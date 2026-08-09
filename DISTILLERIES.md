@@ -2,13 +2,13 @@
 
 > Generated from `data/distilleries.json`. Edit the JSON, then run `npm run data:sync`.
 
-**176 landmarks · 8 spirit families · every marker has an official source link, researched profile and sourced bottle image.**
+**200 landmarks · 8 spirit families · every marker has an official source link, researched profile and sourced bottle image.**
 
 ## Coverage summary
 
 | Family | Markers |
 | --- | ---: |
-| Whisky & whiskey | 66 |
+| Whisky & whiskey | 90 |
 | Brandy & fruit spirits | 18 |
 | Rum & sugar cane | 17 |
 | Agave & related spirits | 14 |
@@ -24,12 +24,12 @@ Every educational subtype has at least 2 matching distillery landmarks; Scotch w
 | Family | Subtype | Markers |
 | --- | --- | ---: |
 | Whisky & whiskey | Scotch whisky | 50 |
-| Whisky & whiskey | Bourbon | 2 |
-| Whisky & whiskey | Rye whiskey | 2 |
+| Whisky & whiskey | Bourbon | 10 |
+| Whisky & whiskey | Rye whiskey | 3 |
 | Whisky & whiskey | Tennessee whiskey | 2 |
 | Whisky & whiskey | Irish whiskey | 2 |
 | Whisky & whiskey | Canadian whisky | 2 |
-| Whisky & whiskey | Japanese whisky | 2 |
+| Whisky & whiskey | Japanese whisky | 14 |
 | Whisky & whiskey | Taiwanese single malt whisky | 2 |
 | Whisky & whiskey | Indian single malt whisky | 2 |
 | Brandy & fruit spirits | Cognac | 2 |
@@ -83,7 +83,7 @@ Every educational subtype has at least 2 matching distillery landmarks; Scotch w
 | Flavored spirits & liqueurs | Infused vodka | 2 |
 | Flavored spirits & liqueurs | Absinthe | 2 |
 
-## Whisky & whiskey (66)
+## Whisky & whiskey (90)
 
 | Distillery / landmark | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -92,8 +92,20 @@ Every educational subtype has at least 2 matching distillery landmarks; Scotch w
 | Amrut Distilleries | Bengaluru, Karnataka | India | Indian single malt whisky | approximate | [Visit](https://amrutdistilleries.com/) | `amrut` |
 | Paul John Distillery | Cuncolim, Goa | India | Indian single malt whisky | approximate | [Visit](https://pauljohnwhisky.com/en/distillery) | `paul-john-goa` |
 | Midleton Distillery | Midleton, County Cork | Ireland | Irish whiskey | approximate | [Visit](https://www.jamesonwhiskey.com/en-ie/visit-our-distilleries/midleton-distillery-cork/) | `midleton` |
+| Akkeshi Distillery | Akkeshi, Hokkaido | Japan | Japanese whisky | approximate | [Visit](https://akkeshi-distillery.com/company/) | `akkeshi` |
+| Chichibu Distillery | Chichibu, Saitama | Japan | Japanese whisky | approximate | [Visit](https://www.chichibu-omotenashi.com/en/guide/spot_20.html) | `chichibu` |
+| Gaiaflow Shizuoka Distillery | Shizuoka, Shizuoka | Japan | Japanese whisky | approximate | [Visit](https://shizuoka-distillery.jp/en/home/) | `shizuoka` |
 | Hakushu Distillery | Hokuto, Yamanashi | Japan | Japanese whisky | approximate | [Visit](https://www.suntory.com/factory/hakushu/) | `hakushu` |
+| Kanosuke Distillery | Hioki, Kagoshima | Japan | Japanese whisky | approximate | [Visit](https://kanosuke.com/en/) | `kanosuke` |
+| Kirin Fuji Gotemba Distillery | Gotemba, Shizuoka | Japan | Japanese whisky | approximate | [Visit](https://www.kirin.co.jp/experience/factory/en/) | `fuji-gotemba` |
+| Mars Komagatake Distillery | Miyada, Nagano | Japan | Japanese whisky | approximate | [Visit](https://www.hombo.co.jp/en/product/marswhisky-shinshu/) | `mars-shinshu` |
+| Nagahama Distillery | Nagahama, Shiga | Japan | Japanese whisky | approximate | [Visit](https://www.romanbeer.com/nagahama-distillery/) | `nagahama` |
+| Nikka Whisky Miyagikyo Distillery | Sendai, Miyagi | Japan | Japanese whisky | approximate | [Visit](https://www.nikka.com/en/distilleries/miyagikyo/) | `miyagikyo` |
+| Nikka Whisky Yoichi Distillery | Yoichi, Hokkaido | Japan | Japanese whisky | approximate | [Visit](https://www.nikka.com/en/distilleries/yoichi/) | `yoichi` |
+| Sakurao Distillery | Hatsukaichi, Hiroshima | Japan | Japanese whisky | approximate | [Visit](https://www.sakuraodistillery.com/en/) | `sakurao` |
+| Suntory Chita Distillery | Chita, Aichi | Japan | Japanese whisky | approximate | [Visit](https://house.suntory.com/chita-whisky) | `chita` |
 | Yamazaki Distillery | Shimamoto, Osaka | Japan | Japanese whisky | exact | [Visit](https://www.suntory.com/factory/yamazaki/) | `yamazaki` |
+| Yuza Distillery | Yuza, Yamagata | Japan | Japanese whisky | approximate | [Visit](https://yuza-disty.jp/en/) | `yuza` |
 | Old Bushmills Distillery | Bushmills, County Antrim | Northern Ireland | Irish whiskey | approximate | [Visit](https://www.bushmills.eu/about-the-distillery/) | `bushmills` |
 | Aberlour Distillery | Aberlour, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.aberlour.com/en/our-distillery/) | `aberlour` |
 | Ardbeg Distillery | Port Ellen, Islay | Scotland | Scotch whisky | approximate | [Visit](https://www.ardbeg.com/visitus/tours.html) | `ardbeg` |
@@ -147,12 +159,24 @@ Every educational subtype has at least 2 matching distillery landmarks; Scotch w
 | Tomatin Distillery | Tomatin, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://tomatin.com/) | `tomatin` |
 | Kavalan Distillery | Yuanshan, Yilan County | Taiwan | Taiwanese single malt whisky | approximate | [Visit](https://www.kavalanwhisky.com/) | `kavalan` |
 | Nantou Distillery / OMAR | Nantou City | Taiwan | Taiwanese single malt whisky | approximate | [Visit](https://www.omarwhisky.com.tw/en/about/production) | `nantou-omar` |
+| Balcones Distilling | Waco, Texas | United States | American single malt whiskey | approximate | [Visit](https://www.balconesdistilling.com/news/balcones-1-texas-single-malt-for-moments-worth-savoring) | `balcones` |
 | Buffalo Trace Distillery | Frankfort, Kentucky | United States | Bourbon | exact | [Visit](https://www.buffalotracedistillery.com/) | `buffalo-trace` |
+| Bulleit Distilling Co. | Shelbyville, Kentucky | United States | Bourbon | approximate | [Visit](https://www.bulleit.com/visit-us) | `bulleit-shelbyville` |
 | Cascade Hollow Distilling Co. | Tullahoma, Tennessee | United States | Tennessee whiskey | approximate | [Visit](https://www.georgedickel.com/en-us/visit-us) | `cascade-hollow` |
+| Four Roses Distillery | Lawrenceburg, Kentucky | United States | Bourbon | approximate | [Visit](https://www.fourrosesbourbon.com/visit-us/distillery/) | `four-roses` |
+| Heaven Hill Bernheim Distillery | Louisville, Kentucky | United States | Bourbon | approximate | [Visit](https://heavenhilldistillery.com/our-distilleries.php) | `heaven-hill-bernheim` |
 | Jack Daniel Distillery | Lynchburg, Tennessee | United States | Tennessee whiskey | approximate | [Visit](https://www.jackdaniels.com/en-us/visit-distillery) | `jack-daniels` |
+| James B. Beam Distilling Co. | Clermont, Kentucky | United States | Bourbon | approximate | [Visit](https://www.jimbeam.com/en-us/visit-us) | `jim-beam-clermont` |
 | Maker’s Mark Distillery | Loretto, Kentucky | United States | Bourbon | approximate | [Visit](https://www.makersmark.com/distillery) | `makers-mark` |
+| New Riff Distilling | Newport, Kentucky | United States | Bourbon | approximate | [Visit](https://www.newriffdistilling.com/) | `new-riff` |
+| Ross & Squibb Distillery | Lawrenceburg, Indiana | United States | Rye whiskey | approximate | [Visit](https://rossandsquibb.com/) | `mgp-lawrenceburg` |
 | Sagamore Spirit Distillery | Baltimore, Maryland | United States | Rye whiskey | approximate | [Visit](https://sagamorespirit.com/about-us/) | `sagamore-spirit` |
+| Stranahan’s Colorado Whiskey Distillery | Denver, Colorado | United States | American single malt whiskey | approximate | [Visit](https://stranahans.com/) | `stranahans` |
+| Westland Distillery | Seattle, Washington | United States | American single malt whiskey | approximate | [Visit](https://westlanddistillery.com/pages/about) | `westland` |
 | WhistlePig Farm Distillery | Shoreham, Vermont | United States | Rye whiskey | approximate | [Visit](https://www.whistlepigwhiskey.com/visit-us) | `whistlepig` |
+| Wild Turkey Distillery | Lawrenceburg, Kentucky | United States | Bourbon | approximate | [Visit](https://www.wildturkeybourbon.com/en-us/our-distillery/) | `wild-turkey` |
+| Willett Distillery | Bardstown, Kentucky | United States | Bourbon | approximate | [Visit](https://www.kentuckybourbonwhiskey.com/) | `willett` |
+| Woodford Reserve Distillery | Versailles, Kentucky | United States | Bourbon | approximate | [Visit](https://www.woodfordreserve.com/our-distillery/) | `woodford-reserve` |
 
 ## Brandy & fruit spirits (18)
 

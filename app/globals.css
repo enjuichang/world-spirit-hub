@@ -2212,6 +2212,38 @@ button {
   vector-effect: non-scaling-stroke;
 }
 
+.map-focus-outline {
+  fill: rgb(226 188 120 / 10%);
+  stroke: #9f8153;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-focused-marker circle {
+  fill: var(--category);
+  stroke: #fff2d9;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-focused-marker line {
+  stroke: #d9a85b;
+  stroke-width: 0.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-focused-marker text {
+  fill: #fff4df;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: #17120d;
+  stroke-linejoin: round;
+  stroke-width: 2.5px;
+  vector-effect: non-scaling-stroke;
+}
+
 .map-region-outline.protected {
   fill: rgb(226 188 120 / 18%);
   stroke: #ffe1a3;
@@ -2248,7 +2280,7 @@ button {
   left: var(--map-x);
   z-index: 3;
   color: #fff4df;
-  font-size: 9px;
+  font-size: 7px;
   font-weight: 900;
   font-style: normal;
   line-height: 1;
@@ -2337,13 +2369,13 @@ button {
 .region-map figcaption b {
   display: grid;
   grid-row: 1 / span 2;
-  width: 20px;
-  height: 20px;
-  color: #17120d;
-  background: var(--category);
+  width: 9px;
+  height: 9px;
+  margin-left: 5px;
+  background: #17120d;
+  border: 2px solid var(--category);
   border-radius: 50%;
-  font-size: 8px;
-  place-items: center;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--category) 16%, transparent);
 }
 
 .region-map figcaption strong,
@@ -2572,6 +2604,78 @@ button {
   line-height: 1.65;
 }
 
+.ingredient-variety-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.ingredient-variety-grid article {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.2fr);
+  min-height: 215px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 1.5%);
+  border: 1px solid var(--border-soft);
+  border-radius: 5px;
+}
+
+.ingredient-variety-grid img {
+  width: 100%;
+  height: 100%;
+  min-height: 215px;
+  object-fit: cover;
+}
+
+.ingredient-variety-grid article > div {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.ingredient-variety-grid span {
+  color: var(--category);
+  font-size: 6px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.ingredient-variety-grid h5 {
+  margin: 13px 0 0;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.ingredient-variety-grid em {
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 8px;
+}
+
+.ingredient-variety-grid p {
+  margin: 12px 0 0;
+  color: var(--text-muted);
+  font-size: 8px;
+  line-height: 1.65;
+}
+
+.ingredient-variety-grid a,
+.ingredient-variety-grid small {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 12px;
+  color: var(--category);
+  font-size: 6px;
+  line-height: 1.4;
+}
+
 .subregion-heading {
   display: grid;
   grid-template-columns: 38px 1fr;
@@ -2636,7 +2740,7 @@ button {
 }
 
 .zone-list article {
-  min-height: 190px;
+  min-height: 250px;
   padding: 18px;
   background: rgb(255 255 255 / 1.5%);
   border-right: 1px solid var(--border-soft);
@@ -2675,6 +2779,45 @@ button {
   color: var(--text-muted);
   font-size: 8px;
   line-height: 1.65;
+}
+
+.zone-distillery {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-top: 12px;
+  margin-top: 14px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.zone-distillery img {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  object-fit: contain;
+  background: rgb(255 255 255 / 4%);
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+}
+
+.zone-distillery div {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.zone-distillery small {
+  color: var(--text-muted);
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.zone-distillery b {
+  overflow: hidden;
+  font-size: 8px;
+  line-height: 1.3;
+  text-overflow: ellipsis;
 }
 
 .method-led-note {
@@ -2972,21 +3115,33 @@ button {
 }
 
 .subtype-map-wrap {
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 7px;
+  position: relative;
+  display: block;
   padding-top: 16px;
   margin-top: 16px;
   border-top: 1px solid var(--border-soft);
 }
 
+.subtype-map-wrap > svg {
+  position: absolute;
+  top: 24px;
+  left: 14px;
+  z-index: 5;
+  padding: 4px;
+  color: #ffe1a3;
+  background: rgb(11 11 10 / 82%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 50%;
+}
+
 .region-map.compact {
-  padding: 7px;
+  padding: 9px;
   background: #0d0c0b;
 }
 
 .region-map.compact .map-canvas {
-  aspect-ratio: 2.25 / 1;
+  min-height: 188px;
+  aspect-ratio: 1.65 / 1;
 }
 
 .region-map.compact figcaption {
@@ -4308,6 +4463,10 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .ingredient-variety-grid {
+    grid-template-columns: 1fr;
+  }
+
   .deep-dive-header {
     gap: 22px;
   }
@@ -4315,6 +4474,14 @@ button {
   .ingredient-profile img {
     min-height: 220px;
     max-height: 290px;
+  }
+
+  .ingredient-variety-grid article {
+    grid-template-columns: minmax(115px, 0.72fr) minmax(0, 1.28fr);
+  }
+
+  .ingredient-variety-grid img {
+    min-height: 230px;
   }
 
   .zone-list,

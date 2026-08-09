@@ -1,156 +1,62 @@
 [
   {
-    "id": "oban",
+    "id": "sakurao",
     "status": "sourced",
-    "imagePath": "/bottles/oban.jpg",
-    "imageSourceUrl": "https://images.alko.fi/images/t_pdp/cdn/906087/oban-14-year-old-single-malt.jpg",
-    "productPageUrl": "https://www.alko.fi/en/products/906087/oban-14-year-old-single-malt",
-    "productName": "Oban 14 Year Old Single Malt",
-    "score": 120,
-    "bytes": 97675
+    "imagePath": "/bottles/sakurao.jpg",
+    "imageSourceUrl": "https://bottleofjapan.com/cdn/shop/files/168799428_1024x1024.jpg?v=1775388814",
+    "productPageUrl": "https://bottleofjapan.com/products/168799428",
+    "productName": "Sakurao Single Malt Japanese Whisky",
+    "score": 97,
+    "bytes": 12811
   },
   {
-    "id": "cardhu",
+    "id": "jim-beam-clermont",
     "status": "sourced",
-    "imagePath": "/bottles/cardhu.webp",
-    "imageSourceUrl": "https://images.ctfassets.net/glsfy1cpffmh/5cdyIHEqPdgr9cwnC8nUx0/3431c7f2b115077f974b59f06458342e/1dd7f1eced3a916025c7ea8c757fad24f3d8afdf.png?fm=webp&q=80&fit=fill",
-    "productPageUrl": "https://www.malts.com/en-us/products/cardhu-12-year-old-single-malt-scotch-whisky-750ml",
-    "productName": "Cardhu 12 Year Old Single Malt",
-    "score": 102,
-    "bytes": 212086
+    "imagePath": "/bottles/jim-beam-clermont.webp",
+    "imageSourceUrl": "https://www.jimbeam.com/sites/default/files/styles/original/public/2024-11/JimBeamWhite_EvergreenProduct_Crop_4x5_2023_s05%20%281%29.webp?itok=yG2db_yU",
+    "productPageUrl": "https://www.jimbeam.com/en-us/visit-us",
+    "productName": "Jim Beam Original Kentucky Straight Bourbon",
+    "score": 99,
+    "bytes": 184874
   },
   {
-    "id": "cragganmore",
+    "id": "four-roses",
     "status": "sourced",
-    "imagePath": "/bottles/cragganmore.png",
-    "imageSourceUrl": "https://aem.lcbo.com/content/dam/lcbo/products/0/1/3/2/013237.jpg.thumb.319.319.png",
-    "productPageUrl": "https://www.lcbo.com/en/cragganmore-12-year-old-21160",
-    "productName": "Cragganmore 12 Year Old",
-    "score": 104,
-    "bytes": 52350
+    "imagePath": "/bottles/four-roses.png",
+    "imageSourceUrl": "https://cdn.caskers.com/catalog/product/cache/4be1456c55268c99c0016aa6f323bbd5/E/a/Eagle_Rare_10.png",
+    "productPageUrl": "https://www.caskers.com/four-roses-single-barrel-kentucky-straight-bourbon-whiskey/",
+    "productName": "Four Roses Single Barrel Bourbon",
+    "score": 97,
+    "bytes": 16629
   },
   {
-    "id": "caol-ila",
+    "id": "heaven-hill-bernheim",
     "status": "sourced",
-    "imagePath": "/bottles/caol-ila.webp",
-    "imageSourceUrl": "https://images.ctfassets.net/glsfy1cpffmh/5cdyIHEqPdgr9cwnC8nUx0/3431c7f2b115077f974b59f06458342e/1dd7f1eced3a916025c7ea8c757fad24f3d8afdf.png?fm=webp&q=80&fit=fill",
-    "productPageUrl": "https://www.malts.com/en-gb/distilleries/caol-ila",
-    "productName": "Caol Ila 12 Year Old",
-    "score": 94,
-    "bytes": 212086
+    "imagePath": "/bottles/heaven-hill-bernheim.png",
+    "imageSourceUrl": "https://heavenhilldistillery.com/images/menu/hh-bib-25.png?ver=9",
+    "productPageUrl": "https://heavenhilldistillery.com/our-distilleries.php",
+    "productName": "Heaven Hill 7 Year Bottled-in-Bond Bourbon",
+    "score": 222,
+    "bytes": 106023
   },
   {
-    "id": "clynelish",
+    "id": "westland",
     "status": "sourced",
-    "imagePath": "/bottles/clynelish.jpg",
-    "imageSourceUrl": "https://www.saq.com/media/catalog/product/1/2/12877571-1_1578412514.png?width=367&height=550&canvas=367,550&optimize=high&fit=bounds&format=jpeg",
-    "productPageUrl": "https://www.saq.com/en/12877571",
-    "productName": "Clynelish 14 Year Old",
-    "score": 113,
-    "bytes": 11710
+    "imagePath": "/bottles/westland.png",
+    "imageSourceUrl": "https://westlanddistillery.com/cdn/shop/files/westland-distillery-19.png?v=1729010828",
+    "productPageUrl": "https://westlanddistillery.com/pages/about",
+    "productName": "Westland Flagship American Single Malt Whiskey",
+    "score": 83,
+    "bytes": 1209257
   },
   {
-    "id": "royal-lochnagar",
+    "id": "balcones",
     "status": "sourced",
-    "imagePath": "/bottles/royal-lochnagar.png",
-    "imageSourceUrl": "https://aem.lcbo.com/content/dam/lcbo/products/0/1/3/2/013237.jpg.thumb.319.319.png",
-    "productPageUrl": "https://www.lcbo.com/en/royal-lochnagar-12-year-old-19578",
-    "productName": "Royal Lochnagar 12 Year Old",
-    "score": 104,
-    "bytes": 52350
-  },
-  {
-    "id": "rhum-clement",
-    "status": "missing",
-    "errors": [
-      "https://www.wine.com/product/rhum-clement-select-barrel-agricole-rhum-700ml/530651: HTTP 403",
-      "https://www.rhum-clement.com/wp-content/plugins/revslider/public/assets/assets/dummy.png: implausible image size 68",
-      "https://www.rhum-clement.com/: no bottle-like image candidate"
-    ]
-  },
-  {
-    "id": "casa-lotos",
-    "status": "sourced",
-    "imagePath": "/bottles/casa-lotos.jpg",
-    "imageSourceUrl": "https://casalotos.com/cdn/shop/products/CasaLotos_Blanco_Photograph.jpg?v=1699895649",
-    "productPageUrl": "https://casalotos.com/products/sotol-blanco",
-    "productName": "Casa Lotos Sotol Blanco",
-    "score": 104,
-    "bytes": 1433376
-  },
-  {
-    "id": "moutai",
-    "status": "sourced",
-    "imagePath": "/bottles/moutai.jpg",
-    "imageSourceUrl": "https://www.1855thebottleshop.com/cdn/shop/files/kweichow-moutai-moutai-flying-fairy-500ml.jpg?v=1779420630",
-    "productPageUrl": "https://www.1855thebottleshop.com/products/kweichow-moutai-moutai-flying-fairy-500ml",
-    "productName": "Kweichow Moutai Flying Fairy 500ml",
-    "score": 136,
-    "bytes": 416590
-  },
-  {
-    "id": "bodegas-fundador",
-    "status": "sourced",
-    "imagePath": "/bottles/bodegas-fundador.jpg",
-    "imageSourceUrl": "https://alregi.es/pub/Images/Articulos/500x500/00019001.jpg",
-    "productPageUrl": "https://winepalace.es/brandy/brandy-fundador-sherry-cask",
-    "productName": "Fundador Sherry Cask Brandy",
-    "score": 80,
-    "bytes": 182066
-  },
-  {
-    "id": "kwv-paarl",
-    "status": "sourced",
-    "imagePath": "/bottles/kwv-paarl.jpg",
-    "imageSourceUrl": "https://kwv.co.za/wp-content/uploads/2025/08/KWV12_Rendering.jpg",
-    "productPageUrl": "https://kwv.co.za/product/kwv-12yr-oldbran-6-1x750/",
-    "productName": "KWV 12 Year Old Brandy",
-    "score": 80,
-    "bytes": 83072
-  },
-  {
-    "id": "bodegas-tradicion",
-    "status": "sourced",
-    "imagePath": "/bottles/bodegas-tradicion.png",
-    "imageSourceUrl": "https://ovh.gourmethunters.com/image/cache/catalog/bottles/bodegas-tradici%C3%B3n/brandy-tradici%C3%B3n-solera-gran-reserva-0x350.png",
-    "productPageUrl": "https://www.gourmethunters.com/en_US/Brandy%2BTradici%C3%B3n%2BSolera%2BGran%2BReserva",
-    "productName": "Brandy Tradición Solera Gran Reserva",
-    "score": 230,
-    "bytes": 47744
-  },
-  {
-    "id": "capel-vicuna",
-    "status": "missing",
-    "errors": [
-      "https://www.haskells.com/capel-pisco-750ml/: fetch failed",
-      "https://www.capel.cl/: fetch failed"
-    ]
-  },
-  {
-    "id": "fenjiu",
-    "status": "missing",
-    "errors": [
-      "https://fenjiu.be/product/: no bottle-like image candidate",
-      "https://www.fenjiu.com.cn/: fetch failed"
-    ]
-  },
-  {
-    "id": "guilin-sanhua",
-    "status": "missing",
-    "errors": [
-      "https://www.chinaglobalmall.com/products/1164841292412: HTTP 403",
-      "https://wsjkw.gxzf.gov.cn/spaqyyyzs_49672/spaqqybz/spaqqybzcx/t26080433.shtml: fetch failed",
-      "https://wsjkw.gxzf.gov.cn/: fetch failed"
-    ]
-  },
-  {
-    "id": "van-ryns",
-    "status": "sourced",
-    "imagePath": "/bottles/van-ryns.jpg",
-    "imageSourceUrl": "https://bottle-stop.com.au/cdn/shop/files/buy-van-ryns-12-year-old-single-pot-still-brandy-750ml-online-spirits-van-ryns-store-alcohol-delivery-bottleshop_near_me-liquor_marketplace-bottle_stop-formerly_boozebud.webp?v=1747124837",
-    "productPageUrl": "https://bottle-stop.com.au/products/van-ryns-12-year-old-single-pot-still-brandy-750ml",
-    "productName": "Van Ryn's 12 Year Old Single Pot Still Brandy",
-    "score": 272,
-    "bytes": 46081
+    "imagePath": "/bottles/balcones.jpg",
+    "imageSourceUrl": "https://cdn.caskers.com/catalog/product/cache/4f6989790ecdd0e389055fabaf312a4d/b/a/balcones-texas-1-single-malt-whisky-1.jpg",
+    "productPageUrl": "https://www.caskers.com/balcones-texas-single-malt-whisky/",
+    "productName": "Balcones Texas 1 Single Malt Whisky",
+    "score": 128,
+    "bytes": 35479
   }
 ]

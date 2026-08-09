@@ -107,12 +107,6 @@
     "productName": "Buy Foursquare Mandamus 16 Year Old Rum Exceptional Cask Mark XXIX Online",
     "searchScore": 118
   },
-  "rhum-clement": {
-    "query": "\"Habitation Clément\" \"Rhum agricole\" bottle 750ml product",
-    "productPageUrl": "https://www.saratogawine.com/product/rhum-clement-rum-select-barrel-750ml/",
-    "productName": "Rhum Clement Rum Select Barrel 750ml - Buy online at SaratogaWine.com",
-    "searchScore": 118
-  },
   "luzhou-laojiao": {
     "query": "\"Luzhou Laojiao\" \"Strong-aroma baijiu\" bottle 750ml product",
     "productPageUrl": "https://shop.baijiuamerica.com/products/luzhou-laojiao-sanrenxuan",
@@ -149,12 +143,6 @@
     "productName": "Buy Jack Daniel's Tennessee Whiskey – Whisky Advocate",
     "searchScore": 128
   },
-  "capel-vicuna": {
-    "query": "\"CAPEL Pisco\" \"Pisco\" bottle 750ml product",
-    "productPageUrl": "https://www.saratogawine.com/product/capel-pisco-premium-750ml/",
-    "productName": "Capel Pisco Premium 750ml - Buy online at SaratogaWine.com",
-    "searchScore": 128
-  },
   "poli-grappa": {
     "query": "\"Poli Distillerie\" \"Grappa\" bottle 750ml product",
     "productPageUrl": "https://www.poligrappa.com/eng/grappas/sarpa",
@@ -169,9 +157,9 @@
   },
   "novo-fogo": {
     "query": "\"Novo Fogo\" \"Cachaça\" bottle 750ml product",
-    "productPageUrl": "https://kegnbottle.com/products/novo-fogo-barrel-aged-cachaca-750-ml",
-    "productName": "Novo Fogo Barrel-Aged Cachaça (750 ml) | Keg N Bottle",
-    "searchScore": 110
+    "productPageUrl": "https://shop.novofogo.com/products/novo-fogo-silver-cachaca",
+    "productName": "Novo Fogo Silver Cachaça",
+    "searchScore": 150
   },
   "zuisen": {
     "query": "\"Zuisen\" \"Awamori\" bottle 750ml product",
@@ -199,72 +187,184 @@
   },
   "distillerie-guy": {
     "query": "\"Distillerie Guy\" \"Absinthe\" bottle 750ml product",
-    "productPageUrl": "https://distillerie-guy.fr/content/16-absinthes",
-    "productName": "Absinthes de Pontarlier | Distillerie Guy",
-    "searchScore": 100
+    "productPageUrl": "https://www.whisky.fr/en/francois-guy-absinthe-4596.html",
+    "productName": "François Guy Absinthe Pontarlier",
+    "searchScore": 150
   },
   "oban": {
-    "productPageUrl": "https://www.alko.fi/en/products/906087/oban-14-year-old-single-malt",
-    "productName": "Oban 14 Year Old Single Malt"
+    "productPageUrl": "https://dramfellows.com/products/oban-14-year-old",
+    "productName": "Oban 14 Year Old Single Malt Scotch Whisky"
   },
   "cardhu": {
-    "productPageUrl": "https://www.malts.com/en-us/products/cardhu-12-year-old-single-malt-scotch-whisky-750ml",
-    "productName": "Cardhu 12 Year Old Single Malt"
+    "productPageUrl": "https://cellier.co.uk/products/cardhu-12-year-old-speyside-single-malt-70cl",
+    "productName": "Cardhu 12 Year Old Speyside Single Malt Scotch Whisky"
   },
   "cragganmore": {
-    "productPageUrl": "https://www.lcbo.com/en/cragganmore-12-year-old-21160",
-    "productName": "Cragganmore 12 Year Old"
+    "productPageUrl": "https://www.danmurphys.com.au/product/DM_84914/",
+    "productName": "Cragganmore 12 Year Old Speyside Single Malt Scotch Whisky"
   },
   "caol-ila": {
-    "productPageUrl": "https://www.wine.com/product/caol-ila-12-year-single-malt-scotch-whisky/526444",
-    "productName": "Caol Ila 12 Year Old"
+    "productPageUrl": "https://www.ohlq.com/liquor/whiskey/scotch/single-malt/caol-ila-12-year-old-single-malt-scotch-whisky",
+    "productName": "Caol Ila 12 Year Old Islay Single Malt Scotch Whisky"
   },
   "clynelish": {
-    "productPageUrl": "https://www.saq.com/en/12877571",
-    "productName": "Clynelish 14 Year Old"
+    "productPageUrl": "https://www.malts.com/en-us/products/clynelish-14-year-old-single-malt-scotch-whisky-750ml",
+    "productName": "Clynelish 14 Year Old Single Malt Scotch Whisky"
   },
   "royal-lochnagar": {
-    "productPageUrl": "https://www.lcbo.com/en/royal-lochnagar-12-year-old-19578",
-    "productName": "Royal Lochnagar 12 Year Old"
+    "productPageUrl": "https://www.saq.com/en/12272249",
+    "productName": "Royal Lochnagar 12 Year Old Highland Single Malt Scotch Whisky"
   },
   "kwv-paarl": {
-    "productPageUrl": "https://kwv.co.za/product/kwv-12yr-oldbran-6-1x750/",
-    "productName": "KWV 12 Year Old Brandy"
+    "productPageUrl": "https://liquorstaronline.co.nz/products/kwv-10-yo-brandy-700ml",
+    "productName": "KWV 10 Year Old Potstill Brandy"
   },
   "van-ryns": {
-    "productPageUrl": "https://bottle-stop.com.au/products/van-ryns-12-year-old-single-pot-still-brandy-750ml",
-    "productName": "Van Ryn's 12 Year Old Single Pot Still Brandy"
+    "productPageUrl": "https://www.masterofmalt.com/brandy/van-ryns/van-ryns-10-vintage-brandy/",
+    "productName": "Van Ryn's 10 Year Old Vintage Brandy"
   },
   "bodegas-fundador": {
-    "productPageUrl": "https://winepalace.es/brandy/brandy-fundador-sherry-cask",
-    "productName": "Fundador Sherry Cask Brandy"
+    "productPageUrl": "https://www.limaodistribuidora.com.br/conhaque/conhaque-fundador-sherry-cask-750ml",
+    "productName": "Fundador Fine Brandy Sherry Cask"
   },
   "bodegas-tradicion": {
-    "productPageUrl": "https://www.gourmethunters.com/en_US/Brandy%2BTradici%C3%B3n%2BSolera%2BGran%2BReserva",
-    "productName": "Brandy Tradición Solera Gran Reserva"
+    "productPageUrl": "https://www.elcorteingles.es/gourmet-club-shop/0110113354200530-tradicion-gran-reserva-solera-jerez-brandy-bottle-70-cl/",
+    "productName": "Tradición Solera Gran Reserva Brandy de Jerez"
   },
   "moutai": {
     "productPageUrl": "https://www.1855thebottleshop.com/products/kweichow-moutai-moutai-flying-fairy-500ml",
     "productName": "Kweichow Moutai Flying Fairy 500ml"
   },
   "fenjiu": {
-    "productPageUrl": "https://fenjiu.be/product/",
-    "productName": "Fenjiu Baijiu"
+    "productPageUrl": "https://whisky.my/product/panama-fenjiu-%E5%B7%B4%E6%8B%BF%E9%A6%AC%E6%B1%BE%E9%85%92-20-years-old-53/",
+    "productName": "Panama Fenjiu 20 Year Old Baijiu"
   },
   "guilin-sanhua": {
     "productPageUrl": "https://www.chinaglobalmall.com/products/1164841292412",
     "productName": "Guilin Sanhua Liquor 480ml"
   },
   "rhum-clement": {
-    "productPageUrl": "https://www.wine.com/product/rhum-clement-select-barrel-agricole-rhum-700ml/530651",
-    "productName": "Rhum Clément Select Barrel"
+    "productPageUrl": "https://www.lilovino.com/antilles/8155-spiritueux-clement-vieux-rhum-select-barrel.html",
+    "productName": "Clément Select Barrel Rhum Agricole"
   },
   "capel-vicuna": {
-    "productPageUrl": "https://www.haskells.com/capel-pisco-750ml/",
-    "productName": "Capel Pisco 750ml"
+    "productPageUrl": "https://abcfws.com/capel-pisco-reservado/350606",
+    "productName": "Capel Pisco Reservado"
   },
   "casa-lotos": {
     "productPageUrl": "https://casalotos.com/products/sotol-blanco",
     "productName": "Casa Lotos Sotol Blanco"
+  },
+  "dalmore": {
+    "productPageUrl": "https://www.caskers.com/dalmore-12-year-old-single-malt-scotch-whisky/",
+    "productName": "The Dalmore 12 Year Old Single Malt Scotch Whisky"
+  },
+  "inverroche": {
+    "productPageUrl": "https://whiskeyd.com/collections/new-western-style-gin",
+    "productName": "Inverroche Classic Gin"
+  },
+  "jagermeister": {
+    "productPageUrl": "https://drinksdeli.asia/products/jagermeister",
+    "productName": "Jägermeister Herbal Liqueur"
+  },
+  "nantou-omar": {
+    "productPageUrl": "https://www.spirituosen-superbillig.com/Omar-Taiwanese-Whisky-Bourbon-Cask-07-Liter-46-Vol.html",
+    "productName": "Omar Taiwanese Single Malt Whisky Bourbon Cask"
+  },
+  "yoichi": {
+    "productPageUrl": "https://nikka.com/eng/brands/singlemalt-yoichi/",
+    "productName": "Nikka Yoichi Single Malt Japanese Whisky"
+  },
+  "miyagikyo": {
+    "productPageUrl": "https://nikka.com/eng/brands/singlemalt-miyagikyo/",
+    "productName": "Nikka Miyagikyo Single Malt Japanese Whisky"
+  },
+  "chichibu": {
+    "productPageUrl": "https://www.highroadspirits.com/ichiros-malt",
+    "productName": "Ichiro's Malt Chichibu Single Malt Japanese Whisky"
+  },
+  "fuji-gotemba": {
+    "productPageUrl": "https://fujiwhisky.thirstie.com/products/fuji-single-grain-japanese-whiskey",
+    "productName": "Fuji Single Grain Japanese Whiskey"
+  },
+  "mars-shinshu": {
+    "productPageUrl": "https://www.hombo.co.jp/en/product/mars-singlemalt-komagatake/",
+    "productName": "Mars Single Malt Komagatake Japanese Whisky"
+  },
+  "akkeshi": {
+    "productPageUrl": "https://www.highroadspirits.com/akkeshi",
+    "productName": "Akkeshi Single Malt Japanese Whisky"
+  },
+  "shizuoka": {
+    "productPageUrl": "https://getabottle.de/en/products/shizuoka-united-s-1st-edition-japanese-whisky-50-5",
+    "productName": "Gaiaflow Shizuoka United S Single Malt Japanese Whisky"
+  },
+  "kanosuke": {
+    "productPageUrl": "https://kanosuke.com/products/single-malt-kannosuke-en",
+    "productName": "Kanosuke Single Malt Japanese Whisky"
+  },
+  "sakurao": {
+    "productPageUrl": "https://bottleofjapan.com/products/168799428",
+    "productName": "Sakurao Single Malt Japanese Whisky"
+  },
+  "nagahama": {
+    "productPageUrl": "https://www.tajima-ya.net/nagahama/",
+    "productName": "Nagahama Single Malt Japanese Whisky"
+  },
+  "yuza": {
+    "productPageUrl": "https://yuza-disty.jp/product/",
+    "productName": "Yuza 2026 Single Malt Japanese Whisky"
+  },
+  "chita": {
+    "productPageUrl": "https://house.suntory.com/chita-whisky",
+    "productName": "The Chita Single Grain Japanese Whisky"
+  },
+  "jim-beam-clermont": {
+    "productPageUrl": "https://www.ohlq.com/liquor/whiskey/american/bourbon/jim-beam-bourbon-whiskey",
+    "productName": "Jim Beam Original Kentucky Straight Bourbon"
+  },
+  "woodford-reserve": {
+    "productPageUrl": "https://www.woodfordreserve.com/whiskey/straight-bourbon-whiskey/",
+    "productName": "Woodford Reserve Kentucky Straight Bourbon"
+  },
+  "four-roses": {
+    "productPageUrl": "https://hic-winemerchants.com/products/four-roses-single-barrel-kentucky-straight-bourbon-whiskey",
+    "productName": "Four Roses Single Barrel Bourbon"
+  },
+  "wild-turkey": {
+    "productPageUrl": "https://www.wildturkeybourbon.com/products/wild-turkey-101/",
+    "productName": "Wild Turkey 101 Kentucky Straight Bourbon"
+  },
+  "heaven-hill-bernheim": {
+    "productPageUrl": "https://www.caskers.com/heaven-hill-7-year-old-bottled-in-bond-kentucky-straight-bourbon-whiskey/",
+    "productName": "Heaven Hill 7 Year Bottled-in-Bond Bourbon"
+  },
+  "bulleit-shelbyville": {
+    "productPageUrl": "https://www.caskers.com/bulleit-bourbon-frontier-whiskey/",
+    "productName": "Bulleit Bourbon Frontier Whiskey"
+  },
+  "mgp-lawrenceburg": {
+    "productPageUrl": "https://www.rossvilleunion.com/",
+    "productName": "Rossville Union Master Crafted Straight Rye Whiskey"
+  },
+  "new-riff": {
+    "productPageUrl": "https://newriffdistilling.com/bourbon/",
+    "productName": "New Riff Kentucky Straight Bourbon"
+  },
+  "willett": {
+    "productPageUrl": "https://www.totalwine.com/spirits/bourbon/small-batch-bourbon/willett-pot-still-reserve-bourbon/p/111580175",
+    "productName": "Willett Pot Still Reserve Bourbon"
+  },
+  "westland": {
+    "productPageUrl": "https://westlanddistillery.com/pages/flagship-info",
+    "productName": "Westland Flagship American Single Malt Whiskey"
+  },
+  "balcones": {
+    "productPageUrl": "https://www.caskers.com/balcones-texas-single-malt-whisky/",
+    "productName": "Balcones Texas 1 Single Malt Whisky"
+  },
+  "stranahans": {
+    "productPageUrl": "https://shop.stranahans.com/products/original",
+    "productName": "Stranahan's Original American Single Malt Whiskey"
   }
 }

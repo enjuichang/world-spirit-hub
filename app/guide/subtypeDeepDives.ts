@@ -20,9 +20,19 @@ export type SubtypeDeepDiveData = {
     image?: string;
     imageAlt?: string;
     fact: string;
+    varieties?: Array<{
+      name: string;
+      scientificName?: string;
+      role: string;
+      description: string;
+      image: string;
+      imageAlt: string;
+      credit?: { label: string; url?: string };
+    }>;
   };
   mapTitle: string;
   mapNote: string;
+  mapFocus?: string[];
   zones: DeepDiveZone[];
   styles?: DeepDiveStyle[];
   source?: { label: string; url: string };
@@ -85,15 +95,16 @@ const curated: Record<string, SubtypeDeepDiveData> = {
       fact: "Grain Scotch can also use other whole cereals, while malt whisky must use malted barley and pot stills.",
     },
     mapTitle: "Scotland's five protected whisky names",
-    mapNote: "Marker positions orient the reader; the legal boundaries are defined in the Scotch Whisky product specification. Flavor notes are tendencies, never requirements.",
+    mapNote: "The vectors follow the protected areas named in the Scotch Whisky product specification. Speyside and Campbeltown use the referenced 2007 ward boundaries; the statutory Highland–Lowland route is cartographically simplified. Flavor notes are tendencies, never requirements.",
+    mapFocus: ["Scotland"],
     zones: [
-      { name: "Highland", point: [-4.4, 57.35], kind: "protected", character: "Broadest range", detail: "The largest region spans light, fruity inland malts, heathery northern styles and salty coastal expressions." },
-      { name: "Speyside", point: [-3.35, 57.48], kind: "protected", character: "Orchard fruit · honey · spice", detail: "Dense with distilleries; many styles emphasize fruit and restrained peat, with Sherry-cask maturation common but not mandatory." },
-      { name: "Lowland", point: [-4.0, 55.75], kind: "protected", character: "Grass · floral lift · gentle cereal", detail: "Often associated with lighter profiles, though a growing group of distilleries makes the region increasingly diverse." },
-      { name: "Islay", point: [-6.2, 55.76], kind: "protected", character: "Peat smoke · maritime savor", detail: "Famous for heavily peated malts, yet individual distilleries and unpeated releases make smoke an important tendency—not a rule." },
-      { name: "Campbeltown", point: [-5.61, 55.43], kind: "protected", character: "Salt · smoke · fruit · toffee", detail: "A compact locality known for robust, layered whiskies with oily, coastal and fruit-driven variations." },
+      { name: "Highland", point: [-4.45, 58.35], kind: "protected", character: "Broadest range", detail: "The largest region spans light, fruity inland malts, heathery northern styles and salty coastal expressions.", distillery: { name: "Glenmorangie Distillery", point: [-4.077, 57.842], image: "/bottles/glenmorangie.png" } },
+      { name: "Speyside", point: [-3.42, 57.34], kind: "protected", character: "Orchard fruit · honey · spice", detail: "Dense with distilleries; many styles emphasize fruit and restrained peat, with Sherry-cask maturation common but not mandatory.", distillery: { name: "The Glenlivet Distillery", point: [-3.338, 57.344], image: "/bottles/glenlivet.jpg" } },
+      { name: "Lowland", point: [-3.65, 55.45], kind: "protected", character: "Grass · floral lift · gentle cereal", detail: "Often associated with lighter profiles, though a growing group of distilleries makes the region increasingly diverse.", distillery: { name: "Auchentoshan Distillery", point: [-4.439, 55.923], image: "/bottles/auchentoshan.webp" } },
+      { name: "Islay", point: [-6.24, 55.76], kind: "protected", character: "Peat smoke · maritime savor", detail: "Famous for heavily peated malts, yet individual distilleries and unpeated releases make smoke an important tendency—not a rule.", distillery: { name: "Laphroaig Distillery", point: [-6.15, 55.63], image: "/bottles/laphroaig.webp" } },
+      { name: "Campbeltown", point: [-5.63, 55.39], kind: "protected", character: "Salt · smoke · fruit · toffee", detail: "A compact locality known for robust, layered whiskies with oily, coastal and fruit-driven variations.", distillery: { name: "Springbank Distillery", point: [-5.608, 55.425], image: "/bottles/springbank.png" } },
     ],
-    source: { label: "Scotch Whisky Association regional guide", url: "https://www.scotch-whisky.org.uk/discover-scotch/enjoying-scotch/scotch-whisky-regions/" },
+    source: { label: "UK Scotch Whisky product specification", url: "https://www.gov.uk/protected-food-drink-names/scotch-whisky" },
   },
   "brandy:Cognac": {
     introduction: "Cognac is made inside a delimited area centered on Charente and Charente-Maritime. Its six crus describe where the grapes grew. Soil, distillation choices, cellar climate, oak and blending all influence the final eau-de-vie.",
@@ -104,9 +115,38 @@ const curated: Record<string, SubtypeDeepDiveData> = {
       image: "/ingredients/ugni-blanc.png",
       imageAlt: "Pale Ugni Blanc grapes growing over chalky vineyard soil",
       fact: "The base wine is not designed as a rich table wine; acidity and subtle aroma help it survive two distillations and years in oak.",
+      varieties: [
+        {
+          name: "Ugni Blanc",
+          scientificName: "Vitis vinifera",
+          role: "More than 98% of Cognac vineyards",
+          description: "High acidity, low sugar and a restrained profile make the benchmark distillation wine: delicate, floral and built to age.",
+          image: "/ingredients/ugni-blanc.png",
+          imageAlt: "Pale Ugni Blanc grapes on a vine",
+        },
+        {
+          name: "Folle Blanche",
+          scientificName: "Vitis vinifera",
+          role: "Historic · now less than 1%",
+          description: "The pre-phylloxera mainstay survives in small plantings and can give balanced eau-de-vie with vivid, powerful aromatics.",
+          image: "/ingredients/folle-blanche.jpg",
+          imageAlt: "A ripe cluster of Folle Blanche grapes",
+          credit: { label: "Photo · Pancrat / CC BY-SA", url: "https://commons.wikimedia.org/wiki/File:Folle_blanche_raisin.jpg" },
+        },
+        {
+          name: "Colombard",
+          scientificName: "Vitis vinifera",
+          role: "Aromatic blending variety",
+          description: "Naturally high acidity and stronger fruit aromatics make Colombard a useful blending counterpoint to neutral Ugni Blanc.",
+          image: "/ingredients/colombard.jpg",
+          imageAlt: "A ripe cluster of Colombard grapes",
+          credit: { label: "Photo · Pancrat / CC BY-SA", url: "https://commons.wikimedia.org/wiki/File:Colombard_raisin.jpg" },
+        },
+      ],
     },
     mapTitle: "The six official Cognac crus",
-    mapNote: "Fine Champagne is not a seventh cru. It is a blend designation made only from Grande and Petite Champagne eaux-de-vie, with at least 50% Grande Champagne. “Bas Champagne” is not an official cru.",
+    mapNote: "The map uses an accurate outline of metropolitan France with orientation markers for the six crus; it does not invent cadastral cru polygons. Fine Champagne is not a seventh cru: it is a blend of Grande and Petite Champagne, with at least 50% Grande Champagne.",
+    mapFocus: ["France"],
     zones: [
       { name: "Grande Champagne", point: [-0.31, 45.61], kind: "protected", character: "Floral finesse · long aging", detail: "Deep chalk and limestone are associated with fine, fragrant eaux-de-vie that can require long maturation to show their full range." },
       { name: "Petite Champagne", point: [-0.25, 45.48], kind: "protected", character: "Floral · supple · earlier development", detail: "Chalky soils also support fine eau-de-vie, generally described as reaching maturity sooner than Grande Champagne." },
@@ -119,6 +159,61 @@ const curated: Record<string, SubtypeDeepDiveData> = {
       { name: "Fine Champagne", character: "A blend designation", detail: "Only Grande and Petite Champagne eaux-de-vie are permitted, and Grande Champagne must make up at least half of the blend." },
     ],
     source: { label: "Bureau National Interprofessionnel du Cognac", url: "https://www.cognac.fr/en/discover/the-cognac-region/cognac-crus/" },
+  },
+  "brandy:Armagnac": {
+    introduction: "Armagnac is Gascony's protected wine spirit. Ten grape varieties are authorized, but four account for the varieties most regularly used; they meet three production zones whose soils and climate shift from west to east.",
+    ingredient: {
+      name: "Armagnac's four principal grapes",
+      scientificName: "Vitis species and crosses",
+      description: "Ugni Blanc supplies dependable acidity, Baco 22A brings a uniquely Gascon hybrid voice, Folle Blanche carries the historic floral line, and Colombard adds exuberant fruit. The producer can distill and blend them separately or together.",
+      fact: "The appellation permits ten varieties. These four are the widely and regularly used core—not a closed list of everything legally possible.",
+      varieties: [
+        {
+          name: "Ugni Blanc",
+          scientificName: "Vitis vinifera",
+          role: "Most widely planted",
+          description: "Acidic, low-alcohol base wines distill into fine, precise eaux-de-vie and adapt well across all three Armagnac terroirs.",
+          image: "/ingredients/ugni-blanc.png",
+          imageAlt: "Pale Ugni Blanc grapes on a vine",
+        },
+        {
+          name: "Baco 22A",
+          scientificName: "Folle Blanche × Noah",
+          role: "Armagnac signature · especially Bas-Armagnac",
+          description: "France's distinctive permitted hybrid is prized on sandy soils for roundness, ripe-fruit depth and an affinity for long aging.",
+          image: "/ingredients/baco-22a.png",
+          imageAlt: "Illustrative close-up of pale Baco 22A grapes on the vine",
+          credit: { label: "Illustrative botanical reference · AI-generated" },
+        },
+        {
+          name: "Folle Blanche",
+          scientificName: "Vitis vinifera",
+          role: "Historic and rare",
+          description: "The pre-phylloxera grape gives fine, elegant and often floral spirit, especially expressive in Blanche and young Armagnac.",
+          image: "/ingredients/folle-blanche.jpg",
+          imageAlt: "A ripe cluster of Folle Blanche grapes",
+          credit: { label: "Photo · Pancrat / CC BY-SA", url: "https://commons.wikimedia.org/wiki/File:Folle_blanche_raisin.jpg" },
+        },
+        {
+          name: "Colombard",
+          scientificName: "Vitis vinifera",
+          role: "Fruit-forward accent",
+          description: "The least used of the principal four contributes strong fruit and lift, often as an aromatic component rather than the whole composition.",
+          image: "/ingredients/colombard.jpg",
+          imageAlt: "A ripe cluster of Colombard grapes",
+          credit: { label: "Photo · Pancrat / CC BY-SA", url: "https://commons.wikimedia.org/wiki/File:Colombard_raisin.jpg" },
+        },
+      ],
+    },
+    mapTitle: "Armagnac's three production zones",
+    mapNote: "The accurate France outline establishes national context; the three labels orient the western, central and eastern Armagnac zones without pretending that point markers are legal boundary polygons.",
+    mapFocus: ["France"],
+    zones: [
+      { name: "Bas-Armagnac", point: [-0.18, 43.86], kind: "protected", character: "Tawny sands · light, fruity finesse", detail: "The western zone spans parts of Landes and Gers. Acidic, low-alcohol wines and sandy, iron-tinged soils are associated with delicate, highly reputed eaux-de-vie." },
+      { name: "Armagnac-Ténarèze", point: [0.34, 43.93], kind: "protected", character: "Clay-limestone · structure", detail: "The central transition zone combines boulbènes with heavier terreforts, commonly giving fuller-bodied spirit that rewards long aging." },
+      { name: "Haut-Armagnac", point: [0.73, 43.67], kind: "protected", character: "Limestone hills · sparse vineyards", detail: "The spread-out southern and eastern zone has clay-limestone hills and relatively limited vineyard area today." },
+    ],
+    source: { label: "Bureau National Interprofessionnel de l'Armagnac", url: "https://armagnac.fr/grape-varieties-and-terroirs" },
   },
   "agave:Tequila": {
     introduction: "Tequila has one required agave species and a legally authorized production territory. Within Jalisco, the Tequila Valley and Los Altos are useful growing-landscape lenses, but they are not separate legal tequila classes.",

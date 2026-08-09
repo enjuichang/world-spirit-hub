@@ -31,7 +31,7 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
   assert.match(html, /<title>World Spirit Hub — A spirited atlas<\/title>/i);
   assert.match(html, /Every spirit has/);
   assert.match(html, /Show all spirits/);
-  assert.match(html, /<strong>176<\/strong> landmarks/);
+  assert.match(html, /<strong>200<\/strong> landmarks/);
   assert.match(html, /Choose 2D or 3D map/);
   assert.match(html, /2D<\/button>/);
   assert.match(html, /3D<\/button>/);
@@ -40,12 +40,14 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
 });
 
 test("renders the educational guide", async () => {
-  const [indexResponse, whiskyResponse] = await Promise.all([
+  const [indexResponse, whiskyResponse, brandyResponse] = await Promise.all([
     render("/guide"),
     render("/guide/whisky"),
+    render("/guide/brandy"),
   ]);
   assert.equal(indexResponse.status, 200);
   assert.equal(whiskyResponse.status, 200);
+  assert.equal(brandyResponse.status, 200);
 
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /Eight families/);
@@ -61,7 +63,14 @@ test("renders the educational guide", async () => {
   assert.match(whiskyHtml, /Blended Scotch/);
   assert.match(whiskyHtml, /Regional names found on labels/);
   assert.match(whiskyHtml, /Subtype field cards/);
-  assert.match(whiskyHtml, /Regional production atlas/);
+  assert.match(whiskyHtml, /Regional vector atlas/);
+
+  const brandyHtml = await brandyResponse.text();
+  assert.match(brandyHtml, /More than 98% of Cognac vineyards/);
+  assert.match(brandyHtml, /Folle Blanche/);
+  assert.match(brandyHtml, /Colombard/);
+  assert.match(brandyHtml, /Borderies/);
+  assert.match(brandyHtml, /Country focus · France/);
 });
 
 test("renders the taste profile and credentialed bar experiences", async () => {

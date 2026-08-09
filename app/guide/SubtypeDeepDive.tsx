@@ -51,8 +51,8 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
         </label>
       </header>
 
-      <article className={`ingredient-profile${deepDive.ingredient.image ? " has-image" : ""}`}>
-        {deepDive.ingredient.image && (
+      <article className={`ingredient-profile${deepDive.ingredient.image && !deepDive.ingredient.varieties?.length ? " has-image" : ""}`}>
+        {deepDive.ingredient.image && !deepDive.ingredient.varieties?.length && (
           <img
             src={deepDive.ingredient.image}
             alt={deepDive.ingredient.imageAlt ?? deepDive.ingredient.name}
@@ -69,6 +69,25 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
         </div>
       </article>
 
+      {!!deepDive.ingredient.varieties?.length && (
+        <div className="ingredient-variety-grid" aria-label={`${selected.name} principal fruit and grape varieties`}>
+          {deepDive.ingredient.varieties.map((variety) => (
+            <article key={variety.name}>
+              <img src={variety.image} alt={variety.imageAlt} width="960" height="720" />
+              <div>
+                <span>{variety.role}</span>
+                <h5>{variety.name}</h5>
+                {variety.scientificName && <em>{variety.scientificName}</em>}
+                <p>{variety.description}</p>
+                {variety.credit && (variety.credit.url
+                  ? <a href={variety.credit.url} target="_blank" rel="noreferrer">{variety.credit.label}<ArrowUpRight size={11} /></a>
+                  : <small>{variety.credit.label}</small>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+
       <div className="subregion-heading">
         <MapPinned aria-hidden="true" />
         <div><span>Regional lens</span><h4>{deepDive.mapTitle}</h4><p>{deepDive.mapNote}</p></div>
@@ -76,7 +95,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
 
       {deepDive.zones.length ? (
         <div className="subregion-layout">
-          <RegionMap regions={deepDive.zones} label={`${selected.name} subregions`} />
+          <RegionMap regions={deepDive.zones} label={`${selected.name} subregions`} focus={deepDive.mapFocus} />
           <div className="zone-list">
             {deepDive.zones.map((zone, index) => (
               <article key={zone.name}>
@@ -84,6 +103,14 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
                 <h5>{zone.name}</h5>
                 <strong>{zone.character}</strong>
                 <p>{zone.detail}</p>
+                {zone.distillery && (
+                  <div className="zone-distillery">
+                    {zone.distillery.image && (
+                      <img src={zone.distillery.image} alt="" width="96" height="96" />
+                    )}
+                    <div><small>Representative distillery</small><b>{zone.distillery.name}</b></div>
+                  </div>
+                )}
               </article>
             ))}
           </div>

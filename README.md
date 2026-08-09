@@ -1,6 +1,6 @@
 # World Spirit Hub
 
-A dark, editorial world-spirit atlas with switchable 2D/3D Mapbox views, 176 sourced landmarks across eight categories, at least two landmarks for every educational subtype and 50 distinct Scotch whisky distilleries, an explainable taste-profile quiz, and a curated cocktail-bar finder with dated editorial credentials.
+A dark, editorial world-spirit atlas with switchable 2D/3D Mapbox views, 200 sourced landmarks across eight categories, at least two landmarks for every educational subtype, 50 distinct Scotch whisky distilleries, 19 Japanese producers and 30 U.S. producers, an explainable taste-profile quiz, and a curated cocktail-bar finder with dated editorial credentials.
 
 ## Local development
 

@@ -2,6 +2,11 @@ export type MapRegion = {
   name: string;
   point: [number, number];
   kind?: "protected" | "traditional" | "global";
+  distillery?: {
+    name: string;
+    point: [number, number];
+    image?: string;
+  };
 };
 
 export type LabelTerm = {

@@ -1,19 +1,25 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import mapboxgl, { LngLatBounds, Map as MapboxMap } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { MapRegion } from "../guideData";
 // Simplified Natural Earth admin-0, admin-1, and map-subunit geometry.
 import boundaryData from "./region-boundaries.json";
+// Protected Scotch areas derived from the statutory dividing line and the
+// official 2007 ward boundaries named in the Scotch Whisky specification.
+import scotchBoundaryData from "./scotch-regions.json";
 
 type RegionGeometry = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 type BoundaryProperties = { id: string };
 type BoundaryFeature = GeoJSON.Feature<RegionGeometry, BoundaryProperties>;
 
 const boundaryFeatures = new Map(
-  (boundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features.map((feature) => [
+  [
+    ...(boundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
+    ...(scotchBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
+  ].map((feature) => [
     feature.properties.id,
     feature,
   ]),
@@ -27,6 +33,19 @@ const boundaryGroups: Record<string, string[]> = {
   "Peru & Chile": ["Peru", "Chile"],
 };
 
+const countryFocusGroups: Record<string, string[]> = {
+  Armagnac: ["France"],
+  "Bolivian high valleys": ["Bolivia"],
+  "Central Europe": ["Germany", "Austria", "Switzerland"],
+  Cognac: ["France"],
+  Jerez: ["Spain"],
+  Normandy: ["France"],
+  "Pacific South America": ["Peru", "Chile"],
+  "Peru & Chile": ["Peru", "Chile"],
+  Tennessee: ["United States"],
+  "Western Cape": ["South Africa"],
+};
+
 function project([longitude, latitude]: [number, number]) {
   return {
     x: ((longitude + 180) / 360) * 100,
@@ -36,6 +55,18 @@ function project([longitude, latitude]: [number, number]) {
 
 function boundariesForRegion(region: MapRegion): BoundaryFeature[] {
   const ids = boundaryGroups[region.name] ?? [region.name];
+  return ids.flatMap((id) => {
+    const feature = boundaryFeatures.get(id);
+    return feature ? [feature] : [];
+  });
+}
+
+function focusIdsForRegions(regions: MapRegion[], requested?: string[]) {
+  const ids = requested ?? regions.flatMap((region) => countryFocusGroups[region.name] ?? boundaryGroups[region.name] ?? [region.name]);
+  return [...new Set(ids)].filter((id) => boundaryFeatures.has(id));
+}
+
+function featuresForIds(ids: string[]) {
   return ids.flatMap((id) => {
     const feature = boundaryFeatures.get(id);
     return feature ? [feature] : [];
@@ -82,6 +113,24 @@ function pointCollection(
   };
 }
 
+function distilleryCollection(regions: MapRegion[]): GeoJSON.FeatureCollection<GeoJSON.Point> {
+  return {
+    type: "FeatureCollection",
+    features: regions.flatMap((region) => region.distillery ? [{
+      type: "Feature" as const,
+      geometry: { type: "Point" as const, coordinates: region.distillery.point },
+      properties: { name: region.distillery.name, region: region.name },
+    }] : []),
+  };
+}
+
+function extendGeometryBounds(bounds: LngLatBounds, geometry: RegionGeometry) {
+  const coordinates = geometry.type === "Polygon"
+    ? geometry.coordinates.flat(1)
+    : geometry.coordinates.flat(2);
+  coordinates.forEach((coordinate) => bounds.extend(coordinate as [number, number]));
+}
+
 function geometryPath(geometry: RegionGeometry) {
   const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
   return polygons
@@ -98,19 +147,47 @@ function geometryPath(geometry: RegionGeometry) {
     .join(" ");
 }
 
+function geometryCoordinates(geometry: RegionGeometry): [number, number][] {
+  return (geometry.type === "Polygon" ? geometry.coordinates.flat(1) : geometry.coordinates.flat(2)) as [number, number][];
+}
+
+function focusedViewBox(features: BoundaryFeature[]) {
+  if (!features.length) return { x: 0, y: 0, width: 360, height: 180 };
+  const points = features.flatMap((feature) => geometryCoordinates(feature.geometry).map(project));
+  const minX = Math.min(...points.map((point) => point.x * 3.6));
+  const maxX = Math.max(...points.map((point) => point.x * 3.6));
+  const minY = Math.min(...points.map((point) => point.y * 1.8));
+  const maxY = Math.max(...points.map((point) => point.y * 1.8));
+  const width = Math.max(maxX - minX, 2);
+  const height = Math.max(maxY - minY, 2);
+  const paddingX = Math.max(width * 0.16, 0.75);
+  const paddingY = Math.max(height * 0.16, 0.75);
+  return { x: minX - paddingX, y: minY - paddingY, width: width + paddingX * 2, height: height + paddingY * 2 };
+}
+
 export function RegionMap({
   regions,
   label,
   compact = false,
+  focus,
 }: {
   regions: MapRegion[];
   label: string;
   compact?: boolean;
+  focus?: string[];
 }) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const [mapReady, setMapReady] = useState(false);
+  const focusIds = useMemo(
+    () => compact || focus !== undefined ? focusIdsForRegions(regions, focus) : [],
+    [compact, focus, regions],
+  );
+  const focusFeatures = useMemo(() => featuresForIds(focusIds), [focusIds]);
+  const viewBox = focusedViewBox(focusFeatures);
+  const markerRadius = Math.max(viewBox.width / 68, 0.17);
+  const markerFontSize = Math.max(viewBox.width / 25, 0.5);
 
   useEffect(() => {
     if (compact || !wrapperRef.current || mapRef.current) return;
@@ -141,6 +218,24 @@ export function RegionMap({
         map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
 
         map.on("load", () => {
+          if (focusFeatures.length) {
+            map.addSource("country-focus", {
+              type: "geojson",
+              data: { type: "FeatureCollection", features: focusFeatures },
+            });
+            map.addLayer({
+              id: "country-focus-fill",
+              type: "fill",
+              source: "country-focus",
+              paint: { "fill-color": "#7c6441", "fill-opacity": 0.18 },
+            });
+            map.addLayer({
+              id: "country-focus-outline",
+              type: "line",
+              source: "country-focus",
+              paint: { "line-color": "#ae8c59", "line-width": 1.4, "line-opacity": 0.9 },
+            });
+          }
           map.addSource("production-outlines", {
             type: "geojson",
             data: outlineCollection(regions),
@@ -150,8 +245,16 @@ export function RegionMap({
             type: "fill",
             source: "production-outlines",
             paint: {
-              "fill-color": ["case", ["==", ["get", "protected"], 1], "#e2bc78", "#d9a85b"],
-              "fill-opacity": 0.2,
+              "fill-color": [
+                "match", ["get", "name"],
+                "Highland", "#9b7845",
+                "Speyside", "#d9a85b",
+                "Lowland", "#766548",
+                "Islay", "#c38c55",
+                "Campbeltown", "#edc57f",
+                "#d9a85b",
+              ],
+              "fill-opacity": 0.28,
             },
           });
           map.addLayer({
@@ -208,27 +311,82 @@ export function RegionMap({
             data: pointCollection(regions),
           });
           map.addLayer({
-            id: "production-index",
+            id: "production-region-names",
             type: "symbol",
             source: "production-labels",
             layout: {
-              "text-field": ["to-string", ["get", "index"]],
-              "text-size": 11,
+              "text-field": ["get", "name"],
+              "text-size": 12,
               "text-font": ["Open Sans Bold"],
               "text-allow-overlap": true,
+              "text-letter-spacing": 0.04,
             },
             paint: {
               "text-color": "#fff4df",
               "text-halo-color": "#17120d",
-              "text-halo-width": 2,
+              "text-halo-width": 1.5,
               "text-halo-blur": 0.5,
             },
           });
 
-          if (regions.length > 1) {
+          const distilleries = distilleryCollection(regions);
+          if (distilleries.features.length) {
+            map.addSource("representative-distilleries", { type: "geojson", data: distilleries });
+            map.addLayer({
+              id: "distillery-halo",
+              type: "circle",
+              source: "representative-distilleries",
+              paint: {
+                "circle-color": "#f0bd68",
+                "circle-radius": 9,
+                "circle-blur": 0.65,
+                "circle-opacity": 0.5,
+              },
+            });
+            map.addLayer({
+              id: "distillery-points",
+              type: "circle",
+              source: "representative-distilleries",
+              paint: {
+                "circle-color": "#17120d",
+                "circle-radius": 4.5,
+                "circle-stroke-color": "#ffd992",
+                "circle-stroke-width": 2,
+              },
+            });
+            map.addLayer({
+              id: "distillery-names",
+              type: "symbol",
+              source: "representative-distilleries",
+              layout: {
+                "text-field": ["get", "name"],
+                "text-size": 9.5,
+                "text-font": ["Open Sans Semibold"],
+                "text-offset": [0, 1.25],
+                "text-anchor": "top",
+                "text-allow-overlap": false,
+              },
+              paint: {
+                "text-color": "#f4c978",
+                "text-halo-color": "#17120d",
+                "text-halo-width": 1.5,
+                "text-halo-blur": 0.5,
+              },
+            });
+          }
+
+          if (focusFeatures.length) {
             const bounds = new LngLatBounds();
-            regions.forEach((region) => bounds.extend(region.point));
-            map.fitBounds(bounds, { padding: 65, maxZoom: 4.2, duration: 0 });
+            focusFeatures.forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
+            map.fitBounds(bounds, { padding: 28, maxZoom: 5.5, duration: 0 });
+          } else if (regions.length > 1) {
+            const bounds = new LngLatBounds();
+            regions.forEach((region) => {
+              const boundaries = boundariesForRegion(region);
+              if (boundaries.length) boundaries.forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
+              else bounds.extend(region.point);
+            });
+            map.fitBounds(bounds, { padding: 42, maxZoom: 5.2, duration: 0 });
           } else {
             map.jumpTo({ center: regions[0].point, zoom: 3.2 });
           }
@@ -244,10 +402,10 @@ export function RegionMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [compact, regions]);
+  }, [compact, focusFeatures, regions]);
 
   return (
-    <figure className={`region-map${compact ? " compact" : ""}`}>
+    <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}`}>
       <div
         className={`map-canvas${mapReady ? " mapbox-ready" : ""}`}
         ref={wrapperRef}
@@ -255,8 +413,16 @@ export function RegionMap({
         aria-label={`${label}: ${regions.map((region) => region.name).join(", ")}`}
       >
         <div className="map-graticule" aria-hidden="true" />
-        <div className="map-land" aria-hidden="true" />
-        <svg className="map-region-outlines" viewBox="0 0 360 180" preserveAspectRatio="none" aria-hidden="true">
+        {!focusFeatures.length && <div className="map-land" aria-hidden="true" />}
+        <svg
+          className="map-region-outlines"
+          viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+        >
+          {focusFeatures.map((feature) => (
+            <path className="map-focus-outline" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-focus`} />
+          ))}
           {regions.flatMap((region, index) =>
             boundariesForRegion(region).map((feature, featureIndex) => (
               <path
@@ -267,8 +433,29 @@ export function RegionMap({
               />
             )),
           )}
+          {focusFeatures.length > 0 && regions.map((region, index) => {
+            const point = project(region.point);
+            const x = point.x * 3.6;
+            const y = point.y * 1.8;
+            const direction = index % 2 === 0 ? 1 : -1;
+            const labelY = y + ((index % 3) - 1) * markerFontSize * 1.4;
+            const labelX = x + direction * markerRadius * 1.9;
+            return (
+              <g className={`map-focused-marker ${region.kind ?? "traditional"}`} key={`${region.name}-focused-${index}`}>
+                <circle cx={x} cy={y} r={markerRadius} />
+                <line x1={x} y1={y} x2={labelX} y2={labelY} />
+                <text
+                  x={labelX + direction * markerRadius * 0.45}
+                  y={labelY}
+                  dominantBaseline="middle"
+                  fontSize={markerFontSize}
+                  textAnchor={direction === 1 ? "start" : "end"}
+                >{compact ? region.name : `${index + 1}. ${region.name}`}</text>
+              </g>
+            );
+          })}
         </svg>
-        {regions.map((region, index) => {
+        {!focusFeatures.length && regions.map((region, index) => {
           const point = project(region.point);
           const hasBoundary = boundariesForRegion(region).length > 0;
           return (
@@ -278,20 +465,20 @@ export function RegionMap({
               key={`${region.name}-${index}`}
               style={{ "--map-x": `${point.x}%`, "--map-y": `${point.y}%` } as CSSProperties}
             >
-              <i>{index + 1}</i>
+              <i>{hasBoundary ? region.name : index + 1}</i>
             </span>
           );
         })}
         {!compact && <div className="mapbox-region-layer" ref={mapContainerRef} aria-hidden={!mapReady} />}
       </div>
       <figcaption>
-        <span>{compact ? "Production area" : mapReady ? "Interactive Mapbox atlas" : "Regional production atlas"}</span>
+        <span>{focusIds.length ? `Country focus · ${focusIds.join(" + ")}` : compact ? "Production area" : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
         <ol>
           {regions.map((region, index) => (
             <li key={`${region.name}-legend-${index}`}>
-              <b>{index + 1}</b>
+              <b aria-hidden="true" />
               <strong>{region.name}</strong>
-              {!compact && <small>{region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>}
+              {!compact && <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>}
             </li>
           ))}
         </ol>

@@ -1599,5 +1599,77 @@
   },
   {
     "id": "combier-absinthe", "name": "Distillerie Combier", "place": "Saumur, Loire Valley", "country": "France", "coordinates": [-0.08, 47.26], "categoryId": "flavoured", "subcategory": "Absinthe", "descriptor": "Historic-still French absinthe distillery", "note": "Compare Jade and Blanchette absinthes distilled in 19th-century copper stills with Pontarlier’s geographically protected local tradition.", "tags": ["wormwood", "anise", "fennel"], "precision": "approximate", "sourceLabel": "Official Combier absinthe page", "sourceUrl": "https://www.combier.fr/produit/absinthe-jade-nouvelle-orleans/"
+  },
+  {
+    "id": "yoichi", "name": "Nikka Whisky Yoichi Distillery", "place": "Yoichi, Hokkaido", "country": "Japan", "coordinates": [140.79, 43.0], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Coal-fired Hokkaido single-malt distillery", "note": "Study direct coal-fired pot distillation, cool northern maturation and the firm, smoky, maritime profile of Nikka’s founding distillery.", "tags": ["malt", "smoke", "brine"], "precision": "approximate", "sourceLabel": "Official Nikka Yoichi distillery page", "sourceUrl": "https://www.nikka.com/en/distilleries/yoichi/"
+  },
+  {
+    "id": "miyagikyo", "name": "Nikka Whisky Miyagikyo Distillery", "place": "Sendai, Miyagi", "country": "Japan", "coordinates": [140.65, 38.31], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Steam-heated woodland malt-and-grain distillery", "note": "Contrast gentle steam-heated malt distillation and Coffey-still grain whisky with Yoichi’s heavier coal-fired style.", "tags": ["malt", "orchard fruit", "floral"], "precision": "approximate", "sourceLabel": "Official Nikka Miyagikyo distillery page", "sourceUrl": "https://www.nikka.com/en/distilleries/miyagikyo/"
+  },
+  {
+    "id": "chichibu", "name": "Chichibu Distillery", "place": "Chichibu, Saitama", "country": "Japan", "coordinates": [139.03, 36.04], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Small-batch Saitama single-malt distillery", "note": "Explore compact production, long fermentation and an unusually varied cask program behind Ichiro Akuto’s influential modern Japanese malt.", "tags": ["malt", "orchard fruit", "oak spice"], "precision": "approximate", "sourceLabel": "Official Chichibu tourism profile", "sourceUrl": "https://www.chichibu-omotenashi.com/en/guide/spot_20.html"
+  },
+  {
+    "id": "fuji-gotemba", "name": "Kirin Fuji Gotemba Distillery", "place": "Gotemba, Shizuoka", "country": "Japan", "coordinates": [138.92, 35.25], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Mount Fuji malt-and-grain whisky distillery", "note": "Compare pot-distilled malt with several grain-whisky styles made on column, kettle and double stills at one high-altitude site.", "tags": ["grain", "malt", "vanilla"], "precision": "approximate", "sourceLabel": "Official Kirin factory guide", "sourceUrl": "https://www.kirin.co.jp/experience/factory/en/"
+  },
+  {
+    "id": "mars-shinshu", "name": "Mars Komagatake Distillery", "place": "Miyada, Nagano", "country": "Japan", "coordinates": [137.94, 35.7], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "High-altitude Central Alps single-malt distillery", "note": "Connect cool mountain maturation, granite-filtered water and seasonal distilling at the site formerly called Mars Shinshu.", "tags": ["malt", "apple", "mountain herbs"], "precision": "approximate", "sourceLabel": "Official Hombo Mars Komagatake page", "sourceUrl": "https://www.hombo.co.jp/en/product/marswhisky-shinshu/"
+  },
+  {
+    "id": "akkeshi", "name": "Akkeshi Distillery", "place": "Akkeshi, Hokkaido", "country": "Japan", "coordinates": [144.82, 43.05], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Cool-maritime Hokkaido malt distillery", "note": "Study an Islay-inspired production model shaped by local peat experiments, humid sea air and mizunara alongside bourbon and sherry casks.", "tags": ["malt", "peat", "sea salt"], "precision": "approximate", "sourceLabel": "Official Akkeshi company page", "sourceUrl": "https://akkeshi-distillery.com/company/"
+  },
+  {
+    "id": "shizuoka", "name": "Gaiaflow Shizuoka Distillery", "place": "Shizuoka, Shizuoka", "country": "Japan", "coordinates": [138.21, 35.12], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Wood-fired and cedar-washback malt distillery", "note": "Compare wood-fired distillation, Japanese-cedar washbacks and two contrasting still systems in a terroir-focused modern malt.", "tags": ["malt", "cedar", "citrus"], "precision": "approximate", "sourceLabel": "Official Shizuoka Distillery site", "sourceUrl": "https://shizuoka-distillery.jp/en/home/"
+  },
+  {
+    "id": "kanosuke", "name": "Kanosuke Distillery", "place": "Hioki, Kagoshima", "country": "Japan", "coordinates": [130.29, 31.59], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Coastal Kagoshima pot-still whisky distillery", "note": "Explore three differently shaped pot stills, warm coastal maturation and the influence of shochu-seasoned American oak.", "tags": ["malt", "citrus", "oak spice"], "precision": "approximate", "sourceLabel": "Official Kanosuke website", "sourceUrl": "https://kanosuke.com/en/"
+  },
+  {
+    "id": "sakurao", "name": "Sakurao Distillery", "place": "Hatsukaichi, Hiroshima", "country": "Japan", "coordinates": [132.32, 34.35], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Seto Inland Sea whisky distillery", "note": "Compare Sakurao’s coastal maturation and Togouchi’s tunnel-aged stocks within a Hiroshima producer that also distills gin.", "tags": ["malt", "citrus", "incense"], "precision": "approximate", "sourceLabel": "Official Sakurao Distillery site", "sourceUrl": "https://www.sakuraodistillery.com/en/"
+  },
+  {
+    "id": "nagahama", "name": "Nagahama Distillery", "place": "Nagahama, Shiga", "country": "Japan", "coordinates": [136.27, 35.38], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Microdistillery beside Lake Biwa", "note": "Examine tiny-batch single malt from compact alembic-style stills and contrast it with the distillery’s blended Amahagan range.", "tags": ["malt", "pear", "spice"], "precision": "approximate", "sourceLabel": "Official Roman Beer distillery page", "sourceUrl": "https://www.romanbeer.com/nagahama-distillery/"
+  },
+  {
+    "id": "yuza", "name": "Yuza Distillery", "place": "Yuza, Yamagata", "country": "Japan", "coordinates": [139.91, 39.02], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Snow-country Yamagata malt distillery", "note": "Connect long winters, local water, pot distillation and a single-malt-only focus at Yamagata’s first whisky distillery.", "tags": ["malt", "orchard fruit", "vanilla"], "precision": "approximate", "sourceLabel": "Official Yuza Distillery site", "sourceUrl": "https://yuza-disty.jp/en/"
+  },
+  {
+    "id": "chita", "name": "Suntory Chita Distillery", "place": "Chita, Aichi", "country": "Japan", "coordinates": [136.86, 34.99], "categoryId": "whisky", "subcategory": "Japanese whisky", "descriptor": "Dedicated Japanese grain-whisky distillery", "note": "Study corn-led grain whisky made in multiple column-still regimes, both as a light single-grain bottling and as a blending component.", "tags": ["corn", "vanilla", "mint"], "precision": "approximate", "sourceLabel": "Official Suntory Chita whisky page", "sourceUrl": "https://house.suntory.com/chita-whisky"
+  },
+  {
+    "id": "jim-beam-clermont", "name": "James B. Beam Distilling Co.", "place": "Clermont, Kentucky", "country": "United States", "coordinates": [-85.65, 37.93], "categoryId": "whisky", "subcategory": "Bourbon", "descriptor": "Historic Beam bourbon campus", "note": "Study Beam’s family yeast, limestone water and new-charred-oak maturation; Clermont distilling is paused during 2026 upgrades while visitor, warehousing and bottling operations continue.", "tags": ["corn", "caramel", "charred oak"], "precision": "approximate", "sourceLabel": "Official James B. Beam visitor page", "sourceUrl": "https://www.jimbeam.com/en-us/visit-us"
+  },
+  {
+    "id": "woodford-reserve", "name": "Woodford Reserve Distillery", "place": "Versailles, Kentucky", "country": "United States", "coordinates": [-84.81, 38.05], "categoryId": "whisky", "subcategory": "Bourbon", "descriptor": "Historic pot-still Kentucky bourbon distillery", "note": "Compare triple pot distillation and long fermentations at Woodford with the column-and-doubler systems common across Kentucky bourbon.", "tags": ["corn", "dried fruit", "cocoa"], "precision": "approximate", "sourceLabel": "Official Woodford Reserve distillery page", "sourceUrl": "https://www.woodfordreserve.com/our-distillery/"
+  },
+  {
+    "id": "four-roses", "name": "Four Roses Distillery", "place": "Lawrenceburg, Kentucky", "country": "United States", "coordinates": [-84.9, 38.04], "categoryId": "whisky", "subcategory": "Bourbon", "descriptor": "Ten-recipe Kentucky bourbon distillery", "note": "Explore how two mash bills and five proprietary yeast strains create ten bourbon recipes for blending and single-barrel selection.", "tags": ["corn", "red fruit", "rye spice"], "precision": "approximate", "sourceLabel": "Official Four Roses distillery page", "sourceUrl": "https://www.fourrosesbourbon.com/visit-us/distillery/"
+  },
+  {
+    "id": "wild-turkey", "name": "Wild Turkey Distillery", "place": "Lawrenceburg, Kentucky", "country": "United States", "coordinates": [-84.85, 38.04], "categoryId": "whisky", "subcategory": "Bourbon", "descriptor": "High-rye Kentucky bourbon distillery", "note": "Connect a relatively low barrel-entry proof and high-rye recipes with bold spice, caramel and char developed above the Kentucky River.", "tags": ["corn", "rye spice", "charred oak"], "precision": "approximate", "sourceLabel": "Official Wild Turkey distillery page", "sourceUrl": "https://www.wildturkeybourbon.com/en-us/our-distillery/"
+  },
+  {
+    "id": "heaven-hill-bernheim", "name": "Heaven Hill Bernheim Distillery", "place": "Louisville, Kentucky", "country": "United States", "coordinates": [-85.79, 38.19], "categoryId": "whisky", "subcategory": "Bourbon", "descriptor": "Multi-mash-bill Louisville whiskey distillery", "note": "See one large heritage plant make bourbon, rye and wheat whiskey across five mash bills using tall column stills and copper-rich doublers.", "tags": ["corn", "vanilla", "baking spice"], "precision": "approximate", "sourceLabel": "Official Heaven Hill distilleries page", "sourceUrl": "https://heavenhilldistillery.com/our-distilleries.php"
+  },
+  {
+    "id": "bulleit-shelbyville", "name": "Bulleit Distilling Co.", "place": "Shelbyville, Kentucky", "country": "United States", "coordinates": [-85.23, 38.22], "categoryId": "whisky", "subcategory": "Bourbon", "descriptor": "Modern high-rye bourbon distillery", "note": "Explore a contemporary high-capacity bourbon site centered on a high-rye flavor profile, fermentation control and new-charred-oak maturation.", "tags": ["corn", "rye spice", "orange"], "precision": "approximate", "sourceLabel": "Official Bulleit visitor page", "sourceUrl": "https://www.bulleit.com/visit-us"
+  },
+  {
+    "id": "mgp-lawrenceburg", "name": "Ross & Squibb Distillery", "place": "Lawrenceburg, Indiana", "country": "United States", "coordinates": [-84.87, 39.09], "categoryId": "whisky", "subcategory": "Rye whiskey", "descriptor": "Historic Indiana rye-and-bourbon distillery", "note": "Study the source of influential 95%-rye whiskey and multiple bourbon mash bills used in Rossville, Remus and many independently bottled brands.", "tags": ["rye", "dill", "pepper"], "precision": "approximate", "sourceLabel": "Official Ross & Squibb website", "sourceUrl": "https://rossandsquibb.com/"
+  },
+  {
+    "id": "new-riff", "name": "New Riff Distilling", "place": "Newport, Kentucky", "country": "United States", "coordinates": [-84.49, 39.1], "categoryId": "whisky", "subcategory": "Bourbon", "descriptor": "Independent bottled-in-bond Kentucky distillery", "note": "Compare sour-mash fermentation, high-rye recipes and bottled-in-bond maturation from a modern independent producer on the Ohio River.", "tags": ["corn", "rye spice", "citrus"], "precision": "approximate", "sourceLabel": "Official New Riff website", "sourceUrl": "https://www.newriffdistilling.com/"
+  },
+  {
+    "id": "willett", "name": "Willett Distillery", "place": "Bardstown, Kentucky", "country": "United States", "coordinates": [-85.47, 37.79], "categoryId": "whisky", "subcategory": "Bourbon", "descriptor": "Family-owned Bardstown bourbon distillery", "note": "Separate Willett’s estate-distilled bourbon and rye from its history of selecting and bottling mature sourced barrels.", "tags": ["corn", "vanilla", "spice"], "precision": "approximate", "sourceLabel": "Official Willett Distillery site", "sourceUrl": "https://www.kentuckybourbonwhiskey.com/"
+  },
+  {
+    "id": "westland", "name": "Westland Distillery", "place": "Seattle, Washington", "country": "United States", "coordinates": [-122.33, 47.56], "categoryId": "whisky", "subcategory": "American single malt whiskey", "descriptor": "Pacific Northwest single-malt distillery", "note": "Explore Washington-grown barley, specialty malts, pot distillation and cool maritime maturation as a distinctly American single-malt model.", "tags": ["malt", "chocolate", "coffee"], "precision": "approximate", "sourceLabel": "Official Westland about page", "sourceUrl": "https://westlanddistillery.com/pages/about"
+  },
+  {
+    "id": "balcones", "name": "Balcones Distilling", "place": "Waco, Texas", "country": "United States", "coordinates": [-97.13, 31.55], "categoryId": "whisky", "subcategory": "American single malt whiskey", "descriptor": "Texas pot-still single-malt distillery", "note": "Compare copper-pot distillation and rapid Texas maturation in large temperature swings with cooler-climate American and Scottish malts.", "tags": ["malt", "baked fruit", "cinnamon"], "precision": "approximate", "sourceLabel": "Official Balcones Texas 1 profile", "sourceUrl": "https://www.balconesdistilling.com/news/balcones-1-texas-single-malt-for-moments-worth-savoring"
+  },
+  {
+    "id": "stranahans", "name": "Stranahan’s Colorado Whiskey Distillery", "place": "Denver, Colorado", "country": "United States", "coordinates": [-105.0, 39.72], "categoryId": "whisky", "subcategory": "American single malt whiskey", "descriptor": "Rocky Mountain American single-malt distillery", "note": "Study malted-barley whiskey distilled in Denver and matured in new charred American oak under Colorado’s dry, high-altitude conditions.", "tags": ["malt", "caramel", "oak spice"], "precision": "approximate", "sourceLabel": "Official Stranahan’s website", "sourceUrl": "https://stranahans.com/"
   }
 ]
