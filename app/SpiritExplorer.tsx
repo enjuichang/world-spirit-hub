@@ -300,7 +300,7 @@ export function SpiritExplorer() {
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!mapReady || !map) return;
+    if (!mapReady || !map || !map.isStyleLoaded()) return;
 
     if (mapMode === "3d") {
       map.setProjection({ name: "globe" });
@@ -607,6 +607,31 @@ export function SpiritExplorer() {
                   <h3>Why it matters</h3>
                   <p>{selectedLocation.note}</p>
                 </div>
+                <div className="drawer-section distillery-profile">
+                  <h3>Distillery profile</h3>
+                  <dl className="profile-facts">
+                    <div>
+                      <dt>Established</dt>
+                      <dd>{selectedLocation.profile.established}</dd>
+                    </div>
+                    <div>
+                      <dt>Spirit focus</dt>
+                      <dd>{selectedLocation.subcategory}</dd>
+                    </div>
+                  </dl>
+                </div>
+                <details className="drawer-disclosure" open>
+                  <summary>Production signature</summary>
+                  <p>{selectedLocation.profile.production}</p>
+                </details>
+                <details className="drawer-disclosure">
+                  <summary>Style in the glass</summary>
+                  <p>{selectedLocation.profile.style}</p>
+                </details>
+                <details className="drawer-disclosure">
+                  <summary>History & label context</summary>
+                  <p>{selectedLocation.profile.context}</p>
+                </details>
                 {selectedLocation.sourceUrl && (
                   <a
                     className="source-link distillery-source"
@@ -619,6 +644,46 @@ export function SpiritExplorer() {
                     <ArrowUpRight size={14} />
                   </a>
                 )}
+
+                <details className="family-reference">
+                  <summary>
+                    <BookOpen size={14} /> About the wider {selectedCategory.name} family
+                  </summary>
+                  <div className="family-reference-body">
+                    <h3>Styles to know</h3>
+                    <div className="subcategory-list">
+                      {selectedCategory.subcategories.map((subcategory) => (
+                        <span key={subcategory}>{subcategory}</span>
+                      ))}
+                    </div>
+                    <h3>Taste compass</h3>
+                    <div className="taste-bars">
+                      {selectedCategory.taste.map((taste, index) => (
+                        <div key={taste}>
+                          <span>{taste}</span>
+                          <i>
+                            <b
+                              style={{
+                                width: `${78 - index * 7}%`,
+                                backgroundColor: selectedCategory.color,
+                              }}
+                            />
+                          </i>
+                        </div>
+                      ))}
+                    </div>
+                    <p>{selectedCategory.production}</p>
+                    <a
+                      className="source-link"
+                      href={selectedCategory.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <BookOpen size={15} /> {selectedCategory.sourceLabel}
+                      <ArrowUpRight size={14} />
+                    </a>
+                  </div>
+                </details>
               </>
             ) : (
               <>
@@ -630,57 +695,61 @@ export function SpiritExplorer() {
               </>
             )}
 
-            <div className="drawer-section">
-              <h3>Styles to know</h3>
-              <div className="subcategory-list">
-                {selectedCategory.subcategories.map((subcategory) => (
-                  <span key={subcategory}>{subcategory}</span>
-                ))}
-              </div>
-            </div>
-            <div className="drawer-section">
-              <h3>Taste compass</h3>
-              <div className="taste-bars">
-                {selectedCategory.taste.map((taste, index) => (
-                  <div key={taste}>
-                    <span>{taste}</span>
-                    <i>
-                      <b
-                        style={{
-                          width: `${78 - index * 7}%`,
-                          backgroundColor: selectedCategory.color,
-                        }}
-                      />
-                    </i>
+            {!selectedLocation && (
+              <>
+                <div className="drawer-section">
+                  <h3>Styles to know</h3>
+                  <div className="subcategory-list">
+                    {selectedCategory.subcategories.map((subcategory) => (
+                      <span key={subcategory}>{subcategory}</span>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-            <details className="drawer-disclosure">
-              <summary>Production & style</summary>
-              <p>{selectedCategory.production}</p>
-            </details>
-            <details className="drawer-disclosure">
-              <summary>Law & labels</summary>
-              <p>{selectedCategory.law}</p>
-            </details>
-            <details className="drawer-disclosure">
-              <summary>History</summary>
-              <p>{selectedCategory.history}</p>
-            </details>
-            <details className="drawer-disclosure">
-              <summary>What moves price</summary>
-              <p>{selectedCategory.price}</p>
-            </details>
-            <a
-              className="source-link"
-              href={selectedCategory.sourceUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <BookOpen size={15} /> {selectedCategory.sourceLabel}
-              <ArrowUpRight size={14} />
-            </a>
+                </div>
+                <div className="drawer-section">
+                  <h3>Taste compass</h3>
+                  <div className="taste-bars">
+                    {selectedCategory.taste.map((taste, index) => (
+                      <div key={taste}>
+                        <span>{taste}</span>
+                        <i>
+                          <b
+                            style={{
+                              width: `${78 - index * 7}%`,
+                              backgroundColor: selectedCategory.color,
+                            }}
+                          />
+                        </i>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <details className="drawer-disclosure">
+                  <summary>Production & style</summary>
+                  <p>{selectedCategory.production}</p>
+                </details>
+                <details className="drawer-disclosure">
+                  <summary>Law & labels</summary>
+                  <p>{selectedCategory.law}</p>
+                </details>
+                <details className="drawer-disclosure">
+                  <summary>History</summary>
+                  <p>{selectedCategory.history}</p>
+                </details>
+                <details className="drawer-disclosure">
+                  <summary>What moves price</summary>
+                  <p>{selectedCategory.price}</p>
+                </details>
+                <a
+                  className="source-link"
+                  href={selectedCategory.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <BookOpen size={15} /> {selectedCategory.sourceLabel}
+                  <ArrowUpRight size={14} />
+                </a>
+              </>
+            )}
           </aside>
         )}
       </div>

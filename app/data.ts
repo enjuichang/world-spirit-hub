@@ -1,4 +1,5 @@
 import distilleryData from "../data/distilleries.json";
+import distilleryProfiles from "../data/distillery-profiles.json";
 
 export type SpiritCategory = {
   id: string;
@@ -31,6 +32,12 @@ export type SpiritLocation = {
   precision?: "exact" | "approximate";
   sourceLabel?: string;
   sourceUrl?: string;
+  profile: {
+    established: string;
+    production: string;
+    style: string;
+    context: string;
+  };
 };
 
 export type CredentialedBar = {
@@ -275,7 +282,16 @@ export const categories: SpiritCategory[] = [
   },
 ];
 
-export const locations = distilleryData as unknown as SpiritLocation[];
+type DistilleryProfile = SpiritLocation["profile"];
+
+const profileById = distilleryProfiles as Record<string, DistilleryProfile>;
+
+export const locations = distilleryData.map((location) => ({
+  ...location,
+  coordinates: location.coordinates as [number, number],
+  precision: location.precision as SpiritLocation["precision"],
+  profile: profileById[location.id],
+})) satisfies SpiritLocation[];
 
 export const credentialedBars: CredentialedBar[] = [
   {

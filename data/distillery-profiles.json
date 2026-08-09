@@ -1,0 +1,543 @@
+{
+  "glenfiddich": {
+    "established": "1887",
+    "production": "Malted barley is mashed and fermented before double distillation in unusually shaped copper pot stills; the new make then matures in a broad cask inventory in Dufftown.",
+    "style": "The core house profile leans toward pear, fresh orchard fruit and clean malt, with American oak, European oak and finishing casks adding vanilla, spice or dried-fruit depth.",
+    "context": "William Grant built the distillery with his family, and spirit first ran on Christmas Day 1887. Glenfiddich remains a single-malt Scotch: one distillery, malted barley and at least three years in oak in Scotland."
+  },
+  "laphroaig": {
+    "established": "1815",
+    "production": "A portion of the barley is still floor-malted, cold-smoked over Islay peat, mashed with Kilbride water and distilled through seven copper stills before coastal maturation, commonly in ex-bourbon casks.",
+    "style": "Peat leads with tar, iodine-like medicinal notes, seaweed and smoke; a sweet malt center and charred American-oak vanilla keep the profile from being only smoky.",
+    "context": "Founded by brothers Donald and Alexander Johnston, Laphroaig is an Islay single-malt Scotch distillery. Its protected category ties production and maturation to Scotland, while the distillery's own peat and still regime shape its identity."
+  },
+  "buffalo-trace": {
+    "established": "Distilling site active since the 1770s",
+    "production": "The Frankfort site mills several corn-led and rye-led mash bills, distills whiskey, fills new charred-oak barrels and matures them across warehouses with markedly different construction and heat patterns.",
+    "style": "There is no single recipe here: the distillery makes multiple bourbon and rye families. Corn sweetness, rye spice, barrel char and warehouse position are recurring variables across the range.",
+    "context": "The site continued operating through Prohibition under medicinal-whiskey permits and was renamed Buffalo Trace in 1999. Bourbon made here must meet the US rules for grain recipe, proof and new charred-oak containers."
+  },
+  "yamazaki": {
+    "established": "1923",
+    "production": "Suntory creates many malt spirit types at one site by varying fermentation, still shapes and distillation regimes, then matures them in casks that include American oak, Spanish oak and Japanese mizunara.",
+    "style": "Yamazaki bottlings often balance soft fruit and honeyed malt with incense-like spice and layered oak; the profile is assembled from diverse component whiskies rather than one uniform still style.",
+    "context": "Founded by Shinjiro Torii, Yamazaki is Japan's first malt-whisky distillery. Current Japanese-whisky labeling standards connect qualifying whisky to Japanese water, distillation and maturation in Japan."
+  },
+  "hennessy": {
+    "established": "1765",
+    "production": "Dry white wines from the Cognac region are double-distilled in copper Charentais pot stills; eaux-de-vie from different crus and ages mature in French oak before the house's tasting committee blends them.",
+    "style": "The house works toward continuity across large blends: floral and fresh-fruit younger eaux-de-vie can sit beside vanilla, spice, dried fruit and rancio from longer maturation.",
+    "context": "Richard Hennessy founded the house in Cognac. Cognac is a protected grape brandy with defined origin, grapes, distillation season and oak-aging rules; age terms refer to the youngest eau-de-vie in a blend."
+  },
+  "chateau-de-laubade": {
+    "established": "1870",
+    "production": "Six estate-grown grape varieties are vinified separately without added sulfites, then each wine is continuously distilled in a custom 1974 Armagnac still and aged separately in Gascon-oak casks.",
+    "style": "Baco, Ugni Blanc, Folle Blanche and Colombard supply different fruit and floral registers; aeration, cellar humidity and movement between new and older oak build prune, spice and mature complexity.",
+    "context": "This 80-hectare Bas-Armagnac estate is run by the Lesgourgues family. Its vintage and blended releases belong to the Armagnac appellation, and the estate adds bottling date and batch number for traceability."
+  },
+  "calvados-drouin": {
+    "established": "Family project begun in 1960",
+    "production": "Norman cider apples—and pears where the appellation permits—are fermented to dry cider, distilled, then matured and blended from a deep stock of vintage and age-designated eaux-de-vie.",
+    "style": "Fresh apple, baked orchard fruit and cider-like savor develop toward pastry spice, nut and polished oak with age; fruit variety and cask history remain central.",
+    "context": "Christian Drouin developed the family estate around a collection of old Calvados stocks. Calvados is protected by Norman appellations whose permitted fruit, distillation and minimum maturation rules differ by area."
+  },
+  "appleton-estate": {
+    "established": "Estate history traced to 1749",
+    "production": "Jamaican molasses is fermented, then distilled in both copper pot stills and columns. High-character marks and lighter distillates are blended after tropical maturation in American-oak casks.",
+    "style": "Ripe banana, orange peel and molasses meet pot-still weight and fruity esters; oak, cocoa and baking spice become more prominent in older blends.",
+    "context": "Appleton is an estate rum from Jamaica's Nassau Valley. Jamaican rum's geographic indication links the spirit to local fermentation, distillation and aging requirements rather than to a single sweetness or color."
+  },
+  "foursquare": {
+    "established": "1996 at the restored estate",
+    "production": "Molasses ferments feed both a double-retort copper pot still and a twin-column Coffey still. Their distillates can be blended and matured—often entirely in Barbados—in used or selected wine and spirit casks.",
+    "style": "Pot-still fruit and weight meet cleaner column structure, with unsweetened presentations often emphasizing dried fruit, coconut, spice and well-integrated oak.",
+    "context": "The Seale family reopened distilling at the historic Foursquare sugar estate in 1996. The site is a key reference for Barbados rum and for transparent age, cask and distillation statements."
+  },
+  "rhum-clement": {
+    "established": "Estate acquired in 1887",
+    "production": "Fresh Martinique sugar-cane juice is quickly fermented and distilled on a Creole column. White rhum rests before bottling; aged expressions mature in oak under tropical conditions.",
+    "style": "Grassy cane, citrus and pepper define the unaged spirit, while oak-aged versions add vanilla, cocoa, dried fruit and spice without losing the cane-juice core.",
+    "context": "Homère Clément acquired Domaine de l'Acajou in 1887. Rhum Agricole Martinique AOC is unusually specific for rum, governing cane varieties, harvest, juice, fermentation, distillation and geography."
+  },
+  "la-fortaleza": {
+    "established": "Historic site revived in 2005",
+    "production": "Mature blue Weber agave is steam-cooked in masonry ovens, crushed by a two-ton volcanic-stone tahona, open-fermented with fiber and distilled twice in small copper pot stills.",
+    "style": "The blanco is agave-forward, oily and savory with citrus, olive, pepper and cooked-earth notes; rested versions add measured barrel spice rather than obscuring the base spirit.",
+    "context": "Guillermo Erickson Sauza restored his family's old Tequila distillery and traditional equipment. Fortaleza is 100% agave Tequila, so the agave and production must meet the denomination's species and geographic rules."
+  },
+  "del-maguey-san-luis": {
+    "established": "Single-village project founded in 1995",
+    "production": "Village producers roast mature agave in an earth-and-stone pit, mill it, ferment it in open wooden vats and distill small batches; species and equipment can vary by named expression.",
+    "style": "San Luis del Río bottlings often join roast agave and smoke with tropical fruit, spice and a dry mineral finish, but the producer, agave lot and release matter more than a fixed brand recipe.",
+    "context": "Del Maguey presents mezcal by village and named maker rather than treating the brand as one factory. San Luis del Río is therefore a regional palenque marker inside Oaxaca's protected Mezcal territory."
+  },
+  "casa-lotos": {
+    "established": "Regional tradition",
+    "production": "Mature dasylirion hearts are cooked, milled, fermented and distilled. Plant species, wild habitat, oven fuel, fermentation vessel and still material vary among Chihuahua's sotoleros.",
+    "style": "Dry grass, pine, earth, pepper and mineral notes are common reference points, with smoke and fruit shifting substantially by plant, producer and batch.",
+    "context": "This is an approximate regional landmark, not one verified distillery. Sotol is made from dasylirion—not agave—and the Mexican denomination covers specified northern states including Chihuahua."
+  },
+  "bombay-sapphire": {
+    "established": "Laverstoke Mill opened as the brand home in 2014",
+    "production": "A neutral spirit is redistilled while vapor passes through perforated botanical baskets in Carterhead stills, extracting juniper, citrus peel, coriander and other aromatics without boiling them in the spirit.",
+    "style": "A bright London Dry profile balances juniper and citrus with coriander spice, floral lift and a clean finish; vapor infusion tends toward a lighter, clearly separated botanical character.",
+    "context": "The brand transformed a historic Hampshire paper mill into its distillery and visitor site. London Dry is a production standard, not a geographic claim: post-distillation sweetening and flavor additions are tightly limited."
+  },
+  "sipsmith": {
+    "established": "2009",
+    "production": "Wheat-based neutral spirit and botanicals are distilled in small copper pot stills. The flagship London Dry uses a classic juniper-citrus-coriander framework and is cut with water before bottling.",
+    "style": "Juniper remains firm and dry, supported by lemon, orange, coriander and gentle root spice rather than strongly flavored contemporary botanicals.",
+    "context": "Sipsmith helped re-establish small-scale copper-pot gin distilling in London in 2009 after licensing rules changed. Its flagship follows the London Dry method even though that term does not require London origin."
+  },
+  "filliers": {
+    "established": "Family distilling since 1880",
+    "production": "Grain is fermented and distilled into malt wine, then combined with juniper and botanicals; the distillery also uses copper pot distillation and oak maturation across different genever styles.",
+    "style": "Compared with neutral-spirit London Dry gin, genever can be rounder and more cereal-led, with malt, bread and pepper under juniper; aged versions add vanilla and oak spice.",
+    "context": "The Filliers family distills in Deinze across multiple generations. Genever is a protected European category with production areas centered on Belgium, the Netherlands and neighboring regions."
+  },
+  "absolut-ahus": {
+    "established": "Åhus production roots date to 1879",
+    "production": "Winter wheat from southern Sweden is fermented and continuously distilled to a highly rectified spirit, then blended with local water and bottled through a tightly integrated Åhus production system.",
+    "style": "The aim is a clean, consistent wheat vodka with restrained cereal sweetness and a soft texture; flavored expressions build on the same neutral-leaning base.",
+    "context": "Lars Olsson Smith introduced Absolut Rent Brännvin in 1879; the modern Absolut brand launched in 1979. Swedish origin and the Åhus system are brand identity, while vodka law allows much broader raw materials."
+  },
+  "polmos-zyrardow": {
+    "established": "Distillery established in 1910",
+    "production": "Polish Dankowskie rye is fermented and distilled, rectified, blended with water and filtered. The process preserves a measured rye signature within a polished luxury-vodka frame.",
+    "style": "Soft vanilla and white pepper sit over faint rye bread and almond, with a creamy rather than aggressively neutral texture.",
+    "context": "Belvedere is produced at the Żyrardów distillery west of Warsaw. As Polish vodka, it sits within the EU geographic indication, which restricts origin and permitted agricultural raw materials."
+  },
+  "moutai": {
+    "established": "Modern company formed in 1951",
+    "production": "Sorghum undergoes repeated high-temperature steaming, high-temperature daqu fermentation and solid-state distillation cycles; base spirits are aged separately and assembled through extensive blending.",
+    "style": "Sauce-aroma baijiu is intense yet layered: fermented grain, soy-like savor, roasted nut, fruit, herbs and long umami depth emerge over repeated sips rather than simple sweetness.",
+    "context": "Moutai is tied to Maotai town and its microclimate, with modern production consolidated in 1951 from local workshops. It is a flagship of China's sauce-aroma baijiu tradition, not a generic clear grain spirit."
+  },
+  "luzhou-laojiao": {
+    "established": "Historic fermentation cellars date to 1573",
+    "production": "Mixed grains and qu ferment in continuously maintained mud pits. Solid fermented grain is distilled batch by batch, and mature base spirits of different grades and ages are blended.",
+    "style": "Strong-aroma baijiu emphasizes ripe pineapple, banana, anise and savory cellar notes, with ethyl hexanoate contributing the style's expansive fruit character.",
+    "context": "Luzhou Laojiao centers its identity on old fermentation pits whose microbial ecosystems are maintained across generations. The protected heritage lies as much in the living pits and craft system as in the still."
+  },
+  "kirishima-shuzo": {
+    "established": "1916",
+    "production": "Steamed rice is inoculated with kōji to start saccharification, then local sweet potatoes join the main fermentation before a single pot distillation preserves aroma and texture.",
+    "style": "Honkaku imo shōchū ranges from clean and floral to earthy, chestnut-like and boldly sweet-potato-led; kōji type, cultivar, distillation pressure and serving temperature change the impression.",
+    "context": "Founded in Miyakonojō, Kirishima specializes in sweet-potato shōchū. Honkaku means single-distilled under Japanese law; it is a production category, not a quality ranking or an aging claim."
+  },
+  "kumesen": {
+    "established": "1952",
+    "production": "Long-grain Indica rice is inoculated with black kōji and fermented in a single mash, then distilled once. Selected spirit can mature in porous earthenware or other vessels as kūsu.",
+    "style": "Young awamori is dry, grainy and lightly earthy with tropical and mushroom-like notes; long aging can create a rounder texture and deeper vanilla, nut and savory aromas.",
+    "context": "Kumesen produces Okinawa's distinct rice spirit rather than mainland shōchū. The Ryukyu Awamori geographic indication protects production in Okinawa and its black-kōji, rice and single-fermentation identity."
+  },
+  "chartreuse": {
+    "established": "Liqueur production dates to 1737",
+    "production": "Carthusian monks alone control the botanical formula. Plant materials are extracted and distilled, then the liqueur is sweetened, colored only by its ingredients and matured before bottling.",
+    "style": "Green Chartreuse is high-proof, intensely herbal and peppery; Yellow is softer and honeyed. Both layer mint, anise, flowers, roots and alpine bitterness without revealing a simple botanical list.",
+    "context": "The recipe traces to a manuscript received in 1605, with production developed by the Carthusian order. Aiguenoire is the production site; the secret formula and monastic stewardship define the producer more than a legal spirit category."
+  },
+  "cointreau": {
+    "established": "1849; orange liqueur created in 1875",
+    "production": "Sweet and bitter orange peels are selected, dried and distilled with neutral alcohol; water and sugar are then balanced to create a clear, concentrated orange liqueur.",
+    "style": "Bright fresh peel, orange blossom and bitter-zest oils arrive without a heavy cooked-sugar impression, giving the liqueur enough intensity to remain clear in mixed drinks.",
+    "context": "The Cointreau brothers founded the house in Angers, and Édouard Cointreau created its crystal-clear orange liqueur in 1875. Triple sec is a style term rather than a protected origin."
+  },
+  "aalborg-akvavit": {
+    "established": "Aalborg Taffel launched in 1846",
+    "production": "A clean agricultural spirit is redistilled or compounded with caraway and supporting seeds, citrus or herbs; unaged, chilled styles and cask-matured aquavits occupy different ends of the category.",
+    "style": "Aalborg's classic reference is dry and caraway-led, with citrus and seed spice. It is a useful counterpoint to dill-forward Danish styles and rounded, oak-aged Norwegian aquavit.",
+    "context": "This marker represents Aalborg's aquavit tradition rather than a confirmed public distillery entrance. EU aquavit must take its characteristic flavor from caraway or dill, but regional recipes vary widely."
+  },
+  "midleton": {
+    "established": "Current distillery opened in 1975",
+    "production": "The complex makes triple-distilled pot-still whiskey from malted and unmalted barley alongside column-distilled grain whiskey; varied still batches and casks become components for many Irish whiskey brands.",
+    "style": "Pure pot still components bring orchard fruit, cereal weight and peppery spice, while grain whiskey adds lightness; bourbon, sherry and other casks broaden the blender's palette.",
+    "context": "Production moved from the neighboring Old Midleton works to the current complex in 1975. It makes Jameson, Redbreast, Powers and other distinct brands, so the distillery should not be mistaken for one whiskey label."
+  },
+  "glenora": {
+    "established": "1990",
+    "production": "Canadian malted barley is mashed and fermented, then distilled in Scottish-style copper pot stills and matured in oak in Cape Breton's cool, humid climate.",
+    "style": "The spirit is generally cereal- and orchard-fruit-led, with honey, vanilla and restrained oak; wine and specialty casks can add fruit or spice to the core single-malt profile.",
+    "context": "Glenora began distilling in 1990 and established a Canadian single-malt reference point. Single malt is a style statement here, while Canadian whisky law—not Scotch rules—governs production and labeling."
+  },
+  "kavalan": {
+    "established": "Distilling began in 2006",
+    "production": "Imported malted barley is mashed, fermented and pot-distilled in Yilan, then filled into bourbon, sherry, wine and other casks managed under Taiwan's hot, humid maturation conditions.",
+    "style": "Ripe tropical fruit and a full texture are recurring signatures; active casks can quickly add vanilla, dried fruit, tannin and spice, making cask selection and monitoring unusually important.",
+    "context": "Kavalan released its first whisky in 2008 after construction began in 2005. Taiwan's climate accelerates extraction and evaporation, but fast color development is not the same as a direct age equivalence to cooler regions."
+  },
+  "amrut": {
+    "established": "Company founded in 1948; single malt launched in 2004",
+    "production": "Indian barley is malted, mashed, fermented and double-distilled in copper pot stills; selected peated malt and varied casks widen the range before maturation in Bengaluru's warm climate.",
+    "style": "Rich malt, tropical fruit and spice often meet concentrated oak; peated and cask-strength releases show how spirit weight and barrel choice cope with rapid extraction and high evaporation.",
+    "context": "Amrut introduced its Indian single malt internationally in 2004. The label describes malt whisky from one distillery, but Indian production and maturation are governed outside Scotch whisky's protected rules."
+  },
+  "bodegas-fundador": {
+    "established": "First Fundador brandy released in 1874",
+    "production": "Wine distillates of different strengths and characters enter casks seasoned with styles of Sherry, then move through a criaderas y solera system that continually blends younger and older spirit.",
+    "style": "Dried fruit, toasted nut, caramel and baking spice reflect both the wine spirit and its seasoned casks; the solera builds consistency rather than preserving one vintage.",
+    "context": "Pedro Domecq introduced Fundador in Jerez in 1874. Brandy de Jerez is a protected indication: maturation must occur in the Jerez area using the traditional dynamic solera system in seasoned oak."
+  },
+  "nardini": {
+    "established": "1779",
+    "production": "Fresh grape pomace is distilled promptly, with steam helping extract alcohol and aroma without scorching; individual distillates can then be rested, aged or blended for a consistent house profile.",
+    "style": "The classic clear grappa is dry, clean and grape-skin aromatic, with floral, herbal and almond notes; barrel-aged versions shift toward vanilla, toast and a softer texture.",
+    "context": "Bortolo Nardini founded the house at Bassano's covered bridge in 1779. Grappa is an Italian geographic indication made from grape pomace, not simply any clear grape brandy."
+  },
+  "la-caravedo": {
+    "established": "Hacienda founded in 1684",
+    "production": "Peruvian aromatic and non-aromatic grapes are fermented to wine, then each batch is distilled once to bottling strength in copper; no water, sugar, flavor or oak maturation is used for traditional pisco.",
+    "style": "Quebranta brings earthy dried-fruit weight while aromatic grapes add flowers and citrus; acholado blends varieties and mosto verde retains richness from partially fermented must.",
+    "context": "Hacienda La Caravedo traces its pisco production to 1684 in Ica. Peruvian pisco rules distinguish grape and fermentation styles and require a rested, unaged spirit distilled to proof."
+  },
+  "kwv-paarl": {
+    "established": "KWV founded in 1918",
+    "production": "Base wines suited to distillation pass through copper pot stills, and selected wine spirits mature in oak before blending; lighter column spirit may appear in broader South African brandy styles.",
+    "style": "Pot-still brandy emphasizes grape, apricot and floral notes with vanilla, spice and dried fruit from maturation, aiming for fruit clarity beneath the wood.",
+    "context": "KWV grew from a South African winegrowers' cooperative into a major Paarl producer. South African pot-still brandy has stricter pot-distillate and oak-aging requirements than blended brandy."
+  },
+  "diamond-demerara": {
+    "established": "Modern production consolidated at Diamond",
+    "production": "Molasses ferments are distilled across metal columns and preserved heritage equipment, including wooden stills associated with former Demerara estates; these marks are blended and tropically matured.",
+    "style": "The still library spans light, clean rum through weighty molasses, anise, dark fruit and smoky wood notes, allowing El Dorado blends to derive complexity from distillate type as well as cask age.",
+    "context": "Diamond preserves stills and marques after Guyana's historic sugar estates consolidated production. Demerara refers to geographic origin and tradition, not simply dark color or added sweetness."
+  },
+  "flor-de-cana": {
+    "established": "1890",
+    "production": "Nicaraguan molasses is fermented and column-distilled, then the rum matures in ex-bourbon oak under the hot, dry conditions around Chichigalpa before blending and bottling.",
+    "style": "A relatively light column-distilled frame carries caramelized nuts, cocoa, vanilla and dry oak; older age-designated blends generally increase concentration and barrel spice.",
+    "context": "The Pellas family began the distillery tradition in 1890 near the San Cristóbal volcano. Flor de Caña's identity is Nicaraguan, while rum age and production statements should be read under local rules."
+  },
+  "bundaberg": {
+    "established": "1888",
+    "production": "Local sugar-industry molasses is fermented, distilled and filled into oak, with Australian rum requiring at least two years of wood maturation before it can carry the category name.",
+    "style": "The familiar profile is robust and molasses-led, with caramel, toffee, spice and oak; higher-end and single-barrel releases show more dried fruit and cask definition.",
+    "context": "Bundaberg Distilling Company was formed in 1888 by local sugar interests seeking a use for molasses. The site's history includes rebuilding after major fires in 1907 and 1936."
+  },
+  "mount-gay": {
+    "established": "Documented deed from 1703",
+    "production": "Barbadian molasses ferments are distilled in both copper pot stills and traditional columns, then their different weights are matured and blended with water filtered through the island's coral geology.",
+    "style": "Bright banana and citrus sit with toasted almond, vanilla and baking spice; pot spirit supplies body while column spirit brings lift and structure.",
+    "context": "A 1703 deed makes Mount Gay one of the oldest continuously documented rum estates. Barbados rum identity rests on local fermentation, distillation and maturation traditions rather than a color-based style."
+  },
+  "casa-herradura": {
+    "established": "1870",
+    "production": "Blue Weber agave is harvested, steam-cooked in masonry ovens, milled, naturally fermented and double-distilled; rested categories mature in oak at the Amatitán estate.",
+    "style": "Cooked agave, citrus and pepper lead the blanco, while reposado and añejo bottlings add vanilla, caramel and baking spice with increasing oak influence.",
+    "context": "Félix López registered Hacienda San José del Refugio as a Tequila producer in 1870. Herradura is 100% agave Tequila from the lowland valley, and its age terms follow the denomination's minimum maturation rules."
+  },
+  "hacienda-patron": {
+    "established": "Patrón founded in 1989",
+    "production": "Highlands blue Weber agave is brick-oven cooked, then split between roller-mill extraction and tahona crushing with fiber. The separately fermented and small-pot-distilled streams are blended.",
+    "style": "The roller-mill spirit contributes cleaner citrus and fruit while tahona production brings earthy, vegetal weight; the house blend aims for a polished agave core with pepper and light sweetness.",
+    "context": "Hacienda Patrón is a dedicated Tequila production complex in Atotonilco el Alto. The brand's tahona and roller streams are process components, while 100% agave and age terms are regulated label claims."
+  },
+  "los-danzantes": {
+    "established": "1997",
+    "production": "Agaves are cooked in a wood-fired earthen pit, milled by tahona, fermented in open wooden vats and distilled in small copper stills; named releases vary by agave species and maturation.",
+    "style": "Roast agave and measured smoke sit beside herbs, citrus, minerals and ripe fruit; wild- or slow-growing species can shift the profile far beyond the core Espadín expression.",
+    "context": "The distillery was established in Santiago Matatlán in 1997 and is led by maestra mezcalera Karina Abad. Its artisanal Mezcal production sits within Oaxaca's denomination and category rules."
+  },
+  "desert-door": {
+    "established": "2017",
+    "production": "Wild Texas sotol plants in the dasylirion family are harvested, pressure-cooked, fermented and distilled in a modern process at Driftwood; the spirit may be bottled clear or oak-rested.",
+    "style": "The profile is grassy and herbal with vanilla, pepper and desert-earth notes, offering a botanical, gently creamy comparison with Mexican sotol and agave spirits.",
+    "context": "Desert Door makes a US spirit from Texas dasylirion. It is related by raw material to Mexican sotol but sits outside Mexico's protected Sotol denomination, an important distinction on the map."
+  },
+  "hendricks-gin-palace": {
+    "established": "Gin Palace opened in 2018",
+    "production": "A Bennett pot still creates a richer botanical distillate while Carter-Head stills produce a lighter vapor-infused one; the spirits are blended before rose and cucumber essences are added.",
+    "style": "Juniper and citrus form the dry base, but cucumber freshness and soft rose are the recognizable accents; two still types help keep the floral profile light rather than perfumed and heavy.",
+    "context": "The Girvan Gin Palace expanded the dedicated home of Hendrick's in 2018. Hendrick's is distilled gin rather than London Dry because its signature essences are incorporated after distillation."
+  },
+  "four-pillars": {
+    "established": "2013",
+    "production": "Neutral wheat spirit is redistilled in modern copper pot stills with classic botanicals, native plants and whole fresh citrus; recipes are adjusted for each expression rather than one house botanical bill.",
+    "style": "Bright orange and lemon, warm spice and assertive juniper meet Australian ingredients such as lemon myrtle, Tasmanian pepperberry or finger lime across the range.",
+    "context": "Four Pillars began in 2013 and established its Healesville home in the Yarra Valley. Its contemporary Australian identity comes from recipes and ingredients, while the individual labels define whether a gin meets dry or flavored styles."
+  },
+  "kyoto-distillery": {
+    "established": "Founded in 2014; first gin released in 2016",
+    "production": "A rice-spirit base is redistilled with botanicals separated into groups before blending. Yuzu, hinoki, bamboo, tea, sanshō and red shiso appear across KI NO BI expressions.",
+    "style": "Clean rice texture supports bright yuzu, green tea, peppery sanshō and dry juniper; separately distilling botanical groups lets the blender tune citrus, herbal and spice layers.",
+    "context": "The Kyoto Distillery was created as a dedicated Japanese gin producer. 'Kyoto Dry Gin' describes place and house style, while gin's legal core remains a juniper-predominant spirit."
+  },
+  "inverroche": {
+    "established": "2011",
+    "production": "A neutral base is copper-pot distilled with conventional gin botanicals and selected fynbos plants from the Cape Floristic Region, with recipes varying from coastal to floral and aromatic styles.",
+    "style": "Juniper is reframed by resinous, tea-like, floral and coastal-herbal fynbos notes; the range demonstrates how local botanicals can change aroma without changing gin's juniper foundation.",
+    "context": "Lorna Scott founded Inverroche in Stilbaai in 2011. Its story centers on responsible relationships with fynbos and local knowledge; 'fynbos gin' is a place-and-recipe identity, not a protected category."
+  },
+  "nolet-ketel-one": {
+    "established": "Nolet family distilling since 1691",
+    "production": "European wheat spirit is highly rectified in columns, then selected components are redistilled in copper pot stills, blended, rested and filtered with water for consistency.",
+    "style": "The vodka stays clean but not weightless: subtle wheat sweetness, citrus and a soft, rounded texture distinguish it from aggressively neutral or highly flavored styles.",
+    "context": "The Nolet family has distilled in Schiedam for more than three centuries; Ketel One takes its name from a copper pot still. The product is vodka, while the site's genever heritage explains its pot-still emphasis."
+  },
+  "chopin-krzesk": {
+    "established": "Historic distillery dates to 1896",
+    "production": "Potato, rye and wheat are fermented and distilled separately into single-ingredient vodkas, then rectified, blended with water and filtered without using one raw material to imitate another.",
+    "style": "Potato gives broad, creamy weight; rye tends toward pepper and bread; wheat is lighter and gently sweet. The range makes texture and raw material the subject rather than neutrality alone.",
+    "context": "The Krzesk distillery anchors Chopin's estate production in eastern Poland. Polish Vodka is an EU geographic indication, and the single-ingredient labels make the agricultural source unusually explicit."
+  },
+  "koskenkorva": {
+    "established": "Production began in 1953",
+    "production": "Finnish barley is continuously distilled and rectified at the village distillery. Co-products are recovered for feed, starch and energy, while the spirit is finished with water before bottling.",
+    "style": "Clean and dry with restrained barley sweetness, faint cereal and a smooth finish; flavored variants are separate products rather than evidence that the base vodka is aromatic.",
+    "context": "The distillery and village share the Koskenkorva name. Its identity combines Finnish barley and an integrated production system, while vodka law does not require barley as the raw material."
+  },
+  "reyka": {
+    "established": "Launched in 2005",
+    "production": "A small Carter-Head still redistills the spirit in batches at Borgarnes; local spring water and filtration through lava rock are used before proofing and bottling.",
+    "style": "A very clean core carries gentle cereal, citrus and pepper with a soft texture; the batch still is used to shape subtle character rather than botanical flavor.",
+    "context": "Reyka is made at Iceland's first dedicated vodka distillery. Lava filtration and glacial-source water are house process details, not legal requirements or proof that minerals pass directly into flavor."
+  },
+  "wuliangye": {
+    "established": "Modern company formed in 1959",
+    "production": "Sorghum, rice, glutinous rice, wheat and corn ferment with qu in old mud pits. Solid-state distillation yields many base-spirit grades that are aged and extensively blended.",
+    "style": "The five-grain strong-aroma profile is lush and expansive, combining pineapple, pear, anise, grain sweetness and savory fermented depth with a long aromatic finish.",
+    "context": "Wuliangye's name means 'five-grain liquid,' making recipe diversity part of its identity. Historic Yibin pits and microbial continuity are central production assets rather than merely old buildings."
+  },
+  "yanghe": {
+    "established": "Historic Yanghe tradition; modern group formed in 1949",
+    "production": "Multiple grains ferment with qu in mud pits, then the solid mash is distilled and classified into blending components. Storage and blending are tuned toward the house's deliberately soft-textured profile.",
+    "style": "Mianrou means soft and mellow: fruit, sweet grain, floral lift and gentle savory notes are presented with less aggressive heat than many strong-aroma references.",
+    "context": "Yanghe is based in Suqian's long-established baijiu region. 'Mianrou' is a house style within strong-aroma baijiu, not a separate raw-material category or a sweetness guarantee."
+  },
+  "hwayo": {
+    "established": "2005",
+    "production": "Korean rice is converted with nuruk or koji-derived cultures, fermented, then vacuum-distilled at lower temperature; the spirit rests and selected batches mature in breathable onggi earthenware.",
+    "style": "Clean rice, pear, flowers and gentle savory cereal sit in a rounded texture. Higher-proof bottlings show more grain depth, while oak-aged versions add vanilla and spice.",
+    "context": "Hwayo revived a premium distilled-soju model distinct from widely sold diluted soju. Distillation, proof and resting choices—not the word soju alone—explain the price and flavor difference."
+  },
+  "iichiko-hita": {
+    "established": "Iichiko brand launched in 1979",
+    "production": "Barley and barley kōji drive fermentation before single distillation; filtration, resting and blending are used to create a clean Oita-style honkaku shōchū without erasing the grain entirely.",
+    "style": "Soft barley, white flowers, pear and a lightly nutty cereal finish make this a gentle introduction to honkaku shōchū, neat, with water or in a highball.",
+    "context": "Sanwa Shurui created iichiko in Oita, a region closely associated with barley shōchū. Honkaku identifies single distillation under Japanese law; it does not mean unfiltered, unaged or high proof."
+  },
+  "jagermeister": {
+    "established": "1935",
+    "production": "A large recipe of herbs, roots, flowers, fruit and spices is ground and macerated in alcohol and water. Extracts are blended, rested in large oak vessels, then balanced with water, alcohol, sugar and caramel.",
+    "style": "Sweetness carries citrus peel, anise, ginger, mint, roots and warming spice into a distinctly bitter finish; serving it very cold suppresses some of that aromatic complexity.",
+    "context": "Curt Mast introduced Jägermeister in Wolfenbüttel in 1935. It is a proprietary herbal liqueur rather than a protected regional category; the guarded formula and extraction/blending sequence define the house style."
+  },
+  "luxardo": {
+    "established": "1821; Torreglia distillery opened after 1947",
+    "production": "Marasca cherries—including fruit, pits, leaves and branches for the classic process—ferment and distill before the spirit rests in ash-wood vats and is blended with sugar for Maraschino.",
+    "style": "Maraschino is clear, dry-leaning and intensely aromatic, with cherry fruit, almond-like kernel, rose and subtle funk; other Luxardo liqueurs use distinct infusions and distillates.",
+    "context": "The Luxardo family founded the house in Zara in 1821 and rebuilt in Veneto after World War II. Maraschino is a liqueur style; Marasca fruit and the family's process provide the producer-specific identity."
+  },
+  "giffard": {
+    "established": "1885",
+    "production": "Fresh fruit, peels, flowers or herbs are macerated or infused in alcohol, sometimes alongside redistilled botanical components, then filtered and sweetened to suit each ingredient.",
+    "style": "The range is ingredient-led rather than one flavor profile: menthe should remain cool and leafy, while berry, citrus and orchard-fruit liqueurs balance recognizable fruit with sugar and acidity.",
+    "context": "Pharmacist Émile Giffard created Menthe-Pastille in Angers in 1885. The house's many liqueurs share extraction expertise, but each label's fruit content, sweetness and alcohol level must be read separately."
+  },
+  "fernet-branca": {
+    "established": "1845",
+    "production": "Roots, barks, herbs, flowers and spices from a guarded recipe are separately extracted, blended and matured in large oak vats before proofing and bottling.",
+    "style": "A concentrated bitter profile layers aloe-like bitterness, mint, saffron, chamomile, dark spice and resin over restrained sweetness, finishing dry and persistent.",
+    "context": "Bernardino Branca created Fernet-Branca in Milan in 1845. Fernet is a strongly bitter amaro style, not a protected place name; the proprietary formula and maturation distinguish this producer."
+  },
+  "makers-mark": {
+    "established": "1953",
+    "production": "A corn-led mash replaces rye with red winter wheat, is roller-milled and sour-mash fermented, then distilled and filled into new charred American-oak barrels that are rotated through the warehouses.",
+    "style": "Wheat softens the grain-spice register without making the whiskey sweet by law; caramel, vanilla, red fruit and gentle baking spice frame a rounded bourbon profile.",
+    "context": "Bill and Margie Samuels developed Maker’s Mark at the former Burks’ Spring site in the 1950s. It is Kentucky straight bourbon, so its wheat is a flavor choice inside bourbon’s corn and new-charred-oak rules."
+  },
+  "jack-daniels": {
+    "established": "Registered in 1866",
+    "production": "A corn-led sour mash ferments with the house yeast, is distilled, then slowly mellowed through sugar-maple charcoal before entering new charred-oak barrels in Lynchburg warehouses.",
+    "style": "Banana and sweet corn meet caramel, toasted oak and charcoal-softened spice; warehouse position, barrel selection and proof distinguish the broad family of releases.",
+    "context": "Jack Daniel established the Lynchburg distillery in the nineteenth century. Tennessee whiskey meets bourbon-like federal standards while state law and the Lincoln County Process reinforce its regional identity."
+  },
+  "cascade-hollow": {
+    "established": "1870",
+    "production": "Corn, rye and malted barley are sour-mash fermented, distilled, chilled and mellowed through sugar-maple charcoal before the whiskey matures in new charred oak.",
+    "style": "George Dickel’s house profile is soft and corn-sweet with vanilla, maple, nuts and dry mineral or charcoal notes; rye and older releases shift the balance.",
+    "context": "Cascade Hollow traces its distilling story to George A. Dickel’s nineteenth-century business and the 1870-era site tradition. The Tullahoma whiskey is labeled Tennessee whisky, using the Scotch spelling by house convention."
+  },
+  "sagamore-spirit": {
+    "established": "Baltimore distillery opened in 2017",
+    "production": "High-rye and lower-rye mash bills are distilled separately, matured in new charred oak and blended; selected whiskey then moves to secondary casks for wine, beer or spirit finishes.",
+    "style": "Rye bread, cinnamon and pepper are rounded by caramel and citrus, while dual-mash blending and finishing casks let the producer tune spice, fruit and oak.",
+    "context": "Sagamore Spirit is part of Maryland’s modern rye revival. Straight rye requires at least 51% rye, new charred oak and two years for the straight designation, while secondary finishes must be disclosed accurately."
+  },
+  "whistlepig": {
+    "established": "Farm acquired in 2007",
+    "production": "The Vermont farm grows rye and operates copper pot stills, while the portfolio also blends sourced mature rye; American, wine and specialty casks broaden the maturation program.",
+    "style": "Rye spice, mint and cereal meet maple, vanilla and oak, with sourced age statements and farm-distilled releases representing distinct production stories rather than one recipe.",
+    "context": "WhistlePig began as a farm-based rye project and later added estate distillation. Reading each label matters: origin, age, farm grain and finishing claims vary across the range."
+  },
+  "bushmills": {
+    "established": "Company registered in 1784",
+    "production": "Malted barley wash is triple-distilled in copper pot stills for the malt components, which mature in bourbon, sherry and other casks; lighter grain whiskey joins the distillery’s blends.",
+    "style": "A light, polished malt profile emphasizes apple, honey and cereal before dried fruit, vanilla or spice from cask selection; the blends are lighter than the single malts.",
+    "context": "The area received a distilling license in 1608, while the Old Bushmills company was registered in 1784. Bushmills makes Irish whiskey in Northern Ireland under the island-wide geographic indication."
+  },
+  "hakushu": {
+    "established": "1973",
+    "production": "Suntory varies fermentation and pot-still shapes to create multiple malt styles, including lightly peated components, then matures them in diverse casks in a cool, forested mountain environment.",
+    "style": "Green herbs, orchard fruit and crisp malt often sit over restrained smoke; the profile is lighter and more verdant than Yamazaki while still depending on component blending.",
+    "context": "Suntory opened Hakushu in the Japanese Alps in 1973. Single-malt Hakushu comes from this distillery, while qualifying Japanese-whisky labels link water, distillation and maturation to Japan."
+  },
+  "crown-royal-gimli": {
+    "established": "Gimli distillery opened in 1968",
+    "production": "Corn-led base whisky and more characterful rye or flavoring whiskies are distilled separately in columns, matured in varied oak and assembled through blending at Gimli.",
+    "style": "Soft vanilla, caramel and gentle oak form the base, with rye spice, fruit and cereal added through flavoring components rather than one fixed all-grain mash bill.",
+    "context": "Crown Royal was created in 1939; today its whiskies are made at the large Gimli distillery. Canadian whisky permits a flexible blending tradition, so the brand name does not describe one mash or still."
+  },
+  "remy-martin": {
+    "established": "1724",
+    "production": "Wines from Grande and Petite Champagne are double-distilled on their lees in small Charentais pot stills, then the eaux-de-vie mature in French oak before multi-age blending.",
+    "style": "Floral grape, apricot and ripe orchard fruit develop toward vanilla, spice, nut and rancio while retaining the fine-textured fruit associated with the chalky Champagne crus.",
+    "context": "Rémy Martin was founded in Cognac in 1724. Its Fine Champagne Cognac claim requires a blend from Grande and Petite Champagne with at least half from Grande Champagne; it is not a sparkling-wine reference."
+  },
+  "bodegas-tradicion": {
+    "established": "1998",
+    "production": "Selected wine distillates mature in old casks seasoned by the bodega’s Sherries and move through criaderas y solera, where fractional blending maintains continuity across withdrawals.",
+    "style": "Raisin, walnut, caramel and polished oak reflect mature spirit and seasoned casks, with the bodega’s old solera stocks favoring concentration over a youthful fruit profile.",
+    "context": "Bodegas Tradición was founded in 1998 around historic Jerez soleras and specialist aging. Brandy de Jerez must mature in the defined Jerez area through its traditional dynamic system."
+  },
+  "delord": {
+    "established": "Family distilling since 1893",
+    "production": "Estate and regional white wines are distilled—principally through traditional continuous Armagnac stills—then separate vintages and grape spirits mature in French-oak casks in Lannepax.",
+    "style": "Prune, orange, flowers and baking spice gain cocoa, walnut and rancio with age; vintage bottlings preserve one harvest while house blends target continuity.",
+    "context": "Prosper Delord began as a traveling distiller in 1893, and later generations established the family house in Lannepax. Its Armagnac labels sit within the Gascon appellation and its age rules."
+  },
+  "pere-magloire": {
+    "established": "Brand founded in 1821",
+    "production": "Pays d’Auge cider apples ferment to dry cider before double distillation in copper pot stills; the apple eaux-de-vie then mature in oak and are blended across casks and ages.",
+    "style": "Fresh and baked apple, cider spice and pastry notes deepen into vanilla, nut and leather with maturation, while the double distillation preserves a polished fruit center.",
+    "context": "Père Magloire has been a Calvados house since 1821. Calvados Pays d’Auge is a more specific appellation requiring local fruit, cider fermentation, double pot distillation and oak aging."
+  },
+  "capel-vicuna": {
+    "established": "Cooperative founded in 1938",
+    "production": "Muscat-family and other permitted Chilean grapes are fermented and distilled, then the spirit may be reduced, rested or matured in wood depending on its legal pisco class and house expression.",
+    "style": "Floral Muscat, citrus and ripe grape can sit over a clean or gently woody frame; Chilean proof classes and optional maturation make it a different reference from unaged Peruvian pisco.",
+    "context": "CAPEL grew from a northern Chilean growers’ cooperative centered on the Elqui Valley. Chilean Pisco is a protected national denomination with grape, production-zone and strength rules distinct from Peru’s."
+  },
+  "poli-grappa": {
+    "established": "1898",
+    "production": "Fresh pomace from named grape varieties is selected quickly and steam-distilled in small copper still systems; distillates are rested, blended or oak-aged according to the release.",
+    "style": "Moscato can be floral and grapey, while darker varieties bring berry, herb or spice; careful steam extraction aims to retain varietal aroma without harsh cooked-pomace notes.",
+    "context": "GioBatta Poli began distilling in Schiavon in 1898, and the family continues the operation. Grappa is an Italian geographic indication made from grape pomace, with variety and maturation disclosed separately."
+  },
+  "rochelt": {
+    "established": "Family enterprise founded in 1989",
+    "production": "Fully ripe fruit ferments naturally, is double-distilled in copper and rests for years in open-pored glass demijohns before bottling without sugar, flavoring or filtration.",
+    "style": "Each eau-de-vie is fruit-specific: Williams pear stays perfumed and green, stone fruit brings kernel and flesh, and wild berries deliver concentrated aroma with a dry finish.",
+    "context": "Rochelt’s Tyrolean approach treats fruit source, ripeness and yield as the quality drivers. Eau-de-vie is a broad fruit-spirit family, so the named fruit is more informative than the clear color."
+  },
+  "st-george-brandy": {
+    "established": "1982",
+    "production": "Fresh California fruit is fermented or macerated as appropriate, then distilled in copper pot stills with narrow cuts; unaged eaux-de-vie are rested to let fruit aroma integrate.",
+    "style": "Pear reads fragrant and dry, raspberry is intensely perfumed, and apple combines peel, blossom and flesh; the goal is recognizable fruit without liqueur-like sugar.",
+    "context": "Jörg Rupf founded St. George Spirits in 1982, helping establish American artisan eau-de-vie. These are dry distilled fruit spirits, not sweet fruit liqueurs, and each bottle should be read by fruit and process."
+  },
+  "ko-hana": {
+    "established": "Founded in 2009",
+    "production": "Named Hawaiian heirloom sugar-cane varieties are grown, harvested and pressed fresh on Oʻahu; the juice is fermented and distilled separately so varietal differences remain visible.",
+    "style": "Fresh grass, flowers and tropical fruit sit over saline and vegetal cane notes, with variety and season shifting the profile more than caramel color or molasses weight.",
+    "context": "Kō Hana links its rum to the recovery of Hawaiian cane cultivars. It is a US cane-juice rum inspired by agricole methods, not Martinique AOC rhum agricole."
+  },
+  "river-antoine": {
+    "established": "1785",
+    "production": "A waterwheel drives the cane crusher, fresh juice undergoes an extended open fermentation, and direct-fired pot stills produce a robust spirit with minimal industrial refinement.",
+    "style": "Fresh cane, overripe tropical fruit, olive, smoke and savory fermentation create an intense rustic profile that can be markedly heavier than filtered column rum.",
+    "context": "River Antoine preserves an eighteenth-century Grenadian production system and remains primarily a local working distillery. It is a cane-juice rum landmark, not a formal agricole appellation."
+  },
+  "neisson": {
+    "established": "1932",
+    "production": "Estate-grown cane is cut and pressed quickly, the juice ferments under controlled short cycles and a Creole column distills it within Martinique AOC parameters before resting or oak maturation.",
+    "style": "White rhum is vivid with fresh cane, lime, flowers and pepper; aged bottlings add cocoa, dried fruit and spice while keeping a dry grassy line.",
+    "context": "The Neisson family founded the Carbet distillery in 1932 and remains independent. Its AOC Martinique status governs cane, juice, fermentation, geography and distillation more closely than most rum categories."
+  },
+  "hampden-estate": {
+    "established": "Estate founded in 1753",
+    "production": "Long, spontaneous-style fermentations use dunder, cane materials and microbially active muck before distillation in double-retort copper pot stills into marks of defined ester intensity.",
+    "style": "Pineapple, banana, solvent-like esters, olive and savory funk can be explosive; mark, fermentation and proof matter as much as cask age in reading a Hampden bottling.",
+    "context": "Hampden has distilled in Trelawny for centuries and historically supplied high-ester marks for blending. Its current estate bottlings expose a production vocabulary once known mainly within the rum trade."
+  },
+  "bacardi-catano": {
+    "established": "Cataño distillery opened in 1936",
+    "production": "Molasses ferments feed high-capacity column systems that create light distillate and more characterful components; oak aging, charcoal filtration and blending build consistent global expressions.",
+    "style": "A light, clean frame carries vanilla, almond and gentle citrus, with aged variants adding caramel and oak while remaining less ester-heavy than pot-still Jamaican rum.",
+    "context": "Bacardí was founded in Santiago de Cuba in 1862 and established its major Puerto Rico site in 1936. Cataño preserves the Cuban light-rum tradition outside Cuba; origin statements must follow the actual production site."
+  },
+  "havana-club-san-jose": {
+    "established": "San José distillery opened in 2007",
+    "production": "Cuban molasses becomes lighter column distillate and richer cane aguardiente; staged oak aging, filtration and blending led by maestros del ron create the finished rum.",
+    "style": "Light vanilla, sugar cane and citrus are layered with dried fruit, tobacco and oak from aged aguardiente, producing more depth than a neutral white-rum model.",
+    "context": "The San José facility is part of Havana Club’s Cuban production network, not the whole brand history. Cuban rum tradition emphasizes continuous aging and maestro-led blending of bases with different weights."
+  },
+  "novo-fogo": {
+    "established": "Founded in 2010",
+    "production": "Fresh organic sugar-cane juice ferments near the Atlantic rainforest, is pot-distilled in copper and either rests in stainless steel or matures in American oak and native Brazilian woods.",
+    "style": "Banana, grass and flowers lead the silver spirit; amburana, zebrawood and other woods can add cinnamon, coconut, resin or tannin unlike conventional oak maturation.",
+    "context": "Novo Fogo makes cachaça in Paraná and foregrounds rainforest stewardship. Brazilian cachaça has its own cane-juice, strength and national-origin rules; it is related to but legally distinct from rum in Brazil."
+  },
+  "weber-haus": {
+    "established": "Family production since 1948",
+    "production": "Estate organic cane is pressed fresh, fermented under controlled conditions and copper-distilled; clear cachaça rests before bottling while aged releases use oak or Brazilian woods.",
+    "style": "Fresh cane and herbs meet pepper and tropical fruit, while native woods can bring balsam, spice, yellow fruit or drying structure depending on species and time.",
+    "context": "The Weber family distills at Ivoti in southern Brazil across multiple generations. Cachaça’s protected Brazilian identity comes from fermented fresh cane juice, not from a required wood type or aged color."
+  },
+  "makers-mark": {"established": "1953", "production": "Corn, wheat and malted barley are roller-milled, sour-mash fermented and distilled before filling new charred American-oak barrels.", "style": "Wheat softens the grain profile toward caramel, vanilla and baking spice while barrel char supplies structure.", "context": "Maker’s Mark is a Kentucky straight bourbon; the wheat recipe is a house choice, while bourbon’s corn minimum and new-charred-oak rules are federal."},
+  "sagamore-spirit": {"established": "Baltimore distillery opened in 2017", "production": "Rye-led mash bills are fermented and distilled on the Baltimore waterfront, then blended or given selected secondary finishes.", "style": "Pepper, citrus and rye bread meet caramel and toasted oak, with finishing casks widening the range.", "context": "Sagamore revives Maryland’s rye identity, but rye whiskey is a US grain-and-cask standard rather than a Maryland-protected origin."},
+  "whistlepig": {"established": "Farm founded in 2007; Vermont distilling began in 2015", "production": "Rye whiskey is distilled in copper pot-and-column equipment and matured or finished on a working Vermont farm that also grows rye.", "style": "Rye spice, mint and grain sit over vanilla and oak; age and finishing cask produce substantial variation.", "context": "WhistlePig combines estate production with sourced mature stocks, so individual labels should be read for origin and age rather than assumed identical."},
+  "jack-daniels": {"established": "Registered in 1866", "production": "A corn-led sour mash is distilled, slowly mellowed through sugar-maple charcoal and matured in new charred-oak barrels made by the company.", "style": "Banana, caramel and toasted oak are polished by charcoal mellowing, with rye and barrel char adding spice.", "context": "Jack Daniel’s is Tennessee whiskey and also meets straight-bourbon production rules; the Lincoln County Process is its defining additional step."},
+  "cascade-hollow": {"established": "Current Cascade Hollow site opened in 1958", "production": "Corn-led whisky is distilled, chilled and mellowed through maple charcoal before maturation in new charred American oak.", "style": "Corn sweetness, mineral notes, vanilla and restrained fruit form a leaner counterpoint to many Kentucky bourbons.", "context": "Cascade Hollow makes George Dickel Tennessee whisky; its spelling is a brand convention, not a different legal category."},
+  "bushmills": {"established": "Licensed tradition dated 1608; distillery recorded in 1784", "production": "Malted barley is mashed, fermented and triple-distilled in copper pot stills, then matured on site in bourbon, sherry and other casks.", "style": "A light, polished malt profile carries orchard fruit, honey and cereal, with wine casks adding dried fruit and spice.", "context": "Bushmills makes Irish whiskey in Northern Ireland under the protected all-island geographic indication; the 1608 date refers to an area license."},
+  "crown-royal-gimli": {"established": "Gimli distillery opened in 1968", "production": "Different corn, rye and malt whisky components are distilled and matured separately before blending to a consistent Canadian profile.", "style": "Soft vanilla and caramel support gentle rye spice, dried fruit and a light, creamy texture.", "context": "Crown Royal was created in 1939 and is now distilled at Gimli; Canadian whisky permits a broad blender’s palette within national rules."},
+  "hakushu": {"established": "1973", "production": "Malted barley, varied fermentation and multiple copper still shapes create component whiskies matured in a forested, high-altitude setting.", "style": "Green herbs, orchard fruit and light smoke are recurring cues, framed by clean malt and restrained oak.", "context": "Hakushu is a Suntory malt distillery and a qualifying Japanese-whisky production site under the industry’s current labeling standard."},
+  "remy-martin": {"established": "1724", "production": "Ugni Blanc wines from Grande and Petite Champagne are double-distilled on lees and their eaux-de-vie matured in French oak before blending.", "style": "Apricot, flowers and vanilla develop toward dried fruit, spice and rancio in older blends.", "context": "Rémy Martin specializes in Fine Champagne Cognac, an appellation blend containing at least half Grande Champagne eaux-de-vie and the balance Petite Champagne."},
+  "delord": {"established": "1893", "production": "Regional white wines are distilled using both traditional continuous Armagnac and double-distillation equipment, then aged in Gascon oak.", "style": "Prune, grape, pepper and baking spice deepen toward nuts and rancio with long maturation.", "context": "Delord is a family Armagnac house in Lannepax; vintage statements identify a harvest year, while age categories follow appellation rules."},
+  "bodegas-tradicion": {"established": "1998", "production": "Wine distillates mature through Jerez’s dynamic criaderas y solera system in casks seasoned by local fortified wines.", "style": "Raisin, walnut, caramel and polished oak reflect both spirit age and the cask’s prior sherry seasoning.", "context": "The bodega is best known for mature sherry and brandy; Brandy de Jerez is protected by place, seasoned casks and solera maturation."},
+  "capel-vicuna": {"established": "Cooperative founded in 1938", "production": "Muscat-family and other permitted grapes are fermented and distilled in northern Chile, then adjusted or matured according to the intended pisco style.", "style": "Floral grape, citrus and stone fruit range from fresh and clear to rounder, wood-touched expressions.", "context": "CAPEL is a grower cooperative within Chile’s pisco denomination; Chilean and Peruvian pisco use distinct national rules."},
+  "poli-grappa": {"established": "1898", "production": "Fresh grape pomace is steam-distilled in small copper cauldrons, with varietal lots handled to preserve aromatic detail.", "style": "Grape skin, white flowers and almond can be vivid in clear grappa; wood aging adds vanilla, toast and spice.", "context": "Poli is a family grappa producer in Veneto. Grappa is Italy’s protected pomace spirit, not a synonym for all grape brandy."},
+  "pere-magloire": {"established": "1821", "production": "Norman cider apples are fermented to cider, double-distilled for Pays d’Auge expressions and matured in oak before blending.", "style": "Fresh and baked apple move toward caramel, pastry spice and nuts as cask age increases.", "context": "Père Magloire works within the Calvados and Calvados Pays d’Auge appellations, whose permitted fruit and distillation rules differ."},
+  "rochelt": {"established": "1973", "production": "Fully ripe fruit ferments naturally, is distilled twice and rests for years without filtration before bottling.", "style": "Apricot, pear, cherry and berry appear with intense fruit purity, dry texture and little distraction from oak.", "context": "Rochelt is a Tyrolean fruit-brandy specialist; eau-de-vie names the fruit distillate style rather than one protected global origin."},
+  "st-george-brandy": {"established": "1982", "production": "Fresh California fruit is fermented and distilled in copper pot stills, with apple brandy receiving cask maturation while clear eaux-de-vie preserve direct fruit aroma.", "style": "Pear, raspberry and apple are dry and concentrated rather than liqueur-sweet, with fermentation character supporting the fruit.", "context": "St. George began as an eau-de-vie distillery before expanding into many spirit families; this marker focuses on that founding specialty."},
+  "ko-hana": {"established": "2009", "production": "Heirloom Hawaiian cane varieties are farmed, hand-harvested, pressed, fermented as fresh juice and distilled on Oʻahu.", "style": "Grassy cane, flowers and tropical fruit vary by cane cultivar, with unaged bottlings keeping the field character visible.", "context": "Kō Hana uses agricole as a style description; it is Hawaiian cane-juice rum, not Martinique AOC rhum agricole."},
+  "river-antoine": {"established": "Estate distilling dates to 1785", "production": "A waterwheel crushes local cane; the juice is concentrated, long-fermented and distilled in direct-fired pot stills without electrical power.", "style": "Intense fresh cane, brine, overripe fruit and savory fermentation character arrive at unusually high strength.", "context": "River Antoine is a historic Grenadian estate and a key cane-juice-rum reference outside the French agricole appellations."},
+  "neisson": {"established": "1932", "production": "Estate cane is crushed rapidly, its juice fermented and distilled on a Creole column under Martinique AOC parameters.", "style": "Fresh cane, lime, flowers and pepper define the white rhums, while oak brings cocoa, fruit and spice.", "context": "Neisson is an independent family distillery in Le Carbet and was an early producer of certified organic AOC Martinique rhum."},
+  "hampden-estate": {"established": "Estate founded in 1753", "production": "Molasses undergoes long, microbiologically complex fermentation before distillation in double-retort copper pot stills and tropical maturation.", "style": "Very high esters evoke overripe pineapple, banana, olive, solvent and spice, supported by heavy pot-still texture.", "context": "Hampden is a Jamaican rum estate whose named marks encode different ester ranges; funk is production-driven, not added flavor."},
+  "bacardi-catano": {"established": "Cataño site opened in 1936", "production": "Molasses ferments feed high-capacity column distillation; light and fuller components are filtered, matured and blended for consistent rum styles.", "style": "A light body carries vanilla, almond and gentle fruit, with charcoal filtration emphasizing clarity.", "context": "The Bacardí family developed its light-rum method in Cuba before moving production; the Cataño site anchors the Puerto Rican continuation of that tradition."},
+  "havana-club-san-jose": {"established": "San José distillery opened in 2007", "production": "Cuban molasses becomes light column distillate and fuller aguardiente components that are aged, filtered and repeatedly blended.", "style": "Light tropical fruit, molasses, vanilla and clean oak build through the Cuban practice of continuous aging and blending.", "context": "Havana Club’s Cuban range is made and aged in Cuba; this marker represents the San José production and maturation complex."},
+  "novo-fogo": {"established": "2010", "production": "Organic cane is cut, pressed, fermented and pot-distilled near Brazil’s Atlantic rainforest, with selected spirit aged in American and native woods.", "style": "Fresh cane, banana and herbs lead the silver spirit; amburana and other woods can add spice, coconut and resin.", "context": "Novo Fogo makes cachaça in Paraná. Cachaça is Brazil’s cane-juice spirit with its own geographic and strength rules."},
+  "weber-haus": {"established": "Family production began in 1948", "production": "Estate organic cane is pressed, fermented and copper-distilled, then rested or aged in a range of Brazilian and international woods.", "style": "Grassy cane and fruit meet herbal, spicy or vanilla notes according to the maturation wood.", "context": "Weber Haus is a family cachaça producer in southern Brazil; wood species are an important label clue in its aged range."},
+  "kilinga-bacanora": {"established": "Contemporary family producer", "production": "Estate Agave angustifolia pacifica is harvested in Sonora, roasted, fermented and distilled in small batches.", "style": "Cooked agave, smoke, dry earth and fruit are framed by the mineral character associated with Sonoran production.", "context": "Kilinga is certified Bacanora, a protected Sonoran agave spirit distinct from Tequila and Mezcal denominations."},
+  "santo-cuviso": {"established": "Contemporary Sonoran producer", "production": "Pacifica agave is traditionally cooked, milled, fermented and distilled in the Ures area for small-batch bacanora.", "style": "Roast agave, herbs, pepper and mineral smoke vary with plant maturity and batch conditions.", "context": "Santo Cuviso provides a second producer view within Bacanora’s Sonora-only denomination."},
+  "estancia-raicilla": {"established": "Family tradition commercialized in the 2010s", "production": "Maximiliana agave is pit- or oven-cooked, fermented and twice distilled by a family producer in the Sierra de Jalisco.", "style": "Pine, herbs, cooked agave and pepper form a bright highland profile with measured smoke.", "context": "Estancia makes denomination-protected Raicilla de la Sierra in La Estancia de Landeros."},
+  "hacienda-el-divisadero": {"established": "Five-generation raicilla tradition", "production": "Coastal agaves are roasted and fermented before distillation in equipment descended from regional Filipino-style still traditions.", "style": "Tropical fruit, salt, smoke and fibrous agave distinguish the coastal family from sierra raicilla.", "context": "Hacienda El Divisadero is a working raicilla taberna inside the Cabo Corrientes portion of the protected territory."},
+  "flor-del-desierto": {"established": "Modern certified sotol producer", "production": "Wild dasylirion is harvested in Chihuahua, cooked in earthen ovens, open-fermented and distilled in copper.", "style": "Dry grass, pine, mint and mineral earth meet gentle roast and smoke.", "context": "Flor del Desierto is certified within Mexico’s Sotol denomination; dasylirion is related to asparagus, not agave."},
+  "rutte": {"established": "1872", "production": "Malt-wine spirit and botanicals are distilled in small copper equipment, with extraction and cask maturation used across genever recipes.", "style": "Cereal, bread and soft fruit sit beneath juniper and spice; wood-aged genever adds vanilla and tannin.", "context": "Rutte’s original Dordrecht shop and distillery remain in use. Genever is a protected regional category across the Low Countries and adjoining areas."},
+  "haymans": {"established": "Family distilling lineage from 1863; Balham site opened in 2018", "production": "Neutral grain spirit and a classic botanical recipe are copper-pot distilled, then lightly sweetened for Old Tom.", "style": "Juniper and citrus stay prominent while restrained sugar rounds coriander, licorice and warm spice.", "context": "Hayman’s Old Tom revives a historic English gin style; Old Tom has no single universal legal recipe."},
+  "herno": {"established": "2011", "production": "Organic wheat spirit is redistilled with juniper and botanicals; extra meadowsweet and a touch of sugar distinguish the Old Tom bottling.", "style": "Juniper, flowers, pine and soft sweetness make a fresher Scandinavian interpretation of Old Tom.", "context": "Hernö distills in Dala on Sweden’s High Coast and labels Old Tom as a style rather than a protected origin."},
+  "deep-eddy": {"established": "2010", "production": "Corn spirit is column-distilled and filtered, then blended with fruit or citrus ingredients for the flavored range.", "style": "A clean, lightly sweet base foregrounds lemon, grapefruit, peach and other direct fruit profiles.", "context": "Deep Eddy distills in Buda, Texas; flavored vodka labeling depends on the added ingredients and final market."},
+  "360-vodka": {"established": "McCormick distilling heritage dates to 1856", "production": "American grain vodka is highly rectified, filtered and used as a base for a broad set of flavored expressions.", "style": "Neutral grain and a soft texture carry fruit, citrus and confectionery flavors with little cereal weight.", "context": "360 is made by McCormick Distilling in Weston; sustainability and packaging are brand programs, not vodka category requirements."},
+  "hanson-sonoma": {"established": "2013", "production": "Organic grape-based vodka is distilled and infused with whole organic fruits, roots or botanicals before bottling.", "style": "Grape texture supports citrus, ginger, cucumber and other recognizable ingredients without a candy-like center.", "context": "Hanson of Sonoma uses infusion as a house technique; ‘infused vodka’ is a descriptive style rather than one harmonized legal class."},
+  "charbay-vodka": {"established": "Family distillery founded in 1983", "production": "A clean vodka base is flavored through real citrus and other ingredient processing developed by the Karakasevic family.", "style": "Fresh zest and fruit oils give a dry, aromatic profile with more peel character than simple sweetness.", "context": "Charbay is a multi-spirit family distillery in California; each flavored vodka label should be read for its stated ingredients."},
+  "langjiu": {"established": "Company history traced to 1898", "production": "Sorghum, high-temperature daqu, repeated solid-state fermentation and distillation cycles create base spirits aged near the Chishui River.", "style": "Roasted grain, soy-like savor, nuts, fruit and long umami depth place Langjiu firmly in the sauce-aroma family.", "context": "Langjiu is based in Erlang, Sichuan, across the Chishui River system from Guizhou’s Moutai center."},
+  "fenjiu": {"established": "Modern distillery established in 1949", "production": "Sorghum ferments with barley-and-pea qu in ceramic-lined pits or jars before solid-state distillation and blending.", "style": "Clean cereal, flowers and restrained fruit define the Fenjiu branch of light-aroma baijiu.", "context": "Xinghuacun in Shanxi is the historic center of Fenjiu; light aroma is a Chinese style classification, not one place name."},
+  "red-star-erguotou": {"established": "1949", "production": "Sorghum ferments with qu and is distilled using the erguotou cut tradition associated with Beijing.", "style": "A dry, forceful profile emphasizes clean sorghum, white pepper and light fruit over heavy cellar aromas.", "context": "Red Star was among the first licensed producers in the People’s Republic and represents Beijing’s erguotou branch of light aroma."},
+  "guilin-sanhua": {"established": "Modern company formed in 1952", "production": "Polished rice and small qu undergo semi-solid fermentation before batch distillation, resting and blending.", "style": "Rice sweetness, flowers, melon and a gentle savory finish are quieter than most sorghum aroma families.", "context": "Sanhua Jiu is Guilin’s signature rice-aroma baijiu; the style uses rice and small-qu methods distinct from strong or sauce aroma."},
+  "vinn-baijiu": {"established": "2009", "production": "Rice is fermented with a multigenerational family culture and distilled in Oregon into baijiu and related rice spirits.", "style": "Soft rice, flowers, tropical fruit and fermentation savor make an accessible rice-aroma reference.", "context": "Vinn is a Vietnamese-American family distillery; it demonstrates a baijiu tradition outside China without claiming a Chinese protected origin."},
+  "zuisen": {"established": "1887", "production": "Thai indica rice is converted with Okinawan black kōji, fermented in one mash and distilled once; selected spirit matures as kūsu.", "style": "Young spirit shows dry rice, mushroom and tropical notes, while long aging brings nuts, vanilla and roundness.", "context": "Zuisen distills in Shuri and belongs to the Ryukyu Awamori geographic indication, separate from mainland honkaku shōchū."},
+  "hitejinro-icheon": {"established": "Company roots date to 1924", "production": "Highly rectified spirit is diluted with water, filtered and adjusted to the light profile expected of modern green-bottle soju.", "style": "Very light grain, soft sweetness and low alcohol prioritize easy drinking with food.", "context": "Diluted soju differs fundamentally from pot-distilled traditional soju; brand strength and sweetening can change between markets."},
+  "lotte-gangneung": {"established": "Producer heritage dates to 1926", "production": "Neutral spirit is blended with water, filtered and adjusted before high-volume bottling as contemporary diluted soju.", "style": "Clean, soft and lightly sweet, with minimal fermentation aroma and a lower serving strength.", "context": "The Gangneung site provides a second industrial-soju reference; diluted soju is a modern Korean production family, not one recipe."},
+  "andong-soju": {"established": "Modern heritage distillery founded in 1987", "production": "Rice is saccharified and fermented with nuruk, then distilled in pot equipment and rested at a substantially higher strength than diluted soju.", "style": "Rice, cereal, earth and savory fermentation notes give a concentrated, warming texture.", "context": "Andong Soju preserves a named regional tradition and contrasts with neutral-spirit green-bottle soju."},
+  "amaro-montenegro": {"established": "1885", "production": "Many herbs, roots, spices and citrus peels are extracted in separate phases, blended and balanced at the San Lazzaro plant.", "style": "Sweet orange, flowers and warm spice lead into moderate root bitterness, making a gentler contrast to fernet.", "context": "Amaro Montenegro is a proprietary Italian amaro; ‘amaro’ describes a broad bitter-liqueur family rather than one protected formula."},
+  "ouzo-plomari": {"established": "1894", "production": "Alcohol and anise-led botanicals are redistilled in 18 small handmade copper stills, then diluted to bottling strength.", "style": "Anise, fennel and herbs form a dry aromatic spirit that turns cloudy when water releases anethole oils.", "context": "Ouzo of Plomari is made on Lesvos within the Greek and Cypriot protected ouzo category."},
+  "samara-ouzo": {"established": "Family distilling tradition since 1896", "production": "Anise and supporting botanicals are selected and redistilled in copper before proofing and resting.", "style": "Licorice-like anise, citrus and herbs show a family balance distinct from neighboring Plomari recipes.", "context": "Samaras is a Lesvos family distillery; each ouzo recipe is proprietary within the wider protected production standard."},
+  "arcus-gjellerasen": {"established": "Arcus formed in 1996 from older Norwegian production", "production": "Potato or grain spirit is flavored with caraway, dill and supporting botanicals; selected aquavit matures in oak, including traditional sea-voyage styles.", "style": "Caraway, dill and citrus can gain vanilla, nuts and spice from oak and temperature movement.", "context": "Gjelleråsen consolidated major Norwegian aquavit production; aquavit’s defining botanicals are caraway or dill under European rules."},
+  "angostura-bitters": {"established": "Bitters created in 1824", "production": "A guarded concentrate of herbs and spices is extracted, blended with alcohol and bottled at high aromatic intensity in Trinidad.", "style": "Clove, cinnamon, gentian-like bitterness and dark spice remain vivid even when used by the dash.", "context": "Angostura aromatic bitters are a proprietary cocktail ingredient, unrelated to angostura bark despite the name."},
+  "fee-brothers": {"established": "1864", "production": "Fruit, spice, nut and botanical flavor systems are extracted and blended into a wide range of cocktail bitters.", "style": "The range spans orange, aromatic, walnut, celery and other focused profiles rather than one house flavor.", "context": "Fee Brothers is a Rochester family producer and flavoring landmark; some products use glycerin and differ structurally from alcohol-extracted bitters."},
+  "absolut-flavors": {"established": "Åhus production heritage dates to 1879", "production": "The same Swedish winter-wheat vodka base is combined with natural flavor preparations and bottled through the integrated Åhus system.", "style": "A clean wheat frame carries citrus, berry, vanilla and spice without cask influence.", "context": "This record highlights Absolut’s flavored range; the separate Åhus marker in vodka represents its unflavored base production."},
+  "rajamaeki-flavored-vodka": {"established": "Rajamäki production began in 1888", "production": "Nordic grain spirit and local water form a neutral vodka base for fruit and berry flavored expressions.", "style": "Clean barley spirit supports lime, berry and other direct flavors with a soft, light texture.", "context": "Rajamäki is a historic Finnish spirits site associated with Finlandia production; flavored variants sit outside plain vodka’s neutral brief."},
+  "zubrowka-bialystok": {"established": "Białystok commercial production since 1928", "production": "A two-stage water-and-alcohol maceration extracts bison grass before the concentrate is filtered and blended into vodka.", "style": "Fresh hay, vanilla, almond, chamomile and green apple make the herbal signature immediately recognizable.", "context": "Żubrówka Bison Grass is an infused Polish vodka tradition tied culturally to the Białowieża Forest and produced at Białystok."},
+  "hangar-one-infusions": {"established": "Brand founded in 2002", "production": "A vodka base is combined with fresh whole-fruit infusions, including aromatic citrus, then blended and proofed in Alameda.", "style": "Real peel oils, flowers and fruit give a drier, more seasonal character than many extract-led flavored vodkas.", "context": "Hangar 1’s infused releases use a descriptive technique term; labeling and exact base composition should be checked by expression."}
+}

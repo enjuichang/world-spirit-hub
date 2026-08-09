@@ -1,6 +1,6 @@
 # World Spirit Hub
 
-A dark, editorial world-spirit atlas with switchable 2D/3D Mapbox views, 57 sourced landmarks across eight categories, an explainable taste-profile quiz, and a curated cocktail-bar finder with dated editorial credentials.
+A dark, editorial world-spirit atlas with switchable 2D/3D Mapbox views, 112 sourced landmarks across eight categories, at least two landmarks for every educational subtype, an explainable taste-profile quiz, and a curated cocktail-bar finder with dated editorial credentials.
 
 ## Local development
 
@@ -35,24 +35,26 @@ If the token is absent or Mapbox cannot load, the accessible location list remai
 
 ## Managing distilleries
 
-[`data/distilleries.json`](data/distilleries.json) is the canonical inventory and is imported directly by the website. [`DISTILLERIES.md`](DISTILLERIES.md) is its generated, human-readable index, grouped by spirit family with official links and stable record IDs.
+[`data/distilleries.json`](data/distilleries.json) is the canonical inventory, paired by stable ID with the researched production and style copy in [`data/distillery-profiles.json`](data/distillery-profiles.json). [`DISTILLERIES.md`](DISTILLERIES.md) is the generated, human-readable index, grouped by spirit family with official links and stable record IDs.
 
 To add or update a distillery:
 
 1. Edit `data/distilleries.json`; do not edit `DISTILLERIES.md` by hand.
-2. Keep every `id` unique and stable, enter coordinates as `[longitude, latitude]`, and use an official HTTPS source.
-3. Mark regional or non-entrance coordinates as `"precision": "approximate"`.
-4. Run `npm run data:sync`, then `npm test`.
+2. Add a matching profile in `data/distillery-profiles.json` with established, production, style, and history/label context copy.
+3. Keep every `id` unique and stable, enter coordinates as `[longitude, latitude]`, and use an official HTTPS source.
+4. Mark regional or non-entrance coordinates as `"precision": "approximate"`.
+5. Run `npm run data:sync`, then `npm test`.
 
 The generator validates required fields, category IDs, coordinates, tags, source URLs, and duplicate IDs. The test workflow runs `data:check`, so a stale Markdown inventory fails before deployment.
 
 ## Main project surfaces
 
 - `data/distilleries.json` — canonical, website-driving distillery inventory.
+- `data/distillery-profiles.json` — researched production, house-style, history, and label context for every landmark.
 - `DISTILLERIES.md` — generated overview for quick review and link checking.
 - `scripts/generate-distillery-index.mjs` — inventory validation and Markdown generation.
 - `app/data.ts` — spirit categories, imported distillery records, and credentialed-bar sample.
-- `app/SpiritExplorer.tsx` — 2D/3D Mapbox atlas, filtering, search, clustering, list view, official distillery links, and detail drawer.
+- `app/SpiritExplorer.tsx` — 2D/3D Mapbox atlas, filtering, search, clustering, list view, official links, and distillery-specific detail profiles.
 - `app/guide/` — educational field guide.
 - `app/discover/` — local, explainable taste profile.
 - `app/bars/` — privacy-conscious distance sorting for dated bar credentials.

@@ -31,7 +31,7 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
   assert.match(html, /<title>World Spirit Hub — A spirited atlas<\/title>/i);
   assert.match(html, /Every spirit has/);
   assert.match(html, /Show all spirits/);
-  assert.match(html, /<strong>57<\/strong> landmarks/);
+  assert.match(html, /<strong>112<\/strong> landmarks/);
   assert.match(html, /Choose 2D or 3D map/);
   assert.match(html, /2D<\/button>/);
   assert.match(html, /3D<\/button>/);
@@ -46,7 +46,10 @@ test("renders the educational guide", async () => {
   assert.match(html, /Eight families/);
   assert.match(html, /Whisky &amp; whiskey/);
   assert.match(html, /Asian grain spirits/);
-  assert.match(html, /Production &amp; style/);
+  assert.match(html, /Production infographic/);
+  assert.match(html, /Regional names found on labels/);
+  assert.match(html, /Subtype field cards/);
+  assert.match(html, /Vector production overlay/);
 });
 
 test("renders the taste profile and credentialed bar experiences", async () => {

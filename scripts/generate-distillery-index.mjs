@@ -2,6 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import process from "node:process";
 
 const jsonUrl = new URL("../data/distilleries.json", import.meta.url);
+const profilesUrl = new URL("../data/distillery-profiles.json", import.meta.url);
 const markdownUrl = new URL("../DISTILLERIES.md", import.meta.url);
 
 const categories = [
@@ -16,6 +17,17 @@ const categories = [
 ];
 
 const categoryNames = new Map(categories);
+const requiredSubtypes = new Map([
+  ["whisky", ["Scotch whisky", "Bourbon", "Rye whiskey", "Tennessee whiskey", "Irish whiskey", "Canadian whisky", "Japanese whisky"]],
+  ["brandy", ["Cognac", "Armagnac", "Brandy de Jerez", "Pisco", "Grappa", "Calvados", "Fruit eaux-de-vie"]],
+  ["rum", ["Molasses-based rum", "Cane-juice rum", "Rhum agricole", "Jamaican rum", "Cuban-style rum", "Cachaça"]],
+  ["agave", ["Tequila", "Mezcal", "Bacanora", "Raicilla", "Sotol"]],
+  ["gin", ["London Dry Gin", "Distilled gin", "Contemporary gin", "Old Tom gin", "Genever"]],
+  ["vodka", ["Neutral vodka", "Characterful vodka", "Flavored vodka", "Infused vodka"]],
+  ["asian", ["Strong-aroma baijiu", "Sauce-aroma baijiu", "Light-aroma baijiu", "Rice-aroma baijiu", "Honkaku shōchū", "Awamori", "Diluted soju", "Distilled soju"]],
+  ["flavoured", ["Liqueurs", "Amari", "Aniseed spirits", "Aquavit", "Cocktail bitters", "Flavored vodka", "Infused vodka"]],
+]);
+const minimumSubtypeCoverage = 2;
 const requiredTextFields = [
   "id",
   "name",
@@ -29,8 +41,13 @@ const requiredTextFields = [
   "sourceUrl",
 ];
 
-function validate(distilleries) {
+const profileFields = ["established", "production", "style", "context"];
+
+function validate(distilleries, profiles) {
   if (!Array.isArray(distilleries)) throw new Error("The inventory must be an array.");
+  if (!profiles || Array.isArray(profiles) || typeof profiles !== "object") {
+    throw new Error("The distillery profiles must be an object keyed by distillery id.");
+  }
 
   const ids = new Set();
   for (const [index, distillery] of distilleries.entries()) {
@@ -60,6 +77,33 @@ function validate(distilleries) {
     if (!/^https:\/\//.test(distillery.sourceUrl)) {
       throw new Error(`Entry ${distillery.id} needs an HTTPS official source URL.`);
     }
+
+    const profile = profiles[distillery.id];
+    if (!profile) throw new Error(`Entry ${distillery.id} needs a researched profile.`);
+    for (const field of profileFields) {
+      if (typeof profile[field] !== "string" || !profile[field].trim()) {
+        throw new Error(`Profile ${distillery.id} is missing ${field}.`);
+      }
+    }
+  }
+
+
+  for (const [categoryId, subtypes] of requiredSubtypes) {
+    for (const subtype of subtypes) {
+      const count = distilleries.filter(
+        (item) => item.categoryId === categoryId && item.subcategory === subtype,
+      ).length;
+      if (count < minimumSubtypeCoverage) {
+        throw new Error(
+          `${categoryNames.get(categoryId)} / ${subtype} needs at least ${minimumSubtypeCoverage} records; found ${count}.`,
+        );
+      }
+    }
+  }
+
+  const orphanedProfiles = Object.keys(profiles).filter((id) => !ids.has(id));
+  if (orphanedProfiles.length) {
+    throw new Error(`Profiles without inventory entries: ${orphanedProfiles.join(", ")}`);
   }
 }
 
@@ -73,7 +117,7 @@ function render(distilleries) {
     "",
     "> Generated from `data/distilleries.json`. Edit the JSON, then run `npm run data:sync`.",
     "",
-    `**${distilleries.length} landmarks · ${categories.length} spirit families · every marker has an official source link.**`,
+    `**${distilleries.length} landmarks · ${categories.length} spirit families · every marker has an official source link and researched profile.**`,
     "",
     "## Coverage summary",
     "",
@@ -84,6 +128,25 @@ function render(distilleries) {
   for (const [categoryId, categoryName] of categories) {
     const count = distilleries.filter((item) => item.categoryId === categoryId).length;
     lines.push(`| ${categoryName} | ${count} |`);
+  }
+
+  lines.push(
+    "",
+    "## Core subtype coverage",
+    "",
+    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery landmarks. Additional regional styles remain in the inventory where they add useful context.`,
+    "",
+    "| Family | Subtype | Markers |",
+    "| --- | --- | ---: |",
+  );
+
+  for (const [categoryId, categoryName] of categories) {
+    for (const subtype of requiredSubtypes.get(categoryId) ?? []) {
+      const count = distilleries.filter(
+        (item) => item.categoryId === categoryId && item.subcategory === subtype,
+      ).length;
+      lines.push(`| ${categoryName} | ${subtype} | ${count} |`);
+    }
   }
 
   for (const [categoryId, categoryName] of categories) {
@@ -113,6 +176,7 @@ function render(distilleries) {
     "- Store coordinates as `[longitude, latitude]`.",
     "- Use `precision: \"approximate\"` when a marker represents a regional or non-public production location.",
     "- Link to an official producer, distillery, appellation, or government source.",
+    "- Keep a matching production, style, history and label-context profile in `data/distillery-profiles.json`.",
     "- Run `npm run data:sync` after editing and `npm run data:check` before committing.",
     "",
   );
@@ -121,7 +185,8 @@ function render(distilleries) {
 }
 
 const distilleries = JSON.parse(await readFile(jsonUrl, "utf8"));
-validate(distilleries);
+const profiles = JSON.parse(await readFile(profilesUrl, "utf8"));
+validate(distilleries, profiles);
 const markdown = render(distilleries);
 
 if (process.argv.includes("--check")) {
@@ -129,7 +194,7 @@ if (process.argv.includes("--check")) {
   if (current !== markdown) {
     throw new Error("DISTILLERIES.md is out of date. Run `npm run data:sync`.");
   }
-  console.log(`Validated ${distilleries.length} distillery records and the Markdown index.`);
+  console.log(`Validated ${distilleries.length} distillery records, researched profiles and the Markdown index.`);
 } else {
   await writeFile(markdownUrl, markdown);
   console.log(`Generated DISTILLERIES.md from ${distilleries.length} records.`);
