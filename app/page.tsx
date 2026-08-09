@@ -39,7 +39,7 @@ export default function Home() {
               <Link
                 key={category.id}
                 className="family-card"
-                href={`/guide#${category.id}`}
+                href={`/guide/${category.id}`}
                 style={{ "--category": category.color } as React.CSSProperties}
               >
                 <span className="family-number">
@@ -127,4 +127,3 @@ export default function Home() {
     </>
   );
 }
-

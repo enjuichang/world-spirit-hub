@@ -1,0 +1,1058 @@
+{
+  "glenfiddich": {
+    "imagePath": "/bottles/glenfiddich.png",
+    "imageSourceUrl": "https://www.glenfiddich.com/sites/default/files/2025-08/gf16-bottle.png",
+    "productPageUrl": "https://www.glenfiddich.com/",
+    "productName": "Glenfiddich 16 Single Malt Whiskey Bottle"
+  },
+  "laphroaig": {
+    "imagePath": "/bottles/laphroaig.webp",
+    "imageSourceUrl": "https://www.laphroaig.com/sites/default/files/styles/article_card_small/public/2026-02/Laphroaig10YearOldIslaySingleMaltScotchWhisky_BottleAndThreeGlassesInHands_8256x5504_2024_s02%20%281%29.jpg.webp?itok=rxEVI4uj",
+    "productPageUrl": "https://www.laphroaig.com/",
+    "productName": "Laphroaig10YearOld card-story__bg-img-container"
+  },
+  "macallan": {
+    "imagePath": "/bottles/macallan.jpg",
+    "imageSourceUrl": "https://sothebys-com.brightspotcdn.com/dims4/default/8e08d66/2147483647/strip/true/crop/4724x4724+0+0/resize/330x330!/quality/90/?url=https%3A%2F%2Fsothebys-md.brightspotcdn.com%2F0f%2F09%2F3302588641d1984d5863b1211ecd%2Fn12186-n214486-1.jpg",
+    "productPageUrl": "https://www.sothebys.com/en/articles/worlds-best-whiskies-the-macallan-scotch",
+    "productName": "The Macallan: A Complete Collector’s Guide | Whisky & Spirits | Sotheby’s"
+  },
+  "balvenie": {
+    "imagePath": "/bottles/balvenie.png",
+    "imageSourceUrl": "https://media.scotchwhisky.com/images/media/85b4adebc507d586741e964b3aebd4f6.png",
+    "productPageUrl": "https://scotchwhisky.com/whiskypedia/1818/balvenie/",
+    "productName": "Balvenie | Scotch Whisky"
+  },
+  "ardbeg": {
+    "imagePath": "/bottles/ardbeg.png",
+    "imageSourceUrl": "https://www.ardbeg.com/cdn/shop/files/Ardbeg-BizarreBQ-1.png?v=1778665160&width=1080",
+    "productPageUrl": "https://www.ardbeg.com/en-int",
+    "productName": "Ardbeg BizarreBQ Islay Single Malt Scotch Whisky Bottle product-card__img"
+  },
+  "bowmore": {
+    "imagePath": "/bottles/bowmore.webp",
+    "imageSourceUrl": "https://www.bowmore.com/sites/default/files/styles/original/public/2025-06/Bowmore-15-Year-Old-Core-Bottle-with-Box-at-Side-View.png.webp?itok=_XDWeC-O",
+    "productPageUrl": "https://www.bowmore.com/",
+    "productName": "Bowmore-15-Year-Old-Core-Bottle-with-Box-at-Side-View product-carousel-card__bg-image lazyload"
+  },
+  "bruichladdich": {
+    "imagePath": "/bottles/bruichladdich.jpg",
+    "imageSourceUrl": "https://www.bruichladdich.com/cdn/shop/files/Port_Charlotte.jpg?v=1755779616&width=1000",
+    "productPageUrl": "https://www.bruichladdich.com/",
+    "productName": "Port Charlotte 18 Islay single malt Scotch whisky bottle beside a glass of whisky on a dark wooden surface feature-row__image lazyloaded"
+  },
+  "bunnahabhain": {
+    "imagePath": "/bottles/bunnahabhain.png",
+    "imageSourceUrl": "https://bunnahabhain.com/cdn/shop/files/Bunnahabhain18YOBottleFront.png?v=1770642755",
+    "productPageUrl": "https://bunnahabhain.com/en-us/pages/distillery-experiences",
+    "productName": "//bunnahabhain.com/cdn/shop/files/Bunnahabhain18YOBottleFront.png?v=1770642755 card__image"
+  },
+  "kilchoman": {
+    "imagePath": "/bottles/kilchoman.png",
+    "imageSourceUrl": "https://www.kilchomandistillery.com/wp-content/uploads/2018/06/MachirBay70cl_BC_Low.png",
+    "productPageUrl": "https://www.kilchomandistillery.com/our-whisky/machir-bay/",
+    "productName": "Kilchoman Machir Bay"
+  },
+  "glenmorangie": {
+    "imagePath": "/bottles/glenmorangie.png",
+    "imageSourceUrl": "https://www.glenmorangie.com/cdn/shop/products/cognac-bottle.png?v=1659972153",
+    "productPageUrl": "https://www.glenmorangie.com/en-us/products/the-original-12-years-old",
+    "productName": "Glenmorangie The Original 12 Years Old"
+  },
+  "oban": {
+    "imagePath": "/bottles/oban.jpg",
+    "imageSourceUrl": "https://dramfellows.com/cdn/shop/files/oban-14-year-old-321040.jpg?v=1707617049",
+    "productPageUrl": "https://dramfellows.com/products/oban-14-year-old",
+    "productName": "Oban 14 Year Old Single Malt Scotch Whisky"
+  },
+  "glengoyne": {
+    "imagePath": "/bottles/glengoyne.png",
+    "imageSourceUrl": "https://media.scotchwhisky.com/images/media/ae402eae63d7293d1995a243ce436b0b.png",
+    "productPageUrl": "https://scotchwhisky.com/whiskypedia/1858/glengoyne/",
+    "productName": "Glengoyne | Scotch Whisky"
+  },
+  "dalmore": {
+    "imagePath": "/bottles/dalmore.jpg",
+    "imageSourceUrl": "https://cdn.caskers.com/catalog/product/cache/4f6989790ecdd0e389055fabaf312a4d/d/a/dalmore-12-year-old-single-malt-scotch-whisky-1_3.jpg",
+    "productPageUrl": "https://www.caskers.com/dalmore-12-year-old-single-malt-scotch-whisky/",
+    "productName": "The Dalmore 12 Year Old Single Malt Scotch Whisky"
+  },
+  "talisker": {
+    "imagePath": "/bottles/talisker.jpg",
+    "imageSourceUrl": "https://images.ctfassets.net/glsfy1cpffmh/3ERMrkYZYS7v3epQ6nBTn5/1503b022c1c395e4f36c59083723a9ca/Talisker_Katie_Tunn_Bottle_Beach.jpg",
+    "productPageUrl": "https://www.malts.com/en-gb/distilleries/talisker",
+    "productName": "page asset"
+  },
+  "tobermory": {
+    "imagePath": "/bottles/tobermory.png",
+    "imageSourceUrl": "https://tobermorydistillery.com/cdn/shop/files/Tobermory-Hebridean-Series-Bottles-with-Packs-and-Tobermory-Bay-Backdrop-Blog-Header.png?v=1739206992&width=420",
+    "productPageUrl": "https://tobermorydistillery.com/en-us",
+    "productName": "files/Tobermory-Hebridean-Series-Bottles-with-Packs-and-Tobermory-Bay-Backdrop-Blog-Header.png mega-menu__image"
+  },
+  "auchentoshan": {
+    "imagePath": "/bottles/auchentoshan.webp",
+    "imageSourceUrl": "https://www.auchentoshan.com/sites/default/files/styles/original/public/2025-12/whisky-bottle-american-oak-auchentoshan.png.webp?itok=_2B1x4kg",
+    "productPageUrl": "https://www.auchentoshan.com/",
+    "productName": "Whisky bottle american oak product-carousel-card__bg-image lazyload"
+  },
+  "glenkinchie": {
+    "imagePath": "/bottles/glenkinchie.jpg",
+    "imageSourceUrl": "https://images.ctfassets.net/glsfy1cpffmh/KlZgZYoqwjscEiVNrL5VY/8114a51c8991979cb4e899f06af84b31/Glenkinchie_3_Bottles.jpeg",
+    "productPageUrl": "https://www.malts.com/en-gb/distilleries/glenkinchie",
+    "productName": "page asset"
+  },
+  "daftmill": {
+    "imagePath": "/bottles/daftmill.png",
+    "imageSourceUrl": "https://www.daftmill.com/wp-content/uploads/2019/04/tagline2.png",
+    "productPageUrl": "https://www.daftmill.com/",
+    "productName": "Daftmill Lowland Single Malt Scotch Whisky. Cupar, Fife. - Daftmill Distillery"
+  },
+  "springbank": {
+    "imagePath": "/bottles/springbank.png",
+    "imageSourceUrl": "https://www.springbank.scot/wp-content/uploads/sites/2/2021/12/homepage_bottle_image_new.png",
+    "productPageUrl": "https://www.springbank.scot/",
+    "productName": "Springbank 30yo 47.3% ABV 70cl Single Malt Scotch Whisky - Springbank"
+  },
+  "glen-scotia": {
+    "imagePath": "/bottles/glen-scotia.jpg",
+    "imageSourceUrl": "https://www.glenscotia.com/cdn/shop/files/21yo-lifestyle_1600x.jpg?v=1675160321",
+    "productPageUrl": "https://www.glenscotia.com/products/21-year-old-scotch-whisky",
+    "productName": "21 Year Old Whisky | Single Malt Scotch | Glen Scotia - Glen Scotia"
+  },
+  "buffalo-trace": {
+    "imagePath": "/bottles/buffalo-trace.png",
+    "imageSourceUrl": "https://cms.buffalotracedistillery.com/wp-content/uploads/2025/11/WELLER-SPECIAL-RESERVE-PACKSHOT-PRODUCT-e1764158017233.png",
+    "productPageUrl": "https://www.buffalotracedistillery.com/",
+    "productName": "page asset"
+  },
+  "yamazaki": {
+    "imagePath": "/bottles/yamazaki.png",
+    "imageSourceUrl": "https://www.suntory.com/factory/yamazaki/assets/img/top/poster_sp.png",
+    "productPageUrl": "https://www.suntory.com/factory/yamazaki/",
+    "productName": "151st whisky review, 17th Japanese whisky review - Yamazaki Single Malt"
+  },
+  "hennessy": {
+    "imagePath": "/bottles/hennessy.jpg",
+    "imageSourceUrl": "https://www.hennessy.com/sites/hennessy/files/styles/landscape_880x472/public/2025-04/hennessy-vs-edition-limitee-harrington-maser-2880x1540.jpg?itok=jwRiLgEq",
+    "productPageUrl": "https://www.hennessy.com/en-int/visit-us",
+    "productName": "Bottle of Hennessy V.S cognac in a natural landscape. This is a limited edition created to celebrate the 300th anniversary of the birth of founder Richard Hennessy lazyload"
+  },
+  "chateau-de-laubade": {
+    "imagePath": "/bottles/chateau-de-laubade.png",
+    "imageSourceUrl": "https://www.chateaudelaubade.com/inc/uploads/2023/02/laubade_footer.png",
+    "productPageUrl": "https://www.chateaudelaubade.com/en/",
+    "productName": "Chateau de Laubade SMWS A5.1 “Fruit Shop Raid” Blind Review (TRB S2E39, Brandy #4, Spirits #175)"
+  },
+  "calvados-drouin": {
+    "imagePath": "/bottles/calvados-drouin.png",
+    "imageSourceUrl": "https://www.calvados-drouin.com/image/product/78/bouteille-fiche-abc-de-christian-drouin.png?1771408988",
+    "productPageUrl": "https://www.calvados-drouin.com/en/product/78/abc-de-christian-drouin",
+    "productName": "ABC de Christian Drouin - DROUIN CALVADOS"
+  },
+  "appleton-estate": {
+    "imagePath": "/bottles/appleton-estate.webp",
+    "imageSourceUrl": "https://www.appletonestate.com/app/uploads/2025/02/our-rums-single-product-appleton-estate-joy.webp",
+    "productPageUrl": "https://www.appletonestate.com/",
+    "productName": "page asset"
+  },
+  "la-fortaleza": {
+    "imagePath": "/bottles/la-fortaleza.jpg",
+    "imageSourceUrl": "https://trumanandorange.com/wp-content/uploads/2020/04/Fortaleza-Packshot-1.jpg",
+    "productPageUrl": "https://trumanandorange.com/fortaleza/",
+    "productName": "Truman & Orange: Fine Liquor Merchants • Fortaleza Tequila"
+  },
+  "del-maguey-san-luis": {
+    "imagePath": "/bottles/del-maguey-san-luis.webp",
+    "imageSourceUrl": "https://d3gevp8yznwb3s.cloudfront.net/images/VTJGc2RHVmtYMStRK1grYnoyMktBcE14eHRPUnFLUFdwWVBPY3cyS051Yz0=.png?width=1200&height=1200&format=webp",
+    "productPageUrl": "https://bottledpoetry.net/products/nuestra-soledad-san-luis-del-rio-mezcal",
+    "productName": "Nuestra Soledad San Luis Del Rio Mezcal | Bottled Poetry Fine Wine & Spirits"
+  },
+  "casa-lotos": {
+    "imagePath": "/bottles/casa-lotos.png",
+    "imageSourceUrl": "https://casalotos.com/cdn/shop/files/bottle.png?v=1699967970&width=1500",
+    "productPageUrl": "https://casalotos.com/products/sotol-blanco",
+    "productName": "Casa Lotos Sotol Blanco"
+  },
+  "bombay-sapphire": {
+    "imagePath": "/bottles/bombay-sapphire.png",
+    "imageSourceUrl": "https://d1y79tpeaemgj5.cloudfront.net/wp-content/uploads/2020/05/04104331/bombay-sapphire-bottle-cutout.png",
+    "productPageUrl": "https://www.bombaysapphire.com/distillery/",
+    "productName": "lazyload"
+  },
+  "sipsmith": {
+    "imagePath": "/bottles/sipsmith.png",
+    "imageSourceUrl": "https://sipsmith.com/wp-content/uploads/2020/07/zesty-orange-gin-1.png",
+    "productPageUrl": "https://sipsmith.com/",
+    "productName": "Zesty Orange Gin attachment-full size-full"
+  },
+  "filliers": {
+    "imagePath": "/bottles/filliers.webp",
+    "imageSourceUrl": "https://filliersdistillery.com/wp-content/uploads/2020/09/filliers-bottles-graanjenever-1.webp",
+    "productPageUrl": "https://filliersdistillery.com/nl/",
+    "productName": "c-lazy"
+  },
+  "absolut-ahus": {
+    "imagePath": "/bottles/absolut-ahus.jpg",
+    "imageSourceUrl": "https://www.blueoceanmy.com/wp-content/uploads/2023/10/Absolut-Mosaik-Limited-Edition-Vodka-2024.jpg",
+    "productPageUrl": "https://www.blueoceanmy.com/product/absolut-mosaik-limited-edition-vodka-2024/",
+    "productName": "Absolut Mosaik Limited Edition Vodka 2024 700ml – Collector Bottle"
+  },
+  "polmos-zyrardow": {
+    "imagePath": "/bottles/polmos-zyrardow.png",
+    "imageSourceUrl": "https://www.belvederevodka.com/sites/default/files/styles/product_menu_thumbnail/public/2024-04/belvedere-organic-vodka-menu-produit.png?itok=Pa3bwfcc",
+    "productPageUrl": "https://www.belvederevodka.com/en-int",
+    "productName": "Belvedere organic vodka bottle Belvedere organic vodka bottle blv-products-thumbnail-img"
+  },
+  "kirishima-shuzo": {
+    "imagePath": "/bottles/kirishima-shuzo.png",
+    "imageSourceUrl": "https://www.kirishima.co.jp/assets/images/img_products_bottle.png",
+    "productPageUrl": "https://www.kirishima.co.jp/",
+    "productName": "Kirishima Shuzo bottling"
+  },
+  "kumesen": {
+    "imagePath": "/bottles/kumesen.jpg",
+    "imageSourceUrl": "https://cdn.shoplightspeed.com/shops/633206/files/39331361/750x2000x3/kujira-kujira-ryukyu-whiskey-20yr-750ml.jpg",
+    "productPageUrl": "https://www.unclefossil.com/kujira-ryukyu-whiskey-20yr-750ml.html",
+    "productName": "Kujira Ryukyu Whiskey 20YR 鯨 750ml $345 FREE DELIVERY - Uncle Fossil Wine&Spirits"
+  },
+  "chartreuse": {
+    "imagePath": "/bottles/chartreuse.png",
+    "imageSourceUrl": "https://www.chartreuse.fr/wp-content/plugins/age-chartreuse/images/chartreuse-titre.png",
+    "productPageUrl": "https://www.chartreuse.fr/en/produit/mof-liqueur/",
+    "productName": "Chartreuse MOF Liqueur – Chartreuse Diffusion"
+  },
+  "cointreau": {
+    "imagePath": "/bottles/cointreau.webp",
+    "imageSourceUrl": "https://www.cointreau.com/us/en/sites/us/files/styles/featured_item_image/public/cocktail-images/Cointreau-Spicy-Margarita.jpeg.webp?itok=4ChWQj_l",
+    "productPageUrl": "https://www.cointreau.com/us/en/",
+    "productName": "A Spicy Margarita in a short drinking glass with lime slices and beside a cut up lime on a white plate, positioning in front of a Cointreau bottle media__image media__element"
+  },
+  "glenora": {
+    "imagePath": "/bottles/glenora.png",
+    "imageSourceUrl": "https://i0.wp.com/torontowhiskysociety.ca/wp-content/uploads/2017/10/dmdj0md-e1509154597221.png?w=1505&",
+    "productPageUrl": "https://torontowhiskysociety.ca/2017/12/19/distillery-spotlight-glenora-distillery-cape-breton-nova-scotia/comment-page-1/",
+    "productName": "Distillery Spotlight: Glenora Distillery, Cape Breton, Nova Scotia – Toronto Whisky Society"
+  },
+  "kavalan": {
+    "imagePath": "/bottles/kavalan.png",
+    "imageSourceUrl": "https://bishopscellar.com/wp-content/uploads/2025/08/Kavalan-LAN-300x600-1.png",
+    "productPageUrl": "https://bishopscellar.com/product/kavalan-lan-single-malt/",
+    "productName": "Kavalan LÁN Single Malt Whisky | Bishop's Cellar"
+  },
+  "amrut": {
+    "imagePath": "/bottles/amrut.png",
+    "imageSourceUrl": "https://amrutdistilleries.com/wp-content/uploads/2025/10/Amrut-Marudham-with-box.png",
+    "productPageUrl": "https://amrutdistilleries.com/amrut-single-malts-varients/",
+    "productName": "Amrut Single Malts | Collection of Best Single Malt Whisky"
+  },
+  "bodegas-fundador": {
+    "imagePath": "/bottles/bodegas-fundador.png",
+    "imageSourceUrl": "https://images.tcdn.com.br/img/img_prod/947695/conhaque_fundador_sherry_cask_750ml_2663_1_7549a0abb1436bcb6c7074b13e4dadf2.png",
+    "productPageUrl": "https://www.limaodistribuidora.com.br/conhaque/conhaque-fundador-sherry-cask-750ml",
+    "productName": "Fundador Fine Brandy Sherry Cask"
+  },
+  "nardini": {
+    "imagePath": "/bottles/nardini.png",
+    "imageSourceUrl": "https://www.broekmans.be/assets/images/pictures/shop_product/sc_c/W500x550/nardini-riserva-classic-1l-2442-bottle-00.png?1782641409",
+    "productPageUrl": "https://www.broekmans.be/en/shop/product/grappa/2442/nardini-riserva-classic-1l",
+    "productName": "Buy Nardini Riserva Classic grappa reliably online | Drankenshop Broekmans"
+  },
+  "la-caravedo": {
+    "imagePath": "/bottles/la-caravedo.png",
+    "imageSourceUrl": "https://cdn.prod.website-files.com/5eaaefe00a5a90433635da0c/5eaaefe00a5a90c2b135db4d_bottle.png",
+    "productPageUrl": "https://www.caravedopisco.com/",
+    "productName": "page asset"
+  },
+  "kwv-paarl": {
+    "imagePath": "/bottles/kwv-paarl.png",
+    "imageSourceUrl": "https://liquorstaronline.co.nz/cdn/shop/files/KWV-10yo-Brandy-750ml_1200x1200.png?v=1764039573",
+    "productPageUrl": "https://liquorstaronline.co.nz/products/kwv-10-yo-brandy-700ml",
+    "productName": "KWV 10 Year Old Potstill Brandy"
+  },
+  "flor-de-cana": {
+    "imagePath": "/bottles/flor-de-cana.webp",
+    "imageSourceUrl": "https://cdn.prod.website-files.com/635173a41d48bd4bbbaefa01/6a3d7a1e11a7d86111ae3307_c0fcc089125b58c4dcf55ee05e4f87c3_botellas.webp",
+    "productPageUrl": "https://www.flordecana.com/",
+    "productName": "new_background_bottles"
+  },
+  "bundaberg": {
+    "imagePath": "/bottles/bundaberg.png",
+    "imageSourceUrl": "https://www.bundabergrum.com.au/cdn/shop/collections/mixed_4_pack_with_xmas_pudding_1200_x_1200_px_1.png?v=1781607384&width=800",
+    "productPageUrl": "https://www.bundabergrum.com.au/pages/distillery",
+    "productName": "Bottle Shop mega-menu__link-image"
+  },
+  "mount-gay": {
+    "imagePath": "/bottles/mount-gay.png",
+    "imageSourceUrl": "https://www.mountgayrum.com/wp-content/themes/MountGayv3/img/wave-hem.png",
+    "productPageUrl": "https://www.mountgayrum.com/distillery/",
+    "productName": "Mount Gay Black Barrel Rum | Astor Wines & Spirits"
+  },
+  "casa-herradura": {
+    "imagePath": "/bottles/casa-herradura.png",
+    "imageSourceUrl": "https://www.herradura.com/wp-content/uploads/2024/08/Anejo.png",
+    "productPageUrl": "https://www.herradura.com/",
+    "productName": "An image of a bottle of Herradura Anejo on an orange platform surrounded by flavor notes of pineapple, cinnamon, and dried citrus. wp-image-58"
+  },
+  "hacienda-patron": {
+    "imagePath": "/bottles/hacienda-patron.png",
+    "imageSourceUrl": "https://www.patrontequila.com/binaries/content/gallery/patrontequila/products/citronge-orange/patron-citronge-orange-bottle.png",
+    "productPageUrl": "https://www.patrontequila.com/",
+    "productName": "page asset"
+  },
+  "los-danzantes": {
+    "imagePath": "/bottles/los-danzantes.png",
+    "imageSourceUrl": "https://agavespirits.com/assets/product-images/LD_Espadin_Joven_Alta.png",
+    "productPageUrl": "https://agavespirits.com/products-los-danzantes-mezcal.php",
+    "productName": "Lorenz Agave Spirits - Los Danzantes Mezcal in Canada"
+  },
+  "desert-door": {
+    "imagePath": "/bottles/desert-door.png",
+    "imageSourceUrl": "https://cdn.prod.website-files.com/6542886097f4715765b3df4e/68c0775b77152a7f19084bfd_2.png",
+    "productPageUrl": "https://www.desertdoor.com/product/desert-door-original-texas-sotol",
+    "productName": "Desert Door Original Texas Sotol"
+  },
+  "hendricks-gin-palace": {
+    "imagePath": "/bottles/hendricks-gin-palace.png",
+    "imageSourceUrl": "https://bodegaslacatedral.com/cdn/shop/files/Bodegas-la-catedral-the-wine-hosts.png?v=1745674474&width=360",
+    "productPageUrl": "https://bodegaslacatedral.com/en",
+    "productName": "Hendrick’s Gin Premium – Scottish Gin | Barcelona – Bodegas La Catedral"
+  },
+  "four-pillars": {
+    "imagePath": "/bottles/four-pillars.png",
+    "imageSourceUrl": "https://fourpillarsgin.com/cdn/shop/files/Four_Pillars_Gin_Gin_Shop_Default_Bandwagon_Dry_652x936px__36629.png?v=1695275377&width=533",
+    "productPageUrl": "https://fourpillarsgin.com/products/rare-dry-gin",
+    "productName": "Four Pillars Rare Dry Gin"
+  },
+  "inverroche": {
+    "imagePath": "/bottles/inverroche.png",
+    "imageSourceUrl": "https://whiskeyd.com/cdn/shop/products/Inverroche-Classic-Gin-v2.png?v=1689596864&width=900",
+    "productPageUrl": "https://whiskeyd.com/collections/new-western-style-gin",
+    "productName": "Inverroche Classic Gin"
+  },
+  "nolet-ketel-one": {
+    "imagePath": "/bottles/nolet-ketel-one.webp",
+    "imageSourceUrl": "https://images.ctfassets.net/nhvvc9v3qesf/01aUPaibqRSzg6awYlPfoO/c10cc9c4bfe0fe3a33b8ca57821d3a34/kov-f23-website-high-neck.jpg",
+    "productPageUrl": "https://www.ketelone.com/our-story",
+    "productName": "Ketel One High Bottle Neck Bartender Pouring max-h-[136px] max-w-[176px] object-contain"
+  },
+  "chopin-krzesk": {
+    "imagePath": "/bottles/chopin-krzesk.webp",
+    "imageSourceUrl": "https://chopinvodka.com/wp-content/uploads/2022/11/3-bottles-938x1024.webp",
+    "productPageUrl": "https://chopinvodka.com/",
+    "productName": "attachment-large size-large wp-image-46"
+  },
+  "koskenkorva": {
+    "imagePath": "/bottles/koskenkorva.png",
+    "imageSourceUrl": "https://www.gerrys.uk.com/images/thumbs/0004581_gerrys.png",
+    "productPageUrl": "https://www.gerrys.uk.com/vodka?orderby=15&pagesize=10000",
+    "productName": "Vodka. Gerry's Wines & Spirits - Buy wines and spirits online at gerrys.uk.com"
+  },
+  "reyka": {
+    "imagePath": "/bottles/reyka.png",
+    "imageSourceUrl": "https://reyka.com/assets/bottle-usa-1fd16967cb0f2344f16c36a12edaa46630a466429be0acd23021df81d43442df.png",
+    "productPageUrl": "https://reyka.com/",
+    "productName": "Reyka Distillery bottling"
+  },
+  "iichiko-hita": {
+    "imagePath": "/bottles/iichiko-hita.png",
+    "imageSourceUrl": "https://att-japan.net/wp-content/uploads/2026/07/att-japan.png",
+    "productPageUrl": "https://att-japan.net/en/culture/283/",
+    "productName": "Drinking in Japan :Shochu - Japan Travel Guide & Media\"att.JAPAN\""
+  },
+  "jagermeister": {
+    "imagePath": "/bottles/jagermeister.png",
+    "imageSourceUrl": "https://drinksdeli.asia/cdn/shop/products/Jaegermeister_1024x.png?v=1610384527",
+    "productPageUrl": "https://drinksdeli.asia/products/jagermeister",
+    "productName": "Jägermeister Herbal Liqueur"
+  },
+  "luxardo": {
+    "imagePath": "/bottles/luxardo.png",
+    "imageSourceUrl": "https://static.wixstatic.com/media/206a40_a47840421fe0468c94961dc26c09797e~mv2.png/v1/crop/x_14,y_0,w_150,h_400/fill/w_75,h_191,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Luxardo-Espresso_Decaf_Bottle_Products-Page.png",
+    "productPageUrl": "https://www.luxardousa.com/products",
+    "productName": "Shop Luxardo | Shop Classic Italian Spirits, Liqueurs, Canned Cocktails, and Maraschino Cherries."
+  },
+  "giffard": {
+    "imagePath": "/bottles/giffard.png",
+    "imageSourceUrl": "https://www.giffard.com/modules/ageverification/views/img/admin/uploads/GIFFARD-CorporatePrincipal+LosangeHD@2x_1660155252_1671797578.png",
+    "productPageUrl": "https://www.giffard.com/fr/4-liqueurs",
+    "productName": "Liqueurs Giffard"
+  },
+  "fernet-branca": {
+    "imagePath": "/bottles/fernet-branca.png",
+    "imageSourceUrl": "https://brancainternational.com/wp-content/uploads/2020/07/branca-usa-2019.png",
+    "productPageUrl": "https://brancainternational.com/en/our-story/",
+    "productName": "Fratelli Branca Fernet-Branca - Best Gourmet Products - TasteAtlas"
+  },
+  "makers-mark": {
+    "imagePath": "/bottles/makers-mark.webp",
+    "imageSourceUrl": "https://www.makersmark.com/sites/default/files/styles/article_card_small/public/2025-11/makers-mark-product-bottle-m2e.jpg.webp?itok=3Cpy2eX4",
+    "productPageUrl": "https://www.makersmark.com/distillery",
+    "productName": "makers-mark-product-bottle-m2e card-story__bg-img-container"
+  },
+  "sagamore-spirit": {
+    "imagePath": "/bottles/sagamore-spirit.jpg",
+    "imageSourceUrl": "https://sagamorespirit.com/wp-content/uploads/SagamoreSpirit-VintnersFinish-web-e1651176137539.jpg",
+    "productPageUrl": "https://sagamorespirit.com/about-us/",
+    "productName": "Port Finish Bottle skip-lazy"
+  },
+  "whistlepig": {
+    "imagePath": "/bottles/whistlepig.png",
+    "imageSourceUrl": "https://cdn.prod.website-files.com/61f27a53fd39a15d7eed0e9c/66d0a905f14d7e6517d821b2_18Year_V5_PDP-BottleImage-658x1310.png",
+    "productPageUrl": "https://www.whistlepigwhiskey.com/",
+    "productName": "product_slide__image"
+  },
+  "cascade-hollow": {
+    "imagePath": "/bottles/cascade-hollow.avif",
+    "imageSourceUrl": "https://images.ctfassets.net/vvbow7h7clgh/35l62AL6RKYGLc9y1oLdp2/a1aaecb3fb2074210ea5e21660f01f3c/george-dickel-rye_front.png?fm=avif&w=1900&q=60",
+    "productPageUrl": "https://www.thebar.com/en-us/brands/george-dickel",
+    "productName": "A bottle of George Dickel Chill Filtered Rye Whisky with a green label and cap, containing 750ml and 45% alcohol by volume. size-full object-cover md:object-center"
+  },
+  "bushmills": {
+    "imagePath": "/bottles/bushmills.jpg",
+    "imageSourceUrl": "https://www.bushmills.eu/wp-content/uploads/2021/09/Caribbean-Highball-Bottle-and-Glass-No-Text-1024x1024.jpg",
+    "productPageUrl": "https://www.bushmills.eu/",
+    "productName": "page asset"
+  },
+  "crown-royal-gimli": {
+    "imagePath": "/bottles/crown-royal-gimli.png",
+    "imageSourceUrl": "https://images.ctfassets.net/wf4e4r4dkfx8/12IySBBip4VXEpEZpjFM6P/11e302f4b6584166c65c00a4d454869b/generosity-fund-hero-v2.png",
+    "productPageUrl": "https://www.crownroyal.com/story",
+    "productName": "Crown Royal Fine De Luxe"
+  },
+  "hakushu": {
+    "imagePath": "/bottles/hakushu.webp",
+    "imageSourceUrl": "https://house.suntory.com/sites/default/files/styles/original/public/2024-11/hakushu-18-years-house-of-suntory.png.webp?itok=Vwyx8nDl",
+    "productPageUrl": "https://house.suntory.com/hakushu-whisky/hakushu-18-years-old",
+    "productName": "Hakushu® 18 | Japanese Whisky | The House of Suntory"
+  },
+  "remy-martin": {
+    "imagePath": "/bottles/remy-martin.png",
+    "imageSourceUrl": "https://static-prod.remymartin.com/app/uploads/2025/10/collection-remy-martin-vsop-2025-light-251029-01-562x800.png",
+    "productPageUrl": "https://www.remymartin.com/visit-us/boutique-tastings/",
+    "productName": "Rémy Martin VSOP bottle lazy"
+  },
+  "delord": {
+    "imagePath": "/bottles/delord.png",
+    "imageSourceUrl": "https://delordgallery.com/cdn/shop/products/Orange_P_600x.png?v=1661344489",
+    "productPageUrl": "https://delordgallery.com/",
+    "productName": "Delord 10 Year Old Bas Armagnac 70cl | Master Of Malt"
+  },
+  "bodegas-tradicion": {
+    "imagePath": "/bottles/bodegas-tradicion.jpg",
+    "imageSourceUrl": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/201901/21/00113354200530____5__600x600.jpg",
+    "productPageUrl": "https://www.elcorteingles.es/gourmet-club-shop/0110113354200530-tradicion-gran-reserva-solera-jerez-brandy-bottle-70-cl/",
+    "productName": "Tradición Solera Gran Reserva Brandy de Jerez"
+  },
+  "pere-magloire": {
+    "imagePath": "/bottles/pere-magloire.png",
+    "imageSourceUrl": "https://www.calvados-pere-magloire.com/wp-content/uploads/2020/08/collection-calvados-exception-pere-magloire-boutique-en-ligne.png",
+    "productPageUrl": "https://www.calvados-pere-magloire.com/en/",
+    "productName": "page asset"
+  },
+  "rochelt": {
+    "imagePath": "/bottles/rochelt.jpg",
+    "imageSourceUrl": "https://www.whiskyfun.com/Material83/Tennessee-Bourbon-Whisky-21-yo-2003-2025-41-5-Cadenhead-Enigma-822-bottles.jpg",
+    "productPageUrl": "https://www.whiskyfun.com/archivenovember25-1-Benriach-Mortlach.html",
+    "productName": "Whiskyfun November 2025 - part 21 - Benriach, Mortlach..."
+  },
+  "st-george-brandy": {
+    "imagePath": "/bottles/st-george-brandy.webp",
+    "imageSourceUrl": "https://c.sambuz.com/33307/craft-spirits-portfolio-vodka-l.webp",
+    "productPageUrl": "https://www.sambuz.com/doc/craft-spirits-portfolio-vodka-ppt-presentation-33307",
+    "productName": "[PPT] - CRAFT SPIRITS PORTFOLIO Vodka Aylesbury Duck 86 Co. Berkshire PowerPoint Presentation - 33307"
+  },
+  "ko-hana": {
+    "imagePath": "/bottles/ko-hana.jpg",
+    "imageSourceUrl": "https://www.gotrum.com/downloads/3339/download/Exclusive%20Interview%20with%20Robert%20Dawson%2C%20Co-Founder%2C%20Ko%CC%84%20Hana%20Distillers%2C%20Kunia%2C%20Hawaii.jpg?cb=147945384036c38103a44be57ae7aea6&w={width}&h={height}",
+    "productPageUrl": "https://www.gotrum.com/editorials/exclusive-interviews/exclusive-interview-with-robert-dawson-co-founder-k%C5%8D-hana-distillers/",
+    "productName": "Exclusive Interview with Mr. Robert Dawson, Co-Founder, Kō Hana Distillers, Kunia, Hawaii - Got Rum? Magazine"
+  },
+  "river-antoine": {
+    "imagePath": "/bottles/river-antoine.png",
+    "imageSourceUrl": "https://www.broekmans.be/assets/images/pictures/shop_product/sc_c/W500x550/river-antoine-rivers-8411-bottle-01.png?1782642391",
+    "productPageUrl": "https://www.broekmans.be/en/shop/product/rum/8411/river-antoine-rivers",
+    "productName": "Buy River Antoine Rivers rum easily online | Drankenshop Broekmans"
+  },
+  "neisson": {
+    "imagePath": "/bottles/neisson.png",
+    "imageSourceUrl": "https://neisson.com/wp-content/uploads/2022/04/ce-qui-fait-neisson-header.png",
+    "productPageUrl": "https://neisson.com/",
+    "productName": "Rum by Distillerie Neisson / Domaines Thieubert - Mar­tinique - Peter's Rum Labels"
+  },
+  "hampden-estate": {
+    "imagePath": "/bottles/hampden-estate.png",
+    "imageSourceUrl": "https://res.cloudinary.com/dndaccqes/image/upload/v1773188826/subcategories/heroes/aged-rum-1773188825546_mbfa4k.png",
+    "productPageUrl": "https://www.capitalspirits.com/products/hampden-estate-8-year-old-single-jamaican-rum-750ml-bottle",
+    "productName": "Hampden Estate 8 Year Old Single Jamaican Rum 750mL Bottle | From $73.8/bottle | Capital Spirits | Capital Spirits"
+  },
+  "bacardi-catano": {
+    "imagePath": "/bottles/bacardi-catano.jpg",
+    "imageSourceUrl": "https://d323g1xugy1rkz.cloudfront.net/wp-content/uploads/2025/05/12144542/FY25_CasaBACARDIPuertoRico_BYO_BottleYourOwn-1.jpg",
+    "productPageUrl": "https://www.bacardi.com/casa-bacardi/",
+    "productName": "lazyload"
+  },
+  "weber-haus": {
+    "imagePath": "/bottles/weber-haus.png",
+    "imageSourceUrl": "https://weberhaus.com.br/wp-content/uploads/2026/03/Copia-de-WEBER-HAUS-205840-683x1024.png",
+    "productPageUrl": "https://weberhaus.com.br/produtos/",
+    "productName": "Explore a linha completa de produtos Weber Haus - Weber Haus"
+  },
+  "kilinga-bacanora": {
+    "imagePath": "/bottles/kilinga-bacanora.png",
+    "imageSourceUrl": "https://kilingabacanora.com/wp-content/uploads/elementor/thumbs/Seed-to-bottle-600px-r98difafgre6hbe462nwuyois8tyo3ru0532oohjz0.png",
+    "productPageUrl": "https://kilingabacanora.com/",
+    "productName": "Seed to bottle 600px Seed to bottle 600px"
+  },
+  "santo-cuviso": {
+    "imagePath": "/bottles/santo-cuviso.webp",
+    "imageSourceUrl": "https://www.santocuviso.com/_astro/blanco.DpHO8Odx_1s1TRE.webp",
+    "productPageUrl": "https://www.santocuviso.com/en/",
+    "productName": "Santo Cuviso Bacanora Blanco product-image"
+  },
+  "estancia-raicilla": {
+    "imagePath": "/bottles/estancia-raicilla.png",
+    "imageSourceUrl": "https://cdn11.bigcommerce.com/s-u9ww3di/images/stencil/350x350/products/14578/21010/Estancia_Teq__25603.1749098320.png?c=2",
+    "productPageUrl": "https://www.oldtowntequila.com/estancia-raicilla/",
+    "productName": "Estancia Raicilla Products - Old Town Tequila"
+  },
+  "flor-del-desierto": {
+    "imagePath": "/bottles/flor-del-desierto.png",
+    "imageSourceUrl": "https://flordeldesierto.com/images/flordeldesierto-1.png",
+    "productPageUrl": "https://flordeldesierto.com/home.php?language=English",
+    "productName": "Image"
+  },
+  "rutte": {
+    "imagePath": "/bottles/rutte.png",
+    "imageSourceUrl": "https://www.rutte.com/cdn/shop/files/handtekening-simonrutte.png?v=1744620971&width=1319",
+    "productPageUrl": "https://www.rutte.com/pages/about-us",
+    "productName": "Datenblatt : Rutte Dutch Dry Gin"
+  },
+  "haymans": {
+    "imagePath": "/bottles/haymans.png",
+    "imageSourceUrl": "https://www.haymansgin.com/wp-content/uploads/2020/07/london-dry-gin-bottle-new-rt-211x600.png",
+    "productPageUrl": "https://www.haymansgin.com/shop/page/2/",
+    "productName": "Shop - Page 2 of 2 - Hayman's Gin"
+  },
+  "herno": {
+    "imagePath": "/bottles/herno.jpg",
+    "imageSourceUrl": "https://www.saq.com/media/catalog/product/1/4/14914330-1_1647547853.png?width=367&height=550&canvas=367,550&optimize=high&fit=bounds&format=jpeg",
+    "productPageUrl": "https://www.saq.com/en/14914330",
+    "productName": "Herno Gin Old Tom Gin | Product page | SAQ.COM"
+  },
+  "deep-eddy": {
+    "imagePath": "/bottles/deep-eddy.png",
+    "imageSourceUrl": "https://deepeddyvodka.com/images/espresso-bottle.png",
+    "productPageUrl": "https://deepeddyvodka.com/",
+    "productName": "Espresso"
+  },
+  "360-vodka": {
+    "imagePath": "/bottles/360-vodka.png",
+    "imageSourceUrl": "https://vodka360.com/wp-content/uploads/2018/04/Mandarin-Orange.png",
+    "productPageUrl": "https://vodka360.com/",
+    "productName": "Mandarin Orange"
+  },
+  "hanson-sonoma": {
+    "imagePath": "/bottles/hanson-sonoma.jpg",
+    "imageSourceUrl": "https://hansonofsonoma.com/cdn/shop/articles/Hanson-Sonoma-Vodka_231683de-9ec2-47dc-a75d-72b08fd7e9d5.webp?v=1755168528&width=1296",
+    "productPageUrl": "https://hansonofsonoma.com/",
+    "productName": "The 17 Best Bottles of Premium Vodka to Buy Right Now"
+  },
+  "red-star-erguotou": {
+    "imagePath": "/bottles/red-star-erguotou.jpg",
+    "imageSourceUrl": "https://i0.wp.com/worldbaijiuday.com/wp-content/uploads/2021/08/world-baijiu-day-2021-stockholm-lu-spirits-stikki-nikki-gelato-3.jpg?w=1356&ssl=1",
+    "productPageUrl": "https://worldbaijiuday.com/2021/08/12/wbd-wrap-baijiulato-with-stikki-nikki-lu-spirits-in-stockholm/",
+    "productName": "WBD wrap: Baijiulato with Stikki Nikki & Lu Spirits in Stockholm | World Baijiu Day"
+  },
+  "andong-soju": {
+    "imagePath": "/bottles/andong-soju.jpg",
+    "imageSourceUrl": "https://www.andongsoju.com/web/product/medium/202410/cf92eda43b52fba01fc5e8b6c9ad403e.jpg",
+    "productPageUrl": "https://www.andongsoju.com/",
+    "productName": "선물세트 특1호"
+  },
+  "ouzo-plomari": {
+    "imagePath": "/bottles/ouzo-plomari.jpg",
+    "imageSourceUrl": "https://images.alko.fi/images/t_pdp/cdn/185556/isidoros-arvanitis-ouzo-of-plomari.jpg",
+    "productPageUrl": "https://www.alko.fi/en/products/185556/Isidoros-Arvanitis-Ouzo-of-Plomari/",
+    "productName": "Isidoros Arvanitis Ouzo of Plomari - Greece - Aniseed distillates"
+  },
+  "samara-ouzo": {
+    "imagePath": "/bottles/samara-ouzo.jpg",
+    "imageSourceUrl": "https://ouzosamara.gr/wp-content/uploads/2018/09/ouzo-products-hero.jpg",
+    "productPageUrl": "https://ouzosamara.gr/en/",
+    "productName": "page asset"
+  },
+  "angostura-bitters": {
+    "imagePath": "/bottles/angostura-bitters.png",
+    "imageSourceUrl": "https://angosturabitters.com/wp-content/uploads/2024/09/200yearbottle-e1726500924602.png",
+    "productPageUrl": "https://angosturabitters.com/",
+    "productName": "200-year Anniversary Limited Edition Bitters"
+  },
+  "fee-brothers": {
+    "imagePath": "/bottles/fee-brothers.jpg",
+    "imageSourceUrl": "https://barproducts.com/cdn/shop/products/fee-bros-bar-cocktail-bitters-complete-set-1_600x600.jpg?v=1752711892",
+    "productPageUrl": "https://barproducts.com/products/fee-brothers-bar-cocktail-bitters-set-6-bottles",
+    "productName": "Fee Brothers Bar Cocktail Bitters Set - 6 Bottles - Bar Products — Bar Products"
+  },
+  "absolut-flavors": {
+    "imagePath": "/bottles/absolut-flavors.png",
+    "imageSourceUrl": "https://theliquorbarn.com/cdn/shop/files/neyers-neyers-sage-ranch-red-wine-bottle.webp?v=1785350251&width=460",
+    "productPageUrl": "https://theliquorbarn.com/products/absolut-mango-750ml",
+    "productName": "Absolut Mango 750ML | Swedish Mango Flavored Vodka – The Liquor Barn"
+  },
+  "rajamaeki-flavored-vodka": {
+    "imagePath": "/bottles/rajamaeki-flavored-vodka.png",
+    "imageSourceUrl": "https://www.finlandia.com/content/dam/finlandia/corporate/images/2025-campaign/asset-bottle.png",
+    "productPageUrl": "https://www.finlandia.com/",
+    "productName": "page asset"
+  },
+  "zubrowka-bialystok": {
+    "imagePath": "/bottles/zubrowka-bialystok.png",
+    "imageSourceUrl": "https://zubrowka.com/wp-content/uploads/2025/01/zubrowka-nowy_packshot-1.png",
+    "productPageUrl": "https://zubrowka.com/en/about-us/",
+    "productName": "Polmos Białystok bottling"
+  },
+  "hangar-one-infusions": {
+    "imagePath": "/bottles/hangar-one-infusions.png",
+    "imageSourceUrl": "https://hangarone.com/wp-content/themes/hangarone/assets/img/products/hangarone_straight.png",
+    "productPageUrl": "https://hangarone.com/vodka-at-new-heights/",
+    "productName": "Vodka at New Heights - Hangar One"
+  },
+  "paul-john-goa": {
+    "imagePath": "/bottles/paul-john-goa.png",
+    "imageSourceUrl": "https://pauljohnwhisky.com/assets/images/brands/labels/kanya-by-paul-john.png",
+    "productPageUrl": "https://pauljohnwhisky.com/",
+    "productName": "Kanya by Paul John"
+  },
+  "casa-real-singani": {
+    "imagePath": "/bottles/casa-real-singani.png",
+    "imageSourceUrl": "https://www.singanicasareal.com/wp-content/uploads/2019/07/singani-casa-real-bolivia-tarija-11.png",
+    "productPageUrl": "https://www.singanicasareal.com/",
+    "productName": "Singani Casa Real - Inicio"
+  },
+  "bodegas-kuhlmann": {
+    "imagePath": "/bottles/bodegas-kuhlmann.webp",
+    "imageSourceUrl": "https://montecito.com.bo/wp-content/uploads/2024/09/Singani-Los-Parrales-Clasico-1-800x799.webp",
+    "productPageUrl": "https://montecito.com.bo/producto/kuhlmann-singani-los-parrales-clasico/",
+    "productName": "Kuhlmann Singani Los Parrales - \"Clásico\" - Montecito"
+  },
+  "van-ryns": {
+    "imagePath": "/bottles/van-ryns.jpg",
+    "imageSourceUrl": "https://cdn11.bigcommerce.com/s-e8lbekfe7c/images/stencil/1024w/attribute_rule_images/20671_source_1758882777.jpg?compression=lossy",
+    "productPageUrl": "https://www.masterofmalt.com/brandy/van-ryns/van-ryns-10-vintage-brandy/",
+    "productName": "Van Ryn's 10 Year Old Vintage Brandy"
+  },
+  "chelo-sajous": {
+    "imagePath": "/bottles/chelo-sajous.jpg",
+    "imageSourceUrl": "https://www.thespiritofhaiti.com/wp-content/uploads/2022/03/clairin-sajou-bottle.jpg",
+    "productPageUrl": "https://www.thespiritofhaiti.com/soh-range/clairin-sajous/",
+    "productName": "img-with-animation skip-lazy nectar-lazy"
+  },
+  "arawaks-vaval": {
+    "imagePath": "/bottles/arawaks-vaval.png",
+    "imageSourceUrl": "https://www.broekmans.be/assets/images/pictures/shop_product/sc_c/W500x550/clairin-vaval-2022-incl-doos-21091-bottle-01.png?1785098827",
+    "productPageUrl": "https://www.broekmans.be/en/shop/product/rum/21091/clairin-vaval-2022-incl-box",
+    "productName": "Buy Clairin Vaval 2022 rum quickly online | Drankenshop Broekmans"
+  },
+  "lalocura-palenque": {
+    "imagePath": "/bottles/lalocura-palenque.png",
+    "imageSourceUrl": "https://www.bswliquor.com/cdn/shop/products/Beringer_Knights_Valley_Cabernet_Sauvignon.png?v=1773764424&width=623",
+    "productPageUrl": "https://www.bswliquor.com/products/lalocura-tepeztate",
+    "productName": "Lalocura Tepeztate-Espadin Mezcal – BSW Liquor"
+  },
+  "del-maguey-minero": {
+    "imagePath": "/bottles/del-maguey-minero.jpg",
+    "imageSourceUrl": "https://prizefighterbottleshop.com/cdn/shop/files/5SentidosEspadinCapon-AlbertoMartinez-label.jpg?v=1701549664&width=1000",
+    "productPageUrl": "https://prizefighterbottleshop.com/collections/mezcal/products/del-maguey-mezcal-minero",
+    "productName": "Del Maguey Minero – Prizefighter Bottle Shop"
+  },
+  "barr-hill-montpelier": {
+    "imagePath": "/bottles/barr-hill-montpelier.jpg",
+    "imageSourceUrl": "https://www.barrhill.com/cdn/shop/products/tom-cat-4.jpg?v=1757615851&width=2000",
+    "productPageUrl": "https://www.barrhill.com/products/tom-cat-gin",
+    "productName": "page asset"
+  },
+  "citadelle-bonbonnet": {
+    "imagePath": "/bottles/citadelle-bonbonnet.png",
+    "imageSourceUrl": "https://citadellegin.com/wp-content/uploads/2023/05/citadelle-rouge-70cl-eu-mockup-front.png",
+    "productPageUrl": "https://citadellegin.com/en/the-secrets-of-french-gin/",
+    "productName": "is-portrait"
+  },
+  "grand-teton-vodka": {
+    "imagePath": "/bottles/grand-teton-vodka.jpg",
+    "imageSourceUrl": "https://www.tetondistillery.com/Assets/ProductImages/GTD_New_Bottle.jpg",
+    "productPageUrl": "https://www.tetondistillery.com/liquor/vodka/750ml-grand-teton-potato-vodka",
+    "productName": "Grand Teton Potato Vodka | Vodka | Grand Teton Distillery"
+  },
+  "kinmen-kaoliang": {
+    "imagePath": "/bottles/kinmen-kaoliang.jpg",
+    "imageSourceUrl": "https://www.kkl-europe.com/sites/default/files/styles/mt_photo/public/38_box_bottle_300_SoldOut.jpg?itok=3WPPXBhu",
+    "productPageUrl": "https://www.kkl-europe.com/en",
+    "productName": "Products | Kinmen Kaoliang Liquor"
+  },
+  "combier-absinthe": {
+    "imagePath": "/bottles/combier-absinthe.jpg",
+    "imageSourceUrl": "https://www.absinthe.de/media/c8/fc/2f/1669820698/1644_1735-Absinthe-Blanchette.jpg",
+    "productPageUrl": "https://www.absinthe.de/en/Combier",
+    "productName": "Combier Absinthe Online Shop"
+  },
+  "glenfarclas": {
+    "imagePath": "/bottles/glenfarclas.jpg",
+    "imageSourceUrl": "https://glenfarclas.com/wp-content/uploads/2022/03/10-Year-Bottle-Desktop-20220317.jpg",
+    "productPageUrl": "https://glenfarclas.com/",
+    "productName": "page asset"
+  },
+  "cardhu": {
+    "imagePath": "/bottles/cardhu.jpg",
+    "imageSourceUrl": "https://cellier.co.uk/cdn/shop/products/cardhu12yrold.jpg?v=1666602441",
+    "productPageUrl": "https://cellier.co.uk/products/cardhu-12-year-old-speyside-single-malt-70cl",
+    "productName": "Cardhu 12 Year Old Speyside Single Malt Scotch Whisky"
+  },
+  "cragganmore": {
+    "imagePath": "/bottles/cragganmore.png",
+    "imageSourceUrl": "https://aem.lcbo.com/content/dam/lcbo/products/0/2/1/1/021160.jpg.thumb.319.319.png",
+    "productPageUrl": "https://www.lcbo.com/en/cragganmore-12-year-old-21160",
+    "productName": "Cragganmore 12 Year Old Speyside Single Malt Scotch Whisky"
+  },
+  "lagavulin": {
+    "imagePath": "/bottles/lagavulin.webp",
+    "imageSourceUrl": "https://images.ctfassets.net/glsfy1cpffmh/3IDJslIRSFnhU6v7pRJQOv/f7d26ed1543e490726016b88d878dc57/3ccdbc258132b327e7fe2432bb758c1cbb07b8c8.jpg?fm=webp&q=80&fit=fill",
+    "productPageUrl": "https://www.malts.com/en-gb/distilleries/lagavulin",
+    "productName": "Finger reaching out to touch Lagavulin bottle  object-cover object-center absolute inset-0 h-full w-full h-full w-full object-cover object-center"
+  },
+  "caol-ila": {
+    "imagePath": "/bottles/caol-ila.webp",
+    "imageSourceUrl": "https://media.ohlq.com/products/1751B.webp",
+    "productPageUrl": "https://www.ohlq.com/liquor/whiskey/scotch/single-malt/caol-ila-12-year-old-single-malt-scotch-whisky",
+    "productName": "Caol Ila 12 Year Old Islay Single Malt Scotch Whisky"
+  },
+  "ardnahoe": {
+    "imagePath": "/bottles/ardnahoe.jpg",
+    "imageSourceUrl": "https://qikify-cdn.nyc3.digitaloceanspaces.com/production/tmenu/instances/161784/65a37aa44c9843705e236e0eb614a41eba0feed8cee8b164659a07b31e8db8de.jpeg",
+    "productPageUrl": "https://ardnahoedistillery.com/pages/our-process",
+    "productName": "page asset"
+  },
+  "glenturret": {
+    "imagePath": "/bottles/glenturret.jpg",
+    "imageSourceUrl": "https://theglenturret.com/cdn/shop/files/AberturretBottleOnlyFront.jpg?crop=center&height=2100&v=1708610614&width=1400",
+    "productPageUrl": "https://theglenturret.com/",
+    "productName": "The Aberturret Gin image__img"
+  },
+  "tomatin": {
+    "imagePath": "/bottles/tomatin.png",
+    "imageSourceUrl": "https://tomatin.com/wp-content/uploads/2019/09/New-Legacy-Bottle-Only-Web-176x300.png",
+    "productPageUrl": "https://tomatin.com/",
+    "productName": "attachment-medium size-medium wp-image-17815"
+  },
+  "clynelish": {
+    "imagePath": "/bottles/clynelish.webp",
+    "imageSourceUrl": "https://images.ctfassets.net/glsfy1cpffmh/YyZ2n2ZbxvY0VYn9WlVh0/4791aeb061ed91f560e56cb3012cce62/clynelish-14-year-old-single-malt-scotch-whisky-70cl-transparent.png?fm=webp&q=30&w=1440",
+    "productPageUrl": "https://www.malts.com/en-us/products/clynelish-14-year-old-single-malt-scotch-whisky-750ml",
+    "productName": "Clynelish 14 Year Old Single Malt Scotch Whisky"
+  },
+  "old-pulteney": {
+    "imagePath": "/bottles/old-pulteney.png",
+    "imageSourceUrl": "https://oldpulteney.com/cdn/shop/files/15_Year_Old_Product_Hero_Shopify.png?v=1776433964&width=1500",
+    "productPageUrl": "https://oldpulteney.com/",
+    "productName": "media__img"
+  },
+  "royal-lochnagar": {
+    "imagePath": "/bottles/royal-lochnagar.jpg",
+    "imageSourceUrl": "https://www.saq.com/media/catalog/product/1/2/12272249-1_1580662510.png?fit=bounds&format=jpeg&height=&optimize=high&width=",
+    "productPageUrl": "https://www.saq.com/en/12272249",
+    "productName": "Royal Lochnagar 12 Year Old Highland Single Malt Scotch Whisky"
+  },
+  "jura": {
+    "imagePath": "/bottles/jura.png",
+    "imageSourceUrl": "https://www.jurawhisky.com/media/g3hdewvh/12yo-us.png?width=230&height=654&v=1dc5a35f90dccf0",
+    "productPageUrl": "https://www.jurawhisky.com/en-us/",
+    "productName": "12YO (US) productFocus__bottle-image productFocus__bottle-image--bottle"
+  },
+  "kingsbarns": {
+    "imagePath": "/bottles/kingsbarns.png",
+    "imageSourceUrl": "https://www.kingsbarnsdistillery.com/cdn/shop/files/Kingsbarns_Distillery_from_front_corner_with_thistles.png?v=1732537007",
+    "productPageUrl": "https://www.kingsbarnsdistillery.com/",
+    "productName": "official product hero open graph"
+  },
+  "moutai": {
+    "imagePath": "/bottles/moutai.jpg",
+    "imageSourceUrl": "https://www.1855thebottleshop.com/cdn/shop/files/kweichow-moutai-moutai-flying-fairy-500ml.jpg?v=1779420630",
+    "productPageUrl": "https://www.1855thebottleshop.com/products/kweichow-moutai-moutai-flying-fairy-500ml",
+    "productName": "Kweichow Moutai Flying Fairy 500ml"
+  },
+  "kyoto-distillery": {
+    "imagePath": "/bottles/kyoto-distillery.jpg",
+    "imageSourceUrl": "https://kyotodistillery.jp/img/og_img.jpg",
+    "productPageUrl": "https://kyotodistillery.jp/en/about/story.php/1000",
+    "productName": "KI NO BI DRY GIN-Other Sake Brands- | Official Reservation Site for Centrair Duty Free Shop"
+  },
+  "yanghe": {
+    "imagePath": "/bottles/yanghe.jpg",
+    "imageSourceUrl": "https://img06.weeecdn.com/item/image/225/838/52EA6D0BA1880E63.jpeg",
+    "productPageUrl": "https://www.weee.com/en/product/Yang-He-Da-Qu-Porcelain-Bottle-Chinese-Baijiu/2965193",
+    "productName": "Yang He Da Qu Porcelain Bottle Chinese Baijiu | Weee!"
+  },
+  "hwayo": {
+    "imagePath": "/bottles/hwayo.jpg",
+    "imageSourceUrl": "https://hwayo.com/wp-content/uploads/2019/12/%ED%99%94%EC%9A%945%EC%A2%85-%EB%8B%A8%EC%B2%B4%EC%BB%B7_1-1024x768.jpg",
+    "productPageUrl": "https://hwayo.com/manufacturing-process-2-2/",
+    "productName": "Zenchu's Shochu, Awamori, Baijiu, and Other Asian Spirits Buyers and Mixing Guide"
+  },
+  "hacienda-el-divisadero": {
+    "imagePath": "/bottles/hacienda-el-divisadero.jpg",
+    "imageSourceUrl": "https://cocktailsandspirits.com/wp-content/uploads/2023/01/EV-raicilla.jpg",
+    "productPageUrl": "https://cocktailsandspirits.com/raicilla/",
+    "productName": "Il Raicilla - Cocktails and Spirits"
+  },
+  "charbay-vodka": {
+    "imagePath": "/bottles/charbay-vodka.webp",
+    "imageSourceUrl": "https://charbay.com/wp-content/uploads/2024/11/charbay-herb-infused-vodka-recipe.webp",
+    "productPageUrl": "https://charbay.com/recipes/charbay-herb-infused-vodka-punch-recipe/",
+    "productName": "Charbay Herb Infused Vodka Punch - Recipe"
+  },
+  "langjiu": {
+    "imagePath": "/bottles/langjiu.jpg",
+    "imageSourceUrl": "https://img.winsns.com/upload/20260429/111323381-en.jpg",
+    "productPageUrl": "https://www.winsns.com/news/show-2633.html",
+    "productName": "Ranking and Review of Sauce-Aroma Baijiu: Ten Widely Recognized, Delicious Sauce-Aroma Spirits Recommended_热点_资讯_winsns"
+  },
+  "fenjiu": {
+    "imagePath": "/bottles/fenjiu.jpg",
+    "imageSourceUrl": "https://whisky.my/cdn-cgi/image/quality%3D80%2Cformat%3Dauto%2Conerror%3Dredirect%2Cmetadata%3Dnone/wp-content/uploads/PANAMA-Fenjiu-20-Years-Old.jpg",
+    "productPageUrl": "https://whisky.my/product/panama-fenjiu-%E5%B7%B4%E6%8B%BF%E9%A6%AC%E6%B1%BE%E9%85%92-20-years-old-53/",
+    "productName": "Panama Fenjiu 20 Year Old Baijiu"
+  },
+  "guilin-sanhua": {
+    "imagePath": "/bottles/guilin-sanhua.jpg",
+    "imageSourceUrl": "https://www.topchinatravel.com/pic/city/guilin/shopping/Guilin-Sanhua-Alcohol-1.jpg",
+    "productPageUrl": "https://www.topchinatravel.com/china-shopping/guilin-sanhua-alcohol.htm",
+    "productName": "Guilin Sanhua Liquor"
+  },
+  "vinn-baijiu": {
+    "imagePath": "/bottles/vinn-baijiu.jpg",
+    "imageSourceUrl": "https://www.skurnik.com/wp-content/uploads/1980/06/baijiu-99-vinn-distillery-2.jpg",
+    "productPageUrl": "https://www.skurnik.com/sku/baijiu-99-vinn-distillery/",
+    "productName": "Baijiu, '99', Vinn Distillery [STRAPPED] - Skurnik Wines & Spirits"
+  },
+  "amaro-montenegro": {
+    "imagePath": "/bottles/amaro-montenegro.jpg",
+    "imageSourceUrl": "https://gruppomontenegro.com/wp-content/uploads/2022/11/Gruppo-News-Cover.jpg",
+    "productPageUrl": "https://gruppomontenegro.com/en/gruppo-montenegro-restyles-its-factory-in-san-lazzaro-di-savena-bo-where-amaro-montenegro-and-vecchia-romagna-produced/",
+    "productName": "official product hero open graph"
+  },
+  "nantou-omar": {
+    "imagePath": "/bottles/nantou-omar.jpg",
+    "imageSourceUrl": "https://www.spirituosen-superbillig.com/pic/Omar-Taiwanese-Whisky-Bourbon-Cask-0-7-Liter-46-Vol-.9158b.jpg",
+    "productPageUrl": "https://www.spirituosen-superbillig.com/Omar-Taiwanese-Whisky-Bourbon-Cask-07-Liter-46-Vol.html",
+    "productName": "Omar Taiwanese Single Malt Whisky Bourbon Cask"
+  },
+  "matsu-liquor": {
+    "imagePath": "/bottles/matsu-liquor.webp",
+    "imageSourceUrl": "https://www.matsu-nsa.gov.tw/_next/static/media/default-share-img.0ccfb077.webp",
+    "productPageUrl": "https://www.matsu-nsa.gov.tw/zh-TW",
+    "productName": "Lawmakers call for clearer labels on liquor bottles - Taipei Times"
+  },
+  "highland-park": {
+    "imagePath": "/bottles/highland-park.jpg",
+    "imageSourceUrl": "https://store.whiskyadvocate.com/cdn/shop/products/highland-park-12_4_1.jpg?v=1667576391&width=1946",
+    "productPageUrl": "https://store.whiskyadvocate.com/products/highland-park-12-year-old",
+    "productName": "Buy Highland Park 12-Year-Old Single Malt Scotch Whisky – Whisky Advocate"
+  },
+  "glengyle": {
+    "imagePath": "/bottles/glengyle.jpg",
+    "imageSourceUrl": "https://grainvine.com/cdn/shop/products/b722236868571ec4255ece0737f2df00d6a2ea9e.jpg?v=1606168076&width=1214",
+    "productPageUrl": "https://grainvine.com/products/kilkerran-cask-strength-8-year-old-single-malt-scotch-whisky",
+    "productName": "Kilkerran Cask Strength 8 Year Old Single Malt Scotch Whisky – Grain & Vine | Natural Wines, Rare Bourbon and Tequila Collection"
+  },
+  "glen-grant": {
+    "imagePath": "/bottles/glen-grant.jpg",
+    "imageSourceUrl": "https://store.whiskyadvocate.com/cdn/shop/products/GG12.jpg?v=1667576154",
+    "productPageUrl": "https://store.whiskyadvocate.com/products/the-glen-grant-12-year-old-scotch-whisky",
+    "productName": "Buy The Glen Grant 12 Year Old Scotch Whisky – Whisky Advocate"
+  },
+  "benriach": {
+    "imagePath": "/bottles/benriach.png",
+    "imageSourceUrl": "https://cdn.caskers.com/catalog/product/cache/4be1456c55268c99c0016aa6f323bbd5/j/o/johnniewalker_blue__89600.1456087477_1__1.png",
+    "productPageUrl": "https://www.caskers.com/benriach-10-year-old-single-malt-scotch-whisky/",
+    "productName": "BenRiach 10YO Single Malt Scotch Whisky: Buy Now | Caskers"
+  },
+  "strathisla": {
+    "imagePath": "/bottles/strathisla.png",
+    "imageSourceUrl": "https://caskcartel.com/cdn/shop/products/sherry-oak-bottle.png?v=1556380876",
+    "productPageUrl": "https://caskcartel.com/collections/scotch/products/strathisla-8-year-old-bot-1970s-speyside-single-malt-scotch-whisky-750ml",
+    "productName": "[BUY] Strathisla 8 Year Old Bot.1970s Speyside Single Malt Scotch Whisky at CaskCartel.com"
+  },
+  "glen-moray": {
+    "imagePath": "/bottles/glen-moray.jpg",
+    "imageSourceUrl": "https://www.saq.com/media/catalog/product/1/1/11904363-1_1772144884.png?width=367&height=550&canvas=367,550&optimize=high&fit=bounds&format=jpeg",
+    "productPageUrl": "https://www.saq.com/en/11904363",
+    "productName": "Glen Moray 12 Years Old Speyside Single Malt Scotch Whisky | Product page | SAQ.COM"
+  },
+  "benromach": {
+    "imagePath": "/bottles/benromach.jpg",
+    "imageSourceUrl": "https://cdn.caskers.com/catalog/product/cache/4f6989790ecdd0e389055fabaf312a4d/b/e/benromach-10-year-old-single-malt-scotch-whisky-1_1.jpg",
+    "productPageUrl": "https://www.caskers.com/benromach-10-year-old-single-malt-scotch-whisky/",
+    "productName": "Benromach 10YO Single Malt Scotch Whisky: Buy Now | Caskers"
+  },
+  "edradour": {
+    "imagePath": "/bottles/edradour.png",
+    "imageSourceUrl": "https://www.edradour.com/bundles/edradourcustomizations/footer/stripe.png?1748611981",
+    "productPageUrl": "https://www.edradour.com/",
+    "productName": "Edradour 2010 Single Cask Scotch Whisky | Buy Online – WhiskyBrother"
+  },
+  "balblair": {
+    "imagePath": "/bottles/balblair.jpg",
+    "imageSourceUrl": "https://cdn.caskers.com/catalog/product/cache/4f6989790ecdd0e389055fabaf312a4d/b/a/balblair-12-year-old-single-malt-scotch-whisky-1.jpg",
+    "productPageUrl": "https://www.caskers.com/balblair-12-year-old-single-malt-scotch-whisky/",
+    "productName": "Balblair 12YO Single Malt Scotch Whisky: Buy Now | Caskers"
+  },
+  "lochranza": {
+    "imagePath": "/bottles/lochranza.jpg",
+    "imageSourceUrl": "https://caskcartel.com/cdn/shop/products/Arran-Lochranza-Reserve-Single-Malt-Whisky.jpg?crop=center&height=1200&v=1554295596&width=1200",
+    "productPageUrl": "https://caskcartel.com/products/the-arran-lochranza-reserve-single-malt-scotch-whisky",
+    "productName": "[BUY] The Arran Lochranza Reserve Single Malt Scotch Whisky at CaskCartel.com"
+  },
+  "lagg": {
+    "imagePath": "/bottles/lagg.jpg",
+    "imageSourceUrl": "https://scotchwhisky.com/images/media/bf2ff1e7dd54494c530896bf4ac921c8.jpg",
+    "productPageUrl": "https://scotchwhisky.com/whiskypedia/14342/lagg/",
+    "productName": "Lagg | Scotch Whisky"
+  },
+  "scapa": {
+    "imagePath": "/bottles/scapa.jpg",
+    "imageSourceUrl": "https://whiskyshopz.com/wp-content/uploads/2024/06/5f6d9fe890803bab0216ad4c319372d9896131b3.jpg",
+    "productPageUrl": "https://whiskyshopz.com/product/scapa-14-year-old-scotch-whisky/",
+    "productName": "Scapa 14 Year Old Scotch Whisky | Whiskys Shop"
+  },
+  "raasay": {
+    "imagePath": "/bottles/raasay.jpg",
+    "imageSourceUrl": "https://raasaydistillery.com/wp-content/uploads/2025/07/isle-of-raasay-shop-draamers-cask1-bottle-with-box.jpg",
+    "productPageUrl": "https://raasaydistillery.com/raasay-whisky/single-malt/",
+    "productName": "Isle of Raasay Single Malt Scotch Whisky - The Draam | Isle of Raasay Distillery"
+  },
+  "rosebank": {
+    "imagePath": "/bottles/rosebank.jpg",
+    "imageSourceUrl": "https://www.whiskybrother.com/cdn/shop/files/Rosebank-21-Year-Old-2014-Release.jpg?v=1741876937",
+    "productPageUrl": "https://www.whiskybrother.com/products/rosebank-21-year-old-2014-release-scotch-whisky",
+    "productName": "Rosebank 21 Year Old 2014 Release Scotch Whisky | Buy Online"
+  },
+  "foursquare": {
+    "imagePath": "/bottles/foursquare.jpg",
+    "imageSourceUrl": "https://www.blackwellswines.com/cdn/shop/files/Foursquare_Mandamus_16_Year_Old_Rum_Exceptional_Cask_Mark_XXIX_600x.jpg?v=1769540549",
+    "productPageUrl": "https://www.blackwellswines.com/products/foursquare-mandamus-16-year-old-rum-exceptional-cask-mark-xxix",
+    "productName": "Buy Foursquare Mandamus 16 Year Old Rum Exceptional Cask Mark XXIX Online"
+  },
+  "rhum-clement": {
+    "imagePath": "/bottles/rhum-clement.jpg",
+    "imageSourceUrl": "https://www.lilovino.com/8080-thickbox_default/spiritueux-clement-vieux-rhum-select-barrel.jpg",
+    "productPageUrl": "https://www.lilovino.com/antilles/8155-spiritueux-clement-vieux-rhum-select-barrel.html",
+    "productName": "Clément Select Barrel Rhum Agricole"
+  },
+  "luzhou-laojiao": {
+    "imagePath": "/bottles/luzhou-laojiao.png",
+    "imageSourceUrl": "https://shop.baijiuamerica.com/cdn/shop/files/6646LZLJSanrenxuan.png?v=1769638969",
+    "productPageUrl": "https://shop.baijiuamerica.com/products/luzhou-laojiao-sanrenxuan",
+    "productName": "Buy LuZhou LaoJiao SanRenXuan Online | 线上购买泸州老窖三人炫 – Baijiu America"
+  },
+  "aalborg-akvavit": {
+    "imagePath": "/bottles/aalborg-akvavit.png",
+    "imageSourceUrl": "https://curiada.com/cdn/shop/products/AalborgTaffelAkvavitTransp.png?v=1645558064&width=720",
+    "productPageUrl": "https://curiada.com/collections/all-items/products/aalborg-taffel-aquavit?_fid=adc958837&_pos=282&_ss=c",
+    "productName": "Buy Aalborg Taffel Akvavit Online - Scandinavian Liquor | Curiada"
+  },
+  "midleton": {
+    "imagePath": "/bottles/midleton.jpg",
+    "imageSourceUrl": "https://store.whiskyadvocate.com/cdn/shop/products/midleton-very-rare-2.jpg?v=1670613210&width=1946",
+    "productPageUrl": "https://store.whiskyadvocate.com/products/midleton-very-rare",
+    "productName": "Buy Midleton Very Rare Irish Whiskey – Whisky Advocate"
+  },
+  "diamond-demerara": {
+    "imagePath": "/bottles/diamond-demerara.jpg",
+    "imageSourceUrl": "https://www.idealwine.com/media/cache/product_variant_medium_small/00-migrated-variant-photos/B2728357_82.jpg",
+    "productPageUrl": "https://www.idealwine.com/en/buy-a-wine/B2182800-413-1-bottle-Diamond-15-years-1999-Velier-Barrels-S-bottled-in-2014-Amber",
+    "productName": "Buy Diamond 15 years 1999 Velier Barrels S - bottled in 2014 (lot: B2182800-413)"
+  },
+  "wuliangye": {
+    "imagePath": "/bottles/wuliangye.png",
+    "imageSourceUrl": "https://shop.baijiuamerica.com/cdn/shop/files/619A_Wuliangye_375ml_box_bottle.png?v=1769638974",
+    "productPageUrl": "https://shop.baijiuamerica.com/products/wu-liang-ye",
+    "productName": "Buy Wu Liang Ye Baijiu Online | 线上购买五粮液白酒 – Baijiu America"
+  },
+  "jack-daniels": {
+    "imagePath": "/bottles/jack-daniels.jpg",
+    "imageSourceUrl": "https://store.whiskyadvocate.com/cdn/shop/products/jd-tennesee-whiskey.jpg?v=1667576379&width=1946",
+    "productPageUrl": "https://store.whiskyadvocate.com/products/jack-daniels-tennessee-whiskey",
+    "productName": "Buy Jack Daniel's Tennessee Whiskey – Whisky Advocate"
+  },
+  "capel-vicuna": {
+    "imagePath": "/bottles/capel-vicuna.jpg",
+    "imageSourceUrl": "https://cdn11.bigcommerce.com/s-t5ovgcn8tc/images/stencil/1280x1280/products/48179/72973/cqzeroftxowbgm3aswuf__52199.1735713608.jpg?c=1&imbypass=on",
+    "productPageUrl": "https://abcfws.com/capel-pisco-reservado/350606",
+    "productName": "Capel Pisco Reservado"
+  },
+  "havana-club-san-jose": {
+    "imagePath": "/bottles/havana-club-san-jose.png",
+    "imageSourceUrl": "https://aem.lcbo.com/content/dam/lcbo/products/0/5/0/3/050307.jpg.thumb.319.319.png",
+    "productPageUrl": "https://www.lcbo.com/en/havana-club-3-year-old-rum-50307",
+    "productName": "Havana Club 3 Year Old Rum"
+  },
+  "novo-fogo": {
+    "imagePath": "/bottles/novo-fogo.png",
+    "imageSourceUrl": "https://shop.novofogo.com/cdn/shop/products/01_20Novo_20Fogo_20Silver_20with_20BTI_20medal_Silver.png?v=1667321916",
+    "productPageUrl": "https://shop.novofogo.com/products/novo-fogo-silver-cachaca",
+    "productName": "Novo Fogo Silver Cachaça"
+  },
+  "zuisen": {
+    "imagePath": "/bottles/zuisen.jpg",
+    "imageSourceUrl": "https://umamimart.com/cdn/shop/products/zuisen.jpg?v=1594763366&width=480",
+    "productPageUrl": "https://umamimart.com/collections/all/awamori",
+    "productName": "Products – Tagged \"awamori\" – Umami Mart"
+  },
+  "hitejinro-icheon": {
+    "imagePath": "/bottles/hitejinro-icheon.webp",
+    "imageSourceUrl": "https://cdn.prod.website-files.com/68b45d5c95d8af8b0e94efcb/68c920c7e0835062c5aff785__center.webp",
+    "productPageUrl": "https://www.jinro-soju.com/products/jinro-chamisul-fresh",
+    "productName": "JINRO Chamisul Fresh"
+  },
+  "lotte-gangneung": {
+    "imagePath": "/bottles/lotte-gangneung.jpg",
+    "imageSourceUrl": "https://tagliquorstores.com/cdn/shop/products/Chum-Churum-Original-750ml.jpg?v=1650161201&width=1946",
+    "productPageUrl": "https://tagliquorstores.com/products/chum-churum-original-soju-360ml",
+    "productName": "Chum Churum Original Soju 360ml"
+  },
+  "arcus-gjellerasen": {
+    "imagePath": "/bottles/arcus-gjellerasen.png",
+    "imageSourceUrl": "https://unwindbottleshop.com/cdn/shop/products/LINIE.png?v=1709276512&width=1445",
+    "productPageUrl": "https://unwindbottleshop.com/products/linie-aquavit-750ml",
+    "productName": "Linie Aquavit 750ml | Norwegian Aquavit Aged at Sea – Unwind Bottle Shop"
+  },
+  "distillerie-guy": {
+    "imagePath": "/bottles/distillerie-guy.webp",
+    "imageSourceUrl": "https://cdn.prod2.whisky.fr/media/lmdw/lmdw_large/4596_6_m54820___fea19f22478a8473.webp",
+    "productPageUrl": "https://www.whisky.fr/en/francois-guy-absinthe-4596.html",
+    "productName": "François Guy Absinthe Pontarlier"
+  },
+  "glenlivet": {
+    "imagePath": "/bottles/glenlivet.jpg",
+    "imageSourceUrl": "https://www.saq.com/media/catalog/product/2/1/21097-1_1582552816.png?width=367&height=550&canvas=367,550&optimize=high&fit=bounds&format=jpeg",
+    "productPageUrl": "https://www.saq.com/fr/21097",
+    "productName": "The Glenlivet 12 Year Old Double Oak"
+  },
+  "poli-grappa": {
+    "imagePath": "/bottles/poli-grappa.jpg",
+    "imageSourceUrl": "https://www.poligrappa.com/backend/prodotti/img_upload/imgconf_dett2/grappa_sarpa_di_poli_tubo_30.jpg",
+    "productPageUrl": "https://www.poligrappa.com/eng/grappas/sarpa",
+    "productName": "Sarpa di Poli Classic Grappa"
+  },
+  "aberlour": {
+    "imagePath": "/bottles/aberlour.png",
+    "imageSourceUrl": "https://bishopscellar.com/wp-content/uploads/2018/06/Aberlour-Bottle-Glasses-1200x1200-1-1024x1024.png",
+    "productPageUrl": "https://bishopscellar.com/product/aberlour-abunadh/",
+    "productName": "Aberlour A'bunadh Speyside Single Malt"
+  },
+  "port-ellen": {
+    "imagePath": "/bottles/port-ellen.png",
+    "imageSourceUrl": "https://www.aldshop.com.au/cdn/shop/files/PortEllen15thRelease32YearOldSingleMaltScotchWhisky.png?v=1716867376",
+    "productPageUrl": "https://www.aldshop.com.au/products/port-ellen-15th-release-32-year-old",
+    "productName": "Port Ellen 15th Release 32 Year Old Single Malt Scotch Whisky"
+  }
+}

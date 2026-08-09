@@ -1,0 +1,270 @@
+{
+  "glenlivet": {
+    "query": "\"Glenlivet\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://www.saq.com/fr/21097",
+    "productName": "The Glenlivet 12 Year Old Double Oak",
+    "searchScore": 118
+  },
+  "aberlour": {
+    "query": "\"Aberlour\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://bishopscellar.com/product/aberlour-abunadh/",
+    "productName": "Aberlour A'bunadh Speyside Single Malt",
+    "searchScore": 118
+  },
+  "highland-park": {
+    "query": "\"Highland Park\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://store.whiskyadvocate.com/products/highland-park-12-year-old",
+    "productName": "Buy Highland Park 12-Year-Old Single Malt Scotch Whisky – Whisky Advocate",
+    "searchScore": 128
+  },
+  "glengyle": {
+    "query": "\"Glengyle\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://grainvine.com/products/kilkerran-cask-strength-8-year-old-single-malt-scotch-whisky",
+    "productName": "Kilkerran Cask Strength 8 Year Old Single Malt Scotch Whisky – Grain & Vine | Natural Wines, Rare Bourbon and Tequila Collection",
+    "searchScore": 108
+  },
+  "glen-grant": {
+    "query": "\"Glen Grant\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://store.whiskyadvocate.com/products/the-glen-grant-12-year-old-scotch-whisky",
+    "productName": "Buy The Glen Grant 12 Year Old Scotch Whisky – Whisky Advocate",
+    "searchScore": 128
+  },
+  "benriach": {
+    "query": "\"Benriach\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://www.caskers.com/benriach-10-year-old-single-malt-scotch-whisky/",
+    "productName": "BenRiach 10YO Single Malt Scotch Whisky: Buy Now | Caskers",
+    "searchScore": 118
+  },
+  "strathisla": {
+    "query": "\"Strathisla\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://caskcartel.com/collections/scotch/products/strathisla-8-year-old-bot-1970s-speyside-single-malt-scotch-whisky-750ml",
+    "productName": "[BUY] Strathisla 8 Year Old Bot.1970s Speyside Single Malt Scotch Whisky at CaskCartel.com",
+    "searchScore": 118
+  },
+  "glen-moray": {
+    "query": "\"Glen Moray\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://www.saq.com/en/11904363",
+    "productName": "Glen Moray 12 Years Old Speyside Single Malt Scotch Whisky | Product page | SAQ.COM",
+    "searchScore": 128
+  },
+  "benromach": {
+    "query": "\"Benromach\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://www.caskers.com/benromach-10-year-old-single-malt-scotch-whisky/",
+    "productName": "Benromach 10YO Single Malt Scotch Whisky: Buy Now | Caskers",
+    "searchScore": 118
+  },
+  "port-ellen": {
+    "query": "\"Port Ellen\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://www.aldshop.com.au/products/port-ellen-15th-release-32-year-old",
+    "productName": "Port Ellen 15th Release 32 Year Old Single Malt Scotch Whisky",
+    "searchScore": 150
+  },
+  "edradour": {
+    "query": "\"Edradour\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://www.whiskybrother.com/products/edradour-2010-single-cask-scotch-whisky",
+    "productName": "Edradour 2010 Single Cask Scotch Whisky | Buy Online – WhiskyBrother",
+    "searchScore": 118
+  },
+  "balblair": {
+    "query": "\"Balblair\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://www.caskers.com/balblair-12-year-old-single-malt-scotch-whisky/",
+    "productName": "Balblair 12YO Single Malt Scotch Whisky: Buy Now | Caskers",
+    "searchScore": 118
+  },
+  "lochranza": {
+    "query": "\"Lochranza\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://caskcartel.com/products/the-arran-lochranza-reserve-single-malt-scotch-whisky",
+    "productName": "[BUY] The Arran Lochranza Reserve Single Malt Scotch Whisky at CaskCartel.com",
+    "searchScore": 118
+  },
+  "lagg": {
+    "query": "\"Lagg\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://scotchwhisky.com/whiskypedia/14342/lagg/",
+    "productName": "Lagg | Scotch Whisky",
+    "searchScore": 100
+  },
+  "scapa": {
+    "query": "\"Scapa\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://whiskyshopz.com/product/scapa-14-year-old-scotch-whisky/",
+    "productName": "Scapa 14 Year Old Scotch Whisky | Whiskys Shop",
+    "searchScore": 118
+  },
+  "raasay": {
+    "query": "\"Isle of Raasay\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://raasaydistillery.com/raasay-whisky/single-malt/",
+    "productName": "Isle of Raasay Single Malt Scotch Whisky - The Draam | Isle of Raasay Distillery",
+    "searchScore": 110
+  },
+  "rosebank": {
+    "query": "\"Rosebank\" \"Scotch whisky\" bottle 750ml product",
+    "productPageUrl": "https://www.whiskybrother.com/products/rosebank-21-year-old-2014-release-scotch-whisky",
+    "productName": "Rosebank 21 Year Old 2014 Release Scotch Whisky | Buy Online",
+    "searchScore": 118
+  },
+  "foursquare": {
+    "query": "\"Foursquare Rum\" \"Molasses-based rum\" bottle 750ml product",
+    "productPageUrl": "https://www.blackwellswines.com/products/foursquare-mandamus-16-year-old-rum-exceptional-cask-mark-xxix",
+    "productName": "Buy Foursquare Mandamus 16 Year Old Rum Exceptional Cask Mark XXIX Online",
+    "searchScore": 118
+  },
+  "rhum-clement": {
+    "query": "\"Habitation Clément\" \"Rhum agricole\" bottle 750ml product",
+    "productPageUrl": "https://www.saratogawine.com/product/rhum-clement-rum-select-barrel-750ml/",
+    "productName": "Rhum Clement Rum Select Barrel 750ml - Buy online at SaratogaWine.com",
+    "searchScore": 118
+  },
+  "luzhou-laojiao": {
+    "query": "\"Luzhou Laojiao\" \"Strong-aroma baijiu\" bottle 750ml product",
+    "productPageUrl": "https://shop.baijiuamerica.com/products/luzhou-laojiao-sanrenxuan",
+    "productName": "Buy LuZhou LaoJiao SanRenXuan Online | 线上购买泸州老窖三人炫 – Baijiu America",
+    "searchScore": 128
+  },
+  "aalborg-akvavit": {
+    "query": "\"Aalborg Akvavit\" \"Aquavit\" bottle 750ml product",
+    "productPageUrl": "https://curiada.com/collections/all-items/products/aalborg-taffel-aquavit?_fid=adc958837&_pos=282&_ss=c",
+    "productName": "Buy Aalborg Taffel Akvavit Online - Scandinavian Liquor | Curiada",
+    "searchScore": 128
+  },
+  "midleton": {
+    "query": "\"Midleton\" \"Irish whiskey\" bottle 750ml product",
+    "productPageUrl": "https://store.whiskyadvocate.com/products/midleton-very-rare",
+    "productName": "Buy Midleton Very Rare Irish Whiskey – Whisky Advocate",
+    "searchScore": 118
+  },
+  "diamond-demerara": {
+    "query": "\"Diamond\" \"Molasses-based rum\" bottle 750ml product",
+    "productPageUrl": "https://www.idealwine.com/en/buy-a-wine/B2182800-413-1-bottle-Diamond-15-years-1999-Velier-Barrels-S-bottled-in-2014-Amber",
+    "productName": "Buy Diamond 15 years 1999 Velier Barrels S - bottled in 2014 (lot: B2182800-413)",
+    "searchScore": 118
+  },
+  "wuliangye": {
+    "query": "\"Wuliangye\" \"Strong-aroma baijiu\" bottle 750ml product",
+    "productPageUrl": "https://shop.baijiuamerica.com/products/wu-liang-ye",
+    "productName": "Buy Wu Liang Ye Baijiu Online | 线上购买五粮液白酒 – Baijiu America",
+    "searchScore": 108
+  },
+  "jack-daniels": {
+    "query": "\"Jack Daniel\" \"Tennessee whiskey\" bottle 750ml product",
+    "productPageUrl": "https://store.whiskyadvocate.com/products/jack-daniels-tennessee-whiskey",
+    "productName": "Buy Jack Daniel's Tennessee Whiskey – Whisky Advocate",
+    "searchScore": 128
+  },
+  "capel-vicuna": {
+    "query": "\"CAPEL Pisco\" \"Pisco\" bottle 750ml product",
+    "productPageUrl": "https://www.saratogawine.com/product/capel-pisco-premium-750ml/",
+    "productName": "Capel Pisco Premium 750ml - Buy online at SaratogaWine.com",
+    "searchScore": 128
+  },
+  "poli-grappa": {
+    "query": "\"Poli Distillerie\" \"Grappa\" bottle 750ml product",
+    "productPageUrl": "https://www.poligrappa.com/eng/grappas/sarpa",
+    "productName": "Sarpa di Poli Classic Grappa",
+    "searchScore": 118
+  },
+  "havana-club-san-jose": {
+    "query": "\"Havana Club San José\" \"Cuban-style rum\" bottle 750ml product",
+    "productPageUrl": "https://www.lcbo.com/en/havana-club-3-year-old-rum-50307",
+    "productName": "Havana Club 3 Year Old Rum",
+    "searchScore": 90
+  },
+  "novo-fogo": {
+    "query": "\"Novo Fogo\" \"Cachaça\" bottle 750ml product",
+    "productPageUrl": "https://kegnbottle.com/products/novo-fogo-barrel-aged-cachaca-750-ml",
+    "productName": "Novo Fogo Barrel-Aged Cachaça (750 ml) | Keg N Bottle",
+    "searchScore": 110
+  },
+  "zuisen": {
+    "query": "\"Zuisen\" \"Awamori\" bottle 750ml product",
+    "productPageUrl": "https://umamimart.com/collections/all/awamori",
+    "productName": "Products – Tagged \"awamori\" – Umami Mart",
+    "searchScore": 108
+  },
+  "hitejinro-icheon": {
+    "query": "\"HiteJinro Icheon\" \"Diluted soju\" bottle 750ml product",
+    "productPageUrl": "https://www.jinro-soju.com/products/jinro-chamisul-fresh",
+    "productName": "JINRO Chamisul Fresh",
+    "searchScore": 90
+  },
+  "lotte-gangneung": {
+    "query": "\"Lotte Liquor Gangneung\" \"Diluted soju\" bottle 750ml product",
+    "productPageUrl": "https://tagliquorstores.com/products/chum-churum-original-soju-360ml",
+    "productName": "Chum Churum Original Soju 360ml",
+    "searchScore": 20
+  },
+  "arcus-gjellerasen": {
+    "query": "\"Arcus\" \"Aquavit\" bottle 750ml product",
+    "productPageUrl": "https://unwindbottleshop.com/products/linie-aquavit-750ml",
+    "productName": "Linie Aquavit 750ml | Norwegian Aquavit Aged at Sea – Unwind Bottle Shop",
+    "searchScore": 108
+  },
+  "distillerie-guy": {
+    "query": "\"Distillerie Guy\" \"Absinthe\" bottle 750ml product",
+    "productPageUrl": "https://distillerie-guy.fr/content/16-absinthes",
+    "productName": "Absinthes de Pontarlier | Distillerie Guy",
+    "searchScore": 100
+  },
+  "oban": {
+    "productPageUrl": "https://www.alko.fi/en/products/906087/oban-14-year-old-single-malt",
+    "productName": "Oban 14 Year Old Single Malt"
+  },
+  "cardhu": {
+    "productPageUrl": "https://www.malts.com/en-us/products/cardhu-12-year-old-single-malt-scotch-whisky-750ml",
+    "productName": "Cardhu 12 Year Old Single Malt"
+  },
+  "cragganmore": {
+    "productPageUrl": "https://www.lcbo.com/en/cragganmore-12-year-old-21160",
+    "productName": "Cragganmore 12 Year Old"
+  },
+  "caol-ila": {
+    "productPageUrl": "https://www.wine.com/product/caol-ila-12-year-single-malt-scotch-whisky/526444",
+    "productName": "Caol Ila 12 Year Old"
+  },
+  "clynelish": {
+    "productPageUrl": "https://www.saq.com/en/12877571",
+    "productName": "Clynelish 14 Year Old"
+  },
+  "royal-lochnagar": {
+    "productPageUrl": "https://www.lcbo.com/en/royal-lochnagar-12-year-old-19578",
+    "productName": "Royal Lochnagar 12 Year Old"
+  },
+  "kwv-paarl": {
+    "productPageUrl": "https://kwv.co.za/product/kwv-12yr-oldbran-6-1x750/",
+    "productName": "KWV 12 Year Old Brandy"
+  },
+  "van-ryns": {
+    "productPageUrl": "https://bottle-stop.com.au/products/van-ryns-12-year-old-single-pot-still-brandy-750ml",
+    "productName": "Van Ryn's 12 Year Old Single Pot Still Brandy"
+  },
+  "bodegas-fundador": {
+    "productPageUrl": "https://winepalace.es/brandy/brandy-fundador-sherry-cask",
+    "productName": "Fundador Sherry Cask Brandy"
+  },
+  "bodegas-tradicion": {
+    "productPageUrl": "https://www.gourmethunters.com/en_US/Brandy%2BTradici%C3%B3n%2BSolera%2BGran%2BReserva",
+    "productName": "Brandy Tradición Solera Gran Reserva"
+  },
+  "moutai": {
+    "productPageUrl": "https://www.1855thebottleshop.com/products/kweichow-moutai-moutai-flying-fairy-500ml",
+    "productName": "Kweichow Moutai Flying Fairy 500ml"
+  },
+  "fenjiu": {
+    "productPageUrl": "https://fenjiu.be/product/",
+    "productName": "Fenjiu Baijiu"
+  },
+  "guilin-sanhua": {
+    "productPageUrl": "https://www.chinaglobalmall.com/products/1164841292412",
+    "productName": "Guilin Sanhua Liquor 480ml"
+  },
+  "rhum-clement": {
+    "productPageUrl": "https://www.wine.com/product/rhum-clement-select-barrel-agricole-rhum-700ml/530651",
+    "productName": "Rhum Clément Select Barrel"
+  },
+  "capel-vicuna": {
+    "productPageUrl": "https://www.haskells.com/capel-pisco-750ml/",
+    "productName": "Capel Pisco 750ml"
+  },
+  "casa-lotos": {
+    "productPageUrl": "https://casalotos.com/products/sotol-blanco",
+    "productName": "Casa Lotos Sotol Blanco"
+  }
+}

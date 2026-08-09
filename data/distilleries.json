@@ -108,6 +108,84 @@
     "id": "glengyle", "name": "Glengyle Distillery", "place": "Campbeltown", "country": "Scotland", "coordinates": [-5.609, 55.426], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Revived Campbeltown malt distillery", "note": "Use Kilkerran single malt to study how a revived historic site adds a distinct lighter, mineral voice to Campbeltown.", "tags": ["cereal", "mineral", "smoke"], "precision": "approximate", "sourceLabel": "Official Springbank and Glengyle website", "sourceUrl": "https://www.springbank.scot/"
   },
   {
+    "id": "glenfarclas", "name": "Glenfarclas Distillery", "place": "Ballindalloch, Speyside", "country": "Scotland", "coordinates": [-3.318, 57.426], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Family-owned sherry-led Speyside malt", "note": "Compare direct-fired stills and long sherry-cask maturation with other rich Speyside distilleries.", "tags": ["sherry", "nuts", "malt"], "precision": "approximate", "sourceLabel": "Official Glenfarclas website", "sourceUrl": "https://glenfarclas.com/pages/distillery"
+  },
+  {
+    "id": "glen-grant", "name": "The Glen Grant Distillery", "place": "Rothes, Speyside", "country": "Scotland", "coordinates": [-3.217, 57.526], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Light Speyside malt shaped by purifiers", "note": "Study tall stills and water-cooling purifiers that encourage a notably light, orchard-fruited spirit.", "tags": ["apple", "pear", "vanilla"], "precision": "approximate", "sourceLabel": "Official The Glen Grant website", "sourceUrl": "https://www.glengrant.com/en/our-distillery/"
+  },
+  {
+    "id": "cardhu", "name": "Cardhu Distillery", "place": "Knockando, Speyside", "country": "Scotland", "coordinates": [-3.337, 57.471], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Soft, honeyed Speyside malt", "note": "Explore a rounded malt that is bottled as single malt and also contributes to major blended Scotch whiskies.", "tags": ["honey", "apple", "cereal"], "precision": "approximate", "sourceLabel": "Official Cardhu distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/cardhu"
+  },
+  {
+    "id": "cragganmore", "name": "Cragganmore Distillery", "place": "Ballindalloch, Speyside", "country": "Scotland", "coordinates": [-3.395, 57.41], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Complex worm-tub Speyside malt", "note": "Compare flat-topped spirit stills and worm-tub condensation with the lighter condenser regimes elsewhere in Speyside.", "tags": ["malt", "herbs", "smoke"], "precision": "approximate", "sourceLabel": "Official Cragganmore distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/cragganmore"
+  },
+  {
+    "id": "benriach", "name": "The Benriach Distillery", "place": "Elgin, Speyside", "country": "Scotland", "coordinates": [-3.282, 57.61], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Speyside distillery with peated and unpeated runs", "note": "Compare three spirit recipes and an unusually broad cask program from one Speyside stillhouse.", "tags": ["orchard fruit", "malt", "smoke"], "precision": "approximate", "sourceLabel": "Official Benriach website", "sourceUrl": "https://www.benriachdistillery.com/en-us/our-world/our-distillery/"
+  },
+  {
+    "id": "strathisla", "name": "Strathisla Distillery", "place": "Keith, Speyside", "country": "Scotland", "coordinates": [-2.955, 57.546], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Historic Speyside malt and blending component", "note": "Study a weighty, fruity malt whose production identity is closely linked to the Chivas Regal blending portfolio.", "tags": ["stone fruit", "nuts", "spice"], "precision": "approximate", "sourceLabel": "Official Strathisla distillery page", "sourceUrl": "https://www.maltwhiskydistilleries.com/chivas-brothers/distilleries/strathisla-distillery"
+  },
+  {
+    "id": "glen-moray", "name": "Glen Moray Distillery", "place": "Elgin, Speyside", "country": "Scotland", "coordinates": [-3.341, 57.645], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Approachable Elgin Speyside malt", "note": "Compare a light cereal-and-fruit spirit across bourbon maturation and an extensive range of wine-cask finishes.", "tags": ["cereal", "apple", "vanilla"], "precision": "approximate", "sourceLabel": "Official Glen Moray website", "sourceUrl": "https://www.glenmoray.com/visit-us/"
+  },
+  {
+    "id": "benromach", "name": "Benromach Distillery", "place": "Forres, Speyside", "country": "Scotland", "coordinates": [-3.618, 57.613], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Lightly smoky traditional-style Speyside malt", "note": "Use restrained peat and first-fill bourbon and sherry casks to widen the common fruit-only picture of Speyside.", "tags": ["smoke", "malt", "sherry"], "precision": "approximate", "sourceLabel": "Official Benromach website", "sourceUrl": "https://www.benromach.com/distillery"
+  },
+  {
+    "id": "lagavulin", "name": "Lagavulin Distillery", "place": "Lagavulin Bay, Islay", "country": "Scotland", "coordinates": [-6.127, 55.635], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Dense, savory south-coast Islay malt", "note": "Compare slow distillation and long maturation with nearby Ardbeg and Laphroaig rather than treating the coast as one flavor.", "tags": ["peat", "seaweed", "dried fruit"], "precision": "approximate", "sourceLabel": "Official Lagavulin distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/lagavulin"
+  },
+  {
+    "id": "caol-ila", "name": "Caol Ila Distillery", "place": "Port Askaig, Islay", "country": "Scotland", "coordinates": [-6.11, 55.854], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Clean, smoky Sound of Islay malt", "note": "Explore a large Islay distillery whose lighter citrus-and-smoke profile supplies both single malt and blends.", "tags": ["smoke", "lemon", "brine"], "precision": "approximate", "sourceLabel": "Official Caol Ila distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/caol-ila"
+  },
+  {
+    "id": "ardnahoe", "name": "Ardnahoe Distillery", "place": "Port Askaig, Islay", "country": "Scotland", "coordinates": [-6.119, 55.874], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Modern worm-tub Islay malt", "note": "Study long still necks, traditional worm tubs and peated spirit at Islay's ninth operating distillery.", "tags": ["peat", "fruit", "coastal"], "precision": "approximate", "sourceLabel": "Official Ardnahoe website", "sourceUrl": "https://ardnahoedistillery.com/pages/our-process"
+  },
+  {
+    "id": "port-ellen", "name": "Port Ellen Distillery", "place": "Port Ellen, Islay", "country": "Scotland", "coordinates": [-6.191, 55.633], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Reopened experimental Islay distillery", "note": "Compare a technically flexible new stillhouse with the historic Port Ellen stocks made before the four-decade closure.", "tags": ["peat", "experimental", "maritime"], "precision": "approximate", "sourceLabel": "Official Diageo Port Ellen reopening story", "sourceUrl": "https://www.diageo.com/en/news-and-media/stories/2024/port-ellen-reborn-the-reopening-of-islay-s-legendary-ghost-distillery"
+  },
+  {
+    "id": "glenturret", "name": "The Glenturret Distillery", "place": "Crieff, Highlands", "country": "Scotland", "coordinates": [-3.854, 56.389], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Historic hand-mashed Highland malt", "note": "Explore long fermentation, manual processing and a range of peated and unpeated components at a small Highland site.", "tags": ["malt", "apple", "spice"], "precision": "approximate", "sourceLabel": "Official The Glenturret website", "sourceUrl": "https://theglenturret.com/"
+  },
+  {
+    "id": "edradour", "name": "Edradour Distillery", "place": "Pitlochry, Highlands", "country": "Scotland", "coordinates": [-3.703, 56.697], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Small-scale Highland malt distillery", "note": "Study compact traditional equipment, worm tubs and richly cask-driven releases at one of Scotland's smallest established sites.", "tags": ["malt", "dried fruit", "nuts"], "precision": "approximate", "sourceLabel": "Official Edradour website", "sourceUrl": "https://www.edradour.com/"
+  },
+  {
+    "id": "tomatin", "name": "Tomatin Distillery", "place": "Tomatin, Highlands", "country": "Scotland", "coordinates": [-4.005, 57.337], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "High-altitude Highland malt distillery", "note": "Compare a large historic stillhouse's soft fruit-led spirit across bourbon, sherry and refill casks.", "tags": ["apple", "pineapple", "vanilla"], "precision": "approximate", "sourceLabel": "Official Tomatin website", "sourceUrl": "https://tomatin.com/"
+  },
+  {
+    "id": "clynelish", "name": "Clynelish Distillery", "place": "Brora, Highlands", "country": "Scotland", "coordinates": [-3.875, 58.023], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Waxy northern Highland malt", "note": "Explore fermentation, copper contact and distillery handling associated with a distinctive waxy spirit texture.", "tags": ["wax", "citrus", "coastal"], "precision": "approximate", "sourceLabel": "Official Clynelish distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/clynelish"
+  },
+  {
+    "id": "balblair", "name": "Balblair Distillery", "place": "Edderton, Highlands", "country": "Scotland", "coordinates": [-4.176, 57.817], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Fruit-led northern Highland malt", "note": "Compare long fermentation and an estery spirit selected for maturation before release rather than by a fixed regional formula.", "tags": ["apple", "citrus", "spice"], "precision": "approximate", "sourceLabel": "Official Balblair website", "sourceUrl": "https://www.balblair.com/our-home/"
+  },
+  {
+    "id": "old-pulteney", "name": "Pulteney Distillery", "place": "Wick, Highlands", "country": "Scotland", "coordinates": [-3.084, 58.436], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Far-northern maritime Highland malt", "note": "Study a dry, coastal spirit from Wick whose identity reflects still shape and production more reliably than sea-air mythology.", "tags": ["citrus", "brine", "honey"], "precision": "approximate", "sourceLabel": "Official Old Pulteney website", "sourceUrl": "https://oldpulteney.com/our-distillery/"
+  },
+  {
+    "id": "royal-lochnagar", "name": "Royal Lochnagar Distillery", "place": "Crathie, Highlands", "country": "Scotland", "coordinates": [-3.214, 57.044], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Small eastern Highland malt", "note": "Compare long fermentation and a restrained fruit-and-oak profile from a compact distillery beside the Balmoral estate.", "tags": ["orchard fruit", "malt", "oak"], "precision": "approximate", "sourceLabel": "Official Royal Lochnagar distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/royal-lochnagar"
+  },
+  {
+    "id": "lochranza", "name": "Lochranza Distillery", "place": "Lochranza, Isle of Arran", "country": "Scotland", "coordinates": [-5.279, 55.7], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Unpeated Arran island malt", "note": "Compare a bright citrus-and-malt spirit from northern Arran with the island's separately operated peated Lagg distillery.", "tags": ["citrus", "malt", "vanilla"], "precision": "approximate", "sourceLabel": "Official Arran Whisky Lochranza page", "sourceUrl": "https://www.arranwhisky.com/our-distilleries/lochranza-distillery"
+  },
+  {
+    "id": "lagg", "name": "Lagg Distillery", "place": "Kilmory, Isle of Arran", "country": "Scotland", "coordinates": [-5.162, 55.446], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Peated southern Arran malt", "note": "Contrast peated spirit and a modern production design with the unpeated Lochranza distillery on the same island.", "tags": ["peat", "cereal", "citrus"], "precision": "approximate", "sourceLabel": "Official Arran Whisky Lagg page", "sourceUrl": "https://www.arranwhisky.com/our-distilleries/lagg-distillery"
+  },
+  {
+    "id": "jura", "name": "Jura Distillery", "place": "Craighouse, Isle of Jura", "country": "Scotland", "coordinates": [-5.95, 55.833], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Island malt with peated and unpeated production", "note": "Explore a light house spirit, periodic heavily peated batches and diverse cask finishing on a sparsely populated island.", "tags": ["cereal", "smoke", "coastal"], "precision": "approximate", "sourceLabel": "Official Jura website", "sourceUrl": "https://www.jurawhisky.com/en/our-distillery/"
+  },
+  {
+    "id": "scapa", "name": "Scapa Distillery", "place": "Kirkwall, Orkney", "country": "Scotland", "coordinates": [-2.983, 58.958], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Unpeated Orcadian island malt", "note": "Compare unpeated fermentation and Lomond-style wash distillation with the heathery smoke of nearby Highland Park.", "tags": ["honey", "pear", "coastal"], "precision": "approximate", "sourceLabel": "Official Scapa website", "sourceUrl": "https://www.scapawhisky.com/en/our-distillery"
+  },
+  {
+    "id": "raasay", "name": "Isle of Raasay Distillery", "place": "Raasay, Inner Hebrides", "country": "Scotland", "coordinates": [-6.041, 57.352], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Modern Hebridean peated-and-unpeated malt", "note": "Study separate peated and unpeated distillates matured in rye, bourbon and wine casks at a young island distillery.", "tags": ["smoke", "dark fruit", "spice"], "precision": "approximate", "sourceLabel": "Official Isle of Raasay Distillery website", "sourceUrl": "https://raasaydistillery.com/"
+  },
+  {
+    "id": "rosebank", "name": "Rosebank Distillery", "place": "Falkirk, Lowlands", "country": "Scotland", "coordinates": [-3.791, 55.999], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Revived triple-distilled Lowland malt", "note": "Compare triple distillation and worm-tub condensation at a reopened historic Lowland distillery.", "tags": ["flowers", "citrus", "cereal"], "precision": "approximate", "sourceLabel": "Official Rosebank website", "sourceUrl": "https://www.rosebank.com/"
+  },
+  {
+    "id": "kingsbarns", "name": "Kingsbarns Distillery", "place": "Kingsbarns, Fife", "country": "Scotland", "coordinates": [-2.656, 56.277], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Modern Fife Lowland malt", "note": "Explore locally sourced barley, long fermentation and a fruit-forward spirit at a converted farmstead near St Andrews.", "tags": ["barley", "banana", "vanilla"], "precision": "approximate", "sourceLabel": "Official Kingsbarns Distillery website", "sourceUrl": "https://www.kingsbarnsdistillery.com/"
+  },
+  {
     "id": "buffalo-trace",
     "name": "Buffalo Trace Distillery",
     "place": "Frankfort, Kentucky",

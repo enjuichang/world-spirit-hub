@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import mapboxgl, { GeoJSONSource, Map as MapboxMap } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import bottleImages from "../data/bottle-images.json";
 import {
   ArrowUpRight,
   BookOpen,
@@ -23,39 +25,34 @@ import {
   locations,
 } from "./data";
 
-const bottleSpritePosition: Record<string, [number, number]> = {
-  whisky: [0, 0],
-  brandy: [33.333, 0],
-  rum: [66.667, 0],
-  agave: [100, 0],
-  gin: [0, 100],
-  vodka: [33.333, 100],
-  asian: [66.667, 100],
-  flavoured: [100, 100],
+type BottleImage = {
+  imagePath: string;
+  imageSourceUrl: string;
+  productPageUrl: string;
+  productName: string;
 };
 
+const bottleImageById = bottleImages as Record<string, BottleImage>;
+
 function BottlePortrait({
-  categoryId,
+  id,
   name,
   compact = false,
 }: {
-  categoryId: string;
+  id: string;
   name: string;
   compact?: boolean;
 }) {
-  const [x, y] = bottleSpritePosition[categoryId] ?? bottleSpritePosition.whisky;
+  const bottle = bottleImageById[id];
+  if (!bottle) return null;
 
   return (
-    <span
+    <img
       className={`bottle-image ${compact ? "bottle-image-compact" : ""}`}
-      role="img"
-      aria-label={`Representative bottle portrait for ${name}`}
-      style={
-        {
-          "--bottle-x": `${x}%`,
-          "--bottle-y": `${y}%`,
-        } as React.CSSProperties
-      }
+      src={bottle.imagePath}
+      alt={`${bottle.productName} bottle from ${name}`}
+      loading="lazy"
+      decoding="async"
     />
   );
 }
@@ -464,6 +461,13 @@ export function SpiritExplorer() {
               );
             })}
           </div>
+          {selectedCategory && !selectedLocation && (
+            <Link className="category-guide-link" href={`/guide/${selectedCategory.id}`} style={{ "--category": selectedCategory.color } as React.CSSProperties}>
+              <BookOpen size={15} />
+              <span><small>Read the dedicated chapter</small>{selectedCategory.name}</span>
+              <ArrowUpRight size={15} />
+            </Link>
+          )}
         </div>
       </aside>
 
@@ -586,7 +590,7 @@ export function SpiritExplorer() {
                 >
                   <span className="list-bottle">
                     <BottlePortrait
-                      categoryId={location.categoryId}
+                      id={location.id}
                       name={location.name}
                       compact
                     />
@@ -607,7 +611,7 @@ export function SpiritExplorer() {
           )}
         </div>
 
-        {selectedCategory && (
+        {selectedLocation && selectedCategory && (
           <aside className="detail-drawer" aria-label="Selected spirit details">
             <button
               className="drawer-close"
@@ -641,16 +645,25 @@ export function SpiritExplorer() {
                 )}
                 <figure className="drawer-bottle">
                   <BottlePortrait
-                    categoryId={selectedLocation.categoryId}
+                    id={selectedLocation.id}
                     name={selectedLocation.name}
                   />
                   <figcaption>
-                    <span>Bottle portrait</span>
-                    <strong>{selectedLocation.name}</strong>
+                    <span>Featured bottle</span>
+                    <strong>
+                      {bottleImageById[selectedLocation.id]?.productName ??
+                        selectedLocation.name}
+                    </strong>
                     <small>
-                      A representative {selectedLocation.subcategory.toLowerCase()} bottle,
-                      created for the atlas.
+                      An actual bottling associated with this producer.
                     </small>
+                    <a
+                      href={bottleImageById[selectedLocation.id]?.productPageUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View product source <ArrowUpRight size={12} />
+                    </a>
                   </figcaption>
                 </figure>
                 <div className="taste-tags">

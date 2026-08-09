@@ -1,8 +1,9 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { access, readFile, writeFile } from "node:fs/promises";
 import process from "node:process";
 
 const jsonUrl = new URL("../data/distilleries.json", import.meta.url);
 const profilesUrl = new URL("../data/distillery-profiles.json", import.meta.url);
+const bottleImagesUrl = new URL("../data/bottle-images.json", import.meta.url);
 const markdownUrl = new URL("../DISTILLERIES.md", import.meta.url);
 
 const categories = [
@@ -29,7 +30,7 @@ const requiredSubtypes = new Map([
 ]);
 const minimumSubtypeCoverage = 2;
 const minimumSubtypeCoverageOverrides = new Map([
-  ["whisky:Scotch whisky", 24],
+  ["whisky:Scotch whisky", 50],
 ]);
 const requiredTextFields = [
   "id",
@@ -111,6 +112,45 @@ function validate(distilleries, profiles) {
   }
 }
 
+async function validateBottleImages(distilleries, bottleImages) {
+  if (!bottleImages || Array.isArray(bottleImages) || typeof bottleImages !== "object") {
+    throw new Error("The bottle image catalog must be an object keyed by distillery id.");
+  }
+
+  const ids = new Set(distilleries.map((distillery) => distillery.id));
+  const imagePaths = new Map();
+  for (const distillery of distilleries) {
+    const bottle = bottleImages[distillery.id];
+    if (!bottle) throw new Error(`Entry ${distillery.id} needs a sourced bottle image.`);
+
+    for (const field of ["imagePath", "imageSourceUrl", "productPageUrl", "productName"]) {
+      if (typeof bottle[field] !== "string" || !bottle[field].trim()) {
+        throw new Error(`Bottle image ${distillery.id} is missing ${field}.`);
+      }
+    }
+    if (!/^\/bottles\/[a-z0-9-]+\.(?:avif|jpe?g|png|webp)$/.test(bottle.imagePath)) {
+      throw new Error(`Bottle image ${distillery.id} has an invalid local path.`);
+    }
+    if (!/^https:\/\//.test(bottle.imageSourceUrl) || !/^https:\/\//.test(bottle.productPageUrl)) {
+      throw new Error(`Bottle image ${distillery.id} needs HTTPS source and product URLs.`);
+    }
+    if (imagePaths.has(bottle.imagePath)) {
+      throw new Error(
+        `Bottle image ${bottle.imagePath} is shared by ${imagePaths.get(bottle.imagePath)} and ${distillery.id}.`,
+      );
+    }
+    imagePaths.set(bottle.imagePath, distillery.id);
+    await access(new URL(`../public${bottle.imagePath}`, import.meta.url)).catch(() => {
+      throw new Error(`Bottle image file is missing for ${distillery.id}: ${bottle.imagePath}`);
+    });
+  }
+
+  const orphanedBottleImages = Object.keys(bottleImages).filter((id) => !ids.has(id));
+  if (orphanedBottleImages.length) {
+    throw new Error(`Bottle images without inventory entries: ${orphanedBottleImages.join(", ")}`);
+  }
+}
+
 function cell(value) {
   return String(value).replaceAll("|", "\\|").replaceAll("\n", " ");
 }
@@ -121,7 +161,7 @@ function render(distilleries) {
     "",
     "> Generated from `data/distilleries.json`. Edit the JSON, then run `npm run data:sync`.",
     "",
-    `**${distilleries.length} landmarks · ${categories.length} spirit families · every marker has an official source link and researched profile.**`,
+    `**${distilleries.length} landmarks · ${categories.length} spirit families · every marker has an official source link, researched profile and sourced bottle image.**`,
     "",
     "## Coverage summary",
     "",
@@ -138,7 +178,7 @@ function render(distilleries) {
     "",
     "## Core subtype coverage",
     "",
-    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery landmarks; Scotch whisky has a dedicated minimum of 24. Additional regional styles remain in the inventory where they add useful context.`,
+    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery landmarks; Scotch whisky has a dedicated minimum of 50. Additional regional styles remain in the inventory where they add useful context.`,
     "",
     "| Family | Subtype | Markers |",
     "| --- | --- | ---: |",
@@ -181,6 +221,7 @@ function render(distilleries) {
     "- Use `precision: \"approximate\"` when a marker represents a regional or non-public production location.",
     "- Link to an official producer, distillery, appellation, or government source.",
     "- Keep a matching production, style, history and label-context profile in `data/distillery-profiles.json`.",
+    "- Keep a unique local bottle asset and its image/product provenance in `data/bottle-images.json`.",
     "- Run `npm run data:sync` after editing and `npm run data:check` before committing.",
     "",
   );
@@ -190,7 +231,9 @@ function render(distilleries) {
 
 const distilleries = JSON.parse(await readFile(jsonUrl, "utf8"));
 const profiles = JSON.parse(await readFile(profilesUrl, "utf8"));
+const bottleImages = JSON.parse(await readFile(bottleImagesUrl, "utf8"));
 validate(distilleries, profiles);
+await validateBottleImages(distilleries, bottleImages);
 const markdown = render(distilleries);
 
 if (process.argv.includes("--check")) {
@@ -198,7 +241,7 @@ if (process.argv.includes("--check")) {
   if (current !== markdown) {
     throw new Error("DISTILLERIES.md is out of date. Run `npm run data:sync`.");
   }
-  console.log(`Validated ${distilleries.length} distillery records, researched profiles and the Markdown index.`);
+  console.log(`Validated ${distilleries.length} distillery records, profiles, unique bottle images and the Markdown index.`);
 } else {
   await writeFile(markdownUrl, markdown);
   console.log(`Generated DISTILLERIES.md from ${distilleries.length} records.`);

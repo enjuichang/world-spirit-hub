@@ -273,6 +273,7 @@ export const categories: SpiritCategory[] = [
       "Aquavit",
       "Cocktail bitters",
       "Flavored vodka",
+      "Infused vodka",
       "Absinthe",
     ],
     regions: ["Italy", "France", "Scandinavia", "Mediterranean", "Global"],

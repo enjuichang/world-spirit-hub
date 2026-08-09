@@ -1,0 +1,588 @@
+{
+  "glenlivet": {
+    "query": "\"The Glenlivet\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.theglenlivet.com/en-gb/whisky/12-year-old-double-oak-engraved/",
+    "productName": "12 Year Old Double Oak Engraved - Shop - The Glenlivet UK",
+    "searchScore": 141
+  },
+  "macallan": {
+    "query": "\"The Macallan\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.sothebys.com/en/articles/worlds-best-whiskies-the-macallan-scotch",
+    "productName": "The Macallan: A Complete Collector’s Guide | Whisky & Spirits | Sotheby’s",
+    "searchScore": 141
+  },
+  "balvenie": {
+    "query": "\"The Balvenie\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://scotchwhisky.com/whiskypedia/1818/balvenie/",
+    "productName": "Balvenie | Scotch Whisky",
+    "searchScore": 123
+  },
+  "aberlour": {
+    "query": "\"Aberlour\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.aberlour.com/en/our-whisky/",
+    "productName": "Single Malt Scotch Whisky Collection - Aberlour",
+    "searchScore": 141
+  },
+  "kilchoman": {
+    "query": "\"Kilchoman\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.kilchomandistillery.com/our-whisky/machir-bay/",
+    "productName": "Kilchoman Machir Bay",
+    "searchScore": 123
+  },
+  "glenmorangie": {
+    "query": "\"Glenmorangie\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.glenmorangie.com/products/the-original-12-years-old",
+    "productName": "Glenmorangie The Original 12 Years Old",
+    "searchScore": 123
+  },
+  "glengoyne": {
+    "query": "\"Glengoyne\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://scotchwhisky.com/whiskypedia/1858/glengoyne/",
+    "productName": "Glengoyne | Scotch Whisky",
+    "searchScore": 123
+  },
+  "dalmore": {
+    "query": "\"The Dalmore\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://shop.vandadundee.org/products/the-portfolio-series-1-whisky-the-dalmore",
+    "productName": "The Dalmore Portfolio Series 1 Whisky | Collectable Gift – V&A Dundee Shop",
+    "searchScore": 141
+  },
+  "highland-park": {
+    "query": "\"Highland Park\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.highlandparkwhisky.com/en/product/highland-park-54",
+    "productName": "54 Year Old Highland Park Single Malt Scotch Whisky",
+    "searchScore": 131
+  },
+  "daftmill": {
+    "query": "\"Daftmill\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.daftmill.com/",
+    "productName": "Daftmill Lowland Single Malt Scotch Whisky. Cupar, Fife. - Daftmill Distillery",
+    "searchScore": 123
+  },
+  "springbank": {
+    "query": "\"Springbank\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.springbank.scot/product/countdown-collection-3rd-edition/",
+    "productName": "Springbank 30yo 47.3% ABV 70cl Single Malt Scotch Whisky - Springbank",
+    "searchScore": 123
+  },
+  "glen-scotia": {
+    "query": "\"Glen Scotia\" \"Scotch whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.glenscotia.com/products/21-year-old-scotch-whisky",
+    "productName": "21 Year Old Whisky | Single Malt Scotch | Glen Scotia - Glen Scotia",
+    "searchScore": 131
+  },
+  "yamazaki": {
+    "query": "\"Yamazaki\" \"Japanese whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.reddit.com/r/whisky/comments/1fbu662",
+    "productName": "151st whisky review, 17th Japanese whisky review - Yamazaki Single Malt",
+    "searchScore": 123
+  },
+  "chateau-de-laubade": {
+    "query": "\"Château de Laubade\" \"Armagnac\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.reddit.com/r/Brandy/comments/ntoha8",
+    "productName": "Chateau de Laubade SMWS A5.1 “Fruit Shop Raid” Blind Review (TRB S2E39, Brandy #4, Spirits #175)",
+    "searchScore": 149
+  },
+  "calvados-drouin": {
+    "query": "\"Christian Drouin\" \"Calvados\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.calvados-drouin.com/en/product/78/abc-de-christian-drouin",
+    "productName": "ABC de Christian Drouin - DROUIN CALVADOS",
+    "searchScore": 131
+  },
+  "foursquare": {
+    "query": "\"Foursquare Rum\" \"Molasses-based rum\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.reddit.com/r/rum/comments/1fodwvq",
+    "productName": "[Rum Review #100] Foursquare Premise ECS VIII",
+    "searchScore": 123
+  },
+  "rhum-clement": {
+    "query": "\"Habitation Clément\" \"Rhum agricole\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.reddit.com/r/rum/comments/ce1jla",
+    "productName": "Rum Review #66/Spirits #223: Clement Cask Collection, False Idol Exclusive Cask",
+    "searchScore": 141
+  },
+  "la-fortaleza": {
+    "query": "\"Tequila Fortaleza\" \"Tequila\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://trumanandorange.com/fortaleza/",
+    "productName": "Truman & Orange: Fine Liquor Merchants • Fortaleza Tequila",
+    "searchScore": 149
+  },
+  "del-maguey-san-luis": {
+    "query": "\"San Luis del Río\" \"Mezcal\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://bottledpoetry.net/products/nuestra-soledad-san-luis-del-rio-mezcal",
+    "productName": "Nuestra Soledad San Luis Del Rio Mezcal | Bottled Poetry Fine Wine & Spirits",
+    "searchScore": 141
+  },
+  "casa-lotos": {
+    "query": "\"Sotol\" \"Sotol\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.desertdoor.com/product/desert-door-original-texas-sotol",
+    "productName": "Desert Door Original Texas Sotol | Desert Door Products | Explore Our Exceptional Spirits",
+    "searchScore": 141
+  },
+  "absolut-ahus": {
+    "query": "\"The Absolut Company\" \"Neutral vodka\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.blueoceanmy.com/product/absolut-mosaik-limited-edition-vodka-2024/",
+    "productName": "Absolut Mosaik Limited Edition Vodka 2024 700ml – Collector Bottle",
+    "searchScore": 123
+  },
+  "moutai": {
+    "query": "\"Kweichow Moutai\" \"Sauce-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.spiritsanddistilling.com/dictionary/acref-9780199311132-e-670",
+    "productName": "sauce-aroma-style baijiu | The Oxford Companion to Spirits & Cocktails | Spirits & Distilling",
+    "searchScore": 133
+  },
+  "luzhou-laojiao": {
+    "query": "\"Luzhou Laojiao\" \"Strong-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.ad-hoc-news.de/boerse/news/ueberblick/the-luzhou-laojiao-guojiao-1573-a-flagship-baijiu-quietly-gaining-global/69709094",
+    "productName": "The Luzhou Laojiao Guojiao 1573 - a flagship baijiu quietly gaining global attention",
+    "searchScore": 131
+  },
+  "kumesen": {
+    "query": "\"Kumesen Syuzo\" \"Awamori\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.unclefossil.com/kujira-ryukyu-whiskey-20yr-750ml.html",
+    "productName": "Kujira Ryukyu Whiskey 20YR 鯨 750ml $345 FREE DELIVERY - Uncle Fossil Wine&Spirits",
+    "searchScore": 133
+  },
+  "chartreuse": {
+    "query": "\"Chartreuse Diffusion\" \"Liqueurs\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.chartreuse.fr/en/produit/mof-liqueur/",
+    "productName": "Chartreuse MOF Liqueur – Chartreuse Diffusion",
+    "searchScore": 131
+  },
+  "aalborg-akvavit": {
+    "query": "\"Aalborg Akvavit tradition\" \"Aquavit\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.tasteatlas.com/aalborg-akvavit-aalborg-dild-akvavit",
+    "productName": "Aalborg Akvavit Aalborg Dild Akvavit - Best Gourmet Products - TasteAtlas",
+    "searchScore": 149
+  },
+  "midleton": {
+    "query": "\"Midleton\" \"Irish whiskey\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://midletondistillerycollection.com/spot-whiskeys/green-spot-11-year-old-single-cask-product/",
+    "productName": "Green Spot 11 Year Old Single Cask - Midleton Distillery Collection",
+    "searchScore": 141
+  },
+  "glenora": {
+    "query": "\"Glenora\" \"Canadian whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://torontowhiskysociety.ca/2017/12/19/distillery-spotlight-glenora-distillery-cape-breton-nova-scotia/comment-page-1/",
+    "productName": "Distillery Spotlight: Glenora Distillery, Cape Breton, Nova Scotia – Toronto Whisky Society",
+    "searchScore": 123
+  },
+  "kavalan": {
+    "query": "\"Kavalan\" \"Taiwanese single malt whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://bishopscellar.com/product/kavalan-lan-single-malt/",
+    "productName": "Kavalan LÁN Single Malt Whisky | Bishop's Cellar",
+    "searchScore": 141
+  },
+  "amrut": {
+    "query": "\"Amrut Distilleries\" \"Indian single malt whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://amrutdistilleries.com/amrut-single-malts-varients/",
+    "productName": "Amrut Single Malts | Collection of Best Single Malt Whisky",
+    "searchScore": 141
+  },
+  "bodegas-fundador": {
+    "query": "\"Bodegas Fundador\" \"Brandy de Jerez\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.brandydejerez.es/en/bodegas-and-brands/bodegas-fundador/",
+    "productName": "Bodegas Fundador - Brandy de Jerez",
+    "searchScore": 131
+  },
+  "nardini": {
+    "query": "\"Nardini\" \"Grappa\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.broekmans.be/en/shop/product/grappa/2442/nardini-riserva-classic-1l",
+    "productName": "Buy Nardini Riserva Classic grappa reliably online | Drankenshop Broekmans",
+    "searchScore": 141
+  },
+  "kwv-paarl": {
+    "query": "\"KWV\" \"South African pot-still brandy\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://sabrandy.co.za/brandy-product-search/",
+    "productName": "Brandy Product Search - SA Brandy Foundation",
+    "searchScore": 133
+  },
+  "diamond-demerara": {
+    "query": "\"Diamond\" \"Molasses-based rum\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://cubanatapasbar.co.uk/pdf/cubana-rum-menu.pdf",
+    "productName": "The RUM COLLECTION",
+    "searchScore": 133
+  },
+  "mount-gay": {
+    "query": "\"Mount Gay\" \"Molasses-based rum\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.astorwines.com/item/29240",
+    "productName": "Mount Gay Black Barrel Rum | Astor Wines & Spirits",
+    "searchScore": 141
+  },
+  "los-danzantes": {
+    "query": "\"Destilería Los Danzantes\" \"Mezcal\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://agavespirits.com/products-los-danzantes-mezcal.php",
+    "productName": "Lorenz Agave Spirits - Los Danzantes Mezcal in Canada",
+    "searchScore": 141
+  },
+  "desert-door": {
+    "query": "\"Desert Door\" \"Texas sotol-style spirit\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.desertdoor.com/product/desert-door-original-texas-sotol",
+    "productName": "Desert Door Original Texas Sotol",
+    "searchScore": 80
+  },
+  "hendricks-gin-palace": {
+    "query": "\"Hendrick’s Gin Palace\" \"Distilled gin\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://bodegaslacatedral.com/en/products/hendricks-gin",
+    "productName": "Hendrick’s Gin Premium – Scottish Gin | Barcelona – Bodegas La Catedral",
+    "searchScore": 123
+  },
+  "four-pillars": {
+    "query": "\"Four Pillars\" \"Contemporary gin\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://fourpillarsgin.com/products/rare-dry-gin",
+    "productName": "Four Pillars Rare Dry Gin",
+    "searchScore": 133
+  },
+  "kyoto-distillery": {
+    "query": "\"The Kyoto\" \"Distilled gin\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://duty-free.centrair.jp/en/product/detail.aspx?scd=2016000015",
+    "productName": "KI NO BI DRY GIN-Other Sake Brands- | Official Reservation Site for Centrair Duty Free Shop",
+    "searchScore": 133
+  },
+  "inverroche": {
+    "query": "\"Inverroche\" \"Contemporary gin\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://cove27.co.nz/collections/gin-nz/spirits",
+    "productName": "Best Premium Gin NZ | Curated New Zealand & Global Gins – Tagged \"Spirits\"– COVE 27",
+    "searchScore": 133
+  },
+  "koskenkorva": {
+    "query": "\"Koskenkorva\" \"Characterful vodka\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.gerrys.uk.com/vodka?orderby=15&pagesize=10000",
+    "productName": "Vodka. Gerry's Wines & Spirits - Buy wines and spirits online at gerrys.uk.com",
+    "searchScore": 133
+  },
+  "wuliangye": {
+    "query": "\"Wuliangye\" \"Strong-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.ad-hoc-news.de/boerse/news/ueberblick/quiet-luxury-in-a-glass-wuliangye-classic-aged-baijiu-leans-into-sipping/69561577",
+    "productName": "Quiet luxury in a glass, Wuliangye Classic Aged Baijiu leans into sipping culture",
+    "searchScore": 123
+  },
+  "yanghe": {
+    "query": "\"Yanghe\" \"Strong-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.sayweee.com/en/product/Yang-He-Da-Qu-Porcelain-Bottle-Chinese-Baijiu/2965193/",
+    "productName": "Yang He Da Qu Porcelain Bottle Chinese Baijiu | Weee!",
+    "searchScore": 115
+  },
+  "hwayo": {
+    "query": "\"Hwayo\" \"Distilled soju\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.reddit.com/r/cocktails/comments/1czccnr",
+    "productName": "Zenchu's Shochu, Awamori, Baijiu, and Other Asian Spirits Buyers and Mixing Guide",
+    "searchScore": 133
+  },
+  "iichiko-hita": {
+    "query": "\"Iichiko Hita\" \"Honkaku shōchū\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://att-japan.net/en/culture/283/",
+    "productName": "Drinking in Japan :Shochu - Japan Travel Guide & Media\"att.JAPAN\"",
+    "searchScore": 115
+  },
+  "jagermeister": {
+    "query": "\"Jägermeister\" \"Liqueurs\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://uk.jagermeister.com/shop/our-products",
+    "productName": "Explore our range of herbal liqueurs and spirits | Jägermeister​",
+    "searchScore": 141
+  },
+  "luxardo": {
+    "query": "\"Luxardo\" \"Liqueurs\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.luxardousa.com/products",
+    "productName": "Shop Luxardo | Shop Classic Italian Spirits, Liqueurs, Canned Cocktails, and Maraschino Cherries.",
+    "searchScore": 141
+  },
+  "giffard": {
+    "query": "\"Giffard\" \"Liqueurs\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.giffard.com/fr/4-liqueurs",
+    "productName": "Liqueurs Giffard",
+    "searchScore": 123
+  },
+  "fernet-branca": {
+    "query": "\"Fratelli Branca Distillerie\" \"Amari\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.tasteatlas.com/fratelli-branca-fernet-branca",
+    "productName": "Fratelli Branca Fernet-Branca - Best Gourmet Products - TasteAtlas",
+    "searchScore": 114
+  },
+  "jack-daniels": {
+    "query": "\"Jack Daniel\" \"Tennessee whiskey\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.target.com/p/-/A-53825427",
+    "productName": "Jack Daniel's Tennessee Whiskey - 100ml Bottle : Target",
+    "searchScore": 131
+  },
+  "crown-royal-gimli": {
+    "query": "\"Gimli\" \"Canadian whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.crownroyal.com/canadian-whisky/crown-royal-fine-de-luxe-blended-canadian-whisky",
+    "productName": "Crown Royal Fine De Luxe",
+    "searchScore": 133
+  },
+  "hakushu": {
+    "query": "\"Hakushu\" \"Japanese whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://house.suntory.com/hakushu-whisky/hakushu-18-years-old",
+    "productName": "Hakushu® 18 | Japanese Whisky | The House of Suntory",
+    "searchScore": 123
+  },
+  "delord": {
+    "query": "\"Armagnac Delord\" \"Armagnac\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.masterofmalt.com/armagnac/delord/delord-10-year-old-bas-armagnac/",
+    "productName": "Delord 10 Year Old Bas Armagnac 70cl | Master Of Malt",
+    "searchScore": 131
+  },
+  "bodegas-tradicion": {
+    "query": "\"Bodegas Tradición\" \"Brandy de Jerez\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.brandydejerez.es/en/bodegas-and-brands/bodegas-tradicion-tradicion-cz-s-l/",
+    "productName": "Bodegas Tradición TRADICION CZ S.L. - Brandy de Jerez",
+    "searchScore": 131
+  },
+  "capel-vicuna": {
+    "query": "\"CAPEL Pisco\" \"Pisco\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.haskells.com/capel-pisco-750ml/",
+    "productName": "Capel Pisco 750ml - Haskell's Wine & Spirits",
+    "searchScore": 149
+  },
+  "poli-grappa": {
+    "query": "\"Poli Distillerie\" \"Grappa\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.grappa.it/",
+    "productName": "Grappa.it | Acquista Grappa sul Poli Shop Online",
+    "searchScore": 141
+  },
+  "rochelt": {
+    "query": "\"Rochelt\" \"Fruit eaux-de-vie\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.whiskyfun.com/archivenovember25-1-Benriach-Mortlach.html",
+    "productName": "Whiskyfun November 2025 - part 21 - Benriach, Mortlach...",
+    "searchScore": 115
+  },
+  "st-george-brandy": {
+    "query": "\"St. George Spirits\" \"Fruit eaux-de-vie\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.sambuz.com/doc/craft-spirits-portfolio-vodka-ppt-presentation-33307",
+    "productName": "[PPT] - CRAFT SPIRITS PORTFOLIO Vodka Aylesbury Duck 86 Co. Berkshire PowerPoint Presentation - 33307",
+    "searchScore": 141
+  },
+  "ko-hana": {
+    "query": "\"Kō Hana Distillers\" \"Cane-juice rum\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.gotrum.com/editorials/exclusive-interviews/exclusive-interview-with-robert-dawson-co-founder-k%C5%8D-hana-distillers/",
+    "productName": "Exclusive Interview with Mr. Robert Dawson, Co-Founder, Kō Hana Distillers, Kunia, Hawaii - Got Rum? Magazine",
+    "searchScore": 131
+  },
+  "river-antoine": {
+    "query": "\"River Antoine Rum\" \"Cane-juice rum\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.broekmans.be/en/shop/product/rum/8411/river-antoine-rivers",
+    "productName": "Buy River Antoine Rivers rum easily online | Drankenshop Broekmans",
+    "searchScore": 149
+  },
+  "neisson": {
+    "query": "\"Distillerie Neisson\" \"Rhum agricole\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://rum.cz/galery/cam/mq/neisson/index-en.htm",
+    "productName": "Rum by Distillerie Neisson / Domaines Thieubert - Mar­tinique - Peter's Rum Labels",
+    "searchScore": 131
+  },
+  "hampden-estate": {
+    "query": "\"Hampden Estate\" \"Jamaican rum\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.capitalspirits.com/products/hampden-estate-8-year-old-single-jamaican-rum-750ml-bottle",
+    "productName": "Hampden Estate 8 Year Old Single Jamaican Rum 750mL Bottle | From $73.8/bottle | Capital Spirits | Capital Spirits",
+    "searchScore": 149
+  },
+  "havana-club-san-jose": {
+    "query": "\"Havana Club San José\" \"Cuban-style rum\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://cocktailwonk.com/2017/07/cuban-rum-cheat-sheet.html",
+    "productName": "Cuban Rum Cheat Sheet - Cocktail Wonk",
+    "searchScore": 115
+  },
+  "novo-fogo": {
+    "query": "\"Novo Fogo\" \"Cachaça\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://novofogo.com/wp-content/uploads/2023/02/The-Best-Cheap-Alcohol-of-2023-According-to-Bartenders-2.pdf",
+    "productName": "SPIRITS & LIQUEURS  MORE SPIRITS",
+    "searchScore": 133
+  },
+  "weber-haus": {
+    "query": "\"Weber Haus\" \"Cachaça\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://weberhaus.com.br/produtos/",
+    "productName": "Explore a linha completa de produtos Weber Haus - Weber Haus",
+    "searchScore": 96
+  },
+  "estancia-raicilla": {
+    "query": "\"Estancia\" \"Raicilla\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.oldtowntequila.com/estancia-raicilla/",
+    "productName": "Estancia Raicilla Products - Old Town Tequila",
+    "searchScore": 141
+  },
+  "hacienda-el-divisadero": {
+    "query": "\"El Divisadero\" \"Raicilla\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://cocktailsandspirits.com/raicilla/",
+    "productName": "Il Raicilla - Cocktails and Spirits",
+    "searchScore": 133
+  },
+  "rutte": {
+    "query": "\"Distilleerderij Rutte\" \"Genever\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.weinquelle.com/datenblaetter/s24638.pdf",
+    "productName": "Datenblatt : Rutte Dutch Dry Gin",
+    "searchScore": 123
+  },
+  "haymans": {
+    "query": "\"Hayman’s\" \"Old Tom gin\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.haymansgin.com/shop/page/2/",
+    "productName": "Shop - Page 2 of 2 - Hayman's Gin",
+    "searchScore": 141
+  },
+  "herno": {
+    "query": "\"Hernö Gin\" \"Old Tom gin\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.saq.com/en/14914330",
+    "productName": "Herno Gin Old Tom Gin | Product page | SAQ.COM",
+    "searchScore": 141
+  },
+  "charbay-vodka": {
+    "query": "\"Charbay\" \"Infused vodka\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://charbay.com/recipes/charbay-herb-infused-vodka-punch-recipe/",
+    "productName": "Charbay Herb Infused Vodka Punch - Recipe",
+    "searchScore": 123
+  },
+  "langjiu": {
+    "query": "\"Langjiu\" \"Sauce-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.winsns.com/news/show-2633.html",
+    "productName": "Ranking and Review of Sauce-Aroma Baijiu: Ten Widely Recognized, Delicious Sauce-Aroma Spirits Recommended_热点_资讯_winsns",
+    "searchScore": 133
+  },
+  "fenjiu": {
+    "query": "\"Xinghuacun Fenjiu\" \"Light-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.spiritsanddistilling.com/dictionary/acref-9780199311132-e-1232",
+    "productName": "light-aroma-style baijiu | The Oxford Companion to Spirits & Cocktails | Spirits & Distilling",
+    "searchScore": 133
+  },
+  "red-star-erguotou": {
+    "query": "\"Beijing Red Star\" \"Light-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://worldbaijiuday.com/2021/08/12/wbd-wrap-baijiulato-with-stikki-nikki-lu-spirits-in-stockholm/",
+    "productName": "WBD wrap: Baijiulato with Stikki Nikki & Lu Spirits in Stockholm | World Baijiu Day",
+    "searchScore": 133
+  },
+  "guilin-sanhua": {
+    "query": "\"Guilin Sanhua\" \"Rice-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.spiritsanddistilling.com/dictionary/acref-9780199311132-e-1238",
+    "productName": "rice-aroma-style baijiu | The Oxford Companion to Spirits & Cocktails | Spirits & Distilling",
+    "searchScore": 133
+  },
+  "vinn-baijiu": {
+    "query": "\"Vinn\" \"Rice-aroma baijiu\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.skurnik.com/sku/baijiu-99-vinn-distillery/",
+    "productName": "Baijiu, '99', Vinn Distillery [STRAPPED] - Skurnik Wines & Spirits",
+    "searchScore": 141
+  },
+  "zuisen": {
+    "query": "\"Zuisen\" \"Awamori\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.reddit.com/r/cocktails/comments/1czccnr",
+    "productName": "Zenchu's Shochu, Awamori, Baijiu, and Other Asian Spirits Buyers and Mixing Guide",
+    "searchScore": 133
+  },
+  "hitejinro-icheon": {
+    "query": "\"HiteJinro Icheon\" \"Diluted soju\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://factsanddetails.com/korea/South_Korea/Life_2/entry-7257.html",
+    "productName": "ALCOHOLIC DRINKS IN KOREA: SOJU, WASP WINE, BEER AND MAKGEOLLI | Facts and Details",
+    "searchScore": 115
+  },
+  "lotte-gangneung": {
+    "query": "\"Lotte Liquor Gangneung\" \"Diluted soju\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.scribd.com/document/838681357/Kim-TW-1017-eps",
+    "productName": "Kim TW - 1017 - Eps | PDF | Gas Chromatography | Whisky",
+    "searchScore": 115
+  },
+  "amaro-montenegro": {
+    "query": "\"Gruppo Montenegro San Lazzaro Plant\" \"Amari\" bottle product -tour -visit -cocktail",
+    "error": "No result"
+  },
+  "ouzo-plomari": {
+    "query": "\"Plomari  Isidoros Arvanitis\" \"Aniseed spirits\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.alko.fi/en/products/185556/Isidoros-Arvanitis-Ouzo-of-Plomari/",
+    "productName": "Isidoros Arvanitis Ouzo of Plomari - Greece - Aniseed distillates",
+    "searchScore": 139
+  },
+  "arcus-gjellerasen": {
+    "query": "\"Arcus\" \"Aquavit\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://s3-eu-west-1.amazonaws.com/arcus-upload/Arucs-Annual-Report-2020.pdf",
+    "productName": "LINIE GINGER is one of",
+    "searchScore": 115
+  },
+  "fee-brothers": {
+    "query": "\"Fee Brothers\" \"Cocktail bitters\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://barproducts.com/products/fee-brothers-bar-cocktail-bitters-set-6-bottles",
+    "productName": "Fee Brothers Bar Cocktail Bitters Set - 6 Bottles - Bar Products — Bar Products",
+    "searchScore": 141
+  },
+  "absolut-flavors": {
+    "query": "\"Absolut Åhus Flavoring Site\" \"Flavored vodka\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://theliquorbarn.com/products/absolut-mango-750ml",
+    "productName": "Absolut Mango 750ML | Swedish Mango Flavored Vodka – The Liquor Barn",
+    "searchScore": 123
+  },
+  "hangar-one-infusions": {
+    "query": "\"Hangar 1\" \"Infused vodka\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://hangarone.com/vodka-at-new-heights/",
+    "productName": "Vodka at New Heights - Hangar One",
+    "searchScore": 123
+  },
+  "nantou-omar": {
+    "query": "\"Nantou  / OMAR\" \"Taiwanese single malt whisky\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://shop.klwines.com/products/details/1932587",
+    "productName": "Nantou \"Omar\" Cask Strength Liqueur Finish Collection: Black Queen Wine Barrel Finished, Lychee Liqueur Barrel Finished, Plum Liqueur Barrel Finished\" Cask Strength Taiwanese Single Malt Whisky (3 x 200 ml) - SKU 1932587",
+    "searchScore": 149
+  },
+  "casa-real-singani": {
+    "query": "\"Casa Real\" \"Singani\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.singanicasareal.com/",
+    "productName": "Singani Casa Real - Inicio",
+    "searchScore": 96
+  },
+  "bodegas-kuhlmann": {
+    "query": "\"Bodegas Kuhlmann / Los Parrales\" \"Singani\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://montecito.com.bo/producto/kuhlmann-singani-los-parrales-clasico/",
+    "productName": "Kuhlmann Singani Los Parrales - \"Clásico\" - Montecito",
+    "searchScore": 96
+  },
+  "van-ryns": {
+    "query": "\"Van Ryn’s\" \"South African pot-still brandy\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://sabrandy.co.za/brandy-product-search/",
+    "productName": "Brandy Product Search - SA Brandy Foundation",
+    "searchScore": 133
+  },
+  "arawaks-vaval": {
+    "query": "\"Arawaks  / Clairin Vaval\" \"Clairin\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.broekmans.be/en/shop/product/rum/21091/clairin-vaval-2022-incl-box",
+    "productName": "Buy Clairin Vaval 2022 rum quickly online | Drankenshop Broekmans",
+    "searchScore": 149
+  },
+  "lalocura-palenque": {
+    "query": "\"Lalocura\" \"Ancestral mezcal\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.bswliquor.com/products/lalocura-tepeztate",
+    "productName": "Lalocura Tepeztate-Espadin Mezcal – BSW Liquor",
+    "searchScore": 123
+  },
+  "del-maguey-minero": {
+    "query": "\"Del Maguey Minero\" \"Ancestral mezcal\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://prizefighterbottleshop.com/collections/mezcal/products/del-maguey-mezcal-minero",
+    "productName": "Del Maguey Minero – Prizefighter Bottle Shop",
+    "searchScore": 149
+  },
+  "grand-teton-vodka": {
+    "query": "\"Grand Teton\" \"Potato vodka\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.tetondistillery.com/liquor/vodka/750ml-grand-teton-potato-vodka",
+    "productName": "Grand Teton Potato Vodka | Vodka | Grand Teton Distillery",
+    "searchScore": 131
+  },
+  "kinmen-kaoliang": {
+    "query": "\"Kinmen Kaoliang Liquor\" \"Kaoliang\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.kkl-europe.com/en",
+    "productName": "Products | Kinmen Kaoliang Liquor",
+    "searchScore": 122
+  },
+  "matsu-liquor": {
+    "query": "\"Matsu Liquor\" \"Kaoliang\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.taipeitimes.com/News/taiwan/archives/2012/10/02/2003544191",
+    "productName": "Lawmakers call for clearer labels on liquor bottles - Taipei Times",
+    "searchScore": 123
+  },
+  "distillerie-guy": {
+    "query": "\"Distillerie Guy\" \"Absinthe\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.reddit.com/r/Absinthe/comments/148sjew",
+    "productName": "I moved to France about a month ago and decided to start a new hobby… absinthe. Found a vintage fountain in a local antique shop and bought a bottle… yum",
+    "searchScore": 133
+  },
+  "combier-absinthe": {
+    "query": "\"Distillerie Combier\" \"Absinthe\" bottle product -tour -visit -cocktail",
+    "productPageUrl": "https://www.absinthe.de/en/Combier",
+    "productName": "Combier Absinthe Online Shop",
+    "searchScore": 141
+  }
+}

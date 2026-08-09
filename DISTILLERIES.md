@@ -2,13 +2,13 @@
 
 > Generated from `data/distilleries.json`. Edit the JSON, then run `npm run data:sync`.
 
-**150 landmarks · 8 spirit families · every marker has an official source link and researched profile.**
+**176 landmarks · 8 spirit families · every marker has an official source link, researched profile and sourced bottle image.**
 
 ## Coverage summary
 
 | Family | Markers |
 | --- | ---: |
-| Whisky & whiskey | 40 |
+| Whisky & whiskey | 66 |
 | Brandy & fruit spirits | 18 |
 | Rum & sugar cane | 17 |
 | Agave & related spirits | 14 |
@@ -19,11 +19,11 @@
 
 ## Core subtype coverage
 
-Every educational subtype has at least 2 matching distillery landmarks; Scotch whisky has a dedicated minimum of 24. Additional regional styles remain in the inventory where they add useful context.
+Every educational subtype has at least 2 matching distillery landmarks; Scotch whisky has a dedicated minimum of 50. Additional regional styles remain in the inventory where they add useful context.
 
 | Family | Subtype | Markers |
 | --- | --- | ---: |
-| Whisky & whiskey | Scotch whisky | 24 |
+| Whisky & whiskey | Scotch whisky | 50 |
 | Whisky & whiskey | Bourbon | 2 |
 | Whisky & whiskey | Rye whiskey | 2 |
 | Whisky & whiskey | Tennessee whiskey | 2 |
@@ -83,7 +83,7 @@ Every educational subtype has at least 2 matching distillery landmarks; Scotch w
 | Flavored spirits & liqueurs | Infused vodka | 2 |
 | Flavored spirits & liqueurs | Absinthe | 2 |
 
-## Whisky & whiskey (40)
+## Whisky & whiskey (66)
 
 | Distillery / landmark | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -97,28 +97,54 @@ Every educational subtype has at least 2 matching distillery landmarks; Scotch w
 | Old Bushmills Distillery | Bushmills, County Antrim | Northern Ireland | Irish whiskey | approximate | [Visit](https://www.bushmills.eu/about-the-distillery/) | `bushmills` |
 | Aberlour Distillery | Aberlour, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.aberlour.com/en/our-distillery/) | `aberlour` |
 | Ardbeg Distillery | Port Ellen, Islay | Scotland | Scotch whisky | approximate | [Visit](https://www.ardbeg.com/visitus/tours.html) | `ardbeg` |
+| Ardnahoe Distillery | Port Askaig, Islay | Scotland | Scotch whisky | approximate | [Visit](https://ardnahoedistillery.com/pages/our-process) | `ardnahoe` |
 | Auchentoshan Distillery | Clydebank, Lowlands | Scotland | Scotch whisky | approximate | [Visit](https://www.auchentoshan.com/visit-our-distillery) | `auchentoshan` |
+| Balblair Distillery | Edderton, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://www.balblair.com/our-home/) | `balblair` |
+| Benromach Distillery | Forres, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.benromach.com/distillery) | `benromach` |
 | Bowmore Distillery | Bowmore, Islay | Scotland | Scotch whisky | approximate | [Visit](https://www.bowmore.com/distillery-tours-and-experiences) | `bowmore` |
 | Bruichladdich Distillery | Bruichladdich, Islay | Scotland | Scotch whisky | approximate | [Visit](https://www.bruichladdich.com/pages/tours) | `bruichladdich` |
 | Bunnahabhain Distillery | Port Askaig, Islay | Scotland | Scotch whisky | approximate | [Visit](https://bunnahabhain.com/pages/distillery-experiences) | `bunnahabhain` |
+| Caol Ila Distillery | Port Askaig, Islay | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/caol-ila) | `caol-ila` |
+| Cardhu Distillery | Knockando, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/cardhu) | `cardhu` |
+| Clynelish Distillery | Brora, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/clynelish) | `clynelish` |
+| Cragganmore Distillery | Ballindalloch, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/cragganmore) | `cragganmore` |
 | Daftmill Distillery | Cupar, Fife | Scotland | Scotch whisky | approximate | [Visit](https://www.daftmill.com/our-story) | `daftmill` |
+| Edradour Distillery | Pitlochry, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://www.edradour.com/) | `edradour` |
+| Glen Moray Distillery | Elgin, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.glenmoray.com/visit-us/) | `glen-moray` |
 | Glen Scotia Distillery | Campbeltown | Scotland | Scotch whisky | approximate | [Visit](https://www.glenscotia.com/pages/plan-your-visit) | `glen-scotia` |
+| Glenfarclas Distillery | Ballindalloch, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://glenfarclas.com/pages/distillery) | `glenfarclas` |
 | Glenfiddich Distillery | Dufftown, Speyside | Scotland | Scotch whisky | exact | [Visit](https://www.glenfiddich.com/visit-the-distillery/) | `glenfiddich` |
 | Glengoyne Distillery | Dumgoyne, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://www.glengoyne.com/pages/visit-us) | `glengoyne` |
 | Glengyle Distillery | Campbeltown | Scotland | Scotch whisky | approximate | [Visit](https://www.springbank.scot/) | `glengyle` |
 | Glenkinchie Distillery | Pencaitland, Lowlands | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/glenkinchie) | `glenkinchie` |
 | Glenmorangie Distillery | Tain, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://www.glenmorangie.com/pages/visit-us) | `glenmorangie` |
 | Highland Park Distillery | Kirkwall, Orkney | Scotland | Scotch whisky | approximate | [Visit](https://www.highlandparkwhisky.com/en/brand-story/distillery) | `highland-park` |
+| Isle of Raasay Distillery | Raasay, Inner Hebrides | Scotland | Scotch whisky | approximate | [Visit](https://raasaydistillery.com/) | `raasay` |
+| Jura Distillery | Craighouse, Isle of Jura | Scotland | Scotch whisky | approximate | [Visit](https://www.jurawhisky.com/en/our-distillery/) | `jura` |
 | Kilchoman Distillery | Kilchoman, Islay | Scotland | Scotch whisky | approximate | [Visit](https://www.kilchomandistillery.com/book-distillery-tour/) | `kilchoman` |
+| Kingsbarns Distillery | Kingsbarns, Fife | Scotland | Scotch whisky | approximate | [Visit](https://www.kingsbarnsdistillery.com/) | `kingsbarns` |
+| Lagavulin Distillery | Lagavulin Bay, Islay | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/lagavulin) | `lagavulin` |
+| Lagg Distillery | Kilmory, Isle of Arran | Scotland | Scotch whisky | approximate | [Visit](https://www.arranwhisky.com/our-distilleries/lagg-distillery) | `lagg` |
 | Laphroaig Distillery | Islay | Scotland | Scotch whisky | exact | [Visit](https://www.laphroaig.com/en/visit-us) | `laphroaig` |
+| Lochranza Distillery | Lochranza, Isle of Arran | Scotland | Scotch whisky | approximate | [Visit](https://www.arranwhisky.com/our-distilleries/lochranza-distillery) | `lochranza` |
 | Oban Distillery | Oban, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/oban) | `oban` |
+| Port Ellen Distillery | Port Ellen, Islay | Scotland | Scotch whisky | approximate | [Visit](https://www.diageo.com/en/news-and-media/stories/2024/port-ellen-reborn-the-reopening-of-islay-s-legendary-ghost-distillery) | `port-ellen` |
+| Pulteney Distillery | Wick, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://oldpulteney.com/our-distillery/) | `old-pulteney` |
+| Rosebank Distillery | Falkirk, Lowlands | Scotland | Scotch whisky | approximate | [Visit](https://www.rosebank.com/) | `rosebank` |
+| Royal Lochnagar Distillery | Crathie, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/royal-lochnagar) | `royal-lochnagar` |
+| Scapa Distillery | Kirkwall, Orkney | Scotland | Scotch whisky | approximate | [Visit](https://www.scapawhisky.com/en/our-distillery) | `scapa` |
 | Springbank Distillery | Campbeltown | Scotland | Scotch whisky | approximate | [Visit](https://www.springbank.scot/) | `springbank` |
+| Strathisla Distillery | Keith, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.maltwhiskydistilleries.com/chivas-brothers/distilleries/strathisla-distillery) | `strathisla` |
 | Talisker Distillery | Carbost, Isle of Skye | Scotland | Scotch whisky | approximate | [Visit](https://www.malts.com/en-gb/distilleries/talisker) | `talisker` |
 | The Balvenie Distillery | Dufftown, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.thebalvenie.com/our-distillery/) | `balvenie` |
+| The Benriach Distillery | Elgin, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.benriachdistillery.com/en-us/our-world/our-distillery/) | `benriach` |
 | The Dalmore Distillery | Alness, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://www.thedalmore.com/pages/visit-us) | `dalmore` |
+| The Glen Grant Distillery | Rothes, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.glengrant.com/en/our-distillery/) | `glen-grant` |
 | The Glenlivet Distillery | Ballindalloch, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.theglenlivet.com/en-us/visit-our-distillery/) | `glenlivet` |
+| The Glenturret Distillery | Crieff, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://theglenturret.com/) | `glenturret` |
 | The Macallan Distillery | Craigellachie, Speyside | Scotland | Scotch whisky | approximate | [Visit](https://www.themacallan.com/en-us/experience-the-macallan/distillery/plan-your-visit) | `macallan` |
 | Tobermory Distillery | Tobermory, Isle of Mull | Scotland | Scotch whisky | approximate | [Visit](https://tobermorydistillery.com/pages/visit-us) | `tobermory` |
+| Tomatin Distillery | Tomatin, Highlands | Scotland | Scotch whisky | approximate | [Visit](https://tomatin.com/) | `tomatin` |
 | Kavalan Distillery | Yuanshan, Yilan County | Taiwan | Taiwanese single malt whisky | approximate | [Visit](https://www.kavalanwhisky.com/) | `kavalan` |
 | Nantou Distillery / OMAR | Nantou City | Taiwan | Taiwanese single malt whisky | approximate | [Visit](https://www.omarwhisky.com.tw/en/about/production) | `nantou-omar` |
 | Buffalo Trace Distillery | Frankfort, Kentucky | United States | Bourbon | exact | [Visit](https://www.buffalotracedistillery.com/) | `buffalo-trace` |
@@ -280,4 +306,5 @@ Every educational subtype has at least 2 matching distillery landmarks; Scotch w
 - Use `precision: "approximate"` when a marker represents a regional or non-public production location.
 - Link to an official producer, distillery, appellation, or government source.
 - Keep a matching production, style, history and label-context profile in `data/distillery-profiles.json`.
+- Keep a unique local bottle asset and its image/product provenance in `data/bottle-images.json`.
 - Run `npm run data:sync` after editing and `npm run data:check` before committing.

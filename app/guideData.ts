@@ -19,10 +19,18 @@ export type SubtypeGuide = {
   region?: MapRegion;
 };
 
+export type BrandingTerm = {
+  term: string;
+  contrast: string;
+  meaning: string;
+  labelCue: string;
+};
+
 export type CategoryGuide = {
   categoryId: string;
   detail: string;
   process: string[];
+  brandingTerms: BrandingTerm[];
   labelTerms: LabelTerm[];
   subtypes: SubtypeGuide[];
 };
@@ -33,6 +41,12 @@ export const categoryGuides: CategoryGuide[] = [
     detail:
       "Whisky starts with grain, but the name on the bottle may also encode a country, grain recipe, still type, cask rule or minimum age. Malted barley brings cereal and fruit; corn often reads round and sweet; rye brings spice. Fermentation builds aroma before the still concentrates it, while oak and climate reshape the spirit over years.",
     process: ["Mill & cook grain", "Convert starch", "Ferment wash", "Distill", "Mature & blend"],
+    brandingTerms: [
+      { term: "Single malt Scotch", contrast: "Blended Scotch", meaning: "Single malt comes from malted barley at one Scottish distillery. Blended Scotch combines one or more single malt whiskies with one or more single grain whiskies.", labelCue: "Single describes one distillery—not one cask. Blended describes the whisky categories brought together, not inferior quality." },
+      { term: "Single cask", contrast: "Small batch", meaning: "Single-cask whisky is drawn from one identified cask. Small batch signals a limited vatting, but the phrase has no single universal batch-size definition.", labelCue: "Look for a cask number and bottle count when specificity matters." },
+      { term: "Cask strength", contrast: "Standard strength", meaning: "Cask strength is bottled at or near the strength at which it leaves the cask; standard bottlings are normally reduced with water to a target ABV.", labelCue: "Cask strength does not automatically mean older, rarer or better—only less diluted." },
+      { term: "Age statement", contrast: "No age statement", meaning: "A stated age generally refers to the youngest whisky in the bottle. No age statement, often shortened to NAS, gives the blender more freedom across mature stocks.", labelCue: "Age measures time, not quality; cask history and spirit character still matter." },
+    ],
     labelTerms: [
       { term: "Scotch Whisky", place: "Scotland", meaning: "Made and matured in Scotland under the Scotch Whisky rules.", region: { name: "Scotland", point: [-4.2, 56.5], kind: "protected" } },
       { term: "Irish Whiskey", place: "Ireland", meaning: "Irish GI; normally matured at least three years on the island.", region: { name: "Ireland", point: [-8, 53.4], kind: "protected" } },
@@ -59,6 +73,12 @@ export const categoryGuides: CategoryGuide[] = [
     detail:
       "Brandy preserves fruit through fermentation and distillation. The fruit, whether whole, pressed wine or pomace, determines the aromatic starting point. A label may identify a broad category such as grape brandy, a protected place such as Cognac, or a raw-material tradition such as grappa. Still choice and oak decide whether fruit stays vivid or develops spice, nuts and rancio.",
     process: ["Harvest fruit", "Press or crush", "Ferment", "Distill", "Rest, age or blend"],
+    brandingTerms: [
+      { term: "VS", contrast: "VSOP / XO", meaning: "On Cognac, these are regulated age categories based on the youngest eau-de-vie in the blend. VSOP requires older stock than VS, and XO older stock than VSOP.", labelCue: "The letters are category shorthand, not a vintage or a tasting score." },
+      { term: "Fine Champagne", contrast: "Champagne", meaning: "Fine Champagne Cognac is a blend from Grande Champagne and Petite Champagne crus, with at least half from Grande Champagne. It is unrelated to sparkling wine.", labelCue: "On a Cognac label, Champagne names chalky growing crus within the Cognac region." },
+      { term: "Brandy", contrast: "Pomace spirit", meaning: "Brandy is generally distilled from wine or fermented fruit. Pomace spirits such as grappa distill the skins, seeds and stems left after pressing.", labelCue: "Read the raw material: wine, fruit or marc/pomace points to a different aromatic base." },
+      { term: "Vintage", contrast: "Age designation", meaning: "Vintage names a harvest year where the category permits it. An age designation communicates maturation class or minimum age without tying the contents to one harvest.", labelCue: "Rules differ sharply by origin, so pair the term with the protected place on the label." },
+    ],
     labelTerms: [
       { term: "Cognac", place: "Charente, France", meaning: "Protected grape brandy from the Cognac delimited region.", region: { name: "Cognac", point: [-0.3, 45.7], kind: "protected" } },
       { term: "Armagnac", place: "Gascony, France", meaning: "Protected brandy commonly associated with continuous Armagnac stills.", region: { name: "Armagnac", point: [0.1, 43.8], kind: "protected" } },
@@ -85,6 +105,12 @@ export const categoryGuides: CategoryGuide[] = [
     detail:
       "Rum can begin with molasses, cane syrup or fresh juice. Long, microbially diverse fermentations create pungent esters; cleaner fermentations and tall columns make lighter spirit. Pot and column distillates are frequently blended, then matured in tropical or continental climates. Regional words such as rhum, ron and rum are clues to language and tradition, not universal style guarantees.",
     process: ["Mill sugar cane", "Select juice/molasses", "Ferment", "Pot or column distill", "Blend, rest or age"],
+    brandingTerms: [
+      { term: "Rhum agricole", contrast: "Molasses rum", meaning: "Agricole is made from fresh cane juice, while most rum begins with molasses. The tightly defined Martinique AOC is more specific than the broad agricole style.", labelCue: "Rhum is French spelling; agricole and a qualifying origin tell you more about the raw material and rules." },
+      { term: "White", contrast: "Dark", meaning: "Color does not map neatly to age. White rum may be unaged or charcoal-filtered after aging; dark color can come from cask maturation, blending or permitted coloring.", labelCue: "Seek an age statement, origin and production details before treating color as a maturity scale." },
+      { term: "Overproof", contrast: "Navy strength", meaning: "Overproof broadly means bottled above a market's standard proof. Navy strength is a historic-style strength claim, commonly around 57% ABV, but not one globally harmonized rum category.", labelCue: "The printed ABV is the precise information; the branding phrase supplies context." },
+      { term: "Solera", contrast: "Age statement", meaning: "Solera describes a fractional blending system containing stocks of different ages. A large solera number may not mean every drop spent that many years in wood.", labelCue: "Check whether the number is explicitly presented as a regulated age statement in the sales market." },
+    ],
     labelTerms: [
       { term: "Rhum Agricole Martinique AOC", place: "Martinique", meaning: "Fresh-cane-juice rum under a detailed French appellation.", region: { name: "Martinique", point: [-61, 14.6], kind: "protected" } },
       { term: "Jamaica Rum", place: "Jamaica", meaning: "Geographical indication associated with Jamaican fermentation and distilling practice.", region: { name: "Jamaica", point: [-77.3, 18.1], kind: "protected" } },
@@ -108,6 +134,12 @@ export const categoryGuides: CategoryGuide[] = [
     detail:
       "These spirits begin in the field. Agave may take six years or several decades to mature, concentrating sugars in its heart. Cooking converts stored fructans, crushing releases juice and fibers, and open or closed fermentations add local microbial character. Species, village, roasting method, fibers in the still and proofing choices can be as expressive as oak.",
     process: ["Grow & select plants", "Harvest hearts", "Cook & crush", "Ferment", "Distill & rest"],
+    brandingTerms: [
+      { term: "100% agave tequila", contrast: "Tequila", meaning: "Both are genuine tequila. The 100% agave category uses only blue-agave sugars; the other category may include permitted non-agave sugars and is often called mixto in conversation.", labelCue: "If the bottle does not say 100% de agave, do not assume all fermentable sugar came from agave." },
+      { term: "Blanco", contrast: "Reposado / Añejo", meaning: "Blanco is unaged or briefly rested; reposado spends at least two months in oak; añejo matures at least one year in smaller oak vessels under tequila rules.", labelCue: "These are maturation classes, not sweetness or quality rankings." },
+      { term: "Mezcal artesanal", contrast: "Mezcal ancestral", meaning: "These regulated production classes differ in permitted cooking, crushing, fermentation and distillation tools. Ancestral is the narrower, more traditional equipment set.", labelCue: "The class explains method; the agave species, village and producer explain much of the individual spirit." },
+      { term: "Joven", contrast: "Madurado en vidrio", meaning: "Joven mezcal is unaged. Madurado en vidrio rests in glass for at least the specified period under the denomination rather than taking flavor from wood.", labelCue: "Joven means young, not automatically smoky; glass maturation changes integration more than color." },
+    ],
     labelTerms: [
       { term: "Tequila", place: "Jalisco + authorized areas", meaning: "Protected Mexican denomination, principally made from blue agave.", region: { name: "Tequila DO", point: [-103.7, 20.7], kind: "protected" } },
       { term: "Mezcal", place: "Authorized Mexican states", meaning: "Protected denomination covering permitted agaves and certified methods.", region: { name: "Mezcal DO", point: [-96.7, 17], kind: "protected" } },
@@ -130,6 +162,12 @@ export const categoryGuides: CategoryGuide[] = [
     detail:
       "Gin is defined by juniper, then differentiated by how botanicals meet the spirit. Distillers may steep botanicals in neutral spirit, suspend them in vapor, distill components separately or combine techniques. Citrus, coriander, roots, flowers and local plants shape the architecture, but a regional-looking phrase is not automatically a geographic protection.",
     process: ["Choose base spirit", "Build botanical recipe", "Macerate or vapor-infuse", "Redistill", "Blend & dilute"],
+    brandingTerms: [
+      { term: "London Dry", contrast: "Distilled gin", meaning: "London Dry is a stricter production standard within distilled gin, with tight limits on sweetening and additions after distillation. Neither phrase requires production in London.", labelCue: "London Dry communicates method and dryness; a place claim needs separate evidence." },
+      { term: "Old Tom", contrast: "Dry gin", meaning: "Old Tom is a historical style commonly rounder or sweeter than dry gin, but it has no single global recipe and may be rested in wood.", labelCue: "Treat Old Tom as a style signal, then check sweetness, cask and producer notes." },
+      { term: "Navy strength", contrast: "Standard strength", meaning: "Navy strength is a high-proof style claim commonly bottled around 57% ABV. Standard-strength gin is diluted further for a lighter concentration.", labelCue: "Use the ABV for certainty; navy strength is not one harmonized worldwide category." },
+      { term: "Compound gin", contrast: "Distilled gin", meaning: "Compound gin flavors spirit without redistilling all the botanicals with it. Distilled gin creates its defining botanical character through redistillation.", labelCue: "Both can be legitimate; the distinction is extraction method, not an automatic quality grade." },
+    ],
     labelTerms: [
       { term: "London Dry Gin", place: "Method, not London", meaning: "A production standard: dry and distilled, without requiring London origin." },
       { term: "Plymouth Gin", place: "Plymouth, England", meaning: "Geographic name tied to production in Plymouth.", region: { name: "Plymouth", point: [-4.1, 50.4], kind: "protected" } },
@@ -151,6 +189,12 @@ export const categoryGuides: CategoryGuide[] = [
     detail:
       "Vodka is more than absence. Highly rectified spirit can retain quiet signals of wheat, rye, potato, grape or other agricultural materials, while filtration, proofing water and mouthfeel become especially visible in a restrained profile. Labels that name a country or protected indication say more than a generic claim of purity or repeated distillation.",
     process: ["Prepare raw material", "Ferment", "Rectify", "Filter or rest", "Proof with water"],
+    brandingTerms: [
+      { term: "Potato vodka", contrast: "Grain vodka", meaning: "The terms identify fermentable raw material, not a guaranteed texture. Potato is often marketed as creamy and grain as crisp, but rectification, filtration and proofing can outweigh the base.", labelCue: "Raw material is a useful clue—never a complete tasting note." },
+      { term: "Distilled multiple times", contrast: "Continuous rectification", meaning: "A stated number of distillations can reflect passes, still sections or marketing conventions. A modern column can perform many separation stages in one continuous run.", labelCue: "A larger number is not a universal purity or quality scale." },
+      { term: "Filtered", contrast: "Unfiltered", meaning: "Filtration may use charcoal or other media to soften aroma and texture. Unfiltered or lightly filtered vodka aims to retain more raw-material character.", labelCue: "Repeated filtration describes process, but does not by itself predict smoothness." },
+      { term: "Flavored", contrast: "Infused", meaning: "Flavored vodka is a regulated market category in many places. Infused describes steeping ingredients, but the final legal designation can still require flavor or composition wording.", labelCue: "Check for added sugar, flavor declarations and a statement of composition where required." },
+    ],
     labelTerms: [
       { term: "Polska Wódka / Polish Vodka", place: "Poland", meaning: "Protected GI using specified Polish-grown raw materials and Polish production.", region: { name: "Poland", point: [19.2, 52.1], kind: "protected" } },
       { term: "Svensk Vodka", place: "Sweden", meaning: "Registered geographic indication for Swedish vodka.", region: { name: "Sweden", point: [15, 62], kind: "protected" } },
@@ -171,6 +215,12 @@ export const categoryGuides: CategoryGuide[] = [
     detail:
       "Many East Asian grain spirits use mold cultures—qu, kōji or nuruk—to unlock starch while yeast makes alcohol. That single distinction opens radically different systems: solid-state pit fermentation and repeated batches for baijiu, single distillation for honkaku shōchū, black kōji and long-grain rice for awamori, and both traditional pot-distilled and modern diluted forms of soju.",
     process: ["Prepare grain/starch", "Inoculate culture", "Saccharify & ferment", "Distill", "Rest, age or dilute"],
+    brandingTerms: [
+      { term: "Strong aroma", contrast: "Sauce aroma", meaning: "These baijiu terms are regulated aroma families, not intensity scores. Strong aroma often emphasizes ester-rich fermented fruit; sauce aroma leans roasted, savory and layered.", labelCue: "Aroma family is the first decoding key; producer, region and age add the next layers." },
+      { term: "Honkaku shōchū", contrast: "Kōrui shōchū", meaning: "Honkaku is single-distilled and preserves raw-material character. Kōrui is multiply distilled to a lighter, more neutral profile often used in mixed drinks.", labelCue: "Look for the Japanese category wording and the named base—barley, sweet potato, rice or another permitted material." },
+      { term: "Distilled soju", contrast: "Diluted soju", meaning: "Distilled soju comes directly from a flavorful fermented base and still. Diluted soju blends highly rectified spirit with water and may include sweetening or flavor adjustments.", labelCue: "Bottle strength and price can hint at the style, but the production category is the reliable distinction." },
+      { term: "Kusu", contrast: "Unaged awamori", meaning: "Kusu is aged awamori meeting defined age presentation rules, traditionally matured in ceramic. Younger awamori shows fresher rice, floral and earthy character.", labelCue: "An age claim on awamori speaks to time in storage, not wood-derived color." },
+    ],
     labelTerms: [
       { term: "白酒 · Báijiǔ", place: "China", meaning: "Chinese grain spirit; aroma category words often appear alongside the name.", region: { name: "China", point: [104, 35], kind: "traditional" } },
       { term: "本格焼酎 · Honkaku Shōchū", place: "Japan", meaning: "Single-distilled shōchū made from permitted materials and processes.", region: { name: "Kyushu", point: [130.5, 32.3], kind: "traditional" } },
@@ -195,6 +245,12 @@ export const categoryGuides: CategoryGuide[] = [
     detail:
       "Flavored spirits layer extraction and blending onto a spirit base. Producers macerate, percolate, redistill or directly add extracts, then balance bitterness, sugar, color and alcohol. Some names describe a legal category, some a protected regional tradition, and others only a broad style—making the exact wording on the label especially important.",
     process: ["Choose spirit base", "Select flavor materials", "Extract or redistill", "Sweeten & blend", "Rest & bottle"],
+    brandingTerms: [
+      { term: "Liqueur", contrast: "Flavored spirit", meaning: "Liqueur normally signals a sweetened spirit category with a minimum sugar level. A flavored spirit may carry added flavor without meeting the same sweetness threshold.", labelCue: "Category rules vary by market, so sweetness and designation should be read together." },
+      { term: "Crème de…", contrast: "Cream liqueur", meaning: "Crème de cassis and similar names indicate a high sugar level, not dairy. Cream liqueur contains dairy cream or a cream-like emulsion.", labelCue: "In crème de…, the ingredient after de names the defining flavor." },
+      { term: "Amaro", contrast: "Aperitivo", meaning: "Amaro is a broad Italian bittersweet herbal style. Aperitivo describes a pre-meal role and often a lighter, brighter profile; the terms can overlap.", labelCue: "Neither word alone tells you exact sugar, bitterness or alcohol—check the bottle and intended serve." },
+      { term: "Cocktail bitters", contrast: "Bitter liqueur", meaning: "Cocktail bitters are highly concentrated and dosed by dashes. Bitter liqueurs and potable bitters are designed for full pours or mixed-drink measures.", labelCue: "Bottle size, dropper or dasher top, and serving guidance reveal the intended use." },
+    ],
     labelTerms: [
       { term: "Amaro / Amari", place: "Italian tradition", meaning: "Bitter-sweet herbal liqueur style; not one protected recipe.", region: { name: "Italy", point: [12.5, 42.8], kind: "traditional" } },
       { term: "Ouzo", place: "Greece / Cyprus", meaning: "Protected aniseed spirit designation.", region: { name: "Greece", point: [22, 39], kind: "protected" } },
@@ -210,6 +266,7 @@ export const categoryGuides: CategoryGuide[] = [
       { name: "Aquavit", lawStatus: "Defined style", law: "EU category requires caraway and/or dill as the defining flavor; certain national/regional names are protected GIs.", style: "Dry, savory and caraway/dill-led, sometimes cask-aged with citrus, fennel and warm spice.", region: { name: "Scandinavia", point: [15, 62], kind: "traditional" } },
       { name: "Cocktail bitters", lawStatus: "Broad style", law: "Often treated as non-beverage or specialty products depending on market; 'bitters' alone does not describe one universal legal category.", style: "Highly concentrated bitter, aromatic extracts used by dashes rather than as a full pour." },
       { name: "Flavored vodka", lawStatus: "Defined style", law: "A recognized flavored vodka designation in major markets, normally requiring truthful flavor naming and sometimes a formula or statement of composition.", style: "Neutral or characterful vodka carrying fruit, spice, herb or confectionery flavors." },
+      { name: "Infused vodka", lawStatus: "Broad style", law: "‘Infused’ describes macerating whole fruit, herbs, roots or spices into vodka rather than one harmonized legal category; final designation depends on the market and formula.", style: "Often drier and more ingredient-specific than extract-led flavored vodka, with natural oils, color and seasonal variation." },
       { name: "Absinthe", lawStatus: "Traditional term", law: "Absinthe is not one globally harmonized recipe. The protected ‘Absinthe de Pontarlier’ GI requires local production and a macerate containing common wormwood and anise; other origins follow their market’s spirit and ingredient rules.", style: "Anise, fennel and wormwood dominate, supported by herbs such as hyssop or lemon balm; dilution releases oils and creates the characteristic opaque louche." },
     ],
   },

@@ -31,7 +31,7 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
   assert.match(html, /<title>World Spirit Hub — A spirited atlas<\/title>/i);
   assert.match(html, /Every spirit has/);
   assert.match(html, /Show all spirits/);
-  assert.match(html, /<strong>150<\/strong> landmarks/);
+  assert.match(html, /<strong>176<\/strong> landmarks/);
   assert.match(html, /Choose 2D or 3D map/);
   assert.match(html, /2D<\/button>/);
   assert.match(html, /3D<\/button>/);
@@ -40,16 +40,28 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
 });
 
 test("renders the educational guide", async () => {
-  const response = await render("/guide");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /Eight families/);
-  assert.match(html, /Whisky &amp; whiskey/);
-  assert.match(html, /Asian grain spirits/);
-  assert.match(html, /Production infographic/);
-  assert.match(html, /Regional names found on labels/);
-  assert.match(html, /Subtype field cards/);
-  assert.match(html, /Regional production atlas/);
+  const [indexResponse, whiskyResponse] = await Promise.all([
+    render("/guide"),
+    render("/guide/whisky"),
+  ]);
+  assert.equal(indexResponse.status, 200);
+  assert.equal(whiskyResponse.status, 200);
+
+  const indexHtml = await indexResponse.text();
+  assert.match(indexHtml, /Eight families/);
+  assert.match(indexHtml, /Choose a spirit family/);
+  assert.match(indexHtml, /Whisky &amp; whiskey/);
+  assert.match(indexHtml, /Asian grain spirits/);
+  assert.match(indexHtml, /branding distinctions/);
+
+  const whiskyHtml = await whiskyResponse.text();
+  assert.match(whiskyHtml, /Production infographic/);
+  assert.match(whiskyHtml, /Common terms on the bottle/);
+  assert.match(whiskyHtml, /Single malt Scotch/);
+  assert.match(whiskyHtml, /Blended Scotch/);
+  assert.match(whiskyHtml, /Regional names found on labels/);
+  assert.match(whiskyHtml, /Subtype field cards/);
+  assert.match(whiskyHtml, /Regional production atlas/);
 });
 
 test("renders the taste profile and credentialed bar experiences", async () => {
