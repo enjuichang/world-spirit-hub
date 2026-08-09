@@ -1,6 +1,6 @@
 # World Spirit Hub
 
-A dark, editorial world-spirit atlas with an interactive Mapbox map, eight-category field guide, explainable taste-profile quiz, and a curated cocktail-bar finder with dated editorial credentials.
+A dark, editorial world-spirit atlas with switchable 2D/3D Mapbox views, 57 sourced landmarks across eight categories, an explainable taste-profile quiz, and a curated cocktail-bar finder with dated editorial credentials.
 
 ## Local development
 
@@ -33,8 +33,8 @@ If the token is absent or Mapbox cannot load, the accessible location list remai
 
 ## Main project surfaces
 
-- `app/data.ts` — curated spirit categories, map landmarks, and credentialed-bar sample.
-- `app/SpiritExplorer.tsx` — Mapbox atlas, filtering, search, clustering, list view, and detail drawer.
+- `app/data.ts` — curated spirit categories, sourced distillery landmarks, and credentialed-bar sample.
+- `app/SpiritExplorer.tsx` — 2D/3D Mapbox atlas, filtering, search, clustering, list view, official distillery links, and detail drawer.
 - `app/guide/` — educational field guide.
 - `app/discover/` — local, explainable taste profile.
 - `app/bars/` — privacy-conscious distance sorting for dated bar credentials.

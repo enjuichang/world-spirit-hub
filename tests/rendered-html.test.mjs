@@ -31,6 +31,10 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
   assert.match(html, /<title>World Spirit Hub — A spirited atlas<\/title>/i);
   assert.match(html, /Every spirit has/);
   assert.match(html, /Show all spirits/);
+  assert.match(html, /<strong>57<\/strong> landmarks/);
+  assert.match(html, /Choose 2D or 3D map/);
+  assert.match(html, /2D<\/button>/);
+  assert.match(html, /3D<\/button>/);
   assert.match(html, /Know the family/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });

@@ -489,15 +489,18 @@ button {
   letter-spacing: normal;
 }
 
-.view-toggle {
+.view-toggle,
+.dimension-toggle {
   display: flex;
+  flex: 0 0 auto;
   padding: 3px;
   background: var(--bg);
   border: 1px solid var(--border-soft);
   border-radius: 999px;
 }
 
-.view-toggle button {
+.view-toggle button,
+.dimension-toggle button {
   display: flex;
   gap: 6px;
   align-items: center;
@@ -511,9 +514,29 @@ button {
   font-weight: 700;
 }
 
-.view-toggle button.active {
+.view-toggle button.active,
+.dimension-toggle button.active {
   color: var(--bg);
   background: var(--accent-strong);
+}
+
+.dimension-toggle button.active {
+  color: var(--text);
+  background: var(--emerald);
+}
+
+.dimension-toggle button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.dimension-toggle button:not(:disabled):hover,
+.view-toggle button:hover {
+  color: var(--text);
+}
+
+.view-toggle button.active:hover {
+  color: var(--bg);
 }
 
 .map-pane {
@@ -2320,8 +2343,12 @@ button {
     margin-left: 0;
   }
 
-  .view-toggle {
+  .dimension-toggle {
     margin-left: auto;
+  }
+
+  .view-toggle {
+    margin-left: 0;
   }
 
   .map-pane,
@@ -2443,6 +2470,12 @@ button {
 
   .result-count span {
     font-size: 17px;
+  }
+
+  .dimension-toggle button,
+  .view-toggle button {
+    gap: 4px;
+    padding: 0 9px;
   }
 
   .map-legend {

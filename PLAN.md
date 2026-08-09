@@ -15,6 +15,8 @@ The product should be educational and brand-neutral. It may use commercial brand
 | V2 | Help users discover their preferences | Taste and cocktail questionnaire, explainable recommendations, saved/shareable results |
 | V3 | Connect preferences to nearby places | Permission-based location, nearby cocktail bar discovery, filters, map/list results, third-party place data |
 
+Current V1 implementation snapshot: 57 curated landmarks across all eight families, official producer links for every marker, clustering and search, and a user-controlled 2D Mercator / 3D terrain-globe view.
+
 ## 3. Audience and core journeys
 
 ### Primary audiences
@@ -1157,7 +1159,7 @@ Complete the checklist in order within each milestone. A checked task should inc
 - [ ] Complete and expert-review Scotch whisky and shōchū as the vertical slice.
 - [ ] Verify every coordinate, its precision level, and its source.
 - [ ] Complete all approved top-level category summaries and required subcategories.
-- [ ] Populate the agreed 12–20 regions and 75–150 curated distillery markers.
+- [ ] Continue the sourced-marker program from the current 57 landmarks toward the agreed 75–150-marker V1 range.
 - [ ] Add representative producers/brands without presenting paid or promotional rankings.
 - [ ] Add taste, style, quality, price-driver, law, labeling, and history content to the defined completeness standard.
 - [ ] Check each legal claim against a current primary/official source and record jurisdiction/review date.

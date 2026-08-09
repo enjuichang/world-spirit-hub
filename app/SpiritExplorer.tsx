@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   BookOpen,
   ChevronRight,
+  Globe2,
   Layers3,
   List,
   Map as MapIcon,
@@ -75,6 +76,7 @@ export function SpiritExplorer() {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [mobileView, setMobileView] = useState<"map" | "list">("map");
+  const [mapMode, setMapMode] = useState<"2d" | "3d">("2d");
 
   const filteredLocations = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase();
@@ -127,6 +129,7 @@ export function SpiritExplorer() {
       });
 
       mapRef.current = map;
+      map.setProjection({ name: "mercator" });
       map.addControl(
         new mapboxgl.NavigationControl({ showCompass: false }),
         "bottom-right",
@@ -137,6 +140,13 @@ export function SpiritExplorer() {
       );
 
       map.on("load", () => {
+        map.addSource("terrain-dem", {
+          type: "raster-dem",
+          url: "mapbox://mapbox.mapbox-terrain-dem-v1",
+          tileSize: 512,
+          maxzoom: 14,
+        });
+
         map.addSource("spirits", {
           type: "geojson",
           data: featureCollection("all", "", null),
@@ -288,6 +298,29 @@ export function SpiritExplorer() {
     source?.setData(featureCollection(categoryId, query, selectedId));
   }, [categoryId, mapReady, query, selectedId]);
 
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!mapReady || !map) return;
+
+    if (mapMode === "3d") {
+      map.setProjection({ name: "globe" });
+      map.setTerrain({ source: "terrain-dem", exaggeration: 1.15 });
+      map.setFog({
+        color: "#171d1c",
+        "high-color": "#25312e",
+        "horizon-blend": 0.08,
+        "space-color": "#080706",
+        "star-intensity": 0.12,
+      });
+      map.easeTo({ pitch: 38, bearing: -12, zoom: 1.55, duration: 700 });
+    } else {
+      map.setTerrain(null);
+      map.setFog(null);
+      map.setProjection({ name: "mercator" });
+      map.easeTo({ pitch: 0, bearing: 0, zoom: 1.25, duration: 650 });
+    }
+  }, [mapMode, mapReady]);
+
   function chooseCategory(nextId: string) {
     setCategoryId(nextId);
     setSelectedId(null);
@@ -306,6 +339,11 @@ export function SpiritExplorer() {
       zoom: 5,
       duration: 500,
     });
+  }
+
+  function chooseMapMode(mode: "2d" | "3d") {
+    setMapMode(mode);
+    setMobileView("map");
   }
 
   return (
@@ -409,6 +447,30 @@ export function SpiritExplorer() {
           </label>
           <div className="result-count" aria-live="polite">
             <span>{filteredLocations.length}</span> places in view
+          </div>
+          <div
+            className="dimension-toggle"
+            role="group"
+            aria-label="Choose 2D or 3D map"
+          >
+            <button
+              type="button"
+              className={mapMode === "2d" ? "active" : ""}
+              onClick={() => chooseMapMode("2d")}
+              aria-pressed={mapMode === "2d"}
+              disabled={mapFailed}
+            >
+              <MapIcon size={14} /> 2D
+            </button>
+            <button
+              type="button"
+              className={mapMode === "3d" ? "active" : ""}
+              onClick={() => chooseMapMode("3d")}
+              aria-pressed={mapMode === "3d"}
+              disabled={mapFailed}
+            >
+              <Globe2 size={14} /> 3D
+            </button>
           </div>
           <div className="view-toggle" aria-label="Choose result view">
             <button
@@ -540,6 +602,18 @@ export function SpiritExplorer() {
                   <h3>Why it matters</h3>
                   <p>{selectedLocation.note}</p>
                 </div>
+                {selectedLocation.sourceUrl && (
+                  <a
+                    className="source-link distillery-source"
+                    href={selectedLocation.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Globe2 size={15} />
+                    {selectedLocation.sourceLabel ?? "Official distillery website"}
+                    <ArrowUpRight size={14} />
+                  </a>
+                )}
               </>
             ) : (
               <>
