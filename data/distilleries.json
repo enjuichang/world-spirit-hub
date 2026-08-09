@@ -42,6 +42,72 @@
     "sourceUrl": "https://www.laphroaig.com/en/visit-us"
   },
   {
+    "id": "glenlivet", "name": "The Glenlivet Distillery", "place": "Ballindalloch, Speyside", "country": "Scotland", "coordinates": [-3.338, 57.344], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Light, fruit-led Speyside malt", "note": "Compare long-necked stills and a fruit-forward new make with Glenfiddich and richer sherry-led Speyside examples.", "tags": ["pineapple", "orchard fruit", "malt"], "precision": "approximate", "sourceLabel": "Official The Glenlivet website", "sourceUrl": "https://www.theglenlivet.com/en-us/visit-our-distillery/"
+  },
+  {
+    "id": "macallan", "name": "The Macallan Distillery", "place": "Craigellachie, Speyside", "country": "Scotland", "coordinates": [-3.207, 57.485], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Sherry-cask-focused Speyside malt", "note": "Study small copper stills, new-make weight and an oak program strongly associated with sherry-seasoned casks.", "tags": ["dried fruit", "spice", "oak"], "precision": "approximate", "sourceLabel": "Official The Macallan website", "sourceUrl": "https://www.themacallan.com/en-us/experience-the-macallan/distillery/plan-your-visit"
+  },
+  {
+    "id": "balvenie", "name": "The Balvenie Distillery", "place": "Dufftown, Speyside", "country": "Scotland", "coordinates": [-3.126, 57.458], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Honeyed Speyside malt with retained crafts", "note": "Explore floor malting, copper work, coopering and cask finishing within one long-running Dufftown production site.", "tags": ["honey", "malt", "vanilla"], "precision": "approximate", "sourceLabel": "Official The Balvenie website", "sourceUrl": "https://www.thebalvenie.com/our-distillery/"
+  },
+  {
+    "id": "aberlour", "name": "Aberlour Distillery", "place": "Aberlour, Speyside", "country": "Scotland", "coordinates": [-3.229, 57.47], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Rich Speyside malt shaped by bourbon and sherry oak", "note": "Compare compact stills and double-cask maturation with lighter Speyside profiles nearby.", "tags": ["red fruit", "chocolate", "spice"], "precision": "approximate", "sourceLabel": "Official Aberlour website", "sourceUrl": "https://www.aberlour.com/en/our-distillery/"
+  },
+  {
+    "id": "ardbeg", "name": "Ardbeg Distillery", "place": "Port Ellen, Islay", "country": "Scotland", "coordinates": [-6.109, 55.64], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Heavily peated south-coast Islay malt", "note": "Compare intense peat, a purifier on the spirit still and ex-bourbon-led maturation with neighboring south-coast malts.", "tags": ["peat", "lemon", "tar"], "precision": "approximate", "sourceLabel": "Official Ardbeg website", "sourceUrl": "https://www.ardbeg.com/visitus/tours.html"
+  },
+  {
+    "id": "bowmore", "name": "Bowmore Distillery", "place": "Bowmore, Islay", "country": "Scotland", "coordinates": [-6.29, 55.756], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Balanced, moderately peated Islay malt", "note": "Explore floor malting, measured peat and maturation beside Loch Indaal as a counterpoint to Islay's heavier styles.", "tags": ["smoke", "citrus", "sea salt"], "precision": "approximate", "sourceLabel": "Official Bowmore website", "sourceUrl": "https://www.bowmore.com/distillery-tours-and-experiences"
+  },
+  {
+    "id": "bruichladdich", "name": "Bruichladdich Distillery", "place": "Bruichladdich, Islay", "country": "Scotland", "coordinates": [-6.362, 55.766], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Victorian Islay distillery with contrasting peat levels", "note": "Compare unpeated Bruichladdich, peated Port Charlotte and heavily peated Octomore from one distillery and shared equipment.", "tags": ["barley", "floral", "peat"], "precision": "approximate", "sourceLabel": "Official Bruichladdich website", "sourceUrl": "https://www.bruichladdich.com/pages/tours"
+  },
+  {
+    "id": "bunnahabhain", "name": "Bunnahabhain Distillery", "place": "Port Askaig, Islay", "country": "Scotland", "coordinates": [-6.126, 55.883], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Traditionally lightly peated northern Islay malt", "note": "Use a sherry-friendly, usually lightly peated house style to challenge the idea that all Islay whisky must be heavily smoky.", "tags": ["nuts", "dried fruit", "coastal"], "precision": "approximate", "sourceLabel": "Official Bunnahabhain website", "sourceUrl": "https://bunnahabhain.com/pages/distillery-experiences"
+  },
+  {
+    "id": "kilchoman", "name": "Kilchoman Distillery", "place": "Kilchoman, Islay", "country": "Scotland", "coordinates": [-6.431, 55.787], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Farm-scale Islay malt distillery", "note": "Follow selected estate barley through floor malting, peat drying, distillation and on-island maturation at a modern farm distillery.", "tags": ["peat", "cereal", "citrus"], "precision": "approximate", "sourceLabel": "Official Kilchoman website", "sourceUrl": "https://www.kilchomandistillery.com/book-distillery-tour/"
+  },
+  {
+    "id": "glenmorangie", "name": "Glenmorangie Distillery", "place": "Tain, Highlands", "country": "Scotland", "coordinates": [-4.077, 57.842], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Tall-still northern Highland malt", "note": "Connect very tall still necks and a light, fragrant spirit with first-fill bourbon oak and modern cask finishing.", "tags": ["citrus", "vanilla", "floral"], "precision": "approximate", "sourceLabel": "Official Glenmorangie website", "sourceUrl": "https://www.glenmorangie.com/pages/visit-us"
+  },
+  {
+    "id": "oban", "name": "Oban Distillery", "place": "Oban, Highlands", "country": "Scotland", "coordinates": [-5.472, 56.415], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Compact west-coast Highland malt", "note": "Study a small urban distillery whose lightly smoky, waxy spirit bridges inland Highland and maritime island cues.", "tags": ["orange", "wax", "sea salt"], "precision": "approximate", "sourceLabel": "Official Oban distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/oban"
+  },
+  {
+    "id": "glengoyne", "name": "Glengoyne Distillery", "place": "Dumgoyne, Highlands", "country": "Scotland", "coordinates": [-4.363, 56.014], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Unpeated southern Highland malt", "note": "Compare slow distillation and unpeated malt with nearby Lowland production across the regional boundary.", "tags": ["apple", "malt", "sherry"], "precision": "approximate", "sourceLabel": "Official Glengoyne website", "sourceUrl": "https://www.glengoyne.com/pages/visit-us"
+  },
+  {
+    "id": "dalmore", "name": "The Dalmore Distillery", "place": "Alness, Highlands", "country": "Scotland", "coordinates": [-4.238, 57.687], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Rich northern Highland malt", "note": "Explore varied still shapes and maturation associated with bourbon and sherry-seasoned oak in a heavier Highland style.", "tags": ["orange", "cocoa", "spice"], "precision": "approximate", "sourceLabel": "Official The Dalmore website", "sourceUrl": "https://www.thedalmore.com/pages/visit-us"
+  },
+  {
+    "id": "talisker", "name": "Talisker Distillery", "place": "Carbost, Isle of Skye", "country": "Scotland", "coordinates": [-6.356, 57.303], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Peppery, maritime island malt", "note": "Compare worm-tub condensation, moderate peat and coastal maturation on Skye with mainland Highland and Islay malts.", "tags": ["pepper", "smoke", "sea salt"], "precision": "approximate", "sourceLabel": "Official Talisker distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/talisker"
+  },
+  {
+    "id": "highland-park", "name": "Highland Park Distillery", "place": "Kirkwall, Orkney", "country": "Scotland", "coordinates": [-2.95, 58.967], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Heather-peated Orkney malt", "note": "Explore aromatic island peat, retained floor malting and sherry-seasoned casks at an Orcadian distillery.", "tags": ["heather smoke", "honey", "spice"], "precision": "approximate", "sourceLabel": "Official Highland Park website", "sourceUrl": "https://www.highlandparkwhisky.com/en/brand-story/distillery"
+  },
+  {
+    "id": "tobermory", "name": "Tobermory Distillery", "place": "Tobermory, Isle of Mull", "country": "Scotland", "coordinates": [-6.069, 56.622], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Island distillery making peated and unpeated malts", "note": "Compare unpeated Tobermory and peated Ledaig from the same Mull stillhouse to isolate the effect of malt specification.", "tags": ["citrus", "malt", "smoke"], "precision": "approximate", "sourceLabel": "Official Tobermory website", "sourceUrl": "https://tobermorydistillery.com/pages/visit-us"
+  },
+  {
+    "id": "auchentoshan", "name": "Auchentoshan Distillery", "place": "Clydebank, Lowlands", "country": "Scotland", "coordinates": [-4.439, 55.923], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Triple-distilled Lowland malt", "note": "Study full triple distillation and its lighter new-make character against the double-distilled norm at most Scotch malt distilleries.", "tags": ["citrus", "almond", "vanilla"], "precision": "approximate", "sourceLabel": "Official Auchentoshan website", "sourceUrl": "https://www.auchentoshan.com/visit-our-distillery"
+  },
+  {
+    "id": "glenkinchie", "name": "Glenkinchie Distillery", "place": "Pencaitland, Lowlands", "country": "Scotland", "coordinates": [-2.89, 55.89], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Light, grassy Lowland malt", "note": "Compare large stills and a delicate floral-grassy make with newer Lowland distilleries and triple-distilled Auchentoshan.", "tags": ["grass", "flowers", "cereal"], "precision": "approximate", "sourceLabel": "Official Glenkinchie distillery website", "sourceUrl": "https://www.malts.com/en-gb/distilleries/glenkinchie"
+  },
+  {
+    "id": "daftmill", "name": "Daftmill Distillery", "place": "Cupar, Fife", "country": "Scotland", "coordinates": [-3.013, 56.311], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Seasonal farm Lowland malt", "note": "Explore estate-grown barley, summer and winter distilling seasons and long maturation at a working Fife farm.", "tags": ["barley", "orchard fruit", "biscuits"], "precision": "approximate", "sourceLabel": "Official Daftmill website", "sourceUrl": "https://www.daftmill.com/our-story"
+  },
+  {
+    "id": "springbank", "name": "Springbank Distillery", "place": "Campbeltown", "country": "Scotland", "coordinates": [-5.608, 55.425], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Traditional Campbeltown malt distillery", "note": "Follow floor malting, partial triple distillation, direct-fired stills and on-site maturation in a highly integrated production model.", "tags": ["oil", "brine", "smoke"], "precision": "approximate", "sourceLabel": "Official Springbank website", "sourceUrl": "https://www.springbank.scot/"
+  },
+  {
+    "id": "glen-scotia", "name": "Glen Scotia Distillery", "place": "Campbeltown", "country": "Scotland", "coordinates": [-5.604, 55.43], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Maritime Campbeltown malt", "note": "Compare a waxy, maritime house style and varied cask finishes with Springbank's more manually integrated production.", "tags": ["brine", "wax", "orchard fruit"], "precision": "approximate", "sourceLabel": "Official Glen Scotia website", "sourceUrl": "https://www.glenscotia.com/pages/plan-your-visit"
+  },
+  {
+    "id": "glengyle", "name": "Glengyle Distillery", "place": "Campbeltown", "country": "Scotland", "coordinates": [-5.609, 55.426], "categoryId": "whisky", "subcategory": "Scotch whisky", "descriptor": "Revived Campbeltown malt distillery", "note": "Use Kilkerran single malt to study how a revived historic site adds a distinct lighter, mineral voice to Campbeltown.", "tags": ["cereal", "mineral", "smoke"], "precision": "approximate", "sourceLabel": "Official Springbank and Glengyle website", "sourceUrl": "https://www.springbank.scot/"
+  },
+  {
     "id": "buffalo-trace",
     "name": "Buffalo Trace Distillery",
     "place": "Frankfort, Kentucky",
@@ -1012,9 +1078,9 @@
       52.065
     ],
     "categoryId": "vodka",
-    "subcategory": "Characterful vodka",
-    "descriptor": "Estate vodka distillery",
-    "note": "Compare potato, rye and wheat distillates made separately to reveal how raw material changes weight, aroma and texture.",
+    "subcategory": "Potato vodka",
+    "descriptor": "Potato-led estate vodka distillery",
+    "note": "Use Chopin Potato as the anchor, then compare the estate’s separately distilled rye and wheat vodkas to isolate raw-material effects on weight, aroma and texture.",
     "tags": [
       "potato",
       "rye",
@@ -1407,5 +1473,53 @@
   },
   {
     "id": "hangar-one-infusions", "name": "Hangar 1 Distillery", "place": "Alameda, California", "country": "United States", "coordinates": [-122.306, 37.786], "categoryId": "flavoured", "subcategory": "Infused vodka", "descriptor": "California whole-fruit vodka producer", "note": "Compare seasonal whole-fruit infusions, including citrus, with extract-led flavored vodkas.", "tags": ["citrus", "fruit", "floral"], "precision": "approximate", "sourceLabel": "Official Hangar 1 website", "sourceUrl": "https://hangarone.com/our-vodkas/"
+  },
+  {
+    "id": "nantou-omar", "name": "Nantou Distillery / OMAR", "place": "Nantou City", "country": "Taiwan", "coordinates": [120.69, 23.91], "categoryId": "whisky", "subcategory": "Taiwanese single malt whisky", "descriptor": "Taiwanese fruit-wine-cask single malt", "note": "Compare double pot distillation, subtropical maturation and finishes in casks from Nantou’s fruit-wine program with Kavalan’s Yilan approach.", "tags": ["malt", "tropical fruit", "wine cask"], "precision": "approximate", "sourceLabel": "Official OMAR production page", "sourceUrl": "https://www.omarwhisky.com.tw/en/about/production"
+  },
+  {
+    "id": "paul-john-goa", "name": "Paul John Distillery", "place": "Cuncolim, Goa", "country": "India", "coordinates": [73.98, 15.18], "categoryId": "whisky", "subcategory": "Indian single malt whisky", "descriptor": "Goan warm-climate single malt", "note": "A second Indian reference for six-row barley, copper pot distillation and rapid cask interaction in a warm coastal climate.", "tags": ["malt", "tropical fruit", "spice"], "precision": "approximate", "sourceLabel": "Official Paul John distillery page", "sourceUrl": "https://pauljohnwhisky.com/en/distillery"
+  },
+  {
+    "id": "casa-real-singani", "name": "Casa Real Distillery", "place": "Santa Ana, Tarija", "country": "Bolivia", "coordinates": [-64.65, -21.58], "categoryId": "brandy", "subcategory": "Singani", "descriptor": "High-valley Moscatel singani distillery", "note": "Connect high-altitude Moscatel of Alexandria vineyards, aromatic wine distillation and unaged bottling with Bolivia’s protected singani identity.", "tags": ["muscat grape", "orange blossom", "citrus"], "precision": "approximate", "sourceLabel": "Official Casa Real website", "sourceUrl": "https://www.casareal.com.bo/"
+  },
+  {
+    "id": "bodegas-kuhlmann", "name": "Bodegas Kuhlmann / Los Parrales", "place": "Tarija Valley", "country": "Bolivia", "coordinates": [-64.73, -21.54], "categoryId": "brandy", "subcategory": "Singani", "descriptor": "Tarija aromatic-grape singani producer", "note": "Compare a second Tarija house’s fresh citrus, fruit and floral profile while keeping the denomination’s Moscatel raw material and origin rules in view.", "tags": ["muscat grape", "floral", "citrus"], "precision": "approximate", "sourceLabel": "Official Bodegas Kuhlmann website", "sourceUrl": "https://bodegaskuhlmann.com/"
+  },
+  {
+    "id": "van-ryns", "name": "Van Ryn’s Distillery", "place": "Stellenbosch, Western Cape", "country": "South Africa", "coordinates": [18.82, -33.94], "categoryId": "brandy", "subcategory": "South African pot-still brandy", "descriptor": "Stellenbosch potstill-brandy specialist", "note": "Study Chenin Blanc and Colombard base wines, double copper-pot distillation, French-oak maturation and a dedicated cooperage.", "tags": ["stone fruit", "vanilla", "oak spice"], "precision": "approximate", "sourceLabel": "South African Brandy Foundation profile", "sourceUrl": "https://sabrandy.co.za/van-ryns/"
+  },
+  {
+    "id": "chelo-sajous", "name": "Distillerie Chelo", "place": "Saint-Michel-de-l’Attalaye", "country": "Haiti", "coordinates": [-72.34, 19.37], "categoryId": "rum", "subcategory": "Clairin", "descriptor": "Village clairin distillery", "note": "Follow Cristalline cane through long spontaneous fermentation and small-scale distillation in Michel Sajous’s distinctive Saint-Michel expression.", "tags": ["fresh cane", "olive", "fermentation"], "precision": "approximate", "sourceLabel": "Official Spirit of Haiti Sajous profile", "sourceUrl": "https://www.thespiritofhaiti.com/soh-range/clairin-sajous/"
+  },
+  {
+    "id": "arawaks-vaval", "name": "Arawaks Distillery / Clairin Vaval", "place": "Cavaillon", "country": "Haiti", "coordinates": [-73.67, 18.3], "categoryId": "rum", "subcategory": "Clairin", "descriptor": "Cavaillon village clairin distillery", "note": "Contrast Fritz Vaval’s local cane, long fermentation and small still with Sajous to see why clairin is best read producer by producer.", "tags": ["fresh cane", "brine", "herbal"], "precision": "approximate", "sourceLabel": "Official Spirit of Haiti Vaval profile", "sourceUrl": "https://www.thespiritofhaiti.com/soh-range/clairin-vaval/"
+  },
+  {
+    "id": "lalocura-palenque", "name": "Lalocura Palenque", "place": "Santa Catarina Minas, Oaxaca", "country": "Mexico", "coordinates": [-96.62, 16.78], "categoryId": "agave", "subcategory": "Ancestral mezcal", "descriptor": "Clay-pot ancestral mezcal palenque", "note": "Explore Eduardo Ángeles’s pit-roasted agave, open fermentation and direct-fire clay-pot distillation in a defining minero tradition.", "tags": ["roasted agave", "clay", "mineral"], "precision": "approximate", "sourceLabel": "Official Lalocura website", "sourceUrl": "https://www.lalocuramezcal.com/en"
+  },
+  {
+    "id": "del-maguey-minero", "name": "Del Maguey Minero Palenque", "place": "Santa Catarina Minas, Oaxaca", "country": "Mexico", "coordinates": [-96.61, 16.78], "categoryId": "agave", "subcategory": "Ancestral mezcal", "descriptor": "Santa Catarina Minas ancestral mezcal", "note": "A second clay-still reference from the same historic village, useful for separating the ancestral production class from one producer’s house style.", "tags": ["agave", "clay", "fruit"], "precision": "approximate", "sourceLabel": "Official Del Maguey Minero technical sheet", "sourceUrl": "https://delmaguey.com/wp-content/uploads/2024/01/Del-Maguey-Single-Village-Mezcal-Minero.pdf"
+  },
+  {
+    "id": "barr-hill-montpelier", "name": "Caledonia Spirits / Barr Hill", "place": "Montpelier, Vermont", "country": "United States", "coordinates": [-72.58, 44.26], "categoryId": "gin", "subcategory": "Barrel-aged gin", "descriptor": "Honey gin aged in new American oak", "note": "See how new American oak adds vanilla and tannin to a juniper-and-raw-honey gin while preserving botanical lift.", "tags": ["juniper", "honey", "oak"], "precision": "approximate", "sourceLabel": "Official Barr Hill Tom Cat page", "sourceUrl": "https://www.barrhill.com/products/tom-cat-gin"
+  },
+  {
+    "id": "citadelle-bonbonnet", "name": "Citadelle Gin Distillery", "place": "Château de Bonbonnet, Ars", "country": "France", "coordinates": [-0.38, 45.65], "categoryId": "gin", "subcategory": "Barrel-aged gin", "descriptor": "Multi-wood French aged-gin distillery", "note": "Compare Citadelle Réserve’s acacia, mulberry, cherry, chestnut and French-oak maturation with Barr Hill’s new-oak model.", "tags": ["juniper", "orchard wood", "spice"], "precision": "approximate", "sourceLabel": "Official Citadelle production page", "sourceUrl": "https://citadellegin.com/en/the-secrets-of-french-gin/"
+  },
+  {
+    "id": "grand-teton-vodka", "name": "Grand Teton Distillery", "place": "Driggs, Idaho", "country": "United States", "coordinates": [-111.11, 43.72], "categoryId": "vodka", "subcategory": "Potato vodka", "descriptor": "Idaho potato-vodka distillery", "note": "Compare Idaho potatoes and Rocky Mountain spring water with Chopin’s Polish estate approach to creamy, weighty potato vodka.", "tags": ["potato", "cream", "mineral"], "precision": "approximate", "sourceLabel": "Official Grand Teton Distillery website", "sourceUrl": "https://www.tetondistillery.com/"
+  },
+  {
+    "id": "kinmen-kaoliang", "name": "Kinmen Kaoliang Liquor", "place": "Kinmen", "country": "Taiwan", "coordinates": [118.32, 24.44], "categoryId": "asian", "subcategory": "Kaoliang", "descriptor": "Kinmen sorghum-spirit landmark", "note": "Study sorghum, wheat starter bricks, solid-state fermentation, distillation and ceramic or stainless resting in Taiwan’s best-known kaoliang center.", "tags": ["sorghum", "white pepper", "fermented fruit"], "precision": "approximate", "sourceLabel": "Official Kinmen Kaoliang production page", "sourceUrl": "https://www.kkl.com.tw/en/production.aspx"
+  },
+  {
+    "id": "matsu-liquor", "name": "Matsu Liquor Factory", "place": "Nangan, Lienchiang County", "country": "Taiwan", "coordinates": [119.95, 26.15], "categoryId": "asian", "subcategory": "Kaoliang", "descriptor": "Matsu island kaoliang distillery", "note": "A second Taiwanese island reference for aromatic sorghum spirit, including aged kaoliang, shaped by a different island production culture.", "tags": ["sorghum", "floral", "savory"], "precision": "approximate", "sourceLabel": "Taiwan Tourism Administration profile", "sourceUrl": "https://www.matsu-nsa.gov.tw/Attraction-Content.aspx?a=2744&l=2"
+  },
+  {
+    "id": "distillerie-guy", "name": "Distillerie Guy", "place": "Pontarlier", "country": "France", "coordinates": [6.36, 46.9], "categoryId": "flavoured", "subcategory": "Absinthe", "descriptor": "Historic Pontarlier absinthe distillery", "note": "Connect locally grown grande absinthe, green anise and traditional distillation with the protected Absinthe de Pontarlier indication.", "tags": ["wormwood", "anise", "herbal"], "precision": "approximate", "sourceLabel": "Official Distillerie Guy absinthe page", "sourceUrl": "https://distillerie-guy.fr/content/16-absinthes"
+  },
+  {
+    "id": "combier-absinthe", "name": "Distillerie Combier", "place": "Saumur, Loire Valley", "country": "France", "coordinates": [-0.08, 47.26], "categoryId": "flavoured", "subcategory": "Absinthe", "descriptor": "Historic-still French absinthe distillery", "note": "Compare Jade and Blanchette absinthes distilled in 19th-century copper stills with Pontarlier’s geographically protected local tradition.", "tags": ["wormwood", "anise", "fennel"], "precision": "approximate", "sourceLabel": "Official Combier absinthe page", "sourceUrl": "https://www.combier.fr/produit/absinthe-jade-nouvelle-orleans/"
   }
 ]

@@ -23,6 +23,43 @@ import {
   locations,
 } from "./data";
 
+const bottleSpritePosition: Record<string, [number, number]> = {
+  whisky: [0, 0],
+  brandy: [33.333, 0],
+  rum: [66.667, 0],
+  agave: [100, 0],
+  gin: [0, 100],
+  vodka: [33.333, 100],
+  asian: [66.667, 100],
+  flavoured: [100, 100],
+};
+
+function BottlePortrait({
+  categoryId,
+  name,
+  compact = false,
+}: {
+  categoryId: string;
+  name: string;
+  compact?: boolean;
+}) {
+  const [x, y] = bottleSpritePosition[categoryId] ?? bottleSpritePosition.whisky;
+
+  return (
+    <span
+      className={`bottle-image ${compact ? "bottle-image-compact" : ""}`}
+      role="img"
+      aria-label={`Representative bottle portrait for ${name}`}
+      style={
+        {
+          "--bottle-x": `${x}%`,
+          "--bottle-y": `${y}%`,
+        } as React.CSSProperties
+      }
+    />
+  );
+}
+
 function featureCollection(
   categoryId: string,
   query: string,
@@ -547,11 +584,15 @@ export function SpiritExplorer() {
                   className={selectedId === location.id ? "selected" : ""}
                   onClick={() => chooseLocation(location.id)}
                 >
-                  <span
-                    className="list-marker"
-                    style={{ backgroundColor: category.color }}
-                  >
-                    {category.short}
+                  <span className="list-bottle">
+                    <BottlePortrait
+                      categoryId={location.categoryId}
+                      name={location.name}
+                      compact
+                    />
+                    <i style={{ backgroundColor: category.color }}>
+                      {category.short}
+                    </i>
                   </span>
                   <span>
                     <strong>{location.name}</strong>
@@ -598,6 +639,20 @@ export function SpiritExplorer() {
                 {selectedLocation.precision === "approximate" && (
                   <p className="precision-note">Approximate regional marker</p>
                 )}
+                <figure className="drawer-bottle">
+                  <BottlePortrait
+                    categoryId={selectedLocation.categoryId}
+                    name={selectedLocation.name}
+                  />
+                  <figcaption>
+                    <span>Bottle portrait</span>
+                    <strong>{selectedLocation.name}</strong>
+                    <small>
+                      A representative {selectedLocation.subcategory.toLowerCase()} bottle,
+                      created for the atlas.
+                    </small>
+                  </figcaption>
+                </figure>
                 <div className="taste-tags">
                   {selectedLocation.tags.map((tag) => (
                     <span key={tag}>{tag}</span>

@@ -18,16 +18,19 @@ const categories = [
 
 const categoryNames = new Map(categories);
 const requiredSubtypes = new Map([
-  ["whisky", ["Scotch whisky", "Bourbon", "Rye whiskey", "Tennessee whiskey", "Irish whiskey", "Canadian whisky", "Japanese whisky"]],
-  ["brandy", ["Cognac", "Armagnac", "Brandy de Jerez", "Pisco", "Grappa", "Calvados", "Fruit eaux-de-vie"]],
-  ["rum", ["Molasses-based rum", "Cane-juice rum", "Rhum agricole", "Jamaican rum", "Cuban-style rum", "Cachaça"]],
-  ["agave", ["Tequila", "Mezcal", "Bacanora", "Raicilla", "Sotol"]],
-  ["gin", ["London Dry Gin", "Distilled gin", "Contemporary gin", "Old Tom gin", "Genever"]],
-  ["vodka", ["Neutral vodka", "Characterful vodka", "Flavored vodka", "Infused vodka"]],
-  ["asian", ["Strong-aroma baijiu", "Sauce-aroma baijiu", "Light-aroma baijiu", "Rice-aroma baijiu", "Honkaku shōchū", "Awamori", "Diluted soju", "Distilled soju"]],
-  ["flavoured", ["Liqueurs", "Amari", "Aniseed spirits", "Aquavit", "Cocktail bitters", "Flavored vodka", "Infused vodka"]],
+  ["whisky", ["Scotch whisky", "Bourbon", "Rye whiskey", "Tennessee whiskey", "Irish whiskey", "Canadian whisky", "Japanese whisky", "Taiwanese single malt whisky", "Indian single malt whisky"]],
+  ["brandy", ["Cognac", "Armagnac", "Brandy de Jerez", "Pisco", "Grappa", "Calvados", "Fruit eaux-de-vie", "Singani", "South African pot-still brandy"]],
+  ["rum", ["Molasses-based rum", "Cane-juice rum", "Rhum agricole", "Jamaican rum", "Cuban-style rum", "Cachaça", "Clairin"]],
+  ["agave", ["Tequila", "Mezcal", "Ancestral mezcal", "Bacanora", "Raicilla", "Sotol"]],
+  ["gin", ["London Dry Gin", "Distilled gin", "Contemporary gin", "Old Tom gin", "Genever", "Barrel-aged gin"]],
+  ["vodka", ["Neutral vodka", "Characterful vodka", "Flavored vodka", "Infused vodka", "Potato vodka"]],
+  ["asian", ["Strong-aroma baijiu", "Sauce-aroma baijiu", "Light-aroma baijiu", "Rice-aroma baijiu", "Honkaku shōchū", "Awamori", "Diluted soju", "Distilled soju", "Kaoliang"]],
+  ["flavoured", ["Liqueurs", "Amari", "Aniseed spirits", "Aquavit", "Cocktail bitters", "Flavored vodka", "Infused vodka", "Absinthe"]],
 ]);
 const minimumSubtypeCoverage = 2;
+const minimumSubtypeCoverageOverrides = new Map([
+  ["whisky:Scotch whisky", 24],
+]);
 const requiredTextFields = [
   "id",
   "name",
@@ -93,9 +96,10 @@ function validate(distilleries, profiles) {
       const count = distilleries.filter(
         (item) => item.categoryId === categoryId && item.subcategory === subtype,
       ).length;
-      if (count < minimumSubtypeCoverage) {
+      const requiredCount = minimumSubtypeCoverageOverrides.get(`${categoryId}:${subtype}`) ?? minimumSubtypeCoverage;
+      if (count < requiredCount) {
         throw new Error(
-          `${categoryNames.get(categoryId)} / ${subtype} needs at least ${minimumSubtypeCoverage} records; found ${count}.`,
+          `${categoryNames.get(categoryId)} / ${subtype} needs at least ${requiredCount} records; found ${count}.`,
         );
       }
     }
@@ -134,7 +138,7 @@ function render(distilleries) {
     "",
     "## Core subtype coverage",
     "",
-    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery landmarks. Additional regional styles remain in the inventory where they add useful context.`,
+    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery landmarks; Scotch whisky has a dedicated minimum of 24. Additional regional styles remain in the inventory where they add useful context.`,
     "",
     "| Family | Subtype | Markers |",
     "| --- | --- | ---: |",
