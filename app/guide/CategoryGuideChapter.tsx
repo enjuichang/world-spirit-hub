@@ -11,11 +11,14 @@ import {
   Sparkles,
   Tag,
 } from "lucide-react";
-import type { SpiritCategory } from "../data";
+import { locations, type SpiritCategory } from "../data";
 import type { CategoryGuide } from "../guideData";
+import { CategoryDistilleryAtlas } from "./CategoryDistilleryAtlas";
+import { CategoryProgression } from "./CategoryProgression";
 import { RegionMap } from "./RegionMap";
 import { SubtypeComparison } from "./SubtypeComparison";
 import { SubtypeDeepDive } from "./SubtypeDeepDive";
+import { categoryProgressions } from "./categoryProgressions";
 import { getSubtypeTargetId } from "./subtypeDeepDives";
 
 type CategoryGuideChapterProps = {
@@ -28,6 +31,8 @@ type CategoryGuideChapterProps = {
 
 export function CategoryGuideChapter({ category, guide, index, previous, next }: CategoryGuideChapterProps) {
   const mappedLabels = guide.labelTerms.flatMap((term) => term.region ? [term.region] : []);
+  const categoryLocations = locations.filter((location) => location.categoryId === category.id);
+  const progression = categoryProgressions[category.id] ?? [];
 
   return (
     <>
@@ -102,7 +107,9 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
             </section>
 
             <SubtypeDeepDive categoryId={category.id} subtypes={guide.subtypes} />
+            {!!progression.length && <CategoryProgression categoryName={category.name} steps={progression} />}
             <div id="compare"><SubtypeComparison categoryId={category.id} categoryName={category.name} subtypes={guide.subtypes} /></div>
+            <CategoryDistilleryAtlas categoryName={category.name} locations={categoryLocations} />
           </div>
 
           <aside className="guide-aside">
@@ -113,7 +120,9 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
                 <ChapterLink href="#branding-terms">Common bottle terms</ChapterLink>
                 <ChapterLink href="#regional-labels">Regional label names</ChapterLink>
                 <ChapterLink href="#styles">Subtype field cards</ChapterLink>
+                <ChapterLink href="#learning-path">Intro to advanced</ChapterLink>
                 <ChapterLink href="#compare">Compare styles</ChapterLink>
+                <ChapterLink href="#distilleries">Distillery map</ChapterLink>
               </ul>
             </div>
             <div>

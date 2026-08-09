@@ -2884,6 +2884,355 @@ button {
   font-weight: 750;
 }
 
+.category-progression,
+.category-distillery-atlas {
+  margin-top: 64px;
+  scroll-margin-top: 92px;
+}
+
+.progression-intro,
+.distillery-atlas-intro {
+  max-width: 760px;
+  margin: -7px 0 20px 50px;
+  color: var(--text-muted);
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.progression-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 0;
+  margin: 26px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--border-soft);
+  border-left: 1px solid var(--border-soft);
+}
+
+.progression-track > li {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 315px;
+  flex-direction: column;
+  padding: 20px;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--category) 8%, var(--surface)), var(--surface) 48%);
+  border-right: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.progression-track > li > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.progression-track > li > header span {
+  color: var(--category);
+  font-family: var(--font-display);
+  font-size: 14px;
+}
+
+.progression-track > li > header small {
+  color: var(--category);
+  font-size: 7px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.progression-track h4 {
+  margin: 34px 0 0;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.progression-serve {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin-top: 13px;
+  color: var(--category);
+  font-size: 7px;
+  line-height: 1.45;
+}
+
+.progression-serve svg {
+  flex: 0 0 auto;
+}
+
+.progression-track p {
+  margin: 15px 0 0;
+  color: var(--text-muted);
+  font-size: 8px;
+  line-height: 1.65;
+}
+
+.progression-track footer {
+  padding-top: 13px;
+  margin-top: auto;
+  color: var(--text);
+  border-top: 1px solid var(--border-soft);
+  font-size: 7px;
+  line-height: 1.5;
+}
+
+.progression-track footer span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--category);
+  font-size: 6px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.progression-track > li > svg {
+  position: absolute;
+  top: 49%;
+  right: -10px;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  padding: 4px;
+  color: #17120d;
+  background: var(--category);
+  border-radius: 50%;
+}
+
+.category-distillery-atlas {
+  padding-top: 34px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.distillery-filter {
+  display: flex;
+  gap: 7px;
+  padding-bottom: 10px;
+  margin-top: 28px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.distillery-filter button {
+  display: flex;
+  gap: 8px;
+  min-height: 34px;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 0 11px;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 7px;
+  font-weight: 750;
+}
+
+.distillery-filter button span {
+  display: grid;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  color: var(--text);
+  background: rgb(255 255 255 / 6%);
+  border-radius: 999px;
+  font-size: 6px;
+  place-items: center;
+}
+
+.distillery-filter button.active {
+  color: #17120d;
+  background: var(--category);
+  border-color: var(--category);
+}
+
+.distillery-filter button.active span {
+  color: #17120d;
+  background: rgb(23 18 13 / 13%);
+}
+
+.distillery-atlas-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(230px, 0.7fr);
+  min-height: 480px;
+  margin-top: 2px;
+  background: #0b0b0a;
+  border: 1px solid var(--border-soft);
+  border-radius: 5px;
+}
+
+.distillery-world-map {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  background: #0e0e0d;
+  border-right: 1px solid var(--border-soft);
+}
+
+.distillery-map-grid,
+.distillery-map-land {
+  position: absolute;
+  inset: 0;
+}
+
+.distillery-map-grid {
+  background-image:
+    linear-gradient(rgb(212 169 95 / 8%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(212 169 95 / 8%) 1px, transparent 1px);
+  background-size: 12.5% 25%;
+}
+
+.distillery-map-land {
+  background: center / 100% 100% no-repeat url("/world-equirectangular.svg");
+  opacity: 0.78;
+}
+
+.distillery-world-map > button {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  place-items: center;
+}
+
+.distillery-world-map > button > span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--category);
+  border: 1px solid #fff1d7;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--category) 15%, transparent);
+  transition: width 140ms ease, height 140ms ease, box-shadow 140ms ease;
+}
+
+.distillery-world-map > button:hover,
+.distillery-world-map > button:focus-visible {
+  z-index: 5;
+}
+
+.distillery-world-map > button:hover > span,
+.distillery-world-map > button:focus-visible > span,
+.distillery-world-map > button.active > span {
+  width: 11px;
+  height: 11px;
+  background: #fff1d7;
+  border: 3px solid var(--category);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--category) 22%, transparent), 0 0 18px var(--category);
+}
+
+.distillery-map-count {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 9px 11px;
+  background: rgb(11 11 10 / 88%);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  backdrop-filter: blur(7px);
+}
+
+.distillery-map-count strong {
+  color: var(--category);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.distillery-map-count span {
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.distillery-map-detail {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(22px, 3vw, 34px);
+  background: linear-gradient(155deg, color-mix(in srgb, var(--category) 10%, var(--surface)), var(--surface) 48%);
+}
+
+.distillery-map-detail > div {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  color: var(--category);
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.distillery-map-detail h4 {
+  margin: 27px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(25px, 3vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+}
+
+.distillery-map-detail > strong {
+  margin-top: 13px;
+  color: var(--category);
+  font-size: 8px;
+  line-height: 1.45;
+}
+
+.distillery-map-detail p {
+  margin: 17px 0 0;
+  color: var(--text-muted);
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.distillery-map-detail ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 17px 0 0;
+  margin: 18px 0 0;
+  border-top: 1px solid var(--border-soft);
+  list-style: none;
+}
+
+.distillery-map-detail li {
+  padding: 5px 7px;
+  color: var(--text-muted);
+  background: rgb(255 255 255 / 4%);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  font-size: 6px;
+  text-transform: uppercase;
+}
+
+.distillery-map-detail a {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: auto;
+  color: var(--category);
+  font-size: 8px;
+  font-weight: 800;
+}
+
 .subtype-comparison {
   --comparison-axis-width: clamp(148px, 17%, 178px);
   margin-top: 64px;
@@ -4219,6 +4568,24 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .progression-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .distillery-atlas-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .distillery-world-map {
+    min-height: 430px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .distillery-map-detail {
+    min-height: 330px;
+  }
+
   .subregion-layout .region-map {
     position: static;
     min-height: 400px;
@@ -4487,6 +4854,31 @@ button {
   .zone-list,
   .deep-style-grid {
     grid-template-columns: 1fr;
+  }
+
+  .progression-intro,
+  .distillery-atlas-intro {
+    margin-left: 0;
+  }
+
+  .progression-track {
+    grid-template-columns: 1fr;
+  }
+
+  .progression-track > li {
+    min-height: 270px;
+  }
+
+  .progression-track > li > svg {
+    top: auto;
+    right: auto;
+    bottom: -10px;
+    left: 22px;
+    transform: rotate(90deg);
+  }
+
+  .distillery-world-map {
+    min-height: 310px;
   }
 
   .zone-list article {

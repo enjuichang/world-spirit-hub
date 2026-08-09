@@ -64,6 +64,10 @@ test("renders the educational guide", async () => {
   assert.match(whiskyHtml, /Regional names found on labels/);
   assert.match(whiskyHtml, /Subtype field cards/);
   assert.match(whiskyHtml, /Regional vector atlas/);
+  assert.match(whiskyHtml, /From introductory to advanced/);
+  assert.match(whiskyHtml, /Blended Irish whiskey/);
+  assert.match(whiskyHtml, /Distillery map/);
+  assert.match(whiskyHtml, /90(?:<!-- -->)? documented production sites/);
 
   const brandyHtml = await brandyResponse.text();
   assert.match(brandyHtml, /More than 98% of Cognac vineyards/);
@@ -71,6 +75,8 @@ test("renders the educational guide", async () => {
   assert.match(brandyHtml, /Colombard/);
   assert.match(brandyHtml, /Borderies/);
   assert.match(brandyHtml, /Country focus · France/);
+  assert.match(brandyHtml, /VS Cognac/);
+  assert.match(brandyHtml, /18(?:<!-- -->)? documented production sites/);
 });
 
 test("renders the taste profile and credentialed bar experiences", async () => {
