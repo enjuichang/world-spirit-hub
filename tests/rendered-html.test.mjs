@@ -49,7 +49,7 @@ test("renders the educational guide", async () => {
   assert.match(html, /Production infographic/);
   assert.match(html, /Regional names found on labels/);
   assert.match(html, /Subtype field cards/);
-  assert.match(html, /Vector production overlay/);
+  assert.match(html, /Regional production atlas/);
 });
 
 test("renders the taste profile and credentialed bar experiences", async () => {

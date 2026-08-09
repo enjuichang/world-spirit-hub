@@ -1,43 +1,173 @@
+"use client";
+
+import type { CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
+import mapboxgl, { LngLatBounds, Map as MapboxMap } from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 import type { MapRegion } from "../guideData";
 
 function project([longitude, latitude]: [number, number]) {
   return {
-    x: ((longitude + 180) / 360) * 360,
-    y: ((90 - latitude) / 180) * 168,
+    x: ((longitude + 180) / 360) * 100,
+    y: ((90 - latitude) / 180) * 100,
   };
 }
 
-export function RegionMap({ regions, label, compact = false }: { regions: MapRegion[]; label: string; compact?: boolean }) {
-  const id = label.replace(/\W/g, "-");
+function regionCollection(regions: MapRegion[]): GeoJSON.FeatureCollection<GeoJSON.Point> {
+  return {
+    type: "FeatureCollection",
+    features: regions.map((region, index) => ({
+      type: "Feature",
+      geometry: { type: "Point", coordinates: region.point },
+      properties: {
+        index: index + 1,
+        name: region.name,
+        protected: region.kind === "protected" ? 1 : 0,
+      },
+    })),
+  };
+}
+
+export function RegionMap({
+  regions,
+  label,
+  compact = false,
+}: {
+  regions: MapRegion[];
+  label: string;
+  compact?: boolean;
+}) {
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<MapboxMap | null>(null);
+  const [mapReady, setMapReady] = useState(false);
+
+  useEffect(() => {
+    if (compact || !wrapperRef.current || mapRef.current) return;
+    const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+    if (!mapboxToken) return;
+
+    const wrapper = wrapperRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || !mapContainerRef.current || mapRef.current) return;
+        observer.disconnect();
+
+        mapboxgl.accessToken = mapboxToken;
+        const map = new mapboxgl.Map({
+          container: mapContainerRef.current,
+          style: "mapbox://styles/mapbox/dark-v11",
+          center: [0, 24],
+          zoom: -0.25,
+          minZoom: -1,
+          maxZoom: 8,
+          attributionControl: false,
+          cooperativeGestures: true,
+        });
+        mapRef.current = map;
+        map.setProjection({ name: "mercator" });
+        map.scrollZoom.disable();
+        map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-right");
+        map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
+
+        map.on("load", () => {
+          map.addSource("production-regions", {
+            type: "geojson",
+            data: regionCollection(regions),
+          });
+          map.addLayer({
+            id: "production-halo",
+            type: "circle",
+            source: "production-regions",
+            paint: {
+              "circle-color": "#e2bc78",
+              "circle-radius": 14,
+              "circle-blur": 0.75,
+              "circle-opacity": 0.65,
+            },
+          });
+          map.addLayer({
+            id: "production-points",
+            type: "circle",
+            source: "production-regions",
+            paint: {
+              "circle-color": ["case", ["==", ["get", "protected"], 1], "#f4c978", "#d9a85b"],
+              "circle-radius": 9,
+              "circle-stroke-color": "#fff4df",
+              "circle-stroke-width": 2,
+            },
+          });
+          map.addLayer({
+            id: "production-index",
+            type: "symbol",
+            source: "production-regions",
+            layout: {
+              "text-field": ["to-string", ["get", "index"]],
+              "text-size": 10,
+              "text-font": ["Open Sans Bold"],
+              "text-allow-overlap": true,
+            },
+            paint: { "text-color": "#17120d" },
+          });
+
+          if (regions.length > 1) {
+            const bounds = new LngLatBounds();
+            regions.forEach((region) => bounds.extend(region.point));
+            map.fitBounds(bounds, { padding: 65, maxZoom: 4.2, duration: 0 });
+          } else {
+            map.jumpTo({ center: regions[0].point, zoom: 3.2 });
+          }
+          setMapReady(true);
+        });
+      },
+      { rootMargin: "240px 0px" },
+    );
+    observer.observe(wrapper);
+
+    return () => {
+      observer.disconnect();
+      mapRef.current?.remove();
+      mapRef.current = null;
+    };
+  }, [compact, regions]);
+
   return (
     <figure className={`region-map${compact ? " compact" : ""}`}>
-      <svg viewBox="0 0 360 168" role="img" aria-label={`${label}: ${regions.map((region) => region.name).join(", ")}`}>
-        <defs>
-          <pattern id={`grid-${id}`} width="30" height="28" patternUnits="userSpaceOnUse">
-            <path d="M30 0H0V28" fill="none" stroke="currentColor" strokeOpacity=".12" strokeWidth=".6" />
-          </pattern>
-          <filter id={`glow-${id}`} x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3" /></filter>
-        </defs>
-        <rect className="map-grid" width="360" height="168" rx="4" fill={`url(#grid-${id})`} />
-        <g className="world-shape" aria-hidden="true">
-          <path d="M18 42 31 24 57 18 78 26 94 24 106 34 96 46 78 48 67 60 52 61 45 72 31 66 25 52Z" />
-          <path d="m78 75 18 8 11 19-7 16-7 27-11 15-8-22-11-22 5-22Z" />
-          <path d="m151 36 18-12 28 4 11 9 22-8 33 7 23-5 33 13 23 16-11 12-29-3-17 9-18-4-22 12-18-5-13 7-8 19-16 8-9-20-13-10-6-22-17-9Z" />
-          <path d="m171 80 19-3 18 11 6 20-13 31-16 20-12-26-13-20 6-17Z" />
-          <path d="m292 116 19-8 25 9 7 16-12 15-27-2-15-14Z" />
-          <path d="m325 62 8-5 7 7-5 9-8-3Z" />
-        </g>
+      <div
+        className={`map-canvas${mapReady ? " mapbox-ready" : ""}`}
+        ref={wrapperRef}
+        role="img"
+        aria-label={`${label}: ${regions.map((region) => region.name).join(", ")}`}
+      >
+        <div className="map-graticule" aria-hidden="true" />
+        <div className="map-land" aria-hidden="true" />
         {regions.map((region, index) => {
           const point = project(region.point);
           return (
-            <g className={`map-point ${region.kind ?? "traditional"}`} key={`${region.name}-${index}`}>
-              <circle className="map-pulse" cx={point.x} cy={point.y} r={compact ? 7 : 9} filter={`url(#glow-${id})`} />
-              <circle cx={point.x} cy={point.y} r={compact ? 3 : 4} />
-            </g>
+            <span
+              aria-hidden="true"
+              className={`map-marker ${region.kind ?? "traditional"}`}
+              key={`${region.name}-${index}`}
+              style={{ "--map-x": `${point.x}%`, "--map-y": `${point.y}%` } as CSSProperties}
+            >
+              <i>{index + 1}</i>
+            </span>
           );
         })}
-      </svg>
-      <figcaption><span>Vector production overlay</span><strong>{regions.map((region) => region.name).join(" · ")}</strong></figcaption>
+        {!compact && <div className="mapbox-region-layer" ref={mapContainerRef} aria-hidden={!mapReady} />}
+      </div>
+      <figcaption>
+        <span>{compact ? "Production area" : mapReady ? "Interactive Mapbox atlas" : "Regional production atlas"}</span>
+        <ol>
+          {regions.map((region, index) => (
+            <li key={`${region.name}-legend-${index}`}>
+              <b>{index + 1}</b>
+              <strong>{region.name}</strong>
+              {!compact && <small>{region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>}
+            </li>
+          ))}
+        </ol>
+      </figcaption>
     </figure>
   );
 }

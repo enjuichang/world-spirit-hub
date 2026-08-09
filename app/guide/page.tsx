@@ -66,7 +66,7 @@ export default function GuidePage() {
                     <GuideTitle icon={<Sparkles />} kicker={`${guide.subtypes.length} styles decoded`} id={`${category.id}-subtypes`}>Subtype field cards</GuideTitle>
                     <div className="subtype-card-grid">
                       {guide.subtypes.map((subtype) => (
-                        <article className="subtype-card" key={subtype.name}>
+                        <article className="subtype-card" id={getSubtypeId(category.id, subtype.name)} key={subtype.name}>
                           <header><h4>{subtype.name}</h4><span className={`law-status ${subtype.lawStatus.toLowerCase().replaceAll(" ", "-")}`}>{subtype.lawStatus}</span></header>
                           <SubtypeFact icon={<Scale />} title="The law">{subtype.law}</SubtypeFact>
                           <SubtypeFact icon={<Sparkles />} title="Signature style">{subtype.style}</SubtypeFact>
@@ -80,7 +80,19 @@ export default function GuidePage() {
                 </div>
 
                 <aside className="guide-aside">
-                  <div><h3>In this chapter</h3><ul>{guide.subtypes.map((subtype) => <li key={subtype.name}>{subtype.name}</li>)}</ul></div>
+                  <div>
+                    <h3>In this chapter</h3>
+                    <ul className="chapter-links">
+                      {guide.subtypes.map((subtype) => (
+                        <li key={subtype.name}>
+                          <a href={`#${getSubtypeId(category.id, subtype.name)}`}>
+                            <span>{subtype.name}</span>
+                            <ArrowRight size={13} aria-hidden="true" />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                   <div><h3>How to read the cards</h3><p className="aside-note">“Protected origin” ties a name to place. “Defined style” sets production rules without necessarily defining one place. “Traditional term” is recognized usage; “broad style” is a useful description, not one universal law.</p></div>
                   <a className="source-link" href={category.sourceUrl} target="_blank" rel="noreferrer"><BookOpen size={15} /> Primary study reference <ArrowUpRight size={14} /></a>
                 </aside>
@@ -105,4 +117,15 @@ function GuideTitle({ icon, kicker, id, children }: { icon: React.ReactNode; kic
 
 function SubtypeFact({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) {
   return <div className="subtype-fact">{icon}<div><strong>{title}</strong><p>{children}</p></div></div>;
+}
+
+function getSubtypeId(categoryId: string, subtypeName: string) {
+  const slug = subtypeName
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+  return `${categoryId}-${slug}`;
 }

@@ -39,7 +39,7 @@ export function SubtypeComparison({ categoryId, categoryName, subtypes }: Subtyp
           <p className="guide-label">Side-by-side method</p>
           <h3 id={`${id}-title`}>Compare {displayCategoryName} styles</h3>
         </div>
-        <p>Select any two subtypes. Every pair is read through the same five lenses.</p>
+        <p>Pick two subtypes and scan the five differences that matter most.</p>
       </div>
 
       <div className="comparison-selectors">
@@ -59,6 +59,11 @@ export function SubtypeComparison({ categoryId, categoryName, subtypes }: Subtyp
       </div>
 
       <div className="comparison-identities" aria-hidden="true">
+        <div className="comparison-axis-heading">
+          <span>Compare by</span>
+          <strong>Five shared lenses</strong>
+          <small>Aligned row by row</small>
+        </div>
         {[left, right].map((subtype) => (
           <div key={subtype.name}>
             <span>{subtype.lawStatus}</span>
@@ -72,11 +77,24 @@ export function SubtypeComparison({ categoryId, categoryName, subtypes }: Subtyp
         {rows.map((row) => (
           <div className="comparison-row" role="row" key={row.key}>
             <div className="comparison-axis" role="rowheader"><span>{row.number}</span>{row.label}</div>
-            <p role="cell">{row.left}</p>
-            <p role="cell">{row.right}</p>
+            <p role="cell" title={row.left}>{toComparisonPhrase(row.left)}</p>
+            <p role="cell" title={row.right}>{toComparisonPhrase(row.right)}</p>
           </div>
         ))}
       </div>
     </section>
   );
+}
+
+function toComparisonPhrase(value: string) {
+  const firstSentence = value.match(/^.*?[.!?](?:\s|$)/)?.[0].trim() ?? value.trim();
+  const firstClause = firstSentence.split(/[;—]/, 1)[0].trim();
+
+  if (firstClause.length <= 92) return firstClause;
+
+  const commaBreak = firstClause.slice(0, 93).lastIndexOf(",");
+  if (commaBreak >= 42) return `${firstClause.slice(0, commaBreak).trim()}.`;
+
+  const wordBreak = firstClause.slice(0, 90).lastIndexOf(" ");
+  return `${firstClause.slice(0, wordBreak).trim()}…`;
 }
