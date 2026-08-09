@@ -22,25 +22,6 @@ import {
   locations,
 } from "./data";
 
-const fallbackMapStyle: mapboxgl.StyleSpecification = {
-  version: 8,
-  glyphs: "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
-  sources: {
-    carto: {
-      type: "raster",
-      tiles: [
-        "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-        "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-        "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-      ],
-      tileSize: 256,
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    },
-  },
-  layers: [{ id: "carto-dark", type: "raster", source: "carto" }],
-};
-
 function featureCollection(
   categoryId: string,
   query: string,
@@ -128,11 +109,16 @@ export function SpiritExplorer() {
 
     try {
       const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
-      if (mapboxToken) mapboxgl.accessToken = mapboxToken;
+      if (!mapboxToken) {
+        queueMicrotask(() => setMapFailed(true));
+        return;
+      }
+
+      mapboxgl.accessToken = mapboxToken;
 
       const map = new mapboxgl.Map({
         container: mapContainer.current,
-        style: mapboxToken ? "mapbox://styles/mapbox/dark-v11" : fallbackMapStyle,
+        style: "mapbox://styles/mapbox/dark-v11",
         center: [9, 24],
         zoom: 1.25,
         minZoom: 1,

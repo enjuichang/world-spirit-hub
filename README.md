@@ -15,13 +15,14 @@ Open the local URL printed by the development server.
 
 ## Map configuration
 
-The atlas uses Mapbox GL JS. It can run locally with the included token-free dark raster fallback. To use Mapbox’s customizable Dark style, copy `.env.example` to `.env.local` and add a public URL-restricted token:
+The atlas uses Mapbox GL JS with a customized Dark style. Copy `.env.example` to `.env.local` and add a public URL-restricted token:
 
 ```bash
 NEXT_PUBLIC_MAPBOX_TOKEN=your_public_token
 ```
 
 Never put a secret Mapbox token in a `NEXT_PUBLIC_*` variable.
+If the token is absent or Mapbox cannot load, the accessible location list remains available.
 
 ## Commands
 
@@ -42,4 +43,3 @@ Never put a secret Mapbox token in a `NEXT_PUBLIC_*` variable.
 ## Editorial caveat
 
 This is an independent educational project and is not affiliated with WSET or any award body. Map markers labeled approximate are regional learning landmarks rather than turn-by-turn visitor directions. Bar credentials show their source year and should be verified before travel.
-

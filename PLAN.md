@@ -451,7 +451,7 @@ focalPoint: { x: 0.55, y: 0.42 }
 - **Framework:** Vinext/Next-compatible React with strict TypeScript and Cloudflare-compatible output.
 - **Interactive UI:** React client components for the coordinated explorer, taste quiz, and location-based bar sorting; keep editorial pages server-rendered with minimal JavaScript.
 - **Styling:** Tailwind CSS v4 plus global CSS custom properties for the approved design tokens and focused component styles.
-- **Map:** Mapbox GL JS with a configurable Mapbox Dark style and a token-free dark raster fallback for local previews.
+- **Map:** Mapbox GL JS with a customized Mapbox Dark style, a public URL-restricted browser token, and an accessible list fallback when the map is unavailable.
 - **Basemap:** a licensed hosted tile provider with clear attribution; do not expose a secret server key in the client.
 - **Data validation:** typed content modules initially, followed by Zod schemas and a custom cross-reference validation pass as the editorial dataset moves into files.
 - **Search:** a compact client-side entity index for instant search inside the explorer; add generated site-wide search when the static page collection expands.
