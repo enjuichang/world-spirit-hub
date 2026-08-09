@@ -530,6 +530,14 @@ button {
     #101515;
 }
 
+/* Mapbox's `.mapboxgl-map` rule is loaded with the client component and sets
+   position: relative. Keep the map pinned to the full atlas stage. */
+.map-pane > .map-canvas.mapboxgl-map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 .map-canvas::after {
   position: absolute;
   inset: 0;
