@@ -146,7 +146,7 @@ Every educational subtype has at least 2 matching distillery landmarks. Addition
 | Hacienda Patrón | Atotonilco el Alto, Jalisco | Mexico | Tequila | approximate | [Visit](https://www.patrontequila.com/es-mx/faqs/fun-facts/what-is-the-hacienda-patron.html) | `hacienda-patron` |
 | Kilinga Bacanora | Álamos, Sonora | Mexico | Bacanora | approximate | [Visit](https://kilingabacanora.com/) | `kilinga-bacanora` |
 | San Luis del Río Palenque | San Luis del Río, Oaxaca | Mexico | Mezcal | approximate | [Visit](https://delmaguey.com/) | `del-maguey-san-luis` |
-| Santo Cuviso Bacanora | Ures, Sonora | Mexico | Bacanora | approximate | [Visit](https://santocuviso.com/) | `santo-cuviso` |
+| Santo Cuviso Bacanora | Quiriego, Sonora | Mexico | Bacanora | approximate | [Visit](https://santocuviso.com/) | `santo-cuviso` |
 | Sotol landmark | Aldama, Chihuahua | Mexico | Sotol | approximate | [Visit](https://sotol.com/) | `casa-lotos` |
 | Tequila Fortaleza | Tequila, Jalisco | Mexico | Tequila | approximate | [Visit](https://tequilafortaleza.com/) | `la-fortaleza` |
 | Desert Door Distillery | Driftwood, Texas | United States | Texas sotol-style spirit | approximate | [Visit](https://www.desertdoor.com/the-distillery) | `desert-door` |
@@ -186,7 +186,7 @@ Every educational subtype has at least 2 matching distillery landmarks. Addition
 | Distillery / landmark | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
 | Beijing Red Star Distillery | Beijing | China | Light-aroma baijiu | approximate | [Visit](https://english.visitbeijing.com.cn/article/4FFLD6UgNM3) | `red-star-erguotou` |
-| Guilin Sanhua Distillery | Guilin, Guangxi | China | Rice-aroma baijiu | approximate | [Visit](https://www.glsanhua.com/) | `guilin-sanhua` |
+| Guilin Sanhua Distillery | Guilin, Guangxi | China | Rice-aroma baijiu | approximate | [Visit](https://wsjkw.gxzf.gov.cn/spaqyyyzs_49672/spaqqybz/spaqqybzcx/t26080433.shtml) | `guilin-sanhua` |
 | Kweichow Moutai | Maotai, Guizhou | China | Sauce-aroma baijiu | approximate | [Visit](https://www.moutai.com.cn/) | `moutai` |
 | Langjiu Distillery | Erlang, Sichuan | China | Sauce-aroma baijiu | approximate | [Visit](https://www.langjiu.cn/) | `langjiu` |
 | Luzhou Laojiao | Luzhou, Sichuan | China | Strong-aroma baijiu | approximate | [Visit](https://www.lzlj.com/) | `luzhou-laojiao` |
@@ -200,7 +200,7 @@ Every educational subtype has at least 2 matching distillery landmarks. Addition
 | Andong Soju Distillery | Andong, North Gyeongsang | South Korea | Distilled soju | approximate | [Visit](https://www.andongsoju.com/) | `andong-soju` |
 | HiteJinro Icheon Factory | Icheon, Gyeonggi-do | South Korea | Diluted soju | approximate | [Visit](https://www.hitejinro.com/company/global.asp) | `hitejinro-icheon` |
 | Hwayo Distillery | Yeoju, Gyeonggi-do | South Korea | Distilled soju | approximate | [Visit](https://hwayo.com/manufacturing-process-2-2/) | `hwayo` |
-| Lotte Liquor Gangneung Factory | Gangneung, Gangwon-do | South Korea | Diluted soju | approximate | [Visit](https://company.lottechilsung.co.kr/eng/) | `lotte-gangneung` |
+| Lotte Liquor Gangneung Factory | Gangneung, Gangwon-do | South Korea | Diluted soju | approximate | [Visit](https://company.lottechilsung.co.kr/eng/company/liquor/contentsid/693/index.do) | `lotte-gangneung` |
 | Vinn Distillery | Wilsonville, Oregon | United States | Rice-aroma baijiu | approximate | [Visit](https://www.vinndistillery.com/) | `vinn-baijiu` |
 
 ## Flavored spirits & liqueurs (17)
