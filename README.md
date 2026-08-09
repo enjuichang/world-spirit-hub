@@ -28,12 +28,30 @@ If the token is absent or Mapbox cannot load, the accessible location list remai
 
 - `npm run dev` — start the development site.
 - `npm run build` — produce the Cloudflare-compatible deployment build.
+- `npm run data:sync` — validate the canonical distillery JSON and regenerate the Markdown inventory.
+- `npm run data:check` — verify the JSON and confirm the generated inventory is current.
 - `npm test` — build and verify the main rendered routes.
 - `npm run lint` — run code-quality checks.
 
+## Managing distilleries
+
+[`data/distilleries.json`](data/distilleries.json) is the canonical inventory and is imported directly by the website. [`DISTILLERIES.md`](DISTILLERIES.md) is its generated, human-readable index, grouped by spirit family with official links and stable record IDs.
+
+To add or update a distillery:
+
+1. Edit `data/distilleries.json`; do not edit `DISTILLERIES.md` by hand.
+2. Keep every `id` unique and stable, enter coordinates as `[longitude, latitude]`, and use an official HTTPS source.
+3. Mark regional or non-entrance coordinates as `"precision": "approximate"`.
+4. Run `npm run data:sync`, then `npm test`.
+
+The generator validates required fields, category IDs, coordinates, tags, source URLs, and duplicate IDs. The test workflow runs `data:check`, so a stale Markdown inventory fails before deployment.
+
 ## Main project surfaces
 
-- `app/data.ts` — curated spirit categories, sourced distillery landmarks, and credentialed-bar sample.
+- `data/distilleries.json` — canonical, website-driving distillery inventory.
+- `DISTILLERIES.md` — generated overview for quick review and link checking.
+- `scripts/generate-distillery-index.mjs` — inventory validation and Markdown generation.
+- `app/data.ts` — spirit categories, imported distillery records, and credentialed-bar sample.
 - `app/SpiritExplorer.tsx` — 2D/3D Mapbox atlas, filtering, search, clustering, list view, official distillery links, and detail drawer.
 - `app/guide/` — educational field guide.
 - `app/discover/` — local, explainable taste profile.

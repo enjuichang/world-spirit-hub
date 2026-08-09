@@ -312,12 +312,17 @@ export function SpiritExplorer() {
         "space-color": "#080706",
         "star-intensity": 0.12,
       });
-      map.easeTo({ pitch: 38, bearing: -12, zoom: 1.55, duration: 700 });
+      map.easeTo({
+        pitch: 38,
+        bearing: -12,
+        zoom: Math.max(map.getZoom(), 1.55),
+        duration: 700,
+      });
     } else {
       map.setTerrain(null);
       map.setFog(null);
       map.setProjection({ name: "mercator" });
-      map.easeTo({ pitch: 0, bearing: 0, zoom: 1.25, duration: 650 });
+      map.easeTo({ pitch: 0, bearing: 0, duration: 650 });
     }
   }, [mapMode, mapReady]);
 

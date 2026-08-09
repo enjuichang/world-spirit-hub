@@ -1,0 +1,1246 @@
+[
+  {
+    "id": "glenfiddich",
+    "name": "Glenfiddich Distillery",
+    "place": "Dufftown, Speyside",
+    "country": "Scotland",
+    "coordinates": [
+      -3.128,
+      57.454
+    ],
+    "categoryId": "whisky",
+    "subcategory": "Single Malt Scotch Whisky",
+    "descriptor": "Orchard-fruited Speyside malt",
+    "note": "A useful starting point for connecting copper pot distillation, ex-bourbon and sherry-influenced maturation with Speyside style.",
+    "tags": [
+      "pear",
+      "malt",
+      "oak"
+    ],
+    "sourceLabel": "Official Glenfiddich website",
+    "sourceUrl": "https://www.glenfiddich.com/visit-the-distillery/"
+  },
+  {
+    "id": "laphroaig",
+    "name": "Laphroaig Distillery",
+    "place": "Islay",
+    "country": "Scotland",
+    "coordinates": [
+      -6.15,
+      55.63
+    ],
+    "categoryId": "whisky",
+    "subcategory": "Single Malt Scotch Whisky",
+    "descriptor": "Peated, maritime Islay malt",
+    "note": "Explore how peat smoke, fermentation, still shape and maturation combine with—not simply copy—a place identity.",
+    "tags": [
+      "peat",
+      "smoke",
+      "coastal"
+    ],
+    "sourceLabel": "Official Laphroaig website",
+    "sourceUrl": "https://www.laphroaig.com/en/visit-us"
+  },
+  {
+    "id": "buffalo-trace",
+    "name": "Buffalo Trace Distillery",
+    "place": "Frankfort, Kentucky",
+    "country": "United States",
+    "coordinates": [
+      -84.87,
+      38.217
+    ],
+    "categoryId": "whisky",
+    "subcategory": "Bourbon",
+    "descriptor": "Kentucky bourbon landmark",
+    "note": "Compare mash bill, new charred oak, warehouse position and the warm Kentucky maturation environment.",
+    "tags": [
+      "corn",
+      "vanilla",
+      "char"
+    ],
+    "sourceLabel": "Official Buffalo Trace website",
+    "sourceUrl": "https://www.buffalotracedistillery.com/"
+  },
+  {
+    "id": "yamazaki",
+    "name": "Yamazaki Distillery",
+    "place": "Shimamoto, Osaka",
+    "country": "Japan",
+    "coordinates": [
+      135.674,
+      34.892
+    ],
+    "categoryId": "whisky",
+    "subcategory": "Japanese whisky",
+    "descriptor": "Japanese malt whisky landmark",
+    "note": "A study in diverse still shapes, fermentation choices and cask types assembled through blending.",
+    "tags": [
+      "fruit",
+      "incense",
+      "oak"
+    ],
+    "sourceLabel": "Official Yamazaki website",
+    "sourceUrl": "https://www.suntory.com/factory/yamazaki/"
+  },
+  {
+    "id": "hennessy",
+    "name": "Hennessy",
+    "place": "Cognac",
+    "country": "France",
+    "coordinates": [
+      -0.328,
+      45.695
+    ],
+    "categoryId": "brandy",
+    "subcategory": "Cognac",
+    "descriptor": "Cognac house and maturation landmark",
+    "note": "Use the location to explore double distillation, regional crus, oak maturation and the role of blending eaux-de-vie.",
+    "tags": [
+      "grape",
+      "floral",
+      "rancio"
+    ],
+    "sourceLabel": "Official Hennessy website",
+    "sourceUrl": "https://www.hennessy.com/en-int/visit-us"
+  },
+  {
+    "id": "chateau-de-laubade",
+    "name": "Château de Laubade",
+    "place": "Sorbet, Bas-Armagnac",
+    "country": "France",
+    "coordinates": [
+      -0.03,
+      43.76
+    ],
+    "categoryId": "brandy",
+    "subcategory": "Armagnac",
+    "descriptor": "Bas-Armagnac estate",
+    "note": "Contrast Armagnac’s common continuous distillation tradition and estate identity with Cognac’s model.",
+    "tags": [
+      "prune",
+      "spice",
+      "oak"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Laubade website",
+    "sourceUrl": "https://www.chateaudelaubade.com/en/"
+  },
+  {
+    "id": "calvados-drouin",
+    "name": "Christian Drouin",
+    "place": "Pont-l’Évêque, Normandy",
+    "country": "France",
+    "coordinates": [
+      0.183,
+      49.282
+    ],
+    "categoryId": "brandy",
+    "subcategory": "Calvados",
+    "descriptor": "Norman apple and pear spirit",
+    "note": "Follow fruit selection, cider fermentation, distillation and oak through a protected regional category.",
+    "tags": [
+      "apple",
+      "pear",
+      "baking spice"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Christian Drouin website",
+    "sourceUrl": "https://www.calvados-drouin.com/en/"
+  },
+  {
+    "id": "appleton-estate",
+    "name": "Appleton Estate",
+    "place": "Nassau Valley",
+    "country": "Jamaica",
+    "coordinates": [
+      -77.82,
+      18.08
+    ],
+    "categoryId": "rum",
+    "subcategory": "Jamaican rum",
+    "descriptor": "Estate rum in Jamaica’s interior",
+    "note": "Long fermentation, pot distillation, ester development, column spirit and tropical maturation make this a rich comparison point.",
+    "tags": [
+      "banana",
+      "ester",
+      "molasses"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Appleton Estate website",
+    "sourceUrl": "https://www.appletonestate.com/en-us/visit-us/"
+  },
+  {
+    "id": "foursquare",
+    "name": "Foursquare Rum Distillery",
+    "place": "Saint Philip",
+    "country": "Barbados",
+    "coordinates": [
+      -59.462,
+      13.122
+    ],
+    "categoryId": "rum",
+    "subcategory": "Barbados rum",
+    "descriptor": "Pot and column rum distillery",
+    "note": "An anchor for studying blended distillate character, cask maturation and Barbados rum identity.",
+    "tags": [
+      "molasses",
+      "dried fruit",
+      "oak"
+    ],
+    "sourceLabel": "Official Foursquare website",
+    "sourceUrl": "https://www.foursquare-rum.com/"
+  },
+  {
+    "id": "rhum-clement",
+    "name": "Habitation Clément",
+    "place": "Le François, Martinique",
+    "country": "France",
+    "coordinates": [
+      -60.9,
+      14.615
+    ],
+    "categoryId": "rum",
+    "subcategory": "Rhum Agricole Martinique",
+    "descriptor": "Cane-juice rhum landmark",
+    "note": "Explore fresh cane juice, Creole column distillation and AOC production rules.",
+    "tags": [
+      "fresh cane",
+      "grass",
+      "pepper"
+    ],
+    "sourceLabel": "Official Clément website",
+    "sourceUrl": "https://rhum-clement.com/"
+  },
+  {
+    "id": "la-fortaleza",
+    "name": "Tequila Fortaleza",
+    "place": "Tequila, Jalisco",
+    "country": "Mexico",
+    "coordinates": [
+      -103.836,
+      20.88
+    ],
+    "categoryId": "agave",
+    "subcategory": "Tequila",
+    "descriptor": "Traditional tequila production",
+    "note": "A reference point for mature blue agave, oven cooking, tahona crushing and copper pot distillation.",
+    "tags": [
+      "cooked agave",
+      "citrus",
+      "pepper"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Fortaleza website",
+    "sourceUrl": "https://tequilafortaleza.com/"
+  },
+  {
+    "id": "del-maguey-san-luis",
+    "name": "San Luis del Río Palenque",
+    "place": "San Luis del Río, Oaxaca",
+    "country": "Mexico",
+    "coordinates": [
+      -96.32,
+      16.84
+    ],
+    "categoryId": "agave",
+    "subcategory": "Mezcal",
+    "descriptor": "Village-scale mezcal production",
+    "note": "An approximate village marker for exploring agave species, earthen roasting, open fermentation and small stills.",
+    "tags": [
+      "roasted agave",
+      "earth",
+      "smoke"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Del Maguey website",
+    "sourceUrl": "https://delmaguey.com/"
+  },
+  {
+    "id": "casa-lotos",
+    "name": "Sotol landmark",
+    "place": "Aldama, Chihuahua",
+    "country": "Mexico",
+    "coordinates": [
+      -105.91,
+      28.84
+    ],
+    "categoryId": "agave",
+    "subcategory": "Sotol",
+    "descriptor": "Dasylirion spirit region",
+    "note": "A regional, approximate marker emphasizing that sotol is made from dasylirion rather than agave.",
+    "tags": [
+      "herbal",
+      "earth",
+      "mineral"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Hacienda de Chihuahua website",
+    "sourceUrl": "https://sotol.com/"
+  },
+  {
+    "id": "bombay-sapphire",
+    "name": "Bombay Sapphire Distillery",
+    "place": "Laverstoke Mill, Hampshire",
+    "country": "England",
+    "coordinates": [
+      -1.299,
+      51.236
+    ],
+    "categoryId": "gin",
+    "subcategory": "London Dry Gin",
+    "descriptor": "Vapor-infusion gin landmark",
+    "note": "Connect botanical recipe and vapor infusion with a clean, juniper-led style.",
+    "tags": [
+      "juniper",
+      "citrus",
+      "coriander"
+    ],
+    "sourceLabel": "Official Bombay Sapphire website",
+    "sourceUrl": "https://www.bombaysapphire.com/distillery/"
+  },
+  {
+    "id": "sipsmith",
+    "name": "Sipsmith Distillery",
+    "place": "London",
+    "country": "England",
+    "coordinates": [
+      -0.246,
+      51.495
+    ],
+    "categoryId": "gin",
+    "subcategory": "London Dry Gin",
+    "descriptor": "Modern London gin distillery",
+    "note": "A useful example of the twenty-first-century revival of small-scale copper gin distilling in London.",
+    "tags": [
+      "juniper",
+      "lemon",
+      "dry"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Sipsmith website",
+    "sourceUrl": "https://sipsmith.com/pages/distillery-tours"
+  },
+  {
+    "id": "filliers",
+    "name": "Filliers Distillery",
+    "place": "Deinze",
+    "country": "Belgium",
+    "coordinates": [
+      3.527,
+      50.984
+    ],
+    "categoryId": "gin",
+    "subcategory": "Genever",
+    "descriptor": "Belgian genever tradition",
+    "note": "Contrast malt-wine character, botanicals and maturation with neutral-spirit gin.",
+    "tags": [
+      "malt",
+      "juniper",
+      "spice"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Filliers website",
+    "sourceUrl": "https://filliersdistillery.com/"
+  },
+  {
+    "id": "absolut-ahus",
+    "name": "The Absolut Company",
+    "place": "Åhus",
+    "country": "Sweden",
+    "coordinates": [
+      14.296,
+      55.928
+    ],
+    "categoryId": "vodka",
+    "subcategory": "Swedish vodka",
+    "descriptor": "Large-scale wheat vodka production",
+    "note": "Explore rectification, consistency, wheat character and the importance of water and dilution.",
+    "tags": [
+      "wheat",
+      "clean",
+      "soft"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Absolut Home website",
+    "sourceUrl": "https://www.absolut.com/en-us/absolut-home/"
+  },
+  {
+    "id": "polmos-zyrardow",
+    "name": "Żyrardów Distillery",
+    "place": "Żyrardów",
+    "country": "Poland",
+    "coordinates": [
+      20.438,
+      52.048
+    ],
+    "categoryId": "vodka",
+    "subcategory": "Polish rye vodka",
+    "descriptor": "Rye vodka landmark",
+    "note": "Compare a characterful rye-based style with more neutral international vodka profiles.",
+    "tags": [
+      "rye",
+      "pepper",
+      "cream"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Belvedere website",
+    "sourceUrl": "https://www.belvederevodka.com/en-us/our-story/"
+  },
+  {
+    "id": "moutai",
+    "name": "Kweichow Moutai",
+    "place": "Maotai, Guizhou",
+    "country": "China",
+    "coordinates": [
+      106.4,
+      27.84
+    ],
+    "categoryId": "asian",
+    "subcategory": "Sauce-aroma baijiu",
+    "descriptor": "Sauce-aroma baijiu landmark",
+    "note": "Study high-temperature qu, solid-state fermentation, repeated production cycles and long blending.",
+    "tags": [
+      "savory",
+      "fermented grain",
+      "umami"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Moutai website",
+    "sourceUrl": "https://www.moutai.com.cn/"
+  },
+  {
+    "id": "luzhou-laojiao",
+    "name": "Luzhou Laojiao",
+    "place": "Luzhou, Sichuan",
+    "country": "China",
+    "coordinates": [
+      105.44,
+      28.87
+    ],
+    "categoryId": "asian",
+    "subcategory": "Strong-aroma baijiu",
+    "descriptor": "Strong-aroma baijiu landmark",
+    "note": "Explore mud-pit fermentation, mixed grains and ester-rich aroma.",
+    "tags": [
+      "pineapple",
+      "anise",
+      "fermented grain"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Luzhou Laojiao website",
+    "sourceUrl": "https://www.lzlj.com/"
+  },
+  {
+    "id": "kirishima-shuzo",
+    "name": "Kirishima Shuzo",
+    "place": "Miyakonojō, Miyazaki",
+    "country": "Japan",
+    "coordinates": [
+      131.073,
+      31.724
+    ],
+    "categoryId": "asian",
+    "subcategory": "Honkaku shōchū",
+    "descriptor": "Sweet-potato shōchū landmark",
+    "note": "Connect kōji choice, sweet potato, single distillation and service temperature with aroma and texture.",
+    "tags": [
+      "sweet potato",
+      "earth",
+      "floral"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Kirishima website",
+    "sourceUrl": "https://www.kirishima.co.jp/"
+  },
+  {
+    "id": "kumesen",
+    "name": "Kumesen Syuzo",
+    "place": "Naha, Okinawa",
+    "country": "Japan",
+    "coordinates": [
+      127.69,
+      26.2
+    ],
+    "categoryId": "asian",
+    "subcategory": "Awamori",
+    "descriptor": "Okinawan awamori producer",
+    "note": "Explore Thai rice, black kōji, single fermentation and the tradition of aged kūsu.",
+    "tags": [
+      "rice",
+      "earth",
+      "tropical"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Kumesen website",
+    "sourceUrl": "https://www.kumesen.co.jp/"
+  },
+  {
+    "id": "chartreuse",
+    "name": "Chartreuse Diffusion",
+    "place": "Aiguenoire, Isère",
+    "country": "France",
+    "coordinates": [
+      5.74,
+      45.37
+    ],
+    "categoryId": "flavoured",
+    "subcategory": "Herbal liqueur",
+    "descriptor": "Herbal liqueur production landmark",
+    "note": "A reference for complex botanical extraction, blending, sweetness and maturation.",
+    "tags": [
+      "herbal",
+      "sweet",
+      "spice"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Chartreuse website",
+    "sourceUrl": "https://www.chartreuse.fr/en/"
+  },
+  {
+    "id": "cointreau",
+    "name": "Carré Cointreau",
+    "place": "Saint-Barthélemy-d’Anjou",
+    "country": "France",
+    "coordinates": [
+      -0.493,
+      47.468
+    ],
+    "categoryId": "flavoured",
+    "subcategory": "Orange liqueur",
+    "descriptor": "Citrus liqueur landmark",
+    "note": "Explore peel selection, extraction, redistillation, blending and sugar balance.",
+    "tags": [
+      "orange",
+      "floral",
+      "sweet"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Cointreau website",
+    "sourceUrl": "https://www.cointreau.com/int/en/visit-cointreau"
+  },
+  {
+    "id": "aalborg-akvavit",
+    "name": "Aalborg Akvavit tradition",
+    "place": "Aalborg",
+    "country": "Denmark",
+    "coordinates": [
+      9.922,
+      57.048
+    ],
+    "categoryId": "flavoured",
+    "subcategory": "Aquavit",
+    "descriptor": "Scandinavian caraway spirit landmark",
+    "note": "A regional marker for comparing caraway-led aquavit with dill-led and cask-aged styles.",
+    "tags": [
+      "caraway",
+      "dill",
+      "citrus"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Aalborg Akvavit website",
+    "sourceUrl": "https://anora.com/brands/aalborg-akvavit"
+  },
+  {
+    "id": "midleton",
+    "name": "Midleton Distillery",
+    "place": "Midleton, County Cork",
+    "country": "Ireland",
+    "coordinates": [
+      -8.18,
+      51.914
+    ],
+    "categoryId": "whisky",
+    "subcategory": "Irish whiskey",
+    "descriptor": "Pot still and grain whiskey campus",
+    "note": "A working reference for triple distillation, unmalted barley in pot still whiskey, grain whiskey and long-form blending.",
+    "tags": [
+      "orchard fruit",
+      "pot still spice",
+      "vanilla"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Midleton website",
+    "sourceUrl": "https://www.jamesonwhiskey.com/en-ie/visit-our-distilleries/midleton-distillery-cork/"
+  },
+  {
+    "id": "glenora",
+    "name": "Glenora Distillery",
+    "place": "Glenville, Nova Scotia",
+    "country": "Canada",
+    "coordinates": [
+      -61.273,
+      46.151
+    ],
+    "categoryId": "whisky",
+    "subcategory": "Canadian single malt whisky",
+    "descriptor": "Cape Breton single malt distillery",
+    "note": "A Canadian counterpoint focused on malted barley, copper pot stills and maturation in a cool maritime climate.",
+    "tags": [
+      "malt",
+      "apple",
+      "oak"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Glenora website",
+    "sourceUrl": "https://www.glenoradistillery.com/"
+  },
+  {
+    "id": "kavalan",
+    "name": "Kavalan Distillery",
+    "place": "Yuanshan, Yilan County",
+    "country": "Taiwan",
+    "coordinates": [
+      121.69,
+      24.713
+    ],
+    "categoryId": "whisky",
+    "subcategory": "Taiwanese single malt whisky",
+    "descriptor": "Subtropical single malt landmark",
+    "note": "Connect rapid warm-climate maturation and high evaporation with cask selection, spirit weight and warehouse management.",
+    "tags": [
+      "tropical fruit",
+      "vanilla",
+      "oak"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Kavalan website",
+    "sourceUrl": "https://www.kavalanwhisky.com/"
+  },
+  {
+    "id": "amrut",
+    "name": "Amrut Distilleries",
+    "place": "Bengaluru, Karnataka",
+    "country": "India",
+    "coordinates": [
+      77.59,
+      13.02
+    ],
+    "categoryId": "whisky",
+    "subcategory": "Indian single malt whisky",
+    "descriptor": "High-altitude Indian whisky producer",
+    "note": "Explore locally grown barley, copper pot distillation and accelerated maturation in Bengaluru’s warm climate.",
+    "tags": [
+      "malt",
+      "tropical fruit",
+      "spice"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Amrut website",
+    "sourceUrl": "https://amrutdistilleries.com/"
+  },
+  {
+    "id": "bodegas-fundador",
+    "name": "Bodegas Fundador",
+    "place": "Jerez de la Frontera",
+    "country": "Spain",
+    "coordinates": [
+      -6.142,
+      36.684
+    ],
+    "categoryId": "brandy",
+    "subcategory": "Brandy de Jerez",
+    "descriptor": "Sherry-cask brandy landmark",
+    "note": "A reference for wine distillation, criaderas y solera maturation and the influence of seasoned Sherry casks.",
+    "tags": [
+      "dried fruit",
+      "walnut",
+      "oak"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Fundador website",
+    "sourceUrl": "https://fundador.com/"
+  },
+  {
+    "id": "nardini",
+    "name": "Nardini Distillery",
+    "place": "Bassano del Grappa, Veneto",
+    "country": "Italy",
+    "coordinates": [
+      11.731,
+      45.767
+    ],
+    "categoryId": "brandy",
+    "subcategory": "Grappa",
+    "descriptor": "Historic Italian pomace spirit producer",
+    "note": "Study how fresh grape pomace, steam distillation and blending preserve varietal aroma while controlling extraction.",
+    "tags": [
+      "grape skin",
+      "floral",
+      "pepper"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Nardini website",
+    "sourceUrl": "https://www.nardini.it/en/"
+  },
+  {
+    "id": "la-caravedo",
+    "name": "Hacienda La Caravedo",
+    "place": "Ica Valley",
+    "country": "Peru",
+    "coordinates": [
+      -75.728,
+      -14.067
+    ],
+    "categoryId": "brandy",
+    "subcategory": "Peruvian pisco",
+    "descriptor": "Historic pisco distillery",
+    "note": "A reference for aromatic and non-aromatic grapes, single-batch distillation to proof and unaged pisco expression.",
+    "tags": [
+      "fresh grape",
+      "citrus",
+      "floral"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Pisco Portón website",
+    "sourceUrl": "https://piscoporton.com/"
+  },
+  {
+    "id": "kwv-paarl",
+    "name": "KWV House of Fire",
+    "place": "Paarl, Western Cape",
+    "country": "South Africa",
+    "coordinates": [
+      18.966,
+      -33.763
+    ],
+    "categoryId": "brandy",
+    "subcategory": "South African pot-still brandy",
+    "descriptor": "Cape wine-brandy production landmark",
+    "note": "Connect base-wine selection, copper pot distillation and oak maturation with South Africa’s established brandy tradition.",
+    "tags": [
+      "stone fruit",
+      "vanilla",
+      "oak spice"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official KWV website",
+    "sourceUrl": "https://kwv.co.za/experience-kwv/"
+  },
+  {
+    "id": "diamond-demerara",
+    "name": "Diamond Distillery",
+    "place": "East Bank Demerara",
+    "country": "Guyana",
+    "coordinates": [
+      -58.187,
+      6.728
+    ],
+    "categoryId": "rum",
+    "subcategory": "Demerara rum",
+    "descriptor": "Heritage-still rum complex",
+    "note": "A landmark for comparing wooden and metal heritage stills, molasses fermentation, blending and tropical maturation.",
+    "tags": [
+      "molasses",
+      "licorice",
+      "dried fruit"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official El Dorado website",
+    "sourceUrl": "https://theeldoradorum.com/"
+  },
+  {
+    "id": "flor-de-cana",
+    "name": "Flor de Caña Distillery",
+    "place": "Chichigalpa, Chinandega",
+    "country": "Nicaragua",
+    "coordinates": [
+      -87.026,
+      12.578
+    ],
+    "categoryId": "rum",
+    "subcategory": "Nicaraguan rum",
+    "descriptor": "Volcanic-climate rum landmark",
+    "note": "Explore column distillation, ex-bourbon cask maturation and blending in Nicaragua’s hot, dry Pacific lowlands.",
+    "tags": [
+      "caramel",
+      "cocoa",
+      "oak"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Flor de Caña website",
+    "sourceUrl": "https://flordecana.com/"
+  },
+  {
+    "id": "bundaberg",
+    "name": "Bundaberg Rum Distillery",
+    "place": "Bundaberg East, Queensland",
+    "country": "Australia",
+    "coordinates": [
+      152.379,
+      -24.854
+    ],
+    "categoryId": "rum",
+    "subcategory": "Australian molasses rum",
+    "descriptor": "Queensland cane-country distillery",
+    "note": "A working example linking local sugar-cane molasses, fermentation, distillation and a minimum two-year maturation tradition.",
+    "tags": [
+      "molasses",
+      "toffee",
+      "warm spice"
+    ],
+    "sourceLabel": "Official Bundaberg website",
+    "sourceUrl": "https://www.bundabergrum.com.au/pages/distillery"
+  },
+  {
+    "id": "mount-gay",
+    "name": "Mount Gay Distillery",
+    "place": "Saint Lucy",
+    "country": "Barbados",
+    "coordinates": [
+      -59.611,
+      13.295
+    ],
+    "categoryId": "rum",
+    "subcategory": "Barbados rum",
+    "descriptor": "Historic northern Barbados distillery",
+    "note": "Compare pot and column distillates, coral-filtered water, blending and tropical maturation within Barbados rum history.",
+    "tags": [
+      "banana",
+      "vanilla",
+      "toast"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Mount Gay website",
+    "sourceUrl": "https://www.mountgayrum.com/distillery/"
+  },
+  {
+    "id": "casa-herradura",
+    "name": "Casa Herradura",
+    "place": "Amatitán, Jalisco",
+    "country": "Mexico",
+    "coordinates": [
+      -103.729,
+      20.834
+    ],
+    "categoryId": "agave",
+    "subcategory": "Tequila",
+    "descriptor": "Historic lowland tequila estate",
+    "note": "Explore blue agave, clay-oven cooking, natural fermentation and extended maturation at a long-running estate.",
+    "tags": [
+      "cooked agave",
+      "citrus",
+      "oak"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Herradura website",
+    "sourceUrl": "https://www.herradura.com/visit-us/"
+  },
+  {
+    "id": "hacienda-patron",
+    "name": "Hacienda Patrón",
+    "place": "Atotonilco el Alto, Jalisco",
+    "country": "Mexico",
+    "coordinates": [
+      -102.51,
+      20.551
+    ],
+    "categoryId": "agave",
+    "subcategory": "Tequila",
+    "descriptor": "Highlands tequila distillery",
+    "note": "A reference for highlands blue agave, brick ovens, roller mill and tahona processing, and small copper pot stills.",
+    "tags": [
+      "cooked agave",
+      "citrus",
+      "pepper"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Patrón website",
+    "sourceUrl": "https://www.patrontequila.com/es-mx/faqs/fun-facts/what-is-the-hacienda-patron.html"
+  },
+  {
+    "id": "los-danzantes",
+    "name": "Destilería Los Danzantes",
+    "place": "Santiago Matatlán, Oaxaca",
+    "country": "Mexico",
+    "coordinates": [
+      -96.383,
+      16.867
+    ],
+    "categoryId": "agave",
+    "subcategory": "Mezcal",
+    "descriptor": "Artisanal mezcal palenque",
+    "note": "Follow earthen-pit cooking, tahona milling, open fermentation and small-batch double distillation in a major mezcal town.",
+    "tags": [
+      "roasted agave",
+      "earth",
+      "herbs"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Los Danzantes website",
+    "sourceUrl": "https://mezcallosdanzantes.com/historia/"
+  },
+  {
+    "id": "desert-door",
+    "name": "Desert Door Distillery",
+    "place": "Driftwood, Texas",
+    "country": "United States",
+    "coordinates": [
+      -98.039,
+      30.129
+    ],
+    "categoryId": "agave",
+    "subcategory": "Texas sotol-style spirit",
+    "descriptor": "Dasylirion distillery outside Austin",
+    "note": "A related-spirit comparison using wild Texas dasylirion; it sits outside the protected Mexican Sotol denomination.",
+    "tags": [
+      "herbal",
+      "grassy",
+      "mineral"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Desert Door website",
+    "sourceUrl": "https://www.desertdoor.com/the-distillery"
+  },
+  {
+    "id": "hendricks-gin-palace",
+    "name": "Hendrick’s Gin Palace",
+    "place": "Girvan, Ayrshire",
+    "country": "Scotland",
+    "coordinates": [
+      -4.856,
+      55.241
+    ],
+    "categoryId": "gin",
+    "subcategory": "Distilled gin",
+    "descriptor": "Dual-still botanical gin landmark",
+    "note": "Compare spirit from Bennett and Carter-Head stills before blending and post-distillation botanical essences.",
+    "tags": [
+      "juniper",
+      "cucumber",
+      "rose"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Hendrick’s website",
+    "sourceUrl": "https://global.hendricksgin.com/"
+  },
+  {
+    "id": "four-pillars",
+    "name": "Four Pillars Distillery",
+    "place": "Healesville, Victoria",
+    "country": "Australia",
+    "coordinates": [
+      145.516,
+      -37.655
+    ],
+    "categoryId": "gin",
+    "subcategory": "Contemporary Australian gin",
+    "descriptor": "Yarra Valley botanical distillery",
+    "note": "Explore whole citrus, Australian botanicals and modern copper pot distillation in a contemporary regional style.",
+    "tags": [
+      "juniper",
+      "orange",
+      "native spice"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Four Pillars website",
+    "sourceUrl": "https://fourpillarsgin.com/pages/distillery"
+  },
+  {
+    "id": "kyoto-distillery",
+    "name": "The Kyoto Distillery",
+    "place": "Minami-ku, Kyoto",
+    "country": "Japan",
+    "coordinates": [
+      135.742,
+      34.963
+    ],
+    "categoryId": "gin",
+    "subcategory": "Japanese dry gin",
+    "descriptor": "Kyoto-focused botanical distillery",
+    "note": "Study a rice-spirit base and separately distilled botanical groups including yuzu, tea, sanshō and red shiso.",
+    "tags": [
+      "yuzu",
+      "tea",
+      "sansho"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Kyoto Distillery website",
+    "sourceUrl": "https://kyotodistillery.jp/en/about/story.php/1000"
+  },
+  {
+    "id": "inverroche",
+    "name": "Inverroche Distillery",
+    "place": "Stilbaai, Western Cape",
+    "country": "South Africa",
+    "coordinates": [
+      21.418,
+      -34.369
+    ],
+    "categoryId": "gin",
+    "subcategory": "South African botanical gin",
+    "descriptor": "Cape fynbos gin distillery",
+    "note": "A place-specific comparison for indigenous fynbos botanicals, copper pot distillation and conservation-led sourcing.",
+    "tags": [
+      "fynbos",
+      "citrus",
+      "floral"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Inverroche website",
+    "sourceUrl": "https://www.inverroche.com/visit-us"
+  },
+  {
+    "id": "nolet-ketel-one",
+    "name": "Nolet Distillery",
+    "place": "Schiedam",
+    "country": "Netherlands",
+    "coordinates": [
+      4.399,
+      51.915
+    ],
+    "categoryId": "vodka",
+    "subcategory": "Dutch wheat vodka",
+    "descriptor": "Family-run vodka and genever distillery",
+    "note": "A reference for combining highly rectified column spirit with copper pot-distilled components before blending and filtration.",
+    "tags": [
+      "wheat",
+      "citrus",
+      "silky"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Ketel One website",
+    "sourceUrl": "https://www.ketelone.com/our-story"
+  },
+  {
+    "id": "chopin-krzesk",
+    "name": "Chopin Distillery",
+    "place": "Krzesk, Masovia",
+    "country": "Poland",
+    "coordinates": [
+      22.617,
+      52.065
+    ],
+    "categoryId": "vodka",
+    "subcategory": "Polish potato and grain vodka",
+    "descriptor": "Estate vodka distillery",
+    "note": "Compare potato, rye and wheat distillates made separately to reveal how raw material changes weight, aroma and texture.",
+    "tags": [
+      "potato",
+      "rye",
+      "creamy"
+    ],
+    "sourceLabel": "Official Chopin website",
+    "sourceUrl": "https://chopinvodka.com/distillery/"
+  },
+  {
+    "id": "koskenkorva",
+    "name": "Koskenkorva Distillery",
+    "place": "Koskenkorva, Southern Ostrobothnia",
+    "country": "Finland",
+    "coordinates": [
+      22.459,
+      62.692
+    ],
+    "categoryId": "vodka",
+    "subcategory": "Finnish barley vodka",
+    "descriptor": "Village-scale barley-to-spirit landmark",
+    "note": "Connect local barley, continuous distillation, material efficiency and water with a clean Nordic vodka profile.",
+    "tags": [
+      "barley",
+      "clean",
+      "soft"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Koskenkorva website",
+    "sourceUrl": "https://koskenkorva.com/en/about-koskenkorva"
+  },
+  {
+    "id": "reyka",
+    "name": "Reyka Distillery",
+    "place": "Borgarnes",
+    "country": "Iceland",
+    "coordinates": [
+      -21.917,
+      64.538
+    ],
+    "categoryId": "vodka",
+    "subcategory": "Icelandic small-batch vodka",
+    "descriptor": "Geothermal-powered vodka distillery",
+    "note": "Explore Carter-Head distillation, lava-rock filtration, glacial spring water and small-batch production.",
+    "tags": [
+      "clean",
+      "citrus",
+      "mineral"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Reyka website",
+    "sourceUrl": "https://reyka.com/"
+  },
+  {
+    "id": "wuliangye",
+    "name": "Wuliangye Distillery",
+    "place": "Yibin, Sichuan",
+    "country": "China",
+    "coordinates": [
+      104.62,
+      28.79
+    ],
+    "categoryId": "asian",
+    "subcategory": "Strong-aroma baijiu",
+    "descriptor": "Five-grain baijiu production city",
+    "note": "Compare five-grain recipes, solid-state pit fermentation, mixed microbial cultures and extensive batch blending.",
+    "tags": [
+      "fermented fruit",
+      "anise",
+      "grain"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Wuliangye website",
+    "sourceUrl": "https://wuliangye.com.cn/en/about/Introduce.html"
+  },
+  {
+    "id": "yanghe",
+    "name": "Yanghe Distillery",
+    "place": "Yanghe, Suqian, Jiangsu",
+    "country": "China",
+    "coordinates": [
+      118.39,
+      33.78
+    ],
+    "categoryId": "asian",
+    "subcategory": "Mianrou-style baijiu",
+    "descriptor": "Jiangsu baijiu production landmark",
+    "note": "A counterpoint for soft-textured baijiu built through pit fermentation, grain selection, distillation and blending.",
+    "tags": [
+      "pear",
+      "grain",
+      "floral"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Yanghe website",
+    "sourceUrl": "https://www.chinayanghe.com/about/yanghe/jtjj/"
+  },
+  {
+    "id": "hwayo",
+    "name": "Hwayo Distillery",
+    "place": "Yeoju, Gyeonggi-do",
+    "country": "South Korea",
+    "coordinates": [
+      127.637,
+      37.296
+    ],
+    "categoryId": "asian",
+    "subcategory": "Distilled soju",
+    "descriptor": "Rice-spirit and onggi maturation producer",
+    "note": "Explore rice, koji-driven conversion, vacuum distillation and resting in breathable Korean earthenware vessels.",
+    "tags": [
+      "rice",
+      "pear",
+      "mineral"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Hwayo website",
+    "sourceUrl": "https://hwayo.com/manufacturing-process-2-2/"
+  },
+  {
+    "id": "iichiko-hita",
+    "name": "Iichiko Hita Distillery",
+    "place": "Hita, Oita",
+    "country": "Japan",
+    "coordinates": [
+      130.934,
+      33.321
+    ],
+    "categoryId": "asian",
+    "subcategory": "Honkaku barley shōchū",
+    "descriptor": "Oita barley shōchū landmark",
+    "note": "Connect barley kōji, single distillation, filtration and blending with the clean, gently aromatic Oita style.",
+    "tags": [
+      "barley",
+      "white flowers",
+      "earth"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Iichiko website",
+    "sourceUrl": "https://www.iichiko.co.jp/"
+  },
+  {
+    "id": "jagermeister",
+    "name": "Jägermeister Production Site",
+    "place": "Wolfenbüttel, Lower Saxony",
+    "country": "Germany",
+    "coordinates": [
+      10.535,
+      52.164
+    ],
+    "categoryId": "flavoured",
+    "subcategory": "Herbal liqueur",
+    "descriptor": "Herbal extraction and maturation landmark",
+    "note": "A reference for macerating a complex botanical recipe, marrying extracts and resting the base in large oak vessels.",
+    "tags": [
+      "herbal",
+      "bitter",
+      "spice"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Jägermeister website",
+    "sourceUrl": "https://jobs.jaegermeister.com/en/our-factories/"
+  },
+  {
+    "id": "luxardo",
+    "name": "Luxardo Distillery",
+    "place": "Torreglia, Veneto",
+    "country": "Italy",
+    "coordinates": [
+      11.731,
+      45.337
+    ],
+    "categoryId": "flavoured",
+    "subcategory": "Maraschino and fruit liqueurs",
+    "descriptor": "Cherry liqueur production landmark",
+    "note": "Explore whole-fruit fermentation and distillation, botanical flavoring, sugar and long resting for classic liqueur styles.",
+    "tags": [
+      "cherry",
+      "almond",
+      "sweet"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Luxardo website",
+    "sourceUrl": "https://www.luxardo.it/"
+  },
+  {
+    "id": "giffard",
+    "name": "Giffard Distillery",
+    "place": "Avrillé, Loire Valley",
+    "country": "France",
+    "coordinates": [
+      -0.594,
+      47.507
+    ],
+    "categoryId": "flavoured",
+    "subcategory": "Fruit and botanical liqueurs",
+    "descriptor": "Loire liqueur house",
+    "note": "Compare maceration, infusion and careful sweetening across mint, citrus, berry and orchard-fruit liqueurs.",
+    "tags": [
+      "mint",
+      "fruit",
+      "sweet"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Giffard website",
+    "sourceUrl": "https://www.giffard.com/en/"
+  },
+  {
+    "id": "fernet-branca",
+    "name": "Fratelli Branca Distillerie",
+    "place": "Milan, Lombardy",
+    "country": "Italy",
+    "coordinates": [
+      9.174,
+      45.501
+    ],
+    "categoryId": "flavoured",
+    "subcategory": "Amaro",
+    "descriptor": "Historic Milan amaro production site",
+    "note": "A reference for extracting roots, bark, herbs and spices before blending and maturation into a concentrated bitter profile.",
+    "tags": [
+      "bitter",
+      "menthol",
+      "roots"
+    ],
+    "precision": "approximate",
+    "sourceLabel": "Official Branca website",
+    "sourceUrl": "https://www.brancainternational.com/en/our-story/"
+  }
+]

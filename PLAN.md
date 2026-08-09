@@ -15,7 +15,7 @@ The product should be educational and brand-neutral. It may use commercial brand
 | V2 | Help users discover their preferences | Taste and cocktail questionnaire, explainable recommendations, saved/shareable results |
 | V3 | Connect preferences to nearby places | Permission-based location, nearby cocktail bar discovery, filters, map/list results, third-party place data |
 
-Current V1 implementation snapshot: 57 curated landmarks across all eight families, official producer links for every marker, clustering and search, and a user-controlled 2D Mercator / 3D terrain-globe view.
+Current V1 implementation snapshot: 57 curated landmarks across all eight families, official producer links for every marker, clustering and search, and a user-controlled 2D Mercator / 3D terrain-globe view. The website now reads those records from a canonical `data/distilleries.json` inventory; a validated, generated `DISTILLERIES.md` gives editors a grouped overview without duplicating the source of truth.
 
 ## 3. Audience and core journeys
 
@@ -290,6 +290,8 @@ Category colors are data colors, not general UI accents. Each category also rece
 ## 7. Content and data model
 
 Store editorial content in version-controlled JSON, YAML, or Markdown with validated front matter. Keep geographic data as GeoJSON or generate GeoJSON from the canonical entity files during the build.
+
+For the current implementation, `data/distilleries.json` is the canonical location dataset and is imported directly by the site. `scripts/generate-distillery-index.mjs` validates the records and generates the human-readable `DISTILLERIES.md`. Editors change only the JSON, run `npm run data:sync`, and commit both files; `npm run data:check` is part of the test gate and fails if the generated index drifts.
 
 ### Suggested content structure
 
@@ -1077,6 +1079,8 @@ Complete the checklist in order within each milestone. A checked task should inc
 - [ ] Add source-review and content-count reports to CI.
 - [ ] Document how an editor creates, reviews, publishes, archives, corrects, and redirects an entity.
 - [ ] Create fixtures containing valid, invalid, draft, archived, accented-name, and antimeridian cases.
+- [x] Move the published distillery markers into canonical JSON with validation for required fields, category IDs, coordinates, taste tags, source URLs, and duplicate IDs.
+- [x] Generate and document a deterministic Markdown inventory for quick editorial review.
 
 **Gate D:** the build reliably rejects malformed, orphaned, unpublished, or internally inconsistent content.
 
@@ -1091,6 +1095,7 @@ Complete the checklist in order within each milestone. A checked task should inc
 - [ ] Add schema-version compatibility checks between generated artifacts and client code.
 - [ ] Add snapshot/unit tests for stable generation and representative edge cases.
 - [ ] Measure compressed artifact sizes and split files that exceed the approved budget.
+- [x] Add the distillery inventory drift check to the standard test command.
 
 **Gate E:** identical source content produces identical map/search artifacts, and all artifacts stay within size budgets.
 
