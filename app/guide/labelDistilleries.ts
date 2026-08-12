@@ -18,7 +18,7 @@ const labelDistilleries: Record<string, Record<string, Distillery>> = {
   brandy: {
     Cognac: { name: "Hennessy", point: [-0.328, 45.695] },
     Armagnac: { name: "Château de Laubade", point: [-0.03, 43.76] },
-    Normandy: { name: "Christian Drouin", point: [0.183, 49.282] },
+    Calvados: { name: "Christian Drouin", point: [0.183, 49.282] },
     Italy: { name: "Nardini Distillery", point: [11.731, 45.767] },
     "Pacific South America": { name: "Hacienda La Caravedo", point: [-75.728, -14.067] },
     "Bolivian high valleys": { name: "Casa Real Distillery", point: [-64.65, -21.58] },

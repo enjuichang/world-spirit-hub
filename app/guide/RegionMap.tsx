@@ -7,6 +7,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import type { MapRegion } from "../guideData";
 // Mexican denomination territories generated from the official INEGI municipal frame.
 import agaveBoundaryData from "./agave-boundaries.json";
+// French spirit appellations derived from INAO's open geographic-area data.
+import brandyBoundaryData from "./brandy-regions.json";
 // Simplified Natural Earth admin-0, admin-1, and map-subunit geometry.
 import boundaryData from "./region-boundaries.json";
 // Higher-detail Natural Earth geometry for countries whose 1:110m shapes are
@@ -20,28 +22,59 @@ type RegionGeometry = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 type BoundaryProperties = { id: string };
 type BoundaryFeature = GeoJSON.Feature<RegionGeometry, BoundaryProperties>;
 
+const LOWER_48_BOUNDS = {
+  west: -125,
+  south: 24,
+  east: -66,
+  north: 50,
+};
+
+function boundaryFeatureForDisplay(feature: BoundaryFeature): BoundaryFeature {
+  if (feature.properties.id !== "United States" || feature.geometry.type !== "MultiPolygon") return feature;
+
+  const coordinates = feature.geometry.coordinates.filter((polygon) =>
+    polygon.some((ring) => ring.some(([longitude, latitude]) =>
+      longitude >= LOWER_48_BOUNDS.west
+      && longitude <= LOWER_48_BOUNDS.east
+      && latitude >= LOWER_48_BOUNDS.south
+      && latitude <= LOWER_48_BOUNDS.north,
+    )),
+  );
+
+  return {
+    ...feature,
+    geometry: { ...feature.geometry, coordinates },
+  };
+}
+
 const boundaryFeatures = new Map(
   [
     ...(boundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(refinedBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(scotchBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(agaveBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
-  ].map((feature) => [
-    feature.properties.id,
-    feature,
-  ]),
+    ...(brandyBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
+  ].map((feature) => {
+    const displayFeature = boundaryFeatureForDisplay(feature);
+    return [displayFeature.properties.id, displayFeature] as const;
+  }),
 );
 
 const MAX_STATIC_ZOOM = 8;
 const PRIMARY_MARKER_RADIUS_PX = 7;
-const DISTILLERY_MARKER_RADIUS_PX = 4;
+const DISTILLERY_MARKER_RADIUS_PX = 2;
+const DISTILLERY_MARKER_MAX_RADIUS_PX = 5;
+const REGION_COLORS = ["#9b7845", "#d9a85b", "#766548", "#c38c55", "#edc57f", "#a88652"];
 
 type StaticView = { zoom: number; centerX: number; centerY: number };
 const DEFAULT_STATIC_VIEW: StaticView = { zoom: 1, centerX: 0.5, centerY: 0.5 };
 
 const boundaryGroups: Record<string, string[]> = {
+  Armagnac: ["Armagnac AOC"],
   "Authorized Mexican states": ["Mezcal DO"],
   Benelux: ["Netherlands", "Belgium", "Luxembourg"],
+  Calvados: ["Calvados AOC"],
+  Cognac: ["Cognac AOC"],
   "Jalisco + authorized areas": ["Tequila DO"],
   "Jalisco & Nayarit": ["Raicilla DO"],
   Korea: ["South Korea"],
@@ -53,12 +86,13 @@ const boundaryGroups: Record<string, string[]> = {
 };
 
 const countryFocusGroups: Record<string, string[]> = {
-  Armagnac: ["France"],
+  Armagnac: ["Armagnac AOC"],
   "Bolivian high valleys": ["Bolivia"],
   "Central Europe": ["Germany", "Austria", "Switzerland"],
-  Cognac: ["France"],
+  Calvados: ["Calvados AOC"],
+  Cognac: ["Cognac AOC"],
   Jerez: ["Spain"],
-  Normandy: ["France"],
+  Normandy: ["Calvados AOC"],
   "Pacific South America": ["Peru", "Chile"],
   "Peru & Chile": ["Peru", "Chile"],
   Tennessee: ["United States"],
@@ -120,7 +154,7 @@ function focusIdsForRegions(regions: MapRegion[], requested?: string[]) {
 }
 
 function isDenominationTerritory(id: string) {
-  return id.endsWith(" DO");
+  return id.endsWith(" DO") || id.endsWith(" AOC");
 }
 
 function featuresForIds(ids: string[]) {
@@ -304,12 +338,14 @@ export function RegionMap({
   );
   // ResizeObserver can briefly report a zero-sized box while a subtype panel
   // is switching. Cap every SVG size against the visible geographic extent so
-  // a transient measurement can never turn a marker or halo into a map-sized
-  // circle.
+  // a transient measurement can never turn a marker into a map-sized shape.
   const mapExtent = Math.min(viewBox.width, viewBox.height);
   const markerRadius = Math.min(mapUnitsPerPixel * PRIMARY_MARKER_RADIUS_PX, mapExtent / 44);
   const markerFontSize = Math.min(mapUnitsPerPixel * (compact ? 9 : 10), mapExtent / 30);
-  const distilleryMarkerRadius = Math.min(mapUnitsPerPixel * DISTILLERY_MARKER_RADIUS_PX, mapExtent / 76);
+  const distilleryMarkerRadiusPx = DISTILLERY_MARKER_RADIUS_PX
+    + (DISTILLERY_MARKER_MAX_RADIUS_PX - DISTILLERY_MARKER_RADIUS_PX)
+      * (Math.log(staticView.zoom) / Math.log(MAX_STATIC_ZOOM));
+  const distilleryMarkerRadius = Math.min(mapUnitsPerPixel * distilleryMarkerRadiusPx, mapExtent / 100);
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -420,12 +456,13 @@ export function RegionMap({
             source: "production-outlines",
             paint: {
               "fill-color": [
-                "match", ["get", "name"],
-                "Highland", "#9b7845",
-                "Speyside", "#d9a85b",
-                "Lowland", "#766548",
-                "Islay", "#c38c55",
-                "Campbeltown", "#edc57f",
+                "match", ["get", "index"],
+                1, REGION_COLORS[0],
+                2, REGION_COLORS[1],
+                3, REGION_COLORS[2],
+                4, REGION_COLORS[3],
+                5, REGION_COLORS[4],
+                6, REGION_COLORS[5],
                 "#d9a85b",
               ],
               "fill-opacity": 0.28,
@@ -510,25 +547,14 @@ export function RegionMap({
           if (distilleries.features.length) {
             map.addSource("representative-distilleries", { type: "geojson", data: distilleries });
             map.addLayer({
-              id: "distillery-halo",
-              type: "circle",
-              source: "representative-distilleries",
-              paint: {
-                "circle-color": "#f0bd68",
-                "circle-radius": 9,
-                "circle-blur": 0.65,
-                "circle-opacity": 0.5,
-              },
-            });
-            map.addLayer({
               id: "distillery-points",
               type: "circle",
               source: "representative-distilleries",
               paint: {
                 "circle-color": "#17120d",
-                "circle-radius": DISTILLERY_MARKER_RADIUS_PX,
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 1.75, 4, 2.5, 8, 5],
                 "circle-stroke-color": "#ffd992",
-                "circle-stroke-width": 2,
+                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 0, 1, 8, 1.75],
               },
             });
             map.addLayer({
@@ -639,6 +665,7 @@ export function RegionMap({
                 d={geometryPath(feature.geometry)}
                 fillRule="evenodd"
                 key={`${region.name}-outline-${index}-${featureIndex}`}
+                style={{ fill: `color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 28%, transparent)`, stroke: REGION_COLORS[index % REGION_COLORS.length] }}
               />
             )),
           )}
@@ -647,10 +674,10 @@ export function RegionMap({
             const point = project(region.distillery.point);
             const x = point.x * 3.6;
             const y = point.y * 1.8;
+            const radius = distilleryMarkerRadius;
             return [
               <g className="map-distillery-marker" key={`${region.name}-distillery-${index}`}>
-                <circle className="map-distillery-halo" cx={x} cy={y} r={distilleryMarkerRadius * 1.75} />
-                <circle cx={x} cy={y} r={distilleryMarkerRadius} />
+                <path d={`M ${x - radius} ${y} a ${radius} ${radius} 0 1 0 ${radius * 2} 0 a ${radius} ${radius} 0 1 0 ${-radius * 2} 0`} />
               </g>,
             ];
           })}
@@ -699,7 +726,7 @@ export function RegionMap({
             <ol>
               {regions.map((region, index) => (
                 <li key={`${region.name}-legend-${index}`}>
-                  <b aria-hidden="true" />
+                  <b aria-hidden="true" style={{ borderColor: REGION_COLORS[index % REGION_COLORS.length], boxShadow: `0 0 0 3px color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 16%, transparent)` }} />
                   <strong>{region.name}</strong>
                   <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>
                 </li>
