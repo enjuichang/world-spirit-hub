@@ -7,7 +7,6 @@ import {
   BookOpenText,
   Factory,
   Fingerprint,
-  MapPinned,
   Scale,
   Sparkles,
   Tag,
@@ -105,6 +104,9 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
                   const example = classification
                     ? categoryLocations.find((location) => location.id === classification.distilleryId)
                     : undefined;
+                  const mappedRegion = subtype.region && example
+                    ? { ...subtype.region, distillery: { name: example.name, point: example.coordinates } }
+                    : subtype.region;
 
                   return (
                     <article className="subtype-card" key={subtype.name}>
@@ -113,7 +115,7 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
                       <SubtypeFact icon={<Scale />} title="The law">{subtype.law}</SubtypeFact>
                       <SubtypeFact icon={<Sparkles />} title="Signature style">{subtype.style}</SubtypeFact>
                       {example && <SubtypeFact icon={<Factory />} title="Distillery example"><strong className="subtype-example-name">{example.name}</strong>{example.place}, {example.country}. {example.descriptor}.</SubtypeFact>}
-                      {subtype.region && <div className="subtype-map-wrap"><MapPinned size={14} aria-hidden="true" /><RegionMap regions={[subtype.region]} label={`${subtype.name} distribution`} compact /></div>}
+                      {mappedRegion && <div className="subtype-map-wrap"><RegionMap regions={[mappedRegion]} label={`${subtype.name} distribution`} compact /></div>}
                       <a className="subtype-explore-link" href={`#${getSubtypeTargetId(category.id, subtype.name)}`}>Explore regions & ingredients <ArrowRight size={13} /></a>
                     </article>
                   );

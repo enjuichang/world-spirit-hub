@@ -61,8 +61,42 @@ function boundariesForRegion(region: MapRegion): BoundaryFeature[] {
   });
 }
 
+function ringContainsPoint(point: [number, number], ring: number[][]) {
+  let inside = false;
+  for (let index = 0, previous = ring.length - 1; index < ring.length; previous = index++) {
+    const [x, y] = ring[index];
+    const [previousX, previousY] = ring[previous];
+    const intersects = ((y > point[1]) !== (previousY > point[1]))
+      && point[0] < ((previousX - x) * (point[1] - y)) / (previousY - y) + x;
+    if (intersects) inside = !inside;
+  }
+  return inside;
+}
+
+function polygonContainsPoint(point: [number, number], polygon: number[][][]) {
+  return ringContainsPoint(point, polygon[0])
+    && !polygon.slice(1).some((hole) => ringContainsPoint(point, hole));
+}
+
+function featureContainsPoint(feature: BoundaryFeature, point: [number, number]) {
+  const polygons = feature.geometry.type === "Polygon"
+    ? [feature.geometry.coordinates]
+    : feature.geometry.coordinates;
+  return polygons.some((polygon) => polygonContainsPoint(point, polygon));
+}
+
+function containingBoundaryId(point: [number, number]) {
+  return [...boundaryFeatures.values()].find((feature) => featureContainsPoint(feature, point))?.properties.id;
+}
+
 function focusIdsForRegions(regions: MapRegion[], requested?: string[]) {
-  const ids = requested ?? regions.flatMap((region) => countryFocusGroups[region.name] ?? boundaryGroups[region.name] ?? [region.name]);
+  const ids = requested ?? regions.flatMap((region) => {
+    const explicit = countryFocusGroups[region.name] ?? boundaryGroups[region.name];
+    if (explicit) return explicit;
+    if (boundaryFeatures.has(region.name)) return [region.name];
+    const containingId = containingBoundaryId(region.point);
+    return containingId ? [containingId] : [];
+  });
   return [...new Set(ids)].filter((id) => boundaryFeatures.has(id));
 }
 
@@ -165,6 +199,24 @@ function focusedViewBox(features: BoundaryFeature[]) {
   return { x: minX - paddingX, y: minY - paddingY, width: width + paddingX * 2, height: height + paddingY * 2 };
 }
 
+function pointFocusedViewBox(regions: MapRegion[]) {
+  const points = regions.flatMap((region) => [region.point, ...(region.distillery ? [region.distillery.point] : [])]).map(project);
+  const xs = points.map((point) => point.x * 3.6);
+  const ys = points.map((point) => point.y * 1.8);
+  const centerX = (Math.min(...xs) + Math.max(...xs)) / 2;
+  const centerY = (Math.min(...ys) + Math.max(...ys)) / 2;
+  let width = Math.max((Math.max(...xs) - Math.min(...xs)) * 1.45, 34);
+  let height = Math.max((Math.max(...ys) - Math.min(...ys)) * 1.45, 16);
+  const targetRatio = 2.15;
+  if (width / height < targetRatio) width = height * targetRatio;
+  else height = width / targetRatio;
+  width = Math.min(width, 360);
+  height = Math.min(height, 180);
+  const x = Math.max(0, Math.min(centerX - width / 2, 360 - width));
+  const y = Math.max(0, Math.min(centerY - height / 2, 180 - height));
+  return { x, y, width, height };
+}
+
 export function RegionMap({
   regions,
   label,
@@ -185,10 +237,20 @@ export function RegionMap({
     [compact, focus, regions],
   );
   const focusFeatures = useMemo(() => featuresForIds(focusIds), [focusIds]);
-  const viewBox = focusedViewBox(focusFeatures);
-  const markerRadius = Math.max(viewBox.width / 68, 0.17);
-  const markerFontSize = Math.max(viewBox.width / 25, 0.5);
-  const distilleryMarkerRadius = Math.max(viewBox.width / 105, 0.12);
+  const viewBox = focusFeatures.length
+    ? focusedViewBox(focusFeatures)
+    : compact
+      ? pointFocusedViewBox(regions)
+      : focusedViewBox([]);
+  const markerRadius = compact
+    ? Math.max(viewBox.width / 120, 0.065)
+    : Math.max(viewBox.width / 68, 0.17);
+  const markerFontSize = compact
+    ? Math.max(viewBox.width / 34, 0.24)
+    : Math.max(viewBox.width / 25, 0.5);
+  const distilleryMarkerRadius = compact
+    ? Math.max(viewBox.width / 145, 0.032)
+    : Math.max(viewBox.width / 105, 0.12);
 
   useEffect(() => {
     if (compact || !wrapperRef.current || mapRef.current) return;
@@ -441,6 +503,9 @@ export function RegionMap({
           preserveAspectRatio="xMidYMid meet"
           aria-hidden="true"
         >
+          {compact && !focusFeatures.length && (
+            <image className="map-land-vector" href="/world-equirectangular.svg" x="0" y="0" width="360" height="180" />
+          )}
           {focusFeatures.map((feature) => (
             <path className="map-focus-outline" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-focus`} />
           ))}
@@ -466,11 +531,11 @@ export function RegionMap({
               </g>,
             ];
           })}
-          {focusFeatures.length > 0 && regions.map((region, index) => {
+          {(focusFeatures.length > 0 || compact) && regions.map((region, index) => {
             const point = project(region.point);
             const x = point.x * 3.6;
             const y = point.y * 1.8;
-            const direction = index % 2 === 0 ? 1 : -1;
+            const direction = x > viewBox.x + viewBox.width * 0.58 ? -1 : 1;
             const labelY = y + ((index % 3) - 1) * markerFontSize * 1.4;
             const labelX = x + direction * markerRadius * 1.9;
             return (
@@ -488,7 +553,7 @@ export function RegionMap({
             );
           })}
         </svg>
-        {!focusFeatures.length && regions.map((region, index) => {
+        {!focusFeatures.length && !compact && regions.map((region, index) => {
           const point = project(region.point);
           const hasBoundary = boundariesForRegion(region).length > 0;
           return (
@@ -505,19 +570,28 @@ export function RegionMap({
         {!compact && <div className="mapbox-region-layer" ref={mapContainerRef} aria-hidden={!mapReady} />}
       </div>
       <figcaption>
-        <div className="map-caption-heading">
-          <span>{focusIds.length ? `Country focus · ${focusIds.join(" + ")}` : compact ? "Production area" : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
-          {!compact && regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
-        </div>
-        <ol>
-          {regions.map((region, index) => (
-            <li key={`${region.name}-legend-${index}`}>
-              <b aria-hidden="true" />
-              <strong>{region.name}</strong>
-              {!compact && <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>}
-            </li>
-          ))}
-        </ol>
+        {compact ? (
+          <div className="compact-map-caption">
+            <span>{focusIds.length ? `Geographic focus · ${focusIds.join(" + ")}` : "Production area"}</span>
+            {regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
+          </div>
+        ) : (
+          <>
+            <div className="map-caption-heading">
+              <span>{focusIds.length ? `Geographic focus · ${focusIds.join(" + ")}` : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
+              {regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
+            </div>
+            <ol>
+              {regions.map((region, index) => (
+                <li key={`${region.name}-legend-${index}`}>
+                  <b aria-hidden="true" />
+                  <strong>{region.name}</strong>
+                  <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>
+                </li>
+              ))}
+            </ol>
+          </>
+        )}
       </figcaption>
     </figure>
   );
