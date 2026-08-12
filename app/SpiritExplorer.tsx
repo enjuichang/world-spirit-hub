@@ -118,13 +118,19 @@ function OfflineExplorerMap({
   return (
     <div
       className={`map-canvas offline-explorer-map${view.zoom > 1 ? " is-zoomed" : ""}`}
+      style={{ padding: 0 }}
       onPointerDown={beginPan}
       onPointerMove={movePan}
       onPointerUp={endPan}
       onPointerCancel={endPan}
       aria-label="Interactive world spirits map"
     >
-      <svg viewBox={viewBox} role="img" aria-label={`${visibleLocations.length} spirit sites on a world map`}>
+      <svg
+        viewBox={viewBox}
+        preserveAspectRatio="xMidYMid slice"
+        role="img"
+        aria-label={`${visibleLocations.length} spirit sites on a world map`}
+      >
         <image href="/world-equirectangular.svg" x="0" y="0" width="360" height="180" />
         <g className="offline-map-graticule" aria-hidden="true">
           {[45, 90, 135, 180, 225, 270, 315].map((x) => <line key={`x-${x}`} x1={x} y1="0" x2={x} y2="180" />)}
