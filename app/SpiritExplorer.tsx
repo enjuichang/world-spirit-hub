@@ -36,6 +36,7 @@ type BottleImage = {
 };
 
 const bottleImageById = bottleImages as Record<string, BottleImage>;
+const MAPBOX_PUBLIC_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 const MAX_FALLBACK_ZOOM = 7;
 
@@ -313,7 +314,7 @@ export function SpiritExplorer() {
     let loadTimer: ReturnType<typeof setTimeout> | undefined;
 
     try {
-      const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+      const mapboxToken = MAPBOX_PUBLIC_TOKEN;
       if (!mapboxToken) {
         queueMicrotask(() => setMapFailed(true));
         return;
@@ -790,7 +791,7 @@ export function SpiritExplorer() {
           )}
         </div>
 
-        {selectedLocation && selectedCategory && (
+        {selectedCategory && (
           <aside className="detail-drawer" aria-label="Selected spirit details">
             <button
               className="drawer-close"

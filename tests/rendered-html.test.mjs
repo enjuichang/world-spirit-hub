@@ -68,6 +68,7 @@ test("renders the educational guide", async () => {
   assert.match(whiskyHtml, /Regional vector atlas/);
   assert.match(whiskyHtml, /From introductory to advanced/);
   assert.match(whiskyHtml, /Blended Irish whiskey/);
+  assert.match(whiskyHtml, /Australian whisky/);
   assert.match(whiskyHtml, /Distillery map/);
   assert.match(whiskyHtml, /161(?:<!-- -->)? documented production sites/);
 
@@ -76,13 +77,15 @@ test("renders the educational guide", async () => {
   assert.match(brandyHtml, /Folle Blanche/);
   assert.match(brandyHtml, /Colombard/);
   assert.match(brandyHtml, /Borderies/);
-  assert.match(brandyHtml, /France with orientation markers for the six crus/);
+  assert.match(brandyHtml, /The six official Cognac crus/);
   assert.match(brandyHtml, /VS Cognac/);
   assert.match(brandyHtml, /86(?:<!-- -->)? documented production sites/);
 
   const agaveHtml = await agaveResponse.text();
-  assert.match(agaveHtml, /Official denomination/);
+  assert.match(agaveHtml, /Mexico context · Highlands \+ Valley · official denomination/i);
   assert.match(agaveHtml, /Tequila DO/);
+  assert.match(agaveHtml, /Los Altos · Highlands/);
+  assert.match(agaveHtml, /trade and terroir language, not separate classes/i);
   assert.doesNotMatch(agaveHtml, /Geographic focus · Mexico/);
 });
 

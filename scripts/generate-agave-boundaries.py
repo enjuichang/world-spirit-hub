@@ -172,6 +172,24 @@ RAICILLA = {
 SOTOL = {"Chihuahua": "*", "Coahuila": "*", "Durango": "*"}
 
 
+# These are familiar tequila-terroir lenses rather than legal sub-denominations.
+# Municipal geometry makes the educational highlight legible without implying
+# that the Tequila standard defines a Highlands or Valley class.
+TEQUILA_HIGHLANDS = {
+    "Jalisco": [
+        "Acatic", "Arandas", "Atotonilco el Alto", "Cañadas de Obregón",
+        "Jalostotitlán", "Jesús María", "Mexticacán", "San Ignacio Cerro Gordo",
+        "San Julián", "San Miguel el Alto", "Tepatitlán de Morelos", "Tototlán",
+        "Valle de Guadalupe", "Yahualica de González Gallo",
+    ],
+}
+
+
+TEQUILA_VALLEY = {
+    "Jalisco": ["Tequila", "Amatitán", "El Arenal", "Magdalena", "Hostotipaquillo"],
+}
+
+
 def normalize(value: str) -> str:
     decomposed = unicodedata.normalize("NFKD", value.casefold())
     return "".join(char for char in decomposed if not unicodedata.combining(char))
@@ -274,12 +292,16 @@ def main() -> None:
         "Raicilla DO": RAICILLA,
         "Sotol DO": SOTOL,
     }
+    common_regions = {
+        "Tequila Highlands": TEQUILA_HIGHLANDS,
+        "Tequila Valley": TEQUILA_VALLEY,
+    }
     collection = {
         "type": "FeatureCollection",
         "source": "INEGI Marco Geoestadístico, December 2025; denomination municipality lists from CRT, IMPI/DOF, and state regulators",
         "features": [
             denomination_feature(identifier, states, territory, args.tolerance)
-            for identifier, territory in territories.items()
+            for identifier, territory in {**territories, **common_regions}.items()
         ],
     }
     args.output.write_text(json.dumps(collection, ensure_ascii=False, separators=(",", ":")) + "\n")

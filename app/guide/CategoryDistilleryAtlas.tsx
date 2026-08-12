@@ -48,8 +48,8 @@ function subtypeRegion(name: string, locations: SpiritLocation[]): SubtypeRegion
   const maxX = Math.max(...xs);
   const minY = Math.min(...ys);
   const maxY = Math.max(...ys);
-  const width = Math.min(30, Math.max(6, maxX - minX + 4));
-  const height = Math.min(32, Math.max(11, maxY - minY + 8));
+  const width = Math.min(18, Math.max(3, maxX - minX + 2));
+  const height = Math.min(20, Math.max(6, maxY - minY + 4));
   const centerX = (minX + maxX) / 2;
   const centerY = (minY + maxY) / 2;
 

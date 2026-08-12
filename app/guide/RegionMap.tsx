@@ -22,6 +22,26 @@ type RegionGeometry = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 type BoundaryProperties = { id: string };
 type BoundaryFeature = GeoJSON.Feature<RegionGeometry, BoundaryProperties>;
 type MinimumRegion = "caribbean";
+type MapLandmark = {
+  name: string;
+  point: [number, number];
+  kind: "city" | "distillery";
+  detail?: string;
+};
+
+type PositionedLabel = {
+  key: string;
+  name: string;
+  pointX: number;
+  pointY: number;
+  labelX: number;
+  labelY: number;
+  lineX: number;
+  lineY: number;
+  textAnchor: "start" | "middle" | "end";
+  kind: "region" | "city" | "distillery";
+  regionIndex?: number;
+};
 
 const MINIMUM_REGION_BOUNDS: Record<MinimumRegion, [[number, number], [number, number]]> = {
   caribbean: [[-92, 6], [-55, 30]],
@@ -72,6 +92,28 @@ const DISTILLERY_MARKER_RADIUS_PX = 2;
 const DISTILLERY_MARKER_MAX_RADIUS_PX = 5;
 const REGION_COLORS = ["#9b7845", "#d9a85b", "#766548", "#c38c55", "#edc57f", "#a88652"];
 
+const FOCUS_LANDMARKS: Record<string, MapLandmark[]> = {
+  "Cognac AOC": [
+    { name: "Cognac", point: [-0.3286, 45.6958], kind: "city" },
+    { name: "Bordeaux", point: [-0.5792, 44.8378], kind: "city" },
+    { name: "Paris", point: [2.3522, 48.8566], kind: "city" },
+    { name: "Marseille", point: [5.3698, 43.2965], kind: "city" },
+    { name: "Hennessy", point: [-0.3266, 45.6963], kind: "distillery", detail: "Cognac house" },
+  ],
+  "Armagnac AOC": [
+    { name: "Bordeaux", point: [-0.5792, 44.8378], kind: "city" },
+    { name: "Toulouse", point: [1.4442, 43.6047], kind: "city" },
+    { name: "Paris", point: [2.3522, 48.8566], kind: "city" },
+    { name: "Château de Laubade", point: [-0.03, 43.76], kind: "distillery", detail: "Armagnac house" },
+  ],
+  "Calvados AOC": [
+    { name: "Caen", point: [-0.3707, 49.1829], kind: "city" },
+    { name: "Rouen", point: [1.0993, 49.4432], kind: "city" },
+    { name: "Paris", point: [2.3522, 48.8566], kind: "city" },
+    { name: "Christian Drouin", point: [0.183, 49.282], kind: "distillery", detail: "Calvados producer" },
+  ],
+};
+
 type StaticView = { zoom: number; centerX: number; centerY: number };
 const DEFAULT_STATIC_VIEW: StaticView = { zoom: 1, centerX: 0.5, centerY: 0.5 };
 
@@ -107,8 +149,17 @@ const countryFocusGroups: Record<string, string[]> = {
 
 const focusContextGroups: Record<string, string[]> = {
   "Armagnac AOC": ["France"],
+  "Bacanora DO": ["Mexico"],
   "Calvados AOC": ["France"],
   "Cognac AOC": ["France"],
+  "Mezcal DO": ["Mexico"],
+  "Raicilla DO": ["Mexico"],
+  "Sotol DO": ["Mexico"],
+  "Tequila DO": ["Mexico"],
+};
+
+const commonRegionGroups: Record<string, string[]> = {
+  "Tequila DO": ["Tequila Highlands", "Tequila Valley"],
 };
 
 function project([longitude, latitude]: [number, number]) {
@@ -180,6 +231,10 @@ function contextIdsForFocus(ids: string[]) {
   return [...new Set(ids.flatMap((id) => focusContextGroups[id] ?? []))];
 }
 
+function commonIdsForFocus(ids: string[]) {
+  return [...new Set(ids.flatMap((id) => commonRegionGroups[id] ?? []))];
+}
+
 function outlineCollection(regions: MapRegion[]): GeoJSON.FeatureCollection<RegionGeometry> {
   return {
     type: "FeatureCollection",
@@ -220,15 +275,125 @@ function pointCollection(
   };
 }
 
-function distilleryCollection(regions: MapRegion[]): GeoJSON.FeatureCollection<GeoJSON.Point> {
+function landmarksForMap(regions: MapRegion[], focusIds: string[]) {
+  const landmarks: MapLandmark[] = [
+    ...focusIds.flatMap((id) => FOCUS_LANDMARKS[id] ?? []),
+    ...regions.flatMap((region) => region.distillery ? [{
+      name: region.distillery.name,
+      point: region.distillery.point,
+      kind: "distillery" as const,
+      detail: region.name,
+    }] : []),
+  ];
+  const seen = new Set<string>();
+  return landmarks.filter((landmark) => {
+    const key = `${landmark.kind}:${landmark.name}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function landmarkCollection(landmarks: MapLandmark[], kind: MapLandmark["kind"]): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: "FeatureCollection",
-    features: regions.flatMap((region) => region.distillery ? [{
+    features: landmarks.filter((landmark) => landmark.kind === kind).map((landmark) => ({
       type: "Feature" as const,
-      geometry: { type: "Point" as const, coordinates: region.distillery.point },
-      properties: { name: region.distillery.name, region: region.name },
-    }] : []),
+      geometry: { type: "Point" as const, coordinates: landmark.point },
+      properties: { name: landmark.name, detail: landmark.detail ?? "" },
+    })),
   };
+}
+
+type LabelRect = { x: number; y: number; width: number; height: number };
+
+function overlapArea(first: LabelRect, second: LabelRect) {
+  return Math.max(0, Math.min(first.x + first.width, second.x + second.width) - Math.max(first.x, second.x))
+    * Math.max(0, Math.min(first.y + first.height, second.y + second.height) - Math.max(first.y, second.y));
+}
+
+function positionMapLabels(
+  regions: MapRegion[],
+  landmarks: MapLandmark[],
+  viewBox: { x: number; y: number; width: number; height: number },
+  fontSize: number,
+  markerRadius: number,
+) {
+  const candidates = [
+    ...regions.map((region, index) => ({
+      key: `region-${index}`,
+      name: `${index + 1}. ${region.name}`,
+      point: region.point,
+      kind: "region" as const,
+      regionIndex: index,
+      priority: 0,
+      size: fontSize,
+    })),
+    ...landmarks.map((landmark, index) => ({
+      key: `landmark-${landmark.kind}-${index}`,
+      name: landmark.name,
+      point: landmark.point,
+      kind: landmark.kind,
+      regionIndex: undefined,
+      priority: landmark.kind === "city" ? 1 : 2,
+      size: fontSize * 0.82,
+    })),
+  ].sort((first, second) => first.priority - second.priority);
+
+  const occupied: LabelRect[] = candidates.map((candidate) => {
+    const point = project(candidate.point);
+    const x = point.x * 3.6;
+    const y = point.y * 1.8;
+    return { x: x - markerRadius * 1.25, y: y - markerRadius * 1.25, width: markerRadius * 2.5, height: markerRadius * 2.5 };
+  });
+  const padding = fontSize * 0.4;
+  const result: PositionedLabel[] = [];
+
+  candidates.forEach((candidate) => {
+    const projected = project(candidate.point);
+    const pointX = projected.x * 3.6;
+    const pointY = projected.y * 1.8;
+    const height = candidate.size * 1.35;
+    const width = Math.max(candidate.name.length * candidate.size * 0.57, candidate.size * 2.5);
+    const gap = markerRadius * (candidate.kind === "region" ? 2.1 : 1.65) + padding;
+    const rowOffsets = [0, -1, 1, -2, 2, -3, 3, -4, 4];
+    const placements = rowOffsets.flatMap((row) => {
+      const y = pointY + row * height * 1.05;
+      return [
+        { rect: { x: pointX + gap, y: y - height / 2, width, height }, labelX: pointX + gap + padding, labelY: y, lineX: pointX + gap, lineY: y, textAnchor: "start" as const },
+        { rect: { x: pointX - gap - width, y: y - height / 2, width, height }, labelX: pointX - gap - padding, labelY: y, lineX: pointX - gap, lineY: y, textAnchor: "end" as const },
+      ];
+    });
+    placements.push(
+      { rect: { x: pointX - width / 2, y: pointY - gap - height, width, height }, labelX: pointX, labelY: pointY - gap - height / 2, lineX: pointX, lineY: pointY - gap, textAnchor: "middle" },
+      { rect: { x: pointX - width / 2, y: pointY + gap, width, height }, labelX: pointX, labelY: pointY + gap + height / 2, lineX: pointX, lineY: pointY + gap, textAnchor: "middle" },
+    );
+
+    const scored = placements.map((placement, index) => {
+      const outside = Math.max(0, viewBox.x + padding - placement.rect.x)
+        + Math.max(0, placement.rect.x + placement.rect.width - (viewBox.x + viewBox.width - padding))
+        + Math.max(0, viewBox.y + padding - placement.rect.y)
+        + Math.max(0, placement.rect.y + placement.rect.height - (viewBox.y + viewBox.height - padding));
+      const collision = occupied.reduce((total, rect) => total + overlapArea(placement.rect, rect), 0);
+      return { ...placement, score: outside * width * 20 + collision * 120 + index };
+    }).sort((first, second) => first.score - second.score);
+    const chosen = scored[0];
+    occupied.push(chosen.rect);
+    result.push({
+      key: candidate.key,
+      name: candidate.name,
+      pointX,
+      pointY,
+      labelX: chosen.labelX,
+      labelY: chosen.labelY,
+      lineX: chosen.lineX,
+      lineY: chosen.lineY,
+      textAnchor: chosen.textAnchor,
+      kind: candidate.kind,
+      regionIndex: candidate.regionIndex,
+    });
+  });
+  return result;
 }
 
 function extendGeometryBounds(bounds: LngLatBounds, geometry: RegionGeometry) {
@@ -365,6 +530,7 @@ export function RegionMap({
   const staticDragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [staticViews, setStaticViews] = useState<Record<string, StaticView>>({});
   const [mapViewport, setMapViewport] = useState({ width: 720, height: 350 });
   const focusIds = useMemo(
@@ -374,6 +540,11 @@ export function RegionMap({
   const focusFeatures = useMemo(() => featuresForIds(focusIds), [focusIds]);
   const contextIds = useMemo(() => contextIdsForFocus(focusIds), [focusIds]);
   const contextFeatures = useMemo(() => featuresForIds(contextIds), [contextIds]);
+  const commonIds = useMemo(() => commonIdsForFocus(focusIds), [focusIds]);
+  const commonFeatures = useMemo(() => featuresForIds(commonIds), [commonIds]);
+  const commonLabel = commonIds.map((id) => id.replace(/^Tequila /, "")).join(" + ");
+  const compactContextLabel = contextIds.length ? `${contextIds.join(" + ")} · ` : "";
+  const contextLabel = contextIds.length ? `${contextIds.join(" + ")} context · ` : "";
   const hasDenominationFocus = focusIds.some(isDenominationTerritory);
   const hasIncompleteFocus = focus !== undefined && focusIds.length < focus.length;
   const fittedViewBox = contextFeatures.length
@@ -414,6 +585,8 @@ export function RegionMap({
     + (DISTILLERY_MARKER_MAX_RADIUS_PX - DISTILLERY_MARKER_RADIUS_PX)
       * zoomProgress;
   const distilleryMarkerRadius = Math.min(mapUnitsPerPixel * distilleryMarkerRadiusPx, mapExtent / 100);
+  const landmarks = useMemo(() => landmarksForMap(regions, focusIds), [focusIds, regions]);
+  const positionedLabels = positionMapLabels(regions, landmarks, viewBox, markerFontSize, markerRadius);
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -528,6 +701,26 @@ export function RegionMap({
               type: "line",
               source: "geographic-context",
               paint: { "line-color": "#c6a56e", "line-width": 1.5, "line-opacity": 0.88 },
+            });
+          }
+          if (commonFeatures.length) {
+            map.addSource("common-production-regions", {
+              type: "geojson",
+              data: { type: "FeatureCollection", features: commonFeatures },
+            });
+            map.addLayer({
+              id: "common-production-regions-fill",
+              type: "fill",
+              source: "common-production-regions",
+              paint: {
+                "fill-color": [
+                  "match", ["get", "id"],
+                  "Tequila Highlands", "#d9a85b",
+                  "Tequila Valley", "#76a878",
+                  "#9b7845",
+                ],
+                "fill-opacity": 0.3,
+              },
             });
           }
           if (focusFeatures.length) {
@@ -645,7 +838,76 @@ export function RegionMap({
             },
           });
 
-          const distilleries = distilleryCollection(regions);
+          const resetRegionFocus = () => {
+            setHoveredRegion(null);
+            map.getCanvas().style.cursor = "";
+            map.setPaintProperty("production-area-fill", "fill-color", [
+              "match", ["get", "index"],
+              1, REGION_COLORS[0], 2, REGION_COLORS[1], 3, REGION_COLORS[2],
+              4, REGION_COLORS[3], 5, REGION_COLORS[4], 6, REGION_COLORS[5], "#d9a85b",
+            ]);
+            map.setPaintProperty("production-area-fill", "fill-opacity", 0.28);
+            map.setPaintProperty("production-area-outline", "line-opacity", 0.96);
+            map.setPaintProperty("production-region-names", "text-opacity", 1);
+            map.setPaintProperty("production-fallback-points", "circle-opacity", 1);
+            map.setPaintProperty("production-fallback-halo", "circle-opacity", 0.65);
+          };
+          const focusRegion = (name: string) => {
+            setHoveredRegion(name);
+            map.getCanvas().style.cursor = "pointer";
+            const selected = ["==", ["get", "name"], name];
+            map.setPaintProperty("production-area-fill", "fill-color", ["case", selected, "#edc57f", "#070706"]);
+            map.setPaintProperty("production-area-fill", "fill-opacity", ["case", selected, 0.58, 0.78]);
+            map.setPaintProperty("production-area-outline", "line-opacity", ["case", selected, 1, 0.16]);
+            map.setPaintProperty("production-region-names", "text-opacity", ["case", selected, 1, 0.16]);
+            map.setPaintProperty("production-fallback-points", "circle-opacity", ["case", selected, 1, 0.14]);
+            map.setPaintProperty("production-fallback-halo", "circle-opacity", ["case", selected, 0.75, 0.05]);
+          };
+          const handleRegionHover = (event: mapboxgl.MapMouseEvent & { features?: mapboxgl.MapboxGeoJSONFeature[] }) => {
+            const name = event.features?.[0]?.properties?.name;
+            if (typeof name === "string") focusRegion(name);
+          };
+          map.on("mousemove", "production-area-fill", handleRegionHover);
+          map.on("mouseleave", "production-area-fill", resetRegionFocus);
+          map.on("mousemove", "production-fallback-points", handleRegionHover);
+          map.on("mouseleave", "production-fallback-points", resetRegionFocus);
+
+          const cities = landmarkCollection(landmarks, "city");
+          if (cities.features.length) {
+            map.addSource("context-cities", { type: "geojson", data: cities });
+            map.addLayer({
+              id: "context-city-points",
+              type: "circle",
+              source: "context-cities",
+              paint: {
+                "circle-color": "#d9cbb6",
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 2, 6, 3.5],
+                "circle-stroke-color": "#17120d",
+                "circle-stroke-width": 1,
+              },
+            });
+            map.addLayer({
+              id: "context-city-names",
+              type: "symbol",
+              source: "context-cities",
+              layout: {
+                "text-field": ["get", "name"],
+                "text-size": ["interpolate", ["linear"], ["zoom"], 0, 9, 6, 11],
+                "text-font": ["Open Sans Semibold"],
+                "text-variable-anchor": ["top", "bottom", "left", "right"],
+                "text-radial-offset": 0.65,
+                "text-allow-overlap": false,
+                "text-optional": false,
+              },
+              paint: {
+                "text-color": "#d9cbb6",
+                "text-halo-color": "#17120d",
+                "text-halo-width": 1.5,
+              },
+            });
+          }
+
+          const distilleries = landmarkCollection(landmarks, "distillery");
           if (distilleries.features.length) {
             map.addSource("representative-distilleries", { type: "geojson", data: distilleries });
             map.addLayer({
@@ -688,7 +950,7 @@ export function RegionMap({
               const coordinates = feature.geometry.coordinates as [number, number];
               new mapboxgl.Popup({ closeButton: false, offset: 10, className: "distillery-popup" })
                 .setLngLat(coordinates)
-                .setHTML(`<strong>${feature.properties?.name ?? "Distillery"}</strong><span>${feature.properties?.region ?? ""}</span>`)
+                .setHTML(`<strong>${feature.properties?.name ?? "Distillery"}</strong><span>${feature.properties?.detail ?? ""}</span>`)
                 .addTo(map);
             };
             map.on("click", "distillery-points", showDistilleryPopup);
@@ -731,10 +993,10 @@ export function RegionMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [compact, contextFeatures, focusFeatures, minimumBounds, regions, shouldApplyMinimumRegion]);
+  }, [commonFeatures, compact, contextFeatures, focusFeatures, landmarks, minimumBounds, regions, shouldApplyMinimumRegion]);
 
   return (
-    <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}`} ref={figureRef}>
+    <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}${hoveredRegion ? " has-region-hover" : ""}`} ref={figureRef}>
       <div
         className={`map-canvas${mapReady ? " mapbox-ready" : ""}${staticView.zoom > 1 ? " is-zoomed" : ""}`}
         ref={wrapperRef}
@@ -764,51 +1026,63 @@ export function RegionMap({
           {contextFeatures.map((feature) => (
             <path className="map-country-context" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-context`} />
           ))}
+          {commonFeatures.map((feature, index) => (
+            <path className={`map-common-region common-${index}`} d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-common`} />
+          ))}
           {focusFeatures.map((feature) => (
             <path className="map-focus-outline" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-focus`} />
           ))}
           {regions.flatMap((region, index) =>
             boundariesForRegion(region).map((feature, featureIndex) => (
               <path
-                className={`map-region-outline ${region.kind ?? "traditional"}`}
+                className={`map-region-outline ${region.kind ?? "traditional"}${hoveredRegion === region.name ? " is-hovered" : hoveredRegion ? " is-dimmed" : ""}`}
                 d={geometryPath(feature.geometry)}
                 fillRule="evenodd"
                 key={`${region.name}-outline-${index}-${featureIndex}`}
                 style={{ fill: `color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 28%, transparent)`, stroke: REGION_COLORS[index % REGION_COLORS.length] }}
+                onPointerEnter={() => setHoveredRegion(region.name)}
+                onPointerLeave={() => setHoveredRegion(null)}
               />
             )),
           )}
-          {regions.flatMap((region, index) => {
-            if (!region.distillery) return [];
-            const point = project(region.distillery.point);
-            const x = point.x * 3.6;
-            const y = point.y * 1.8;
-            const radius = distilleryMarkerRadius;
-            return [
-              <g className="map-distillery-marker" key={`${region.name}-distillery-${index}`}>
-                <path d={`M ${x - radius} ${y} a ${radius} ${radius} 0 1 0 ${radius * 2} 0 a ${radius} ${radius} 0 1 0 ${-radius * 2} 0`} />
-              </g>,
-            ];
-          })}
-          {regions.map((region, index) => {
-            const point = project(region.point);
-            const x = point.x * 3.6;
-            const y = point.y * 1.8;
-            const direction = x > viewBox.x + viewBox.width * 0.58 ? -1 : 1;
-            const labelOffsets = [-1.8, -0.65, 0.65, -1.1, 1.7, 0.15];
-            const labelY = y + labelOffsets[index % labelOffsets.length] * markerFontSize;
-            const labelX = x + direction * markerRadius * 1.9;
+          {positionedLabels.map((positioned) => {
+            if (positioned.kind === "region" && positioned.regionIndex !== undefined) {
+              const region = regions[positioned.regionIndex];
+              return (
+                <g
+                  className={`map-focused-marker ${region.kind ?? "traditional"}${hoveredRegion === region.name ? " is-hovered" : hoveredRegion ? " is-dimmed" : ""}`}
+                  key={positioned.key}
+                  onPointerEnter={() => setHoveredRegion(region.name)}
+                  onPointerLeave={() => setHoveredRegion(null)}
+                >
+                  <circle cx={positioned.pointX} cy={positioned.pointY} r={markerRadius} />
+                  <line x1={positioned.pointX} y1={positioned.pointY} x2={positioned.lineX} y2={positioned.lineY} />
+                  <text
+                    x={positioned.labelX}
+                    y={positioned.labelY}
+                    dominantBaseline="middle"
+                    fontSize={markerFontSize}
+                    textAnchor={positioned.textAnchor}
+                  >{compact ? region.name : positioned.name}</text>
+                </g>
+              );
+            }
+            const landmark = landmarks.find((item) => item.name === positioned.name && item.kind === positioned.kind);
+            const radius = positioned.kind === "distillery" ? distilleryMarkerRadius * 1.4 : distilleryMarkerRadius;
             return (
-              <g className={`map-focused-marker ${region.kind ?? "traditional"}`} key={`${region.name}-focused-${index}`}>
-                <circle cx={x} cy={y} r={markerRadius} />
-                <line x1={x} y1={y} x2={labelX} y2={labelY} />
+              <g className={`map-place-marker ${positioned.kind}`} key={positioned.key}>
+                <title>{`${positioned.name}${landmark?.detail ? ` · ${landmark.detail}` : ""}`}</title>
+                {positioned.kind === "city"
+                  ? <circle cx={positioned.pointX} cy={positioned.pointY} r={radius} />
+                  : <path d={`M ${positioned.pointX} ${positioned.pointY - radius} L ${positioned.pointX + radius} ${positioned.pointY} L ${positioned.pointX} ${positioned.pointY + radius} L ${positioned.pointX - radius} ${positioned.pointY} Z`} />}
+                <line x1={positioned.pointX} y1={positioned.pointY} x2={positioned.lineX} y2={positioned.lineY} />
                 <text
-                  x={labelX + direction * markerRadius * 0.45}
-                  y={labelY}
+                  x={positioned.labelX}
+                  y={positioned.labelY}
                   dominantBaseline="middle"
-                  fontSize={markerFontSize}
-                  textAnchor={direction === 1 ? "start" : "end"}
-                >{compact ? region.name : `${index + 1}. ${region.name}`}</text>
+                  fontSize={markerFontSize * 0.82}
+                  textAnchor={positioned.textAnchor}
+                >{positioned.name}</text>
               </g>
             );
           })}
@@ -824,13 +1098,13 @@ export function RegionMap({
       <figcaption>
         {compact ? (
           <div className="compact-map-caption">
-            <span>{focusLabel.length ? `${hasDenominationFocus ? "Official denomination" : "Geographic focus"} · ${focusLabel.join(" + ")}` : "Production area"}</span>
+            <span>{focusLabel.length ? `${hasDenominationFocus ? `${compactContextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus"} · ${focusLabel.join(" + ")}` : "Production area"}</span>
             {regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
           </div>
         ) : (
           <>
             <div className="map-caption-heading">
-              <span>{focusLabel.length ? `${hasDenominationFocus ? "Official denomination" : "Geographic focus"} · ${focusLabel.join(" + ")}` : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
+              <span>{focusLabel.length ? `${hasDenominationFocus ? `${contextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus"} · ${focusLabel.join(" + ")}` : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
               {regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
             </div>
             <ol>

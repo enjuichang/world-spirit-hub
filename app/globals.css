@@ -2352,6 +2352,22 @@ button {
   stroke-width: 1.25;
   filter: drop-shadow(0 0 2px color-mix(in srgb, var(--category) 62%, transparent));
   vector-effect: non-scaling-stroke;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: fill 180ms ease, opacity 180ms ease, filter 180ms ease, stroke 180ms ease;
+}
+
+.map-region-outline.is-dimmed {
+  fill: rgb(4 4 3 / 86%) !important;
+  stroke: rgb(108 91 64 / 28%) !important;
+  filter: none;
+  opacity: 0.92;
+}
+
+.map-region-outline.is-hovered {
+  fill: rgb(237 197 127 / 48%) !important;
+  stroke: #ffe1a3 !important;
+  filter: drop-shadow(0 0 5px rgb(237 197 127 / 48%));
 }
 
 .map-focus-outline {
@@ -2363,11 +2379,20 @@ button {
 }
 
 .map-country-context {
-  fill: rgb(175 144 96 / 16%);
-  stroke: #c6a56e;
+  fill: rgb(175 144 96 / 9%);
+  stroke: #8f7958;
   stroke-linejoin: round;
   stroke-width: 1.35;
   vector-effect: non-scaling-stroke;
+}
+
+.map-common-region {
+  fill: rgb(217 168 91 / 32%);
+  stroke: none;
+}
+
+.map-common-region.common-1 {
+  fill: rgb(118 168 120 / 32%);
 }
 
 .map-focused-marker circle {
@@ -2375,6 +2400,21 @@ button {
   stroke: #fff2d9;
   stroke-width: 1.5;
   vector-effect: non-scaling-stroke;
+}
+
+.map-focused-marker {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 180ms ease;
+}
+
+.map-focused-marker.is-dimmed {
+  opacity: 0.13;
+}
+
+.map-focused-marker.is-hovered circle {
+  fill: #edc57f;
+  filter: drop-shadow(0 0 4px rgb(237 197 127 / 65%));
 }
 
 .map-focused-marker line {
@@ -2402,6 +2442,45 @@ button {
 
 .map-distillery-marker path {
   vector-effect: non-scaling-stroke;
+}
+
+.map-place-marker {
+  pointer-events: none;
+}
+
+.map-place-marker line {
+  stroke: rgb(206 184 151 / 58%);
+  stroke-width: 0.65;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-place-marker text {
+  fill: #d9cbb6;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: #17120d;
+  stroke-linejoin: round;
+  stroke-width: 2.2px;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-place-marker.city circle {
+  fill: #d9cbb6;
+  stroke: #17120d;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-place-marker.distillery path {
+  fill: #17120d;
+  stroke: #ffd992;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.map-place-marker.distillery text {
+  fill: #f4c978;
 }
 
 .map-region-outline.protected {

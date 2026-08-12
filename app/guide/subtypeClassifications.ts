@@ -40,6 +40,10 @@ const classifications: Record<string, SubtypeClassification> = {
     definition: "Malted-barley whisky from one Indian distillery, distinguished by origin and single-distillery production.",
     distilleryId: "amrut",
   },
+  "whisky:Australian whisky": {
+    definition: "Australian-made cereal-grain whisky subject to a two-year minimum maturation in wood, without one mandated grain recipe or regional style.",
+    distilleryId: "lark-distillery",
+  },
   "whisky:American single malt whiskey": {
     definition: "United States standard made entirely from malted barley at one U.S. distillery and matured in oak no larger than 700 liters.",
     distilleryId: "westland",

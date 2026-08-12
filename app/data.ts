@@ -73,9 +73,10 @@ export const categories: SpiritCategory[] = [
       "Japanese whisky",
       "Taiwanese single malt whisky",
       "Indian single malt whisky",
+      "Australian whisky",
       "American single malt whiskey",
     ],
-    regions: ["Scotland", "United States", "Ireland", "Canada", "Japan", "Taiwan", "India"],
+    regions: ["Scotland", "United States", "Ireland", "Canada", "Japan", "Taiwan", "India", "Australia"],
     taste: ["Cereal", "Orchard fruit", "Vanilla", "Oak", "Smoke"],
     production:
       "Cereals are converted, fermented, distilled, then usually matured in oak. Mash bill, fermentation, still type, cask history and climate all leave a mark.",
