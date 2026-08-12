@@ -405,7 +405,7 @@ export function SpiritExplorer() {
               <strong>8</strong> families
             </span>
             <span>
-              <strong>{locations.length}</strong> landmarks
+              <strong>{locations.length}</strong> sites
             </span>
             <span>
               <strong>1</strong> world
@@ -433,7 +433,7 @@ export function SpiritExplorer() {
             </span>
             <span>
               <strong>Show all spirits</strong>
-              <small>All {locations.length} map landmarks</small>
+              <small>All {locations.length} map sites</small>
             </span>
             <ChevronRight size={16} aria-hidden="true" />
           </button>
@@ -454,7 +454,7 @@ export function SpiritExplorer() {
                   <span className="category-mark">{category.short}</span>
                   <span>
                     <strong>{category.name}</strong>
-                    <small>{count} landmarks</small>
+                    <small>{count} sites</small>
                   </span>
                   <ChevronRight size={16} aria-hidden="true" />
                 </button>
@@ -475,7 +475,7 @@ export function SpiritExplorer() {
         <div className="map-toolbar">
           <label className="map-search">
             <Search size={17} aria-hidden="true" />
-            <span className="sr-only">Search spirit landmarks</span>
+            <span className="sr-only">Search spirit sites</span>
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
@@ -565,7 +565,7 @@ export function SpiritExplorer() {
           </div>
         </div>
 
-        <div className="location-list" aria-label="Spirit landmarks">
+        <div className="location-list" aria-label="Spirit sites">
           <div className="list-heading">
             <span>Atlas index</span>
             <small>{filteredLocations.length} results</small>
@@ -643,29 +643,28 @@ export function SpiritExplorer() {
                 {selectedLocation.precision === "approximate" && (
                   <p className="precision-note">Approximate regional marker</p>
                 )}
-                <figure className="drawer-bottle">
-                  <BottlePortrait
-                    id={selectedLocation.id}
-                    name={selectedLocation.name}
-                  />
-                  <figcaption>
-                    <span>Featured bottle</span>
-                    <strong>
-                      {bottleImageById[selectedLocation.id]?.productName ??
-                        selectedLocation.name}
-                    </strong>
-                    <small>
-                      An actual bottling associated with this producer.
-                    </small>
-                    <a
-                      href={bottleImageById[selectedLocation.id]?.productPageUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View product source <ArrowUpRight size={12} />
-                    </a>
-                  </figcaption>
-                </figure>
+                {bottleImageById[selectedLocation.id] && (
+                  <figure className="drawer-bottle">
+                    <BottlePortrait
+                      id={selectedLocation.id}
+                      name={selectedLocation.name}
+                    />
+                    <figcaption>
+                      <span>Featured bottle</span>
+                      <strong>{bottleImageById[selectedLocation.id].productName}</strong>
+                      <small>
+                        An actual bottling associated with this producer.
+                      </small>
+                      <a
+                        href={bottleImageById[selectedLocation.id].productPageUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View product source <ArrowUpRight size={12} />
+                      </a>
+                    </figcaption>
+                  </figure>
+                )}
                 <div className="taste-tags">
                   {selectedLocation.tags.map((tag) => (
                     <span key={tag}>{tag}</span>

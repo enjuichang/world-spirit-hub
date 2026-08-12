@@ -4,6 +4,7 @@ import process from "node:process";
 const jsonUrl = new URL("../data/distilleries.json", import.meta.url);
 const profilesUrl = new URL("../data/distillery-profiles.json", import.meta.url);
 const bottleImagesUrl = new URL("../data/bottle-images.json", import.meta.url);
+const subtypeExpansionUrl = new URL("../data/subtype-expansion.json", import.meta.url);
 const markdownUrl = new URL("../DISTILLERIES.md", import.meta.url);
 
 const categories = [
@@ -28,9 +29,9 @@ const requiredSubtypes = new Map([
   ["asian", ["Strong-aroma baijiu", "Sauce-aroma baijiu", "Light-aroma baijiu", "Rice-aroma baijiu", "Honkaku shōchū", "Awamori", "Diluted soju", "Distilled soju", "Kaoliang"]],
   ["flavoured", ["Liqueurs", "Amari", "Aniseed spirits", "Aquavit", "Cocktail bitters", "Flavored vodka", "Infused vodka", "Absinthe"]],
 ]);
-const minimumSubtypeCoverage = 2;
+const minimumSubtypeCoverage = 5;
 const minimumSubtypeCoverageOverrides = new Map([
-  ["whisky:Scotch whisky", 50],
+  ["whisky:Scotch whisky", 53],
 ]);
 const requiredTextFields = [
   "id",
@@ -121,7 +122,7 @@ async function validateBottleImages(distilleries, bottleImages) {
   const imagePaths = new Map();
   for (const distillery of distilleries) {
     const bottle = bottleImages[distillery.id];
-    if (!bottle) throw new Error(`Entry ${distillery.id} needs a sourced bottle image.`);
+    if (!bottle) continue;
 
     for (const field of ["imagePath", "imageSourceUrl", "productPageUrl", "productName"]) {
       if (typeof bottle[field] !== "string" || !bottle[field].trim()) {
@@ -161,7 +162,7 @@ function render(distilleries) {
     "",
     "> Generated from `data/distilleries.json`. Edit the JSON, then run `npm run data:sync`.",
     "",
-    `**${distilleries.length} landmarks · ${categories.length} spirit families · every marker has an official source link, researched profile and sourced bottle image.**`,
+    `**${distilleries.length} sites · ${categories.length} spirit families · every marker has an official source link and production profile.**`,
     "",
     "## Coverage summary",
     "",
@@ -178,7 +179,7 @@ function render(distilleries) {
     "",
     "## Core subtype coverage",
     "",
-    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery landmarks; Scotch whisky has a dedicated minimum of 50. Additional regional styles remain in the inventory where they add useful context.`,
+    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery sites; Scotch whisky has a dedicated minimum of 53. Additional regional styles remain in the inventory where they add useful context.`,
     "",
     "| Family | Subtype | Markers |",
     "| --- | --- | ---: |",
@@ -202,7 +203,7 @@ function render(distilleries) {
       "",
       `## ${categoryName} (${entries.length})`,
       "",
-      "| Distillery / landmark | Place | Country | Style | Precision | Official website | ID |",
+      "| Distillery / site | Place | Country | Style | Precision | Official website | ID |",
       "| --- | --- | --- | --- | --- | --- | --- |",
     );
     for (const item of entries) {
@@ -229,9 +230,46 @@ function render(distilleries) {
   return lines.join("\n");
 }
 
-const distilleries = JSON.parse(await readFile(jsonUrl, "utf8"));
-const profiles = JSON.parse(await readFile(profilesUrl, "utf8"));
+const baseDistilleries = JSON.parse(await readFile(jsonUrl, "utf8"));
+const baseProfiles = JSON.parse(await readFile(profilesUrl, "utf8"));
 const bottleImages = JSON.parse(await readFile(bottleImagesUrl, "utf8"));
+const subtypeExpansion = JSON.parse(await readFile(subtypeExpansionUrl, "utf8"));
+const expandedProfiles = {};
+const expandedDistilleries = Object.entries(subtypeExpansion).flatMap(([key, entries]) => {
+  const separator = key.indexOf(":");
+  const categoryId = key.slice(0, separator);
+  const subcategory = key.slice(separator + 1);
+
+  return entries.map((entry) => {
+    const [id, name, place, country, longitude, latitude, descriptor, ...rest] = entry;
+    const sourceUrl = rest.pop();
+    const tags = rest;
+    const note = `A documented ${subcategory} production site that broadens the atlas beyond its original reference set.`;
+    expandedProfiles[id] = {
+      established: "See official producer history",
+      production: `${name} produces ${subcategory} at or around the mapped ${place} site. The producer source below is the reference for current production and visitor information.`,
+      style: `${descriptor}. Representative cues include ${tags.join(", ")}.`,
+      context: note,
+    };
+    return {
+      id,
+      name,
+      place,
+      country,
+      coordinates: [longitude, latitude],
+      categoryId,
+      subcategory,
+      descriptor,
+      note,
+      tags,
+      precision: "approximate",
+      sourceLabel: `Official ${name} website`,
+      sourceUrl,
+    };
+  });
+});
+const distilleries = [...baseDistilleries, ...expandedDistilleries];
+const profiles = { ...baseProfiles, ...expandedProfiles };
 validate(distilleries, profiles);
 await validateBottleImages(distilleries, bottleImages);
 const markdown = render(distilleries);
@@ -241,7 +279,7 @@ if (process.argv.includes("--check")) {
   if (current !== markdown) {
     throw new Error("DISTILLERIES.md is out of date. Run `npm run data:sync`.");
   }
-  console.log(`Validated ${distilleries.length} distillery records, profiles, unique bottle images and the Markdown index.`);
+  console.log(`Validated ${distilleries.length} distillery records, profiles, available unique bottle images and the Markdown index.`);
 } else {
   await writeFile(markdownUrl, markdown);
   console.log(`Generated DISTILLERIES.md from ${distilleries.length} records.`);

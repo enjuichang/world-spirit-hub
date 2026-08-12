@@ -50,7 +50,8 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
       subtypeRegion(subcategory, locations.filter((location) => location.subcategory === subcategory)),
     );
     if (filter !== "All") return regions.filter((region) => region.name === filter);
-    return regions.sort((a, b) => b.count - a.count).slice(0, 5);
+    const prominenceThreshold = Math.max(2, Math.ceil(Math.max(...regions.map(({ count }) => count)) * 0.15));
+    return regions.filter(({ count }) => count >= prominenceThreshold).sort((a, b) => b.count - a.count).slice(0, 5);
   }, [filter, locations, subcategories]);
   const filtered = filter === "All" ? locations : locations.filter((location) => location.subcategory === filter);
   const [selectedId, setSelectedId] = useState(locations[0]?.id ?? "");
@@ -64,7 +65,7 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
         <Factory aria-hidden="true" />
         <div><span>{locations.length} documented production sites</span><h3 id="distillery-atlas-title">Distillery map</h3></div>
       </div>
-      <p className="distillery-atlas-intro">Explore the production landmarks in the {categoryName.toLowerCase()} chapter. Select a style to reduce the map, then choose a marker for its production story.</p>
+      <p className="distillery-atlas-intro">Explore the production sites in the {categoryName.toLowerCase()} chapter. Select a style to reduce the map, then choose a marker for its production story.</p>
 
       <div className="distillery-filter" aria-label="Filter distilleries by subtype">
         {["All", ...subcategories].map((subcategory) => (

@@ -196,7 +196,7 @@
     ],
     "categoryId": "whisky",
     "subcategory": "Bourbon",
-    "descriptor": "Kentucky bourbon landmark",
+    "descriptor": "Kentucky bourbon site",
     "note": "Compare mash bill, new charred oak, warehouse position and the warm Kentucky maturation environment.",
     "tags": [
       "corn",
@@ -217,7 +217,7 @@
     ],
     "categoryId": "whisky",
     "subcategory": "Japanese whisky",
-    "descriptor": "Japanese malt whisky landmark",
+    "descriptor": "Japanese malt whisky site",
     "note": "A study in diverse still shapes, fermentation choices and cask types assembled through blending.",
     "tags": [
       "fruit",
@@ -238,7 +238,7 @@
     ],
     "categoryId": "brandy",
     "subcategory": "Cognac",
-    "descriptor": "Cognac house and maturation landmark",
+    "descriptor": "Cognac house and maturation site",
     "note": "Use the location to explore double distillation, regional crus, oak maturation and the role of blending eaux-de-vie.",
     "tags": [
       "grape",
@@ -346,7 +346,7 @@
     ],
     "categoryId": "rum",
     "subcategory": "Rhum agricole",
-    "descriptor": "Cane-juice rhum landmark",
+    "descriptor": "Cane-juice rhum site",
     "note": "Explore fresh cane juice, Creole column distillation and AOC production rules.",
     "tags": [
       "fresh cane",
@@ -402,7 +402,7 @@
   },
   {
     "id": "casa-lotos",
-    "name": "Sotol landmark",
+    "name": "Sotol site",
     "place": "Aldama, Chihuahua",
     "country": "Mexico",
     "coordinates": [
@@ -433,7 +433,7 @@
     ],
     "categoryId": "gin",
     "subcategory": "London Dry Gin",
-    "descriptor": "Vapor-infusion gin landmark",
+    "descriptor": "Vapor-infusion gin site",
     "note": "Connect botanical recipe and vapor infusion with a clean, juniper-led style.",
     "tags": [
       "juniper",
@@ -520,7 +520,7 @@
     ],
     "categoryId": "vodka",
     "subcategory": "Neutral vodka",
-    "descriptor": "Rye vodka landmark",
+    "descriptor": "Rye vodka site",
     "note": "Compare a characterful rye-based style with more neutral international vodka profiles.",
     "tags": [
       "rye",
@@ -542,7 +542,7 @@
     ],
     "categoryId": "asian",
     "subcategory": "Sauce-aroma baijiu",
-    "descriptor": "Sauce-aroma baijiu landmark",
+    "descriptor": "Sauce-aroma baijiu site",
     "note": "Study high-temperature qu, solid-state fermentation, repeated production cycles and long blending.",
     "tags": [
       "savory",
@@ -564,7 +564,7 @@
     ],
     "categoryId": "asian",
     "subcategory": "Strong-aroma baijiu",
-    "descriptor": "Strong-aroma baijiu landmark",
+    "descriptor": "Strong-aroma baijiu site",
     "note": "Explore mud-pit fermentation, mixed grains and ester-rich aroma.",
     "tags": [
       "pineapple",
@@ -586,7 +586,7 @@
     ],
     "categoryId": "asian",
     "subcategory": "Honkaku shōchū",
-    "descriptor": "Sweet-potato shōchū landmark",
+    "descriptor": "Sweet-potato shōchū site",
     "note": "Connect kōji choice, sweet potato, single distillation and service temperature with aroma and texture.",
     "tags": [
       "sweet potato",
@@ -630,7 +630,7 @@
     ],
     "categoryId": "flavoured",
     "subcategory": "Liqueurs",
-    "descriptor": "Herbal liqueur production landmark",
+    "descriptor": "Herbal liqueur production site",
     "note": "A reference for complex botanical extraction, blending, sweetness and maturation.",
     "tags": [
       "herbal",
@@ -652,7 +652,7 @@
     ],
     "categoryId": "flavoured",
     "subcategory": "Liqueurs",
-    "descriptor": "Citrus liqueur landmark",
+    "descriptor": "Citrus liqueur site",
     "note": "Explore peel selection, extraction, redistillation, blending and sugar balance.",
     "tags": [
       "orange",
@@ -674,7 +674,7 @@
     ],
     "categoryId": "flavoured",
     "subcategory": "Aquavit",
-    "descriptor": "Scandinavian caraway spirit landmark",
+    "descriptor": "Scandinavian caraway spirit site",
     "note": "A regional marker for comparing caraway-led aquavit with dill-led and cask-aged styles.",
     "tags": [
       "caraway",
@@ -740,7 +740,7 @@
     ],
     "categoryId": "whisky",
     "subcategory": "Taiwanese single malt whisky",
-    "descriptor": "Subtropical single malt landmark",
+    "descriptor": "Subtropical single malt site",
     "note": "Connect rapid warm-climate maturation and high evaporation with cask selection, spirit weight and warehouse management.",
     "tags": [
       "tropical fruit",
@@ -784,7 +784,7 @@
     ],
     "categoryId": "brandy",
     "subcategory": "Brandy de Jerez",
-    "descriptor": "Sherry-cask brandy landmark",
+    "descriptor": "Sherry-cask brandy site",
     "note": "A reference for wine distillation, criaderas y solera maturation and the influence of seasoned Sherry casks.",
     "tags": [
       "dried fruit",
@@ -850,7 +850,7 @@
     ],
     "categoryId": "brandy",
     "subcategory": "South African pot-still brandy",
-    "descriptor": "Cape wine-brandy production landmark",
+    "descriptor": "Cape wine-brandy production site",
     "note": "Connect base-wine selection, copper pot distillation and oak maturation with South Africa’s established brandy tradition.",
     "tags": [
       "stone fruit",
@@ -873,7 +873,7 @@
     "categoryId": "rum",
     "subcategory": "Molasses-based rum",
     "descriptor": "Heritage-still rum complex",
-    "note": "A landmark for comparing wooden and metal heritage stills, molasses fermentation, blending and tropical maturation.",
+    "note": "A site for comparing wooden and metal heritage stills, molasses fermentation, blending and tropical maturation.",
     "tags": [
       "molasses",
       "licorice",
@@ -894,7 +894,7 @@
     ],
     "categoryId": "rum",
     "subcategory": "Molasses-based rum",
-    "descriptor": "Volcanic-climate rum landmark",
+    "descriptor": "Volcanic-climate rum site",
     "note": "Explore column distillation, ex-bourbon cask maturation and blending in Nicaragua’s hot, dry Pacific lowlands.",
     "tags": [
       "caramel",
@@ -1047,7 +1047,7 @@
     ],
     "categoryId": "gin",
     "subcategory": "Distilled gin",
-    "descriptor": "Dual-still botanical gin landmark",
+    "descriptor": "Dual-still botanical gin site",
     "note": "Compare spirit from Bennett and Carter-Head stills before blending and post-distillation botanical essences.",
     "tags": [
       "juniper",
@@ -1178,7 +1178,7 @@
     ],
     "categoryId": "vodka",
     "subcategory": "Characterful vodka",
-    "descriptor": "Village-scale barley-to-spirit landmark",
+    "descriptor": "Village-scale barley-to-spirit site",
     "note": "Connect local barley, continuous distillation, material efficiency and water with a clean Nordic vodka profile.",
     "tags": [
       "barley",
@@ -1244,7 +1244,7 @@
     ],
     "categoryId": "asian",
     "subcategory": "Strong-aroma baijiu",
-    "descriptor": "Jiangsu baijiu production landmark",
+    "descriptor": "Jiangsu baijiu production site",
     "note": "A counterpoint for soft-textured baijiu built through pit fermentation, grain selection, distillation and blending.",
     "tags": [
       "pear",
@@ -1288,7 +1288,7 @@
     ],
     "categoryId": "asian",
     "subcategory": "Honkaku shōchū",
-    "descriptor": "Oita barley shōchū landmark",
+    "descriptor": "Oita barley shōchū site",
     "note": "Connect barley kōji, single distillation, filtration and blending with the clean, gently aromatic Oita style.",
     "tags": [
       "barley",
@@ -1310,7 +1310,7 @@
     ],
     "categoryId": "flavoured",
     "subcategory": "Liqueurs",
-    "descriptor": "Herbal extraction and maturation landmark",
+    "descriptor": "Herbal extraction and maturation site",
     "note": "A reference for macerating a complex botanical recipe, marrying extracts and resting the base in large oak vessels.",
     "tags": [
       "herbal",
@@ -1332,7 +1332,7 @@
     ],
     "categoryId": "flavoured",
     "subcategory": "Liqueurs",
-    "descriptor": "Cherry liqueur production landmark",
+    "descriptor": "Cherry liqueur production site",
     "note": "Explore whole-fruit fermentation and distillation, botanical flavoring, sugar and long resting for classic liqueur styles.",
     "tags": [
       "cherry",
@@ -1397,13 +1397,13 @@
     "id": "whistlepig", "name": "WhistlePig Farm Distillery", "place": "Shoreham, Vermont", "country": "United States", "coordinates": [-73.114, 43.885], "categoryId": "whisky", "subcategory": "Rye whiskey", "descriptor": "Farm-based Vermont rye producer", "note": "Connect estate-grown rye, copper pot distillation and varied cask finishes with modern American rye.", "tags": ["rye", "spice", "farm"], "precision": "approximate", "sourceLabel": "Official WhistlePig website", "sourceUrl": "https://www.whistlepigwhiskey.com/visit-us"
   },
   {
-    "id": "jack-daniels", "name": "Jack Daniel Distillery", "place": "Lynchburg, Tennessee", "country": "United States", "coordinates": [-86.132, 35.284], "categoryId": "whisky", "subcategory": "Tennessee whiskey", "descriptor": "Historic Tennessee whiskey landmark", "note": "Study sour mash, maple-charcoal mellowing and maturation in new charred oak.", "tags": ["charcoal", "banana", "oak"], "precision": "approximate", "sourceLabel": "Official Jack Daniel’s website", "sourceUrl": "https://www.jackdaniels.com/en-us/visit-distillery"
+    "id": "jack-daniels", "name": "Jack Daniel Distillery", "place": "Lynchburg, Tennessee", "country": "United States", "coordinates": [-86.132, 35.284], "categoryId": "whisky", "subcategory": "Tennessee whiskey", "descriptor": "Historic Tennessee whiskey site", "note": "Study sour mash, maple-charcoal mellowing and maturation in new charred oak.", "tags": ["charcoal", "banana", "oak"], "precision": "approximate", "sourceLabel": "Official Jack Daniel’s website", "sourceUrl": "https://www.jackdaniels.com/en-us/visit-distillery"
   },
   {
     "id": "cascade-hollow", "name": "Cascade Hollow Distilling Co.", "place": "Tullahoma, Tennessee", "country": "United States", "coordinates": [-86.254, 35.362], "categoryId": "whisky", "subcategory": "Tennessee whiskey", "descriptor": "Cascade Hollow Tennessee whisky site", "note": "Compare chilled maple-charcoal mellowing and house yeast with other Tennessee whiskey methods.", "tags": ["charcoal", "corn", "mineral"], "precision": "approximate", "sourceLabel": "Official George Dickel website", "sourceUrl": "https://www.georgedickel.com/en-us/visit-us"
   },
   {
-    "id": "bushmills", "name": "Old Bushmills Distillery", "place": "Bushmills, County Antrim", "country": "Northern Ireland", "coordinates": [-6.518, 55.204], "categoryId": "whisky", "subcategory": "Irish whiskey", "descriptor": "Triple-distilled Irish malt landmark", "note": "Contrast triple-distilled malt whiskey and coastal maturation with Midleton’s pot-still and grain traditions.", "tags": ["malt", "orchard fruit", "sherry"], "precision": "approximate", "sourceLabel": "Official Bushmills website", "sourceUrl": "https://www.bushmills.eu/about-the-distillery/"
+    "id": "bushmills", "name": "Old Bushmills Distillery", "place": "Bushmills, County Antrim", "country": "Northern Ireland", "coordinates": [-6.518, 55.204], "categoryId": "whisky", "subcategory": "Irish whiskey", "descriptor": "Triple-distilled Irish malt site", "note": "Contrast triple-distilled malt whiskey and coastal maturation with Midleton’s pot-still and grain traditions.", "tags": ["malt", "orchard fruit", "sherry"], "precision": "approximate", "sourceLabel": "Official Bushmills website", "sourceUrl": "https://www.bushmills.eu/about-the-distillery/"
   },
   {
     "id": "crown-royal-gimli", "name": "Gimli Distillery", "place": "Gimli, Manitoba", "country": "Canada", "coordinates": [-96.988, 50.633], "categoryId": "whisky", "subcategory": "Canadian whisky", "descriptor": "Lake Winnipeg Canadian whisky distillery", "note": "A reference for separately distilled flavoring and base whiskies assembled through blending.", "tags": ["rye", "vanilla", "blend"], "precision": "approximate", "sourceLabel": "Official Crown Royal website", "sourceUrl": "https://www.crownroyal.com/story"
@@ -1439,7 +1439,7 @@
     "id": "ko-hana", "name": "Kō Hana Distillers", "place": "Kunia, Oʻahu", "country": "United States", "coordinates": [-158.067, 21.354], "categoryId": "rum", "subcategory": "Cane-juice rum", "descriptor": "Hawaiian farm-to-bottle cane distillery", "note": "Explore single-variety heirloom cane, fresh pressing, juice fermentation and agricole-style distillation.", "tags": ["fresh cane", "grass", "tropical fruit"], "precision": "approximate", "sourceLabel": "Official Kō Hana website", "sourceUrl": "https://www.kohanarum.com/ourjourney"
   },
   {
-    "id": "river-antoine", "name": "River Antoine Rum Distillery", "place": "Saint Patrick Parish", "country": "Grenada", "coordinates": [-61.626, 12.184], "categoryId": "rum", "subcategory": "Cane-juice rum", "descriptor": "Waterwheel-powered Grenadian rum landmark", "note": "A rare reference for waterwheel cane crushing, long fermentation and direct-fired pot distillation.", "tags": ["fresh cane", "savory", "fermentation"], "precision": "approximate", "sourceLabel": "Official Grenada tourism website", "sourceUrl": "https://www.puregrenada.com/river-antoine-rum-distillery/"
+    "id": "river-antoine", "name": "River Antoine Rum Distillery", "place": "Saint Patrick Parish", "country": "Grenada", "coordinates": [-61.626, 12.184], "categoryId": "rum", "subcategory": "Cane-juice rum", "descriptor": "Waterwheel-powered Grenadian rum site", "note": "A rare reference for waterwheel cane crushing, long fermentation and direct-fired pot distillation.", "tags": ["fresh cane", "savory", "fermentation"], "precision": "approximate", "sourceLabel": "Official Grenada tourism website", "sourceUrl": "https://www.puregrenada.com/river-antoine-rum-distillery/"
   },
   {
     "id": "neisson", "name": "Distillerie Neisson", "place": "Le Carbet", "country": "Martinique", "coordinates": [-61.18, 14.7], "categoryId": "rum", "subcategory": "Rhum agricole", "descriptor": "Independent Martinique agricole distillery", "note": "Connect estate cane, rapid juice fermentation and AOC column distillation with a vivid cane profile.", "tags": ["fresh cane", "citrus", "herbal"], "precision": "approximate", "sourceLabel": "Official Neisson website", "sourceUrl": "https://neisson.com/"
@@ -1505,7 +1505,7 @@
     "id": "red-star-erguotou", "name": "Beijing Red Star Distillery", "place": "Beijing", "country": "China", "coordinates": [116.46, 39.9], "categoryId": "asian", "subcategory": "Light-aroma baijiu", "descriptor": "Beijing erguotou producer", "note": "Contrast the erguotou branch of light-aroma baijiu with Shanxi Fenjiu methods and profile.", "tags": ["sorghum", "pepper", "clean"], "precision": "approximate", "sourceLabel": "Official Beijing tourism website", "sourceUrl": "https://english.visitbeijing.com.cn/article/4FFLD6UgNM3"
   },
   {
-    "id": "guilin-sanhua", "name": "Guilin Sanhua Distillery", "place": "Guilin, Guangxi", "country": "China", "coordinates": [110.29, 25.27], "categoryId": "asian", "subcategory": "Rice-aroma baijiu", "descriptor": "Guilin rice-aroma baijiu landmark", "note": "Explore polished rice, small qu and a gentle, floral spirit style distinct from sorghum baijiu.", "tags": ["rice", "floral", "melon"], "precision": "approximate", "sourceLabel": "Guangxi Health Commission product standard", "sourceUrl": "https://wsjkw.gxzf.gov.cn/spaqyyyzs_49672/spaqqybz/spaqqybzcx/t26080433.shtml"
+    "id": "guilin-sanhua", "name": "Guilin Sanhua Distillery", "place": "Guilin, Guangxi", "country": "China", "coordinates": [110.29, 25.27], "categoryId": "asian", "subcategory": "Rice-aroma baijiu", "descriptor": "Guilin rice-aroma baijiu site", "note": "Explore polished rice, small qu and a gentle, floral spirit style distinct from sorghum baijiu.", "tags": ["rice", "floral", "melon"], "precision": "approximate", "sourceLabel": "Guangxi Health Commission product standard", "sourceUrl": "https://wsjkw.gxzf.gov.cn/spaqyyyzs_49672/spaqqybz/spaqqybzcx/t26080433.shtml"
   },
   {
     "id": "vinn-baijiu", "name": "Vinn Distillery", "place": "Wilsonville, Oregon", "country": "United States", "coordinates": [-122.68, 45.3], "categoryId": "asian", "subcategory": "Rice-aroma baijiu", "descriptor": "Family rice-spirit distillery", "note": "A diaspora reference for rice baijiu fermentation and distillation using a multigenerational family starter.", "tags": ["rice", "fermentation", "floral"], "precision": "approximate", "sourceLabel": "Official Vinn Distillery website", "sourceUrl": "https://www.vinndistillery.com/"
@@ -1523,7 +1523,7 @@
     "id": "andong-soju", "name": "Andong Soju Distillery", "place": "Andong, North Gyeongsang", "country": "South Korea", "coordinates": [128.73, 36.56], "categoryId": "asian", "subcategory": "Distilled soju", "descriptor": "Traditional Andong rice-soju producer", "note": "Compare nuruk fermentation and pot distillation with Hwayo’s contemporary distilled-soju approach.", "tags": ["rice", "nuruk", "savory"], "precision": "approximate", "sourceLabel": "Official Andong Soju website", "sourceUrl": "https://www.andongsoju.com/"
   },
   {
-    "id": "amaro-montenegro", "name": "Gruppo Montenegro San Lazzaro Plant", "place": "San Lazzaro di Savena, Emilia-Romagna", "country": "Italy", "coordinates": [11.4, 44.47], "categoryId": "flavoured", "subcategory": "Amari", "descriptor": "Italian amaro production landmark", "note": "Compare dozens of botanical extractions and a softer citrus-led amaro profile with Fernet-Branca.", "tags": ["bitter", "orange", "herbal"], "precision": "approximate", "sourceLabel": "Official Gruppo Montenegro website", "sourceUrl": "https://gruppomontenegro.com/en/gruppo-montenegro-restyles-its-factory-in-san-lazzaro-di-savena-bo-where-amaro-montenegro-and-vecchia-romagna-produced/"
+    "id": "amaro-montenegro", "name": "Gruppo Montenegro San Lazzaro Plant", "place": "San Lazzaro di Savena, Emilia-Romagna", "country": "Italy", "coordinates": [11.4, 44.47], "categoryId": "flavoured", "subcategory": "Amari", "descriptor": "Italian amaro production site", "note": "Compare dozens of botanical extractions and a softer citrus-led amaro profile with Fernet-Branca.", "tags": ["bitter", "orange", "herbal"], "precision": "approximate", "sourceLabel": "Official Gruppo Montenegro website", "sourceUrl": "https://gruppomontenegro.com/en/gruppo-montenegro-restyles-its-factory-in-san-lazzaro-di-savena-bo-where-amaro-montenegro-and-vecchia-romagna-produced/"
   },
   {
     "id": "ouzo-plomari", "name": "Plomari Distillery Isidoros Arvanitis", "place": "Plomari, Lesvos", "country": "Greece", "coordinates": [26.36, 38.98], "categoryId": "flavoured", "subcategory": "Aniseed spirits", "descriptor": "Copper-still ouzo distillery", "note": "Explore anise, fennel and other botanicals redistilled in small copper stills for ouzo.", "tags": ["anise", "fennel", "herbal"], "precision": "approximate", "sourceLabel": "Official Ouzo of Plomari website", "sourceUrl": "https://ouzoplomari.gr/en/the-distillery/"
@@ -1541,7 +1541,7 @@
     "id": "fee-brothers", "name": "Fee Brothers", "place": "Rochester, New York", "country": "United States", "coordinates": [-77.63, 43.15], "categoryId": "flavoured", "subcategory": "Cocktail bitters", "descriptor": "Family cocktail-bitters producer", "note": "Compare aromatic, citrus, nut and spice bitters built through flavor extraction and blending.", "tags": ["bitter", "orange", "spice"], "precision": "approximate", "sourceLabel": "Official Fee Brothers website", "sourceUrl": "https://www.feebrothers.com/"
   },
   {
-    "id": "absolut-flavors", "name": "Absolut Åhus Flavoring Site", "place": "Åhus, Skåne", "country": "Sweden", "coordinates": [14.3, 55.92], "categoryId": "flavoured", "subcategory": "Flavored vodka", "descriptor": "Single-source Swedish flavored vodka landmark", "note": "Compare a consistent wheat-vodka base across citrus, berry and spice-led flavored expressions.", "tags": ["wheat", "citrus", "fruit"], "precision": "approximate", "sourceLabel": "Official Absolut website", "sourceUrl": "https://www.absolut.com/en-us/absolutcollaborations/absolut-home/"
+    "id": "absolut-flavors", "name": "Absolut Åhus Flavoring Site", "place": "Åhus, Skåne", "country": "Sweden", "coordinates": [14.3, 55.92], "categoryId": "flavoured", "subcategory": "Flavored vodka", "descriptor": "Single-source Swedish flavored vodka site", "note": "Compare a consistent wheat-vodka base across citrus, berry and spice-led flavored expressions.", "tags": ["wheat", "citrus", "fruit"], "precision": "approximate", "sourceLabel": "Official Absolut website", "sourceUrl": "https://www.absolut.com/en-us/absolutcollaborations/absolut-home/"
   },
   {
     "id": "rajamaeki-flavored-vodka", "name": "Rajamäki Distillery", "place": "Rajamäki", "country": "Finland", "coordinates": [24.75, 60.74], "categoryId": "flavoured", "subcategory": "Flavored vodka", "descriptor": "Finnish vodka and flavoring site", "note": "A second reference for fruit-flavored vodka built on Nordic grain spirit and local water.", "tags": ["barley", "berry", "citrus"], "precision": "approximate", "sourceLabel": "Official Finlandia website", "sourceUrl": "https://www.finlandia.com/en/our-vodkas/"
@@ -1589,7 +1589,7 @@
     "id": "grand-teton-vodka", "name": "Grand Teton Distillery", "place": "Driggs, Idaho", "country": "United States", "coordinates": [-111.11, 43.72], "categoryId": "vodka", "subcategory": "Potato vodka", "descriptor": "Idaho potato-vodka distillery", "note": "Compare Idaho potatoes and Rocky Mountain spring water with Chopin’s Polish estate approach to creamy, weighty potato vodka.", "tags": ["potato", "cream", "mineral"], "precision": "approximate", "sourceLabel": "Official Grand Teton Distillery website", "sourceUrl": "https://www.tetondistillery.com/"
   },
   {
-    "id": "kinmen-kaoliang", "name": "Kinmen Kaoliang Liquor", "place": "Kinmen", "country": "Taiwan", "coordinates": [118.32, 24.44], "categoryId": "asian", "subcategory": "Kaoliang", "descriptor": "Kinmen sorghum-spirit landmark", "note": "Study sorghum, wheat starter bricks, solid-state fermentation, distillation and ceramic or stainless resting in Taiwan’s best-known kaoliang center.", "tags": ["sorghum", "white pepper", "fermented fruit"], "precision": "approximate", "sourceLabel": "Official Kinmen Kaoliang production page", "sourceUrl": "https://www.kkl.com.tw/en/production.aspx"
+    "id": "kinmen-kaoliang", "name": "Kinmen Kaoliang Liquor", "place": "Kinmen", "country": "Taiwan", "coordinates": [118.32, 24.44], "categoryId": "asian", "subcategory": "Kaoliang", "descriptor": "Kinmen sorghum-spirit site", "note": "Study sorghum, wheat starter bricks, solid-state fermentation, distillation and ceramic or stainless resting in Taiwan’s best-known kaoliang center.", "tags": ["sorghum", "white pepper", "fermented fruit"], "precision": "approximate", "sourceLabel": "Official Kinmen Kaoliang production page", "sourceUrl": "https://www.kkl.com.tw/en/production.aspx"
   },
   {
     "id": "matsu-liquor", "name": "Matsu Liquor Factory", "place": "Nangan, Lienchiang County", "country": "Taiwan", "coordinates": [119.95, 26.15], "categoryId": "asian", "subcategory": "Kaoliang", "descriptor": "Matsu island kaoliang distillery", "note": "A second Taiwanese island reference for aromatic sorghum spirit, including aged kaoliang, shaped by a different island production culture.", "tags": ["sorghum", "floral", "savory"], "precision": "approximate", "sourceLabel": "Taiwan Tourism Administration profile", "sourceUrl": "https://www.matsu-nsa.gov.tw/Attraction-Content.aspx?a=2744&l=2"

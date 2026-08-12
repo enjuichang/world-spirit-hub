@@ -1,0 +1,304 @@
+{
+  "whisky:Scotch whisky": [
+    ["glenallachie", "The GlenAllachie Distillery", "Aberlour, Speyside", "Scotland", -3.229, 57.463, "Sherry-cask-led Speyside single malt", "orchard fruit", "cocoa", "spice", "https://theglenallachie.com/our-distillery/"],
+    ["ardnamurchan", "Ardnamurchan Distillery", "Glenbeg, Ardnamurchan", "Scotland", -5.943, 56.703, "West-coast malt with peated and unpeated spirit", "malt", "citrus", "smoke", "https://ardnamurchandistillery.com/"],
+    ["deanston", "Deanston Distillery", "Doune, Highlands", "Scotland", -4.073, 56.19, "Waxy Highland malt from a converted mill", "honey", "wax", "oak", "https://deanstonmalt.com/pages/our-distillery"]
+  ],
+  "whisky:Bourbon": [
+    ["bardstown-bourbon", "Bardstown Bourbon Company", "Bardstown, Kentucky", "United States", -85.466, 37.809, "Modern Kentucky bourbon campus", "caramel", "vanilla", "oak", "https://www.bardstownbourbon.com/distillery/"],
+    ["rabbit-hole", "Rabbit Hole Distillery", "Louisville, Kentucky", "United States", -85.74, 38.254, "Grain-to-glass urban bourbon distillery", "corn", "spice", "oak", "https://www.rabbitholedistillery.com/pages/distillery"],
+    ["castle-key", "Castle & Key Distillery", "Frankfort, Kentucky", "United States", -84.808, 38.158, "Restored Kentucky bourbon distillery", "corn", "toffee", "char", "https://www.castleandkey.com/pages/distillery"]
+  ],
+  "whisky:Rye whiskey": [
+    ["wilderness-trail-rye", "Wilderness Trail Distillery", "Danville, Kentucky", "United States", -84.786, 37.646, "Sweet-mash Kentucky rye whiskey", "rye spice", "citrus", "oak", "https://wildernesstraildistillery.com/"],
+    ["dads-hat", "Mountain Laurel Spirits", "Bristol, Pennsylvania", "United States", -74.851, 40.104, "Pennsylvania-style rye revival", "rye", "pepper", "dried fruit", "https://dadshatrye.com/"],
+    ["michters-shively", "Michter’s Shively Distillery", "Louisville, Kentucky", "United States", -85.764, 38.19, "Small-batch Kentucky rye production", "rye", "caramel", "spice", "https://michters.com/distillery/"]
+  ],
+  "whisky:Tennessee whiskey": [
+    ["nelsons-green-brier", "Nelson’s Green Brier Distillery", "Nashville, Tennessee", "United States", -86.782, 36.166, "Nashville Tennessee whiskey revival", "caramel", "cinnamon", "oak", "https://greenbrierdistillery.com/"],
+    ["uncle-nearest", "Nearest Green Distillery", "Shelbyville, Tennessee", "United States", -86.46, 35.485, "Tennessee whiskey and charcoal-mellowing campus", "maple", "vanilla", "oak", "https://unclenearest.com/distillery/"],
+    ["chattanooga-whiskey", "Chattanooga Whiskey Riverfront Distillery", "Chattanooga, Tennessee", "United States", -85.31, 35.054, "High-malt Tennessee whiskey experiments", "malt", "toffee", "spice", "https://chattanoogawhiskey.com/distillery/"]
+  ],
+  "whisky:Irish whiskey": [
+    ["teeling", "Teeling Whiskey Distillery", "Dublin", "Ireland", -6.277, 53.337, "Dublin pot-still whiskey distillery", "orchard fruit", "spice", "oak", "https://teelingdistillery.com/"],
+    ["dingle", "Dingle Distillery", "Dingle, County Kerry", "Ireland", -10.271, 52.141, "Small-batch Irish malt and pot-still whiskey", "malt", "apple", "spice", "https://dingledistillery.ie/"],
+    ["tullamore-dew", "Tullamore D.E.W. Distillery", "Tullamore, County Offaly", "Ireland", -7.492, 53.274, "Triple-distilled Irish whiskey campus", "cereal", "vanilla", "orchard fruit", "https://www.tullamoredew.com/en-gb/visit-tullamore-distillery/"]
+  ],
+  "whisky:Canadian whisky": [
+    ["hiram-walker", "Hiram Walker & Sons Distillery", "Windsor, Ontario", "Canada", -83.01, 42.326, "Large-scale Canadian whisky blending site", "cereal", "caramel", "spice", "https://www.hiramwalker.com/"],
+    ["forty-creek", "Forty Creek Distillery", "Grimsby, Ontario", "Canada", -79.583, 43.194, "Ontario grain-whisky distillery", "vanilla", "nuts", "oak", "https://fortycreekwhisky.com/visit-us/"],
+    ["alberta-distillers", "Alberta Distillers", "Calgary, Alberta", "Canada", -114.048, 51.001, "Prairie rye-whisky distillery", "rye", "caramel", "pepper", "https://www.albertadistillers.com/"]
+  ],
+  "whisky:Japanese whisky": [
+    ["white-oak", "Eigashima Shuzo White Oak Distillery", "Akashi, Hyōgo", "Japan", 134.911, 34.679, "Coastal Japanese malt-whisky distillery", "malt", "citrus", "oak", "https://www.ei-sake.jp/en/"],
+    ["mars-tsunuki", "Mars Tsunuki Distillery", "Minamisatsuma, Kagoshima", "Japan", 130.323, 31.42, "Warm-climate Japanese malt distillery", "stone fruit", "malt", "spice", "https://www.hombo.co.jp/en/factory/mars-tsunuki-distillery/"],
+    ["matsui-kurayoshi", "Matsui Whisky Kurayoshi Distillery", "Kurayoshi, Tottori", "Japan", 133.826, 35.43, "Tottori whisky distillery and maturation site", "malt", "pear", "oak", "https://matsuiwhisky.com/en/"]
+  ],
+  "whisky:Taiwanese single malt whisky": [
+    ["holy-distillery-whisky", "Holy Distillery", "New Taipei City", "Taiwan", 121.465, 25.017, "Small-scale Taiwanese single malt", "malt", "tropical fruit", "oak", "https://www.holydistillery.com.tw/"],
+    ["maoweiki", "Maoweiki Distillery", "Luzhu, Taoyuan", "Taiwan", 121.29, 25.05, "Craft Taiwanese single-cask malt whisky", "vanilla", "citrus", "malt", "https://www.maoweiki.com/"],
+    ["nova-taiwan-whisky", "NOVA Whisky Distillery", "Kaohsiung", "Taiwan", 120.312, 22.627, "Modern southern Taiwanese whisky distillery", "malt", "fruit", "spice", "https://www.nova-distillery.com/"]
+  ],
+  "whisky:Indian single malt whisky": [
+    ["rampur", "Rampur Distillery", "Rampur, Uttar Pradesh", "India", 79.025, 28.816, "Himalayan-foothills Indian single malt", "tropical fruit", "malt", "oak", "https://rampursinglemalt.com/"],
+    ["indri", "Indri Distillery", "Indri, Haryana", "India", 76.729, 29.879, "Triple-cask Indian single malt", "malt", "dried fruit", "spice", "https://www.indri.in/our-story"],
+    ["godawan", "Godawan Alwar Distillery", "Alwar, Rajasthan", "India", 76.635, 27.553, "Desert-climate Indian single malt", "fruit", "spice", "oak", "https://www.diageoindia.com/en/brands/brand-explorer/godawan"]
+  ],
+
+  "brandy:Cognac": [
+    ["martell", "Maison Martell", "Cognac, Charente", "France", -0.327, 45.696, "Historic Cognac house and cellars", "orchard fruit", "spice", "rancio", "https://www.martell.com/en-us/maison-martell/"],
+    ["courvoisier", "Maison Courvoisier", "Jarnac, Charente", "France", -0.174, 45.681, "Jarnac Cognac house and maturation site", "flowers", "stone fruit", "oak", "https://www.courvoisier.com/our-house/"],
+    ["camus", "Maison CAMUS", "Cognac, Charente", "France", -0.329, 45.695, "Family-owned Cognac house", "violet", "fruit", "spice", "https://www.camus.fr/en/pages/our-maison"]
+  ],
+  "brandy:Armagnac": [
+    ["dartigalongue", "Maison Dartigalongue", "Nogaro, Gers", "France", -0.033, 43.758, "Bas-Armagnac house and cellars", "prune", "vanilla", "spice", "https://www.dartigalongue.com/en/"],
+    ["chateau-de-briat", "Château de Briat", "Mauvezin-d’Armagnac, Landes", "France", -0.118, 43.982, "Estate Bas-Armagnac producer", "plum", "oak", "rancio", "https://www.briat.fr/en/"],
+    ["janneau", "Maison Janneau", "Condom, Gers", "France", 0.372, 43.958, "Armagnac house with pot and column distillation", "dried fruit", "vanilla", "spice", "https://www.janneau.com/"]
+  ],
+  "brandy:Brandy de Jerez": [
+    ["osborne-el-puerto", "Bodegas Osborne", "El Puerto de Santa María, Cádiz", "Spain", -6.231, 36.594, "Solera-aged Brandy de Jerez producer", "dried fruit", "walnut", "oak", "https://www.osborne.es/en/"],
+    ["gonzalez-byass-lepanto", "González Byass Lepanto Cellars", "Jerez de la Frontera, Cádiz", "Spain", -6.14, 36.681, "Jerez brandy matured in seasoned casks", "raisin", "vanilla", "spice", "https://www.gonzalezbyass.com/"],
+    ["williams-humbert", "Bodegas Williams & Humbert", "Jerez de la Frontera, Cádiz", "Spain", -6.17, 36.704, "Cathedral-scale Jerez solera cellars", "fig", "toffee", "oak", "https://www.williams-humbert.com/en/"]
+  ],
+  "brandy:Pisco": [
+    ["vinas-de-oro", "Viñas de Oro Distillery", "Chincha, Ica", "Peru", -76.136, -13.419, "Peruvian pisco estate", "fresh grape", "flowers", "citrus", "https://vinasdeoro.com.pe/"],
+    ["hacienda-sarcay", "Hacienda Sarcay", "Azpitia, Lima", "Peru", -76.481, -12.593, "Small-valley Peruvian pisco producer", "grape", "herbs", "citrus", "https://haciendasarcay.com/"],
+    ["tacama-pisco", "Hacienda Tacama", "Ica", "Peru", -75.702, -14.086, "Historic Peruvian winery and pisco distillery", "grape", "stone fruit", "flowers", "https://www.tacama.com/"]
+  ],
+  "brandy:Grappa": [
+    ["nonino", "Distillerie Nonino", "Percoto, Friuli", "Italy", 13.306, 45.982, "Single-variety grappa pioneer", "grape skin", "flowers", "spice", "https://www.grappanonino.it/en/distillery/"],
+    ["berta", "Distillerie Berta", "Mombaruzzo, Piedmont", "Italy", 8.448, 44.77, "Piedmont grappa distillery and cellars", "dried fruit", "vanilla", "grape", "https://www.distillerieberta.it/en/"],
+    ["marolo", "Distilleria Santa Teresa dei Fratelli Marolo", "Alba, Piedmont", "Italy", 8.035, 44.7, "Artisanal Piedmont grappa distillery", "grape", "herbs", "oak", "https://www.marolo.com/en/"]
+  ],
+  "brandy:Calvados": [
+    ["chateau-du-breuil", "Château du Breuil", "Le Breuil-en-Auge, Normandy", "France", 0.226, 49.228, "Pays d’Auge Calvados distillery", "apple", "vanilla", "spice", "https://www.chateau-breuil.com/en/"],
+    ["boulard", "Calvados Boulard", "Coquainvilliers, Normandy", "France", 0.209, 49.197, "Pays d’Auge apple-brandy producer", "baked apple", "oak", "spice", "https://www.calvados-boulard.com/"],
+    ["roger-groult", "Calvados Roger Groult", "Saint-Cyr-du-Ronceray, Normandy", "France", 0.295, 49.052, "Farm-based Pays d’Auge Calvados", "apple", "cider", "rancio", "https://www.calvados-groult.com/en/"]
+  ],
+  "brandy:Fruit eaux-de-vie": [
+    ["massenez", "Distillerie Massenez", "Dieffenbach-au-Val, Alsace", "France", 7.33, 48.318, "Alsatian fruit eaux-de-vie distillery", "pear", "cherry", "flowers", "https://www.massenez.com/en/"],
+    ["miclo", "Distillerie Miclo", "Lapoutroie, Alsace", "France", 7.17, 48.153, "Alsatian orchard-fruit distillery", "pear", "raspberry", "stone fruit", "https://www.distillerie-miclo.com/en/"],
+    ["etter", "Etter Distillery", "Zug", "Switzerland", 8.516, 47.172, "Swiss cherry and fruit-spirit distillery", "cherry", "fruit stone", "spice", "https://www.etter-distillerie.ch/en/"]
+  ],
+  "brandy:Singani": [
+    ["rujero", "Bodegas y Viñedos Rujero", "Tarija", "Bolivia", -64.73, -21.54, "High-altitude Moscatel singani producer", "muscat", "flowers", "citrus", "https://rujero.com/"],
+    ["san-pedro-singani", "Bodega San Pedro", "Valle de Cinti, Chuquisaca", "Bolivia", -65.31, -20.84, "Cinti Valley singani producer", "grape", "flowers", "herbs", "https://www.singanisanpedro.com/"],
+    ["sausini", "Bodegas Sausini", "Tarija", "Bolivia", -64.74, -21.53, "Tarija singani and wine estate", "muscat", "citrus", "spice", "https://www.sausini.com/"]
+  ],
+  "brandy:South African pot-still brandy": [
+    ["oude-molen", "Oude Molen Distillery", "Elgin, Western Cape", "South Africa", 19.041, -34.155, "Cape pot-still brandy distillery", "dried fruit", "vanilla", "oak", "https://oudemolen.co.za/"],
+    ["boplaas-brandy", "Boplaas Family Vineyards", "Calitzdorp, Western Cape", "South Africa", 21.69, -33.534, "Estate Cape pot-still brandy", "apricot", "raisin", "oak", "https://www.boplaas.co.za/"],
+    ["tokara-brandy", "Tokara Distillery", "Stellenbosch, Western Cape", "South Africa", 18.921, -33.91, "Estate pot-still brandy in Stellenbosch", "grape", "citrus", "spice", "https://www.tokara.com/"]
+  ],
+
+  "rum:Molasses-based rum": [
+    ["worthy-park-rum", "Worthy Park Estate", "Lluidas Vale, Saint Catherine", "Jamaica", -77.15, 18.13, "Estate molasses rum distillery", "banana", "molasses", "ester", "https://worthyparkestate.com/"],
+    ["st-lucia-distillers", "St. Lucia Distillers", "Roseau Valley", "Saint Lucia", -61.025, 13.95, "Multi-still Caribbean rum distillery", "molasses", "tropical fruit", "spice", "https://www.stluciadistillers.com/"],
+    ["beenleigh", "Beenleigh Artisan Distillery", "Eagleby, Queensland", "Australia", 153.218, -27.704, "Australian molasses-rum distillery", "caramel", "banana", "oak", "https://www.beenleighrum.com.au/"]
+  ],
+  "rum:Cane-juice rum": [
+    ["renegade-rum", "Renegade Rum Distillery", "Pearls, Saint Andrew", "Grenada", -61.62, 12.13, "Terroir-led fresh-cane rum distillery", "fresh cane", "grass", "pepper", "https://renegaderum.com/"],
+    ["copalli", "Copalli Rum Distillery", "Punta Gorda, Toledo", "Belize", -88.81, 16.1, "Estate organic cane-juice rum", "fresh cane", "cacao", "tropical fruit", "https://copallirum.com/"],
+    ["o-reizinho", "O Reizinho Distillery", "Gaula, Madeira", "Portugal", -16.81, 32.68, "Madeiran agricultural cane rum", "fresh cane", "olive", "citrus", "https://www.oreizinho.pt/"]
+  ],
+  "rum:Rhum agricole": [
+    ["la-favorite", "Distillerie La Favorite", "Fort-de-France", "Martinique", -61.06, 14.65, "Family-run Martinique agricole distillery", "fresh cane", "grass", "flowers", "https://www.rhum-lafavorite.com/"],
+    ["saint-james", "Distillerie Saint-James", "Sainte-Marie", "Martinique", -60.995, 14.78, "Martinique AOC agricole distillery", "cane", "pepper", "oak", "https://rhum-saintjames.com/"],
+    ["rhum-jm", "Habitation Bellevue / Rhum J.M", "Macouba", "Martinique", -61.135, 14.88, "Mountain Martinique agricole estate", "fresh cane", "citrus", "spice", "https://www.rhum-jm.com/"]
+  ],
+  "rum:Jamaican rum": [
+    ["worthy-park-jamaica", "Worthy Park Estate Distillery", "Lluidas Vale, Saint Catherine", "Jamaica", -77.15, 18.13, "Single-estate Jamaican pot-still rum", "banana", "pineapple", "ester", "https://worthyparkestate.com/"],
+    ["long-pond", "Long Pond Distillery", "Clark’s Town, Trelawny", "Jamaica", -77.54, 18.42, "High-ester Trelawny rum distillery", "overripe fruit", "ester", "spice", "https://www.camparigroup.com/en/page/our-brands/appleton-estate"] ,
+    ["clarendon-monymusk", "Clarendon Distillers", "Lionel Town, Clarendon", "Jamaica", -77.24, 17.81, "Pot-and-column Jamaican rum distillery", "molasses", "tropical fruit", "funk", "https://nationalrums.com/"]
+  ],
+  "rum:Cuban-style rum": [
+    ["destileria-serralles", "Destilería Serrallés", "Ponce", "Puerto Rico", -66.613, 18.018, "Light-bodied multi-column Caribbean rum", "caramel", "vanilla", "citrus", "https://donq.com/our-distillery/"],
+    ["dusa-diplomatico", "Destilerías Unidas", "La Miel, Lara", "Venezuela", -69.36, 9.76, "Spanish-tradition Venezuelan rum distillery", "molasses", "orange", "toffee", "https://www.rondiplomatico.com/our-distillery/"],
+    ["santa-teresa", "Hacienda Santa Teresa", "El Consejo, Aragua", "Venezuela", -67.29, 10.24, "Solera-influenced Venezuelan rum estate", "caramel", "dried fruit", "oak", "https://www.santateresarum.com/"]
+  ],
+  "rum:Cachaça": [
+    ["engenho-anisio-santiago", "Engenho Anísio Santiago", "Salinas, Minas Gerais", "Brazil", -42.3, -16.17, "Traditional Salinas cachaça distillery", "fresh cane", "banana", "spice", "https://www.havanacachaca.com.br/"],
+    ["cachaca-magnifica", "Fazenda do Anil / Cachaça Magnífica", "Vassouras, Rio de Janeiro", "Brazil", -43.62, -22.4, "Farm-to-bottle copper-still cachaça", "cane", "herbs", "oak", "https://magnificadefaria.com.br/"],
+    ["ypioca", "Ypióca Distillery", "Maranguape, Ceará", "Brazil", -38.68, -3.89, "Ceará cachaça producer", "fresh cane", "vanilla", "spice", "https://www.ypioca.com.br/"]
+  ],
+  "rum:Clairin": [
+    ["clairin-casimir", "Distillerie Douglas Casimir", "Baradères, Nippes", "Haiti", -73.64, 18.49, "Village clairin from local cane varieties", "fresh cane", "herbs", "brine", "https://www.thespiritofhaiti.com/soh-range/clairin-casimir/"],
+    ["clairin-le-rocher", "Distillerie Le Rocher", "Pignon", "Haiti", -72.12, 19.34, "Cane-syrup clairin with dunder fermentation", "cane syrup", "smoke", "fermentation", "https://www.thespiritofhaiti.com/soh-range/clairin-le-rocher/"],
+    ["clairin-sonson", "Distillerie Sonson", "Cabaret, Ouest", "Haiti", -72.42, 18.74, "Small-estate Haitian clairin", "fresh cane", "savory", "fruit", "https://www.thespiritofhaiti.com/soh-range/clairin-sonson/"]
+  ],
+
+  "agave:Tequila": [
+    ["la-rojena", "La Rojeña Distillery", "Tequila, Jalisco", "Mexico", -103.84, 20.88, "Historic lowland tequila distillery", "cooked agave", "pepper", "oak", "https://www.mundocuervo.com/"],
+    ["la-altena", "La Alteña Distillery", "Arandas, Jalisco", "Mexico", -102.34, 20.7, "Highlands tequila distillery", "cooked agave", "citrus", "pepper", "https://www.eltesorotequila.com/our-story"] ,
+    ["siete-leguas", "Tequila Siete Leguas", "Atotonilco el Alto, Jalisco", "Mexico", -102.51, 20.55, "Traditional highlands tequila producer", "agave", "earth", "citrus", "https://tequilasieteleguas.com/"]
+  ],
+  "agave:Mezcal": [
+    ["real-minero", "Palenque Real Minero", "Santa Catarina Minas, Oaxaca", "Mexico", -96.62, 16.78, "Clay-pot mezcal palenque", "roasted agave", "mineral", "smoke", "https://realminero.com.mx/"],
+    ["gracias-a-dios", "Palenque Gracias a Dios", "Santiago Matatlán, Oaxaca", "Mexico", -96.38, 16.86, "Oaxacan mezcal palenque", "agave", "herbs", "smoke", "https://graciasadiosmezcal.com/"],
+    ["el-silencio-xaaga", "Destilería El Silencio", "San Baltazar Guelavila, Oaxaca", "Mexico", -96.35, 16.95, "Stone-roasted artisanal mezcal site", "roasted agave", "citrus", "smoke", "https://elsilencio.com/pages/our-story"]
+  ],
+  "agave:Ancestral mezcal": [
+    ["cinco-sentidos-alberto", "Palenque Alberto Martínez", "Santa Catarina Albarradas, Oaxaca", "Mexico", -96.25, 17.06, "Ancestral clay-pot mezcal production", "wild agave", "earth", "smoke", "https://www.cincosentidos.com/"],
+    ["mezcal-vago-tio-rey", "Palenque Tío Rey", "Sola de Vega, Oaxaca", "Mexico", -96.96, 16.52, "Ancestral clay-pot mezcal palenque", "agave", "clay", "smoke", "https://mezcalvago.com/mezcaleros/tio-rey/"] ,
+    ["la-medida-ancestral", "Palenque La Medida", "San Baltazar Guelavila, Oaxaca", "Mexico", -96.35, 16.95, "Small-batch ancestral mezcal site", "roasted agave", "mineral", "herbs", "https://mezcallamedida.com/"]
+  ],
+  "agave:Bacanora": [
+    ["sunora-bacanora", "Sunora Bacanora Distillery", "Ures, Sonora", "Mexico", -110.39, 29.43, "Sonoran bacanora distillery", "agave pacifica", "citrus", "pepper", "https://sunorabacanora.com/en/about-us/"],
+    ["rancho-tepua", "Rancho Tepúa Vinata", "Aconchi, Sonora", "Mexico", -110.23, 29.83, "Family bacanora vinata", "roasted agave", "mesquite", "herbs", "https://ranchotepua.com/"],
+    ["cielo-rojo", "Cielo Rojo Bacanora Vinata", "Sahuaripa, Sonora", "Mexico", -109.23, 29.05, "Mountain bacanora producer", "agave", "earth", "smoke", "https://bacanoracielorojo.com/"]
+  ],
+  "agave:Raicilla": [
+    ["la-venenosa-costa", "Taberna La Venenosa Costa", "El Tuito, Jalisco", "Mexico", -105.32, 20.32, "Coastal raicilla taberna", "wild agave", "cheese", "tropical fruit", "https://www.lavenenosa.com/"],
+    ["el-real-raicilla", "Destilería El Real", "San Sebastián del Oeste, Jalisco", "Mexico", -104.85, 20.76, "Sierra raicilla distillery", "agave", "pine", "smoke", "https://raicillaelreal.com/"],
+    ["hacienda-guadalupe-raicilla", "Taberna Hacienda de Guadalupe", "Mascota, Jalisco", "Mexico", -104.79, 20.53, "Mountain raicilla taberna", "roasted agave", "herbs", "earth", "https://haciendadeguadalupe.com/"]
+  ],
+  "agave:Sotol": [
+    ["hacienda-de-angeles", "Hacienda de Ángeles Vinata", "Camargo, Chihuahua", "Mexico", -105.17, 27.69, "Chihuahuan sotol vinata", "dasylirion", "earth", "pepper", "https://sotolhaciendadeangeles.com/"] ,
+    ["don-cuco", "Vinata Don Cuco", "Janos, Chihuahua", "Mexico", -108.19, 30.89, "Northern Chihuahua sotol producer", "dasylirion", "pine", "smoke", "https://sotoldoncuco.com/"],
+    ["clande", "Sotol Clande Vinata", "Madera, Chihuahua", "Mexico", -108.14, 29.19, "Small-batch sotol vinata", "desert plant", "herbs", "mineral", "https://sotolclande.com/"]
+  ],
+
+  "gin:London Dry Gin": [
+    ["beefeater", "Beefeater Distillery", "Kennington, London", "United Kingdom", -0.113, 51.487, "Classic London Dry gin distillery", "juniper", "citrus", "coriander", "https://www.beefeatergin.com/en/our-distillery/"],
+    ["tanqueray-cameronbridge", "Cameronbridge Distillery", "Windygates, Fife", "Scotland", -3.05, 56.19, "Large-scale London Dry gin production site", "juniper", "coriander", "angelica", "https://www.tanqueray.com/en-row/the-story-of-tanqueray"] ,
+    ["greenalls", "G&J Distillers", "Warrington, Cheshire", "United Kingdom", -2.59, 53.39, "Historic London Dry gin production site", "juniper", "lemon", "spice", "https://www.greenallsgin.com/our-story/"]
+  ],
+  "gin:Distilled gin": [
+    ["monkey-47", "Black Forest Distillers", "Loßburg, Black Forest", "Germany", 8.45, 48.41, "Botanical-rich German distilled gin", "juniper", "citrus", "forest herbs", "https://monkey47.com/"],
+    ["plymouth-gin", "Black Friars Distillery", "Plymouth, Devon", "United Kingdom", -4.143, 50.369, "Historic Plymouth distilled gin site", "juniper", "citrus", "earth", "https://www.plymouthgin.com/en/our-home/"] ,
+    ["suntory-osaka-gin", "Suntory Osaka Plant", "Osaka", "Japan", 135.5, 34.69, "Japanese distilled gin production site", "sakura", "tea", "citrus", "https://house.suntory.com/roku-gin"]
+  ],
+  "gin:Contemporary gin": [
+    ["the-botanist", "Bruichladdich Distillery / The Botanist", "Bruichladdich, Islay", "Scotland", -6.36, 55.77, "Islay botanical contemporary gin", "juniper", "mint", "flowers", "https://www.thebotanist.com/"],
+    ["isle-of-harris-gin", "Isle of Harris Distillery", "Tarbert, Harris", "Scotland", -6.8, 57.9, "Island gin with local sugar kelp", "juniper", "citrus", "sea herbs", "https://harrisdistillery.com/"],
+    ["procera", "Procera Distillery", "Nairobi", "Kenya", 36.82, -1.29, "African botanical contemporary gin", "juniper", "pepper", "flowers", "https://www.proceragin.com/"]
+  ],
+  "gin:Old Tom gin": [
+    ["jensens-old-tom", "Jensen’s Bermondsey Distillery", "London", "United Kingdom", -0.074, 51.498, "Historic-recipe Old Tom gin", "juniper", "licorice", "citrus", "https://jensensgin.com/"],
+    ["ransom-old-tom", "Ransom Wine Co. & Distillery", "Sheridan, Oregon", "United States", -123.39, 45.1, "Malt-based barrel-rested Old Tom gin", "malt", "juniper", "oak", "https://ransomspirits.com/"],
+    ["cotswolds-old-tom", "Cotswolds Distillery", "Stourton, Warwickshire", "United Kingdom", -1.59, 52.04, "Barrel-rested English Old Tom gin", "juniper", "caramel", "spice", "https://www.cotswoldsdistillery.com/"]
+  ],
+  "gin:Genever": [
+    ["bols-genever", "House of Bols Distillery", "Amsterdam", "Netherlands", 4.88, 52.36, "Malt-wine genever producer", "malt", "juniper", "herbs", "https://bols.com/pages/genever"] ,
+    ["zuidam", "Zuidam Distillers", "Baarle-Nassau", "Netherlands", 4.93, 51.45, "Family genever and malt-wine distillery", "malt", "juniper", "vanilla", "https://www.zuidam.eu/"],
+    ["hooghoudt", "Hooghoudt Distillery", "Groningen", "Netherlands", 6.57, 53.22, "Groningen genever distillery", "juniper", "malt", "spice", "https://hooghoudt.com/"]
+  ],
+  "gin:Barrel-aged gin": [
+    ["st-george-dry-rye-reposado", "St. George Spirits", "Alameda, California", "United States", -122.3, 37.79, "Rye-based barrel-rested gin", "juniper", "rye", "oak", "https://stgeorgespirits.com/spirits/dry-rye-gin"] ,
+    ["few-barrel-gin", "FEW Spirits", "Evanston, Illinois", "United States", -87.68, 42.05, "American oak-rested gin", "juniper", "vanilla", "spice", "https://www.fewspirits.com/"],
+    ["copperworks-cask-gin", "Copperworks Distilling", "Seattle, Washington", "United States", -122.34, 47.6, "Cask-finished malt-based gin", "juniper", "malt", "oak", "https://copperworksdistilling.com/"]
+  ],
+
+  "vodka:Neutral vodka": [
+    ["titos", "Fifth Generation / Tito’s Handmade Vodka", "Austin, Texas", "United States", -97.62, 30.21, "Corn-based American neutral vodka", "clean", "corn", "soft", "https://www.titosvodka.com/"],
+    ["grey-goose", "Grey Goose Production Site", "Gensac-la-Pallue, Cognac", "France", -0.25, 45.65, "French wheat neutral vodka", "wheat", "citrus", "clean", "https://www.greygoose.com/our-story.html"] ,
+    ["purity-vodka", "Purity Distillery", "Ellinge Castle, Skåne", "Sweden", 13.1, 55.84, "Multi-distilled Swedish neutral vodka", "clean", "wheat", "mineral", "https://purityvodka.com/"]
+  ],
+  "vodka:Characterful vodka": [
+    ["arbikie-vodka", "Arbikie Highland Estate Distillery", "Inverkeilor, Angus", "Scotland", -2.62, 56.64, "Estate-grown characterful vodka", "potato", "cereal", "earth", "https://arbikie.com/"],
+    ["chase-vodka", "Chase Distillery", "Herefordshire", "United Kingdom", -2.65, 52.08, "Single-estate potato vodka", "potato", "cream", "pepper", "https://www.chasedistillery.co.uk/"] ,
+    ["belvedere", "Polmos Żyrardów / Belvedere", "Żyrardów", "Poland", 20.43, 52.05, "Polish rye vodka with raw-material character", "rye", "pepper", "cream", "https://www.belvederevodka.com/en-int/our-story/"]
+  ],
+  "vodka:Flavored vodka": [
+    ["new-amsterdam-flavors", "New Amsterdam Spirits Production", "Modesto, California", "United States", -121.0, 37.64, "Fruit-flavored American vodka range", "citrus", "berry", "clean", "https://www.newamsterdamspirits.com/vodka"] ,
+    ["pinnacle-vodka", "Pinnacle Vodka Production", "Frankfort, Kentucky", "United States", -84.87, 38.2, "Dessert- and fruit-flavored vodka range", "fruit", "vanilla", "sweet", "https://www.pinnaclevodka.com/"] ,
+    ["three-olives", "Three Olives Vodka Production", "Lawrenceburg, Indiana", "United States", -84.86, 39.09, "English-origin flavored vodka range", "fruit", "citrus", "sweet", "https://threeolives.com/"]
+  ],
+  "vodka:Infused vodka": [
+    ["boyd-blair", "Pennsylvania Pure Distilleries", "Glenshaw, Pennsylvania", "United States", -79.96, 40.53, "Small-batch potato vodka infusions", "potato", "botanicals", "pepper", "https://boydandblair.com/"] ,
+    ["44-north", "44° North Distillery", "Rigby, Idaho", "United States", -111.91, 43.67, "Idaho vodka with fruit infusions", "potato", "huckleberry", "nectarine", "https://44northvodka.com/"] ,
+    ["cardinal-vodka", "Cardinal Spirits", "Bloomington, Indiana", "United States", -86.53, 39.16, "Craft vodka and botanical infusions", "cereal", "botanicals", "citrus", "https://www.cardinalspirits.com/"]
+  ],
+  "vodka:Potato vodka": [
+    ["luksusowa", "Luksusowa Vodka Distillery", "Poznań", "Poland", 16.93, 52.41, "Polish potato vodka producer", "potato", "cream", "pepper", "https://www.luksusowavodka.com/"] ,
+    ["blue-ice", "Distilled Resources / Blue Ice", "Rigby, Idaho", "United States", -111.91, 43.67, "Idaho potato vodka distillery", "potato", "mineral", "clean", "https://blueicevodka.com/"] ,
+    ["zodiac-vodka", "Zodiac Vodka Distillery", "Rigby, Idaho", "United States", -111.92, 43.68, "American potato vodka producer", "potato", "cream", "citrus", "https://zodiacvodka.com/"]
+  ],
+
+  "asian:Strong-aroma baijiu": [
+    ["gujinggong", "Gujing Gongjiu Distillery", "Bozhou, Anhui", "China", 115.78, 33.85, "Anhui strong-aroma baijiu producer", "sorghum", "pineapple", "fermentation", "https://www.gujing.com/"],
+    ["jiannanchun", "Jiannanchun Distillery", "Mianzhu, Sichuan", "China", 104.2, 31.34, "Sichuan strong-aroma baijiu distillery", "sorghum", "tropical fruit", "spice", "https://www.jnc.com.cn/"],
+    ["shuijingfang", "Shuijingfang Distillery", "Chengdu, Sichuan", "China", 104.08, 30.67, "Historic Chengdu strong-aroma baijiu site", "sorghum", "fruit", "savory", "https://www.shuijingfang.com/"]
+  ],
+  "asian:Sauce-aroma baijiu": [
+    ["guotai", "Guotai Distillery", "Maotai, Guizhou", "China", 106.36, 27.84, "Maotai-town sauce-aroma baijiu", "sorghum", "soy", "roasted grain", "https://www.guotaijiu.com/"],
+    ["xijiu", "Guizhou Xijiu Distillery", "Xishui, Guizhou", "China", 106.2, 28.33, "Guizhou sauce-aroma baijiu producer", "sorghum", "umami", "cocoa", "https://www.gzxijiu.com/"],
+    ["zhenjiu", "Guizhou Zhenjiu Distillery", "Zunyi, Guizhou", "China", 106.93, 27.73, "Zunyi sauce-aroma baijiu distillery", "sorghum", "roasted grain", "herbs", "https://www.zhenjiu.com/"]
+  ],
+  "asian:Light-aroma baijiu": [
+    ["niulanshan", "Niulanshan Distillery", "Shunyi, Beijing", "China", 116.65, 40.13, "Beijing light-aroma erguotou producer", "sorghum", "flowers", "pepper", "https://www.niulanshan.com.cn/"],
+    ["baofeng", "Baofeng Distillery", "Baofeng, Henan", "China", 113.05, 33.87, "Henan light-aroma baijiu distillery", "sorghum", "grain", "flowers", "https://www.baofengjiuye.com/"],
+    ["tianyoude", "Tianyoude Highland Barley Spirit Distillery", "Huzhu, Qinghai", "China", 101.96, 36.84, "Qinghai light-aroma barley spirit", "barley", "flowers", "herbs", "https://www.002646.com/"]
+  ],
+  "asian:Rice-aroma baijiu": [
+    ["jiujiang", "Jiujiang Distillery", "Foshan, Guangdong", "China", 112.93, 23.0, "Guangdong rice-aroma spirit producer", "rice", "flowers", "savory", "https://www.jiujiang.com.cn/"],
+    ["xiangshan-guilin", "Guilin Xiangshan Distillery", "Guilin, Guangxi", "China", 110.29, 25.26, "Guilin rice-aroma baijiu producer", "rice", "melon", "flowers", "https://www.gxxs酒业.com/"],
+    ["changleshao", "Guangdong Changle Distillery", "Wuhua, Guangdong", "China", 115.77, 23.93, "Hakka-region rice spirit distillery", "rice", "herbs", "soft fruit", "https://www.changlejiu.com/"]
+  ],
+  "asian:Honkaku shōchū": [
+    ["satsuma-shuzo", "Satsuma Shuzo Meijigura", "Makurazaki, Kagoshima", "Japan", 130.3, 31.27, "Sweet-potato honkaku shōchū distillery", "sweet potato", "koji", "earth", "https://www.satsuma.co.jp/english/"],
+    ["nishi-shuzo", "Nishi Shuzo", "Hioki, Kagoshima", "Japan", 130.35, 31.63, "Kagoshima imo shōchū producer", "sweet potato", "flowers", "earth", "https://www.nishi-shuzo.co.jp/en/"],
+    ["takahashi-shuzo", "Takahashi Shuzo", "Hitoyoshi, Kumamoto", "Japan", 130.76, 32.22, "Rice honkaku shōchū distillery", "rice", "koji", "flowers", "https://www.hakutake.co.jp/en/"]
+  ],
+  "asian:Awamori": [
+    ["masahiro-awamori", "Masahiro Shuzo", "Itoman, Okinawa", "Japan", 127.69, 26.13, "Okinawan awamori distillery", "rice", "black koji", "tropical fruit", "https://www.masahiro.co.jp/english/"] ,
+    ["chuko-awamori", "Chuko Shuzo", "Tomigusuku, Okinawa", "Japan", 127.68, 26.18, "Ceramic-aging awamori producer", "rice", "black koji", "earth", "https://www.chuko-awamori.com/en/"] ,
+    ["helios-awamori", "Helios Distillery", "Nago, Okinawa", "Japan", 127.98, 26.59, "Northern Okinawa awamori distillery", "rice", "herbs", "tropical fruit", "https://www.helios-syuzo.co.jp/en/"]
+  ],
+  "asian:Diluted soju": [
+    ["muhak", "Muhak Changwon Plant", "Changwon, Gyeongsangnam-do", "South Korea", 128.68, 35.23, "Regional diluted-soju production site", "clean", "cereal", "soft", "https://www.muhak.co.kr/"],
+    ["daesun", "Daesun Distilling", "Busan", "South Korea", 129.08, 35.18, "Busan diluted-soju producer", "clean", "citrus", "soft", "https://www.daesun.co.kr/"],
+    ["bohae", "Bohae Brewery", "Mokpo, Jeollanam-do", "South Korea", 126.39, 34.81, "Southwestern Korean diluted-soju producer", "clean", "fruit", "cereal", "https://www.bohae.co.kr/"]
+  ],
+  "asian:Distilled soju": [
+    ["hwayo-gwangjuyo", "Kwangjuyo Distillery", "Yeoju, Gyeonggi-do", "South Korea", 127.64, 37.3, "Rice-based distilled-soju producer", "rice", "flowers", "pepper", "https://www.hwayo.com/eng/"],
+    ["tokki-soju", "Tokki Soju Distillery", "Chungju, North Chungcheong", "South Korea", 127.93, 36.99, "Modern rice distilled-soju site", "rice", "melon", "flowers", "https://tokkisoju.com/"],
+    ["munbaeju", "Munbaeju Brewery", "Gimpo, Gyeonggi-do", "South Korea", 126.72, 37.62, "Traditional grain distilled-soju producer", "sorghum", "pear", "flowers", "https://www.munbaeju.co.kr/"]
+  ],
+  "asian:Kaoliang": [
+    ["ttl-longtian", "TTL Longtian Distillery", "Guantian, Tainan", "Taiwan", 120.32, 23.19, "Taiwanese sorghum-spirit distillery", "sorghum", "pepper", "fermented fruit", "https://en.ttl.com.tw/"],
+    ["ttl-chiayi", "TTL Chiayi Distillery", "Minxiong, Chiayi", "Taiwan", 120.43, 23.55, "Taiwanese kaoliang production site", "sorghum", "grain", "flowers", "https://en.ttl.com.tw/"],
+    ["yushan-kaoliang", "Yushan Kaoliang Production Site", "Nantou", "Taiwan", 120.68, 23.91, "Taiwanese sorghum-spirit producer", "sorghum", "citrus", "pepper", "https://en.ttl.com.tw/products.aspx"]
+  ],
+
+  "flavoured:Liqueurs": [
+    ["benedictine", "Palais Bénédictine", "Fécamp, Normandy", "France", 0.37, 49.76, "Herbal liqueur production and maturation site", "herbs", "honey", "spice", "https://www.benedictinedom.com/"],
+    ["grand-marnier", "Grand Marnier Production Site", "Bourg-Charente", "France", -0.22, 45.67, "Cognac-and-orange liqueur producer", "orange", "cognac", "vanilla", "https://www.grandmarnier.com/our-story/"],
+    ["bols-liqueurs", "House of Bols", "Amsterdam", "Netherlands", 4.88, 52.36, "Historic Dutch liqueur producer", "fruit", "spice", "herbs", "https://bols.com/"]
+  ],
+  "flavoured:Amari": [
+    ["marzadro-amaro", "Distilleria Marzadro", "Nogaredo, Trentino", "Italy", 11.02, 45.91, "Alpine amaro and grappa distillery", "alpine herbs", "bitter", "citrus", "https://www.marzadro.it/en/"] ,
+    ["cappelletti", "Antica Erboristeria Cappelletti", "Aldeno, Trentino", "Italy", 11.09, 45.98, "Wine-based aperitivo and amaro producer", "bitter orange", "herbs", "spice", "https://www.cappellettinovasalus.it/"] ,
+    ["bordiga-amaro", "Bordiga Distillery", "Cuneo, Piedmont", "Italy", 7.55, 44.39, "Alpine botanical amaro distillery", "herbs", "gentian", "mint", "https://www.bordiga1888.it/en/"]
+  ],
+  "flavoured:Aniseed spirits": [
+    ["henri-bardouin", "Distilleries et Domaines de Provence", "Forcalquier, Provence", "France", 5.78, 43.96, "Provençal pastis distillery", "anise", "herbs", "licorice", "https://www.distilleries-provence.com/en/"] ,
+    ["distillerie-janot", "Distillerie Janot", "Aubagne, Provence", "France", 5.57, 43.29, "Marseille-style pastis producer", "anise", "fennel", "licorice", "https://www.janot.com/"] ,
+    ["barbayanni", "Barbayanni Ouzo Distillery", "Plomari, Lesvos", "Greece", 26.37, 38.98, "Traditional Lesvos ouzo distillery", "anise", "fennel", "herbs", "https://thebarbayanni.gr/en/"]
+  ],
+  "flavoured:Aquavit": [
+    ["det-norske-brenneri", "Det Norske Brenneri", "Grimstad", "Norway", 8.59, 58.34, "Norwegian aquavit distillery", "caraway", "dill", "oak", "https://detnorskebrenneri.no/"],
+    ["spirit-of-hven", "Spirit of Hven Distillery", "Backafallsbyn, Ven", "Sweden", 12.69, 55.91, "Island aquavit and spirits distillery", "caraway", "fennel", "citrus", "https://www.hven.com/en/"] ,
+    ["saturnus-aquavit", "Saturnus Distillery", "Malmö", "Sweden", 13.0, 55.61, "Swedish aquavit and punch producer", "caraway", "anise", "citrus", "https://saturnus.se/"]
+  ],
+  "flavoured:Cocktail bitters": [
+    ["bitter-truth", "The Bitter Truth", "Pullach, Bavaria", "Germany", 11.52, 48.06, "Cocktail-bitters blending and production site", "gentian", "spice", "citrus", "https://the-bitter-truth.com/"] ,
+    ["scrappys-bitters", "Scrappy’s Bitters", "Seattle, Washington", "United States", -122.33, 47.61, "Small-batch cocktail-bitters producer", "lavender", "cardamom", "citrus", "https://scrappysbitters.com/"] ,
+    ["bittercube", "Bittercube", "Milwaukee, Wisconsin", "United States", -87.91, 43.04, "Botanical cocktail-bitters producer", "cherry bark", "citrus", "spice", "https://bittercube.com/"]
+  ],
+  "flavoured:Flavored vodka": [
+    ["nemiroff-flavors", "Nemiroff Distillery", "Nemyriv, Vinnytsia", "Ukraine", 28.84, 48.97, "Ukrainian flavored-vodka producer", "honey", "pepper", "herbs", "https://nemiroff.vodka/en/"],
+    ["soplica", "Soplica Production Site", "Poznań", "Poland", 16.93, 52.41, "Polish fruit-flavored vodka producer", "cherry", "quince", "hazelnut", "https://soplica.pl/"],
+    ["debowa-polska", "Dębowa Polska Distillery", "Siedlec, Greater Poland", "Poland", 16.02, 52.14, "Polish oak- and botanical-flavored vodka", "oak", "herbs", "vanilla", "https://debowa.pl/en/"]
+  ],
+  "flavoured:Infused vodka": [
+    ["heritage-infused-vodka", "Heritage Distilling Co.", "Gig Harbor, Washington", "United States", -122.58, 47.33, "Craft botanical and fruit vodka infusions", "lavender", "citrus", "berry", "https://heritagedistilling.com/"] ,
+    ["ohso-vodka", "O.H.S.O. Distillery", "Scottsdale, Arizona", "United States", -111.91, 33.49, "Small-batch infused vodka producer", "citrus", "herbs", "pepper", "https://www.ohsobrewery.com/distillery"] ,
+    ["spring44-vodka", "Spring44 Distilling", "Loveland, Colorado", "United States", -105.08, 40.4, "Mountain-water vodka and infusions", "citrus", "honey", "botanicals", "https://spring44.com/"]
+  ],
+  "flavoured:Absinthe": [
+    ["emile-pernot", "Distillerie Les Fils d’Émile Pernot", "La Cluse-et-Mijoux, Doubs", "France", 6.38, 46.88, "Pontarlier absinthe distillery", "wormwood", "anise", "fennel", "https://www.emilepernot.fr/en/"] ,
+    ["artemisia-bugnon", "Distillerie Artemisia-Bugnon", "Couvet, Val-de-Travers", "Switzerland", 6.63, 46.93, "Val-de-Travers absinthe distillery", "wormwood", "anise", "herbs", "https://www.absinthe-suisse.com/"] ,
+    ["pacifique-absinthe", "Pacific Distillery", "Woodinville, Washington", "United States", -122.16, 47.75, "Traditional American absinthe distillery", "wormwood", "anise", "fennel", "https://pacificdistillery.com/"]
+  ]
+}

@@ -11,11 +11,11 @@ The product should be educational and brand-neutral. It may use commercial brand
 | Release | Goal | Included |
 | --- | --- | --- |
 | V1 | Explore the world of spirits | Interactive map, filters, search, “show all,” subcategory and distillery markers, accessible list, cited detail pages, glossary, and shareable URLs |
-| V1.1 | Deepen the reference | Comparisons, timelines, expanded dataset, learning collections, localization pilot, and editorial workflow refinements |
+| V1.1 | Deepen the reference | A canonical page for every published distillery, prominent-spirit records, shareable distillery comparison, timelines, expanded coverage, and editorial workflow refinements |
 | V2 | Help users discover their preferences | Taste and cocktail questionnaire, explainable recommendations, saved/shareable results |
 | V3 | Connect preferences to nearby places | Permission-based location, nearby cocktail bar discovery, filters, map/list results, third-party place data |
 
-Current V1 implementation snapshot: 200 curated landmarks across all eight families, at least two matching distilleries for every educational subtype, 50 distinct Scotch whisky distilleries, 19 Japanese producers and 30 U.S. producers, official producer links for every marker, clustering and search, and a user-controlled 2D Mercator / 3D terrain-globe view. The website now reads those records from a canonical `data/distilleries.json` inventory; a validated, generated `DISTILLERIES.md` gives editors a grouped overview without duplicating the source of truth.
+Current V1 implementation snapshot: 377 curated sites across all eight families, at least five matching distilleries for every educational subtype, 53 distinct Scotch whisky distilleries, 17 Japanese-whisky producers and 58 U.S. producers, official producer links for every marker, clustering and search, and a user-controlled 2D Mercator / 3D terrain-globe view. The website reads its original records from `data/distilleries.json` and the subtype expansion from `data/subtype-expansion.json`; a validated, generated `DISTILLERIES.md` gives editors a grouped overview.
 
 ## 3. Audience and core journeys
 
@@ -473,6 +473,177 @@ The implementation can remain backend-free through V2 if questionnaire results s
 - Prefer framework-agnostic TypeScript modules for filtering, scoring, URL parsing, and content validation so they can be unit tested without a browser.
 - Treat generated files as build artifacts. Never hand-edit GeoJSON or search indexes generated from canonical content.
 
+### Distillery pages and comparison architecture
+
+The next content layer should make each published distillery a permanent destination rather than only a map selection. The design must also preserve enough structured, comparable facts to support a later side-by-side comparison without rewriting the content model.
+
+#### Product boundaries
+
+- A **distillery** is a physical production site with coordinates, place, operating status, history, production facts, and visitor-access facts when verified.
+- A **producer** is the operating or owning organization. Ownership changes over time, so the current operator and historical ownership notes must not be inferred from the distillery name.
+- A **brand** is a market-facing identity. One distillery may make several brands, and one brand may use spirit from several distilleries.
+- A **spirit product** is a specific expression or stable product line. It can be highlighted on a distillery page, but it is never the identity of the distillery itself.
+- A **featured-spirit relationship** is an editorial choice connecting a distillery to a prominent product. It carries display order, a neutral role such as `signature`, `historic`, `production-example`, or `category-reference`, and a sourced explanation of why the product is useful to learners. “Featured” must not mean “best.”
+
+This separation replaces the current one-bottle-per-distillery assumption in `data/bottle-images.json`. Existing bottle records can seed the first featured product for each distillery, but the image catalog should ultimately be keyed by media or product ID rather than distillery ID.
+
+#### Canonical entity contracts
+
+```ts
+type BaseEntity = {
+  id: string;                 // stable relationship key; never recycled
+  slug: string;               // editable URL key; changes require a redirect
+  name: string;
+  aliases?: string[];
+  reviewStatus: "draft" | "published" | "archived";
+  sourceIds: string[];
+  lastReviewed: string;       // ISO date
+};
+
+type Distillery = BaseEntity & {
+  entityType: "distillery";
+  operatorProducerId?: string;
+  categoryIds: string[];
+  location: {
+    place: string;
+    regionId?: string;
+    countryCode: string;
+    coordinates: [longitude: number, latitude: number];
+    precision: "exact" | "approximate";
+  };
+  founded?: { year?: number; display: string };
+  operatingStatus: "operating" | "closed" | "silent" | "planned" | "unknown";
+  summary: string;
+  history: string;
+  production: ProductionProfile;
+  houseStyle: TasteProfile;
+  featuredSpirits: Array<{
+    productId: string;
+    role: "signature" | "historic" | "production-example" | "category-reference";
+    reason: string;
+    sourceIds: string[];
+  }>;
+};
+
+type SpiritProduct = BaseEntity & {
+  entityType: "product";
+  brandId: string;
+  distilleryIds: string[];    // supports blends and multi-site production
+  categoryId: string;
+  subcategoryId?: string;
+  ageStatement?: string;
+  abv?: number;               // only when the value is stable and sourced
+  productionNotes?: string;
+  tasteProfile: TasteProfile;
+  mediaIds: string[];
+};
+```
+
+`ProductionProfile` and `TasteProfile` should use controlled, optional fields rather than prose-only blobs. Production fields should cover only facts that compare meaningfully across categories: raw material, fermentation, still type, distillation approach, maturation, water/source context, and notable techniques. Taste uses the existing controlled tags first, with optional documented intensity values later. Prose remains available for nuance, while the structured fields power comparison.
+
+Relationships are written once in canonical content and reverse relationships are generated at build time. For example, products name their production sites; the build creates each distillery’s complete product list. The explicit `featuredSpirits` list is separate because it is curated page ordering, not a production claim.
+
+#### Page and URL design
+
+| Route | Rendering | Responsibility |
+| --- | --- | --- |
+| `/distilleries/` | Generated static page | Searchable/browsable index with category, country, region, and operating-status filters |
+| `/distilleries/[slug]/` | Generated static pages | Canonical introduction, production, house style, history, prominent spirits, map context, sources, and related distilleries |
+| `/distilleries/compare/?ids=id-a,id-b` | Static shell + small client component | Shareable comparison of two to four validated distillery IDs |
+| `/products/[slug]/` | Generated static pages, after product normalization | Canonical product detail; distillery cards initially may link to a sourced product page until this route exists |
+
+Distillery pages are content-heavy server components and should require no hydration for reading. Only the map preview, share control, and comparison picker should be client components. Each page should generate its title, description, canonical URL, social metadata, breadcrumbs, and sitemap entry from validated content.
+
+The comparison URL is the complete source of truth for a shared comparison. Parse, de-duplicate, and validate IDs, preserve their URL order as column order, and enforce a limit of four. Unknown or archived IDs are omitted with an accessible notice. A single valid ID should show the picker rather than a broken table.
+
+#### Distillery page composition
+
+```text
+DistilleryPage (server)
+├── DistilleryHero
+│   ├── identity, place, status, founded date
+│   └── category links and Compare action
+├── DistilleryIntroduction
+├── ProductionProfile
+├── HouseStyle
+├── FeaturedSpiritGrid
+│   └── FeaturedSpiritCard
+├── HistoryAndContext
+├── LocationAndPrecisionNote
+├── RelatedDistilleries
+└── CitationList and last-reviewed date
+```
+
+Prominent spirits should appear as two to five editorial examples, ordered deliberately and accompanied by a one-sentence reason. Cards show a sourced image only when rights/provenance metadata passes validation. Missing media, ABV, age, tour information, or other optional facts should collapse cleanly rather than produce placeholder claims.
+
+Related distilleries should be derived, not hand-curated initially: same subcategory first, then same region, excluding the current record and archived content. Keep the result deterministic and cap it to avoid dense link farms.
+
+#### Comparison behavior and view model
+
+The UI should compare facts, not rank distilleries. It should never compute a winner, quality score, or value score.
+
+```ts
+type DistilleryComparison = {
+  distilleries: Array<{
+    id: string;
+    slug: string;
+    name: string;
+    place: string;
+    categoryNames: string[];
+    status: string;
+    foundedDisplay?: string;
+    production: Array<{ key: string; label: string; value?: string }>;
+    tasteTags: string[];
+    featuredSpirits: Array<{ name: string; role: string; productSlug?: string }>;
+    sourceUrl: string;
+  }>;
+  sections: Array<{ id: string; label: string; comparableKeys: string[] }>;
+};
+```
+
+- Comparison sections: identity and place, spirit families, raw materials, fermentation, distillation, maturation, house style, prominent spirits, and sources/review date.
+- Two to four columns on desktop; on small screens use one sticky row-label column with horizontally scrollable distillery columns and clear scroll affordance.
+- Include “show differences only,” remove, replace, and reorder controls. Reordering updates the URL.
+- Use `Not documented` only inside a comparison cell where the absent value matters; do not treat missing data as “none.”
+- Allow cross-category comparison because it can teach meaningful differences, but label non-equivalent fields clearly and never force category-specific facts into a false common scale.
+- All values must remain readable as semantic HTML when styles fail. The comparison picker and table require keyboard-operable controls, visible focus, correctly associated headers, and a non-table summary for narrow assistive contexts.
+
+#### Build-time data pipeline
+
+```text
+Canonical JSON content
+  distilleries + profiles + producers + brands + products + media + sources
+                              ↓
+Schema validation and referential-integrity checks
+                              ↓
+Derived indexes
+  slug lookup + reverse relationships + related entities + compare projection
+                  ↓                              ↓
+Generated static pages                 comparison/search JSON
+```
+
+Extend `scripts/generate-distillery-index.mjs` or replace it with a small set of focused generators that share one validation library. The production build must reject duplicate IDs/slugs, broken product/distillery/brand relationships, invalid feature roles, missing sources, invalid coordinates, featured products not connected to that distillery, duplicate featured ordering, and published records pointing to drafts.
+
+Generate a compact `distillery-comparison.json` containing only the normalized fields needed by the comparison client. Do not ship full editorial prose, image provenance, or unused product records to that route. Keep the current map projection separate so adding page content does not increase initial Mapbox payload size.
+
+#### Incremental migration from the current repository
+
+1. **Add a read model:** centralize the current joins across `data/distilleries.json`, `data/distillery-profiles.json`, and `data/bottle-images.json` behind typed functions such as `getAllDistilleries`, `getDistilleryBySlug`, and `getFeaturedSpirits`. Keep existing map behavior unchanged.
+2. **Generate the first pages:** use the existing stable IDs as initial slugs and build `/distilleries/[slug]/` for a two-record vertical slice. Add links from map/list details and category atlases.
+3. **Normalize products:** introduce product, brand, producer, media, and source records. Convert current bottle entries into product/media records in deterministic batches; retain an adapter until all published distilleries are migrated.
+4. **Expand page coverage:** generate a page for every published distillery, add the index, sitemap entries, redirects, and completeness reporting.
+5. **Add comparison projection:** create pure field-normalization and URL-parser modules, then emit the compact comparison artifact.
+6. **Ship comparison:** add selection entry points to the distillery index, detail pages, and explorer; deliver the shareable comparison route only after structured-field coverage meets the threshold below.
+
+Do not block the first distillery pages on full data normalization. The adapter permits visible progress while the content model migrates safely, and the final validator prevents two competing sources of truth.
+
+#### Readiness gates
+
+- **Page gate:** every published distillery has a unique canonical slug, introduction, location/precision, operating status, production summary, house style, at least one source, and last-reviewed date.
+- **Featured-spirit gate:** no product appears without a product/brand identity, production-site relationship, neutral feature role, reason, source, and rights-checked media when an image is used.
+- **Comparison beta gate:** at least 90% of published distilleries have values for category, place, operating status, raw material, distillation approach, maturation approach, and at least three taste tags. Missing optional facts remain acceptable.
+- **Launch gate:** URL parsing, field normalization, reverse relationships, page generation, metadata, accessibility, and a representative cross-category comparison have automated coverage; every comparison value traces to canonical content.
+
 ### Proposed repository structure
 
 ```text
@@ -818,7 +989,10 @@ Client-side filtering, map interactions, and URL state
 ### Phase 3 — V1.1 refinement
 
 - Expand underrepresented regions and categories.
-- Add comparison and timeline views if user research supports them.
+- Publish the canonical distillery index and a complete page for every published distillery.
+- Normalize products, brands, producers, media, and sources; add two to five prominent spirit examples where editorially justified.
+- Add the shareable two-to-four-distillery comparison after the structured-content coverage gate passes.
+- Add timeline views if user research supports them.
 - Improve SEO metadata, social cards, analytics, and correction workflow.
 - Run usability sessions with beginners and spirits learners.
 
@@ -1088,6 +1262,7 @@ Complete the checklist in order within each milestone. A checked task should inc
 
 - [ ] Implement deterministic entity manifest and ID/slug lookup generation.
 - [ ] Generate overview and per-category GeoJSON from canonical distillery/region data.
+- [ ] Generate distillery reverse relationships, related-entity lists, and a compact comparison projection from canonical records.
 - [ ] Strip unused prose and private editorial fields from client map artifacts.
 - [ ] Generate region/category counts, related-entity lists, and map bounding boxes.
 - [ ] Generate or configure the search index with canonical-name weighting and alias support.
@@ -1103,7 +1278,9 @@ Complete the checklist in order within each milestone. A checked task should inc
 
 - [ ] Build the homepage and primary calls to explore or browse the guide.
 - [ ] Build the spirit index and generated category/subcategory pages.
-- [ ] Build generated region and distillery pages.
+- [ ] Build the generated distillery index and a canonical page for every published distillery.
+- [ ] Add prominent-spirit cards backed by normalized product, brand, media, and source records.
+- [ ] Link explorer and category-atlas distillery selections to their canonical pages.
 - [ ] Build glossary index and term pages.
 - [ ] Build sources/methodology, about, corrections, privacy, and responsible-use pages.
 - [ ] Render source citations, last-reviewed dates, legal jurisdiction, and coordinate precision consistently.
@@ -1164,7 +1341,7 @@ Complete the checklist in order within each milestone. A checked task should inc
 - [ ] Complete and expert-review Scotch whisky and shōchū as the vertical slice.
 - [ ] Verify every coordinate, its precision level, and its source.
 - [ ] Complete all approved top-level category summaries and required subcategories.
-- [x] Continue the sourced-marker program beyond the initial 75–150-marker V1 range; the current inventory has 200 landmarks with at least two per educational subtype, 50 Scotch distilleries, 19 Japanese producers and 30 U.S. producers.
+- [x] Continue the sourced-marker program beyond the initial 75–150-marker V1 range; the current inventory has 377 sites with at least five per educational subtype, 53 Scotch distilleries, 17 Japanese-whisky producers and 58 U.S. producers.
 - [ ] Add representative producers/brands without presenting paid or promotional rankings.
 - [ ] Add taste, style, quality, price-driver, law, labeling, and history content to the defined completeness standard.
 - [ ] Check each legal claim against a current primary/official source and record jurisdiction/review date.
@@ -1192,7 +1369,9 @@ Complete the checklist in order within each milestone. A checked task should inc
 
 ### L. V1.1 enhancements
 
-- [ ] Add entity comparison only after defining meaningful comparable fields.
+- [ ] Migrate the current one-bottle-per-distillery records into normalized product, brand, producer, media, and source entities.
+- [ ] Reach the structured-content coverage gate for comparison fields and publish a completeness report.
+- [ ] Add a shareable two-to-four-distillery comparison with difference filtering, reorder/replace controls, and accessible responsive semantics.
 - [ ] Add historical timeline views with sourced dates and disputed-event handling.
 - [ ] Expand underrepresented regions based on transparent coverage reporting.
 - [ ] Add downloadable/shareable learning collections.

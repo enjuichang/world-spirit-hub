@@ -31,7 +31,7 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
   assert.match(html, /<title>World Spirit Hub — A spirited atlas<\/title>/i);
   assert.match(html, /Every spirit has/);
   assert.match(html, /Show all spirits/);
-  assert.match(html, /<strong>200<\/strong> landmarks/);
+  assert.match(html, /<strong>377<\/strong> sites/);
   assert.match(html, /Choose 2D or 3D map/);
   assert.match(html, /2D<\/button>/);
   assert.match(html, /3D<\/button>/);
@@ -67,7 +67,7 @@ test("renders the educational guide", async () => {
   assert.match(whiskyHtml, /From introductory to advanced/);
   assert.match(whiskyHtml, /Blended Irish whiskey/);
   assert.match(whiskyHtml, /Distillery map/);
-  assert.match(whiskyHtml, /90(?:<!-- -->)? documented production sites/);
+  assert.match(whiskyHtml, /117(?:<!-- -->)? documented production sites/);
 
   const brandyHtml = await brandyResponse.text();
   assert.match(brandyHtml, /More than 98% of Cognac vineyards/);
@@ -76,7 +76,7 @@ test("renders the educational guide", async () => {
   assert.match(brandyHtml, /Borderies/);
   assert.match(brandyHtml, /Country focus · France/);
   assert.match(brandyHtml, /VS Cognac/);
-  assert.match(brandyHtml, /18(?:<!-- -->)? documented production sites/);
+  assert.match(brandyHtml, /45(?:<!-- -->)? documented production sites/);
 });
 
 test("renders the taste profile and credentialed bar experiences", async () => {

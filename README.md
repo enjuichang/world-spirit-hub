@@ -1,6 +1,6 @@
 # World Spirit Hub
 
-A dark, editorial world-spirit atlas with switchable 2D/3D Mapbox views, 200 sourced landmarks across eight categories, at least two landmarks for every educational subtype, 50 distinct Scotch whisky distilleries, 19 Japanese producers and 30 U.S. producers, an explainable taste-profile quiz, and a curated cocktail-bar finder with dated editorial credentials.
+A dark, editorial world-spirit atlas with switchable 2D/3D Mapbox views, 377 sourced sites across eight categories, at least five sites for every educational subtype, 53 distinct Scotch whisky distilleries, 17 Japanese-whisky producers and 58 U.S. producers, an explainable taste-profile quiz, and a curated cocktail-bar finder with dated editorial credentials.
 
 ## Local development
 
@@ -35,7 +35,7 @@ If the token is absent or Mapbox cannot load, the accessible location list remai
 
 ## Managing distilleries
 
-[`data/distilleries.json`](data/distilleries.json) is the canonical inventory, paired by stable ID with the researched production and style copy in [`data/distillery-profiles.json`](data/distillery-profiles.json). [`DISTILLERIES.md`](DISTILLERIES.md) is the generated, human-readable index, grouped by spirit family with official links and stable record IDs.
+[`data/distilleries.json`](data/distilleries.json) is the original inventory, paired by stable ID with the researched production and style copy in [`data/distillery-profiles.json`](data/distillery-profiles.json). [`data/subtype-expansion.json`](data/subtype-expansion.json) adds three sourced producers for each educational subtype. [`DISTILLERIES.md`](DISTILLERIES.md) is the generated, human-readable index, grouped by spirit family with official links and stable record IDs.
 
 To add or update a distillery:
 
@@ -49,8 +49,9 @@ The generator validates required fields, category IDs, coordinates, tags, source
 
 ## Main project surfaces
 
-- `data/distilleries.json` — canonical, website-driving distillery inventory.
-- `data/distillery-profiles.json` — researched production, house-style, history, and label context for every landmark.
+- `data/distilleries.json` — original website-driving distillery inventory.
+- `data/subtype-expansion.json` — three additional sourced producers for every educational subtype.
+- `data/distillery-profiles.json` — researched production, house-style, history, and label context for every site.
 - `DISTILLERIES.md` — generated overview for quick review and link checking.
 - `scripts/generate-distillery-index.mjs` — inventory validation and Markdown generation.
 - `app/data.ts` — spirit categories, imported distillery records, and credentialed-bar sample.
@@ -62,4 +63,4 @@ The generator validates required fields, category IDs, coordinates, tags, source
 
 ## Editorial caveat
 
-This is an independent educational project and is not affiliated with WSET or any award body. Map markers labeled approximate are regional learning landmarks rather than turn-by-turn visitor directions. Bar credentials show their source year and should be verified before travel.
+This is an independent educational project and is not affiliated with WSET or any award body. Map markers labeled approximate are regional learning sites rather than turn-by-turn visitor directions. Bar credentials show their source year and should be verified before travel.

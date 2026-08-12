@@ -1,5 +1,6 @@
 import distilleryData from "../data/distilleries.json";
 import distilleryProfiles from "../data/distillery-profiles.json";
+import subtypeExpansion from "../data/subtype-expansion.json";
 
 export type SpiritCategory = {
   id: string;
@@ -297,12 +298,76 @@ type DistilleryProfile = SpiritLocation["profile"];
 
 const profileById = distilleryProfiles as Record<string, DistilleryProfile>;
 
-export const locations = distilleryData.map((location) => ({
-  ...location,
-  coordinates: location.coordinates as [number, number],
-  precision: location.precision as SpiritLocation["precision"],
-  profile: profileById[location.id],
-})) satisfies SpiritLocation[];
+type ExpansionTuple = [
+  id: string,
+  name: string,
+  place: string,
+  country: string,
+  longitude: number,
+  latitude: number,
+  descriptor: string,
+  tagOne: string,
+  tagTwo: string,
+  tagThree: string,
+  sourceUrl: string,
+];
+
+const expandedLocations = Object.entries(
+  subtypeExpansion as unknown as Record<string, ExpansionTuple[]>,
+).flatMap(([key, entries]) => {
+  const separator = key.indexOf(":");
+  const categoryId = key.slice(0, separator);
+  const subcategory = key.slice(separator + 1);
+
+  return entries.map((entry) => {
+    const [
+      id,
+      name,
+      place,
+      country,
+      longitude,
+      latitude,
+      descriptor,
+      tagOne,
+      tagTwo,
+      tagThree,
+      sourceUrl,
+    ] = entry;
+    const note = `A documented ${subcategory} production site that broadens the atlas beyond its original reference set.`;
+
+    return {
+      id,
+      name,
+      place,
+      country,
+      coordinates: [longitude, latitude] as [number, number],
+      categoryId,
+      subcategory,
+      descriptor,
+      note,
+      tags: [tagOne, tagTwo, tagThree],
+      precision: "approximate" as const,
+      sourceLabel: `Official ${name} website`,
+      sourceUrl,
+      profile: {
+        established: "See official producer history",
+        production: `${name} produces ${subcategory} at or around the mapped ${place} site. The producer source below is the reference for current production and visitor information.`,
+        style: `${descriptor}. Representative cues include ${tagOne}, ${tagTwo} and ${tagThree}.`,
+        context: note,
+      },
+    } satisfies SpiritLocation;
+  });
+});
+
+export const locations = [
+  ...distilleryData.map((location) => ({
+    ...location,
+    coordinates: location.coordinates as [number, number],
+    precision: location.precision as SpiritLocation["precision"],
+    profile: profileById[location.id],
+  })),
+  ...expandedLocations,
+] satisfies SpiritLocation[];
 
 export const credentialedBars: CredentialedBar[] = [
   {
