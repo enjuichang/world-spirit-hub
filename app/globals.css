@@ -2398,12 +2398,10 @@ button {
   fill: #17120d;
   stroke: #ffd992;
   stroke-width: 2;
-  vector-effect: non-scaling-stroke;
 }
 
-.map-distillery-marker .map-distillery-halo {
-  fill: rgb(240 189 104 / 14%);
-  stroke: none;
+.map-distillery-marker path {
+  vector-effect: non-scaling-stroke;
 }
 
 .map-region-outline.protected {
@@ -2891,6 +2889,17 @@ button {
   border-top: 1px solid var(--border-soft);
   font-size: 8px;
   line-height: 1.65;
+}
+
+.ingredient-profile .ingredient-copy > a {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  width: fit-content;
+  margin-top: 10px;
+  color: var(--category);
+  font-size: 7px;
+  line-height: 1.4;
 }
 
 .ingredient-variety-grid {
@@ -3472,8 +3481,8 @@ button {
   position: absolute;
   z-index: 3;
   display: grid;
-  width: 16px;
-  height: 16px;
+  width: var(--atlas-marker-hit-size, 18px);
+  height: var(--atlas-marker-hit-size, 18px);
   padding: 0;
   background: transparent;
   border: 0;
@@ -3484,8 +3493,8 @@ button {
 
 .distillery-map-stage > button > span {
   display: block;
-  width: 6px;
-  height: 6px;
+  width: var(--atlas-marker-size, 6px);
+  height: var(--atlas-marker-size, 6px);
   background: var(--category);
   border: 1px solid #fff1d7;
   border-radius: 50%;
@@ -3501,8 +3510,8 @@ button {
 .distillery-map-stage > button:hover > span,
 .distillery-map-stage > button:focus-visible > span,
 .distillery-map-stage > button.active > span {
-  width: 11px;
-  height: 11px;
+  width: var(--atlas-marker-active-size, 10px);
+  height: var(--atlas-marker-active-size, 10px);
   background: #fff1d7;
   border: 3px solid var(--category);
   box-shadow: 0 0 0 6px color-mix(in srgb, var(--category) 22%, transparent), 0 0 18px var(--category);
@@ -5012,6 +5021,11 @@ button {
   .subregion-layout .region-map:not(.immersive) {
     position: static;
     min-height: 400px;
+  }
+
+  .subregion-layout .region-map:not(.immersive) .map-canvas {
+    min-height: 390px;
+    aspect-ratio: 2.05 / 1;
   }
 
   .guide-legal-note {

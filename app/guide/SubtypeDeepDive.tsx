@@ -72,6 +72,11 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
           {deepDive.ingredient.scientificName && <em>{deepDive.ingredient.scientificName}</em>}
           <p>{deepDive.ingredient.description}</p>
           <small>{deepDive.ingredient.fact}</small>
+          {deepDive.ingredient.credit && (
+            <a href={deepDive.ingredient.credit.url} target="_blank" rel="noreferrer">
+              {deepDive.ingredient.credit.label}<ArrowUpRight size={11} />
+            </a>
+          )}
         </div>
       </article>
 
@@ -101,7 +106,13 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
 
       {deepDive.zones.length ? (
         <div className="subregion-layout">
-          <RegionMap regions={deepDive.zones} label={`${selected.name} subregions`} focus={deepDive.mapFocus} immersive />
+          <RegionMap
+            regions={deepDive.zones}
+            label={`${selected.name} subregions`}
+            focus={deepDive.mapFocus}
+            immersive
+            minimumRegion={categoryId === "rum" ? "caribbean" : undefined}
+          />
           <div className="zone-list">
             {deepDive.zones.map((zone, index) => (
               <article key={`${zone.name}-${zone.distillery?.name ?? index}`}>

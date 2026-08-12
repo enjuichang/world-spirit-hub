@@ -38,6 +38,7 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
   );
   const categoryLocations = locations.filter((location) => location.categoryId === category.id);
   const progression = categoryProgressions[category.id] ?? [];
+  const minimumMapRegion = category.id === "rum" ? "caribbean" as const : undefined;
 
   return (
     <>
@@ -92,7 +93,7 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
                 <div className="label-term-list">
                   {guide.labelTerms.map((term) => <article key={term.term}><span>{term.place}</span><h4>{term.term}</h4><p>{term.meaning}</p></article>)}
                 </div>
-                {mappedLabels.length > 0 && <RegionMap regions={mappedLabels} label={`${category.name} production regions`} />}
+                {mappedLabels.length > 0 && <RegionMap regions={mappedLabels} label={`${category.name} production regions`} minimumRegion={minimumMapRegion} />}
               </div>
             </section>
 
@@ -115,7 +116,7 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
                       <SubtypeFact icon={<Scale />} title="The law">{subtype.law}</SubtypeFact>
                       <SubtypeFact icon={<Sparkles />} title="Signature style">{subtype.style}</SubtypeFact>
                       {example && <SubtypeFact icon={<Factory />} title="Distillery example"><strong className="subtype-example-name">{example.name}</strong>{example.place}, {example.country}. {example.descriptor}.</SubtypeFact>}
-                      {mappedRegion && <div className="subtype-map-wrap"><RegionMap regions={[mappedRegion]} label={`${subtype.name} distribution`} compact /></div>}
+                      {mappedRegion && <div className="subtype-map-wrap"><RegionMap regions={[mappedRegion]} label={`${subtype.name} distribution`} compact minimumRegion={minimumMapRegion} /></div>}
                       <a className="subtype-explore-link" href={`#${getSubtypeTargetId(category.id, subtype.name)}`}>Explore regions & ingredients <ArrowRight size={13} /></a>
                     </article>
                   );

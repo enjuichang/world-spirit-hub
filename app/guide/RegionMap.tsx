@@ -21,6 +21,11 @@ import scotchBoundaryData from "./scotch-regions.json";
 type RegionGeometry = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 type BoundaryProperties = { id: string };
 type BoundaryFeature = GeoJSON.Feature<RegionGeometry, BoundaryProperties>;
+type MinimumRegion = "caribbean";
+
+const MINIMUM_REGION_BOUNDS: Record<MinimumRegion, [[number, number], [number, number]]> = {
+  caribbean: [[-92, 6], [-55, 30]],
+};
 
 const LOWER_48_BOUNDS = {
   west: -125,
@@ -61,7 +66,8 @@ const boundaryFeatures = new Map(
 );
 
 const MAX_STATIC_ZOOM = 8;
-const PRIMARY_MARKER_RADIUS_PX = 7;
+const PRIMARY_MARKER_MIN_RADIUS_PX = 4.5;
+const PRIMARY_MARKER_MAX_RADIUS_PX = 7.5;
 const DISTILLERY_MARKER_RADIUS_PX = 2;
 const DISTILLERY_MARKER_MAX_RADIUS_PX = 5;
 const REGION_COLORS = ["#9b7845", "#d9a85b", "#766548", "#c38c55", "#edc57f", "#a88652"];
@@ -266,6 +272,35 @@ function focusedViewBox(features: BoundaryFeature[]) {
   return { x: minX - paddingX, y: minY - paddingY, width: width + paddingX * 2, height: height + paddingY * 2 };
 }
 
+function boundsViewBox([[west, south], [east, north]]: [[number, number], [number, number]]) {
+  const topLeft = project([west, north]);
+  const bottomRight = project([east, south]);
+  return {
+    x: topLeft.x * 3.6,
+    y: topLeft.y * 1.8,
+    width: (bottomRight.x - topLeft.x) * 3.6,
+    height: (bottomRight.y - topLeft.y) * 1.8,
+  };
+}
+
+function unionViewBoxes(
+  first: { x: number; y: number; width: number; height: number },
+  second: { x: number; y: number; width: number; height: number },
+) {
+  const x = Math.min(first.x, second.x);
+  const y = Math.min(first.y, second.y);
+  return {
+    x,
+    y,
+    width: Math.max(first.x + first.width, second.x + second.width) - x,
+    height: Math.max(first.y + first.height, second.y + second.height) - y,
+  };
+}
+
+function pointIsWithinBounds([longitude, latitude]: [number, number], [[west, south], [east, north]]: [[number, number], [number, number]]) {
+  return longitude >= west && longitude <= east && latitude >= south && latitude <= north;
+}
+
 function zoomedViewBox(
   base: { x: number; y: number; width: number; height: number },
   view: StaticView,
@@ -314,12 +349,14 @@ export function RegionMap({
   compact = false,
   focus,
   immersive = false,
+  minimumRegion,
 }: {
   regions: MapRegion[];
   label: string;
   compact?: boolean;
   focus?: string[];
   immersive?: boolean;
+  minimumRegion?: MinimumRegion;
 }) {
   const figureRef = useRef<HTMLElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -339,13 +376,22 @@ export function RegionMap({
   const contextFeatures = useMemo(() => featuresForIds(contextIds), [contextIds]);
   const hasDenominationFocus = focusIds.some(isDenominationTerritory);
   const hasIncompleteFocus = focus !== undefined && focusIds.length < focus.length;
-  const baseViewBox = contextFeatures.length
+  const fittedViewBox = contextFeatures.length
     ? focusedViewBox(contextFeatures)
     : focusFeatures.length && !hasIncompleteFocus
       ? focusedViewBox(focusFeatures)
     : compact || focus !== undefined
       ? pointFocusedViewBox(regions)
       : focusedViewBox([]);
+  const minimumBounds = minimumRegion ? MINIMUM_REGION_BOUNDS[minimumRegion] : undefined;
+  const minimumViewBox = minimumBounds ? boundsViewBox(minimumBounds) : undefined;
+  const shouldApplyMinimumRegion = !!minimumBounds
+    && !!minimumViewBox
+    && regions.some((region) => pointIsWithinBounds(region.point, minimumBounds))
+    && (fittedViewBox.width < minimumViewBox.width || fittedViewBox.height < minimumViewBox.height);
+  const baseViewBox = shouldApplyMinimumRegion && minimumViewBox
+    ? unionViewBoxes(fittedViewBox, minimumViewBox)
+    : fittedViewBox;
   const baseViewKey = `${baseViewBox.x}:${baseViewBox.y}:${baseViewBox.width}:${baseViewBox.height}`;
   const staticView = staticViews[baseViewKey] ?? DEFAULT_STATIC_VIEW;
   const viewBox = zoomedViewBox(baseViewBox, staticView);
@@ -358,11 +404,15 @@ export function RegionMap({
   // is switching. Cap every SVG size against the visible geographic extent so
   // a transient measurement can never turn a marker into a map-sized shape.
   const mapExtent = Math.min(viewBox.width, viewBox.height);
-  const markerRadius = Math.min(mapUnitsPerPixel * PRIMARY_MARKER_RADIUS_PX, mapExtent / 44);
-  const markerFontSize = Math.min(mapUnitsPerPixel * (compact ? 9 : 10), mapExtent / 30);
+  const zoomProgress = Math.log(staticView.zoom) / Math.log(MAX_STATIC_ZOOM);
+  const primaryMarkerRadiusPx = PRIMARY_MARKER_MIN_RADIUS_PX
+    + (PRIMARY_MARKER_MAX_RADIUS_PX - PRIMARY_MARKER_MIN_RADIUS_PX) * zoomProgress;
+  const markerRadius = Math.min(mapUnitsPerPixel * primaryMarkerRadiusPx, mapExtent / 52);
+  const markerFontSizePx = (compact ? 8.5 : 9.5) + zoomProgress * 1.5;
+  const markerFontSize = Math.min(mapUnitsPerPixel * markerFontSizePx, mapExtent / 32);
   const distilleryMarkerRadiusPx = DISTILLERY_MARKER_RADIUS_PX
     + (DISTILLERY_MARKER_MAX_RADIUS_PX - DISTILLERY_MARKER_RADIUS_PX)
-      * (Math.log(staticView.zoom) / Math.log(MAX_STATIC_ZOOM));
+      * zoomProgress;
   const distilleryMarkerRadius = Math.min(mapUnitsPerPixel * distilleryMarkerRadiusPx, mapExtent / 100);
 
   useEffect(() => {
@@ -552,7 +602,7 @@ export function RegionMap({
             source: "production-fallback-points",
           paint: {
               "circle-color": "#e2bc78",
-              "circle-radius": 12,
+              "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 7, 4, 10, 8, 14],
               "circle-blur": 0.75,
               "circle-opacity": 0.65,
             },
@@ -563,7 +613,7 @@ export function RegionMap({
             source: "production-fallback-points",
             paint: {
               "circle-color": ["case", ["==", ["get", "protected"], 1], "#f4c978", "#d9a85b"],
-              "circle-radius": PRIMARY_MARKER_RADIUS_PX,
+              "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, PRIMARY_MARKER_MIN_RADIUS_PX, 4, 6, 8, PRIMARY_MARKER_MAX_RADIUS_PX],
               "circle-stroke-color": "#fff4df",
               "circle-stroke-width": 2,
             },
@@ -648,6 +698,7 @@ export function RegionMap({
 
           if (focusFeatures.length) {
             const bounds = new LngLatBounds();
+            if (shouldApplyMinimumRegion && minimumBounds) minimumBounds.forEach((point) => bounds.extend(point));
             (contextFeatures.length ? contextFeatures : focusFeatures).forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
             regions.forEach((region) => {
               bounds.extend(region.point);
@@ -656,12 +707,15 @@ export function RegionMap({
             map.fitBounds(bounds, { padding: 28, maxZoom: 5.5, duration: 0 });
           } else if (regions.length > 1) {
             const bounds = new LngLatBounds();
+            if (shouldApplyMinimumRegion && minimumBounds) minimumBounds.forEach((point) => bounds.extend(point));
             regions.forEach((region) => {
               const boundaries = boundariesForRegion(region);
               if (boundaries.length) boundaries.forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
               else bounds.extend(region.point);
             });
             map.fitBounds(bounds, { padding: 42, maxZoom: 5.2, duration: 0 });
+          } else if (shouldApplyMinimumRegion && minimumBounds) {
+            map.fitBounds(minimumBounds, { padding: 28, maxZoom: 5.2, duration: 0 });
           } else {
             map.jumpTo({ center: regions[0].point, zoom: 3.2 });
           }
@@ -677,7 +731,7 @@ export function RegionMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [compact, contextFeatures, focusFeatures, regions]);
+  }, [compact, contextFeatures, focusFeatures, minimumBounds, regions, shouldApplyMinimumRegion]);
 
   return (
     <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}`} ref={figureRef}>

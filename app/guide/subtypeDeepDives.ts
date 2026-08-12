@@ -22,6 +22,7 @@ export type SubtypeDeepDiveData = {
     description: string;
     image?: string;
     imageAlt?: string;
+    credit?: { label: string; url: string };
     fact: string;
     varieties?: Array<{
       name: string;
@@ -41,54 +42,82 @@ export type SubtypeDeepDiveData = {
   source?: { label: string; url: string };
 };
 
+const ingredientImages = {
+  barley: { image: "/ingredients/barley-grains.jpg", imageAlt: "Barley grains gathered beside ripe barley ears", credit: { label: "Photo · Miansari66 / CC0", url: "https://commons.wikimedia.org/wiki/File:Barley_(Jo).JPG" } },
+  corn: { image: "/ingredients/corn-kernels.jpg", imageAlt: "A close view of dried yellow and blue corn kernels", credit: { label: "Photo · Joel Penner / CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Maize_Corn.jpg" } },
+  rye: { image: "/ingredients/rye-grains.jpg", imageAlt: "Whole rye grains in close view", credit: { label: "Photo · Agronom / Wikimedia Commons", url: "https://commons.wikimedia.org/wiki/File:Rye_grains.JPG" } },
+  ugniBlanc: { image: "/ingredients/ugni-blanc-grapes.jpg", imageAlt: "Ripe Ugni Blanc grapes on the vine in Grande Champagne", credit: { label: "Photo · Andrew Thomas / CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Croizet_Ugni_blanc_grapes_Grande_Champagne.jpg" } },
+  airen: { image: "/ingredients/airen-grapes.jpg", imageAlt: "Airén grapes ripening on a vine in Spain", credit: { label: "Photo · BodegasAmbite / CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:AirenGrapeVine.jpg" } },
+  muscat: { image: "/ingredients/muscat-grapes.jpg", imageAlt: "Ripe Muscat of Alexandria grapes", credit: { label: "Photo · Rjcastillo / CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Uva_Moscatel_de_Alejandr%C3%ADa.jpg" } },
+  chenin: { image: "/ingredients/chenin-blanc.jpg", imageAlt: "Chenin Blanc grapes in a Stellenbosch vineyard", credit: { label: "Photo · Agne27 / Wikimedia Commons", url: "https://commons.wikimedia.org/wiki/File:Stellenbosch_Chenin_blanc.jpg" } },
+  pomace: { image: "/ingredients/grape-pomace.jpg", imageAlt: "Pressed grape skins and seeds left after winemaking", credit: { label: "Photo · David Lytle / CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Red_wine_grape_pomace.jpg" } },
+  ciderApples: { image: "/ingredients/cider-apples.jpg", imageAlt: "Freshly harvested apples ready to be pressed for cider", credit: { label: "Photo · Mikejamesshaw / Wikimedia Commons", url: "https://commons.wikimedia.org/wiki/File:Apples_ready_to_be_made_into_cider.jpg" } },
+  fruit: { image: "/ingredients/assorted-fruit.jpg", imageAlt: "An assortment of fresh whole fruit at a market", credit: { label: "Photo · LuzViMindaLife / Wikimedia Commons", url: "https://commons.wikimedia.org/wiki/File:Assorted_fruits_zc.jpg" } },
+  molasses: { image: "/ingredients/molasses.jpg", imageAlt: "Dark cane molasses in a clear bottle", credit: { label: "Photo · Surv1v4l1st / public domain", url: "https://commons.wikimedia.org/wiki/File:Bottle_of_Molasses.jpg" } },
+  sugarcane: { image: "/ingredients/sugarcane.jpg", imageAlt: "Freshly cut sugar-cane stalks", credit: { label: "Photo · Sarah and Jason / CC BY-SA 2.0", url: "https://commons.wikimedia.org/wiki/File:Sugarcane_stalks.jpg" } },
+  agave: { image: "/ingredients/agave-field.jpg", imageAlt: "Rows of mature agave plants in a field near Tequila, Jalisco", credit: { label: "Photo · Tobias Hesse / CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:Agave-Field.JPG" } },
+  dasylirion: { image: "/ingredients/dasylirion.jpg", imageAlt: "A mature Dasylirion wheeleri plant", credit: { label: "Photo · Stan Shebs / CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:Dasylirion_wheeleri_1.jpg" } },
+  juniper: { image: "/ingredients/juniper-berries.jpg", imageAlt: "Dried juniper berries in close view", credit: { label: "Photo · Tero Karppinen / CC0", url: "https://commons.wikimedia.org/wiki/File:Juniper_Berry_(51016929107).jpg" } },
+  potatoes: { image: "/ingredients/potatoes.jpg", imageAlt: "Freshly harvested whole potatoes", credit: { label: "Photo · USDA / public domain", url: "https://commons.wikimedia.org/wiki/File:Potatoes.jpg" } },
+  rice: { image: "/ingredients/rice-grains.jpg", imageAlt: "Polished white rice grains", credit: { label: "Photo · Ashok Menon / CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Rice_Grains.jpg" } },
+  sorghum: { image: "/ingredients/sorghum-grains.jpg", imageAlt: "A bowl of cooked whole sorghum grains", credit: { label: "Photo · Wiki Taro / CC0", url: "https://commons.wikimedia.org/wiki/File:Sorghum_grain_boiled.jpg" } },
+  sweetPotato: { image: "/ingredients/sweet-potatoes.jpg", imageAlt: "Whole sweet potatoes", credit: { label: "Photo · HeraldDesa / CC BY-SA 3.0", url: "https://commons.wikimedia.org/wiki/File:Sweetpotato.jpg" } },
+  botanicals: { image: "/ingredients/botanicals.jpg", imageAlt: "Fresh herbs, citrus, roots and dried spices arranged together", credit: { label: "Photo · Zak Greant / CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:Spices,_seasonings,_herbs_and_vegetables.jpg" } },
+  anise: { image: "/ingredients/anise.jpg", imageAlt: "Dried star anise fruits", credit: { label: "Photo · Jebulon / public domain", url: "https://commons.wikimedia.org/wiki/File:Star_aniseed.jpg" } },
+  caraway: { image: "/ingredients/caraway.jpg", imageAlt: "Dried caraway seeds in close view", credit: { label: "Photo · D. O'Neil / Wikimedia Commons", url: "https://commons.wikimedia.org/wiki/File:Carawayseeds.JPG" } },
+  wormwood: { image: "/ingredients/wormwood.jpg", imageAlt: "Common wormwood growing in the wild", credit: { label: "Photo · Robert Flogaus-Faust / Wikimedia Commons", url: "https://commons.wikimedia.org/wiki/File:Artemisia_absinthium_RF.jpg" } },
+} as const;
+
 const categoryIngredients: Record<string, SubtypeDeepDiveData["ingredient"]> = {
   whisky: {
     name: "Cereal grains",
     description: "Barley, corn, rye, wheat and other cereals change fermentable yield, texture and the family of aromas available before the still and cask add their own influence.",
     fact: "The exact mash bill—or the blend of separately made whiskies—is usually more informative than grain imagery alone.",
-    image: "/ingredients/malted-barley.png",
-    imageAlt: "Malted barley grains and barley ears on a traditional malting floor",
+    ...ingredientImages.barley,
   },
   brandy: {
     name: "Fermented fruit",
     description: "Brandy begins with wine, cider, pomace or another fermented fruit. Variety, ripeness, acidity, pressing and lees determine what the still has available to concentrate.",
     fact: "A protected brandy name often narrows both the permitted fruit and the place where it must be grown or transformed.",
-    image: "/ingredients/ugni-blanc.png",
-    imageAlt: "Pale wine grapes growing over vineyard soil",
+    ...ingredientImages.ugniBlanc,
   },
   rum: {
     name: "Sugar cane",
     scientificName: "Saccharum species and hybrids",
     description: "Rum may begin with fresh cane juice, cane syrup or molasses. That first choice changes freshness, fermentation behavior and the style of congeners built before distillation.",
     fact: "Fresh juice must be processed quickly; molasses is stable enough to travel and supports a very different production economy.",
+    ...ingredientImages.sugarcane,
   },
   agave: {
     name: "Agave—or Dasylirion for sotol",
     description: "Species, maturity, field conditions and the way a harvested heart is cooked all shape the fermentable sugars and savory plant character of these spirits.",
     fact: "Sotol belongs beside agave spirits culturally and methodologically, but its raw plant is Dasylirion, not agave.",
-    image: "/ingredients/blue-agave.png",
-    imageAlt: "Mature blue agave plants growing in red soil",
+    ...ingredientImages.agave,
   },
   gin: {
     name: "Juniper and botanicals",
     scientificName: "Juniperus communis and recipe botanicals",
     description: "Juniper must lead the legal identity of gin, while citrus, coriander, roots, flowers, tea, fruit and local plants reshape its aromatic architecture.",
     fact: "Recipe and extraction method are usually more useful than geography for styles such as London Dry or contemporary gin.",
+    ...ingredientImages.juniper,
   },
   vodka: {
     name: "Agricultural fermentables",
     description: "Wheat, rye, corn, potato, grapes and other materials can all supply alcohol. Rectification may quiet their aroma, but texture and subtle cereal, earthy or fruity cues can remain.",
     fact: "Water, filtration and final proof become especially visible when the base spirit is highly rectified.",
+    ...ingredientImages.barley,
   },
   asian: {
     name: "Grain plus fermentation culture",
     description: "Sorghum, rice, barley, sweet potato and other starches meet qu, kōji or nuruk cultures that unlock sugar while building distinctive microbial aroma.",
     fact: "The conversion culture is not a minor ingredient: it is part of the production engine and the flavor system.",
+    ...ingredientImages.rice,
   },
   flavoured: {
     name: "Botanicals, fruit, sugar and a spirit base",
     description: "Roots, bark, seeds, herbs, flowers, fruit, nuts, dairy or coffee may be extracted into a spirit base, then balanced with sweetness, bitterness and alcohol.",
     fact: "The ingredient list and extraction method often explain more than a broad word such as liqueur or bitters.",
+    ...ingredientImages.botanicals,
   },
 };
 
@@ -165,6 +194,7 @@ function subtypeIngredient(categoryId: string, subtypeName: string): SubtypeDeep
   };
   if (subtypeName === "Bourbon" || subtypeName === "Tennessee whiskey") return {
     ...categoryIngredients.whisky,
+    ...ingredientImages.corn,
     name: "Corn-led mash bill",
     scientificName: "Zea mays with secondary grains",
     description: "At least 51% corn provides fermentable starch and a round, sweet center. Rye, wheat and malted barley in the remainder redirect spice, softness and fermentation performance.",
@@ -172,35 +202,38 @@ function subtypeIngredient(categoryId: string, subtypeName: string): SubtypeDeep
   };
   if (subtypeName === "Rye whiskey") return {
     ...categoryIngredients.whisky,
+    ...ingredientImages.rye,
     name: "Rye-led mash bill",
     scientificName: "Secale cereale with secondary grains",
     description: "At least 51% rye gives a viscous mash and a grain profile often read as peppery, herbal or dry. Corn, malt and process choices keep rye whiskey from being one fixed flavor.",
     fact: "Rye percentage is only the starting point; fermentation, entry proof and maturation time can be equally visible.",
   };
-  if (subtypeName === "Pisco") return { ...base, name: "Aromatic and non-aromatic wine grapes", scientificName: "Vitis vinifera", description: "Permitted grape varieties differ between Peru and Chile. Muscat-family grapes can give overt flowers and citrus, while less aromatic varieties emphasize fresh grape, herbs and texture.", fact: "Country is essential label information: Peruvian and Chilean pisco follow different production and maturation rules." };
-  if (subtypeName === "Grappa") return { ...base, name: "Fresh grape pomace", scientificName: "Vitis vinifera skins, seeds and pulp", description: "Grappa distills the moist marc left after winemaking. Grape variety, pomace freshness, storage and whether stems are present strongly affect floral, skin, seed and earthy aromas.", fact: "Pomace—not finished wine—is the defining raw material, separating grappa from wine brandy." };
-  if (subtypeName === "Calvados") return { ...base, name: "Cider apples and pears", description: "Bittersweet, bittersharp, sweet and acidic apples are blended for fermentable sugar, tannin and freshness; some appellations also permit or emphasize perry pears.", fact: "The orchard blend is designed for cider and distillation, not simply copied from dessert-fruit varieties." };
-  if (subtypeName === "Fruit eaux-de-vie") return { ...base, name: "Whole fermented fruit", description: "Pear, cherry, plum, raspberry and other fruits are fermented or macerated according to category rules, then distilled to retain a vivid varietal fingerprint.", fact: "A named fruit tells you more than the broad phrase eau-de-vie; some delicate berries require a different legal production route." };
-  if (subtypeName === "Singani") return { ...base, name: "Moscatel of Alexandria", scientificName: "Vitis vinifera · Muscat of Alexandria", description: "This highly aromatic grape grown in Bolivia's elevated valleys gives a wine rich in floral, citrus-peel and fresh-grape precursors for distillation.", fact: "Altitude describes the growing landscape; the denomination also depends on authorized zones and Bolivian production rules." };
-  if (/molasses/i.test(subtypeName)) return { ...base, name: "Cane molasses", description: "The concentrated by-product of sugar crystallization contains fermentable sugar plus minerals and compounds that support everything from clean short ferments to intensely aromatic long ones.", fact: "Molasses does not dictate a dark or heavy rum: fermentation, still and blending decide that." };
+  if (subtypeName === "Brandy de Jerez") return { ...base, ...ingredientImages.airen, name: "Airén-led wine distillate", scientificName: "Vitis vinifera · Airén", description: "Most Brandy de Jerez begins with wine distillate made from Airén grapes grown beyond the aging zone. Its relatively neutral, fresh base leaves room for distillation strength and seasoned Sherry casks to shape the final spirit.", fact: "The protected identity centers on production and solera aging in the Jerez area; the base grapes do not all need to grow there." };
+  if (subtypeName === "Pisco") return { ...base, ...ingredientImages.muscat, name: "Aromatic and non-aromatic wine grapes", scientificName: "Vitis vinifera", description: "Permitted grape varieties differ between Peru and Chile. Muscat-family grapes can give overt flowers and citrus, while less aromatic varieties emphasize fresh grape, herbs and texture.", fact: "Country is essential label information: Peruvian and Chilean pisco follow different production and maturation rules." };
+  if (subtypeName === "Grappa") return { ...base, ...ingredientImages.pomace, name: "Fresh grape pomace", scientificName: "Vitis vinifera skins, seeds and pulp", description: "Grappa distills the moist marc left after winemaking. Grape variety, pomace freshness, storage and whether stems are present strongly affect floral, skin, seed and earthy aromas.", fact: "Pomace—not finished wine—is the defining raw material, separating grappa from wine brandy." };
+  if (subtypeName === "Calvados") return { ...base, ...ingredientImages.ciderApples, name: "Cider apples and pears", description: "Bittersweet, bittersharp, sweet and acidic apples are blended for fermentable sugar, tannin and freshness; some appellations also permit or emphasize perry pears.", fact: "The orchard blend is designed for cider and distillation, not simply copied from dessert-fruit varieties." };
+  if (subtypeName === "Fruit eaux-de-vie") return { ...base, ...ingredientImages.fruit, name: "Whole fermented fruit", description: "Pear, cherry, plum, raspberry and other fruits are fermented or macerated according to category rules, then distilled to retain a vivid varietal fingerprint.", fact: "A named fruit tells you more than the broad phrase eau-de-vie; some delicate berries require a different legal production route." };
+  if (subtypeName === "Singani") return { ...base, ...ingredientImages.muscat, name: "Moscatel of Alexandria", scientificName: "Vitis vinifera · Muscat of Alexandria", description: "This highly aromatic grape grown in Bolivia's elevated valleys gives a wine rich in floral, citrus-peel and fresh-grape precursors for distillation.", fact: "Altitude describes the growing landscape; the denomination also depends on authorized zones and Bolivian production rules." };
+  if (subtypeName === "South African pot-still brandy") return { ...base, ...ingredientImages.chenin, name: "Chenin Blanc and Colombard wine", scientificName: "Vitis vinifera", description: "South African pot-still brandy commonly starts with high-acid Chenin Blanc or Colombard base wine. Fruit quality and restrained wine character give copper distillation and at least three years in oak a clean foundation.", fact: "Pot-still brandy is defined by all-pot-still wine spirit and maturation, not by one mandatory grape variety." };
+  if (/molasses/i.test(subtypeName) || subtypeName === "Jamaican rum" || subtypeName === "Cuban-style rum") return { ...base, ...ingredientImages.molasses, name: "Cane molasses", description: "The concentrated by-product of sugar crystallization contains fermentable sugar plus minerals and compounds that support everything from clean short ferments to intensely aromatic long ones.", fact: "Molasses does not dictate a dark or heavy rum: fermentation, still and blending decide that." };
   if (categoryId === "rum") return { ...base, name: subtypeName === "Clairin" ? "Fresh cane juice or cane syrup" : "Fresh-pressed sugar-cane juice", description: "Fresh cane material preserves grassy, vegetal and mineral precursors that must be fermented soon after harvest. Cane variety, field conditions and microbial practice remain visible in expressive spirit.", fact: "Fresh juice is a raw-material identity; a protected place name adds the legal production boundary." };
-  if (subtypeName === "Sotol" || subtypeName === "Texas sotol-style spirit") return { ...base, name: "Dasylirion", scientificName: "Dasylirion species", description: "The spiky desert plant stores fermentable fructans in its stem. Maturity, wild habitat, cooking and fermentation give grassy, resinous, earthy and lactic character.", fact: "Dasylirion is in the asparagus family but is not an agave; Mexican Sotol also carries a protected geographic identity." };
+  if (subtypeName === "Sotol" || subtypeName === "Texas sotol-style spirit") return { ...base, ...ingredientImages.dasylirion, name: "Dasylirion", scientificName: "Dasylirion species", description: "The spiky desert plant stores fermentable fructans in its stem. Maturity, wild habitat, cooking and fermentation give grassy, resinous, earthy and lactic character.", fact: "Dasylirion is in the asparagus family but is not an agave; Mexican Sotol also carries a protected geographic identity." };
   if (subtypeName === "Bacanora") return { ...base, name: "Pacifica agave", scientificName: "Agave angustifolia var. pacifica", description: "This Sonoran agave is harvested after years in a dry landscape, then cooked, crushed, fermented and distilled in regional vinata traditions.", fact: "Species and Sonoran origin matter more than using smoke as a shortcut for identity." };
   if (subtypeName === "Raicilla") return { ...base, name: "Jalisco and Nayarit agaves", scientificName: "Agave maximiliana, A. inaequidens and other permitted species", description: "Mountain and coastal raicilla traditions work with different agaves whose maturity, roast and fermentation can produce pine, herbs, tropical fruit, cheese-like savor or smoke.", fact: "Raicilla is a denomination with multiple local traditions—not simply mezcal from western Mexico." };
   if (categoryId === "agave") return { ...base, name: "Permitted mature agave", scientificName: "Agave species named by the denomination", description: "Species, years to maturity, wild or cultivated origin and accumulated field sugars establish the raw flavor potential before cooking transforms the harvested hearts.", fact: "The label's agave species and village or state can be more predictive than the word smoky." };
   if (subtypeName === "Genever") return { ...base, name: "Malt wine and juniper", description: "A fermented grain mash supplies a malty, whiskey-like backbone while juniper and other botanicals layer aromatic lift. The malt-wine proportion is a key style signal.", fact: "Genever is not simply sweeter gin; its cereal-spirit foundation changes the architecture." };
   if (categoryId === "gin") return { ...base, name: "Juniper-led botanical recipe", scientificName: "Juniperus communis with recipe botanicals", description: "Juniper supplies pine, resin and citrus-like terpenes. Coriander, peel, roots, flowers, tea, fruit and local botanicals determine whether the recipe reads classic, floral, savory or contemporary.", fact: "Botanical dominance and extraction method explain more than the number of botanicals advertised." };
-  if (subtypeName === "Potato vodka") return { ...base, name: "Potatoes", scientificName: "Solanum tuberosum", description: "Cooked potato starch must be enzymatically converted before fermentation. Yield is lower than with many grains, while careful distillation may preserve a broad, creamy or earthy texture.", fact: "Potato vodka can still be highly neutral; raw material does not override rectification and filtration." };
-  if (categoryId === "vodka") return { ...base, name: /flavored|infused/i.test(subtypeName) ? "Vodka base plus declared flavor" : "Fermentable grain, potato or fruit", description: /flavored|infused/i.test(subtypeName) ? "A rectified vodka base carries fruit, herbs, spice or other declared ingredients through infusion, extract, essence or blending." : "The base material supplies alcohol and subtle texture before rectification. Wheat, rye, corn, potato and fruit can each be made quiet or deliberately characterful.", fact: /flavored|infused/i.test(subtypeName) ? "Read sweetness, color and flavor-source disclosures as well as the word vodka." : "Water, filtration and final proof often become as visible as the fermentable base." };
-  if (/baijiu|Kaoliang/i.test(subtypeName)) return { ...base, name: /Rice-aroma/i.test(subtypeName) ? "Rice and small-qu" : "Sorghum and qu", description: /Rice-aroma/i.test(subtypeName) ? "Rice meets a saccharifying and fermenting small-qu culture, commonly in semi-solid or liquid fermentation that preserves a soft, floral grain profile." : "Sorghum is cooked and fermented with qu, a grain-based culture carrying enzymes, yeasts and bacteria. Repeated cycles and vessel ecology can matter as much as the grain itself.", fact: "Qu is simultaneously a conversion system, microbial starter and flavor-building ingredient." };
-  if (subtypeName === "Honkaku shōchū") return { ...base, name: "A named base ingredient plus kōji", description: "Sweet potato, barley, rice, buckwheat, brown sugar and other permitted materials meet rice-, barley- or sweet-potato kōji before a single distillation preserves their identity.", fact: "The base ingredient and kōji type are the two most useful first questions when comparing honkaku shōchū." };
-  if (subtypeName === "Awamori") return { ...base, name: "Indica rice and black kōji", scientificName: "Oryza sativa with Aspergillus luchuensis", description: "Long-grain indica rice is made entirely into black-kōji rice, providing both enzymes and citric-acid protection for Okinawa's warm fermentation climate.", fact: "All-kōji preparation and single batch distillation distinguish awamori from most shōchū." };
-  if (/soju/i.test(subtypeName)) return { ...base, name: subtypeName === "Diluted soju" ? "Highly rectified neutral spirit" : "Grain and nuruk", description: subtypeName === "Diluted soju" ? "Neutral spirit made from agricultural starch is reduced with water and adjusted into a light, accessible final drink." : "Rice or other grains meet nuruk, a mixed microbial fermentation culture, before direct distillation retains cereal and fermentation character.", fact: "Diluted and directly distilled soju share a name but have fundamentally different production engines." };
-  if (subtypeName === "Amari") return { ...base, name: "Bitter roots, bark, citrus and herbs", description: "Gentian, cinchona, rhubarb, wormwood, citrus peel, spices and local herbs may be extracted separately or together, then blended into a proprietary bittersweet profile.", fact: "Amaro is a style family, so ingredient disclosure and producer tradition are more useful than expecting one recipe." };
-  if (subtypeName === "Aniseed spirits") return { ...base, name: "Anise and related aromatic seeds", scientificName: "Pimpinella anisum and recipe botanicals", description: "Aniseed supplies anethole, often alongside star anise, fennel or licorice. The oil dissolves at bottle strength and clouds when water is added.", fact: "The louche is a physical emulsion—not proof of added sugar or artificial color." };
-  if (subtypeName === "Aquavit") return { ...base, name: "Caraway and/or dill", description: "Caraway brings earthy citrus and warm spice; dill gives fresher green aromatics. Citrus, fennel and cask influence broaden the protected and unprotected regional styles.", fact: "In the EU category, caraway or dill must provide the defining flavor." };
+  if (subtypeName === "Potato vodka") return { ...base, ...ingredientImages.potatoes, name: "Potatoes", scientificName: "Solanum tuberosum", description: "Cooked potato starch must be enzymatically converted before fermentation. Yield is lower than with many grains, while careful distillation may preserve a broad, creamy or earthy texture.", fact: "Potato vodka can still be highly neutral; raw material does not override rectification and filtration." };
+  if (categoryId === "vodka") return { ...base, ...(/flavored|infused/i.test(subtypeName) ? ingredientImages.botanicals : ingredientImages.barley), name: /flavored|infused/i.test(subtypeName) ? "Vodka base plus declared flavor" : "Fermentable grain, potato or fruit", description: /flavored|infused/i.test(subtypeName) ? "A rectified vodka base carries fruit, herbs, spice or other declared ingredients through infusion, extract, essence or blending." : "The base material supplies alcohol and subtle texture before rectification. Wheat, rye, corn, potato and fruit can each be made quiet or deliberately characterful.", fact: /flavored|infused/i.test(subtypeName) ? "Read sweetness, color and flavor-source disclosures as well as the word vodka." : "Water, filtration and final proof often become as visible as the fermentable base." };
+  if (/baijiu|Kaoliang/i.test(subtypeName)) return { ...base, ...(/Rice-aroma/i.test(subtypeName) ? ingredientImages.rice : ingredientImages.sorghum), name: /Rice-aroma/i.test(subtypeName) ? "Rice and small-qu" : "Sorghum and qu", description: /Rice-aroma/i.test(subtypeName) ? "Rice meets a saccharifying and fermenting small-qu culture, commonly in semi-solid or liquid fermentation that preserves a soft, floral grain profile." : "Sorghum is cooked and fermented with qu, a grain-based culture carrying enzymes, yeasts and bacteria. Repeated cycles and vessel ecology can matter as much as the grain itself.", fact: "Qu is simultaneously a conversion system, microbial starter and flavor-building ingredient." };
+  if (subtypeName === "Honkaku shōchū") return { ...base, ...ingredientImages.sweetPotato, name: "A named base ingredient plus kōji", description: "Sweet potato, barley, rice, buckwheat, brown sugar and other permitted materials meet rice-, barley- or sweet-potato kōji before a single distillation preserves their identity.", fact: "The base ingredient and kōji type are the two most useful first questions when comparing honkaku shōchū." };
+  if (subtypeName === "Awamori") return { ...base, ...ingredientImages.rice, name: "Indica rice and black kōji", scientificName: "Oryza sativa with Aspergillus luchuensis", description: "Long-grain indica rice is made entirely into black-kōji rice, providing both enzymes and citric-acid protection for Okinawa's warm fermentation climate.", fact: "All-kōji preparation and single batch distillation distinguish awamori from most shōchū." };
+  if (/soju/i.test(subtypeName)) return { ...base, ...ingredientImages.rice, name: subtypeName === "Diluted soju" ? "Highly rectified neutral spirit" : "Grain and nuruk", description: subtypeName === "Diluted soju" ? "Neutral spirit made from agricultural starch is reduced with water and adjusted into a light, accessible final drink." : "Rice or other grains meet nuruk, a mixed microbial fermentation culture, before direct distillation retains cereal and fermentation character.", fact: "Diluted and directly distilled soju share a name but have fundamentally different production engines." };
+  if (subtypeName === "Amari") return { ...base, ...ingredientImages.botanicals, name: "Bitter roots, bark, citrus and herbs", description: "Gentian, cinchona, rhubarb, wormwood, citrus peel, spices and local herbs may be extracted separately or together, then blended into a proprietary bittersweet profile.", fact: "Amaro is a style family, so ingredient disclosure and producer tradition are more useful than expecting one recipe." };
+  if (subtypeName === "Aniseed spirits") return { ...base, ...ingredientImages.anise, name: "Anise and related aromatic seeds", scientificName: "Pimpinella anisum and recipe botanicals", description: "Aniseed supplies anethole, often alongside star anise, fennel or licorice. The oil dissolves at bottle strength and clouds when water is added.", fact: "The louche is a physical emulsion—not proof of added sugar or artificial color." };
+  if (subtypeName === "Aquavit") return { ...base, ...ingredientImages.caraway, name: "Caraway and/or dill", description: "Caraway brings earthy citrus and warm spice; dill gives fresher green aromatics. Citrus, fennel and cask influence broaden the protected and unprotected regional styles.", fact: "In the EU category, caraway or dill must provide the defining flavor." };
   if (subtypeName === "Cocktail bitters") return { ...base, name: "Concentrated bitter and aromatic botanicals", description: "Roots, bark, spices, citrus peel and herbs are extracted into a potent base designed to season a drink by the dash rather than function as a full pour.", fact: "Aromatic bitters and bitter liqueurs may share ingredients, but concentration and intended serving size are fundamentally different." };
-  if (subtypeName === "Absinthe") return { ...base, name: "Wormwood, anise and fennel", scientificName: "Artemisia absinthium and aromatic botanicals", description: "The classic botanical triad combines bitter wormwood with anethole-rich anise and fennel, often joined by hyssop, lemon balm and other herbs in distillation or coloration.", fact: "Traditional dilution releases aromatic oils and softens high bottling strength; fire is not required." };
+  if (subtypeName === "Absinthe") return { ...base, ...ingredientImages.wormwood, name: "Wormwood, anise and fennel", scientificName: "Artemisia absinthium and aromatic botanicals", description: "The classic botanical triad combines bitter wormwood with anethole-rich anise and fennel, often joined by hyssop, lemon balm and other herbs in distillation or coloration.", fact: "Traditional dilution releases aromatic oils and softens high bottling strength; fire is not required." };
   return base;
 }
 
@@ -211,8 +244,7 @@ const curated: Record<string, SubtypeDeepDiveData> = {
       name: "Malted barley",
       scientificName: "Hordeum vulgare",
       description: "Single malt Scotch begins with malted barley. Germination creates enzymes that release fermentable sugars; kilning stops growth, and peat smoke may—or may not—add smoky phenols at this stage.",
-      image: "/ingredients/malted-barley.png",
-      imageAlt: "Malted barley grains and barley ears on a traditional malting floor",
+      ...ingredientImages.barley,
       fact: "Grain Scotch can also use other whole cereals, while malt whisky must use malted barley and pot stills.",
     },
     mapTitle: "Scotland's five protected whisky names",
@@ -233,8 +265,7 @@ const curated: Record<string, SubtypeDeepDiveData> = {
       name: "Ugni Blanc",
       scientificName: "Vitis vinifera · Ugni Blanc",
       description: "Ugni Blanc accounts for about 98% of Cognac vines. Its high acidity, relatively low alcohol and disease resistance make a restrained base wine that is well suited to distillation and long maturation.",
-      image: "/ingredients/ugni-blanc.png",
-      imageAlt: "Pale Ugni Blanc grapes growing over chalky vineyard soil",
+      ...ingredientImages.ugniBlanc,
       fact: "The base wine is not designed as a rich table wine; acidity and subtle aroma help it survive two distillations and years in oak.",
       varieties: [
         {
@@ -242,8 +273,9 @@ const curated: Record<string, SubtypeDeepDiveData> = {
           scientificName: "Vitis vinifera",
           role: "More than 98% of Cognac vineyards",
           description: "High acidity, low sugar and a restrained profile make the benchmark distillation wine: delicate, floral and built to age.",
-          image: "/ingredients/ugni-blanc.png",
-          imageAlt: "Pale Ugni Blanc grapes on a vine",
+          image: ingredientImages.ugniBlanc.image,
+          imageAlt: ingredientImages.ugniBlanc.imageAlt,
+          credit: ingredientImages.ugniBlanc.credit,
         },
         {
           name: "Folle Blanche",
@@ -294,17 +326,18 @@ const curated: Record<string, SubtypeDeepDiveData> = {
           scientificName: "Vitis vinifera",
           role: "Most widely planted",
           description: "Acidic, low-alcohol base wines distill into fine, precise eaux-de-vie and adapt well across all three Armagnac terroirs.",
-          image: "/ingredients/ugni-blanc.png",
-          imageAlt: "Pale Ugni Blanc grapes on a vine",
+          image: ingredientImages.ugniBlanc.image,
+          imageAlt: ingredientImages.ugniBlanc.imageAlt,
+          credit: ingredientImages.ugniBlanc.credit,
         },
         {
           name: "Baco 22A",
           scientificName: "Folle Blanche × Noah",
           role: "Armagnac signature · especially Bas-Armagnac",
           description: "France's distinctive permitted hybrid is prized on sandy soils for roundness, ripe-fruit depth and an affinity for long aging.",
-          image: "/ingredients/baco-22a.png",
-          imageAlt: "Illustrative close-up of pale Baco 22A grapes on the vine",
-          credit: { label: "Illustrative botanical reference · AI-generated" },
+          image: "/ingredients/baco-22a-grapes.jpg",
+          imageAlt: "A real white-grape cluster photographed for an Armagnac grape-variety reference",
+          credit: { label: "Photo · Armagnac.com grape-variety reference", url: "https://www.armagnac.com/en/content/les-cepages.html" },
         },
         {
           name: "Folle Blanche",
@@ -341,6 +374,7 @@ const curated: Record<string, SubtypeDeepDiveData> = {
     ingredient: {
       name: "Cider apples and perry pears",
       description: "Bittersweet, bittersharp, sweet and acidic cider apples are blended for fermentable sugar, tannin and freshness. Perry pears play a particularly important role in Calvados Domfrontais.",
+      ...ingredientImages.ciderApples,
       fact: "These orchard varieties are selected for fermentation and distillation; they are not simply dessert fruit transferred into a still.",
     },
     mapTitle: "Calvados's three appellation areas",
@@ -359,8 +393,7 @@ const curated: Record<string, SubtypeDeepDiveData> = {
       name: "Blue Weber agave",
       scientificName: "Agave tequilana Weber var. azul",
       description: "Blue agave is the only agave permitted for tequila. The plant commonly spends five to eight years in the field before jimadores remove its leaves and harvest the sugar-rich heart for cooking.",
-      image: "/ingredients/blue-agave.png",
-      imageAlt: "Mature blue Weber agave plants growing in red Jalisco soil",
+      ...ingredientImages.agave,
       fact: "“100% agave” tequila uses only blue-agave sugars; the broader tequila category must use at least 51% blue-agave sugars.",
     },
     mapTitle: "Two Jalisco landscapes—and the wider denomination",

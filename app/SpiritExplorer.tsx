@@ -73,12 +73,31 @@ function OfflineExplorerMap({
   selectedId: string | null;
   onChooseLocation: (id: string) => void;
 }) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [view, setView] = useState(DEFAULT_FALLBACK_VIEW);
+  const [viewport, setViewport] = useState({ width: 900, height: 630 });
   const width = 360 / view.zoom;
   const height = 180 / view.zoom;
   const viewBox = `${view.centerX * 360 - width / 2} ${view.centerY * 180 - height / 2} ${width} ${height}`;
-  const markerRadius = 1.7 / view.zoom;
+  // This SVG uses `slice`, so the larger scale factor controls how user units
+  // map to pixels. Convert the desired zoom-responsive pixel radius back into
+  // viewBox units instead of assuming one geographic radius works everywhere.
+  const screenScale = Math.max(viewport.width / width, viewport.height / height);
+  const zoomProgress = Math.log(view.zoom) / Math.log(MAX_FALLBACK_ZOOM);
+  const markerRadiusPixels = 3.5 + zoomProgress * 2.5;
+  const markerRadius = markerRadiusPixels / Math.max(screenScale, 0.01);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new ResizeObserver(([entry]) => {
+      const { width: nextWidth, height: nextHeight } = entry.contentRect;
+      if (nextWidth >= 120 && nextHeight >= 120) setViewport({ width: nextWidth, height: nextHeight });
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   function changeZoom(multiplier: number) {
     setView((current) => clampFallbackView({
@@ -117,6 +136,7 @@ function OfflineExplorerMap({
 
   return (
     <div
+      ref={containerRef}
       className={`map-canvas offline-explorer-map${view.zoom > 1 ? " is-zoomed" : ""}`}
       style={{ padding: 0 }}
       onPointerDown={beginPan}
@@ -398,10 +418,10 @@ export function SpiritExplorer() {
           paint: {
             "circle-color": ["get", "color"],
             "circle-radius": [
-              "case",
-              ["==", ["get", "selected"], 1],
-              12,
-              9,
+              "interpolate", ["linear"], ["zoom"],
+              1, ["case", ["==", ["get", "selected"], 1], 7, 4],
+              6, ["case", ["==", ["get", "selected"], 1], 9, 5.5],
+              13, ["case", ["==", ["get", "selected"], 1], 12, 7],
             ],
             "circle-stroke-color": [
               "case",
@@ -410,10 +430,9 @@ export function SpiritExplorer() {
               "#100F0E",
             ],
             "circle-stroke-width": [
-              "case",
-              ["==", ["get", "selected"], 1],
-              4,
-              2,
+              "interpolate", ["linear"], ["zoom"],
+              1, ["case", ["==", ["get", "selected"], 1], 2.5, 1.25],
+              13, ["case", ["==", ["get", "selected"], 1], 3.5, 2],
             ],
           },
         });

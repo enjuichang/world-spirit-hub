@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Factory, MapPinned, Minus, Plus, RotateCcw } from "lucide-react";
+import type { CSSProperties } from "react";
 import { useMemo, useRef, useState } from "react";
 import type { SpiritLocation } from "../data";
 
@@ -80,6 +81,12 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
   const [atlasView, setAtlasView] = useState<AtlasView>({ zoom: 1, centerX: 0.5, centerY: 0.5 });
   const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const selected = filtered.find((location) => location.id === selectedId) ?? filtered[0];
+  const atlasZoomProgress = Math.log(atlasView.zoom) / Math.log(MAX_ATLAS_ZOOM);
+  const atlasMarkerStyle = {
+    "--atlas-marker-size": `${6 + atlasZoomProgress * 2}px`,
+    "--atlas-marker-active-size": `${10 + atlasZoomProgress * 3}px`,
+    "--atlas-marker-hit-size": `${18 + atlasZoomProgress * 4}px`,
+  } as CSSProperties;
 
   function changeZoom(multiplier: number) {
     setAtlasView((current) => clampAtlasView({ ...current, zoom: current.zoom * multiplier }));
@@ -144,6 +151,7 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
         <div className="distillery-world-map" role="group" aria-label={`${categoryName} distillery map with ${filtered.length} markers`}>
           <div
             className={`distillery-map-stage${atlasView.zoom > 1 ? " is-zoomed" : ""}`}
+            style={atlasMarkerStyle}
             onPointerDown={beginPan}
             onPointerMove={movePan}
             onPointerUp={endPan}
