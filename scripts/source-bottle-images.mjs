@@ -2,9 +2,43 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
-const distilleries = JSON.parse(
+const baseDistilleries = JSON.parse(
   await readFile(path.join(root, "data/distilleries.json"), "utf8"),
 );
+const subtypeExpansion = JSON.parse(
+  await readFile(path.join(root, "data/subtype-expansion.json"), "utf8"),
+);
+const additionalSubtypeExpansion = JSON.parse(
+  await readFile(path.join(root, "data/additional-subtype-expansion.json"), "utf8"),
+);
+for (const [key, entries] of Object.entries(additionalSubtypeExpansion)) {
+  subtypeExpansion[key] = [...(subtypeExpansion[key] ?? []), ...entries];
+}
+const expandedDistilleries = Object.entries(subtypeExpansion).flatMap(
+  ([key, entries]) => {
+    const separator = key.indexOf(":");
+    const categoryId = key.slice(0, separator);
+    const subcategory = key.slice(separator + 1);
+
+    return entries.map((entry) => {
+      const [id, name, place, country, longitude, latitude, descriptor, ...rest] =
+        entry;
+      const sourceUrl = rest.pop();
+      return {
+        id,
+        name,
+        place,
+        country,
+        coordinates: [longitude, latitude],
+        categoryId,
+        subcategory,
+        descriptor,
+        sourceUrl,
+      };
+    });
+  },
+);
+const distilleries = [...baseDistilleries, ...expandedDistilleries];
 const productPages = JSON.parse(
   await readFile(path.join(root, "data/bottle-product-pages.json"), "utf8"),
 );
@@ -17,10 +51,17 @@ Object.assign(
     ),
   ),
 );
+const directImageOverrides = JSON.parse(
+  await readFile(
+    path.join(root, "data/bottle-direct-image-overrides.json"),
+    "utf8",
+  ),
+);
 const outputDir = path.join(root, "public/bottles");
 const catalogPath = path.join(root, "data/bottle-images.json");
 const reportPath = path.join(root, "data/bottle-image-report.json");
 const onlyMissing = process.argv.includes("--missing");
+const onlyDirect = process.argv.includes("--direct");
 const refreshIds = new Set(
   (process.argv.find((argument) => argument.startsWith("--ids=")) ?? "")
     .replace("--ids=", "")
@@ -195,8 +236,66 @@ async function downloadCandidate(candidate, id) {
   return { filename, bytes: bytes.length, finalUrl: response.url };
 }
 
+async function searchBottleImages(location) {
+  const query = `${location.name} ${location.subcategory} bottle product`;
+  const searchUrl = `https://www.bing.com/images/search?q=${encodeURIComponent(query)}&form=HDRSC2&first=1`;
+  const response = await fetch(searchUrl, {
+    headers: {
+      "accept-language": "en-US,en;q=0.8",
+      "user-agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/136 Safari/537.36",
+    },
+    signal: AbortSignal.timeout(18_000),
+  });
+  if (!response.ok) throw new Error(`image search HTTP ${response.status}`);
+  const html = await response.text();
+  const candidates = [];
+  for (const match of html.matchAll(/\bm=(?:"([^"]+)"|'([^']+)')/gi)) {
+    try {
+      const metadata = JSON.parse(decodeHtml(match[1] ?? match[2] ?? ""));
+      if (!metadata.murl || !metadata.purl) continue;
+      const context = `${metadata.t ?? ""} ${metadata.desc ?? ""}`;
+      const haystack = `${metadata.murl} ${metadata.purl} ${context}`.toLowerCase();
+      let score = haystack.includes("bottle") ? 180 : 60;
+      if (/logo|icon|distillery|tour|person|cocktail|barrel/.test(haystack)) score -= 180;
+      for (const word of location.name.toLowerCase().split(/[^a-z0-9]+/)) {
+        if (word.length > 3 && haystack.includes(word)) score += 14;
+      }
+      candidates.push({
+        url: metadata.murl,
+        pageUrl: metadata.purl,
+        context,
+        score,
+      });
+    } catch {}
+  }
+  return candidates.sort((a, b) => b.score - a.score);
+}
+
 async function sourceOne(location) {
   const productPage = productPages[location.id];
+  const directImage = directImageOverrides[location.id];
+  if (directImage) {
+    try {
+      const downloaded = await downloadCandidate(
+        {
+          url: directImage.imageSourceUrl,
+          pageUrl: directImage.productPageUrl,
+        },
+        location.id,
+      );
+      return {
+        id: location.id,
+        status: "sourced",
+        imagePath: `/bottles/${downloaded.filename}`,
+        imageSourceUrl: downloaded.finalUrl,
+        productPageUrl: directImage.productPageUrl,
+        productName: directImage.productName,
+        score: 300,
+        bytes: downloaded.bytes,
+      };
+    } catch {}
+  }
   const pageAttempts = [productPage?.productPageUrl, location.sourceUrl].filter(Boolean);
   try {
     pageAttempts.push(new URL("/", location.sourceUrl).href);
@@ -240,11 +339,37 @@ async function sourceOne(location) {
       errors.push(`${pageUrl}: ${error.message}`);
     }
   }
+  try {
+    const candidates = await searchBottleImages(location);
+    for (const candidate of candidates.slice(0, 24)) {
+      if (candidate.score < 60) continue;
+      try {
+        const downloaded = await downloadCandidate(candidate, location.id);
+        return {
+          id: location.id,
+          status: "sourced",
+          imagePath: `/bottles/${downloaded.filename}`,
+          imageSourceUrl: downloaded.finalUrl,
+          productPageUrl: candidate.pageUrl,
+          productName: candidate.context || `${location.name} bottling`,
+          score: candidate.score,
+          bytes: downloaded.bytes,
+        };
+      } catch (error) {
+        errors.push(`${candidate.url}: ${error.message}`);
+      }
+    }
+    errors.push(`${location.name}: no usable bottle image search result`);
+  } catch (error) {
+    errors.push(`image search: ${error.message}`);
+  }
   return { id: location.id, status: "missing", errors: errors.slice(-4) };
 }
 
 const locationsToSource = refreshIds.size
   ? distilleries.filter((location) => refreshIds.has(location.id))
+  : onlyDirect
+    ? distilleries.filter((location) => directImageOverrides[location.id])
   : onlyMissing
     ? distilleries.filter((location) => !existingCatalog[location.id])
     : distilleries;

@@ -1,62 +1,12 @@
 [
   {
-    "id": "sakurao",
+    "id": "santa-cruz-cuba",
     "status": "sourced",
-    "imagePath": "/bottles/sakurao.jpg",
-    "imageSourceUrl": "https://bottleofjapan.com/cdn/shop/files/168799428_1024x1024.jpg?v=1775388814",
-    "productPageUrl": "https://bottleofjapan.com/products/168799428",
-    "productName": "Sakurao Single Malt Japanese Whisky",
-    "score": 97,
-    "bytes": 12811
-  },
-  {
-    "id": "jim-beam-clermont",
-    "status": "sourced",
-    "imagePath": "/bottles/jim-beam-clermont.webp",
-    "imageSourceUrl": "https://www.jimbeam.com/sites/default/files/styles/original/public/2024-11/JimBeamWhite_EvergreenProduct_Crop_4x5_2023_s05%20%281%29.webp?itok=yG2db_yU",
-    "productPageUrl": "https://www.jimbeam.com/en-us/visit-us",
-    "productName": "Jim Beam Original Kentucky Straight Bourbon",
-    "score": 99,
-    "bytes": 184874
-  },
-  {
-    "id": "four-roses",
-    "status": "sourced",
-    "imagePath": "/bottles/four-roses.png",
-    "imageSourceUrl": "https://cdn.caskers.com/catalog/product/cache/4be1456c55268c99c0016aa6f323bbd5/E/a/Eagle_Rare_10.png",
-    "productPageUrl": "https://www.caskers.com/four-roses-single-barrel-kentucky-straight-bourbon-whiskey/",
-    "productName": "Four Roses Single Barrel Bourbon",
-    "score": 97,
-    "bytes": 16629
-  },
-  {
-    "id": "heaven-hill-bernheim",
-    "status": "sourced",
-    "imagePath": "/bottles/heaven-hill-bernheim.png",
-    "imageSourceUrl": "https://heavenhilldistillery.com/images/menu/hh-bib-25.png?ver=9",
-    "productPageUrl": "https://heavenhilldistillery.com/our-distilleries.php",
-    "productName": "Heaven Hill 7 Year Bottled-in-Bond Bourbon",
-    "score": 222,
-    "bytes": 106023
-  },
-  {
-    "id": "westland",
-    "status": "sourced",
-    "imagePath": "/bottles/westland.png",
-    "imageSourceUrl": "https://westlanddistillery.com/cdn/shop/files/westland-distillery-19.png?v=1729010828",
-    "productPageUrl": "https://westlanddistillery.com/pages/about",
-    "productName": "Westland Flagship American Single Malt Whiskey",
-    "score": 83,
-    "bytes": 1209257
-  },
-  {
-    "id": "balcones",
-    "status": "sourced",
-    "imagePath": "/bottles/balcones.jpg",
-    "imageSourceUrl": "https://cdn.caskers.com/catalog/product/cache/4f6989790ecdd0e389055fabaf312a4d/b/a/balcones-texas-1-single-malt-whisky-1.jpg",
-    "productPageUrl": "https://www.caskers.com/balcones-texas-single-malt-whisky/",
-    "productName": "Balcones Texas 1 Single Malt Whisky",
-    "score": 128,
-    "bytes": 35479
+    "imagePath": "/bottles/santa-cruz-cuba.png",
+    "imageSourceUrl": "https://img.envioscuba.com/Img_Data/500x500/4038a67d-dfd1-44c0-bbc7-324b4ffaff34.png",
+    "productPageUrl": "https://www.carlostercero.ca/mayabeque/Item?ProdPid=919111",
+    "productName": "Santa Cruz del Norte Carta Blanca Rum",
+    "score": 300,
+    "bytes": 75492
   }
 ]

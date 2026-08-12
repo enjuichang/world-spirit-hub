@@ -5,6 +5,7 @@ const jsonUrl = new URL("../data/distilleries.json", import.meta.url);
 const profilesUrl = new URL("../data/distillery-profiles.json", import.meta.url);
 const bottleImagesUrl = new URL("../data/bottle-images.json", import.meta.url);
 const subtypeExpansionUrl = new URL("../data/subtype-expansion.json", import.meta.url);
+const additionalSubtypeExpansionUrl = new URL("../data/additional-subtype-expansion.json", import.meta.url);
 const markdownUrl = new URL("../DISTILLERIES.md", import.meta.url);
 
 const categories = [
@@ -29,9 +30,9 @@ const requiredSubtypes = new Map([
   ["asian", ["Strong-aroma baijiu", "Sauce-aroma baijiu", "Light-aroma baijiu", "Rice-aroma baijiu", "Honkaku shōchū", "Awamori", "Diluted soju", "Distilled soju", "Kaoliang"]],
   ["flavoured", ["Liqueurs", "Amari", "Aniseed spirits", "Aquavit", "Cocktail bitters", "Flavored vodka", "Infused vodka", "Absinthe"]],
 ]);
-const minimumSubtypeCoverage = 5;
+const minimumSubtypeCoverage = 10;
 const minimumSubtypeCoverageOverrides = new Map([
-  ["whisky:Scotch whisky", 53],
+  ["whisky:Scotch whisky", 58],
 ]);
 const requiredTextFields = [
   "id",
@@ -179,7 +180,7 @@ function render(distilleries) {
     "",
     "## Core subtype coverage",
     "",
-    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery sites; Scotch whisky has a dedicated minimum of 53. Additional regional styles remain in the inventory where they add useful context.`,
+    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery sites; Scotch whisky has a dedicated minimum of 58. Additional regional styles remain in the inventory where they add useful context.`,
     "",
     "| Family | Subtype | Markers |",
     "| --- | --- | ---: |",
@@ -233,7 +234,14 @@ function render(distilleries) {
 const baseDistilleries = JSON.parse(await readFile(jsonUrl, "utf8"));
 const baseProfiles = JSON.parse(await readFile(profilesUrl, "utf8"));
 const bottleImages = JSON.parse(await readFile(bottleImagesUrl, "utf8"));
-const subtypeExpansion = JSON.parse(await readFile(subtypeExpansionUrl, "utf8"));
+const originalSubtypeExpansion = JSON.parse(await readFile(subtypeExpansionUrl, "utf8"));
+const additionalSubtypeExpansion = JSON.parse(await readFile(additionalSubtypeExpansionUrl, "utf8"));
+const subtypeExpansion = Object.fromEntries(
+  [...new Set([...Object.keys(originalSubtypeExpansion), ...Object.keys(additionalSubtypeExpansion)])].map((key) => [
+    key,
+    [...(originalSubtypeExpansion[key] ?? []), ...(additionalSubtypeExpansion[key] ?? [])],
+  ]),
+);
 const expandedProfiles = {};
 const expandedDistilleries = Object.entries(subtypeExpansion).flatMap(([key, entries]) => {
   const separator = key.indexOf(":");

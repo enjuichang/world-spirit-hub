@@ -1,6 +1,7 @@
 import distilleryData from "../data/distilleries.json";
 import distilleryProfiles from "../data/distillery-profiles.json";
 import subtypeExpansion from "../data/subtype-expansion.json";
+import additionalSubtypeExpansion from "../data/additional-subtype-expansion.json";
 
 export type SpiritCategory = {
   id: string;
@@ -312,9 +313,16 @@ type ExpansionTuple = [
   sourceUrl: string,
 ];
 
-const expandedLocations = Object.entries(
-  subtypeExpansion as unknown as Record<string, ExpansionTuple[]>,
-).flatMap(([key, entries]) => {
+const originalExpandedLocations = subtypeExpansion as unknown as Record<string, ExpansionTuple[]>;
+const additionalExpandedLocations = additionalSubtypeExpansion as unknown as Record<string, ExpansionTuple[]>;
+const combinedSubtypeExpansion = Object.fromEntries(
+  [...new Set([...Object.keys(originalExpandedLocations), ...Object.keys(additionalExpandedLocations)])].map((key) => [
+    key,
+    [...(originalExpandedLocations[key] ?? []), ...(additionalExpandedLocations[key] ?? [])],
+  ]),
+);
+
+const expandedLocations = Object.entries(combinedSubtypeExpansion).flatMap(([key, entries]) => {
   const separator = key.indexOf(":");
   const categoryId = key.slice(0, separator);
   const subcategory = key.slice(separator + 1);

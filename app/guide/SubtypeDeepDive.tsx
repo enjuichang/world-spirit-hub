@@ -51,16 +51,22 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
         </label>
       </header>
 
-      <article className={`ingredient-profile${deepDive.ingredient.image && !deepDive.ingredient.varieties?.length ? " has-image" : ""}`}>
-        {deepDive.ingredient.image && !deepDive.ingredient.varieties?.length && (
+      <article className={`ingredient-profile${!deepDive.ingredient.varieties?.length ? " has-image" : ""}`}>
+        {!deepDive.ingredient.varieties?.length && (deepDive.ingredient.image ? (
           <img
             src={deepDive.ingredient.image}
             alt={deepDive.ingredient.imageAlt ?? deepDive.ingredient.name}
             width="1536"
             height="1024"
           />
-        )}
-        <div>
+        ) : (
+          <div className="ingredient-visual" aria-hidden="true">
+            <Sprout />
+            <span>{selected.name}</span>
+            <strong>{deepDive.ingredient.name}</strong>
+          </div>
+        ))}
+        <div className="ingredient-copy">
           <span><Sprout size={15} /> Raw ingredient</span>
           <h4>{deepDive.ingredient.name}</h4>
           {deepDive.ingredient.scientificName && <em>{deepDive.ingredient.scientificName}</em>}
@@ -98,7 +104,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
           <RegionMap regions={deepDive.zones} label={`${selected.name} subregions`} focus={deepDive.mapFocus} />
           <div className="zone-list">
             {deepDive.zones.map((zone, index) => (
-              <article key={zone.name}>
+              <article key={`${zone.name}-${zone.distillery?.name ?? index}`}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <h5>{zone.name}</h5>
                 <strong>{zone.character}</strong>
@@ -111,6 +117,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
                     <div><small>Representative distillery</small><b>{zone.distillery.name}</b></div>
                   </div>
                 )}
+                {zone.source && <a className="zone-source" href={zone.source.url} target="_blank" rel="noreferrer">{zone.source.label}<ArrowUpRight size={11} /></a>}
               </article>
             ))}
           </div>

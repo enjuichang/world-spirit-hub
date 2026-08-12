@@ -1,12 +1,17 @@
 "use client";
 
-import type { CSSProperties } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Minus, Plus, RotateCcw } from "lucide-react";
 import mapboxgl, { LngLatBounds, Map as MapboxMap } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { MapRegion } from "../guideData";
+// Mexican denomination territories generated from the official INEGI municipal frame.
+import agaveBoundaryData from "./agave-boundaries.json";
 // Simplified Natural Earth admin-0, admin-1, and map-subunit geometry.
 import boundaryData from "./region-boundaries.json";
+// Higher-detail Natural Earth geometry for countries whose 1:110m shapes are
+// visibly coarse at subtype-map scale. France is intentionally metropolitan.
+import refinedBoundaryData from "./refined-country-boundaries.json";
 // Protected Scotch areas derived from the statutory dividing line and the
 // official 2007 ward boundaries named in the Scotch Whisky specification.
 import scotchBoundaryData from "./scotch-regions.json";
@@ -18,19 +23,33 @@ type BoundaryFeature = GeoJSON.Feature<RegionGeometry, BoundaryProperties>;
 const boundaryFeatures = new Map(
   [
     ...(boundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
+    ...(refinedBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(scotchBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
+    ...(agaveBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
   ].map((feature) => [
     feature.properties.id,
     feature,
   ]),
 );
 
+const MAX_STATIC_ZOOM = 8;
+const PRIMARY_MARKER_RADIUS_PX = 7;
+const DISTILLERY_MARKER_RADIUS_PX = 4;
+
+type StaticView = { zoom: number; centerX: number; centerY: number };
+const DEFAULT_STATIC_VIEW: StaticView = { zoom: 1, centerX: 0.5, centerY: 0.5 };
+
 const boundaryGroups: Record<string, string[]> = {
+  "Authorized Mexican states": ["Mezcal DO"],
   Benelux: ["Netherlands", "Belgium", "Luxembourg"],
+  "Jalisco + authorized areas": ["Tequila DO"],
+  "Jalisco & Nayarit": ["Raicilla DO"],
   Korea: ["South Korea"],
   "Netherlands & Belgium": ["Netherlands", "Belgium"],
+  "Northern Mexico": ["Sotol DO"],
   "Pacific South America": ["Peru", "Chile"],
   "Peru & Chile": ["Peru", "Chile"],
+  Sonora: ["Bacanora DO"],
 };
 
 const countryFocusGroups: Record<string, string[]> = {
@@ -61,9 +80,47 @@ function boundariesForRegion(region: MapRegion): BoundaryFeature[] {
   });
 }
 
+function ringContainsPoint(point: [number, number], ring: number[][]) {
+  let inside = false;
+  for (let index = 0, previous = ring.length - 1; index < ring.length; previous = index++) {
+    const [x, y] = ring[index];
+    const [previousX, previousY] = ring[previous];
+    const intersects = ((y > point[1]) !== (previousY > point[1]))
+      && point[0] < ((previousX - x) * (point[1] - y)) / (previousY - y) + x;
+    if (intersects) inside = !inside;
+  }
+  return inside;
+}
+
+function polygonContainsPoint(point: [number, number], polygon: number[][][]) {
+  return ringContainsPoint(point, polygon[0])
+    && !polygon.slice(1).some((hole) => ringContainsPoint(point, hole));
+}
+
+function featureContainsPoint(feature: BoundaryFeature, point: [number, number]) {
+  const polygons = feature.geometry.type === "Polygon"
+    ? [feature.geometry.coordinates]
+    : feature.geometry.coordinates;
+  return polygons.some((polygon) => polygonContainsPoint(point, polygon));
+}
+
+function containingBoundaryId(point: [number, number]) {
+  return [...boundaryFeatures.values()].find((feature) => featureContainsPoint(feature, point))?.properties.id;
+}
+
 function focusIdsForRegions(regions: MapRegion[], requested?: string[]) {
-  const ids = requested ?? regions.flatMap((region) => countryFocusGroups[region.name] ?? boundaryGroups[region.name] ?? [region.name]);
+  const ids = requested ?? regions.flatMap((region) => {
+    const explicit = countryFocusGroups[region.name] ?? boundaryGroups[region.name];
+    if (explicit) return explicit;
+    if (boundaryFeatures.has(region.name)) return [region.name];
+    const containingId = containingBoundaryId(region.point);
+    return containingId ? [containingId] : [];
+  });
   return [...new Set(ids)].filter((id) => boundaryFeatures.has(id));
+}
+
+function isDenominationTerritory(id: string) {
+  return id.endsWith(" DO");
 }
 
 function featuresForIds(ids: string[]) {
@@ -165,6 +222,48 @@ function focusedViewBox(features: BoundaryFeature[]) {
   return { x: minX - paddingX, y: minY - paddingY, width: width + paddingX * 2, height: height + paddingY * 2 };
 }
 
+function zoomedViewBox(
+  base: { x: number; y: number; width: number; height: number },
+  view: StaticView,
+) {
+  const width = base.width / view.zoom;
+  const height = base.height / view.zoom;
+  return {
+    x: base.x + base.width * view.centerX - width / 2,
+    y: base.y + base.height * view.centerY - height / 2,
+    width,
+    height,
+  };
+}
+
+function clampView(view: StaticView): StaticView {
+  const zoom = Math.min(MAX_STATIC_ZOOM, Math.max(1, view.zoom));
+  const half = 0.5 / zoom;
+  return {
+    zoom,
+    centerX: Math.min(1 - half, Math.max(half, view.centerX)),
+    centerY: Math.min(1 - half, Math.max(half, view.centerY)),
+  };
+}
+
+function pointFocusedViewBox(regions: MapRegion[]) {
+  const points = regions.flatMap((region) => [region.point, ...(region.distillery ? [region.distillery.point] : [])]).map(project);
+  const xs = points.map((point) => point.x * 3.6);
+  const ys = points.map((point) => point.y * 1.8);
+  const centerX = (Math.min(...xs) + Math.max(...xs)) / 2;
+  const centerY = (Math.min(...ys) + Math.max(...ys)) / 2;
+  let width = Math.max((Math.max(...xs) - Math.min(...xs)) * 1.45, 34);
+  let height = Math.max((Math.max(...ys) - Math.min(...ys)) * 1.45, 16);
+  const targetRatio = 2.15;
+  if (width / height < targetRatio) width = height * targetRatio;
+  else height = width / targetRatio;
+  width = Math.min(width, 360);
+  height = Math.min(height, 180);
+  const x = Math.max(0, Math.min(centerX - width / 2, 360 - width));
+  const y = Math.max(0, Math.min(centerY - height / 2, 180 - height));
+  return { x, y, width, height };
+}
+
 export function RegionMap({
   regions,
   label,
@@ -179,16 +278,84 @@ export function RegionMap({
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
+  const staticDragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [mapReady, setMapReady] = useState(false);
+  const [staticViews, setStaticViews] = useState<Record<string, StaticView>>({});
+  const [mapViewport, setMapViewport] = useState({ width: 720, height: 350 });
   const focusIds = useMemo(
     () => compact || focus !== undefined ? focusIdsForRegions(regions, focus) : [],
     [compact, focus, regions],
   );
   const focusFeatures = useMemo(() => featuresForIds(focusIds), [focusIds]);
-  const viewBox = focusedViewBox(focusFeatures);
-  const markerRadius = Math.max(viewBox.width / 68, 0.17);
-  const markerFontSize = Math.max(viewBox.width / 25, 0.5);
-  const distilleryMarkerRadius = Math.max(viewBox.width / 105, 0.12);
+  const hasDenominationFocus = focusIds.some(isDenominationTerritory);
+  const hasIncompleteFocus = focus !== undefined && focusIds.length < focus.length;
+  const baseViewBox = focusFeatures.length && !hasIncompleteFocus
+    ? focusedViewBox(focusFeatures)
+    : compact || focus !== undefined
+      ? pointFocusedViewBox(regions)
+      : focusedViewBox([]);
+  const baseViewKey = `${baseViewBox.x}:${baseViewBox.y}:${baseViewBox.width}:${baseViewBox.height}`;
+  const staticView = staticViews[baseViewKey] ?? DEFAULT_STATIC_VIEW;
+  const viewBox = zoomedViewBox(baseViewBox, staticView);
+  const focusLabel = focus?.length ? focus : focusIds;
+  const mapUnitsPerPixel = Math.max(
+    viewBox.width / Math.max(mapViewport.width, 1),
+    viewBox.height / Math.max(mapViewport.height, 1),
+  );
+  const markerRadius = mapUnitsPerPixel * PRIMARY_MARKER_RADIUS_PX;
+  const markerFontSize = mapUnitsPerPixel * (compact ? 9 : 10);
+  const distilleryMarkerRadius = mapUnitsPerPixel * DISTILLERY_MARKER_RADIUS_PX;
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setMapViewport({ width: entry.contentRect.width, height: entry.contentRect.height });
+    });
+    observer.observe(wrapper);
+    return () => observer.disconnect();
+  }, []);
+
+  function changeStaticZoom(multiplier: number) {
+    setStaticViews((views) => {
+      const current = views[baseViewKey] ?? DEFAULT_STATIC_VIEW;
+      return { ...views, [baseViewKey]: clampView({ ...current, zoom: current.zoom * multiplier }) };
+    });
+  }
+
+  function resetStaticView() {
+    setStaticViews((views) => ({ ...views, [baseViewKey]: DEFAULT_STATIC_VIEW }));
+  }
+
+  function beginStaticPan(event: React.PointerEvent<HTMLDivElement>) {
+    if (mapReady || event.button !== 0 || (event.target as HTMLElement).closest("button")) return;
+    staticDragRef.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function moveStaticPan(event: React.PointerEvent<HTMLDivElement>) {
+    const drag = staticDragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId || staticView.zoom <= 1) return;
+    const width = Math.max(event.currentTarget.getBoundingClientRect().width, 1);
+    const height = Math.max(event.currentTarget.getBoundingClientRect().height, 1);
+    const deltaX = event.clientX - drag.x;
+    const deltaY = event.clientY - drag.y;
+    staticDragRef.current = { ...drag, x: event.clientX, y: event.clientY };
+    setStaticViews((views) => {
+      const current = views[baseViewKey] ?? DEFAULT_STATIC_VIEW;
+      return { ...views, [baseViewKey]: clampView({
+        ...current,
+        centerX: current.centerX - deltaX / (width * current.zoom),
+        centerY: current.centerY - deltaY / (height * current.zoom),
+      }) };
+    });
+  }
+
+  function endStaticPan(event: React.PointerEvent<HTMLDivElement>) {
+    if (staticDragRef.current?.pointerId !== event.pointerId) return;
+    staticDragRef.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+  }
 
   useEffect(() => {
     if (compact || !wrapperRef.current || mapRef.current) return;
@@ -215,7 +382,6 @@ export function RegionMap({
         });
         mapRef.current = map;
         map.setProjection({ name: "mercator" });
-        map.scrollZoom.disable();
         map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-right");
         map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
 
@@ -289,9 +455,9 @@ export function RegionMap({
             id: "production-fallback-halo",
             type: "circle",
             source: "production-fallback-points",
-            paint: {
+          paint: {
               "circle-color": "#e2bc78",
-              "circle-radius": 14,
+              "circle-radius": 12,
               "circle-blur": 0.75,
               "circle-opacity": 0.65,
             },
@@ -302,7 +468,7 @@ export function RegionMap({
             source: "production-fallback-points",
             paint: {
               "circle-color": ["case", ["==", ["get", "protected"], 1], "#f4c978", "#d9a85b"],
-              "circle-radius": 9,
+              "circle-radius": PRIMARY_MARKER_RADIUS_PX,
               "circle-stroke-color": "#fff4df",
               "circle-stroke-width": 2,
             },
@@ -354,7 +520,7 @@ export function RegionMap({
               source: "representative-distilleries",
               paint: {
                 "circle-color": "#17120d",
-                "circle-radius": 4.5,
+                "circle-radius": DISTILLERY_MARKER_RADIUS_PX,
                 "circle-stroke-color": "#ffd992",
                 "circle-stroke-width": 2,
               },
@@ -399,6 +565,10 @@ export function RegionMap({
           if (focusFeatures.length) {
             const bounds = new LngLatBounds();
             focusFeatures.forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
+            regions.forEach((region) => {
+              bounds.extend(region.point);
+              if (region.distillery) bounds.extend(region.distillery.point);
+            });
             map.fitBounds(bounds, { padding: 28, maxZoom: 5.5, duration: 0 });
           } else if (regions.length > 1) {
             const bounds = new LngLatBounds();
@@ -428,19 +598,31 @@ export function RegionMap({
   return (
     <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}`}>
       <div
-        className={`map-canvas${mapReady ? " mapbox-ready" : ""}`}
+        className={`map-canvas${mapReady ? " mapbox-ready" : ""}${staticView.zoom > 1 ? " is-zoomed" : ""}`}
         ref={wrapperRef}
-        role="img"
+        role="group"
         aria-label={`${label}: ${regions.map((region) => region.name).join(", ")}`}
+        onPointerDown={beginStaticPan}
+        onPointerMove={moveStaticPan}
+        onPointerUp={endStaticPan}
+        onPointerCancel={endStaticPan}
+        onWheel={(event) => {
+          if (mapReady) return;
+          event.preventDefault();
+          changeStaticZoom(event.deltaY < 0 ? 1.25 : 0.8);
+        }}
       >
         <div className="map-graticule" aria-hidden="true" />
-        {!focusFeatures.length && <div className="map-land" aria-hidden="true" />}
+        {!compact && !focusFeatures.length && <div className="map-land" aria-hidden="true" />}
         <svg
           className="map-region-outlines"
           viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
           preserveAspectRatio="xMidYMid meet"
           aria-hidden="true"
         >
+          {!focusFeatures.length && (
+            <image className="map-land-vector" href="/world-equirectangular.svg" x="0" y="0" width="360" height="180" />
+          )}
           {focusFeatures.map((feature) => (
             <path className="map-focus-outline" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-focus`} />
           ))}
@@ -466,11 +648,11 @@ export function RegionMap({
               </g>,
             ];
           })}
-          {focusFeatures.length > 0 && regions.map((region, index) => {
+          {regions.map((region, index) => {
             const point = project(region.point);
             const x = point.x * 3.6;
             const y = point.y * 1.8;
-            const direction = index % 2 === 0 ? 1 : -1;
+            const direction = x > viewBox.x + viewBox.width * 0.58 ? -1 : 1;
             const labelY = y + ((index % 3) - 1) * markerFontSize * 1.4;
             const labelX = x + direction * markerRadius * 1.9;
             return (
@@ -488,36 +670,36 @@ export function RegionMap({
             );
           })}
         </svg>
-        {!focusFeatures.length && regions.map((region, index) => {
-          const point = project(region.point);
-          const hasBoundary = boundariesForRegion(region).length > 0;
-          return (
-            <span
-              aria-hidden="true"
-              className={`${hasBoundary ? "map-outline-index" : "map-marker"} ${region.kind ?? "traditional"}`}
-              key={`${region.name}-${index}`}
-              style={{ "--map-x": `${point.x}%`, "--map-y": `${point.y}%` } as CSSProperties}
-            >
-              <i>{hasBoundary ? region.name : index + 1}</i>
-            </span>
-          );
-        })}
         {!compact && <div className="mapbox-region-layer" ref={mapContainerRef} aria-hidden={!mapReady} />}
+        <div className="map-zoom-controls" aria-label="Map zoom controls">
+          <button type="button" onClick={() => changeStaticZoom(1.5)} disabled={staticView.zoom >= MAX_STATIC_ZOOM} aria-label="Zoom in"><Plus aria-hidden="true" /></button>
+          <button type="button" onClick={() => changeStaticZoom(2 / 3)} disabled={staticView.zoom <= 1} aria-label="Zoom out"><Minus aria-hidden="true" /></button>
+          <button type="button" onClick={resetStaticView} disabled={staticView.zoom <= 1} aria-label="Reset map view"><RotateCcw aria-hidden="true" /></button>
+        </div>
       </div>
       <figcaption>
-        <div className="map-caption-heading">
-          <span>{focusIds.length ? `Country focus · ${focusIds.join(" + ")}` : compact ? "Production area" : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
-          {!compact && regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
-        </div>
-        <ol>
-          {regions.map((region, index) => (
-            <li key={`${region.name}-legend-${index}`}>
-              <b aria-hidden="true" />
-              <strong>{region.name}</strong>
-              {!compact && <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>}
-            </li>
-          ))}
-        </ol>
+        {compact ? (
+          <div className="compact-map-caption">
+            <span>{focusLabel.length ? `${hasDenominationFocus ? "Official denomination" : "Geographic focus"} · ${focusLabel.join(" + ")}` : "Production area"}</span>
+            {regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
+          </div>
+        ) : (
+          <>
+            <div className="map-caption-heading">
+              <span>{focusLabel.length ? `${hasDenominationFocus ? "Official denomination" : "Geographic focus"} · ${focusLabel.join(" + ")}` : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
+              {regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
+            </div>
+            <ol>
+              {regions.map((region, index) => (
+                <li key={`${region.name}-legend-${index}`}>
+                  <b aria-hidden="true" />
+                  <strong>{region.name}</strong>
+                  <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>
+                </li>
+              ))}
+            </ol>
+          </>
+        )}
       </figcaption>
     </figure>
   );

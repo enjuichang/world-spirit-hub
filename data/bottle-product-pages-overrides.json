@@ -366,5 +366,21 @@
   "stranahans": {
     "productPageUrl": "https://shop.stranahans.com/products/original",
     "productName": "Stranahan's Original American Single Malt Whiskey"
+  },
+  "matsui-kurayoshi": {
+    "productPageUrl": "https://matsuiwhisky.com/en/item/kurayoshi/",
+    "productName": "Matsui Pure Malt Whisky The Kurayoshi"
+  },
+  "maoweiki": {
+    "productPageUrl": "https://d2yq4xezjqhhze.cloudfront.net/theme/maoweiki.html",
+    "productName": "Maoweiki Taiwanese Single Malt Whisky"
+  },
+  "luksusowa": {
+    "productPageUrl": "https://www.marianos.com/p/luksusowa-vodka/0063032800037",
+    "productName": "Luksusowa Polish Potato Vodka"
+  },
+  "jiannanchun": {
+    "productPageUrl": "https://www.jd.com/brand/1225918ac1e3c0d6da090.html",
+    "productName": "Jiannanchun Crystal Sword 52% Baijiu"
   }
 }
