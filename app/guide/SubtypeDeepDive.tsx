@@ -101,7 +101,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
 
       {deepDive.zones.length ? (
         <div className="subregion-layout">
-          <RegionMap regions={deepDive.zones} label={`${selected.name} subregions`} focus={deepDive.mapFocus} />
+          <RegionMap regions={deepDive.zones} label={`${selected.name} subregions`} focus={deepDive.mapFocus} immersive />
           <div className="zone-list">
             {deepDive.zones.map((zone, index) => (
               <article key={`${zone.name}-${zone.distillery?.name ?? index}`}>

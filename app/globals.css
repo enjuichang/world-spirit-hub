@@ -2362,6 +2362,14 @@ button {
   vector-effect: non-scaling-stroke;
 }
 
+.map-country-context {
+  fill: rgb(175 144 96 / 16%);
+  stroke: #c6a56e;
+  stroke-linejoin: round;
+  stroke-width: 1.35;
+  vector-effect: non-scaling-stroke;
+}
+
 .map-focused-marker circle {
   fill: var(--category);
   stroke: #fff2d9;
@@ -3002,20 +3010,42 @@ button {
 
 .subregion-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+  grid-template-columns: 1fr;
   gap: 12px;
   align-items: start;
 }
 
 .subregion-layout .region-map {
-  position: sticky;
-  top: 92px;
-  min-height: 440px;
+  position: relative;
+  min-height: 100svh;
+}
+
+.subregion-layout .region-map.immersive .map-canvas {
+  height: calc(100svh - 132px);
+  min-height: 560px;
+  aspect-ratio: auto;
+}
+
+.region-map.immersive:fullscreen {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  width: 100vw;
+  height: 100svh;
+  padding: 12px;
+  background: #0b0b0a;
+  border: 0;
+  border-radius: 0;
+}
+
+.region-map.immersive:fullscreen .map-canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 .zone-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--border-soft);
   border-left: 1px solid var(--border-soft);
 }
@@ -4979,7 +5009,7 @@ button {
     min-height: 330px;
   }
 
-  .subregion-layout .region-map {
+  .subregion-layout .region-map:not(.immersive) {
     position: static;
     min-height: 400px;
   }
@@ -5288,7 +5318,7 @@ button {
     min-height: 0;
   }
 
-  .subregion-layout .region-map {
+  .subregion-layout .region-map:not(.immersive) {
     min-height: 0;
   }
 

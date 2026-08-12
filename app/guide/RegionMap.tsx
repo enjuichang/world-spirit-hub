@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Minus, Plus, RotateCcw } from "lucide-react";
+import { Maximize2, Minimize2, Minus, Plus, RotateCcw } from "lucide-react";
 import mapboxgl, { LngLatBounds, Map as MapboxMap } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { MapRegion } from "../guideData";
@@ -99,6 +99,12 @@ const countryFocusGroups: Record<string, string[]> = {
   "Western Cape": ["South Africa"],
 };
 
+const focusContextGroups: Record<string, string[]> = {
+  "Armagnac AOC": ["France"],
+  "Calvados AOC": ["France"],
+  "Cognac AOC": ["France"],
+};
+
 function project([longitude, latitude]: [number, number]) {
   return {
     x: ((longitude + 180) / 360) * 100,
@@ -162,6 +168,10 @@ function featuresForIds(ids: string[]) {
     const feature = boundaryFeatures.get(id);
     return feature ? [feature] : [];
   });
+}
+
+function contextIdsForFocus(ids: string[]) {
+  return [...new Set(ids.flatMap((id) => focusContextGroups[id] ?? []))];
 }
 
 function outlineCollection(regions: MapRegion[]): GeoJSON.FeatureCollection<RegionGeometry> {
@@ -303,17 +313,21 @@ export function RegionMap({
   label,
   compact = false,
   focus,
+  immersive = false,
 }: {
   regions: MapRegion[];
   label: string;
   compact?: boolean;
   focus?: string[];
+  immersive?: boolean;
 }) {
+  const figureRef = useRef<HTMLElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const staticDragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [mapReady, setMapReady] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [staticViews, setStaticViews] = useState<Record<string, StaticView>>({});
   const [mapViewport, setMapViewport] = useState({ width: 720, height: 350 });
   const focusIds = useMemo(
@@ -321,10 +335,14 @@ export function RegionMap({
     [compact, focus, regions],
   );
   const focusFeatures = useMemo(() => featuresForIds(focusIds), [focusIds]);
+  const contextIds = useMemo(() => contextIdsForFocus(focusIds), [focusIds]);
+  const contextFeatures = useMemo(() => featuresForIds(contextIds), [contextIds]);
   const hasDenominationFocus = focusIds.some(isDenominationTerritory);
   const hasIncompleteFocus = focus !== undefined && focusIds.length < focus.length;
-  const baseViewBox = focusFeatures.length && !hasIncompleteFocus
-    ? focusedViewBox(focusFeatures)
+  const baseViewBox = contextFeatures.length
+    ? focusedViewBox(contextFeatures)
+    : focusFeatures.length && !hasIncompleteFocus
+      ? focusedViewBox(focusFeatures)
     : compact || focus !== undefined
       ? pointFocusedViewBox(regions)
       : focusedViewBox([]);
@@ -357,6 +375,22 @@ export function RegionMap({
     observer.observe(wrapper);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    function handleFullscreenChange() {
+      const fullscreen = document.fullscreenElement === figureRef.current;
+      setIsFullscreen(fullscreen);
+      window.setTimeout(() => mapRef.current?.resize(), 0);
+    }
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  async function toggleFullscreen() {
+    if (!figureRef.current) return;
+    if (document.fullscreenElement === figureRef.current) await document.exitFullscreen();
+    else await figureRef.current.requestFullscreen();
+  }
 
   function changeStaticZoom(multiplier: number) {
     setStaticViews((views) => {
@@ -428,6 +462,24 @@ export function RegionMap({
         map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
 
         map.on("load", () => {
+          if (contextFeatures.length) {
+            map.addSource("geographic-context", {
+              type: "geojson",
+              data: { type: "FeatureCollection", features: contextFeatures },
+            });
+            map.addLayer({
+              id: "geographic-context-fill",
+              type: "fill",
+              source: "geographic-context",
+              paint: { "fill-color": "#5f523f", "fill-opacity": 0.24 },
+            });
+            map.addLayer({
+              id: "geographic-context-outline",
+              type: "line",
+              source: "geographic-context",
+              paint: { "line-color": "#c6a56e", "line-width": 1.5, "line-opacity": 0.88 },
+            });
+          }
           if (focusFeatures.length) {
             map.addSource("country-focus", {
               type: "geojson",
@@ -596,7 +648,7 @@ export function RegionMap({
 
           if (focusFeatures.length) {
             const bounds = new LngLatBounds();
-            focusFeatures.forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
+            (contextFeatures.length ? contextFeatures : focusFeatures).forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
             regions.forEach((region) => {
               bounds.extend(region.point);
               if (region.distillery) bounds.extend(region.distillery.point);
@@ -625,10 +677,10 @@ export function RegionMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [compact, focusFeatures, regions]);
+  }, [compact, contextFeatures, focusFeatures, regions]);
 
   return (
-    <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}`}>
+    <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}`} ref={figureRef}>
       <div
         className={`map-canvas${mapReady ? " mapbox-ready" : ""}${staticView.zoom > 1 ? " is-zoomed" : ""}`}
         ref={wrapperRef}
@@ -655,6 +707,9 @@ export function RegionMap({
           {!focusFeatures.length && (
             <image className="map-land-vector" href="/world-equirectangular.svg" x="0" y="0" width="360" height="180" />
           )}
+          {contextFeatures.map((feature) => (
+            <path className="map-country-context" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-context`} />
+          ))}
           {focusFeatures.map((feature) => (
             <path className="map-focus-outline" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-focus`} />
           ))}
@@ -709,6 +764,7 @@ export function RegionMap({
           <button type="button" onClick={() => changeStaticZoom(1.5)} disabled={staticView.zoom >= MAX_STATIC_ZOOM} aria-label="Zoom in"><Plus aria-hidden="true" /></button>
           <button type="button" onClick={() => changeStaticZoom(2 / 3)} disabled={staticView.zoom <= 1} aria-label="Zoom out"><Minus aria-hidden="true" /></button>
           <button type="button" onClick={resetStaticView} disabled={staticView.zoom <= 1} aria-label="Reset map view"><RotateCcw aria-hidden="true" /></button>
+          {immersive && <button type="button" onClick={toggleFullscreen} aria-label={isFullscreen ? "Exit full screen" : "View map full screen"}>{isFullscreen ? <Minimize2 aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}</button>}
         </div>
       </div>
       <figcaption>
