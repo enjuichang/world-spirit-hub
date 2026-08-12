@@ -302,15 +302,21 @@ export function RegionMap({
     viewBox.width / Math.max(mapViewport.width, 1),
     viewBox.height / Math.max(mapViewport.height, 1),
   );
-  const markerRadius = mapUnitsPerPixel * PRIMARY_MARKER_RADIUS_PX;
-  const markerFontSize = mapUnitsPerPixel * (compact ? 9 : 10);
-  const distilleryMarkerRadius = mapUnitsPerPixel * DISTILLERY_MARKER_RADIUS_PX;
+  // ResizeObserver can briefly report a zero-sized box while a subtype panel
+  // is switching. Cap every SVG size against the visible geographic extent so
+  // a transient measurement can never turn a marker or halo into a map-sized
+  // circle.
+  const mapExtent = Math.min(viewBox.width, viewBox.height);
+  const markerRadius = Math.min(mapUnitsPerPixel * PRIMARY_MARKER_RADIUS_PX, mapExtent / 44);
+  const markerFontSize = Math.min(mapUnitsPerPixel * (compact ? 9 : 10), mapExtent / 30);
+  const distilleryMarkerRadius = Math.min(mapUnitsPerPixel * DISTILLERY_MARKER_RADIUS_PX, mapExtent / 76);
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
     const observer = new ResizeObserver(([entry]) => {
-      setMapViewport({ width: entry.contentRect.width, height: entry.contentRect.height });
+      const { width, height } = entry.contentRect;
+      if (width >= 120 && height >= 120) setMapViewport({ width, height });
     });
     observer.observe(wrapper);
     return () => observer.disconnect();
@@ -643,7 +649,7 @@ export function RegionMap({
             const y = point.y * 1.8;
             return [
               <g className="map-distillery-marker" key={`${region.name}-distillery-${index}`}>
-                <circle className="map-distillery-halo" cx={x} cy={y} r={distilleryMarkerRadius * 2.2} />
+                <circle className="map-distillery-halo" cx={x} cy={y} r={distilleryMarkerRadius * 1.75} />
                 <circle cx={x} cy={y} r={distilleryMarkerRadius} />
               </g>,
             ];
@@ -653,7 +659,8 @@ export function RegionMap({
             const x = point.x * 3.6;
             const y = point.y * 1.8;
             const direction = x > viewBox.x + viewBox.width * 0.58 ? -1 : 1;
-            const labelY = y + ((index % 3) - 1) * markerFontSize * 1.4;
+            const labelOffsets = [-1.8, -0.65, 0.65, -1.1, 1.7, 0.15];
+            const labelY = y + labelOffsets[index % labelOffsets.length] * markerFontSize;
             const labelX = x + direction * markerRadius * 1.9;
             return (
               <g className={`map-focused-marker ${region.kind ?? "traditional"}`} key={`${region.name}-focused-${index}`}>

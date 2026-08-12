@@ -2318,7 +2318,7 @@ button {
 }
 
 .map-distillery-marker .map-distillery-halo {
-  fill: rgb(240 189 104 / 28%);
+  fill: rgb(240 189 104 / 14%);
   stroke: none;
 }
 
@@ -5213,7 +5213,21 @@ button {
   }
 
   .subregion-layout .region-map {
-    min-height: 330px;
+    min-height: 0;
+  }
+
+  .region-map:not(.compact) .map-canvas {
+    min-height: 280px;
+    aspect-ratio: 1.15 / 1;
+  }
+
+  .map-caption-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .region-map figcaption ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .comparison-heading {
