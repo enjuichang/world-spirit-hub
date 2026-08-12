@@ -14,6 +14,9 @@ import {
   List,
   Map as MapIcon,
   MapPin,
+  Minus,
+  Plus,
+  RotateCcw,
   Search,
   Sparkles,
   X,
@@ -33,6 +36,144 @@ type BottleImage = {
 };
 
 const bottleImageById = bottleImages as Record<string, BottleImage>;
+
+const MAX_FALLBACK_ZOOM = 7;
+
+type FallbackView = { zoom: number; centerX: number; centerY: number };
+
+const DEFAULT_FALLBACK_VIEW: FallbackView = {
+  zoom: 1,
+  centerX: 0.5,
+  centerY: 0.5,
+};
+
+function projectLocation([longitude, latitude]: [number, number]) {
+  return {
+    x: ((longitude + 180) / 360) * 360,
+    y: ((90 - latitude) / 180) * 180,
+  };
+}
+
+function clampFallbackView(view: FallbackView): FallbackView {
+  const zoom = Math.min(MAX_FALLBACK_ZOOM, Math.max(1, view.zoom));
+  const half = 0.5 / zoom;
+  return {
+    zoom,
+    centerX: Math.min(1 - half, Math.max(half, view.centerX)),
+    centerY: Math.min(1 - half, Math.max(half, view.centerY)),
+  };
+}
+
+function OfflineExplorerMap({
+  visibleLocations,
+  selectedId,
+  onChooseLocation,
+}: {
+  visibleLocations: typeof locations;
+  selectedId: string | null;
+  onChooseLocation: (id: string) => void;
+}) {
+  const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
+  const [view, setView] = useState(DEFAULT_FALLBACK_VIEW);
+  const width = 360 / view.zoom;
+  const height = 180 / view.zoom;
+  const viewBox = `${view.centerX * 360 - width / 2} ${view.centerY * 180 - height / 2} ${width} ${height}`;
+  const markerRadius = 4.8 / view.zoom;
+
+  function changeZoom(multiplier: number) {
+    setView((current) => clampFallbackView({
+      ...current,
+      zoom: current.zoom * multiplier,
+    }));
+  }
+
+  function beginPan(event: React.PointerEvent<HTMLDivElement>) {
+    if (event.button !== 0 || (event.target as Element).closest("button, [role='button']")) return;
+    dragRef.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function movePan(event: React.PointerEvent<HTMLDivElement>) {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId || view.zoom <= 1) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const deltaX = event.clientX - drag.x;
+    const deltaY = event.clientY - drag.y;
+    dragRef.current = { ...drag, x: event.clientX, y: event.clientY };
+    setView((current) => clampFallbackView({
+      ...current,
+      centerX: current.centerX - deltaX / Math.max(bounds.width * current.zoom, 1),
+      centerY: current.centerY - deltaY / Math.max(bounds.height * current.zoom, 1),
+    }));
+  }
+
+  function endPan(event: React.PointerEvent<HTMLDivElement>) {
+    if (dragRef.current?.pointerId !== event.pointerId) return;
+    dragRef.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  }
+
+  return (
+    <div
+      className={`map-canvas offline-explorer-map${view.zoom > 1 ? " is-zoomed" : ""}`}
+      onPointerDown={beginPan}
+      onPointerMove={movePan}
+      onPointerUp={endPan}
+      onPointerCancel={endPan}
+      aria-label="Interactive world spirits map"
+    >
+      <svg viewBox={viewBox} role="img" aria-label={`${visibleLocations.length} spirit sites on a world map`}>
+        <image href="/world-equirectangular.svg" x="0" y="0" width="360" height="180" />
+        <g className="offline-map-graticule" aria-hidden="true">
+          {[45, 90, 135, 180, 225, 270, 315].map((x) => <line key={`x-${x}`} x1={x} y1="0" x2={x} y2="180" />)}
+          {[45, 90, 135].map((y) => <line key={`y-${y}`} x1="0" y1={y} x2="360" y2={y} />)}
+        </g>
+        <g className="offline-map-markers">
+          {visibleLocations.map((location) => {
+            const point = projectLocation(location.coordinates);
+            const category = getCategory(location.categoryId)!;
+            const selected = selectedId === location.id;
+            return (
+              <g
+                key={location.id}
+                className={selected ? "selected" : ""}
+                role="button"
+                tabIndex={0}
+                aria-label={`${location.name}, ${location.place}, ${location.country}`}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onChooseLocation(location.id);
+                }}
+                onKeyDown={(event) => {
+                  if (event.key !== "Enter" && event.key !== " ") return;
+                  event.preventDefault();
+                  onChooseLocation(location.id);
+                }}
+              >
+                <circle className="offline-marker-halo" cx={point.x} cy={point.y} r={markerRadius * 1.75} />
+                <circle cx={point.x} cy={point.y} r={selected ? markerRadius * 1.25 : markerRadius} fill={category.color} />
+              </g>
+            );
+          })}
+        </g>
+      </svg>
+      <div className="offline-map-note">Built-in atlas · always available</div>
+      <div className="map-zoom-controls" aria-label="Map zoom controls">
+        <button type="button" onClick={() => changeZoom(1.7)} disabled={view.zoom >= MAX_FALLBACK_ZOOM} aria-label="Zoom in">
+          <Plus />
+        </button>
+        <button type="button" onClick={() => changeZoom(1 / 1.7)} disabled={view.zoom <= 1} aria-label="Zoom out">
+          <Minus />
+        </button>
+        <button type="button" onClick={() => setView(DEFAULT_FALLBACK_VIEW)} disabled={view.zoom <= 1} aria-label="Reset map view">
+          <RotateCcw />
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function BottlePortrait({
   id,
@@ -143,6 +284,8 @@ export function SpiritExplorer() {
   useEffect(() => {
     if (!mapContainer.current || mapRef.current) return;
 
+    let loadTimer: ReturnType<typeof setTimeout> | undefined;
+
     try {
       const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
       if (!mapboxToken) {
@@ -173,7 +316,16 @@ export function SpiritExplorer() {
         "bottom-left",
       );
 
+      loadTimer = setTimeout(() => {
+        if (!map.loaded()) setMapFailed(true);
+      }, 8000);
+
+      map.on("error", () => {
+        if (!map.loaded()) setMapFailed(true);
+      });
+
       map.on("load", () => {
+        if (loadTimer) clearTimeout(loadTimer);
         map.addSource("terrain-dem", {
           type: "raster-dem",
           url: "mapbox://mapbox.mapbox-terrain-dem-v1",
@@ -320,6 +472,7 @@ export function SpiritExplorer() {
     }
 
     return () => {
+      if (loadTimer) clearTimeout(loadTimer);
       mapRef.current?.remove();
       mapRef.current = null;
     };
@@ -504,7 +657,6 @@ export function SpiritExplorer() {
               className={mapMode === "2d" ? "active" : ""}
               onClick={() => chooseMapMode("2d")}
               aria-pressed={mapMode === "2d"}
-              disabled={mapFailed}
             >
               <MapIcon size={14} /> 2D
             </button>
@@ -514,6 +666,7 @@ export function SpiritExplorer() {
               onClick={() => chooseMapMode("3d")}
               aria-pressed={mapMode === "3d"}
               disabled={mapFailed}
+              title={mapFailed ? "3D view needs a live map connection" : undefined}
             >
               <Globe2 size={14} /> 3D
             </button>
@@ -544,17 +697,18 @@ export function SpiritExplorer() {
               <span /> Drawing the atlas…
             </div>
           )}
+          <div
+            ref={mapContainer}
+            className={`map-canvas mapbox-explorer-layer${mapFailed ? " mapbox-failed" : ""}`}
+            aria-label="Interactive world spirits map"
+          />
           {mapFailed && (
-            <div className="map-unavailable" role="alert">
-              <MapIcon size={28} />
-              <strong>The map is unavailable.</strong>
-              <span>Every location remains available in list view.</span>
-              <button type="button" onClick={() => setMobileView("list")}>
-                Open list
-              </button>
-            </div>
+            <OfflineExplorerMap
+              visibleLocations={filteredLocations}
+              selectedId={selectedId}
+              onChooseLocation={chooseLocation}
+            />
           )}
-          <div ref={mapContainer} className="map-canvas" aria-label="Interactive world spirits map" />
           <div className="map-legend" aria-label="Spirit category legend">
             {categories.map((category) => (
               <span key={category.id}>
