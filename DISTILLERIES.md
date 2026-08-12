@@ -2,30 +2,30 @@
 
 > Generated from `data/distilleries.json`. Edit the JSON, then run `npm run data:sync`.
 
-**672 sites · 8 spirit families · every marker has an official source link and production profile.**
+**628 sites · 8 spirit families · every marker has an official source link and production profile.**
 
 ## Coverage summary
 
 | Family | Markers |
 | --- | ---: |
-| Whisky & whiskey | 162 |
-| Brandy & fruit spirits | 90 |
-| Rum & sugar cane | 73 |
-| Agave & related spirits | 62 |
-| Gin & genever | 60 |
-| Vodka | 51 |
-| Asian grain spirits | 91 |
-| Flavored spirits & liqueurs | 83 |
+| Whisky & whiskey | 161 |
+| Brandy & fruit spirits | 86 |
+| Rum & sugar cane | 70 |
+| Agave & related spirits | 53 |
+| Gin & genever | 57 |
+| Vodka | 45 |
+| Asian grain spirits | 77 |
+| Flavored spirits & liqueurs | 79 |
 
 ## Core subtype coverage
 
-Every educational subtype has at least 10 matching distillery sites; Scotch whisky has a dedicated minimum of 58. Additional regional styles remain in the inventory where they add useful context.
+Every core educational subtype has at least 6 matching producer sites, most have eight or more, and Scotch whisky has a dedicated minimum of 53. Additional regional styles remain in the inventory where they add useful context.
 
 | Family | Subtype | Markers |
 | --- | --- | ---: |
 | Whisky & whiskey | Scotch whisky | 58 |
 | Whisky & whiskey | Bourbon | 18 |
-| Whisky & whiskey | Rye whiskey | 11 |
+| Whisky & whiskey | Rye whiskey | 10 |
 | Whisky & whiskey | Tennessee whiskey | 10 |
 | Whisky & whiskey | Irish whiskey | 10 |
 | Whisky & whiskey | Canadian whisky | 10 |
@@ -35,55 +35,55 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Brandy & fruit spirits | Cognac | 10 |
 | Brandy & fruit spirits | Armagnac | 10 |
 | Brandy & fruit spirits | Brandy de Jerez | 10 |
-| Brandy & fruit spirits | Pisco | 10 |
+| Brandy & fruit spirits | Pisco | 9 |
 | Brandy & fruit spirits | Grappa | 10 |
 | Brandy & fruit spirits | Calvados | 10 |
-| Brandy & fruit spirits | Fruit eaux-de-vie | 10 |
-| Brandy & fruit spirits | Singani | 10 |
-| Brandy & fruit spirits | South African pot-still brandy | 10 |
-| Rum & sugar cane | Molasses-based rum | 13 |
-| Rum & sugar cane | Cane-juice rum | 10 |
+| Brandy & fruit spirits | Fruit eaux-de-vie | 9 |
+| Brandy & fruit spirits | Singani | 9 |
+| Brandy & fruit spirits | South African pot-still brandy | 9 |
+| Rum & sugar cane | Molasses-based rum | 11 |
+| Rum & sugar cane | Cane-juice rum | 9 |
 | Rum & sugar cane | Rhum agricole | 10 |
 | Rum & sugar cane | Jamaican rum | 10 |
 | Rum & sugar cane | Cuban-style rum | 10 |
 | Rum & sugar cane | Cachaça | 10 |
 | Rum & sugar cane | Clairin | 10 |
-| Agave & related spirits | Tequila | 11 |
+| Agave & related spirits | Tequila | 10 |
 | Agave & related spirits | Mezcal | 10 |
 | Agave & related spirits | Ancestral mezcal | 10 |
-| Agave & related spirits | Bacanora | 10 |
-| Agave & related spirits | Raicilla | 10 |
-| Agave & related spirits | Sotol | 10 |
+| Agave & related spirits | Bacanora | 6 |
+| Agave & related spirits | Raicilla | 7 |
+| Agave & related spirits | Sotol | 9 |
 | Gin & genever | London Dry Gin | 10 |
-| Gin & genever | Distilled gin | 10 |
+| Gin & genever | Distilled gin | 9 |
 | Gin & genever | Contemporary gin | 10 |
-| Gin & genever | Old Tom gin | 10 |
+| Gin & genever | Old Tom gin | 9 |
 | Gin & genever | Genever | 10 |
-| Gin & genever | Barrel-aged gin | 10 |
-| Vodka | Neutral vodka | 11 |
-| Vodka | Characterful vodka | 10 |
+| Gin & genever | Barrel-aged gin | 9 |
+| Vodka | Neutral vodka | 8 |
+| Vodka | Characterful vodka | 9 |
 | Vodka | Flavored vodka | 10 |
-| Vodka | Infused vodka | 10 |
-| Vodka | Potato vodka | 10 |
-| Asian grain spirits | Strong-aroma baijiu | 11 |
-| Asian grain spirits | Sauce-aroma baijiu | 10 |
-| Asian grain spirits | Light-aroma baijiu | 10 |
-| Asian grain spirits | Rice-aroma baijiu | 10 |
+| Vodka | Infused vodka | 9 |
+| Vodka | Potato vodka | 9 |
+| Asian grain spirits | Strong-aroma baijiu | 10 |
+| Asian grain spirits | Sauce-aroma baijiu | 7 |
+| Asian grain spirits | Light-aroma baijiu | 9 |
+| Asian grain spirits | Rice-aroma baijiu | 8 |
 | Asian grain spirits | Honkaku shōchū | 10 |
 | Asian grain spirits | Awamori | 10 |
-| Asian grain spirits | Diluted soju | 10 |
-| Asian grain spirits | Distilled soju | 10 |
-| Asian grain spirits | Kaoliang | 10 |
+| Asian grain spirits | Diluted soju | 7 |
+| Asian grain spirits | Distilled soju | 8 |
+| Asian grain spirits | Kaoliang | 8 |
 | Flavored spirits & liqueurs | Liqueurs | 13 |
 | Flavored spirits & liqueurs | Amari | 10 |
-| Flavored spirits & liqueurs | Aniseed spirits | 10 |
+| Flavored spirits & liqueurs | Aniseed spirits | 9 |
 | Flavored spirits & liqueurs | Aquavit | 10 |
 | Flavored spirits & liqueurs | Cocktail bitters | 10 |
-| Flavored spirits & liqueurs | Flavored vodka | 10 |
-| Flavored spirits & liqueurs | Infused vodka | 10 |
+| Flavored spirits & liqueurs | Flavored vodka | 9 |
+| Flavored spirits & liqueurs | Infused vodka | 8 |
 | Flavored spirits & liqueurs | Absinthe | 10 |
 
-## Whisky & whiskey (162)
+## Whisky & whiskey (161)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -230,7 +230,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Lux Row Distillers | Bardstown, Kentucky | United States | Bourbon | approximate | [Visit](https://luxrowdistillers.com/) | `lux-row` |
 | Maker’s Mark Distillery | Loretto, Kentucky | United States | Bourbon | approximate | [Visit](https://www.makersmark.com/distillery) | `makers-mark` |
 | Michter’s Shively Distillery | Louisville, Kentucky | United States | Rye whiskey | approximate | [Visit](https://michters.com/distillery/) | `michters-shively` |
-| Mountain Laurel Spirits | Bristol, Pennsylvania | United States | Rye whiskey | approximate | [Visit](https://dadshatrye.com/) | `dads-hat` |
 | Nearest Green Distillery | Shelbyville, Tennessee | United States | Tennessee whiskey | approximate | [Visit](https://unclenearest.com/distillery/) | `uncle-nearest` |
 | Nelson’s Green Brier Distillery | Nashville, Tennessee | United States | Tennessee whiskey | approximate | [Visit](https://greenbrierdistillery.com/) | `nelsons-green-brier` |
 | New England Distilling | Portland, Maine | United States | Rye whiskey | approximate | [Visit](https://newenglanddistilling.com/) | `new-england-rye` |
@@ -250,7 +249,7 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Willett Distillery | Bardstown, Kentucky | United States | Bourbon | approximate | [Visit](https://www.kentuckybourbonwhiskey.com/) | `willett` |
 | Woodford Reserve Distillery | Versailles, Kentucky | United States | Bourbon | approximate | [Visit](https://www.woodfordreserve.com/our-distillery/) | `woodford-reserve` |
 
-## Brandy & fruit spirits (90)
+## Brandy & fruit spirits (86)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -261,7 +260,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Bodega Tierra Alta | Cinti Valley, Chuquisaca | Bolivia | Singani | approximate | [Visit](https://www.singani.com.bo/) | `tierra-alta-singani` |
 | Bodega Valle Hermoso | Tarija | Bolivia | Singani | approximate | [Visit](https://www.singani.com.bo/) | `valle-hermoso-singani` |
 | Bodegas Kuhlmann / Los Parrales | Tarija Valley | Bolivia | Singani | approximate | [Visit](https://bodegaskuhlmann.com/) | `bodegas-kuhlmann` |
-| Bodegas Los Parrales | Tarija | Bolivia | Singani | approximate | [Visit](https://www.losparrales.com.bo/) | `los-parrales-singani` |
 | Bodegas Sausini | Tarija | Bolivia | Singani | approximate | [Visit](https://www.sausini.com/) | `sausini` |
 | Bodegas y Viñedos Rujero | Tarija | Bolivia | Singani | approximate | [Visit](https://rujero.com/) | `rujero` |
 | Casa Real Distillery | Santa Ana, Tarija | Bolivia | Singani | approximate | [Visit](https://www.casareal.com.bo/) | `casa-real-singani` |
@@ -314,7 +312,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Bodega San Isidro / Barsol | Ica | Peru | Pisco | approximate | [Visit](https://barsolpisco.com/) | `barsol-pisco` |
 | Bodegas y Viñedos Tabernero | Chincha Alta, Ica | Peru | Pisco | approximate | [Visit](https://www.tabernero.com/) | `tabernero-pisco` |
 | Hacienda La Caravedo | Ica Valley | Peru | Pisco | approximate | [Visit](https://piscoporton.com/) | `la-caravedo` |
-| Hacienda La Caravedo / Pisco Portón | Ica | Peru | Pisco | approximate | [Visit](https://www.piscoporton.com/) | `hacienda-la-caravedo-porton` |
 | Hacienda Sarcay | Azpitia, Lima | Peru | Pisco | approximate | [Visit](https://haciendasarcay.com/) | `hacienda-sarcay` |
 | Hacienda Tacama | Ica | Peru | Pisco | approximate | [Visit](https://www.tacama.com/) | `tacama-pisco` |
 | Santiago Queirolo Winery | Pachacámac, Lima | Peru | Pisco | approximate | [Visit](https://www.santiagoqueirolo.com/) | `quirolo-pisco` |
@@ -324,7 +321,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Boplaas Family Vineyards | Calitzdorp, Western Cape | South Africa | South African pot-still brandy | approximate | [Visit](https://www.boplaas.co.za/) | `boplaas-brandy` |
 | Grundheim Wines Distillery | Oudtshoorn, Western Cape | South Africa | South African pot-still brandy | approximate | [Visit](https://grundheim.co.za/) | `grundheim-brandy` |
 | Joseph Barry Distillery | Barrydale, Western Cape | South Africa | South African pot-still brandy | approximate | [Visit](https://www.josephbarry.co.za/) | `joseph-barry` |
-| Kaapzicht Estate Distillery | Stellenbosch, Western Cape | South Africa | South African pot-still brandy | approximate | [Visit](https://www.kaapzicht.co.za/) | `kaapzicht-brandy` |
 | KWV House of Fire | Paarl, Western Cape | South Africa | South African pot-still brandy | approximate | [Visit](https://kwv.co.za/experience-kwv/) | `kwv-paarl` |
 | Ladismith Cellar | Ladismith, Western Cape | South Africa | South African pot-still brandy | approximate | [Visit](https://ladismithwine.co.za/) | `ladismith-brandy` |
 | Oude Molen Distillery | Elgin, Western Cape | South Africa | South African pot-still brandy | approximate | [Visit](https://oudemolen.co.za/) | `oude-molen` |
@@ -340,12 +336,11 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Bodegas Williams & Humbert | Jerez de la Frontera, Cádiz | Spain | Brandy de Jerez | approximate | [Visit](https://www.williams-humbert.com/en/) | `williams-humbert` |
 | González Byass Lepanto Cellars | Jerez de la Frontera, Cádiz | Spain | Brandy de Jerez | approximate | [Visit](https://www.gonzalezbyass.com/) | `gonzalez-byass-lepanto` |
 | Sánchez Romate Hermanos | Jerez de la Frontera, Cádiz | Spain | Brandy de Jerez | approximate | [Visit](https://www.romate.com/) | `sanchez-romate` |
-| Etter Distillery | Zug | Switzerland | Fruit eaux-de-vie | approximate | [Visit](https://www.etter-distillerie.ch/en/) | `etter` |
 | Capreolus Distillery | Cirencester, Gloucestershire | United Kingdom | Fruit eaux-de-vie | approximate | [Visit](https://capreolusdistillery.co.uk/) | `capreolus-distillery` |
 | Clear Creek Distillery | Hood River, Oregon | United States | Fruit eaux-de-vie | approximate | [Visit](https://www.hrdspirits.com/clear-creek-distillery) | `clear-creek-brandy` |
 | St. George Spirits | Alameda, California | United States | Fruit eaux-de-vie | approximate | [Visit](https://stgeorgespirits.com/spirits/brandy) | `st-george-brandy` |
 
-## Rum & sugar cane (73)
+## Rum & sugar cane (70)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -376,7 +371,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Renegade Rum Distillery | Pearls, Saint Andrew | Grenada | Cane-juice rum | approximate | [Visit](https://renegaderum.com/) | `renegade-rum` |
 | River Antoine Rum Distillery | Saint Patrick Parish | Grenada | Cane-juice rum | approximate | [Visit](https://www.puregrenada.com/river-antoine-rum-distillery/) | `river-antoine` |
 | Distillerie Bellevue | Capesterre, Marie-Galante | Guadeloupe | Cane-juice rum | approximate | [Visit](https://www.distillerie-bellevue.com/) | `bellevue-marie-galante` |
-| Distillerie Bielle | Grand-Bourg, Marie-Galante | Guadeloupe | Cane-juice rum | approximate | [Visit](https://rhum-bielle.com/) | `bielle` |
 | Distillerie Damoiseau | Le Moule, Grande-Terre | Guadeloupe | Cane-juice rum | approximate | [Visit](https://www.damoiseau.com/) | `damoiseau` |
 | Distillerie Longueteau | Capesterre-Belle-Eau | Guadeloupe | Cane-juice rum | approximate | [Visit](https://www.rhumlongueteau.fr/) | `longueteau` |
 | Distillerie Papa Rouyo | Goyave, Basse-Terre | Guadeloupe | Cane-juice rum | approximate | [Visit](https://www.paparouyo.com/) | `papa-rouyo` |
@@ -401,7 +395,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Monymusk Estate Rum Works | Lionel Town, Clarendon | Jamaica | Jamaican rum | approximate | [Visit](https://nationalrums.com/) | `monymusk-estate` |
 | National Rums of Jamaica Kingston | Kingston | Jamaica | Jamaican rum | approximate | [Visit](https://nationalrums.com/) | `jamaica-rum-estates-kingston` |
 | New Yarmouth Distillery | Clarendon Parish | Jamaica | Jamaican rum | approximate | [Visit](https://www.camparigroup.com/en/page/our-brands/appleton-estate) | `new-yarmouth` |
-| Worthy Park Estate | Lluidas Vale, Saint Catherine | Jamaica | Molasses-based rum | approximate | [Visit](https://worthyparkestate.com/) | `worthy-park-rum` |
 | Worthy Park Estate Distillery | Lluidas Vale, Saint Catherine | Jamaica | Jamaican rum | approximate | [Visit](https://worthyparkestate.com/) | `worthy-park-jamaica` |
 | Distillerie Depaz | Saint-Pierre | Martinique | Rhum agricole | approximate | [Visit](https://www.depaz.fr/) | `depaz` |
 | Distillerie Dillon | Fort-de-France | Martinique | Rhum agricole | approximate | [Visit](https://www.rhum-dillon.com/) | `dillon-rhum` |
@@ -418,26 +411,19 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Casa BACARDÍ | Cataño | Puerto Rico | Cuban-style rum | approximate | [Visit](https://www.bacardi.com/casa-bacardi/) | `bacardi-catano` |
 | Destilería Serrallés | Ponce | Puerto Rico | Cuban-style rum | approximate | [Visit](https://donq.com/our-distillery/) | `destileria-serralles` |
 | St. Lucia Distillers | Roseau Valley | Saint Lucia | Molasses-based rum | approximate | [Visit](https://www.stluciadistillers.com/) | `st-lucia-distillers` |
-| Angostura Distillery | Laventille | Trinidad and Tobago | Molasses-based rum | approximate | [Visit](https://angosturarums.com/) | `angostura-rum` |
 | Kō Hana Distillers | Kunia, Oʻahu | United States | Cane-juice rum | approximate | [Visit](https://www.kohanarum.com/ourjourney) | `ko-hana` |
 | Destilerías Unidas | La Miel, Lara | Venezuela | Cuban-style rum | approximate | [Visit](https://www.rondiplomatico.com/our-distillery/) | `dusa-diplomatico` |
 | Hacienda Santa Teresa | El Consejo, Aragua | Venezuela | Cuban-style rum | approximate | [Visit](https://www.santateresarum.com/) | `santa-teresa` |
 
-## Agave & related spirits (62)
+## Agave & related spirits (53)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
-| Aguamiel Bacanora Vinata | Sahuaripa, Sonora | Mexico | Bacanora | approximate | [Visit](https://www.bacanora.com.mx/) | `aguamiel-bacanora` |
-| Bacanora 42 Vinata | Moctezuma, Sonora | Mexico | Bacanora | approximate | [Visit](https://www.bacanora.com.mx/) | `bacanora-42` |
 | Batuq Bacanora Distillery | Ures, Sonora | Mexico | Bacanora | approximate | [Visit](https://www.batuq.com/) | `batuq-bacanora` |
-| Bonete Raicilla Taberna | Cabo Corrientes, Jalisco | Mexico | Raicilla | approximate | [Visit](https://www.raicillabonete.com/) | `bonete-raicilla` |
 | Casa Herradura | Amatitán, Jalisco | Mexico | Tequila | approximate | [Visit](https://www.herradura.com/visit-us/) | `casa-herradura` |
 | Cielo Rojo Bacanora Vinata | Sahuaripa, Sonora | Mexico | Bacanora | approximate | [Visit](https://bacanoracielorojo.com/) | `cielo-rojo` |
-| De Una Raicilla Taberna | San Sebastián del Oeste, Jalisco | Mexico | Raicilla | approximate | [Visit](https://deunaraicilla.com/) | `de-una-raicilla` |
 | Del Maguey Minero Palenque | Santa Catarina Minas, Oaxaca | Mexico | Ancestral mezcal | approximate | [Visit](https://delmaguey.com/wp-content/uploads/2024/01/Del-Maguey-Single-Village-Mezcal-Minero.pdf) | `del-maguey-minero` |
-| Destilería El Real | San Sebastián del Oeste, Jalisco | Mexico | Raicilla | approximate | [Visit](https://raicillaelreal.com/) | `el-real-raicilla` |
 | Destilería El Silencio | San Baltazar Guelavila, Oaxaca | Mexico | Mezcal | approximate | [Visit](https://elsilencio.com/pages/our-story) | `el-silencio-xaaga` |
-| Destilería La Alteña Visitor Site | Arandas, Jalisco | Mexico | Tequila | approximate | [Visit](https://www.eltesorotequila.com/) | `el-tesoro-altena` |
 | Destilería Los Danzantes | Santiago Matatlán, Oaxaca | Mexico | Mezcal | approximate | [Visit](https://mezcallosdanzantes.com/historia/) | `los-danzantes` |
 | Dixeebe Palenque | Miahuatlán, Oaxaca | Mexico | Ancestral mezcal | approximate | [Visit](https://dixeebe.com/) | `dixeebe-ancestral` |
 | El Jolgorio Family Palenques | Oaxaca | Mexico | Ancestral mezcal | approximate | [Visit](https://www.mezcaleljolgorio.com/) | `el-jolgorio-ancestral` |
@@ -458,7 +444,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Lalocura Palenque | Santa Catarina Minas, Oaxaca | Mexico | Ancestral mezcal | approximate | [Visit](https://www.lalocuramezcal.com/en) | `lalocura-palenque` |
 | Las Perlas Raicilla Taberna | El Tuito, Jalisco | Mexico | Raicilla | approximate | [Visit](https://www.raicilla.com/) | `las-perlas-raicilla` |
 | Los Amantes Mezcalería and Palenque | Tlacolula, Oaxaca | Mexico | Mezcal | approximate | [Visit](https://losamantes.com/) | `los-amantes` |
-| Los Sotoleros Vinata | Aldama, Chihuahua | Mexico | Sotol | approximate | [Visit](https://lossotoleros.com/) | `sotoleros` |
 | Mezcal Amarás Palenque | Tlacolula, Oaxaca | Mexico | Mezcal | approximate | [Visit](https://mezcalamaras.com/) | `mezcal-amaras` |
 | Mezcal Unión Producer Network | San Baltazar Guelavila, Oaxaca | Mexico | Mezcal | approximate | [Visit](https://www.mezcalunion.com/) | `mezcal-union` |
 | Mezonte Producer Network | Jalisco and Oaxaca | Mexico | Ancestral mezcal | approximate | [Visit](https://mezonte.com/) | `mezonte-ancestral` |
@@ -470,7 +455,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Palenque Real Minero | Santa Catarina Minas, Oaxaca | Mexico | Mezcal | approximate | [Visit](https://realminero.com.mx/) | `real-minero` |
 | Palenque Rey Campero | Candelaria Yegolé, Oaxaca | Mexico | Ancestral mezcal | approximate | [Visit](https://reycampero.com/) | `rey-campero-ancestral` |
 | Palenque Tío Rey | Sola de Vega, Oaxaca | Mexico | Ancestral mezcal | approximate | [Visit](https://mezcalvago.com/mezcaleros/tio-rey/) | `mezcal-vago-tio-rey` |
-| Rancho San Isidro Vinata | Huásabas, Sonora | Mexico | Bacanora | approximate | [Visit](https://www.bacanora.com.mx/) | `rancho-san-isidro-bacanora` |
 | Rancho Tepúa Vinata | Aconchi, Sonora | Mexico | Bacanora | approximate | [Visit](https://ranchotepua.com/) | `rancho-tepua` |
 | San Luis del Río Palenque | San Luis del Río, Oaxaca | Mexico | Mezcal | approximate | [Visit](https://delmaguey.com/) | `del-maguey-san-luis` |
 | Santo Cuviso Bacanora | Quiriego, Sonora | Mexico | Bacanora | approximate | [Visit](https://santocuviso.com/) | `santo-cuviso` |
@@ -486,11 +470,10 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Tequila Siete Leguas | Atotonilco el Alto, Jalisco | Mexico | Tequila | approximate | [Visit](https://tequilasieteleguas.com/) | `siete-leguas` |
 | Tequilera Los Alambiques | Arandas, Jalisco | Mexico | Tequila | approximate | [Visit](https://tequilaocho.com/) | `tequila-ocho-los-alambiques` |
 | Vinata Don Cuco | Janos, Chihuahua | Mexico | Sotol | approximate | [Visit](https://sotoldoncuco.com/) | `don-cuco` |
-| Yoowe Bacanora Vinata | Arivechi, Sonora | Mexico | Bacanora | approximate | [Visit](https://www.bacanora.com.mx/) | `yoowe-bacanora` |
 | Desert Door Distillery | Driftwood, Texas | United States | Texas sotol-style spirit | approximate | [Visit](https://www.desertdoor.com/the-distillery) | `desert-door` |
 | Marfa Spirits Co. | Marfa, Texas | United States | Sotol | approximate | [Visit](https://marfaspirits.com/) | `marfa-spirits-sotol` |
 
-## Gin & genever (60)
+## Gin & genever (57)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -501,9 +484,7 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Bombay Sapphire Distillery | Laverstoke Mill, Hampshire | England | London Dry Gin | exact | [Visit](https://www.bombaysapphire.com/distillery/) | `bombay-sapphire` |
 | Hayman’s Distillery | Balham, London | England | Old Tom gin | approximate | [Visit](https://www.haymansgin.com/product/old-tom-gin/) | `haymans` |
 | Sipsmith Distillery | London | England | London Dry Gin | approximate | [Visit](https://sipsmith.com/pages/distillery-tours) | `sipsmith` |
-| Kyrö Distillery Company | Isokyrö | Finland | Barrel-aged gin | approximate | [Visit](https://kyrodistillery.com/) | `kyrö-koskue` |
 | Citadelle Gin Distillery | Château de Bonbonnet, Ars | France | Barrel-aged gin | approximate | [Visit](https://citadellegin.com/en/the-secrets-of-french-gin/) | `citadelle-bonbonnet` |
-| Citadelle Gin Distillery | Ars, Charente | France | Distilled gin | approximate | [Visit](https://citadellegin.com/) | `citadelle-ferrand` |
 | Black Forest Distillers | Loßburg, Black Forest | Germany | Distilled gin | approximate | [Visit](https://monkey47.com/) | `monkey-47` |
 | Third Eye Distillery | Ponda, Goa | India | Contemporary gin | approximate | [Visit](https://strangerandsons.com/) | `stranger-and-sons` |
 | Nikka Miyagikyo Gin Works | Sendai, Miyagi | Japan | Distilled gin | approximate | [Visit](https://www.nikka.com/eng/brands/coffey-gin-vodka/) | `nikka-coffey-gin` |
@@ -548,25 +529,22 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Caledonia Spirits / Barr Hill | Montpelier, Vermont | United States | Barrel-aged gin | approximate | [Visit](https://www.barrhill.com/products/tom-cat-gin) | `barr-hill-montpelier` |
 | Copperworks Distilling | Seattle, Washington | United States | Barrel-aged gin | approximate | [Visit](https://copperworksdistilling.com/) | `copperworks-cask-gin` |
 | FEW Spirits | Evanston, Illinois | United States | Barrel-aged gin | approximate | [Visit](https://www.fewspirits.com/) | `few-barrel-gin` |
-| Hotaling & Co. Distillery | San Francisco, California | United States | Old Tom gin | approximate | [Visit](https://www.hotalingandco.com/) | `anchor-old-tom` |
 | Philadelphia Distilling | Philadelphia, Pennsylvania | United States | Barrel-aged gin | approximate | [Visit](https://www.philadelphiadistilling.com/) | `bluecoat-barrel-gin` |
 | Ransom Wine Co. & Distillery | Sheridan, Oregon | United States | Old Tom gin | approximate | [Visit](https://ransomspirits.com/) | `ransom-old-tom` |
 | Smooth Ambler Spirits | Maxwelton, West Virginia | United States | Barrel-aged gin | approximate | [Visit](https://smoothambler.com/) | `smooth-ambler-barrel-gin` |
 | St. George Spirits | Alameda, California | United States | Barrel-aged gin | approximate | [Visit](https://stgeorgespirits.com/spirits/dry-rye-gin) | `st-george-dry-rye-reposado` |
 | Vapor Distillery | Boulder, Colorado | United States | Barrel-aged gin | approximate | [Visit](https://vapordistillery.com/) | `roundhouse-imperial` |
 
-## Vodka (51)
+## Vodka (45)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
 | Altvater Gessler Distillery | Vienna | Austria | Potato vodka | approximate | [Visit](https://monopolowavodka.com/) | `monopolowa-vodka` |
 | Finlandia Flavored Vodka Distillery | Rajamäki | Finland | Flavored vodka | approximate | [Visit](https://www.finlandia.com/) | `finlandia-flavors` |
 | Koskenkorva Distillery | Koskenkorva, Southern Ostrobothnia | Finland | Characterful vodka | approximate | [Visit](https://koskenkorva.com/en/about-koskenkorva) | `koskenkorva` |
-| Rajamäki Distillery | Rajamäki | Finland | Neutral vodka | approximate | [Visit](https://www.finlandia.com/) | `finlandia-rajamaeki` |
 | Cîroc Flavored Vodka Production | Chevanceaux, Charente | France | Flavored vodka | approximate | [Visit](https://www.ciroc.com/) | `ciroc-flavors` |
 | FAIR Spirits Distillery | Cognac, Charente | France | Characterful vodka | approximate | [Visit](https://fair-drinks.com/) | `fair-quinoa-vodka` |
 | Grey Goose Production Site | Gensac-la-Pallue, Cognac | France | Neutral vodka | approximate | [Visit](https://www.greygoose.com/our-story.html) | `grey-goose` |
-| Maison Villevert Cîroc Production | Chevanceaux, Charente | France | Neutral vodka | approximate | [Visit](https://www.ciroc.com/) | `ciroc-chevanceaux` |
 | Reyka Distillery | Borgarnes | Iceland | Characterful vodka | approximate | [Visit](https://reyka.com/) | `reyka` |
 | Nikka Coffey Vodka Distillery | Sendai, Miyagi | Japan | Characterful vodka | approximate | [Visit](https://www.nikka.com/eng/brands/coffey-gin-vodka/) | `nikka-coffey-vodka` |
 | Suntory Osaka Haku Distillery | Osaka | Japan | Characterful vodka | approximate | [Visit](https://house.suntory.com/haku-vodka) | `haku-osaka` |
@@ -576,9 +554,7 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Nolet Distillery | Schiedam | Netherlands | Neutral vodka | approximate | [Visit](https://www.ketelone.com/our-story) | `nolet-ketel-one` |
 | Nolet Distillery Citroen Works | Schiedam | Netherlands | Flavored vodka | approximate | [Visit](https://www.ketelone.com/) | `ketel-one-citroen` |
 | Chopin Distillery | Krzesk, Masovia | Poland | Potato vodka | exact | [Visit](https://chopinvodka.com/distillery/) | `chopin-krzesk` |
-| Luksusowa Vodka Distillery | Poznań | Poland | Potato vodka | approximate | [Visit](https://www.luksusowavodka.com/) | `luksusowa` |
 | Polmos Bielsko-Biała / Vesica | Bielsko-Biała | Poland | Potato vodka | approximate | [Visit](https://vesicavodka.com/) | `vesica-vodka` |
-| Polmos Żyrardów / Belvedere | Żyrardów | Poland | Characterful vodka | approximate | [Visit](https://www.belvederevodka.com/en-int/our-story/) | `belvedere` |
 | Vestal Vodka Distillery | Kaszuby | Poland | Characterful vodka | approximate | [Visit](https://vestalvodka.com/) | `vestal-vodka` |
 | Żyrardów Distillery | Żyrardów | Poland | Neutral vodka | approximate | [Visit](https://www.belvederevodka.com/en-us/our-story/) | `polmos-zyrardow` |
 | Arbikie Highland Estate Distillery | Inverkeilor, Angus | Scotland | Characterful vodka | approximate | [Visit](https://arbikie.com/) | `arbikie-vodka` |
@@ -591,10 +567,8 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | East London Liquor Company Vodka Works | London | United Kingdom | Characterful vodka | approximate | [Visit](https://eastlondonliquorcompany.com/) | `single-estate-haku` |
 | 44° North Distillery | Rigby, Idaho | United States | Infused vodka | approximate | [Visit](https://44northvodka.com/) | `44-north` |
 | Campari Modesto Vodka Facility | Modesto, California | United States | Neutral vodka | approximate | [Visit](https://www.skyyvodka.com/) | `skyy-modesto` |
-| Cardinal Spirits | Bloomington, Indiana | United States | Infused vodka | approximate | [Visit](https://www.cardinalspirits.com/) | `cardinal-vodka` |
 | Charbay Distillery | St. Helena, California | United States | Infused vodka | approximate | [Visit](https://www.charbay.com/) | `charbay-vodka` |
 | Deep Eddy Distillery | Buda, Texas | United States | Flavored vodka | approximate | [Visit](https://deepeddyvodka.com/visit-us/) | `deep-eddy` |
-| Diageo Plainfield Distillery | Plainfield, Illinois | United States | Neutral vodka | approximate | [Visit](https://www.smirnoff.com/) | `smirnoff-plainfield` |
 | Distilled Resources / Blue Ice | Rigby, Idaho | United States | Potato vodka | approximate | [Visit](https://blueicevodka.com/) | `blue-ice` |
 | Distilled Resources Potato Vodka Works | Rigby, Idaho | United States | Potato vodka | approximate | [Visit](https://44northvodka.com/) | `44-north-potato` |
 | Fifth Generation / Tito’s Handmade Vodka | Austin, Texas | United States | Neutral vodka | approximate | [Visit](https://www.titosvodka.com/) | `titos` |
@@ -611,29 +585,23 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Woody Creek Distillers | Basalt, Colorado | United States | Potato vodka | approximate | [Visit](https://woodycreekdistillers.com/) | `woody-creek-vodka` |
 | Zodiac Vodka Distillery | Rigby, Idaho | United States | Potato vodka | approximate | [Visit](https://zodiacvodka.com/) | `zodiac-vodka` |
 
-## Asian grain spirits (91)
+## Asian grain spirits (77)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
-| Anhui Yingjia Distillery | Huoshan, Anhui | China | Strong-aroma baijiu | approximate | [Visit](https://www.yingjia.cn/) | `yingjia-gongjiu` |
 | Baofeng Distillery | Baofeng, Henan | China | Light-aroma baijiu | approximate | [Visit](https://www.baofengjiuye.com/) | `baofeng` |
 | Beijing Red Star Distillery | Beijing | China | Light-aroma baijiu | approximate | [Visit](https://english.visitbeijing.com.cn/article/4FFLD6UgNM3) | `red-star-erguotou` |
 | Beijing Red Star Distillery No. 2 | Huairou, Beijing | China | Light-aroma baijiu | approximate | [Visit](https://www.redstarwine.com/) | `hongxing-second` |
 | Diaoyutai Guobin Distillery | Renhuai, Guizhou | China | Sauce-aroma baijiu | approximate | [Visit](https://www.dytj.com/) | `diaoyutai-baijiu` |
 | Guangdong Changle Distillery | Wuhua, Guangdong | China | Rice-aroma baijiu | approximate | [Visit](https://www.changlejiu.com/) | `changleshao` |
-| Guangxi Shilixiang Distillery | Liuzhou, Guangxi | China | Rice-aroma baijiu | approximate | [Visit](https://www.gxj.com.cn/) | `shilixiang-rice` |
 | Guilin Sanhua Distillery | Guilin, Guangxi | China | Rice-aroma baijiu | approximate | [Visit](https://wsjkw.gxzf.gov.cn/spaqyyyzs_49672/spaqqybz/spaqqybzcx/t26080433.shtml) | `guilin-sanhua` |
 | Guilin Sanhua Rice Spirit Works | Guilin, Guangxi | China | Rice-aroma baijiu | approximate | [Visit](https://www.guilinsanhua.com/) | `sanhuajiu-guilin` |
 | Guilin Xiangshan Distillery | Guilin, Guangxi | China | Rice-aroma baijiu | approximate | [Visit](https://www.gxxs酒业.com/) | `xiangshan-guilin` |
-| Guizhou Chun Distillery | Xingyi, Guizhou | China | Sauce-aroma baijiu | approximate | [Visit](https://www.gzchun.com/) | `guizhou-chun` |
-| Guizhou Xijiu Distillery | Xishui, Guizhou | China | Sauce-aroma baijiu | approximate | [Visit](https://www.gzxijiu.com/) | `xijiu` |
-| Guizhou Zhenjiu Distillery | Zunyi, Guizhou | China | Sauce-aroma baijiu | approximate | [Visit](https://www.zhenjiu.com/) | `zhenjiu` |
 | Gujing Gongjiu Distillery | Bozhou, Anhui | China | Strong-aroma baijiu | approximate | [Visit](https://www.gujing.com/) | `gujinggong` |
 | Guotai Distillery | Maotai, Guizhou | China | Sauce-aroma baijiu | approximate | [Visit](https://www.guotaijiu.com/) | `guotai` |
 | Hengshui Laobaigan Distillery | Hengshui, Hebei | China | Light-aroma baijiu | approximate | [Visit](https://www.hengshuilaobaigan.net/) | `laobaigan-hengshui` |
 | Huanghelou Distillery | Wuhan, Hubei | China | Light-aroma baijiu | approximate | [Visit](https://www.hhlj.com.cn/) | `huanghelou-jiu` |
 | Jiangsu King’s Luck Brewery | Lianshui, Jiangsu | China | Strong-aroma baijiu | approximate | [Visit](https://www.jsgyj.com.cn/) | `guoyuan-jiangsu` |
-| Jiangxiaobai Distillery | Chongqing | China | Light-aroma baijiu | approximate | [Visit](https://www.ijovo.com/) | `jiangxiaobai` |
 | Jiannanchun Distillery | Mianzhu, Sichuan | China | Strong-aroma baijiu | approximate | [Visit](https://www.jnc.com.cn/) | `jiannanchun` |
 | Jinsha Gu Distillery | Bijie, Guizhou | China | Sauce-aroma baijiu | approximate | [Visit](https://www.jinshajiu.com/) | `jinsha-gujiu` |
 | Jiujiang Distillery | Foshan, Guangdong | China | Rice-aroma baijiu | approximate | [Visit](https://www.jiujiang.com.cn/) | `jiujiang` |
@@ -643,7 +611,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Luzhou Laojiao | Luzhou, Sichuan | China | Strong-aroma baijiu | approximate | [Visit](https://www.lzlj.com/) | `luzhou-laojiao` |
 | Meilan Rice Liquor Works | Haikou, Hainan | China | Rice-aroma baijiu | approximate | [Visit](https://www.hnliquor.com/) | `meilan-rice-baijiu` |
 | Niulanshan Distillery | Shunyi, Beijing | China | Light-aroma baijiu | approximate | [Visit](https://www.niulanshan.com.cn/) | `niulanshan` |
-| Quanzhou Rice Spirit Distillery | Quanzhou, Guangxi | China | Rice-aroma baijiu | approximate | [Visit](https://www.guilinliquor.com/) | `quanxing-rice-aroma` |
 | Shedian Laojiu Distillery | Sheqi, Henan | China | Strong-aroma baijiu | approximate | [Visit](https://www.shedian.com/) | `shedianlaojiu` |
 | Shiwan Yubingshao Distillery | Foshan, Guangdong | China | Rice-aroma baijiu | approximate | [Visit](https://www.shiwanjiu.com/) | `guangdong-shiwan` |
 | Shuijingfang Distillery | Chengdu, Sichuan | China | Strong-aroma baijiu | approximate | [Visit](https://www.shuijingfang.com/) | `shuijingfang` |
@@ -676,9 +643,7 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Yanagita Shuzo | Miyakonojo, Miyazaki | Japan | Honkaku shōchū | approximate | [Visit](https://www.yanagita.co.jp/) | `yanagita-shuzo` |
 | Zuisen Distillery | Shuri, Naha, Okinawa | Japan | Awamori | approximate | [Visit](https://www.zuisen.co.jp/en/) | `zuisen` |
 | Andong Soju Distillery | Andong, North Gyeongsang | South Korea | Distilled soju | approximate | [Visit](https://www.andongsoju.com/) | `andong-soju` |
-| Bohae Brewery | Mokpo, Jeollanam-do | South Korea | Diluted soju | approximate | [Visit](https://www.bohae.co.kr/) | `bohae` |
 | Daesun Distilling | Busan | South Korea | Diluted soju | approximate | [Visit](https://www.daesun.co.kr/) | `daesun` |
-| Daesun Distilling Busan | Busan | South Korea | Diluted soju | approximate | [Visit](https://www.daesun.co.kr/) | `c1-soju` |
 | Hallasan Soju Distillery | Jeju City | South Korea | Diluted soju | approximate | [Visit](https://www.hallasan.co.kr/) | `hallasan-soju` |
 | HiteJinro Icheon Factory | Icheon, Gyeonggi-do | South Korea | Diluted soju | approximate | [Visit](https://www.hitejinro.com/company/global.asp) | `hitejinro-icheon` |
 | Hwayo Distillery | Yeoju, Gyeonggi-do | South Korea | Distilled soju | approximate | [Visit](https://hwayo.com/manufacturing-process-2-2/) | `hwayo` |
@@ -689,31 +654,25 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Lotte Chilsung Gangneung Soju Plant | Gangneung | South Korea | Diluted soju | approximate | [Visit](https://company.lottechilsung.co.kr/eng/) | `chum-churum-gangneung` |
 | Lotte Liquor Gangneung Factory | Gangneung, Gangwon-do | South Korea | Diluted soju | approximate | [Visit](https://company.lottechilsung.co.kr/eng/company/liquor/contentsid/693/index.do) | `lotte-gangneung` |
 | Muhak Changwon Plant | Changwon, Gyeongsangnam-do | South Korea | Diluted soju | approximate | [Visit](https://www.muhak.co.kr/) | `muhak` |
-| Muhak Changwon Plant | Changwon | South Korea | Diluted soju | approximate | [Visit](https://www.muhak.co.kr/) | `goodday-soju` |
 | Munbaeju Brewery | Gimpo, Gyeonggi-do | South Korea | Distilled soju | approximate | [Visit](https://www.munbaeju.co.kr/) | `munbaeju` |
-| Samhae Soju Brewery | Seoul | South Korea | Distilled soju | approximate | [Visit](https://english.visitseoul.net/) | `samhae-soju` |
 | The Han Seoul Night Distillery | Seoul | South Korea | Distilled soju | approximate | [Visit](https://www.thehan.kr/) | `seoul-night-soju` |
 | Tokki Soju Distillery | Chungju, North Chungcheong | South Korea | Distilled soju | approximate | [Visit](https://tokkisoju.com/) | `tokki-soju` |
-| Won Spirits Distillery | Wonju, Gangwon | South Korea | Distilled soju | approximate | [Visit](https://wonspirits.com/) | `won-soju` |
 | Kinmen Kaoliang Jinning Plant | Jinning, Kinmen | Taiwan | Kaoliang | approximate | [Visit](https://www.kkl.com.tw/) | `kinmen-jinning` |
 | Kinmen Kaoliang Liquor | Kinmen | Taiwan | Kaoliang | approximate | [Visit](https://www.kkl.com.tw/en/production.aspx) | `kinmen-kaoliang` |
-| Matsu Liquor Dongyin Distillery | Dongyin, Lienchiang | Taiwan | Kaoliang | approximate | [Visit](https://www.matsu-liquor.com.tw/) | `matsu-dongyin` |
 | Matsu Liquor Factory | Nangan, Lienchiang County | Taiwan | Kaoliang | approximate | [Visit](https://www.matsu-nsa.gov.tw/Attraction-Content.aspx?a=2744&l=2) | `matsu-liquor` |
 | Matsu Liquor Nangan Distillery | Nangan, Lienchiang | Taiwan | Kaoliang | approximate | [Visit](https://www.matsu-liquor.com.tw/) | `matsu-nangan` |
 | TTL Chiayi Distillery | Minxiong, Chiayi | Taiwan | Kaoliang | approximate | [Visit](https://en.ttl.com.tw/) | `ttl-chiayi` |
 | TTL Longtian Distillery | Guantian, Tainan | Taiwan | Kaoliang | approximate | [Visit](https://en.ttl.com.tw/) | `ttl-longtian` |
-| TTL Longtian Distillery | Guantian, Tainan | Taiwan | Kaoliang | approximate | [Visit](https://event.ttl.com.tw/lt/) | `ttl-longtian-kaoliang` |
 | Yushan Kaoliang Production Site | Nantou | Taiwan | Kaoliang | approximate | [Visit](https://en.ttl.com.tw/products.aspx) | `yushan-kaoliang` |
 | Yushan Kaoliang Works | Nantou | Taiwan | Kaoliang | approximate | [Visit](https://www.ttl.com.tw/) | `yushan-nantou-kaoliang` |
 | Vinn Distillery | Wilsonville, Oregon | United States | Rice-aroma baijiu | approximate | [Visit](https://www.vinndistillery.com/) | `vinn-baijiu` |
 
-## Flavored spirits & liqueurs (83)
+## Flavored spirits & liqueurs (79)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
 | Aalborg Akvavit tradition | Aalborg | Denmark | Aquavit | approximate | [Visit](https://anora.com/brands/aalborg-akvavit) | `aalborg-akvavit` |
 | Copenhagen Distillery | Copenhagen | Denmark | Aquavit | approximate | [Visit](https://www.copenhagendistillery.com/) | `copenhagen-distillery-aquavit` |
-| Finlandia Flavor Works | Rajamäki | Finland | Flavored vodka | approximate | [Visit](https://www.finlandia.com/) | `finlandia-flavored-category` |
 | Rajamäki Distillery | Rajamäki | Finland | Flavored vodka | approximate | [Visit](https://www.finlandia.com/en/our-vodkas/) | `rajamaeki-flavored-vodka` |
 | Carré Cointreau | Saint-Barthélemy-d’Anjou | France | Liqueurs | approximate | [Visit](https://www.cointreau.com/int/en/visit-cointreau) | `cointreau` |
 | Chartreuse Diffusion | Aiguenoire, Isère | France | Liqueurs | approximate | [Visit](https://www.chartreuse.fr/en/) | `chartreuse` |
@@ -771,7 +730,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Distillerie Artemisia-Bugnon | Couvet, Val-de-Travers | Switzerland | Absinthe | approximate | [Visit](https://www.absinthe-suisse.com/) | `artemisia-bugnon` |
 | Matter-Luginbühl Distillery | Kallnach | Switzerland | Absinthe | approximate | [Visit](https://www.absinthe-duplais.com/) | `duplais-absinthe` |
 | House of Angostura | Laventille | Trinidad and Tobago | Cocktail bitters | approximate | [Visit](https://angosturabitters.com/our-story/) | `angostura-bitters` |
-| Mey İçki Tekirdağ Distillery | Tekirdağ | Turkey | Aniseed spirits | approximate | [Visit](https://www.yeniraki.com/) | `tekirdag-raki` |
 | Nemiroff Distillery | Nemyriv, Vinnytsia | Ukraine | Flavored vodka | approximate | [Visit](https://nemiroff.vodka/en/) | `nemiroff-flavors` |
 | Bob’s Bitters Production | London | United Kingdom | Cocktail bitters | approximate | [Visit](https://www.bobsbitters.com/) | `bobs-bitters` |
 | Chase Botanical Vodka Works | Herefordshire | United Kingdom | Infused vodka | approximate | [Visit](https://www.chasedistillery.co.uk/) | `chase-infused-category` |
@@ -791,8 +749,6 @@ Every educational subtype has at least 10 matching distillery sites; Scotch whis
 | Sazerac Orange Bitters Works | Louisville, Kentucky | United States | Cocktail bitters | approximate | [Visit](https://www.sazerac.com/) | `regans-orange-bitters` |
 | Scrappy’s Bitters | Seattle, Washington | United States | Cocktail bitters | approximate | [Visit](https://scrappysbitters.com/) | `scrappys-bitters` |
 | Smirnoff Flavor Works | Plainfield, Illinois | United States | Flavored vodka | approximate | [Visit](https://www.smirnoff.com/) | `smirnoff-flavored-category` |
-| Spring44 Distilling | Loveland, Colorado | United States | Infused vodka | approximate | [Visit](https://spring44.com/) | `spring44-vodka` |
-| Square One Botanical Vodka Works | Novato, California | United States | Infused vodka | approximate | [Visit](https://squareoneorganicspirits.com/) | `square-one-infused-category` |
 | St. George Spirits Absinthe Works | Alameda, California | United States | Absinthe | approximate | [Visit](https://stgeorgespirits.com/spirits/absinthe-verte) | `st-george-absinthe` |
 
 ## Editing checklist

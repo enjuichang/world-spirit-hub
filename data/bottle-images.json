@@ -1260,10 +1260,10 @@
     "productName": "lazyload"
   },
   "teeling": {
-    "imagePath": "/bottles/teeling.jpg",
-    "imageSourceUrl": "https://teelingdistillery.com/wp-content/uploads/2022/05/teeling-distillery.jpg",
+    "imagePath": "/bottles/teeling.png",
+    "imageSourceUrl": "https://cove27.co.nz/cdn/shop/files/Teeling-Irish-Single-Malt-Whiskey-700ml.png?v=1744752687",
     "productPageUrl": "https://teelingdistillery.com/",
-    "productName": "official product hero open graph"
+    "productName": "Teeling Whiskey Distillery"
   },
   "dingle": {
     "imagePath": "/bottles/dingle.png",
@@ -1290,10 +1290,10 @@
     "productName": "Alberta Distillers Ltd. Rare Batch No.1 - ZYN THE WINE MARKET LTD."
   },
   "white-oak": {
-    "imagePath": "/bottles/white-oak.png",
-    "imageSourceUrl": "https://www.ei-sake.jp/en/img/product01.png",
+    "imagePath": "/bottles/white-oak.jpg",
+    "imageSourceUrl": "https://marketwinestore.com.au/cdn/shop/files/white_oak_eigashami_whisky_market_wine_store.jpg?crop=center&height=1600&v=1752244898&width=1200",
     "productPageUrl": "https://www.ei-sake.jp/en/",
-    "productName": "img-fluid"
+    "productName": "Eigashima Shuzo White Oak Distillery"
   },
   "mars-tsunuki": {
     "imagePath": "/bottles/mars-tsunuki.jpg",
@@ -1333,9 +1333,9 @@
   },
   "chateau-du-breuil": {
     "imagePath": "/bottles/chateau-du-breuil.jpg",
-    "imageSourceUrl": "https://www.chateau-breuil.com/wp-content/uploads/elementor/thumbs/482738043-qrmpuc6arw6hq7d5oedzvwwqp7ep68seiresdq4x5w.jpg",
-    "productPageUrl": "https://www.chateau-breuil.com/",
-    "productName": "official product hero open graph"
+    "imageSourceUrl": "https://www.roccavini.it/508-large_default/calvados.jpg",
+    "productPageUrl": "https://www.roccavini.it/liquori/459-calvados.html",
+    "productName": "calvados chateau du breil"
   },
   "boulard": {
     "imagePath": "/bottles/boulard.jpg",
@@ -1361,12 +1361,6 @@
     "productPageUrl": "https://www.tokara.com/",
     "productName": "attachment-large size-large wp-image-10293"
   },
-  "worthy-park-rum": {
-    "imagePath": "/bottles/worthy-park-rum.png",
-    "imageSourceUrl": "https://worthyparkestate.com/wp-content/uploads/2025/06/WORTHY-PARK-JAMAICA-RUM-website.png",
-    "productPageUrl": "https://worthyparkestate.com/",
-    "productName": "attachment-full size-full wp-image-672"
-  },
   "st-lucia-distillers": {
     "imagePath": "/bottles/st-lucia-distillers.jpg",
     "imageSourceUrl": "https://mydrinx.shop/cdn/shop/products/a03723c93009c78ba9b9415a6baed445b42f051a5239b9e7886b27a72cba493b.jpg?v=1710778991",
@@ -1386,10 +1380,10 @@
     "productName": "Cdiscount"
   },
   "worthy-park-jamaica": {
-    "imagePath": "/bottles/worthy-park-jamaica.png",
-    "imageSourceUrl": "https://worthyparkestate.com/wp-content/uploads/2025/06/WORTHY-PARK-JAMAICA-RUM-website.png",
-    "productPageUrl": "https://worthyparkestate.com/",
-    "productName": "attachment-full size-full wp-image-672"
+    "imagePath": "/bottles/worthy-park-jamaica.jpg",
+    "imageSourceUrl": "https://cdn11.bigcommerce.com/s-2ozph3dkpy/images/stencil/1280x1280/products/565516/512788/JM-XWP-05-06__48919.1686379255.jpg?c=1",
+    "productPageUrl": "https://thecellardor.com/worthy-park-12-year-old-single-estate-rum-2006-750ml/",
+    "productName": "Worthy Park 12 Year Old Single Estate Rum 2006 750ml"
   },
   "destileria-serralles": {
     "imagePath": "/bottles/destileria-serralles.jpg",
@@ -1441,9 +1435,9 @@
   },
   "tanqueray-cameronbridge": {
     "imagePath": "/bottles/tanqueray-cameronbridge.png",
-    "imageSourceUrl": "https://images.ctfassets.net/hs93c4k6gio0/bq9yqfGIu61RWfLCYhUaN/be6aa82b6c193cd9655d47a4c428b008/b6f180a92c1e70075461e766ed19c02f7b394eb2__2_.png",
-    "productPageUrl": "https://www.tanqueray.com/en-gb",
-    "productName": "hero-seal object-cover max-w-[97px] md:max-w-[170px]"
+    "imageSourceUrl": "https://webmail.cheers.com.np/uploads/products/305639852515295741900027157211145593747597.png",
+    "productPageUrl": "https://webmail.cheers.com.np/liquor/product/tanqueray-london-dry-gin-1l",
+    "productName": "Tanqueray London Dry Gin 1L - Cheers Online Store Nepal"
   },
   "greenalls": {
     "imagePath": "/bottles/greenalls.png",
@@ -1534,12 +1528,6 @@
     "imageSourceUrl": "https://www.reservebar.com/_next/image?q=75&url=https%3A%2F%2Fassets.liquidcommerce.co%2Fcatalog%2Fimages%2Fchasepotatovodak.jpg&w=1920",
     "productPageUrl": "https://www.reservebar.com/products/chase-potato-vodka/GROUPING-44491",
     "productName": "Chase Potato Vodka | ReserveBar"
-  },
-  "belvedere": {
-    "imagePath": "/bottles/belvedere.png",
-    "imageSourceUrl": "https://www.belvederevodka.com/sites/default/files/styles/product_menu_thumbnail/public/2024-04/belvedere-organic-vodka-menu-produit.png?itok=Pa3bwfcc",
-    "productPageUrl": "https://www.belvederevodka.com/en-int",
-    "productName": "Belvedere organic vodka bottle Belvedere organic vodka bottle blv-products-thumbnail-img"
   },
   "new-amsterdam-flavors": {
     "imagePath": "/bottles/new-amsterdam-flavors.png",
@@ -1650,22 +1638,16 @@
     "productName": "Nemiroff Cranberry Vodka | Caskers"
   },
   "soplica": {
-    "imagePath": "/bottles/soplica.png",
-    "imageSourceUrl": "https://soplica.pl/static/1f03c393b88beb4ba2794a45264c531c/af1d1/production-step-01.png",
+    "imagePath": "/bottles/soplica.jpg",
+    "imageSourceUrl": "https://wodkacompany.com/cdn/shop/files/soplica-zimowa-quince-raspberry-cinnamon-vodka-liqueur-pigwa-malina-cynamon-wodkacompany.jpg?crop=center&height=1200&v=1733258923&width=1200",
     "productPageUrl": "https://soplica.pl/",
-    "productName": "Soplica Production Site bottling"
+    "productName": "Soplica Production Site"
   },
   "heritage-infused-vodka": {
     "imagePath": "/bottles/heritage-infused-vodka.jpg",
     "imageSourceUrl": "https://www.traveldistilled.com/wp-content/uploads/2021/06/Heritage-Hibiscus-Vodka-Bottle.jpg",
     "productPageUrl": "https://www.traveldistilled.com/heritage-hibiscus-vodka-review/",
     "productName": "Heritage Hibiscus Vodka Review | Travel Distilled"
-  },
-  "spring44-vodka": {
-    "imagePath": "/bottles/spring44-vodka.jpg",
-    "imageSourceUrl": "https://static.wixstatic.com/media/04ff51_0da17ab7e05942388a99d9d60f012868~mv2_d_4032_3024_s_4_2.jpg/v1/fill/w_2500,h_1875,al_c/04ff51_0da17ab7e05942388a99d9d60f012868~mv2_d_4032_3024_s_4_2.jpg",
-    "productPageUrl": "https://www.spring44.com/",
-    "productName": "official product hero open graph"
   },
   "pacifique-absinthe": {
     "imagePath": "/bottles/pacifique-absinthe.jpg",
@@ -1678,12 +1660,6 @@
     "imageSourceUrl": "https://tshop.r10s.jp/wineuki/cabinet/default/08/22/9903000029716.jpg?fitin=720%3A720",
     "productPageUrl": "https://item.rakuten.co.jp/wineuki/9903000029716/",
     "productName": "cite楽天市場 cite正規品 ウィルダネストレイル ライ ウイスキー ケンタッキー ストレート ウイスキー 750ml 50％WILDERNESSTRAIL RYE WHISKY KENTUCKY STRAIGHT WHISKY 750ml 50%：うきうきワインの玉手箱"
-  },
-  "dads-hat": {
-    "imagePath": "/bottles/dads-hat.jpg",
-    "imageSourceUrl": "https://canvas-lb.tubitv.com/opts/FzfTU6RBaK-_7g==/8b406316-d2ff-4b2a-ab89-a5d3e1090522/CJgDEMcEOgUxLjEuOQ==",
-    "productPageUrl": "https://tubitv.com/tv-shows/200340289/s01-e24-episode-24",
-    "productName": "Watch Cyanide & Happiness: Compilations S01:E24 - Episode 24 - Free TV ... Watch Cyanide & Happiness: Compilations S01:E24 - Episode 24 - Free TV ..."
   },
   "hiram-walker": {
     "imagePath": "/bottles/hiram-walker.jpg",
@@ -1799,12 +1775,6 @@
     "productPageUrl": "https://www.thewhiskyexchange.com/p/5439/kirsch-vieux-cherry-grande-reserve-eau-de-vie-g-miclo",
     "productName": "Kirsch Vieux (Cherry) Grande Reserve Eau de Vie - G. Miclo : The Whisky Exchange"
   },
-  "etter": {
-    "imagePath": "/bottles/etter.jpg",
-    "imageSourceUrl": "https://cioinfluence.com/wp-content/uploads/2017/11/Login-Enterprise-Introduces-New-Features-to-Accelerate-Root-Cause-Analysis-and-Improve-End-User-Experience-for-VDI-and-DaaS.jpg",
-    "productPageUrl": "https://cioinfluence.com/itechnology-series-news/login-enterprise-introduces-new-features-to-accelerate-root-cause-analysis-and-improve-end-user-experience-for-vdi-and-daas/",
-    "productName": "Login Enterprise Introduces New Features to Accelerate Root Cause ... Login Enterprise Introduces New Features to Accelerate Root Cause ..."
-  },
   "rujero": {
     "imagePath": "/bottles/rujero.jpg",
     "imageSourceUrl": "https://pagestudio.s3.theshoppad.net/bolivianita-de/490216ebbce6a880fb8e2bbac84d34f9.jpg",
@@ -1819,9 +1789,9 @@
   },
   "sausini": {
     "imagePath": "/bottles/sausini.jpg",
-    "imageSourceUrl": "https://img.magnific.com/premium-vector/diagram-showing-solar-eclipse-sun-earth-moon-vector-infographic_530733-3683.jpg?w=2000",
-    "productPageUrl": "https://tools.wbez.org/lunar-eclipse-model/premium-vector-diagram-showing-solar-eclipse-sun-earth-and-moon",
-    "productName": "Premium Vector | Diagram showing solar eclipse Sun Earth and Moon ... Premium Vector | Diagram showing solar eclipse Sun Earth and Moon ..."
+    "imageSourceUrl": "https://www.shop.misturabolivia.com/cdn/shop/files/DSC8069copy.jpg?v=1693511877",
+    "productPageUrl": "https://www.sausini.com/",
+    "productName": "Bodegas Sausini"
   },
   "beenleigh": {
     "imagePath": "/bottles/beenleigh.jpg",
@@ -1872,10 +1842,10 @@
     "productName": "Cuban Rum - Santisima Trinidad de Cuba 7 - 40,3 % - Santisima Trinidad de Cuba"
   },
   "engenho-anisio-santiago": {
-    "imagePath": "/bottles/engenho-anisio-santiago.png",
-    "imageSourceUrl": "https://community.inovelli.com/uploads/default/original/2X/2/20f36719f8c1075f6b65f48855df8107a4dfecf7.png",
-    "productPageUrl": "https://ar.inspiredpencil.com/pictures-2023/4-way-light-switch-wiring",
-    "productName": "4 Way Light Switch Wiring 4 Way Light Switch Wiring"
+    "imagePath": "/bottles/engenho-anisio-santiago.jpg",
+    "imageSourceUrl": "https://cachacarianacional.vteximg.com.br/arquivos/ids/168708-1000-1000/cachaca-anisio-santiago-edicao-especial-80-anos-500ml-081828_2.jpg?v=638267551432170000",
+    "productPageUrl": "https://www.cachacarianacional.com.br/cachaca-anisio-santiago-edicao-especial-80-anos-500ml-081828/p",
+    "productName": "Cachaça Anísio Santiago Edição Especial 80 Anos 500ml - Cachaçaria Nacional"
   },
   "cachaca-magnifica": {
     "imagePath": "/bottles/cachaca-magnifica.jpg",
@@ -1949,12 +1919,6 @@
     "productPageUrl": "https://www.thewhiskyexchange.com/p/71405/la-venenosa-costa-raicilla",
     "productName": "La Venenosa Costa Raicilla : The Whisky Exchange"
   },
-  "el-real-raicilla": {
-    "imagePath": "/bottles/el-real-raicilla.jpg",
-    "imageSourceUrl": "https://www.bornheimer-hang.de/wp-content/uploads/2025/10/Argentina-vs-Venezuela-Prediction-October-11-2025.jpg",
-    "productPageUrl": "https://www.bornheimer-hang.de/world-cup/argentina-vs-venezuela-prediction-october-11-2025/",
-    "productName": "Argentina vs Venezuela Prediction October 11, 2025 - Bornheimer Argentina vs Venezuela Prediction October 11, 2025 - Bornheimer"
-  },
   "hacienda-guadalupe-raicilla": {
     "imagePath": "/bottles/hacienda-guadalupe-raicilla.jpg",
     "imageSourceUrl": "https://www.cavesduroy.fr/commande-en-ligne/8029-large_default/la-venenosa-tabernas-lot-2-la-raicilla-a-longtemps-ete-un-alcool-mexicain-de-contrebande-elle-est-produite-dans-la-region-de-jal.jpg",
@@ -1975,9 +1939,9 @@
   },
   "clande": {
     "imagePath": "/bottles/clande.jpg",
-    "imageSourceUrl": "https://cdn2.stylecraze.com/wp-content/uploads/2024/08/Realistic-Hibiscus-Flower-Tattoo.jpg",
-    "productPageUrl": "https://storage.googleapis.com/xerantovil/hibiscus-flower-drawing-tattoo.html",
-    "productName": "Hibiscus Flower Drawing Tattoo Hibiscus Flower Drawing Tattoo"
+    "imageSourceUrl": "https://www.liquorexpress.us/cdn/shop/products/b1d26a4d-4bbb-4917-bc51-88a7bd1e3460_21d34fef-1b0a-417d-b746-b76eeb0277b1.jpg?v=1700346383",
+    "productPageUrl": "https://sotolclande.com/",
+    "productName": "clande"
   },
   "beefeater": {
     "imagePath": "/bottles/beefeater.jpg",
@@ -2005,9 +1969,9 @@
   },
   "bols-genever": {
     "imagePath": "/bottles/bols-genever.jpg",
-    "imageSourceUrl": "https://i.pinimg.com/originals/58/e0/7c/58e07c415944c47301a27132ee11af44.jpg",
-    "productPageUrl": "https://www.pinterest.co.uk/pin/434597432782917164/",
-    "productName": "Ancient Egyptian tomb painting with agricultural scenes. From tomb of ... Ancient Egyptian tomb painting with agricultural scenes. From tomb of ..."
+    "imageSourceUrl": "https://www.bittersandbottles.com/cdn/shop/products/bols-genever_1280x1280.jpg?v=1571310929",
+    "productPageUrl": "https://www.bittersandbottles.com/products/bols-genever?srsltid=AfmBOoqxjhWMAGaHjek_qS6T3ZDMFuOh7zU3fbbHTB99Yk3wVB4zawLV",
+    "productName": "Bols Genever — Bitters & Bottles"
   },
   "hooghoudt": {
     "imagePath": "/bottles/hooghoudt.jpg",
@@ -2016,16 +1980,10 @@
     "productName": "Genever 5 anni 70cl – Hooghoudt"
   },
   "copperworks-cask-gin": {
-    "imagePath": "/bottles/copperworks-cask-gin.jpg",
-    "imageSourceUrl": "https://justatic.com/v/20260708091513/shared/images/social-media/law.jpg",
-    "productPageUrl": "https://law.justia.com/cases/louisiana/fourth-circuit-court-of-appeal/2025/2024-ka-0509.html",
-    "productName": "STATE OF LOUISIANA STATE OF LOUISIANA"
-  },
-  "cardinal-vodka": {
-    "imagePath": "/bottles/cardinal-vodka.jpg",
-    "imageSourceUrl": "https://images.gotoliquorstore.com/product/1000001533/5d4ae8d2-a30e-4eca-9910-26c68329e9e5_1000_m.jpg",
-    "productPageUrl": "https://www.gotoliquorstore.com/p/cardinal-sin-vodka/1534",
-    "productName": "Cardinal Sin Vodka - Buy Online | GotoLiquorStore"
+    "imagePath": "/bottles/copperworks-cask-gin.png",
+    "imageSourceUrl": "https://bevmo.com/cdn/shop/files/3f13b94b-4782-439a-80c5-d83d45821816-background_removed.png?v=1745365006&width=1445",
+    "productPageUrl": "https://copperworksdistilling.com/",
+    "productName": "Copperworks Distilling"
   },
   "blue-ice": {
     "imagePath": "/bottles/blue-ice.jpg",
@@ -2046,28 +2004,16 @@
     "productName": "全兴大曲晶彩/古井贡酒亳菊官方旗舰店 - 华糖云交会"
   },
   "shuijingfang": {
-    "imagePath": "/bottles/shuijingfang.webp",
-    "imageSourceUrl": "https://images.suamusica.com.br/qoPDBsgxqzRjWaBftlSKlu3gJGU=/500x500/filters:format(webp)/63837/2670089/cd_cover.png",
-    "productPageUrl": "https://suamusica.com.br/NovoRitmo/banda-calypso-um-show-para-virada",
-    "productName": "Banda Calypso: Um Show para Virada - Variados - Sua Música Banda Calypso: Um Show para Virada - Variados - Sua Música"
+    "imagePath": "/bottles/shuijingfang.png",
+    "imageSourceUrl": "https://pbexpressliquor.com/cdn/shop/files/Shui-Jing-Fang-2016-removebg-preview_grande.png?v=1689458824",
+    "productPageUrl": "https://www.shuijingfang.com/",
+    "productName": "Shuijingfang Distillery"
   },
   "guotai": {
     "imagePath": "/bottles/guotai.jpg",
     "imageSourceUrl": "https://img08.jiuxian.com/2022/1205/98b61969aacf4aadb9d541f2d46a8c6f6.jpg",
     "productPageUrl": "https://m.jiuxian.com/m_v1/goods/view/845407",
     "productName": "53度国台国标酒2016年酿造500ml（6瓶）"
-  },
-  "xijiu": {
-    "imagePath": "/bottles/xijiu.jpg",
-    "imageSourceUrl": "https://www.gz-jjjt.com/uploads/20240418/2ca4dc1554347a3a8fee32e3d29717cc.jpg",
-    "productPageUrl": "https://www.gz-jjjt.com/index/product_2/24.html",
-    "productName": "贵酱令®贵州酱酒·義酒-甲秀酱香_贵州酱酒集团"
-  },
-  "zhenjiu": {
-    "imagePath": "/bottles/zhenjiu.jpg",
-    "imageSourceUrl": "https://www.gz-jjjt.com/uploads/20240418/2ca4dc1554347a3a8fee32e3d29717cc.jpg",
-    "productPageUrl": "https://www.gz-jjjt.com/index/product_2/24.html",
-    "productName": "贵酱令®贵州酱酒·義酒-甲秀酱香_贵州酱酒集团"
   },
   "niulanshan": {
     "imagePath": "/bottles/niulanshan.jpg",
@@ -2106,10 +2052,10 @@
     "productName": "京东(JD.COM)-正品低价、品质保障、配送及时、轻松购物！"
   },
   "chuko-awamori": {
-    "imagePath": "/bottles/chuko-awamori.webp",
-    "imageSourceUrl": "https://image.slidesharecdn.com/mosbows-240307163850-0d4206ad/75/MO-S-BOWS-PRESENTATION-MADE-ON-CANVA-2024-3-2048.jpg",
-    "productPageUrl": "https://www.slideshare.net/slideshow/mos-bows-presentation-made-on-canva-2024/266679661",
-    "productName": "MO’S BOWS PRESENTATION MADE ON CANVA 2024 | PPTX MO’S BOWS PRESENTATION MADE ON CANVA 2024 | PPTX"
+    "imagePath": "/bottles/chuko-awamori.png",
+    "imageSourceUrl": "https://kuraichibk.com/cdn/shop/files/ChukoRyukyuAwamoriKusu_ecef85f1-60d0-46be-ae10-ddcaa98e5517.png?v=1750257050",
+    "productPageUrl": "https://www.chuko-awamori.com/en/",
+    "productName": "Chuko Shuzo"
   },
   "helios-awamori": {
     "imagePath": "/bottles/helios-awamori.jpg",
@@ -2129,17 +2075,11 @@
     "productPageUrl": "https://enjoyit999.com/product/6090",
     "productName": "韓國燒酒 大鮮 原味燒酒 360ml - 酒酒酒全台最大酒品詢價網"
   },
-  "bohae": {
-    "imagePath": "/bottles/bohae.jpg",
-    "imageSourceUrl": "https://cdn4.vectorstock.com/i/1000x1000/65/98/green-eco-letter-w-vector-20336598.jpg",
-    "productPageUrl": "https://ar.inspiredpencil.com/pictures-2023/green-letter-w",
-    "productName": "Green Letter W Green Letter W"
-  },
   "tokki-soju": {
-    "imagePath": "/bottles/tokki-soju.jpg",
-    "imageSourceUrl": "https://i.ytimg.com/vi/kXOfZzAnbLA/maxresdefault.jpg",
-    "productPageUrl": "https://www.youtube.com/watch?v=kXOfZzAnbLA",
-    "productName": "Dan Lambert from American Top Team Has a Few Things to Say | AEW ... Dan Lambert from American Top Team Has a Few Things to Say | AEW ..."
+    "imagePath": "/bottles/tokki-soju.png",
+    "imageSourceUrl": "https://www.compagniadeicaraibi.com/public/f63f93b982d2475abfebbb7e208e9ab0.png",
+    "productPageUrl": "https://www.compagniadeicaraibi.com/articoli/TOKKI/SOJ08395",
+    "productName": "SOJU TOKKI GRAY"
   },
   "munbaeju": {
     "imagePath": "/bottles/munbaeju.png",
@@ -2202,10 +2142,10 @@
     "productName": "Mini Ouzo 700ml | Kent Street Cellars"
   },
   "det-norske-brenneri": {
-    "imagePath": "/bottles/det-norske-brenneri.jpg",
-    "imageSourceUrl": "https://www.cuded.com/wp-content/uploads/2023/07/Rose-skeleton-hand-tattoo-with-a-skull.jpg",
-    "productPageUrl": "https://infoupdate.org/skeleton-hand-holding-dead-rose-tattoo/",
-    "productName": "Skeleton Hand Holding Dead Rose Tattoo - Infoupdate.org Skeleton Hand Holding Dead Rose Tattoo - Infoupdate.org"
+    "imagePath": "/bottles/det-norske-brenneri.png",
+    "imageSourceUrl": "https://images-eu-prod.cms.commerce.dynamics.com/cms/api/rxdcjxfpsr/imageFileData/search?fileName=%2FProducts%2F592048_000_001.png",
+    "productPageUrl": "https://www.servicenord.no/l%C3%B8iten-linie-41%2C5%25-70cl/5637149863.p",
+    "productName": "LØITEN LINIE 41,5% 70CL"
   },
   "saturnus-aquavit": {
     "imagePath": "/bottles/saturnus-aquavit.jpg",
@@ -2248,12 +2188,6 @@
     "imageSourceUrl": "https://webbox.imgix.net/images/vcokrjiqcbvfgodl/45e3c793-64df-4d50-9eac-d0241c9c3602.jpg?auto=format%2Ccompress&crop=entropy&fit=crop",
     "productPageUrl": "https://www.kuva-chateau.com.tw/theme/maoweiki.html",
     "productName": "MAOWEIKI | Hotel Kuva Chateau"
-  },
-  "luksusowa": {
-    "imagePath": "/bottles/luksusowa.jpg",
-    "imageSourceUrl": "https://i.pinimg.com/originals/92/2f/43/922f4323a5ea3d349504b278d1196454.jpg",
-    "productPageUrl": "https://www.pinterest.com/pin/169448004714955538/",
-    "productName": "Pin af Kathy Patages på Licorice Lane . ç o ʈ ʈ α ɠ ҽ | Monogram ... Pin af Kathy Patages på Licorice Lane . ç o ʈ ʈ α ɠ ҽ | Monogram ..."
   },
   "jiannanchun": {
     "imagePath": "/bottles/jiannanchun.jpg",
@@ -2472,10 +2406,10 @@
     "productName": "Cardrona Distillery Full Flight Solera Cask Strength Single Malt New Zealand Whisky (375ml) | Nicks Wine Merchants"
   },
   "crazy-cock-maharashtra": {
-    "imagePath": "/bottles/crazy-cock-maharashtra.webp",
-    "imageSourceUrl": "https://www.cryptopolitan.com/wp-content/uploads/2025/06/Telegram-censored-in-Kenya.webp",
-    "productPageUrl": "https://www.cryptopolitan.com/zh-cn/telegram-censored-in-kenya-media-apps-down/",
-    "productName": "Telegram在肯尼亚遭到审查，其他社交媒体应用也出现故障。 Telegram在肯尼亚遭到审查，其他社交媒体应用也出现故障。"
+    "imagePath": "/bottles/crazy-cock-maharashtra.jpg",
+    "imageSourceUrl": "https://whiskysituation.co.uk/cdn/shop/files/4787027169.jpg?v=1771937230",
+    "productPageUrl": "https://crazycockwhisky.com/",
+    "productName": "crazy-cock-maharashtra"
   },
   "kamet-kurukshetra": {
     "imagePath": "/bottles/kamet-kurukshetra.jpg",
@@ -2563,9 +2497,9 @@
   },
   "barbadillo-brandy": {
     "imagePath": "/bottles/barbadillo-brandy.jpg",
-    "imageSourceUrl": "https://i.etsystatic.com/26476420/c/1548/1230/0/138/il/136e8c/3895529681/il_680x540.3895529681_fcqq.jpg",
-    "productPageUrl": "https://www.etsy.com/listing/1211600700/heavenly-birthday-cake-topper-custom",
-    "productName": "Heavenly Birthday Cake Topper Custom Cake Topper Memorial Birthday Cake ... Heavenly Birthday Cake Topper Custom Cake Topper Memorial Birthday Cake ..."
+    "imageSourceUrl": "https://www.wine.ua/upload/iblock/b33/barbadillo_brandy_de_jerez_solera_bb_wineua.jpg",
+    "productPageUrl": "https://www.wine.ua/brandy/spain/barbadillo_brandy_de_jerez_solera_bb/",
+    "productName": "Бренди Barbadillo Brandy de Jerez Solera «BB» Set 6 Bottles (Барбадийо Бренди де Херес Солера «ББ» Сет 6 Бутылок) 6x700 мл | Wine.ua"
   },
   "fernando-de-castilla-brandy": {
     "imagePath": "/bottles/fernando-de-castilla-brandy.jpg",
@@ -2578,12 +2512,6 @@
     "imageSourceUrl": "https://580103.app.netsuite.com/core/media/media.nl?c=580103&h=F7z49eKlBVOkE6tJ6_jUBoXhUASC74tEXI6nA2mvwzk-6cgg&id=1415281",
     "productPageUrl": "https://www.creamwine.com/product.php?id=15057",
     "productName": "Cream Wine Company"
-  },
-  "hacienda-la-caravedo-porton": {
-    "imagePath": "/bottles/hacienda-la-caravedo-porton.png",
-    "imageSourceUrl": "https://cdn.prod.website-files.com/5eaaefe00a5a90433635da0c/5eaaefe00a5a90c2b135db4d_bottle.png",
-    "productPageUrl": "https://www.caravedopisco.com/",
-    "productName": "page asset"
   },
   "tabernero-pisco": {
     "imagePath": "/bottles/tabernero-pisco.jpg",
@@ -2676,10 +2604,10 @@
     "productName": "Schladerer Kirschwasser Eau De Vie - Lot 31170 - Buy/Sell Spirits Online"
   },
   "capreolus-distillery": {
-    "imagePath": "/bottles/capreolus-distillery.jpg",
-    "imageSourceUrl": "https://images.tcdn.com.br/img/img_prod/746520/chiclete_com_recheio_blong_nitroferas_peccin_caixa_com_40_un_5815609_3_0c3938299a6156f381b3046d7814617e.jpg",
-    "productPageUrl": "https://www.embaleme.com.br/chiclete-com-recheio-blong-nitroferas-peccin-caixa-com-40-un",
-    "productName": "Chiclete com recheio Blong Nitroferas caixa com 40 un Peccin Chiclete com recheio Blong Nitroferas caixa com 40 un Peccin"
+    "imagePath": "/bottles/capreolus-distillery.webp",
+    "imageSourceUrl": "https://images.squarespace-cdn.com/content/v1/58d56a21e3df28af90a2e37d/1644868479019-XC9AD89VW0667VKO6JI4/CapreolusWebsite_IMGcuts2.jpg",
+    "productPageUrl": "https://www.pmspirits.com/capreolus",
+    "productName": "Capreolus Distillery: Masterful Eaux-de-Vie & Authentic English Fruit Spirit Creations — PM Spirits"
   },
   "nusbaumer": {
     "imagePath": "/bottles/nusbaumer.jpg",
@@ -2692,12 +2620,6 @@
     "imageSourceUrl": "https://www.royalbatch.com/upload/products/1/clear-creek-eau-de-vie-pomme-8-year-old-apple-brandy-375ml_RoyalBatch_dVbOY-NwAGJ7.jpg",
     "productPageUrl": "https://www.royalbatch.com/clear-creek-eau-de-vie-pomme-8-year-apple-brandy-375ml",
     "productName": "Clear Creek Eau de Vie Pomme Apple Brandy | Royal Batch"
-  },
-  "los-parrales-singani": {
-    "imagePath": "/bottles/los-parrales-singani.jpg",
-    "imageSourceUrl": "https://1.bp.blogspot.com/-UZBzlcqAyBQ/YE7XFmAKg6I/AAAAAAAAoOw/sb-saxpic3AxPFrSTtteolJBjFCcxQP6ACLcBGAsYHQ/s2048/numeros.jpg",
-    "productPageUrl": "https://mf.revo.works/lch/atividade-contagem-1-ano.html",
-    "productName": "Atividade Contagem 1 Ano - REVOEDUCA Atividade Contagem 1 Ano - REVOEDUCA"
   },
   "casa-de-plata-singani": {
     "imagePath": "/bottles/casa-de-plata-singani.jpg",
@@ -2735,18 +2657,6 @@
     "productPageUrl": "https://www.lavernewines.co.za/buywine/ladismith-8-year-potstill-brandy/",
     "productName": "Ladismith 8 Year Potstill Brandy | La Verne Wine Boutique"
   },
-  "kaapzicht-brandy": {
-    "imagePath": "/bottles/kaapzicht-brandy.png",
-    "imageSourceUrl": "https://www.lavernewines.co.za/wp-content/uploads/2018/12/Ladismith_8_year_brandy_750ml.png",
-    "productPageUrl": "https://www.lavernewines.co.za/buywine/ladismith-8-year-potstill-brandy/",
-    "productName": "Ladismith 8 Year Potstill Brandy | La Verne Wine Boutique"
-  },
-  "angostura-rum": {
-    "imagePath": "/bottles/angostura-rum.png",
-    "imageSourceUrl": "https://mcdn.wallpapersafari.com/medium/16/2/FQxtMG.png",
-    "productPageUrl": "https://wallpapersafari.com/westeros-map-wallpaper/",
-    "productName": "🔥 [130+] Westeros Map Wallpapers | WallpaperSafari 🔥 [130+] Westeros Map Wallpapers | WallpaperSafari"
-  },
   "brugal-puerto-plata": {
     "imagePath": "/bottles/brugal-puerto-plata.png",
     "imageSourceUrl": "https://lovescotch.com/cdn/shop/products/Brugal_Doblemente_Anejado_Rum_LoveScotch_4.png?v=1756520053",
@@ -2782,12 +2692,6 @@
     "imageSourceUrl": "https://www.closdesmillesimes.com/client/cache/produit/800_______topcenter_635b9080_19108.jpg",
     "productPageUrl": "https://www.closdesmillesimes.com/longueteau-parcellaire-n-1-cannes-rouges-edition-2023.html",
     "productName": "Rhum Agricole (Pur Jus de Canne)-LONGUETEAU - Parcellaire n°1 - Cannes Rouges - Edition 2023 - 55% - Clos des Millésimes - Boutique en ligne vente de vins & spiritueux de qualité au meilleur prix"
-  },
-  "bielle": {
-    "imagePath": "/bottles/bielle.jpg",
-    "imageSourceUrl": "https://static.vecteezy.com/system/resources/previews/055/990/482/non_2x/hand-drawn-illustration-of-a-classic-pie-free-vector.jpg",
-    "productPageUrl": "https://www.vecteezy.com/vector-art/55990482-hand-drawn-illustration-of-a-classic-pie",
-    "productName": "Hand-drawn illustration of a classic pie. 55990482 Vector Art at Vecteezy Hand-drawn illustration of a classic pie. 55990482 Vector Art at Vecteezy"
   },
   "papa-rouyo": {
     "imagePath": "/bottles/papa-rouyo.jpg",
@@ -3005,35 +2909,11 @@
     "productPageUrl": "https://www.astorwines.com/item/47431?srsltid=AfmBOor8OQSIqpby80Hl5dKuI2NecXCslbls7HCcOVVWdEwreu489IBe",
     "productName": "El Jolgorio Ancestral Arooqueno Mezcal | Astor Wines & Spirits"
   },
-  "rancho-san-isidro-bacanora": {
-    "imagePath": "/bottles/rancho-san-isidro-bacanora.jpg",
-    "imageSourceUrl": "https://i.pinimg.com/originals/a1/a3/a8/a1a3a88221a12d588953aa2ff23bef41.jpg",
-    "productPageUrl": "https://www.pinterest.com/pin/diy-barn-greenhouse-tutorial-free-plan--238831586471067118/",
-    "productName": "DIY Barn Greenhouse Tutorial - Free Plan DIY Barn Greenhouse Tutorial - Free Plan"
-  },
-  "bacanora-42": {
-    "imagePath": "/bottles/bacanora-42.jpg",
-    "imageSourceUrl": "https://c8.alamy.com/comp/KPC0FX/elephants-in-amboseli-national-park-near-kilimanjaro-in-kenya-KPC0FX.jpg",
-    "productPageUrl": "https://www.alamy.com/stock-image-elephants-in-amboseli-national-park-near-kilimanjaro-in-kenya-168679614.html",
-    "productName": "elephants in Amboseli national park near Kilimanjaro in Kenya Stock ... elephants in Amboseli national park near Kilimanjaro in Kenya Stock ..."
-  },
-  "aguamiel-bacanora": {
-    "imagePath": "/bottles/aguamiel-bacanora.png",
-    "imageSourceUrl": "https://wallpaperaccess.com/full/159160.png",
-    "productPageUrl": "https://wallpaperaccess.com/minimalist-desktop",
-    "productName": "Minimalist Desktop Wallpapers - Top Free Minimalist Desktop Backgrounds ... Minimalist Desktop Wallpapers - Top Free Minimalist Desktop Backgrounds ..."
-  },
   "batuq-bacanora": {
     "imagePath": "/bottles/batuq-bacanora.jpg",
     "imageSourceUrl": "https://a0.muscache.com/im/pictures/Mt/MtTemplate-6621482/original/e37a8f2c-a2e4-4f74-ae8a-bb2dd52b1acc.jpeg",
     "productPageUrl": "https://www.airbnb.com/experiences/6621482",
     "productName": "Agave Tasting at Sonora Moonshine · ★5.0"
-  },
-  "de-una-raicilla": {
-    "imagePath": "/bottles/de-una-raicilla.jpg",
-    "imageSourceUrl": "https://i.ebayimg.com/images/g/Rz8AAOSwwuVnJRzc/s-l400.jpg",
-    "productPageUrl": "https://www.ebay.com/itm/135336617199",
-    "productName": "Olivia Casta 8x10 High Quality Photograph Picture Model Photo Print ... Olivia Casta 8x10 High Quality Photograph Picture Model Photo Print ..."
   },
   "la-reina-raicilla": {
     "imagePath": "/bottles/la-reina-raicilla.png",
@@ -3161,12 +3041,6 @@
     "productPageUrl": "https://whiskyauctioneer.com/learn/explore-whisky/bottles/cat-bottle-brand-old-tom-gin-circa",
     "productName": "Cat & Bottle Brand Old Tom Gin circa Whisky | Whisky Auctioneer"
   },
-  "anchor-old-tom": {
-    "imagePath": "/bottles/anchor-old-tom.jpg",
-    "imageSourceUrl": "https://assets.whiskyauctioneer.com/styles/xlarge_1_1/s3/8109145-001.JPG?itok=i_NfJZ0f",
-    "productPageUrl": "https://whiskyauctioneer.com/learn/explore-whisky/bottles/cat-bottle-brand-old-tom-gin-circa",
-    "productName": "Cat & Bottle Brand Old Tom Gin circa Whisky | Whisky Auctioneer"
-  },
   "van-wees-genever": {
     "imagePath": "/bottles/van-wees-genever.jpg",
     "imageSourceUrl": "https://cdn11.bigcommerce.com/s-e8lbekfe7c/product_images/attribute_rule_images/32728_source_1773775240.jpg",
@@ -3197,12 +3071,6 @@
     "productPageUrl": "https://stillwine.de/products/de-borgen-old-style-genever",
     "productName": "DE BORGEN OLD STYLE GENEVER 40 VOL% 0,7L | StillWine GmbH"
   },
-  "kyrö-koskue": {
-    "imagePath": "/bottles/kyrö-koskue.jpg",
-    "imageSourceUrl": "https://i.pinimg.com/originals/bb/bb/9e/bbbb9e314d54fe4282ac01430e8e1197.jpg",
-    "productPageUrl": "https://roulerenvelo.blogspot.com/2023/12/quest-ce-que-les-crunchs-velo.html",
-    "productName": "Qu'est-ce que les crunchs à vélo Qu'est-ce que les crunchs à vélo"
-  },
   "bluecoat-barrel-gin": {
     "imagePath": "/bottles/bluecoat-barrel-gin.jpg",
     "imageSourceUrl": "https://media.philly.com/images/RS_x_20170519_IMG_3261.jpg",
@@ -3217,21 +3085,15 @@
   },
   "roundhouse-imperial": {
     "imagePath": "/bottles/roundhouse-imperial.jpg",
-    "imageSourceUrl": "https://tepedentistry.com/wp-content/uploads/2018/11/night-guard-2-768x512.jpg",
-    "productPageUrl": "https://tepedentistry.com/services/preventive-dental-services/occlusal-guards-night-guards/",
-    "productName": "Night Guards - Tepe Dentistry - Colleen Tepe Hofstetter, DDS Night Guards - Tepe Dentistry - Colleen Tepe Hofstetter, DDS"
+    "imageSourceUrl": "https://thewiseolddog.com/cdn/shop/files/F0953FC8-3C57-4BCD-9B50-998A12332D1A.jpg?v=1723654752",
+    "productPageUrl": "https://thewiseolddog.com/products/roundhouse-spirits-gin",
+    "productName": "Roundhouse Spirits Gin"
   },
   "burroughs-reserve": {
     "imagePath": "/bottles/burroughs-reserve.jpg",
     "imageSourceUrl": "https://caskcartel.com/cdn/shop/products/Beefeater_Burrough_s_Reserve_Oak_Rested_Gin.jpg?v=1725558180&width=1000",
     "productPageUrl": "https://caskcartel.com/products/beefeater-burroughs-reserve-oak-rested-gin",
     "productName": "[BUY] Beefeer Burrough's Reserve Oak Rested Gin at CaskCartel.com"
-  },
-  "ciroc-chevanceaux": {
-    "imagePath": "/bottles/ciroc-chevanceaux.png",
-    "imageSourceUrl": "https://images.ctfassets.net/31x7zf94v2b3/p696WxCGrsTeoYkKJAOH9/bb8db9107e943d13cbd2c6093a4edb91/17124014_Ciroc-LimonataBottle.png",
-    "productPageUrl": "https://www.ciroc.com/en",
-    "productName": "page asset"
   },
   "stolichnaya-latvia": {
     "imagePath": "/bottles/stolichnaya-latvia.png",
@@ -3377,12 +3239,6 @@
     "productPageUrl": "https://www.foodszs.com/templet/product/188997.html",
     "productName": "金酱酒.金酱金典||贵州金酱酒业|中国食品招商网"
   },
-  "yingjia-gongjiu": {
-    "imagePath": "/bottles/yingjia-gongjiu.jpg",
-    "imageSourceUrl": "https://i.ytimg.com/vi/F9vV_5vEGqM/maxresdefault.jpg",
-    "productPageUrl": "https://fity.club/lists/suggestions/drawings-ideas/",
-    "productName": "Drawings Ideas New Artwork: 'Running Out Of Ideas' Conor O'Brien Art Drawings Ideas New Artwork: 'Running Out Of Ideas' Conor O'Brien Art"
-  },
   "diaoyutai-baijiu": {
     "imagePath": "/bottles/diaoyutai-baijiu.jpg",
     "imageSourceUrl": "https://img1.cnxiangyan.com/jiunew/2023/0516/5942_1.jpg?x-image-process=style%2Fsy",
@@ -3394,12 +3250,6 @@
     "imageSourceUrl": "https://www.baijiu09.com/data/editor/2110/f8a074d9d2aecd48056d9e023f031929_1633962362_2098.jpg",
     "productPageUrl": "https://baijiu09.com/shop/item.php?it_id=BJA-00769",
     "productName": "[정품]진사회이사주(金沙回沙酒) 찬석7성(钻石7星) 500ml, 53%Vol > 금사회사주(金沙回沙酒)진사회이사주 | 바이주 월드"
-  },
-  "guizhou-chun": {
-    "imagePath": "/bottles/guizhou-chun.jpg",
-    "imageSourceUrl": "https://www.gz-jjjt.com/uploads/20240418/2ca4dc1554347a3a8fee32e3d29717cc.jpg",
-    "productPageUrl": "https://www.gz-jjjt.com/index/product_2/24.html",
-    "productName": "贵酱令®贵州酱酒·義酒-甲秀酱香_贵州酱酒集团"
   },
   "yaxi-jiaojiu": {
     "imagePath": "/bottles/yaxi-jiaojiu.jpg",
@@ -3421,15 +3271,9 @@
   },
   "laobaigan-hengshui": {
     "imagePath": "/bottles/laobaigan-hengshui.jpg",
-    "imageSourceUrl": "https://www.publicdomainpictures.net/pictures/560000/velka/woman-portrait-dress-crop-top-1701794019wVZ.jpg",
-    "productPageUrl": "https://www.publicdomainpictures.net/en/view-image.php?image=552044&picture=woman-portrait-dress-crop-top",
-    "productName": "Woman, Portrait, Dress, Crop Top Free Stock Photo - Public Domain Pictures Woman, Portrait, Dress, Crop Top Free Stock Photo - Public Domain Pictures"
-  },
-  "jiangxiaobai": {
-    "imagePath": "/bottles/jiangxiaobai.jpg",
-    "imageSourceUrl": "https://pbs.twimg.com/media/FmjnsyHXwAIkpTL.jpg",
-    "productPageUrl": "https://x.com/zentreya/status/1614796134316380160/photo/2",
-    "productName": "Zentreya V1.2 Cyber-Legs Enhanced vers. After a small upgrade and blue ... Zentreya V1.2 Cyber-Legs Enhanced vers. After a small upgrade and blue ..."
+    "imageSourceUrl": "https://image.pp918.com/BrandGuide/20190522/20190522134535_2899.jpeg",
+    "productPageUrl": "https://www.pp918.com/guideinfo_9980.html",
+    "productName": "衡水老白干价格表 做代理加盟需要多少钱？ - 品牌之家"
   },
   "hongxing-second": {
     "imagePath": "/bottles/hongxing-second.png",
@@ -3449,12 +3293,6 @@
     "productPageUrl": "https://post.smzdm.com/p/agqkmdxd/",
     "productName": "大曲、小曲、麸曲有什么区别，都用于生产什么酒？_白酒_什么值得买"
   },
-  "shilixiang-rice": {
-    "imagePath": "/bottles/shilixiang-rice.jpg",
-    "imageSourceUrl": "https://qna.smzdm.com/202203/16/623173085b4f96731.jpg_e1080.jpg",
-    "productPageUrl": "https://post.smzdm.com/p/agqkmdxd/",
-    "productName": "大曲、小曲、麸曲有什么区别，都用于生产什么酒？_白酒_什么值得买"
-  },
   "meilan-rice-baijiu": {
     "imagePath": "/bottles/meilan-rice-baijiu.webp",
     "imageSourceUrl": "https://www.cru.ru/upload/resize_cache/ram.watermark/efa/87d/d3e/288242/D36A6819.webp",
@@ -3466,12 +3304,6 @@
     "imageSourceUrl": "https://img14.360buyimg.com/pop/jfs/t1/199876/9/39325/143240/65659768F9c064bbf/f7f89b4b04dcfa7a.png",
     "productPageUrl": "https://post.smzdm.com/p/apm6w45w/",
     "productName": "玉冰烧_白酒_什么值得买"
-  },
-  "quanxing-rice-aroma": {
-    "imagePath": "/bottles/quanxing-rice-aroma.jpg",
-    "imageSourceUrl": "https://qna.smzdm.com/202203/16/623173085b4f96731.jpg_e1080.jpg",
-    "productPageUrl": "https://post.smzdm.com/p/agqkmdxd/",
-    "productName": "大曲、小曲、麸曲有什么区别，都用于生产什么酒？_白酒_什么值得买"
   },
   "hamada-shuzo": {
     "imagePath": "/bottles/hamada-shuzo.jpg",
@@ -3533,29 +3365,11 @@
     "productPageUrl": "https://amp.guideku.com/food/2020/03/06/110000/lawan-covid-19-pabrik-soju-sumbang-stok-alkohol-untuk-jadi-hand-sanitizer",
     "productName": "Lawan Covid-19, Pabrik Soju Sumbang Stok Alkohol untuk Jadi Hand Sanitizer - GuideKu.com"
   },
-  "goodday-soju": {
-    "imagePath": "/bottles/goodday-soju.jpg",
-    "imageSourceUrl": "https://db.kookje.co.kr/news2000/photo/2019/1107/L20191107.22014002674i2.jpg",
-    "productPageUrl": "https://www.kookje.co.kr/news2011/asp/newsbody.asp?code=0200&key=20191107.22014002674",
-    "productName": "�ֹ��ǰ�� �߾� ��ȯ ���������밡�� ��Ʈ�� ��ǳ : �����Ź�"
-  },
-  "c1-soju": {
-    "imagePath": "/bottles/c1-soju.jpg",
-    "imageSourceUrl": "https://enjoyit999.com/FileManagement/images/%E5%A4%A7%E9%AE%AE%E5%8E%9F%E5%91%B3.jpg",
-    "productPageUrl": "https://enjoyit999.com/product/6090",
-    "productName": "韓國燒酒 大鮮 原味燒酒 360ml - 酒酒酒全台最大酒品詢價網"
-  },
   "hallasan-soju": {
-    "imagePath": "/bottles/hallasan-soju.jpg",
-    "imageSourceUrl": "https://www.resortsgal.com/wp-content/uploads/2023/05/journeylittlemermaid-43.jpg",
-    "productPageUrl": "https://ar.inspiredpencil.com/pictures-2023/hidden-things-in-the-little-mermaid",
-    "productName": "Hidden Things In The Little Mermaid Hidden Things In The Little Mermaid"
-  },
-  "won-soju": {
-    "imagePath": "/bottles/won-soju.jpg",
-    "imageSourceUrl": "https://i5.walmartimages.com/asr/0f4764db-97e8-4195-8d98-f959156992ff.f9eddfe08a602def117e724884951d6c.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
-    "productPageUrl": "https://ar.inspiredpencil.com/pictures-2023/pringles-original-ingredients",
-    "productName": "Pringles Original Ingredients Pringles Original Ingredients"
+    "imagePath": "/bottles/hallasan-soju.png",
+    "imageSourceUrl": "https://www.totalwine.com/dynamic/490x/images/242772375/242772375-2-fr.png",
+    "productPageUrl": "https://www.totalwine.com/spirits/soju/hallasan-17-soju/p/242772375",
+    "productName": "Hallasan 17 Soju | Total Wine & More - 6pk-375ml Bottles"
   },
   "igangju": {
     "imagePath": "/bottles/igangju.png",
@@ -3586,18 +3400,6 @@
     "imageSourceUrl": "https://www.wine0222.com/upload/202403241934591nd7y1.png",
     "productPageUrl": "https://www.wine0222.com/products_detail/7615.htm",
     "productName": "馬祖高粱酒 58度高粱酒 - 產品介紹 - 宸瀧菸酒量販｜提供紅酒、威士忌、高粱等多元酒款商品，滿足買酒需求。"
-  },
-  "matsu-dongyin": {
-    "imagePath": "/bottles/matsu-dongyin.png",
-    "imageSourceUrl": "https://www.wine0222.com/upload/202403241934591nd7y1.png",
-    "productPageUrl": "https://www.wine0222.com/products_detail/7615.htm",
-    "productName": "馬祖高粱酒 58度高粱酒 - 產品介紹 - 宸瀧菸酒量販｜提供紅酒、威士忌、高粱等多元酒款商品，滿足買酒需求。"
-  },
-  "ttl-longtian-kaoliang": {
-    "imagePath": "/bottles/ttl-longtian-kaoliang.jpg",
-    "imageSourceUrl": "https://img.p9.com.tw/Upload/ForumImages/2025/04/30/20250430041641900_1.jpeg",
-    "productPageUrl": "https://www.p9.com.tw/Forum/TTL%E7%AA%96%E8%97%8F10%E5%B9%B4%E5%96%AE%E7%94%95%E5%8E%9F%E6%BC%BF-%E4%B8%AD%E5%BC%8F%E7%83%88%E9%85%92-Topics1339675.aspx",
-    "productName": "TTL窖藏10年單甕原漿 :::P9品酒網:::"
   },
   "yushan-nantou-kaoliang": {
     "imagePath": "/bottles/yushan-nantou-kaoliang.jpg",
@@ -3677,12 +3479,6 @@
     "productPageUrl": "https://philipsonwine.se/produkter/sambuca-ramazzotti",
     "productName": "Köp Sambuca Ramazzotti i dag | Philipson Wine"
   },
-  "tekirdag-raki": {
-    "imagePath": "/bottles/tekirdag-raki.jpg",
-    "imageSourceUrl": "https://wallpaperbat.com/img/24943543-snoopy-lying-on-grass-desktop-wallpaper.jpg",
-    "productPageUrl": "https://wallpaperbat.com/peanuts-wallpapers",
-    "productName": "Peanuts Wallpapers - 4k, HD Backgrounds on WallpaperBat Peanuts Wallpapers - 4k, HD Backgrounds on WallpaperBat"
-  },
   "linie-aquavit": {
     "imagePath": "/bottles/linie-aquavit.jpg",
     "imageSourceUrl": "https://www.myspirits.ch/media/catalog/product/cache/150360b587254b7c7e7e3b515d12a0a9/2/2/22415031.jpg",
@@ -3697,15 +3493,15 @@
   },
   "op-anderson": {
     "imagePath": "/bottles/op-anderson.jpg",
-    "imageSourceUrl": "https://i.pinimg.com/736x/6f/ca/e6/6fcae617d3375c9aa557e37e83dac2a4.jpg",
-    "productPageUrl": "https://www.pinterest.com/pin/671036413253042335/",
-    "productName": "o o"
+    "imageSourceUrl": "https://www.handyliquor.com/cdn/shop/files/3BD5A837-7C46-4B70-BB49-213A808E78E1_1024x1024.jpg?v=1736822724",
+    "productPageUrl": "https://www.handyliquor.com/products/o-p-anderson-aquavit",
+    "productName": "O.P. ANDERSON AQUAVIT – M&W INC"
   },
   "braennvin-brennivin": {
-    "imagePath": "/bottles/braennvin-brennivin.jpg",
-    "imageSourceUrl": "https://i.pinimg.com/originals/99/e8/9b/99e89bb965be9f28da54d824c162779d.jpg",
-    "productPageUrl": "https://blog1.accuradio.com/en/first-day-of-9th-grade-printable.html",
-    "productName": "First Day Of 9Th Grade Printable - Educational Printable Worksheets First Day Of 9Th Grade Printable - Educational Printable Worksheets"
+    "imagePath": "/bottles/braennvin-brennivin.png",
+    "imageSourceUrl": "https://assets.flaivy.com/0fbc27b3a54454ec1cec2f78dabcd813.png",
+    "productPageUrl": "https://flaivy.com/articles/3ecfb74c-7a11-4c3f-9110-07a065ef1b57",
+    "productName": "Brennivin"
   },
   "copenhagen-distillery-aquavit": {
     "imagePath": "/bottles/copenhagen-distillery-aquavit.jpg",
@@ -3721,9 +3517,9 @@
   },
   "regans-orange-bitters": {
     "imagePath": "/bottles/regans-orange-bitters.jpg",
-    "imageSourceUrl": "https://www.sazerac.com/content/dam/corporate/culture/sazerachouse-louisiana.jpg",
-    "productPageUrl": "https://www.sazerac.com/",
-    "productName": "official product hero open graph"
+    "imageSourceUrl": "https://www.kroger.com/product/images/large/front/0008800419015",
+    "productPageUrl": "https://www.foodsco.net/p/regans-orange-bitters-10-fl-oz-90-proof-45-abv-/0008800419015",
+    "productName": "Foods Co."
   },
   "bobs-bitters": {
     "imagePath": "/bottles/bobs-bitters.jpg",
@@ -3749,12 +3545,6 @@
     "productPageUrl": "https://www.allendalewine.com/products/13259660/smirnoff-strawberry-vodka",
     "productName": "Smirnoff Strawberry Vodka 1.75L Plastic Bottle - Allendale Wine Shoppe"
   },
-  "finlandia-flavored-category": {
-    "imagePath": "/bottles/finlandia-flavored-category.png",
-    "imageSourceUrl": "https://www.finlandia.com/content/dam/finlandia/corporate/images/2025-campaign/asset-bottle.png",
-    "productPageUrl": "https://www.finlandia.com/",
-    "productName": "page asset"
-  },
   "stoli-flavored-category": {
     "imagePath": "/bottles/stoli-flavored-category.jpg",
     "imageSourceUrl": "https://www.instacart.com/image-server/1200x1200/www.instacart.com/assets/domains/product-image/file/large_89e21caa-807b-41fa-bfe7-6b27ea9f9e8e.jpg",
@@ -3779,12 +3569,6 @@
     "productPageUrl": "https://sudsandspirits.com/tru-garden-organic-vodka/?srsltid=AfmBOoryDOiVQ31rijCmgkNsK_sz3Uhc-rzBYPdNd3uDf_Srxw4MnSnP",
     "productName": "Tru Garden Organic Vodka - Order Today"
   },
-  "square-one-infused-category": {
-    "imagePath": "/bottles/square-one-infused-category.jpg",
-    "imageSourceUrl": "https://images.gotoliquorstore.com/product/1000013191/faa18f99-02c2-4c83-a8d1-df79e35dcaf1_1000_m.jpg",
-    "productPageUrl": "https://www.gotoliquorstore.com/p/square-one-organic-botanical-vodka/13198",
-    "productName": "Square One Organic Botanical Vodka - Buy Online | GotoLiquorStore"
-  },
   "charbay-blood-orange": {
     "imagePath": "/bottles/charbay-blood-orange.jpg",
     "imageSourceUrl": "https://cdn.specsonline.com/images/products/008609575003.jpg",
@@ -3792,10 +3576,10 @@
     "productName": "Charbay Key Lime Vodka"
   },
   "jadequior-absinthe": {
-    "imagePath": "/bottles/jadequior-absinthe.webp",
-    "imageSourceUrl": "https://biz.ocean.co.ua/wp-content/uploads/2024/03/Minecraft-small-town-build.webp",
-    "productPageUrl": "https://biz.ocean.co.ua/minecraft-small-town-build/",
-    "productName": "Minecraft small town build Minecraft small town build"
+    "imagePath": "/bottles/jadequior-absinthe.jpg",
+    "imageSourceUrl": "https://www.binnys.com/globalassets/catalogs/binnys/11/1143/114341/114341.jpg?v=637593987260000000",
+    "productPageUrl": "https://www.binnys.com/spirits/liqueurs-cordials/jade-liqueurs-nouvelle-orleans-absinthe-superieure-114341/",
+    "productName": "Jade Liqueurs Nouvelle Orleans Absinthe Superieure | 750 ml Bottle"
   },
   "la-fee-absinthe": {
     "imagePath": "/bottles/la-fee-absinthe.jpg",
@@ -3828,10 +3612,10 @@
     "productName": "A clear glass bottle of Old Nutchez Trace Tennessee whiskey with a red cap and a beige label featuring crossed rifles and text. user-items-list-carousel__media"
   },
   "company-distilling": {
-    "imagePath": "/bottles/company-distilling.jpg",
-    "imageSourceUrl": "https://static-ca-cdn.eporner.com/gallery/be/Vn/EFwXrQCVnbe/12541743-ginger-lee-tight-cameltoe-cunt-158.jpg",
-    "productPageUrl": "https://www.eporner.com/photo/RTx8maIwuMd/ginger-lee-tight-cameltoe-cunt-158/",
-    "productName": "ginger lee tight pussy cameltoe - ginger lee tight cameltoe cunt (158 ... ginger lee tight pussy cameltoe - ginger lee tight cameltoe cunt (158 ..."
+    "imagePath": "/bottles/company-distilling.png",
+    "imageSourceUrl": "https://seelbachs.com/cdn/shop/files/CompanyDistillingTennesseeWhiskeyFinishedwithAppleWood.png?format=webp&height=1200&v=1760470282",
+    "productPageUrl": "https://companydistilling.com/",
+    "productName": "company-distilling"
   },
   "roe-and-co": {
     "imagePath": "/bottles/roe-and-co.webp",
@@ -3847,117 +3631,75 @@
   },
   "saburomaru": {
     "imagePath": "/bottles/saburomaru.jpg",
-    "imageSourceUrl": "https://www.wakatsuru.co.jp/saburomaru/wp/wp-content/uploads/2023/02/saburomaru_web_2023_ogp.jpg",
+    "imageSourceUrl": "https://mugigawa.com/cdn/shop/files/amoment_srest..._900x.jpg?v=1732857835",
     "productPageUrl": "https://www.wakatsuru.co.jp/saburomaru/",
-    "productName": "official product hero open graph"
+    "productName": "Saburomaru Distillery"
   },
   "quirolo-pisco": {
-    "imagePath": "/bottles/quirolo-pisco.jpg",
-    "imageSourceUrl": "https://i.ytimg.com/vi/52QMLfvEngU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&rs=AOn4CLDD2IOP02dfhoZwyG3xFOW52dJcMg",
-    "productPageUrl": "https://www.youtube.com/watch?v=52QMLfvEngU",
-    "productName": "las anonas y ayotes - YouTube las anonas y ayotes - YouTube"
+    "imagePath": "/bottles/quirolo-pisco.png",
+    "imageSourceUrl": "https://www.totalwine.com/dynamic/490x/images/176886750/176886750-1-fr.png",
+    "productPageUrl": "https://www.totalwine.com/spirits/brandy-cognac/pisco/santiago-queirolo-acholado-pisco/p/176886750",
+    "productName": "Santiago Queirolo Acholado Pisco | Total Wine & More"
   },
   "singani-63": {
-    "imagePath": "/bottles/singani-63.png",
-    "imageSourceUrl": "https://singani63.com/assets/home/grower.png",
+    "imagePath": "/bottles/singani-63.jpg",
+    "imageSourceUrl": "https://cellar.com/cdn/shop/files/SINGANI63CASAREAL.jpg?v=1712695931",
     "productPageUrl": "https://singani63.com/",
-    "productName": "A man with a wine bottle next to grape vines w-full"
+    "productName": "Casa Real Singani 63 Cellars"
   },
   "valle-hermoso-singani": {
-    "imagePath": "/bottles/valle-hermoso-singani.jpg",
-    "imageSourceUrl": "https://i.pinimg.com/originals/ee/42/2b/ee422be63184ca9eafa676357f45f515.jpg",
-    "productPageUrl": "https://storage.googleapis.com/dvhegtfjmjuewe/steak-doneness-chart-blue.html",
-    "productName": "Steak Doneness Chart Blue at Lewis Durkin blog Steak Doneness Chart Blue at Lewis Durkin blog"
+    "imagePath": "/bottles/valle-hermoso-singani.png",
+    "imageSourceUrl": "https://miskisimi.com/cdn/shop/files/Botella-Yokich-Singani.png?v=1732544139",
+    "productPageUrl": "https://www.singani.com.bo/",
+    "productName": "Bodega Valle Hermoso"
   },
   "bellevue-marie-galante": {
-    "imagePath": "/bottles/bellevue-marie-galante.jpg",
-    "imageSourceUrl": "http://kuronekochildblog.com/wp-content/uploads/2025/06/%E5%90%8D%E6%8E%A2%E5%81%B5%E3%82%B3%E3%83%8A%E3%83%B3%EF%BC%8814%EF%BC%89.jpg",
-    "productPageUrl": "https://kuronekochildblog.com/detective-conan-ero-2/",
-    "productName": "【名探偵コナン】エロ・サービスシーンPART②｜蘭と園子のハイレグ水着や蘭のパンチラキックなど | 一般漫画（少年誌・青年誌）サービスシーン 【名探偵コナン】エロ・サービスシーンPART②｜蘭と園子のハイレグ水着や蘭のパンチラキックなど | 一般漫画（少年誌・青年誌）サービスシーン"
+    "imagePath": "/bottles/bellevue-marie-galante.png",
+    "imageSourceUrl": "https://antillessurtarn81.com/cdn/shop/products/bellevue-rhum-blanc-59-1l-marie-galante.png?v=1649428374",
+    "productPageUrl": "https://www.distillerie-bellevue.com/",
+    "productName": "Distillerie Bellevue"
   },
   "new-yarmouth": {
-    "imagePath": "/bottles/new-yarmouth.jpg",
-    "imageSourceUrl": "https://cdn.shopify.com/s/files/1/0268/3695/9406/files/204_pure_600x600.jpg?v=1692351396",
-    "productPageUrl": "https://wiskiiactive.com/blogs/news/vibrant-colors-for-our-best-selling-items-introducing-wiskiis-latest-collection",
-    "productName": "new new"
-  },
-  "el-tesoro-altena": {
-    "imagePath": "/bottles/el-tesoro-altena.webp",
-    "imageSourceUrl": "https://www.eltesorotequila.com/sites/default/files/styles/original/public/2024-06/paradiso-tequila-el-tesoro.png.webp?itok=jmce9pqx",
-    "productPageUrl": "https://www.eltesorotequila.com/",
-    "productName": "el tesoro paradiso bottle front product-carousel-card__bg-image lazyload"
+    "imagePath": "/bottles/new-yarmouth.png",
+    "imageSourceUrl": "https://deliawhisky.de/cdn/shop/files/NewYarmouth_2005_e5ac69e1-9679-48a3-8baf-9c86560c6a70.png?v=1761659456&width=1445",
+    "productPageUrl": "https://www.camparigroup.com/en/page/our-brands/appleton-estate",
+    "productName": "New Yarmouth Distillery"
   },
   "rey-campero-ancestral": {
-    "imagePath": "/bottles/rey-campero-ancestral.webp",
-    "imageSourceUrl": "https://ichef.bbci.co.uk/ace/ws/640/amz/worldservice/live/assets/images/2015/02/10/150210004625_escoltas_venezuela_624x351_afp.jpg.webp",
-    "productPageUrl": "https://www.bbc.com/mundo/noticias/2015/02/150210_venezuela_escoltas_dp",
-    "productName": "Cómo es ser escolta en Venezuela - BBC News Mundo Cómo es ser escolta en Venezuela - BBC News Mundo"
+    "imagePath": "/bottles/rey-campero-ancestral.jpg",
+    "imageSourceUrl": "https://sftequilashop.com/cdn/shop/files/rey-campero-ensamble-tobala-chino-coyote.jpg?v=1728436625",
+    "productPageUrl": "https://reycampero.com/",
+    "productName": "Palenque Rey Campero"
   },
   "dixeebe-ancestral": {
     "imagePath": "/bottles/dixeebe-ancestral.jpg",
-    "imageSourceUrl": "https://i.pinimg.com/originals/3f/01/4b/3f014b4b1ec96dc521febff8a482957f.jpg",
-    "productPageUrl": "https://spanishhpfakes.blogspot.com/",
-    "productName": "Spanish HP Fakes Spanish HP Fakes"
-  },
-  "yoowe-bacanora": {
-    "imagePath": "/bottles/yoowe-bacanora.jpg",
-    "imageSourceUrl": "https://cdn.mensagenscomamor.com/content/images/m000144033.jpg?v=1&w=600&h=600",
-    "productPageUrl": "https://www.mensagenscomamor.com/saci-perere",
-    "productName": "Saci-Pererê. Você realmente conhece essa lenda? Saci-Pererê. Você realmente conhece essa lenda?"
+    "imageSourceUrl": "https://www.mezcalistas.com/wp-content/uploads/2021/10/Tobala-First-Edition-406x1024.jpg",
+    "productPageUrl": "https://www.mezcalistas.com/mezcalero/valentin-cortes/",
+    "productName": "Valentín Cortés Archives – Mezcalistas"
   },
   "la-venenosa-sierra": {
-    "imagePath": "/bottles/la-venenosa-sierra.webp",
-    "imageSourceUrl": "https://ic-vt-nss.xhcdn.com/a/NTZiM2Y2Nzk4YjQzNWNiNzkxYjc2NjY2NGZlMGU2Nzc/s(w:2560,h:1440),webp/021/749/288/v2/2560x1440.216.webp",
-    "productPageUrl": "https://nl.xhamster.com/tags/lesbian-cum",
-    "productName": "Gratis Lesbisch Klaarkomen pornovideo's | xHamster Gratis Lesbisch Klaarkomen pornovideo's | xHamster"
-  },
-  "bonete-raicilla": {
-    "imagePath": "/bottles/bonete-raicilla.jpg",
-    "imageSourceUrl": "https://live.staticflickr.com/65535/52807372348_20c57727aa_b.jpg",
-    "productPageUrl": "https://www.flickr.com/photos/30389998@N03/52807372348/",
-    "productName": "Narrow gauge locomotive and cars at the Çubuk-1 Dam, Ankar… | Flickr Narrow gauge locomotive and cars at the Çubuk-1 Dam, Ankar… | Flickr"
+    "imagePath": "/bottles/la-venenosa-sierra.png",
+    "imageSourceUrl": "https://www.liquorland.co.nz/content/products/la-venenosa-occidental-raicilla-700ml-842548-35375.jpg?auto=webp&canvas=1%3A1&fit=bounds&height=1440&optimize=high&width=1440",
+    "productPageUrl": "https://www.liquorland.co.nz/la-venenosa-occidental-raicilla-700ml-842548",
+    "productName": "Shop La Venenosa Occidental Raicilla 700ml at Liquorland"
   },
   "flor-del-desierto-sierra": {
     "imagePath": "/bottles/flor-del-desierto-sierra.jpg",
-    "imageSourceUrl": "https://d2iwr6cbo83dtj.cloudfront.net/2025/03/flor-de-lotus-judy-gallagher-flickr.jpg",
-    "productPageUrl": "https://fity.club/lists/suggestions/flor-de-lotus/",
-    "productName": "Flor De Lotus Dames En Herenkleding, Online Mode Kopen | SHEIN Flor De Lotus Dames En Herenkleding, Online Mode Kopen | SHEIN"
-  },
-  "sotoleros": {
-    "imagePath": "/bottles/sotoleros.jpg",
-    "imageSourceUrl": "https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-    "productPageUrl": "https://www.pexels.com/photo/beach-during-sunset-635279/",
-    "productName": "Beach During Sunset · Free Stock Photo Beach During Sunset · Free Stock Photo"
+    "imageSourceUrl": "https://leonandsonwine.com/cdn/shop/products/Flor_Del_Desierto_Sotol_Sierra_Mexico-010136.jpg?v=1678475352&width=1000",
+    "productPageUrl": "https://flordeldesierto.com/",
+    "productName": "Flor del Desierto Sierra Vinata"
   },
   "marfa-spirits-sotol": {
     "imagePath": "/bottles/marfa-spirits-sotol.jpg",
-    "imageSourceUrl": "https://images7.alphacoders.com/838/838168.jpg",
-    "productPageUrl": "https://wall.alphacoders.com/big.php?i=838168",
-    "productName": "Epic Drogon and Daenerys HD Wallpaper - Game of Thrones Epic Drogon and Daenerys HD Wallpaper - Game of Thrones"
+    "imageSourceUrl": "https://www.themarfaspirit.com/cdn/shop/files/chihuahaun-desert-sotol_a622ab72-e765-4f5d-818e-224e67521aa1_1512x.jpg?v=1771216880",
+    "productPageUrl": "https://marfaspirits.com/",
+    "productName": "Marfa Spirits Co."
   },
   "oxley-gin": {
     "imagePath": "/bottles/oxley-gin.png",
     "imageSourceUrl": "https://d2y23lczbzsmdc.cloudfront.net/wp-content/uploads/2019/05/01131859/Header-image-1200x634.png",
     "productPageUrl": "https://www.oxleygin.com/",
     "productName": "official product hero open graph"
-  },
-  "citadelle-ferrand": {
-    "imagePath": "/bottles/citadelle-ferrand.png",
-    "imageSourceUrl": "https://citadellegin.com/wp-content/uploads/2023/05/citadelle-rouge-70cl-eu-mockup-front.png",
-    "productPageUrl": "https://citadellegin.com/",
-    "productName": "is-portrait"
-  },
-  "smirnoff-plainfield": {
-    "imagePath": "/bottles/smirnoff-plainfield.avif",
-    "imageSourceUrl": "https://images.ctfassets.net/tlircn1cnxbm/6x286MK7eiSesqysSsawwB/2ee65a88f0f8826fae2b2628e4f02d43/4219059_Smirnoff_FMB_Website_Homepage_ICE_ReadyToDrink_1320x1200.png?fm=avif&w=3840&q=30",
-    "productPageUrl": "https://www.smirnoff.com/en-us",
-    "productName": "Three bottles of Smirnoff Ice in an ice bucket"
-  },
-  "finlandia-rajamaeki": {
-    "imagePath": "/bottles/finlandia-rajamaeki.png",
-    "imageSourceUrl": "https://www.finlandia.com/content/dam/finlandia/corporate/images/2025-campaign/asset-bottle.png",
-    "productPageUrl": "https://www.finlandia.com/",
-    "productName": "page asset"
   },
   "skyy-modesto": {
     "imagePath": "/bottles/skyy-modesto.webp",
@@ -3967,33 +3709,27 @@
   },
   "vesica-vodka": {
     "imagePath": "/bottles/vesica-vodka.jpg",
-    "imageSourceUrl": "https://imgv2-1-f.scribdassets.com/img/document/767946418/original/67ca7a5445/1?v=1",
-    "productPageUrl": "https://www.scribd.com/document/767946418/MECANICA-CORPORAL",
-    "productName": "Principios de Mecánica Corporal y Alineación | PDF Principios de Mecánica Corporal y Alineación | PDF"
+    "imageSourceUrl": "https://preetliquor.com/cdn/shop/files/large_a01fd8dc-dcf2-4efe-aef3-17966a5d2bbe.jpg?v=1735595205",
+    "productPageUrl": "https://vesicavodka.com/",
+    "productName": "vesica-vodka"
   },
   "ohishi-shuzo": {
-    "imagePath": "/bottles/ohishi-shuzo.png",
-    "imageSourceUrl": "https://koperasisriseremban.net/wp-content/uploads/2025/12/bm-4.png",
-    "productPageUrl": "https://koperasisriseremban.net/product/mybuku-modul-bahasa-melayu-tingkatan-2/",
-    "productName": "MyBuku Modul Bahasa Melayu Tingkatan 2 – Koperasi Sri Seremban MyBuku Modul Bahasa Melayu Tingkatan 2 – Koperasi Sri Seremban"
+    "imagePath": "/bottles/ohishi-shuzo.jpg",
+    "imageSourceUrl": "https://shop.r10s.jp/likaman/cabinet/l_10/ikou_20091118/img1022368422.jpg",
+    "productPageUrl": "https://item.rakuten.co.jp/likaman/343532/",
+    "productName": "cite楽天市場 球磨焼酎 大石 琥珀熟成米焼酎 特別限定品 25°1.8L 熊本県 大石酒造場[米焼酎][1800ml][長S]：お酒の専門店　リカマン楽天市場店"
   },
   "taragawa-awamori": {
-    "imagePath": "/bottles/taragawa-awamori.jpg",
-    "imageSourceUrl": "https://aasm.org/wp-content/uploads/2024/07/Montage-Coding-Table-2.jpg",
-    "productPageUrl": "https://aasm.org/coding-for-oximetry-to-capture-both-practice-expense-and-physician-work/",
-    "productName": "Coding for oximetry to capture both practice expense and physician work Coding for oximetry to capture both practice expense and physician work"
-  },
-  "samhae-soju": {
-    "imagePath": "/bottles/samhae-soju.png",
-    "imageSourceUrl": "https://english.visitseoul.net/resources/theme/images/img/visitseoul_sns_20241127.png",
-    "productPageUrl": "https://english.visitseoul.net/",
-    "productName": "official product hero open graph"
+    "imagePath": "/bottles/taragawa-awamori.png",
+    "imageSourceUrl": "https://kuraichibk.com/cdn/shop/files/TaragawaAwamori.png?v=1750257017",
+    "productPageUrl": "https://taragawa.co.jp/",
+    "productName": "Taragawa Distillery"
   },
   "st-germain": {
     "imagePath": "/bottles/st-germain.jpg",
-    "imageSourceUrl": "https://d314f1jaam2x1y.cloudfront.net/wp-content/uploads/2022/10/13073514/FY22_US_St-Germain_WebAssets_BottleInElderflowers_Desktop-3-1.jpg",
+    "imageSourceUrl": "https://bottlebroz.com/cdn/shop/products/St_-Germain-Elderflower-Liqueur-375ml.jpg?v=1665181821",
     "productPageUrl": "https://www.stgermainliqueur.com/",
-    "productName": "lazyload"
+    "productName": "St-Germain Liqueur Works"
   },
   "frangelico": {
     "imagePath": "/bottles/frangelico.png",
@@ -4015,15 +3751,15 @@
   },
   "st-george-absinthe": {
     "imagePath": "/bottles/st-george-absinthe.png",
-    "imageSourceUrl": "https://stgeorgespirits.com/uploads/spirits/_1200x630_crop_center-center_82_none_ns/StGeorge_Absinthe750_NoBackground_1000H.png?mtime=1699440417",
-    "productPageUrl": "https://stgeorgespirits.com/spirits/absinthe-verte",
-    "productName": "official product hero open graph"
+    "imageSourceUrl": "https://media.liquormax.com/eq4rxnkvcouvc1anfqqhe/p-20226-stgeorgeab.png",
+    "productPageUrl": "https://www.lisasliquorbarn.com/spirits/cordials/cord",
+    "productName": "St. George Absinthe Verte 750Ml | Lisa's Liquor Barn"
   },
   "duplais-absinthe": {
     "imagePath": "/bottles/duplais-absinthe.jpg",
-    "imageSourceUrl": "https://www.kingmods.net/uploads/fs22/mods/man-tgs-18500-pack-fs22-1-1.jpg",
-    "productPageUrl": "https://www.kingmods.net/de/ls22/kategorien/fahrzeuge?sort_by=TRENDING_7D&categories=66,65&page=62",
-    "productName": "LS22 Fahrzeuge - KingMods LS22 Fahrzeuge - KingMods"
+    "imageSourceUrl": "https://cdn11.bigcommerce.com/s-d9fkz13/images/stencil/1280x1280/products/1276/2428/duplais-blanche-shadow-gimp__58833.1481234064.jpg?c=2",
+    "productPageUrl": "https://www.maisonabsinthe.com/duplais-swiss-blanche-absinthe-750ml/",
+    "productName": "Duplais, Blanche Absinthe, 750ML"
   },
   "santa-cruz-cuba": {
     "imagePath": "/bottles/santa-cruz-cuba.png",

@@ -294,7 +294,13 @@ async function sourceOne(location) {
         score: 300,
         bytes: downloaded.bytes,
       };
-    } catch {}
+    } catch (error) {
+      return {
+        id: location.id,
+        status: "missing",
+        errors: [`exact bottle image: ${error.message}`],
+      };
+    }
   }
   const pageAttempts = [productPage?.productPageUrl, location.sourceUrl].filter(Boolean);
   try {

@@ -15,7 +15,7 @@ The product should be educational and brand-neutral. It may use commercial brand
 | V2 | Help users discover their preferences | Taste and cocktail questionnaire, explainable recommendations, saved/shareable results |
 | V3 | Connect preferences to nearby places | Permission-based location, nearby cocktail bar discovery, filters, map/list results, third-party place data |
 
-Current V1 implementation snapshot: 377 curated sites across all eight families, at least five matching distilleries for every educational subtype, 53 distinct Scotch whisky distilleries, 17 Japanese-whisky producers and 58 U.S. producers, official producer links for every marker, clustering and search, and a user-controlled 2D Mercator / 3D terrain-globe view. The website reads its original records from `data/distilleries.json` and the subtype expansion from `data/subtype-expansion.json`; a validated, generated `DISTILLERIES.md` gives editors a grouped overview.
+Current V1 implementation snapshot: 628 curated sites across all eight families, at least six matching producers for every core educational subtype and at least eight for most, 53 distinct Scotch whisky distilleries, deep non-whisky coverage, official producer links and unique bottle images for every marker, clustering and search, and a user-controlled 2D Mercator / 3D terrain-globe view. The website reads its original records from `data/distilleries.json` and the subtype expansions from `data/subtype-expansion.json` and `data/additional-subtype-expansion.json`; a validated, generated `DISTILLERIES.md` gives editors a grouped overview.
 
 ## 3. Audience and core journeys
 
@@ -1341,7 +1341,7 @@ Complete the checklist in order within each milestone. A checked task should inc
 - [ ] Complete and expert-review Scotch whisky and shōchū as the vertical slice.
 - [ ] Verify every coordinate, its precision level, and its source.
 - [ ] Complete all approved top-level category summaries and required subcategories.
-- [x] Continue the sourced-marker program beyond the initial 75–150-marker V1 range; the current inventory has 377 sites with at least five per educational subtype, 53 Scotch distilleries, 17 Japanese-whisky producers and 58 U.S. producers.
+- [x] Continue the sourced-marker program beyond the initial 75–150-marker V1 range; the current inventory has 628 sites with at least six per core educational subtype (most have eight or more), 53 Scotch distilleries, broad non-whisky coverage and a unique sourced bottle image for every marker.
 - [ ] Add representative producers/brands without presenting paid or promotional rankings.
 - [ ] Add taste, style, quality, price-driver, law, labeling, and history content to the defined completeness standard.
 - [ ] Check each legal claim against a current primary/official source and record jurisdiction/review date.

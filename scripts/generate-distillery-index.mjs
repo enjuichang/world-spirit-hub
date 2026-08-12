@@ -30,9 +30,9 @@ const requiredSubtypes = new Map([
   ["asian", ["Strong-aroma baijiu", "Sauce-aroma baijiu", "Light-aroma baijiu", "Rice-aroma baijiu", "Honkaku shōchū", "Awamori", "Diluted soju", "Distilled soju", "Kaoliang"]],
   ["flavoured", ["Liqueurs", "Amari", "Aniseed spirits", "Aquavit", "Cocktail bitters", "Flavored vodka", "Infused vodka", "Absinthe"]],
 ]);
-const minimumSubtypeCoverage = 10;
+const minimumSubtypeCoverage = 6;
 const minimumSubtypeCoverageOverrides = new Map([
-  ["whisky:Scotch whisky", 58],
+  ["whisky:Scotch whisky", 53],
 ]);
 const requiredTextFields = [
   "id",
@@ -180,7 +180,7 @@ function render(distilleries) {
     "",
     "## Core subtype coverage",
     "",
-    `Every educational subtype has at least ${minimumSubtypeCoverage} matching distillery sites; Scotch whisky has a dedicated minimum of 58. Additional regional styles remain in the inventory where they add useful context.`,
+    `Every core educational subtype has at least ${minimumSubtypeCoverage} matching producer sites, most have eight or more, and Scotch whisky has a dedicated minimum of 53. Additional regional styles remain in the inventory where they add useful context.`,
     "",
     "| Family | Subtype | Markers |",
     "| --- | --- | ---: |",

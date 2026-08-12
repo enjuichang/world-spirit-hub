@@ -1,12 +1,582 @@
 [
   {
-    "id": "santa-cruz-cuba",
+    "id": "dads-hat",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "company-distilling",
     "status": "sourced",
-    "imagePath": "/bottles/santa-cruz-cuba.png",
-    "imageSourceUrl": "https://img.envioscuba.com/Img_Data/500x500/4038a67d-dfd1-44c0-bbc7-324b4ffaff34.png",
-    "productPageUrl": "https://www.carlostercero.ca/mayabeque/Item?ProdPid=919111",
-    "productName": "Santa Cruz del Norte Carta Blanca Rum",
+    "imagePath": "/bottles/company-distilling.png",
+    "imageSourceUrl": "https://seelbachs.com/cdn/shop/files/CompanyDistillingTennesseeWhiskeyFinishedwithAppleWood.png?format=webp&height=1200&v=1760470282",
+    "productPageUrl": "https://companydistilling.com/",
+    "productName": "company-distilling",
     "score": 300,
-    "bytes": 75492
+    "bytes": 586106
+  },
+  {
+    "id": "teeling",
+    "status": "sourced",
+    "imagePath": "/bottles/teeling.png",
+    "imageSourceUrl": "https://cove27.co.nz/cdn/shop/files/Teeling-Irish-Single-Malt-Whiskey-700ml.png?v=1744752687",
+    "productPageUrl": "https://teelingdistillery.com/",
+    "productName": "Teeling Whiskey Distillery",
+    "score": 300,
+    "bytes": 242594
+  },
+  {
+    "id": "white-oak",
+    "status": "sourced",
+    "imagePath": "/bottles/white-oak.jpg",
+    "imageSourceUrl": "https://marketwinestore.com.au/cdn/shop/files/white_oak_eigashami_whisky_market_wine_store.jpg?crop=center&height=1600&v=1752244898&width=1200",
+    "productPageUrl": "https://www.ei-sake.jp/en/",
+    "productName": "Eigashima Shuzo White Oak Distillery",
+    "score": 300,
+    "bytes": 75982
+  },
+  {
+    "id": "saburomaru",
+    "status": "sourced",
+    "imagePath": "/bottles/saburomaru.jpg",
+    "imageSourceUrl": "https://mugigawa.com/cdn/shop/files/amoment_srest..._900x.jpg?v=1732857835",
+    "productPageUrl": "https://www.wakatsuru.co.jp/saburomaru/",
+    "productName": "Saburomaru Distillery",
+    "score": 300,
+    "bytes": 68903
+  },
+  {
+    "id": "crazy-cock-maharashtra",
+    "status": "sourced",
+    "imagePath": "/bottles/crazy-cock-maharashtra.jpg",
+    "imageSourceUrl": "https://whiskysituation.co.uk/cdn/shop/files/4787027169.jpg?v=1771937230",
+    "productPageUrl": "https://crazycockwhisky.com/",
+    "productName": "crazy-cock-maharashtra",
+    "score": 300,
+    "bytes": 135349
+  },
+  {
+    "id": "barbadillo-brandy",
+    "status": "sourced",
+    "imagePath": "/bottles/barbadillo-brandy.jpg",
+    "imageSourceUrl": "https://www.wine.ua/upload/iblock/b33/barbadillo_brandy_de_jerez_solera_bb_wineua.jpg",
+    "productPageUrl": "https://www.wine.ua/brandy/spain/barbadillo_brandy_de_jerez_solera_bb/",
+    "productName": "Бренди Barbadillo Brandy de Jerez Solera «BB» Set 6 Bottles (Барбадийо Бренди де Херес Солера «ББ» Сет 6 Бутылок) 6x700 мл | Wine.ua",
+    "score": 300,
+    "bytes": 209916
+  },
+  {
+    "id": "quirolo-pisco",
+    "status": "sourced",
+    "imagePath": "/bottles/quirolo-pisco.png",
+    "imageSourceUrl": "https://www.totalwine.com/dynamic/490x/images/176886750/176886750-1-fr.png",
+    "productPageUrl": "https://www.totalwine.com/spirits/brandy-cognac/pisco/santiago-queirolo-acholado-pisco/p/176886750",
+    "productName": "Santiago Queirolo Acholado Pisco | Total Wine & More",
+    "score": 300,
+    "bytes": 71742
+  },
+  {
+    "id": "chateau-du-breuil",
+    "status": "sourced",
+    "imagePath": "/bottles/chateau-du-breuil.jpg",
+    "imageSourceUrl": "https://www.roccavini.it/508-large_default/calvados.jpg",
+    "productPageUrl": "https://www.roccavini.it/liquori/459-calvados.html",
+    "productName": "calvados chateau du breil",
+    "score": 300,
+    "bytes": 24149
+  },
+  {
+    "id": "etter",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "capreolus-distillery",
+    "status": "sourced",
+    "imagePath": "/bottles/capreolus-distillery.webp",
+    "imageSourceUrl": "https://images.squarespace-cdn.com/content/v1/58d56a21e3df28af90a2e37d/1644868479019-XC9AD89VW0667VKO6JI4/CapreolusWebsite_IMGcuts2.jpg",
+    "productPageUrl": "https://www.pmspirits.com/capreolus",
+    "productName": "Capreolus Distillery: Masterful Eaux-de-Vie & Authentic English Fruit Spirit Creations — PM Spirits",
+    "score": 300,
+    "bytes": 26438
+  },
+  {
+    "id": "sausini",
+    "status": "sourced",
+    "imagePath": "/bottles/sausini.jpg",
+    "imageSourceUrl": "https://www.shop.misturabolivia.com/cdn/shop/files/DSC8069copy.jpg?v=1693511877",
+    "productPageUrl": "https://www.sausini.com/",
+    "productName": "Bodegas Sausini",
+    "score": 300,
+    "bytes": 55176
+  },
+  {
+    "id": "los-parrales-singani",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: fetch failed"
+    ]
+  },
+  {
+    "id": "singani-63",
+    "status": "sourced",
+    "imagePath": "/bottles/singani-63.jpg",
+    "imageSourceUrl": "https://cellar.com/cdn/shop/files/SINGANI63CASAREAL.jpg?v=1712695931",
+    "productPageUrl": "https://singani63.com/",
+    "productName": "Casa Real Singani 63 Cellars",
+    "score": 300,
+    "bytes": 32190
+  },
+  {
+    "id": "valle-hermoso-singani",
+    "status": "sourced",
+    "imagePath": "/bottles/valle-hermoso-singani.png",
+    "imageSourceUrl": "https://miskisimi.com/cdn/shop/files/Botella-Yokich-Singani.png?v=1732544139",
+    "productPageUrl": "https://www.singani.com.bo/",
+    "productName": "Bodega Valle Hermoso",
+    "score": 300,
+    "bytes": 308422
+  },
+  {
+    "id": "worthy-park-rum",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "angostura-rum",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: implausible image size 1692"
+    ]
+  },
+  {
+    "id": "bielle",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: fetch failed"
+    ]
+  },
+  {
+    "id": "bellevue-marie-galante",
+    "status": "sourced",
+    "imagePath": "/bottles/bellevue-marie-galante.png",
+    "imageSourceUrl": "https://antillessurtarn81.com/cdn/shop/products/bellevue-rhum-blanc-59-1l-marie-galante.png?v=1649428374",
+    "productPageUrl": "https://www.distillerie-bellevue.com/",
+    "productName": "Distillerie Bellevue",
+    "score": 300,
+    "bytes": 377323
+  },
+  {
+    "id": "worthy-park-jamaica",
+    "status": "sourced",
+    "imagePath": "/bottles/worthy-park-jamaica.jpg",
+    "imageSourceUrl": "https://cdn11.bigcommerce.com/s-2ozph3dkpy/images/stencil/1280x1280/products/565516/512788/JM-XWP-05-06__48919.1686379255.jpg?c=1",
+    "productPageUrl": "https://thecellardor.com/worthy-park-12-year-old-single-estate-rum-2006-750ml/",
+    "productName": "Worthy Park 12 Year Old Single Estate Rum 2006 750ml",
+    "score": 300,
+    "bytes": 97798
+  },
+  {
+    "id": "new-yarmouth",
+    "status": "sourced",
+    "imagePath": "/bottles/new-yarmouth.png",
+    "imageSourceUrl": "https://deliawhisky.de/cdn/shop/files/NewYarmouth_2005_e5ac69e1-9679-48a3-8baf-9c86560c6a70.png?v=1761659456&width=1445",
+    "productPageUrl": "https://www.camparigroup.com/en/page/our-brands/appleton-estate",
+    "productName": "New Yarmouth Distillery",
+    "score": 300,
+    "bytes": 445517
+  },
+  {
+    "id": "engenho-anisio-santiago",
+    "status": "sourced",
+    "imagePath": "/bottles/engenho-anisio-santiago.jpg",
+    "imageSourceUrl": "https://cachacarianacional.vteximg.com.br/arquivos/ids/168708-1000-1000/cachaca-anisio-santiago-edicao-especial-80-anos-500ml-081828_2.jpg?v=638267551432170000",
+    "productPageUrl": "https://www.cachacarianacional.com.br/cachaca-anisio-santiago-edicao-especial-80-anos-500ml-081828/p",
+    "productName": "Cachaça Anísio Santiago Edição Especial 80 Anos 500ml - Cachaçaria Nacional",
+    "score": 300,
+    "bytes": 95807
+  },
+  {
+    "id": "rey-campero-ancestral",
+    "status": "sourced",
+    "imagePath": "/bottles/rey-campero-ancestral.jpg",
+    "imageSourceUrl": "https://sftequilashop.com/cdn/shop/files/rey-campero-ensamble-tobala-chino-coyote.jpg?v=1728436625",
+    "productPageUrl": "https://reycampero.com/",
+    "productName": "Palenque Rey Campero",
+    "score": 300,
+    "bytes": 63856
+  },
+  {
+    "id": "dixeebe-ancestral",
+    "status": "sourced",
+    "imagePath": "/bottles/dixeebe-ancestral.jpg",
+    "imageSourceUrl": "https://www.mezcalistas.com/wp-content/uploads/2021/10/Tobala-First-Edition-406x1024.jpg",
+    "productPageUrl": "https://www.mezcalistas.com/mezcalero/valentin-cortes/",
+    "productName": "Valentín Cortés Archives – Mezcalistas",
+    "score": 300,
+    "bytes": 30047
+  },
+  {
+    "id": "bacanora-42",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "aguamiel-bacanora",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "yoowe-bacanora",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "la-venenosa-sierra",
+    "status": "sourced",
+    "imagePath": "/bottles/la-venenosa-sierra.png",
+    "imageSourceUrl": "https://www.liquorland.co.nz/content/products/la-venenosa-occidental-raicilla-700ml-842548-35375.jpg?auto=webp&canvas=1%3A1&fit=bounds&height=1440&optimize=high&width=1440",
+    "productPageUrl": "https://www.liquorland.co.nz/la-venenosa-occidental-raicilla-700ml-842548",
+    "productName": "Shop La Venenosa Occidental Raicilla 700ml at Liquorland",
+    "score": 300,
+    "bytes": 195663
+  },
+  {
+    "id": "bonete-raicilla",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "de-una-raicilla",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "clande",
+    "status": "sourced",
+    "imagePath": "/bottles/clande.jpg",
+    "imageSourceUrl": "https://www.liquorexpress.us/cdn/shop/products/b1d26a4d-4bbb-4917-bc51-88a7bd1e3460_21d34fef-1b0a-417d-b746-b76eeb0277b1.jpg?v=1700346383",
+    "productPageUrl": "https://sotolclande.com/",
+    "productName": "clande",
+    "score": 300,
+    "bytes": 292668
+  },
+  {
+    "id": "flor-del-desierto-sierra",
+    "status": "sourced",
+    "imagePath": "/bottles/flor-del-desierto-sierra.jpg",
+    "imageSourceUrl": "https://leonandsonwine.com/cdn/shop/products/Flor_Del_Desierto_Sotol_Sierra_Mexico-010136.jpg?v=1678475352&width=1000",
+    "productPageUrl": "https://flordeldesierto.com/",
+    "productName": "Flor del Desierto Sierra Vinata",
+    "score": 300,
+    "bytes": 93170
+  },
+  {
+    "id": "sotoleros",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "marfa-spirits-sotol",
+    "status": "sourced",
+    "imagePath": "/bottles/marfa-spirits-sotol.jpg",
+    "imageSourceUrl": "https://www.themarfaspirit.com/cdn/shop/files/chihuahaun-desert-sotol_a622ab72-e765-4f5d-818e-224e67521aa1_1512x.jpg?v=1771216880",
+    "productPageUrl": "https://marfaspirits.com/",
+    "productName": "Marfa Spirits Co.",
+    "score": 300,
+    "bytes": 79961
+  },
+  {
+    "id": "tanqueray-cameronbridge",
+    "status": "sourced",
+    "imagePath": "/bottles/tanqueray-cameronbridge.png",
+    "imageSourceUrl": "https://webmail.cheers.com.np/uploads/products/305639852515295741900027157211145593747597.png",
+    "productPageUrl": "https://webmail.cheers.com.np/liquor/product/tanqueray-london-dry-gin-1l",
+    "productName": "Tanqueray London Dry Gin 1L - Cheers Online Store Nepal",
+    "score": 300,
+    "bytes": 300003
+  },
+  {
+    "id": "bols-genever",
+    "status": "sourced",
+    "imagePath": "/bottles/bols-genever.jpg",
+    "imageSourceUrl": "https://www.bittersandbottles.com/cdn/shop/products/bols-genever_1280x1280.jpg?v=1571310929",
+    "productPageUrl": "https://www.bittersandbottles.com/products/bols-genever?srsltid=AfmBOoqxjhWMAGaHjek_qS6T3ZDMFuOh7zU3fbbHTB99Yk3wVB4zawLV",
+    "productName": "Bols Genever — Bitters & Bottles",
+    "score": 300,
+    "bytes": 151902
+  },
+  {
+    "id": "copperworks-cask-gin",
+    "status": "sourced",
+    "imagePath": "/bottles/copperworks-cask-gin.png",
+    "imageSourceUrl": "https://bevmo.com/cdn/shop/files/3f13b94b-4782-439a-80c5-d83d45821816-background_removed.png?v=1745365006&width=1445",
+    "productPageUrl": "https://copperworksdistilling.com/",
+    "productName": "Copperworks Distilling",
+    "score": 300,
+    "bytes": 109428
+  },
+  {
+    "id": "kyrö-koskue",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "roundhouse-imperial",
+    "status": "sourced",
+    "imagePath": "/bottles/roundhouse-imperial.jpg",
+    "imageSourceUrl": "https://thewiseolddog.com/cdn/shop/files/F0953FC8-3C57-4BCD-9B50-998A12332D1A.jpg?v=1723654752",
+    "productPageUrl": "https://thewiseolddog.com/products/roundhouse-spirits-gin",
+    "productName": "Roundhouse Spirits Gin",
+    "score": 300,
+    "bytes": 847829
+  },
+  {
+    "id": "luksusowa",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 404"
+    ]
+  },
+  {
+    "id": "vesica-vodka",
+    "status": "sourced",
+    "imagePath": "/bottles/vesica-vodka.jpg",
+    "imageSourceUrl": "https://preetliquor.com/cdn/shop/files/large_a01fd8dc-dcf2-4efe-aef3-17966a5d2bbe.jpg?v=1735595205",
+    "productPageUrl": "https://vesicavodka.com/",
+    "productName": "vesica-vodka",
+    "score": 300,
+    "bytes": 20996
+  },
+  {
+    "id": "jiannanchun",
+    "status": "sourced",
+    "imagePath": "/bottles/jiannanchun.jpg",
+    "imageSourceUrl": "https://imgservice.suning.cn/uimg1/b2c/image/87xBbOD6EIbzG0PHneI02Q.jpg_800w_800h_4e",
+    "productPageUrl": "https://www.suning.com/item/0000000000/12386773201.html",
+    "productName": "剑南春白酒报价_参数_图片_视频_怎么样_问答-苏宁易购",
+    "score": 300,
+    "bytes": 441088
+  },
+  {
+    "id": "shuijingfang",
+    "status": "sourced",
+    "imagePath": "/bottles/shuijingfang.png",
+    "imageSourceUrl": "https://pbexpressliquor.com/cdn/shop/files/Shui-Jing-Fang-2016-removebg-preview_grande.png?v=1689458824",
+    "productPageUrl": "https://www.shuijingfang.com/",
+    "productName": "Shuijingfang Distillery",
+    "score": 300,
+    "bytes": 309355
+  },
+  {
+    "id": "yingjia-gongjiu",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: fetch failed"
+    ]
+  },
+  {
+    "id": "laobaigan-hengshui",
+    "status": "sourced",
+    "imagePath": "/bottles/laobaigan-hengshui.jpg",
+    "imageSourceUrl": "https://image.pp918.com/BrandGuide/20190522/20190522134535_2899.jpeg",
+    "productPageUrl": "https://www.pp918.com/guideinfo_9980.html",
+    "productName": "衡水老白干价格表 做代理加盟需要多少钱？ - 品牌之家",
+    "score": 300,
+    "bytes": 77668
+  },
+  {
+    "id": "jiangxiaobai",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: The operation was aborted due to timeout"
+    ]
+  },
+  {
+    "id": "ohishi-shuzo",
+    "status": "sourced",
+    "imagePath": "/bottles/ohishi-shuzo.jpg",
+    "imageSourceUrl": "https://shop.r10s.jp/likaman/cabinet/l_10/ikou_20091118/img1022368422.jpg",
+    "productPageUrl": "https://item.rakuten.co.jp/likaman/343532/",
+    "productName": "cite楽天市場 球磨焼酎 大石 琥珀熟成米焼酎 特別限定品 25°1.8L 熊本県 大石酒造場[米焼酎][1800ml][長S]：お酒の専門店　リカマン楽天市場店",
+    "score": 300,
+    "bytes": 62305
+  },
+  {
+    "id": "chuko-awamori",
+    "status": "sourced",
+    "imagePath": "/bottles/chuko-awamori.png",
+    "imageSourceUrl": "https://kuraichibk.com/cdn/shop/files/ChukoRyukyuAwamoriKusu_ecef85f1-60d0-46be-ae10-ddcaa98e5517.png?v=1750257050",
+    "productPageUrl": "https://www.chuko-awamori.com/en/",
+    "productName": "Chuko Shuzo",
+    "score": 300,
+    "bytes": 190461
+  },
+  {
+    "id": "taragawa-awamori",
+    "status": "sourced",
+    "imagePath": "/bottles/taragawa-awamori.png",
+    "imageSourceUrl": "https://kuraichibk.com/cdn/shop/files/TaragawaAwamori.png?v=1750257017",
+    "productPageUrl": "https://taragawa.co.jp/",
+    "productName": "Taragawa Distillery",
+    "score": 300,
+    "bytes": 193318
+  },
+  {
+    "id": "hallasan-soju",
+    "status": "sourced",
+    "imagePath": "/bottles/hallasan-soju.png",
+    "imageSourceUrl": "https://www.totalwine.com/dynamic/490x/images/242772375/242772375-2-fr.png",
+    "productPageUrl": "https://www.totalwine.com/spirits/soju/hallasan-17-soju/p/242772375",
+    "productName": "Hallasan 17 Soju | Total Wine & More - 6pk-375ml Bottles",
+    "score": 300,
+    "bytes": 86506
+  },
+  {
+    "id": "tokki-soju",
+    "status": "sourced",
+    "imagePath": "/bottles/tokki-soju.png",
+    "imageSourceUrl": "https://www.compagniadeicaraibi.com/public/f63f93b982d2475abfebbb7e208e9ab0.png",
+    "productPageUrl": "https://www.compagniadeicaraibi.com/articoli/TOKKI/SOJ08395",
+    "productName": "SOJU TOKKI GRAY",
+    "score": 300,
+    "bytes": 242745
+  },
+  {
+    "id": "won-soju",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 403"
+    ]
+  },
+  {
+    "id": "samhae-soju",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 410"
+    ]
+  },
+  {
+    "id": "st-germain",
+    "status": "sourced",
+    "imagePath": "/bottles/st-germain.jpg",
+    "imageSourceUrl": "https://bottlebroz.com/cdn/shop/products/St_-Germain-Elderflower-Liqueur-375ml.jpg?v=1665181821",
+    "productPageUrl": "https://www.stgermainliqueur.com/",
+    "productName": "St-Germain Liqueur Works",
+    "score": 300,
+    "bytes": 70092
+  },
+  {
+    "id": "tekirdag-raki",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: image HTTP 403"
+    ]
+  },
+  {
+    "id": "det-norske-brenneri",
+    "status": "sourced",
+    "imagePath": "/bottles/det-norske-brenneri.png",
+    "imageSourceUrl": "https://images-eu-prod.cms.commerce.dynamics.com/cms/api/rxdcjxfpsr/imageFileData/search?fileName=%2FProducts%2F592048_000_001.png",
+    "productPageUrl": "https://www.servicenord.no/l%C3%B8iten-linie-41%2C5%25-70cl/5637149863.p",
+    "productName": "LØITEN LINIE 41,5% 70CL",
+    "score": 300,
+    "bytes": 194268
+  },
+  {
+    "id": "op-anderson",
+    "status": "sourced",
+    "imagePath": "/bottles/op-anderson.jpg",
+    "imageSourceUrl": "https://www.handyliquor.com/cdn/shop/files/3BD5A837-7C46-4B70-BB49-213A808E78E1_1024x1024.jpg?v=1736822724",
+    "productPageUrl": "https://www.handyliquor.com/products/o-p-anderson-aquavit",
+    "productName": "O.P. ANDERSON AQUAVIT – M&W INC",
+    "score": 300,
+    "bytes": 61001
+  },
+  {
+    "id": "braennvin-brennivin",
+    "status": "sourced",
+    "imagePath": "/bottles/braennvin-brennivin.png",
+    "imageSourceUrl": "https://assets.flaivy.com/0fbc27b3a54454ec1cec2f78dabcd813.png",
+    "productPageUrl": "https://flaivy.com/articles/3ecfb74c-7a11-4c3f-9110-07a065ef1b57",
+    "productName": "Brennivin",
+    "score": 300,
+    "bytes": 187806
+  },
+  {
+    "id": "regans-orange-bitters",
+    "status": "sourced",
+    "imagePath": "/bottles/regans-orange-bitters.jpg",
+    "imageSourceUrl": "https://www.kroger.com/product/images/large/front/0008800419015",
+    "productPageUrl": "https://www.foodsco.net/p/regans-orange-bitters-10-fl-oz-90-proof-45-abv-/0008800419015",
+    "productName": "Foods Co.",
+    "score": 300,
+    "bytes": 21371
+  },
+  {
+    "id": "soplica",
+    "status": "sourced",
+    "imagePath": "/bottles/soplica.jpg",
+    "imageSourceUrl": "https://wodkacompany.com/cdn/shop/files/soplica-zimowa-quince-raspberry-cinnamon-vodka-liqueur-pigwa-malina-cynamon-wodkacompany.jpg?crop=center&height=1200&v=1733258923&width=1200",
+    "productPageUrl": "https://soplica.pl/",
+    "productName": "Soplica Production Site",
+    "score": 300,
+    "bytes": 68413
+  },
+  {
+    "id": "spring44-vodka",
+    "status": "missing",
+    "errors": [
+      "exact bottle image: not an image"
+    ]
+  },
+  {
+    "id": "jadequior-absinthe",
+    "status": "sourced",
+    "imagePath": "/bottles/jadequior-absinthe.jpg",
+    "imageSourceUrl": "https://www.binnys.com/globalassets/catalogs/binnys/11/1143/114341/114341.jpg?v=637593987260000000",
+    "productPageUrl": "https://www.binnys.com/spirits/liqueurs-cordials/jade-liqueurs-nouvelle-orleans-absinthe-superieure-114341/",
+    "productName": "Jade Liqueurs Nouvelle Orleans Absinthe Superieure | 750 ml Bottle",
+    "score": 300,
+    "bytes": 424166
+  },
+  {
+    "id": "st-george-absinthe",
+    "status": "sourced",
+    "imagePath": "/bottles/st-george-absinthe.png",
+    "imageSourceUrl": "https://media.liquormax.com/eq4rxnkvcouvc1anfqqhe/p-20226-stgeorgeab.png",
+    "productPageUrl": "https://www.lisasliquorbarn.com/spirits/cordials/cord",
+    "productName": "St. George Absinthe Verte 750Ml | Lisa's Liquor Barn",
+    "score": 300,
+    "bytes": 184608
+  },
+  {
+    "id": "duplais-absinthe",
+    "status": "sourced",
+    "imagePath": "/bottles/duplais-absinthe.jpg",
+    "imageSourceUrl": "https://cdn11.bigcommerce.com/s-d9fkz13/images/stencil/1280x1280/products/1276/2428/duplais-blanche-shadow-gimp__58833.1481234064.jpg?c=2",
+    "productPageUrl": "https://www.maisonabsinthe.com/duplais-swiss-blanche-absinthe-750ml/",
+    "productName": "Duplais, Blanche Absinthe, 750ML",
+    "score": 300,
+    "bytes": 80205
   }
 ]

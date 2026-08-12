@@ -11,7 +11,6 @@
   ],
   "whisky:Rye whiskey": [
     ["wilderness-trail-rye", "Wilderness Trail Distillery", "Danville, Kentucky", "United States", -84.786, 37.646, "Sweet-mash Kentucky rye whiskey", "rye spice", "citrus", "oak", "https://wildernesstraildistillery.com/"],
-    ["dads-hat", "Mountain Laurel Spirits", "Bristol, Pennsylvania", "United States", -74.851, 40.104, "Pennsylvania-style rye revival", "rye", "pepper", "dried fruit", "https://dadshatrye.com/"],
     ["michters-shively", "Michter’s Shively Distillery", "Louisville, Kentucky", "United States", -85.764, 38.19, "Small-batch Kentucky rye production", "rye", "caramel", "spice", "https://michters.com/distillery/"]
   ],
   "whisky:Tennessee whiskey": [
@@ -77,8 +76,7 @@
   ],
   "brandy:Fruit eaux-de-vie": [
     ["massenez", "Distillerie Massenez", "Dieffenbach-au-Val, Alsace", "France", 7.33, 48.318, "Alsatian fruit eaux-de-vie distillery", "pear", "cherry", "flowers", "https://www.massenez.com/en/"],
-    ["miclo", "Distillerie Miclo", "Lapoutroie, Alsace", "France", 7.17, 48.153, "Alsatian orchard-fruit distillery", "pear", "raspberry", "stone fruit", "https://www.distillerie-miclo.com/en/"],
-    ["etter", "Etter Distillery", "Zug", "Switzerland", 8.516, 47.172, "Swiss cherry and fruit-spirit distillery", "cherry", "fruit stone", "spice", "https://www.etter-distillerie.ch/en/"]
+    ["miclo", "Distillerie Miclo", "Lapoutroie, Alsace", "France", 7.17, 48.153, "Alsatian orchard-fruit distillery", "pear", "raspberry", "stone fruit", "https://www.distillerie-miclo.com/en/"]
   ],
   "brandy:Singani": [
     ["rujero", "Bodegas y Viñedos Rujero", "Tarija", "Bolivia", -64.73, -21.54, "High-altitude Moscatel singani producer", "muscat", "flowers", "citrus", "https://rujero.com/"],
@@ -92,7 +90,6 @@
   ],
 
   "rum:Molasses-based rum": [
-    ["worthy-park-rum", "Worthy Park Estate", "Lluidas Vale, Saint Catherine", "Jamaica", -77.15, 18.13, "Estate molasses rum distillery", "banana", "molasses", "ester", "https://worthyparkestate.com/"],
     ["st-lucia-distillers", "St. Lucia Distillers", "Roseau Valley", "Saint Lucia", -61.025, 13.95, "Multi-still Caribbean rum distillery", "molasses", "tropical fruit", "spice", "https://www.stluciadistillers.com/"],
     ["beenleigh", "Beenleigh Artisan Distillery", "Eagleby, Queensland", "Australia", 153.218, -27.704, "Australian molasses-rum distillery", "caramel", "banana", "oak", "https://www.beenleighrum.com.au/"]
   ],
@@ -149,7 +146,6 @@
   ],
   "agave:Raicilla": [
     ["la-venenosa-costa", "Taberna La Venenosa Costa", "El Tuito, Jalisco", "Mexico", -105.32, 20.32, "Coastal raicilla taberna", "wild agave", "cheese", "tropical fruit", "https://www.lavenenosa.com/"],
-    ["el-real-raicilla", "Destilería El Real", "San Sebastián del Oeste, Jalisco", "Mexico", -104.85, 20.76, "Sierra raicilla distillery", "agave", "pine", "smoke", "https://raicillaelreal.com/"],
     ["hacienda-guadalupe-raicilla", "Taberna Hacienda de Guadalupe", "Mascota, Jalisco", "Mexico", -104.79, 20.53, "Mountain raicilla taberna", "roasted agave", "herbs", "earth", "https://haciendadeguadalupe.com/"]
   ],
   "agave:Sotol": [
@@ -196,8 +192,7 @@
   ],
   "vodka:Characterful vodka": [
     ["arbikie-vodka", "Arbikie Highland Estate Distillery", "Inverkeilor, Angus", "Scotland", -2.62, 56.64, "Estate-grown characterful vodka", "potato", "cereal", "earth", "https://arbikie.com/"],
-    ["chase-vodka", "Chase Distillery", "Herefordshire", "United Kingdom", -2.65, 52.08, "Single-estate potato vodka", "potato", "cream", "pepper", "https://www.chasedistillery.co.uk/"] ,
-    ["belvedere", "Polmos Żyrardów / Belvedere", "Żyrardów", "Poland", 20.43, 52.05, "Polish rye vodka with raw-material character", "rye", "pepper", "cream", "https://www.belvederevodka.com/en-int/our-story/"]
+    ["chase-vodka", "Chase Distillery", "Herefordshire", "United Kingdom", -2.65, 52.08, "Single-estate potato vodka", "potato", "cream", "pepper", "https://www.chasedistillery.co.uk/"]
   ],
   "vodka:Flavored vodka": [
     ["new-amsterdam-flavors", "New Amsterdam Spirits Production", "Modesto, California", "United States", -121.0, 37.64, "Fruit-flavored American vodka range", "citrus", "berry", "clean", "https://www.newamsterdamspirits.com/vodka"] ,
@@ -206,11 +201,9 @@
   ],
   "vodka:Infused vodka": [
     ["boyd-blair", "Pennsylvania Pure Distilleries", "Glenshaw, Pennsylvania", "United States", -79.96, 40.53, "Small-batch potato vodka infusions", "potato", "botanicals", "pepper", "https://boydandblair.com/"] ,
-    ["44-north", "44° North Distillery", "Rigby, Idaho", "United States", -111.91, 43.67, "Idaho vodka with fruit infusions", "potato", "huckleberry", "nectarine", "https://44northvodka.com/"] ,
-    ["cardinal-vodka", "Cardinal Spirits", "Bloomington, Indiana", "United States", -86.53, 39.16, "Craft vodka and botanical infusions", "cereal", "botanicals", "citrus", "https://www.cardinalspirits.com/"]
+    ["44-north", "44° North Distillery", "Rigby, Idaho", "United States", -111.91, 43.67, "Idaho vodka with fruit infusions", "potato", "huckleberry", "nectarine", "https://44northvodka.com/"]
   ],
   "vodka:Potato vodka": [
-    ["luksusowa", "Luksusowa Vodka Distillery", "Poznań", "Poland", 16.93, 52.41, "Polish potato vodka producer", "potato", "cream", "pepper", "https://www.luksusowavodka.com/"] ,
     ["blue-ice", "Distilled Resources / Blue Ice", "Rigby, Idaho", "United States", -111.91, 43.67, "Idaho potato vodka distillery", "potato", "mineral", "clean", "https://blueicevodka.com/"] ,
     ["zodiac-vodka", "Zodiac Vodka Distillery", "Rigby, Idaho", "United States", -111.92, 43.68, "American potato vodka producer", "potato", "cream", "citrus", "https://zodiacvodka.com/"]
   ],
@@ -221,9 +214,7 @@
     ["shuijingfang", "Shuijingfang Distillery", "Chengdu, Sichuan", "China", 104.08, 30.67, "Historic Chengdu strong-aroma baijiu site", "sorghum", "fruit", "savory", "https://www.shuijingfang.com/"]
   ],
   "asian:Sauce-aroma baijiu": [
-    ["guotai", "Guotai Distillery", "Maotai, Guizhou", "China", 106.36, 27.84, "Maotai-town sauce-aroma baijiu", "sorghum", "soy", "roasted grain", "https://www.guotaijiu.com/"],
-    ["xijiu", "Guizhou Xijiu Distillery", "Xishui, Guizhou", "China", 106.2, 28.33, "Guizhou sauce-aroma baijiu producer", "sorghum", "umami", "cocoa", "https://www.gzxijiu.com/"],
-    ["zhenjiu", "Guizhou Zhenjiu Distillery", "Zunyi, Guizhou", "China", 106.93, 27.73, "Zunyi sauce-aroma baijiu distillery", "sorghum", "roasted grain", "herbs", "https://www.zhenjiu.com/"]
+    ["guotai", "Guotai Distillery", "Maotai, Guizhou", "China", 106.36, 27.84, "Maotai-town sauce-aroma baijiu", "sorghum", "soy", "roasted grain", "https://www.guotaijiu.com/"]
   ],
   "asian:Light-aroma baijiu": [
     ["niulanshan", "Niulanshan Distillery", "Shunyi, Beijing", "China", 116.65, 40.13, "Beijing light-aroma erguotou producer", "sorghum", "flowers", "pepper", "https://www.niulanshan.com.cn/"],
@@ -247,8 +238,7 @@
   ],
   "asian:Diluted soju": [
     ["muhak", "Muhak Changwon Plant", "Changwon, Gyeongsangnam-do", "South Korea", 128.68, 35.23, "Regional diluted-soju production site", "clean", "cereal", "soft", "https://www.muhak.co.kr/"],
-    ["daesun", "Daesun Distilling", "Busan", "South Korea", 129.08, 35.18, "Busan diluted-soju producer", "clean", "citrus", "soft", "https://www.daesun.co.kr/"],
-    ["bohae", "Bohae Brewery", "Mokpo, Jeollanam-do", "South Korea", 126.39, 34.81, "Southwestern Korean diluted-soju producer", "clean", "fruit", "cereal", "https://www.bohae.co.kr/"]
+    ["daesun", "Daesun Distilling", "Busan", "South Korea", 129.08, 35.18, "Busan diluted-soju producer", "clean", "citrus", "soft", "https://www.daesun.co.kr/"]
   ],
   "asian:Distilled soju": [
     ["hwayo-gwangjuyo", "Kwangjuyo Distillery", "Yeoju, Gyeonggi-do", "South Korea", 127.64, 37.3, "Rice-based distilled-soju producer", "rice", "flowers", "pepper", "https://www.hwayo.com/eng/"],
@@ -293,8 +283,7 @@
   ],
   "flavoured:Infused vodka": [
     ["heritage-infused-vodka", "Heritage Distilling Co.", "Gig Harbor, Washington", "United States", -122.58, 47.33, "Craft botanical and fruit vodka infusions", "lavender", "citrus", "berry", "https://heritagedistilling.com/"] ,
-    ["ohso-vodka", "O.H.S.O. Distillery", "Scottsdale, Arizona", "United States", -111.91, 33.49, "Small-batch infused vodka producer", "citrus", "herbs", "pepper", "https://www.ohsobrewery.com/distillery"] ,
-    ["spring44-vodka", "Spring44 Distilling", "Loveland, Colorado", "United States", -105.08, 40.4, "Mountain-water vodka and infusions", "citrus", "honey", "botanicals", "https://spring44.com/"]
+    ["ohso-vodka", "O.H.S.O. Distillery", "Scottsdale, Arizona", "United States", -111.91, 33.49, "Small-batch infused vodka producer", "citrus", "herbs", "pepper", "https://www.ohsobrewery.com/distillery"]
   ],
   "flavoured:Absinthe": [
     ["emile-pernot", "Distillerie Les Fils d’Émile Pernot", "La Cluse-et-Mijoux, Doubs", "France", 6.38, 46.88, "Pontarlier absinthe distillery", "wormwood", "anise", "fennel", "https://www.emilepernot.fr/en/"] ,

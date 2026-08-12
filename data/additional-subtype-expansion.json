@@ -86,7 +86,6 @@
   ],
   "brandy:Pisco": [
     ["quirolo-pisco", "Santiago Queirolo Winery", "Pachacámac, Lima", "Peru", -76.87, -12.22, "Peruvian grape-to-pisco winery", "grape", "flowers", "citrus", "https://www.santiagoqueirolo.com/"],
-    ["hacienda-la-caravedo-porton", "Hacienda La Caravedo / Pisco Portón", "Ica", "Peru", -75.728, -14.068, "Historic Peruvian pisco hacienda", "grape", "flowers", "fruit", "https://www.piscoporton.com/"],
     ["tabernero-pisco", "Bodegas y Viñedos Tabernero", "Chincha Alta, Ica", "Peru", -76.131, -13.419, "Chincha pisco winery and distillery", "grape", "citrus", "herbs", "https://www.tabernero.com/"],
     ["ocucaje-pisco", "Viña Ocucaje", "Ocucaje, Ica", "Peru", -75.672, -14.346, "Desert-valley Peruvian pisco producer", "grape", "stone fruit", "flowers", "https://ocucaje.com/"],
     ["barsol-pisco", "Bodega San Isidro / Barsol", "Ica", "Peru", -75.73, -14.07, "Small-batch Peruvian pisco bodega", "grape", "citrus", "pepper", "https://barsolpisco.com/"]
@@ -113,7 +112,6 @@
     ["clear-creek-brandy", "Clear Creek Distillery", "Hood River, Oregon", "United States", -121.52, 45.71, "Pacific Northwest fruit brandy distillery", "pear", "cherry", "plum", "https://www.hrdspirits.com/clear-creek-distillery"]
   ],
   "brandy:Singani": [
-    ["los-parrales-singani", "Bodegas Los Parrales", "Tarija", "Bolivia", -64.73, -21.53, "High-altitude Bolivian singani producer", "muscat", "flowers", "citrus", "https://www.losparrales.com.bo/"],
     ["singani-63", "Casa Real Singani 63 Cellars", "Tarija", "Bolivia", -64.74, -21.54, "Tarija singani production and maturation site", "muscat", "flowers", "fruit", "https://singani63.com/"],
     ["casa-de-plata-singani", "Bodega Casa de Plata", "Camargo, Chuquisaca", "Bolivia", -65.21, -20.64, "Cinti Valley singani distillery", "muscat", "citrus", "herbs", "https://www.singani.com.bo/"],
     ["valle-hermoso-singani", "Bodega Valle Hermoso", "Tarija", "Bolivia", -64.73, -21.54, "Traditional Tarija singani producer", "grape", "flowers", "spice", "https://www.singani.com.bo/"],
@@ -123,12 +121,10 @@
     ["joseph-barry", "Joseph Barry Distillery", "Barrydale, Western Cape", "South Africa", 20.72, -33.9, "Klein Karoo pot-still brandy cellar", "grape", "dried fruit", "oak", "https://www.josephbarry.co.za/"],
     ["grundheim-brandy", "Grundheim Wines Distillery", "Oudtshoorn, Western Cape", "South Africa", 22.2, -33.58, "Family Cape pot-still brandy producer", "grape", "raisin", "spice", "https://grundheim.co.za/"],
     ["allesverloren-brandy", "Allesverloren Estate", "Riebeek West, Western Cape", "South Africa", 18.87, -33.35, "Swartland estate pot-still brandy", "grape", "plum", "oak", "https://allesverloren.co.za/"],
-    ["ladismith-brandy", "Ladismith Cellar", "Ladismith, Western Cape", "South Africa", 21.26, -33.49, "Klein Karoo pot-still brandy producer", "grape", "apricot", "oak", "https://ladismithwine.co.za/"],
-    ["kaapzicht-brandy", "Kaapzicht Estate Distillery", "Stellenbosch, Western Cape", "South Africa", 18.77, -33.88, "Stellenbosch estate pot-still brandy", "grape", "spice", "oak", "https://www.kaapzicht.co.za/"]
+    ["ladismith-brandy", "Ladismith Cellar", "Ladismith, Western Cape", "South Africa", 21.26, -33.49, "Klein Karoo pot-still brandy producer", "grape", "apricot", "oak", "https://ladismithwine.co.za/"]
   ],
 
   "rum:Molasses-based rum": [
-    ["angostura-rum", "Angostura Distillery", "Laventille", "Trinidad and Tobago", -61.48, 10.65, "Trinidad molasses-rum distillery", "molasses", "caramel", "spice", "https://angosturarums.com/"],
     ["brugal-puerto-plata", "Brugal Distillery", "Puerto Plata", "Dominican Republic", -70.69, 19.79, "Dominican molasses-rum distillery", "molasses", "vanilla", "oak", "https://www.brugal-rum.com/"],
     ["ron-barcelo", "Ron Barceló Distillery", "San Pedro de Macorís", "Dominican Republic", -69.3, 18.45, "Dominican column-rum production site", "molasses", "caramel", "citrus", "https://www.ronbarcelo.com/"],
     ["travellers-liquors", "Travellers Liquors Distillery", "Belize City", "Belize", -88.2, 17.5, "Belizean molasses-rum distillery", "molasses", "fruit", "oak", "https://www.travellersliquors.com/"],
@@ -137,7 +133,6 @@
   "rum:Cane-juice rum": [
     ["damoiseau", "Distillerie Damoiseau", "Le Moule, Grande-Terre", "Guadeloupe", -61.35, 16.33, "Guadeloupe fresh-cane rum distillery", "fresh cane", "grass", "pepper", "https://www.damoiseau.com/"],
     ["longueteau", "Distillerie Longueteau", "Capesterre-Belle-Eau", "Guadeloupe", -61.56, 16.05, "Estate fresh-cane rum distillery", "cane", "flowers", "citrus", "https://www.rhumlongueteau.fr/"],
-    ["bielle", "Distillerie Bielle", "Grand-Bourg, Marie-Galante", "Guadeloupe", -61.0, 15.88, "Marie-Galante cane-juice rum distillery", "fresh cane", "olive", "spice", "https://rhum-bielle.com/"],
     ["bellevue-marie-galante", "Distillerie Bellevue", "Capesterre, Marie-Galante", "Guadeloupe", -61.22, 15.89, "Wind-powered cane-rum estate", "cane", "grass", "fruit", "https://www.distillerie-bellevue.com/"],
     ["papa-rouyo", "Distillerie Papa Rouyo", "Goyave, Basse-Terre", "Guadeloupe", -61.58, 16.13, "Guadeloupe cane-juice pot-still distillery", "fresh cane", "earth", "citrus", "https://www.paparouyo.com/"]
   ],
@@ -180,7 +175,6 @@
   "agave:Tequila": [
     ["el-pandillo", "El Pandillo Distillery", "Jesús María, Jalisco", "Mexico", -102.22, 20.61, "Highlands tequila distillery", "cooked agave", "pepper", "citrus", "https://tequilatapatio.com/"],
     ["cascahuin", "Tequila Cascahuín Distillery", "El Arenal, Jalisco", "Mexico", -103.69, 20.78, "Valley tequila distillery", "agave", "earth", "pepper", "https://www.tequilacascahuin.com/"],
-    ["el-tesoro-altena", "Destilería La Alteña Visitor Site", "Arandas, Jalisco", "Mexico", -102.34, 20.7, "Traditional highlands tequila production site", "cooked agave", "citrus", "herbs", "https://www.eltesorotequila.com/"],
     ["tequila-ocho-los-alambiques", "Tequilera Los Alambiques", "Arandas, Jalisco", "Mexico", -102.35, 20.7, "Estate-focused highlands tequila distillery", "agave", "flowers", "pepper", "https://tequilaocho.com/"],
     ["el-tequileno", "El Tequileño Distillery", "Tequila, Jalisco", "Mexico", -103.84, 20.88, "Historic Tequila-town distillery", "cooked agave", "citrus", "oak", "https://www.tequileno.com/"]
   ],
@@ -199,23 +193,16 @@
     ["el-jolgorio-ancestral", "El Jolgorio Family Palenques", "Oaxaca", "Mexico", -96.72, 17.06, "Family-network ancestral mezcal production", "wild agave", "earth", "smoke", "https://www.mezcaleljolgorio.com/"]
   ],
   "agave:Bacanora": [
-    ["rancho-san-isidro-bacanora", "Rancho San Isidro Vinata", "Huásabas, Sonora", "Mexico", -109.3, 29.9, "Mountain bacanora vinata", "agave pacifica", "mesquite", "herbs", "https://www.bacanora.com.mx/"],
-    ["bacanora-42", "Bacanora 42 Vinata", "Moctezuma, Sonora", "Mexico", -109.68, 29.8, "Sonoran bacanora producer", "agave", "earth", "pepper", "https://www.bacanora.com.mx/"],
-    ["aguamiel-bacanora", "Aguamiel Bacanora Vinata", "Sahuaripa, Sonora", "Mexico", -109.23, 29.05, "Sierra Sonora bacanora distillery", "agave", "smoke", "citrus", "https://www.bacanora.com.mx/"],
-    ["yoowe-bacanora", "Yoowe Bacanora Vinata", "Arivechi, Sonora", "Mexico", -109.19, 28.93, "Small-batch Sonoran bacanora site", "roasted agave", "herbs", "smoke", "https://www.bacanora.com.mx/"],
     ["batuq-bacanora", "Batuq Bacanora Distillery", "Ures, Sonora", "Mexico", -110.39, 29.43, "Traditional Ures bacanora distillery", "agave pacifica", "pepper", "earth", "https://www.batuq.com/"]
   ],
   "agave:Raicilla": [
     ["la-venenosa-sierra", "La Venenosa Sierra Occidental Taberna", "Mascota, Jalisco", "Mexico", -104.79, 20.53, "Mountain raicilla taberna", "wild agave", "pine", "fruit", "https://www.lavenenosa.com/"],
-    ["bonete-raicilla", "Bonete Raicilla Taberna", "Cabo Corrientes, Jalisco", "Mexico", -105.52, 20.4, "Coastal Jalisco raicilla producer", "agave", "tropical fruit", "smoke", "https://www.raicillabonete.com/"],
-    ["de-una-raicilla", "De Una Raicilla Taberna", "San Sebastián del Oeste, Jalisco", "Mexico", -104.85, 20.76, "Sierra raicilla distillery", "agave", "herbs", "earth", "https://deunaraicilla.com/"],
     ["la-reina-raicilla", "La Reina Raicilla Taberna", "Atenguillo, Jalisco", "Mexico", -104.49, 20.42, "Mountain raicilla producer", "roasted agave", "pine", "pepper", "https://www.raicilla.com/"],
     ["las-perlas-raicilla", "Las Perlas Raicilla Taberna", "El Tuito, Jalisco", "Mexico", -105.32, 20.32, "Coastal raicilla production site", "wild agave", "fruit", "minerality", "https://www.raicilla.com/"]
   ],
   "agave:Sotol": [
     ["sotol-por-siempre", "Sotol Por Siempre Vinata", "Madera, Chihuahua", "Mexico", -108.14, 29.19, "Chihuahuan sotol vinata", "dasylirion", "pine", "earth", "https://sotolporsiempre.com/"],
     ["flor-del-desierto-sierra", "Flor del Desierto Sierra Vinata", "Coyame del Sotol, Chihuahua", "Mexico", -105.09, 29.46, "Desert sotol production site", "dasylirion", "herbs", "smoke", "https://flordeldesierto.com/"],
-    ["sotoleros", "Los Sotoleros Vinata", "Aldama, Chihuahua", "Mexico", -105.92, 28.84, "Small-batch Chihuahua sotol vinata", "desert plant", "pepper", "earth", "https://lossotoleros.com/"],
     ["sotol-ono", "Sotol Ono Distillery", "Janos, Chihuahua", "Mexico", -108.19, 30.89, "Northern Chihuahua sotol producer", "dasylirion", "pine", "mineral", "https://sotolono.com/"],
     ["marfa-spirits-sotol", "Marfa Spirits Co.", "Marfa, Texas", "United States", -104.02, 30.31, "Texas sotol distillery", "desert spoon", "herbs", "smoke", "https://marfaspirits.com/"]
   ],
@@ -231,8 +218,7 @@
     ["edinburgh-gin", "Edinburgh Gin Distillery", "Edinburgh", "Scotland", -3.205, 55.95, "Scottish distilled gin site", "juniper", "citrus", "heather", "https://www.edinburghgin.com/"],
     ["lind-and-lime", "Lind & Lime Distillery", "Leith, Edinburgh", "Scotland", -3.17, 55.98, "Leith distilled gin distillery", "juniper", "lime", "pepper", "https://lindandlime.com/"],
     ["nikka-coffey-gin", "Nikka Miyagikyo Gin Works", "Sendai, Miyagi", "Japan", 140.65, 38.31, "Coffey-still Japanese distilled gin", "citrus", "sansho", "juniper", "https://www.nikka.com/eng/brands/coffey-gin-vodka/"],
-    ["ki-no-bi-kyoto", "The Kyoto Distillery", "Kyoto", "Japan", 135.75, 35.0, "Japanese rice-base distilled gin", "yuzu", "tea", "juniper", "https://kyotodistillery.jp/en/"],
-    ["citadelle-ferrand", "Citadelle Gin Distillery", "Ars, Charente", "France", -0.38, 45.64, "Charente pot-distilled gin estate", "juniper", "flowers", "citrus", "https://citadellegin.com/"]
+    ["ki-no-bi-kyoto", "The Kyoto Distillery", "Kyoto", "Japan", 135.75, 35.0, "Japanese rice-base distilled gin", "yuzu", "tea", "juniper", "https://kyotodistillery.jp/en/"]
   ],
   "gin:Contemporary gin": [
     ["roku-osaka", "Roku Gin Osaka Production", "Osaka", "Japan", 135.5, 34.69, "Japanese-botanical contemporary gin", "sakura", "tea", "yuzu", "https://house.suntory.com/roku-gin"],
@@ -245,8 +231,7 @@
     ["bathtub-old-tom", "Ableforth’s Distillery", "Tunbridge Wells, Kent", "United Kingdom", 0.26, 51.13, "English Old Tom gin producer", "juniper", "orange", "spice", "https://www.ableforths.com/"],
     ["city-of-london-old-tom", "City of London Distillery", "London", "United Kingdom", -0.105, 51.515, "Urban Old Tom gin distillery", "juniper", "licorice", "citrus", "https://www.cityoflondondistillery.com/"],
     ["spring-gin-old-tom", "Filliers Distillery Old Tom Works", "Deinze", "Belgium", 3.53, 50.98, "Belgian Old Tom-style gin producer", "juniper", "malt", "spice", "https://filliersdistillery.com/"],
-    ["barr-hill-tom-cat", "Caledonia Spirits", "Montpelier, Vermont", "United States", -72.57, 44.26, "Honeyed barrel-rested Old Tom gin", "juniper", "honey", "oak", "https://www.barrhill.com/"],
-    ["anchor-old-tom", "Hotaling & Co. Distillery", "San Francisco, California", "United States", -122.4, 37.78, "American malt-led Old Tom gin", "juniper", "malt", "oak", "https://www.hotalingandco.com/"]
+    ["barr-hill-tom-cat", "Caledonia Spirits", "Montpelier, Vermont", "United States", -72.57, 44.26, "Honeyed barrel-rested Old Tom gin", "juniper", "honey", "oak", "https://www.barrhill.com/"]
   ],
   "gin:Genever": [
     ["van-wees-genever", "A. van Wees Distilleerderij de Ooievaar", "Amsterdam", "Netherlands", 4.89, 52.37, "Traditional Amsterdam genever distillery", "malt wine", "juniper", "herbs", "https://www.de-ooievaar.nl/"],
@@ -256,7 +241,6 @@
     ["de-borgen-genever", "Hooghoudt De Borgen Distillery", "Groningen", "Netherlands", 6.57, 53.22, "Northern Dutch genever producer", "malt wine", "juniper", "oak", "https://deborgen.com/"]
   ],
   "gin:Barrel-aged gin": [
-    ["kyrö-koskue", "Kyrö Distillery Company", "Isokyrö", "Finland", 22.32, 63.0, "Rye-based barrel-aged Finnish gin", "juniper", "rye", "oak", "https://kyrodistillery.com/"],
     ["bluecoat-barrel-gin", "Philadelphia Distilling", "Philadelphia, Pennsylvania", "United States", -75.14, 39.97, "American oak-finished gin distillery", "juniper", "citrus", "oak", "https://www.philadelphiadistilling.com/"],
     ["smooth-ambler-barrel-gin", "Smooth Ambler Spirits", "Maxwelton, West Virginia", "United States", -80.54, 37.86, "Appalachian barrel-rested gin producer", "juniper", "vanilla", "spice", "https://smoothambler.com/"],
     ["roundhouse-imperial", "Vapor Distillery", "Boulder, Colorado", "United States", -105.25, 40.03, "Colorado barrel-aged gin distillery", "juniper", "malt", "oak", "https://vapordistillery.com/"],
@@ -264,10 +248,7 @@
   ],
 
   "vodka:Neutral vodka": [
-    ["smirnoff-plainfield", "Diageo Plainfield Distillery", "Plainfield, Illinois", "United States", -88.2, 41.61, "Large-scale American neutral vodka site", "clean", "grain", "soft", "https://www.smirnoff.com/"],
-    ["ciroc-chevanceaux", "Maison Villevert Cîroc Production", "Chevanceaux, Charente", "France", -0.23, 45.3, "French grape vodka production site", "clean", "grape", "citrus", "https://www.ciroc.com/"],
     ["stolichnaya-latvia", "Latvijas Balzams Vodka Works", "Riga", "Latvia", 24.1, 56.95, "Baltic neutral vodka production site", "grain", "clean", "pepper", "https://stoli.com/"],
-    ["finlandia-rajamaeki", "Rajamäki Distillery", "Rajamäki", "Finland", 24.76, 60.74, "Finnish barley vodka distillery", "barley", "clean", "citrus", "https://www.finlandia.com/"],
     ["skyy-modesto", "Campari Modesto Vodka Facility", "Modesto, California", "United States", -121.0, 37.64, "American neutral vodka production site", "grain", "clean", "mineral", "https://www.skyyvodka.com/"]
   ],
   "vodka:Characterful vodka": [
@@ -303,29 +284,24 @@
     ["kouzijiao", "Kouzijiao Distillery", "Huaibei, Anhui", "China", 116.8, 33.95, "Anhui strong-aroma baijiu producer", "sorghum", "fruit", "fermentation", "https://www.kouzi.com/"],
     ["shedianlaojiu", "Shedian Laojiu Distillery", "Sheqi, Henan", "China", 112.95, 33.06, "Henan strong-aroma baijiu distillery", "sorghum", "tropical fruit", "spice", "https://www.shedian.com/"],
     ["tuopai-shede", "Tuopai Shede Distillery", "Shehong, Sichuan", "China", 105.39, 30.87, "Sichuan strong-aroma baijiu campus", "sorghum", "fruit", "savory", "https://www.tuopaishede.cn/"],
-    ["guoyuan-jiangsu", "Jiangsu King’s Luck Brewery", "Lianshui, Jiangsu", "China", 119.26, 33.78, "Jiangsu strong-aroma baijiu producer", "sorghum", "pear", "fermentation", "https://www.jsgyj.com.cn/"],
-    ["yingjia-gongjiu", "Anhui Yingjia Distillery", "Huoshan, Anhui", "China", 116.32, 31.39, "Anhui ecological strong-aroma baijiu", "sorghum", "flowers", "spice", "https://www.yingjia.cn/"]
+    ["guoyuan-jiangsu", "Jiangsu King’s Luck Brewery", "Lianshui, Jiangsu", "China", 119.26, 33.78, "Jiangsu strong-aroma baijiu producer", "sorghum", "pear", "fermentation", "https://www.jsgyj.com.cn/"]
   ],
   "asian:Sauce-aroma baijiu": [
     ["diaoyutai-baijiu", "Diaoyutai Guobin Distillery", "Renhuai, Guizhou", "China", 106.41, 27.8, "Maotai-region sauce-aroma baijiu", "sorghum", "umami", "roasted grain", "https://www.dytj.com/"],
     ["jinsha-gujiu", "Jinsha Gu Distillery", "Bijie, Guizhou", "China", 105.29, 27.3, "Guizhou sauce-aroma baijiu distillery", "sorghum", "cocoa", "herbs", "https://www.jinshajiu.com/"],
-    ["guizhou-chun", "Guizhou Chun Distillery", "Xingyi, Guizhou", "China", 104.9, 25.09, "Guizhou sauce-style baijiu producer", "sorghum", "roasted grain", "savory", "https://www.gzchun.com/"],
     ["yaxi-jiaojiu", "Yaxi Jiaojiu Distillery", "Zunyi, Guizhou", "China", 106.93, 27.73, "Zunyi sauce-aroma baijiu production site", "sorghum", "soy", "spice", "https://www.yaxijiao.com/"],
     ["wulingjiu", "Wuling Distillery", "Changde, Hunan", "China", 111.69, 29.04, "Hunan sauce-aroma baijiu distillery", "sorghum", "umami", "fruit", "https://www.wulingjiu.com/"]
   ],
   "asian:Light-aroma baijiu": [
     ["huanghelou-jiu", "Huanghelou Distillery", "Wuhan, Hubei", "China", 114.3, 30.59, "Central Chinese light-aroma baijiu producer", "sorghum", "flowers", "grain", "https://www.hhlj.com.cn/"],
     ["laobaigan-hengshui", "Hengshui Laobaigan Distillery", "Hengshui, Hebei", "China", 115.67, 37.74, "Laobaigan-style northern baijiu distillery", "sorghum", "grain", "pepper", "https://www.hengshuilaobaigan.net/"],
-    ["jiangxiaobai", "Jiangxiaobai Distillery", "Chongqing", "China", 106.55, 29.56, "Modern sorghum light-aroma baijiu producer", "sorghum", "citrus", "flowers", "https://www.ijovo.com/"],
     ["hongxing-second", "Beijing Red Star Distillery No. 2", "Huairou, Beijing", "China", 116.63, 40.32, "Beijing erguotou production site", "sorghum", "grain", "pepper", "https://www.redstarwine.com/"],
     ["xiaohutuxian", "Xiaohutuxian Distillery", "Renhuai, Guizhou", "China", 106.41, 27.8, "Clean-aroma Chinese baijiu producer", "sorghum", "flowers", "herbs", "https://www.xhtx.com.cn/"]
   ],
   "asian:Rice-aroma baijiu": [
     ["sanhuajiu-guilin", "Guilin Sanhua Rice Spirit Works", "Guilin, Guangxi", "China", 110.29, 25.27, "Guilin rice-aroma baijiu distillery", "rice", "flowers", "melon", "https://www.guilinsanhua.com/"],
-    ["shilixiang-rice", "Guangxi Shilixiang Distillery", "Liuzhou, Guangxi", "China", 109.41, 24.33, "Guangxi rice-spirit distillery", "rice", "fruit", "herbs", "https://www.gxj.com.cn/"],
     ["meilan-rice-baijiu", "Meilan Rice Liquor Works", "Haikou, Hainan", "China", 110.35, 20.02, "Hainan rice-aroma spirit producer", "rice", "flowers", "soft fruit", "https://www.hnliquor.com/"],
-    ["guangdong-shiwan", "Shiwan Yubingshao Distillery", "Foshan, Guangdong", "China", 113.12, 23.02, "Cantonese rice-aroma baijiu producer", "rice", "savory", "flowers", "https://www.shiwanjiu.com/"],
-    ["quanxing-rice-aroma", "Quanzhou Rice Spirit Distillery", "Quanzhou, Guangxi", "China", 111.07, 25.93, "Northern Guangxi rice-spirit distillery", "rice", "melon", "herbs", "https://www.guilinliquor.com/"]
+    ["guangdong-shiwan", "Shiwan Yubingshao Distillery", "Foshan, Guangdong", "China", 113.12, 23.02, "Cantonese rice-aroma baijiu producer", "rice", "savory", "flowers", "https://www.shiwanjiu.com/"]
   ],
   "asian:Honkaku shōchū": [
     ["hamada-shuzo", "Hamada Shuzo", "Ichikikushikino, Kagoshima", "Japan", 130.29, 31.72, "Kagoshima honkaku shōchū distillery", "sweet potato", "koji", "earth", "https://www.hamadasyuzou.co.jp/global/"],
@@ -344,13 +320,9 @@
   "asian:Diluted soju": [
     ["chum-churum-gangneung", "Lotte Chilsung Gangneung Soju Plant", "Gangneung", "South Korea", 128.9, 37.75, "Large-scale Korean diluted soju plant", "rice", "clean", "soft", "https://company.lottechilsung.co.kr/eng/"],
     ["charm-soju", "Kumbokju Distillery", "Daegu", "South Korea", 128.6, 35.87, "Daegu diluted soju producer", "grain", "clean", "sweet", "https://www.kumbokju.co.kr/"],
-    ["goodday-soju", "Muhak Changwon Plant", "Changwon", "South Korea", 128.68, 35.23, "Gyeongsang diluted soju plant", "grain", "clean", "fruit", "https://www.muhak.co.kr/"],
-    ["c1-soju", "Daesun Distilling Busan", "Busan", "South Korea", 129.08, 35.18, "Busan diluted soju producer", "grain", "clean", "soft", "https://www.daesun.co.kr/"],
     ["hallasan-soju", "Hallasan Soju Distillery", "Jeju City", "South Korea", 126.53, 33.5, "Jeju diluted soju producer", "grain", "mineral", "clean", "https://www.hallasan.co.kr/"]
   ],
   "asian:Distilled soju": [
-    ["won-soju", "Won Spirits Distillery", "Wonju, Gangwon", "South Korea", 127.95, 37.34, "Korean rice distilled-soju producer", "rice", "flowers", "clean", "https://wonspirits.com/"],
-    ["samhae-soju", "Samhae Soju Brewery", "Seoul", "South Korea", 126.98, 37.57, "Traditional Seoul distilled-soju producer", "rice", "nuruk", "herbs", "https://english.visitseoul.net/"],
     ["igangju", "Jeonju Igangju Distillery", "Jeonju", "South Korea", 127.15, 35.82, "Traditional pear-and-ginger distilled spirit", "rice", "pear", "ginger", "https://www.igangju.co.kr/"],
     ["jindo-hongju", "Jindo Hongju Distillery", "Jindo, South Jeolla", "South Korea", 126.26, 34.49, "Traditional Korean distilled rice spirit", "rice", "herbs", "fruit", "https://www.jindohongju.or.kr/"],
     ["seoul-night-soju", "The Han Seoul Night Distillery", "Seoul", "South Korea", 126.98, 37.57, "Modern Korean distilled-soju site", "rice", "plum", "juniper", "https://www.thehan.kr/"]
@@ -358,8 +330,6 @@
   "asian:Kaoliang": [
     ["kinmen-jinning", "Kinmen Kaoliang Jinning Plant", "Jinning, Kinmen", "Taiwan", 118.32, 24.45, "Kinmen sorghum-spirit production site", "sorghum", "flowers", "grain", "https://www.kkl.com.tw/"],
     ["matsu-nangan", "Matsu Liquor Nangan Distillery", "Nangan, Lienchiang", "Taiwan", 119.94, 26.15, "Island kaoliang distillery", "sorghum", "grain", "pepper", "https://www.matsu-liquor.com.tw/"],
-    ["matsu-dongyin", "Matsu Liquor Dongyin Distillery", "Dongyin, Lienchiang", "Taiwan", 120.49, 26.37, "Northern island kaoliang distillery", "sorghum", "flowers", "mineral", "https://www.matsu-liquor.com.tw/"],
-    ["ttl-longtian-kaoliang", "TTL Longtian Distillery", "Guantian, Tainan", "Taiwan", 120.31, 23.19, "Taiwanese sorghum-spirit distillery", "sorghum", "grain", "fruit", "https://event.ttl.com.tw/lt/"],
     ["yushan-nantou-kaoliang", "Yushan Kaoliang Works", "Nantou", "Taiwan", 120.68, 23.91, "Central Taiwanese kaoliang production site", "sorghum", "flowers", "spice", "https://www.ttl.com.tw/"]
   ],
 
@@ -381,8 +351,7 @@
     ["pernod", "Pernod Production House", "Thuir, Occitanie", "France", 2.76, 42.63, "French anise spirit production site", "anise", "fennel", "herbs", "https://www.pernod.com/"],
     ["ricard", "Ricard Production Site", "Marseille", "France", 5.37, 43.3, "Marseille pastis producer", "anise", "licorice", "herbs", "https://www.ricard.com/"],
     ["molinari-sambuca", "Molinari Distillery", "Colfelice, Lazio", "Italy", 13.6, 41.55, "Italian sambuca distillery", "star anise", "elderflower", "sweet", "https://www.molinari.it/"],
-    ["ramazzotti-sambuca", "Ramazzotti Sambuca Works", "Milan", "Italy", 9.19, 45.46, "Italian anise liqueur production", "star anise", "fennel", "sweet", "https://www.ramazzotti1815.com/"],
-    ["tekirdag-raki", "Mey İçki Tekirdağ Distillery", "Tekirdağ", "Turkey", 27.51, 40.98, "Turkish grape-and-anise rakı distillery", "anise", "grape", "herbs", "https://www.yeniraki.com/"]
+    ["ramazzotti-sambuca", "Ramazzotti Sambuca Works", "Milan", "Italy", 9.19, 45.46, "Italian anise liqueur production", "star anise", "fennel", "sweet", "https://www.ramazzotti1815.com/"]
   ],
   "flavoured:Aquavit": [
     ["linie-aquavit", "Arcus Linie Aquavit Cellars", "Hagan", "Norway", 10.92, 59.99, "Norwegian cask-matured aquavit producer", "caraway", "dill", "oak", "https://linie.com/"],
@@ -401,14 +370,12 @@
   "flavoured:Flavored vodka": [
     ["smirnoff-flavored-category", "Smirnoff Flavor Works", "Plainfield, Illinois", "United States", -88.2, 41.61, "American flavored vodka production site", "fruit", "citrus", "sweet", "https://www.smirnoff.com/"],
     ["ciroc-flavored-category", "Cîroc Flavor Production", "Chevanceaux, Charente", "France", -0.23, 45.3, "French flavored grape-vodka producer", "grape", "fruit", "sweet", "https://www.ciroc.com/"],
-    ["finlandia-flavored-category", "Finlandia Flavor Works", "Rajamäki", "Finland", 24.76, 60.74, "Finnish flavored vodka production", "berry", "lime", "barley", "https://www.finlandia.com/"],
     ["stoli-flavored-category", "Stoli Flavor Works", "Riga", "Latvia", 24.1, 56.95, "Baltic flavored vodka producer", "fruit", "vanilla", "grain", "https://stoli.com/"],
     ["absolut-flavored-category", "Absolut Flavor Works", "Åhus", "Sweden", 14.3, 55.93, "Swedish flavored vodka production", "citrus", "berry", "wheat", "https://www.absolut.com/"]
   ],
   "flavoured:Infused vodka": [
     ["chase-infused-category", "Chase Botanical Vodka Works", "Herefordshire", "United Kingdom", -2.65, 52.08, "English estate vodka infusion site", "potato", "orange", "botanicals", "https://www.chasedistillery.co.uk/"],
     ["greenbar-infused-category", "Greenbar Infused Vodka Distillery", "Los Angeles, California", "United States", -118.24, 34.04, "Organic American vodka infusion site", "grain", "herbs", "fruit", "https://greenbardistillery.com/"],
-    ["square-one-infused-category", "Square One Botanical Vodka Works", "Novato, California", "United States", -122.57, 38.11, "Organic rye-vodka infusion producer", "rye", "botanicals", "citrus", "https://squareoneorganicspirits.com/"],
     ["hangar-one-buddhas-hand", "Hangar 1 Infusion Works", "Alameda, California", "United States", -122.3, 37.79, "California fruit-infused vodka site", "citrus", "grain", "flowers", "https://hangarone.com/"],
     ["charbay-blood-orange", "Charbay Infused Vodka Distillery", "St. Helena, California", "United States", -122.47, 38.5, "Napa Valley fruit-infused vodka producer", "blood orange", "grain", "citrus", "https://www.charbay.com/"]
   ],
