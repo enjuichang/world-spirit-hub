@@ -78,7 +78,7 @@ function OfflineExplorerMap({
   const width = 360 / view.zoom;
   const height = 180 / view.zoom;
   const viewBox = `${view.centerX * 360 - width / 2} ${view.centerY * 180 - height / 2} ${width} ${height}`;
-  const markerRadius = 4.8 / view.zoom;
+  const markerRadius = 1.7 / view.zoom;
 
   function changeZoom(multiplier: number) {
     setView((current) => clampFallbackView({
@@ -152,7 +152,7 @@ function OfflineExplorerMap({
                   onChooseLocation(location.id);
                 }}
               >
-                <circle className="offline-marker-halo" cx={point.x} cy={point.y} r={markerRadius * 1.75} />
+                <circle className="offline-marker-halo" cx={point.x} cy={point.y} r={markerRadius * 1.55} />
                 <circle cx={point.x} cy={point.y} r={selected ? markerRadius * 1.25 : markerRadius} fill={category.color} />
               </g>
             );
