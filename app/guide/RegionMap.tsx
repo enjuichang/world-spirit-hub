@@ -188,6 +188,7 @@ export function RegionMap({
   const viewBox = focusedViewBox(focusFeatures);
   const markerRadius = Math.max(viewBox.width / 68, 0.17);
   const markerFontSize = Math.max(viewBox.width / 25, 0.5);
+  const distilleryMarkerRadius = Math.max(viewBox.width / 105, 0.12);
 
   useEffect(() => {
     if (compact || !wrapperRef.current || mapRef.current) return;
@@ -210,6 +211,7 @@ export function RegionMap({
           maxZoom: 8,
           attributionControl: false,
           cooperativeGestures: true,
+          renderWorldCopies: false,
         });
         mapRef.current = map;
         map.setProjection({ name: "mercator" });
@@ -263,9 +265,9 @@ export function RegionMap({
             source: "production-outlines",
             paint: {
               "line-color": "#e2bc78",
-              "line-width": 7,
-              "line-blur": 5,
-              "line-opacity": 0.45,
+              "line-width": ["interpolate", ["linear"], ["zoom"], 0, 3, 5, 6],
+              "line-blur": 3,
+              "line-opacity": 0.32,
             },
           });
           map.addLayer({
@@ -274,7 +276,7 @@ export function RegionMap({
             source: "production-outlines",
             paint: {
               "line-color": ["case", ["==", ["get", "protected"], 1], "#ffe1a3", "#e2bc78"],
-              "line-width": 2.25,
+              "line-width": ["interpolate", ["linear"], ["zoom"], 0, 1.25, 5, 2.5],
               "line-opacity": 0.96,
             },
           });
@@ -316,9 +318,12 @@ export function RegionMap({
             source: "production-labels",
             layout: {
               "text-field": ["get", "name"],
-              "text-size": 12,
+              "text-size": ["interpolate", ["linear"], ["zoom"], 0, 10, 4, 13],
               "text-font": ["Open Sans Bold"],
-              "text-allow-overlap": true,
+              "text-allow-overlap": false,
+              "text-optional": true,
+              "text-variable-anchor": ["center", "top", "bottom", "left", "right"],
+              "text-radial-offset": 0.5,
               "text-letter-spacing": 0.04,
             },
             paint: {
@@ -365,6 +370,9 @@ export function RegionMap({
                 "text-offset": [0, 1.25],
                 "text-anchor": "top",
                 "text-allow-overlap": false,
+                "text-optional": true,
+                "text-variable-anchor": ["top", "bottom", "left", "right"],
+                "text-radial-offset": 0.75,
               },
               paint: {
                 "text-color": "#f4c978",
@@ -373,6 +381,19 @@ export function RegionMap({
                 "text-halo-blur": 0.5,
               },
             });
+
+            const showDistilleryPopup = (event: mapboxgl.MapMouseEvent & { features?: mapboxgl.MapboxGeoJSONFeature[] }) => {
+              const feature = event.features?.[0];
+              if (!feature || feature.geometry.type !== "Point") return;
+              const coordinates = feature.geometry.coordinates as [number, number];
+              new mapboxgl.Popup({ closeButton: false, offset: 10, className: "distillery-popup" })
+                .setLngLat(coordinates)
+                .setHTML(`<strong>${feature.properties?.name ?? "Distillery"}</strong><span>${feature.properties?.region ?? ""}</span>`)
+                .addTo(map);
+            };
+            map.on("click", "distillery-points", showDistilleryPopup);
+            map.on("mouseenter", "distillery-points", () => { map.getCanvas().style.cursor = "pointer"; });
+            map.on("mouseleave", "distillery-points", () => { map.getCanvas().style.cursor = ""; });
           }
 
           if (focusFeatures.length) {
@@ -433,6 +454,18 @@ export function RegionMap({
               />
             )),
           )}
+          {regions.flatMap((region, index) => {
+            if (!region.distillery) return [];
+            const point = project(region.distillery.point);
+            const x = point.x * 3.6;
+            const y = point.y * 1.8;
+            return [
+              <g className="map-distillery-marker" key={`${region.name}-distillery-${index}`}>
+                <circle className="map-distillery-halo" cx={x} cy={y} r={distilleryMarkerRadius * 2.2} />
+                <circle cx={x} cy={y} r={distilleryMarkerRadius} />
+              </g>,
+            ];
+          })}
           {focusFeatures.length > 0 && regions.map((region, index) => {
             const point = project(region.point);
             const x = point.x * 3.6;
@@ -472,7 +505,10 @@ export function RegionMap({
         {!compact && <div className="mapbox-region-layer" ref={mapContainerRef} aria-hidden={!mapReady} />}
       </div>
       <figcaption>
-        <span>{focusIds.length ? `Country focus · ${focusIds.join(" + ")}` : compact ? "Production area" : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
+        <div className="map-caption-heading">
+          <span>{focusIds.length ? `Country focus · ${focusIds.join(" + ")}` : compact ? "Production area" : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
+          {!compact && regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
+        </div>
         <ol>
           {regions.map((region, index) => (
             <li key={`${region.name}-legend-${index}`}>

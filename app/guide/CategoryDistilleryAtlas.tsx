@@ -8,9 +8,50 @@ function position([longitude, latitude]: [number, number]) {
   return { left: `${((longitude + 180) / 360) * 100}%`, top: `${((90 - latitude) / 180) * 100}%` };
 }
 
+type SubtypeRegion = {
+  name: string;
+  count: number;
+  style: { left: string; top: string; width: string; height: string };
+};
+
+function subtypeRegion(name: string, locations: SpiritLocation[]): SubtypeRegion {
+  const points = locations.map(({ coordinates }) => ({
+    x: ((coordinates[0] + 180) / 360) * 100,
+    y: ((90 - coordinates[1]) / 180) * 100,
+  }));
+  const xs = points.map(({ x }) => x);
+  const ys = points.map(({ y }) => y);
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  const minY = Math.min(...ys);
+  const maxY = Math.max(...ys);
+  const width = Math.min(30, Math.max(6, maxX - minX + 4));
+  const height = Math.min(32, Math.max(11, maxY - minY + 8));
+  const centerX = (minX + maxX) / 2;
+  const centerY = (minY + maxY) / 2;
+
+  return {
+    name,
+    count: locations.length,
+    style: {
+      left: `${Math.max(0, Math.min(100 - width, centerX - width / 2))}%`,
+      top: `${Math.max(0, Math.min(100 - height, centerY - height / 2))}%`,
+      width: `${width}%`,
+      height: `${height}%`,
+    },
+  };
+}
+
 export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryName: string; locations: SpiritLocation[] }) {
   const subcategories = useMemo(() => [...new Set(locations.map((location) => location.subcategory))], [locations]);
   const [filter, setFilter] = useState("All");
+  const subtypeRegions = useMemo(() => {
+    const regions = subcategories.map((subcategory) =>
+      subtypeRegion(subcategory, locations.filter((location) => location.subcategory === subcategory)),
+    );
+    if (filter !== "All") return regions.filter((region) => region.name === filter);
+    return regions.sort((a, b) => b.count - a.count).slice(0, 5);
+  }, [filter, locations, subcategories]);
   const filtered = filter === "All" ? locations : locations.filter((location) => location.subcategory === filter);
   const [selectedId, setSelectedId] = useState(locations[0]?.id ?? "");
   const selected = filtered.find((location) => location.id === selectedId) ?? filtered[0];
@@ -42,20 +83,30 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
 
       <div className="distillery-atlas-layout">
         <div className="distillery-world-map" role="group" aria-label={`${categoryName} distillery map with ${filtered.length} markers`}>
-          <div className="distillery-map-grid" aria-hidden="true" />
-          <div className="distillery-map-land" aria-hidden="true" />
-          {filtered.map((location) => (
-            <button
-              aria-label={`${location.name}, ${location.place}`}
-              aria-pressed={selected?.id === location.id}
-              className={selected?.id === location.id ? "active" : ""}
-              key={location.id}
-              onClick={() => setSelectedId(location.id)}
-              style={position(location.coordinates)}
-              title={location.name}
-              type="button"
-            ><span /></button>
-          ))}
+          <div className="distillery-map-stage">
+            <div className="distillery-map-grid" aria-hidden="true" />
+            <div className="distillery-map-land" aria-hidden="true" />
+            <div className="distillery-map-regions" aria-hidden="true">
+              {subtypeRegions.map((region) => (
+                <div className={filter === region.name ? "active" : ""} key={region.name} style={region.style}>
+                  <span>{region.name}</span>
+                </div>
+              ))}
+            </div>
+            {filtered.map((location) => (
+              <button
+                aria-label={`${location.name}, ${location.place}`}
+                aria-pressed={selected?.id === location.id}
+                className={selected?.id === location.id ? "active" : ""}
+                key={location.id}
+                onClick={() => setSelectedId(location.id)}
+                style={position(location.coordinates)}
+                title={location.name}
+                type="button"
+              ><span /></button>
+            ))}
+          </div>
+          <div className="distillery-map-key"><span /> Prominent subtype regions</div>
           <div className="distillery-map-count"><strong>{filtered.length}</strong><span>{filter === "All" ? "sites shown" : filter}</span></div>
         </div>
 

@@ -71,6 +71,7 @@ export const categories: SpiritCategory[] = [
       "Japanese whisky",
       "Taiwanese single malt whisky",
       "Indian single malt whisky",
+      "American single malt whiskey",
     ],
     regions: ["Scotland", "United States", "Ireland", "Canada", "Japan", "Taiwan", "India"],
     taste: ["Cereal", "Orchard fruit", "Vanilla", "Oak", "Smoke"],
@@ -155,8 +156,8 @@ export const categories: SpiritCategory[] = [
     color: "#63A876",
     summary:
       "Cooked plant hearts, long growing cycles and place-specific methods produce spirits ranging from bright and peppery to smoky and deeply savory.",
-    subcategories: ["Tequila", "Mezcal", "Ancestral mezcal", "Bacanora", "Raicilla", "Sotol"],
-    regions: ["Jalisco", "Oaxaca", "Durango", "Sonora", "Chihuahua"],
+    subcategories: ["Tequila", "Mezcal", "Ancestral mezcal", "Bacanora", "Raicilla", "Sotol", "Texas sotol-style spirit"],
+    regions: ["Jalisco", "Oaxaca", "Durango", "Sonora", "Chihuahua", "Texas"],
     taste: ["Cooked agave", "Citrus", "Pepper", "Earth", "Smoke"],
     production:
       "Mature plants are harvested, cooked, crushed, fermented and distilled. Species, maturity, cooking method, fermentation vessel and still material shape style.",

@@ -6,6 +6,7 @@ import {
   BookOpen,
   BookOpenText,
   Factory,
+  Fingerprint,
   MapPinned,
   Scale,
   Sparkles,
@@ -20,6 +21,8 @@ import { SubtypeComparison } from "./SubtypeComparison";
 import { SubtypeDeepDive } from "./SubtypeDeepDive";
 import { categoryProgressions } from "./categoryProgressions";
 import { getSubtypeTargetId } from "./subtypeDeepDives";
+import { withLabelDistilleries } from "./labelDistilleries";
+import { getSubtypeClassification } from "./subtypeClassifications";
 
 type CategoryGuideChapterProps = {
   category: SpiritCategory;
@@ -30,7 +33,10 @@ type CategoryGuideChapterProps = {
 };
 
 export function CategoryGuideChapter({ category, guide, index, previous, next }: CategoryGuideChapterProps) {
-  const mappedLabels = guide.labelTerms.flatMap((term) => term.region ? [term.region] : []);
+  const mappedLabels = withLabelDistilleries(
+    category.id,
+    guide.labelTerms.flatMap((term) => term.region ? [term.region] : []),
+  );
   const categoryLocations = locations.filter((location) => location.categoryId === category.id);
   const progression = categoryProgressions[category.id] ?? [];
 
@@ -94,15 +100,24 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
             <section className="subtype-section" id="styles" aria-labelledby={`${category.id}-subtypes`}>
               <GuideTitle icon={<Sparkles />} kicker={`${guide.subtypes.length} styles decoded`} id={`${category.id}-subtypes`}>Subtype field cards</GuideTitle>
               <div className="subtype-card-grid">
-                {guide.subtypes.map((subtype) => (
-                  <article className="subtype-card" key={subtype.name}>
-                    <header><h4>{subtype.name}</h4><span className={`law-status ${subtype.lawStatus.toLowerCase().replaceAll(" ", "-")}`}>{subtype.lawStatus}</span></header>
-                    <SubtypeFact icon={<Scale />} title="The law">{subtype.law}</SubtypeFact>
-                    <SubtypeFact icon={<Sparkles />} title="Signature style">{subtype.style}</SubtypeFact>
-                    {subtype.region && <div className="subtype-map-wrap"><MapPinned size={14} aria-hidden="true" /><RegionMap regions={[subtype.region]} label={`${subtype.name} distribution`} compact /></div>}
-                    <a className="subtype-explore-link" href={`#${getSubtypeTargetId(category.id, subtype.name)}`}>Explore regions & ingredients <ArrowRight size={13} /></a>
-                  </article>
-                ))}
+                {guide.subtypes.map((subtype) => {
+                  const classification = getSubtypeClassification(category.id, subtype.name);
+                  const example = classification
+                    ? categoryLocations.find((location) => location.id === classification.distilleryId)
+                    : undefined;
+
+                  return (
+                    <article className="subtype-card" key={subtype.name}>
+                      <header><h4>{subtype.name}</h4><span className={`law-status ${subtype.lawStatus.toLowerCase().replaceAll(" ", "-")}`}>{subtype.lawStatus}</span></header>
+                      {classification && <SubtypeFact icon={<Fingerprint />} title="Distinct classification">{classification.definition}</SubtypeFact>}
+                      <SubtypeFact icon={<Scale />} title="The law">{subtype.law}</SubtypeFact>
+                      <SubtypeFact icon={<Sparkles />} title="Signature style">{subtype.style}</SubtypeFact>
+                      {example && <SubtypeFact icon={<Factory />} title="Distillery example"><strong className="subtype-example-name">{example.name}</strong>{example.place}, {example.country}. {example.descriptor}.</SubtypeFact>}
+                      {subtype.region && <div className="subtype-map-wrap"><MapPinned size={14} aria-hidden="true" /><RegionMap regions={[subtype.region]} label={`${subtype.name} distribution`} compact /></div>}
+                      <a className="subtype-explore-link" href={`#${getSubtypeTargetId(category.id, subtype.name)}`}>Explore regions & ingredients <ArrowRight size={13} /></a>
+                    </article>
+                  );
+                })}
               </div>
             </section>
 

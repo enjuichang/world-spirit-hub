@@ -71,6 +71,7 @@ export const categoryGuides: CategoryGuide[] = [
       { name: "Japanese whisky", lawStatus: "Traditional term", law: "The Japan Spirits & Liqueurs Makers Association standard is an industry labeling standard, not a national GI; members qualifying for the term follow Japanese production and maturation criteria.", style: "Precise, layered blends and malt whiskies, often balancing orchard fruit, incense-like oak and restrained smoke.", region: { name: "Japan", point: [138, 37], kind: "traditional" } },
       { name: "Taiwanese single malt whisky", lawStatus: "Broad style", law: "A country-and-production description rather than a protected global style: malt whisky is made at one Taiwanese distillery, while exact maturation and label rules depend on the market.", style: "Warm, humid warehouses accelerate extraction and evaporation, often emphasizing tropical fruit, vanilla, spice and active cask character.", region: { name: "Taiwan", point: [121, 23.7], kind: "traditional" } },
       { name: "Indian single malt whisky", lawStatus: "Broad style", law: "A country-and-production description for malt whisky from one Indian distillery; it is not governed by Scotch rules, and qualifying details should be checked on the label.", style: "Indian barley and hot maturation commonly produce concentrated malt, tropical fruit, spice and fast-developing oak character.", region: { name: "India", point: [78, 20.6], kind: "traditional" } },
+      { name: "American single malt whiskey", lawStatus: "Defined style", law: "The U.S. standard requires 100% malted barley, mashing, distillation and maturation in the United States, production at one U.S. distillery, distillation to no more than 80% ABV, oak casks no larger than 700 L and bottling at 40% ABV or more.", style: "Malt-led American whiskey ranging from cereal and chocolate to fruit and smoke, with climate, specialty malt and new or used oak creating broad regional variation.", region: { name: "United States", point: [-98, 39], kind: "traditional" } },
     ],
   },
   {
@@ -160,6 +161,7 @@ export const categoryGuides: CategoryGuide[] = [
       { name: "Bacanora", lawStatus: "Protected origin", law: "Sonoran denomination with a defined production territory and Mexican standard; commonly based on Agave angustifolia.", style: "Dry, herbal and mineral with roasted agave and desert scrub notes.", region: { name: "Sonora", point: [-110.8, 29.3], kind: "protected" } },
       { name: "Raicilla", lawStatus: "Protected origin", law: "Mexican denomination covering specified municipalities in Jalisco and Nayarit, with permitted agaves and methods.", style: "Coastal versions can be lush and fruity; mountain versions often read herbal, peppery and mineral.", region: { name: "Jalisco & Nayarit", point: [-105, 20.5], kind: "protected" } },
       { name: "Sotol", lawStatus: "Protected origin", law: "Mexican denomination for spirit made from Dasylirion in Chihuahua, Coahuila and Durango; botanically it is not agave.", style: "Grassy, resinous and earthy, sometimes with smoke and lactic fermentation character.", region: { name: "Northern Mexico", point: [-106.5, 28], kind: "protected" } },
+      { name: "Texas sotol-style spirit", lawStatus: "Broad style", law: "A U.S.-made spirit distilled from Dasylirion. It sits outside Mexico’s protected Sotol denomination, so its identity comes from raw material and production method rather than that geographic name.", style: "Fresh desert herbs, grass, cucumber, earth and pepper, often cleaner and less smoke-led than pit-roasted northern Mexican Sotol.", region: { name: "Texas", point: [-102, 31], kind: "traditional" } },
     ],
   },
   {
@@ -283,6 +285,8 @@ export function getCategoryGuide(categoryId: string) {
 
 export const guideSources = [
   { label: "EU spirit drinks regulation", url: "https://eur-lex.europa.eu/eli/reg/2019/787/oj/eng" },
+  { label: "US American single malt whisky standard", url: "https://www.ttb.gov/public-information/featured-stories/ttb-establishes-american-single-malt-whisky-standard-identity" },
+  { label: "Mexican Sotol denomination standard", url: "https://dof.gob.mx/nota_detalle_popup.php?codigo=669378" },
   { label: "Bolivian Singani denomination law", url: "https://www.senapi.gob.bo/normativas/leyes/ley-de-denominacion-de-origen" },
   { label: "Absinthe de Pontarlier GI specification", url: "https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=uriserv%3AOJ.C_.2018.110.01.0035.01.ENG" },
   { label: "US TTB label anatomy", url: "https://www.ttb.gov/regulated-commodities/beverage-alcohol/distilled-spirits/ds-labeling-home/anatomy-of-a-distilled-spirits-label-tool" },
