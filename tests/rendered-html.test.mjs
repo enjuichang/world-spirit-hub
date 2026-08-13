@@ -41,16 +41,18 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
 });
 
 test("renders the educational guide", async () => {
-  const [indexResponse, whiskyResponse, brandyResponse, agaveResponse] = await Promise.all([
+  const [indexResponse, whiskyResponse, brandyResponse, agaveResponse, asianResponse] = await Promise.all([
     render("/guide"),
     render("/guide/whisky"),
     render("/guide/brandy"),
     render("/guide/agave"),
+    render("/guide/asian"),
   ]);
   assert.equal(indexResponse.status, 200);
   assert.equal(whiskyResponse.status, 200);
   assert.equal(brandyResponse.status, 200);
   assert.equal(agaveResponse.status, 200);
+  assert.equal(asianResponse.status, 200);
 
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /Eight families/);
@@ -84,11 +86,14 @@ test("renders the educational guide", async () => {
   assert.match(brandyHtml, /86(?:<!-- -->)? documented production sites/);
 
   const agaveHtml = await agaveResponse.text();
+  const asianHtml = await asianResponse.text();
   assert.match(agaveHtml, /Mexico context · Highlands \+ Valley · official denomination/i);
   assert.match(agaveHtml, /Tequila DO/);
   assert.match(agaveHtml, /Los Altos · Highlands/);
   assert.match(agaveHtml, /trade and terroir language, not separate classes/i);
   assert.doesNotMatch(agaveHtml, /Geographic focus · Mexico/);
+
+  assert.match(asianHtml, /Geographic focus · China › Guizhou/);
 });
 
 test("Australian whisky has a map boundary and representative distilleries", async () => {

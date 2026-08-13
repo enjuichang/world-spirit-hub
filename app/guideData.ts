@@ -1,5 +1,6 @@
 export type MapRegion = {
   name: string;
+  parentRegion?: string;
   mapLabel?: string;
   point: [number, number];
   kind?: "protected" | "traditional" | "global";
@@ -240,7 +241,7 @@ export const categoryGuides: CategoryGuide[] = [
     ],
     subtypes: [
       { name: "Strong-aroma baijiu", lawStatus: "Defined style", law: "Chinese national/industry standards define baijiu and aroma categories; region-specific names may carry additional protection.", style: "Powerful pineapple, fermented fruit and savory notes from mud-pit fermentation and mixed-grain cycles.", region: { name: "Sichuan basin", point: [104.1, 30.7], kind: "traditional" } },
-      { name: "Sauce-aroma baijiu", lawStatus: "Defined style", law: "A regulated Chinese aroma category; famous regional indications such as Kweichow Moutai add place-specific specifications.", style: "Layered umami, roasted grain, soy-like savor and dried fruit from repeated high-temperature cycles.", region: { name: "Guizhou", point: [106.7, 26.6], kind: "traditional" } },
+      { name: "Sauce-aroma baijiu", lawStatus: "Defined style", law: "A regulated Chinese aroma category; famous regional indications such as Kweichow Moutai add place-specific specifications.", style: "Layered umami, roasted grain, soy-like savor and dried fruit from repeated high-temperature cycles.", region: { name: "Guizhou", parentRegion: "China", point: [106.7, 26.6], kind: "traditional" } },
       { name: "Light-aroma baijiu", lawStatus: "Defined style", law: "A Chinese aroma classification rather than one universal place name.", style: "Clean, floral and cereal-led, often from sorghum fermented in stone jars.", region: { name: "Northern China", point: [112, 37], kind: "traditional" } },
       { name: "Rice-aroma baijiu", lawStatus: "Defined style", law: "Chinese aroma category based around rice-spirit character; geographic claims require separate qualification.", style: "Soft, floral and gently sweet with rice, honey and yogurt-like notes.", region: { name: "Southern China", point: [110, 24], kind: "traditional" } },
       { name: "Honkaku shōchū", lawStatus: "Defined style", law: "Japan's single-distilled shōchū category restricts materials and process; several regional shōchū names are protected GIs.", style: "Raw-material expressive—sweet potato, barley, rice, buckwheat or brown sugar—with kōji-driven umami.", region: { name: "Kyushu", point: [130.5, 32.3], kind: "traditional" } },

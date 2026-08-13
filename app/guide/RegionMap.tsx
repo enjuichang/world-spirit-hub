@@ -660,6 +660,12 @@ export function RegionMap({
   const isJerezFocus = focusIds.includes("Brandy de Jerez GI");
   const displayRegions = useMemo(() => isJerezFocus ? [] : regions, [isJerezFocus, regions]);
   const focusFeatures = useMemo(() => featuresForIds(focusIds), [focusIds]);
+  const parentIds = useMemo(
+    () => [...new Set(regions.flatMap((region) => region.parentRegion ? [region.parentRegion] : []))]
+      .filter((id) => boundaryFeatures.has(id)),
+    [regions],
+  );
+  const parentFeatures = useMemo(() => featuresForIds(parentIds), [parentIds]);
   const contextIds = useMemo(() => contextIdsForFocus(focusIds), [focusIds]);
   const contextFeatures = useMemo(() => featuresForIds(contextIds), [contextIds]);
   const commonIds = useMemo(() => commonIdsForFocus(focusIds), [focusIds]);
@@ -669,10 +675,11 @@ export function RegionMap({
   const contextLabel = contextIds.length ? `${contextIds.join(" + ")} context · ` : "";
   const hasDenominationFocus = focusIds.some(isDenominationTerritory);
   const hasIncompleteFocus = focus !== undefined && focusIds.length < focus.length;
-  // Context geometry is intentionally excluded from the initial fit. It stays
-  // visible as a large country backdrop, while the camera opens on the actual
-  // state, appellation, or other subregion the visitor came here to explore.
-  const fittedViewBox = focusFeatures.length && !hasIncompleteFocus
+  // Explicit parent regions frame compact cards as a geographic hierarchy:
+  // the country stays visible while the nested state or province is highlighted.
+  const fittedViewBox = compact && parentFeatures.length
+    ? focusedViewBox(parentFeatures)
+    : focusFeatures.length && !hasIncompleteFocus
       ? focusedViewBox(focusFeatures)
     : compact || focus !== undefined
       ? pointFocusedViewBox(regions)
@@ -695,6 +702,9 @@ export function RegionMap({
   const staticView = staticViews[baseViewKey] ?? DEFAULT_STATIC_VIEW;
   const viewBox = zoomedViewBox(baseViewBox, staticView);
   const focusLabel = focus?.length ? focus : focusIds;
+  const compactFocusLabel = parentIds.length
+    ? `${parentIds.join(" + ")} › ${focusLabel.join(" + ")}`
+    : focusLabel.join(" + ");
   const mapUnitsPerPixel = Math.max(
     viewBox.width / Math.max(mapViewport.width, 1),
     viewBox.height / Math.max(mapViewport.height, 1),
@@ -1359,7 +1369,7 @@ export function RegionMap({
       <figcaption>
         {compact ? (
           <div className="compact-map-caption">
-            <span>{focusLabel.length ? `${hasDenominationFocus ? `${compactContextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus"} · ${focusLabel.join(" + ")}` : "Production area"}</span>
+            <span>{focusLabel.length ? `${hasDenominationFocus ? `${compactContextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus"} · ${compactFocusLabel}` : "Production area"}</span>
             {showDistilleryMarkers && !isJerezFocus && regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
           </div>
         ) : (
