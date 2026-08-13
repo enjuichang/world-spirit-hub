@@ -189,6 +189,7 @@ const boundaryGroups: Record<string, string[]> = {
   "Other authorized areas": ["Other Tequila authorized areas"],
   "Pacific South America": ["Peru", "Chile"],
   "Peru & Chile": ["Peru", "Chile"],
+  Scandinavia: ["Sweden", "Norway"],
   Sonora: ["Bacanora DO"],
 };
 

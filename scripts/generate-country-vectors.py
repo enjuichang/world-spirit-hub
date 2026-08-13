@@ -53,6 +53,7 @@ GUIDE_COUNTRY_IDS = {
     "Luxembourg",
     "Mexico",
     "Netherlands",
+    "Norway",
     "Peru",
     "Poland",
     "South Africa",

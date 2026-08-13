@@ -119,7 +119,7 @@ test("all maps share complete, detailed country vectors", async () => {
   }
 
   assert.ok(guideBoundaries.features.length >= 33);
-  for (const countryName of ["Australia", "China", "Finland", "Netherlands", "South Korea", "United Kingdom", "United States"]) {
+  for (const countryName of ["Australia", "China", "Finland", "Netherlands", "Norway", "South Korea", "United Kingdom", "United States"]) {
     assert.ok(guideBoundaries.features.some((feature) => feature.properties.id === countryName));
   }
 });
