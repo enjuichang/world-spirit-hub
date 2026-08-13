@@ -657,6 +657,14 @@ export function RegionMap({
   const [staticViews, setStaticViews] = useState<Record<string, StaticView>>({});
   const [mapViewport, setMapViewport] = useState({ width: 720, height: 350 });
   const activeRegion = hoveredRegion ?? selectedRegion ?? null;
+  const previewRegion = useCallback((regionName: string) => {
+    setHoveredRegion(regionName);
+    onRegionPreview?.(regionName);
+  }, [onRegionPreview]);
+  const endRegionPreview = useCallback(() => {
+    setHoveredRegion(null);
+    onRegionPreviewEnd?.();
+  }, [onRegionPreviewEnd]);
   const focusIds = useMemo(
     () => compact || focus !== undefined ? focusIdsForRegions(regions, focus) : [],
     [compact, focus, regions],
@@ -1034,15 +1042,13 @@ export function RegionMap({
           });
 
           const resetRegionFocus = () => {
-            setHoveredRegion(null);
-            onRegionPreviewEnd?.();
+            endRegionPreview();
             map.getCanvas().style.cursor = "";
             if (selectedRegionRef.current) focusInteractiveRegionPaint(map, selectedRegionRef.current);
             else resetInteractiveRegionPaint(map);
           };
           const focusRegion = (name: string) => {
-            setHoveredRegion(name);
-            onRegionPreview?.(name);
+            previewRegion(name);
             map.getCanvas().style.cursor = "pointer";
             focusInteractiveRegionPaint(map, name);
           };
@@ -1101,14 +1107,12 @@ export function RegionMap({
             const enterCity = (event: mapboxgl.MapMouseEvent & { features?: mapboxgl.MapboxGeoJSONFeature[] }) => {
               const name = event.features?.[0]?.properties?.name;
               if (typeof name === "string" && regions.some((region) => region.name === name)) {
-                setHoveredRegion(name);
-                onRegionPreview?.(name);
+                previewRegion(name);
                 map.getCanvas().style.cursor = "pointer";
               }
             };
             const leaveCity = () => {
-              setHoveredRegion(null);
-              onRegionPreviewEnd?.();
+              endRegionPreview();
               map.getCanvas().style.cursor = "";
             };
             map.on("click", "context-city-points", selectCity);
@@ -1205,7 +1209,7 @@ export function RegionMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [commonFeatures, compact, contextFeatures, displayRegions, focusFeatures, geographicLabels, hasDenominationFocus, isJerezFocus, landmarks, minimumBounds, onRegionPreview, regions, selectRegion, shouldApplyMinimumRegion]);
+  }, [commonFeatures, compact, contextFeatures, displayRegions, endRegionPreview, focusFeatures, geographicLabels, hasDenominationFocus, isJerezFocus, landmarks, minimumBounds, previewRegion, regions, selectRegion, shouldApplyMinimumRegion]);
 
   return (
     <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}${hoveredRegion ? " has-region-hover" : ""}`} ref={figureRef}>
@@ -1254,18 +1258,15 @@ export function RegionMap({
           {displayRegions.flatMap((region, index) =>
             boundariesForRegion(region).map((feature, featureIndex) => (
               <path
-                className={`map-region-outline ${region.kind ?? "traditional"}${hoveredRegion === region.name ? " is-hovered" : hoveredRegion ? " is-dimmed" : ""}`}
+                className={`map-region-outline ${region.kind ?? "traditional"}${activeRegion === region.name ? " is-hovered" : activeRegion ? " is-dimmed" : ""}`}
                 d={geometryPath(feature.geometry)}
                 fillRule="evenodd"
                 key={`${region.name}-outline-${index}-${featureIndex}`}
                 style={{ fill: `color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 28%, transparent)`, stroke: REGION_COLORS[index % REGION_COLORS.length] }}
-                onPointerEnter={() => {
-                  setHoveredRegion(region.name);
-                  onRegionPreview?.(region.name);
-                }}
-                onPointerLeave={() => setHoveredRegion(null)}
-                onFocus={() => setHoveredRegion(region.name)}
-                onBlur={() => setHoveredRegion(null)}
+                onPointerEnter={() => previewRegion(region.name)}
+                onPointerLeave={endRegionPreview}
+                onFocus={() => previewRegion(region.name)}
+                onBlur={endRegionPreview}
                 onClick={() => void selectRegion(region.name)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
@@ -1297,15 +1298,12 @@ export function RegionMap({
               const region = displayRegions[positioned.regionIndex];
               return (
                 <g
-                  className={`map-focused-marker ${region.kind ?? "traditional"}${hoveredRegion === region.name ? " is-hovered" : hoveredRegion ? " is-dimmed" : ""}`}
+                  className={`map-focused-marker ${region.kind ?? "traditional"}${activeRegion === region.name ? " is-hovered" : activeRegion ? " is-dimmed" : ""}`}
                   key={positioned.key}
-                  onPointerEnter={() => {
-                    setHoveredRegion(region.name);
-                    onRegionPreview?.(region.name);
-                  }}
-                  onPointerLeave={() => setHoveredRegion(null)}
-                  onFocus={() => setHoveredRegion(region.name)}
-                  onBlur={() => setHoveredRegion(null)}
+                  onPointerEnter={() => previewRegion(region.name)}
+                  onPointerLeave={endRegionPreview}
+                  onFocus={() => previewRegion(region.name)}
+                  onBlur={endRegionPreview}
                   onClick={() => void selectRegion(region.name)}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
@@ -1337,9 +1335,12 @@ export function RegionMap({
             const radius = positioned.kind === "distillery" ? distilleryMarkerRadius * 1.4 : distilleryMarkerRadius;
             return (
               <g
-                className={`map-place-marker ${positioned.kind}${landmark?.highlight ? " is-highlighted" : ""}${selectableRegionName ? " is-selectable" : ""}${hoveredRegion && positioned.regionName && positioned.regionName !== hoveredRegion ? " is-dimmed" : ""}`}
+                className={`map-place-marker ${positioned.kind}${landmark?.highlight ? " is-highlighted" : ""}${selectableRegionName ? " is-selectable" : ""}${activeRegion && positioned.regionName && positioned.regionName !== activeRegion ? " is-dimmed" : ""}`}
                 key={positioned.key}
-                onPointerEnter={selectableRegionName ? () => onRegionPreview?.(selectableRegionName) : undefined}
+                onPointerEnter={selectableRegionName ? () => previewRegion(selectableRegionName) : undefined}
+                onPointerLeave={selectableRegionName ? endRegionPreview : undefined}
+                onFocus={selectableRegionName ? () => previewRegion(selectableRegionName) : undefined}
+                onBlur={selectableRegionName ? endRegionPreview : undefined}
                 onClick={selectableRegionName ? () => void selectRegion(selectableRegionName) : undefined}
                 onKeyDown={selectableRegionName ? (event) => {
                   if (event.key === "Enter" || event.key === " ") {

@@ -2708,11 +2708,13 @@ button {
   height: 100%;
   z-index: 4;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 240ms ease;
 }
 
 .mapbox-ready .mapbox-region-layer {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .mapbox-ready > .map-zoom-controls {
