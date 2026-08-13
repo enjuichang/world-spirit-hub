@@ -411,6 +411,19 @@ export function SpiritExplorer() {
         });
 
         map.addLayer({
+          id: "cluster-count",
+          type: "symbol",
+          source: "spirits",
+          filter: ["has", "point_count"],
+          layout: {
+            "text-field": ["get", "point_count_abbreviated"],
+            "text-size": 12,
+            "text-font": ["Open Sans Bold"],
+          },
+          paint: { "text-color": "#100F0E" },
+        });
+
+        map.addLayer({
           id: "unclustered-points",
           type: "circle",
           source: "spirits",
