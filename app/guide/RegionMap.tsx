@@ -338,11 +338,12 @@ function positionMapLabels(
   viewBox: { x: number; y: number; width: number; height: number },
   fontSize: number,
   markerRadius: number,
+  numberRegionLabels: boolean,
 ) {
   const candidates = [
     ...regions.map((region, index) => ({
       key: `region-${index}`,
-      name: `${index + 1}. ${region.mapLabel ?? region.name}`,
+      name: `${numberRegionLabels ? `${index + 1}. ` : ""}${region.mapLabel ?? region.name}`,
       point: region.point,
       kind: "region" as const,
       regionIndex: index,
@@ -537,6 +538,7 @@ export function RegionMap({
   compact = false,
   focus,
   immersive = false,
+  displayMode = "regions",
   minimumRegion,
   onRegionSelect,
 }: {
@@ -545,6 +547,7 @@ export function RegionMap({
   compact?: boolean;
   focus?: string[];
   immersive?: boolean;
+  displayMode?: "regions" | "cities";
   minimumRegion?: MinimumRegion;
   onRegionSelect?: (regionName: string) => void;
 }) {
@@ -611,7 +614,7 @@ export function RegionMap({
       * zoomProgress;
   const distilleryMarkerRadius = Math.min(mapUnitsPerPixel * distilleryMarkerRadiusPx, mapExtent / 100);
   const landmarks = useMemo(() => landmarksForMap(regions, focusIds), [focusIds, regions]);
-  const positionedLabels = positionMapLabels(regions, landmarks, viewBox, markerFontSize, markerRadius);
+  const positionedLabels = positionMapLabels(regions, landmarks, viewBox, markerFontSize, markerRadius, displayMode !== "cities");
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -1190,7 +1193,7 @@ export function RegionMap({
                 <li key={`${region.name}-legend-${index}`}>
                   <b aria-hidden="true" style={{ borderColor: REGION_COLORS[index % REGION_COLORS.length], boxShadow: `0 0 0 3px color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 16%, transparent)` }} />
                   <strong>{region.name}</strong>
-                  <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>
+                  {displayMode !== "cities" && <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>}
                 </li>
               ))}
             </ol>

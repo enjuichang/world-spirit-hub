@@ -3,7 +3,7 @@
 
 import { ArrowUpRight, FlaskConical, MapPinned, Sprout } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { SubtypeGuide } from "../guideData";
+import type { MapRegion, SubtypeGuide } from "../guideData";
 import { withBasePath } from "../publicPath";
 import { RegionMap } from "./RegionMap";
 import { getSubtypeDeepDive, getSubtypeTargetId } from "./subtypeDeepDives";
@@ -28,11 +28,36 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
 
   const selected = subtypes.find((subtype) => subtype.name === selectedName) ?? subtypes[0];
   const deepDive = useMemo(() => selected ? getSubtypeDeepDive(categoryId, selected) : undefined, [categoryId, selected]);
+  const mapRegions = useMemo<MapRegion[]>(() => {
+    if (!deepDive || deepDive.mapDisplay !== "deduped-cities") return deepDive?.zones ?? [];
+
+    const cities = new Map<string, { name: string; points: Array<[number, number]>; kind: MapRegion["kind"] }>();
+    deepDive.zones.forEach((zone) => {
+      const name = zone.name.split(",")[0].trim();
+      const key = name.toLocaleLowerCase();
+      const city = cities.get(key) ?? { name, points: [], kind: zone.kind };
+      city.points.push(zone.point);
+      cities.set(key, city);
+    });
+
+    return [...cities.values()].map((city) => ({
+      name: city.name,
+      point: [
+        city.points.reduce((total, point) => total + point[0], 0) / city.points.length,
+        city.points.reduce((total, point) => total + point[1], 0) / city.points.length,
+      ],
+      kind: city.kind,
+    }));
+  }, [deepDive]);
 
   function showZoneCard(regionName: string) {
-    setSelectedZoneName(regionName);
+    const zoneName = deepDive?.zones.find((zone) => (
+      zone.name === regionName
+      || (deepDive.mapDisplay === "deduped-cities" && zone.name.split(",")[0].trim() === regionName)
+    ))?.name ?? regionName;
+    setSelectedZoneName(zoneName);
     window.requestAnimationFrame(() => {
-      const card = zoneCardRefs.current.get(regionName);
+      const card = zoneCardRefs.current.get(zoneName);
       if (!card) return;
       card.focus({ preventScroll: true });
       card.scrollIntoView({
@@ -128,10 +153,11 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
       {deepDive.zones.length ? (
         <div className="subregion-layout">
           <RegionMap
-            regions={deepDive.zones}
+            regions={mapRegions}
             label={`${selected.name} subregions`}
             focus={deepDive.mapFocus}
             immersive
+            displayMode={deepDive.mapDisplay === "deduped-cities" ? "cities" : "regions"}
             minimumRegion={categoryId === "rum" ? "caribbean" : undefined}
             onRegionSelect={showZoneCard}
           />

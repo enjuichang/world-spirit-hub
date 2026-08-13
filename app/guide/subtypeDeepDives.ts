@@ -36,6 +36,7 @@ export type SubtypeDeepDiveData = {
   };
   mapTitle: string;
   mapNote: string;
+  mapDisplay?: "deduped-cities";
   mapFocus?: string[];
   zones: DeepDiveZone[];
   styles?: DeepDiveStyle[];
@@ -456,18 +457,23 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
       ? [{ ...subtype.region, character: subtype.style, detail: subtype.law }]
       : [];
   const countries = [...new Set(producers.map((producer) => producer[3]))];
+  const cities = [...new Set(producers.map((producer) => producer[2].split(",")[0].trim()))];
   const methodLens = methodLenses[categoryId] ?? methodLenses.flavoured;
+  const isKentuckyBourbon = key === "whisky:Bourbon";
 
   return {
     introduction: `${subtype.name} is a ${subtype.lawStatus.toLocaleLowerCase()} whose identity comes from the interaction of raw material, method, place and any maturation rules—not from one flavor stereotype. ${subtype.style}`,
     ingredient,
-    mapTitle: producers.length ? `${subtype.name} production examples` : zones.length ? "Where this identity is rooted" : "Method-led rather than map-led",
-    mapNote: producers.length
+    mapTitle: isKentuckyBourbon ? "Kentucky bourbon production cities" : producers.length ? `${subtype.name} production examples` : zones.length ? "Where this identity is rooted" : "Method-led rather than map-led",
+    mapNote: isKentuckyBourbon
+      ? `These ${producers.length} documented production sites are grouped into ${cities.length} Kentucky cities. City markers are geographic anchors, not legal boundaries or a complete directory; bourbon can be made anywhere in the United States.`
+      : producers.length
       ? `These ${producers.length} documented production sites give the atlas concrete geographic anchors${countries.length ? ` across ${countries.join(", ")}` : ""}. Markers identify producers, not legal boundaries or a complete directory.`
       : zones.length
         ? "This marker shows the named production origin or tradition. It is an orientation point, not a claim that one place produces only one flavor."
       : "This subtype has no single truthful internal regional map. Its most useful subdivisions come from recipe, extraction, distillation or maturation rather than geography.",
-    mapFocus: key === "whisky:Bourbon"
+    mapDisplay: isKentuckyBourbon ? "deduped-cities" : undefined,
+    mapFocus: isKentuckyBourbon
       ? ["Kentucky"]
       : categoryId === "agave" && agaveDenominationFocus[subtype.name]
       ? agaveDenominationFocus[subtype.name]
