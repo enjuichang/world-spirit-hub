@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- Vinext's image optimizer cannot fetch project-local assets in the worker runtime. */
 
 import { ArrowUpRight, FlaskConical, MapPinned, Sprout } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MapRegion, SubtypeGuide } from "../guideData";
 import { withBasePath } from "../publicPath";
 import { RegionMap } from "./RegionMap";
@@ -11,7 +11,8 @@ import { getSubtypeDeepDive, getSubtypeTargetId } from "./subtypeDeepDives";
 export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; subtypes: SubtypeGuide[] }) {
   const [selectedName, setSelectedName] = useState(subtypes[0]?.name ?? "");
   const [selectedZoneName, setSelectedZoneName] = useState<string | null>(null);
-  const zoneCardRefs = useRef(new Map<string, HTMLElement>());
+  const [previewZoneName, setPreviewZoneName] = useState<string | null>(null);
+  const zonePanelRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     function readHash() {
@@ -19,6 +20,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
       if (match) {
         setSelectedName(match.name);
         setSelectedZoneName(null);
+        setPreviewZoneName(null);
       }
     }
     readHash();
@@ -50,22 +52,38 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
     }));
   }, [deepDive]);
 
-  function showZoneCard(regionName: string) {
-    const zoneName = deepDive?.zones.find((zone) => (
-      zone.name === regionName
-      || (deepDive.mapDisplay === "deduped-cities" && zone.name.split(",")[0].trim() === regionName)
-    ))?.name ?? regionName;
-    setSelectedZoneName(zoneName);
+  const activeZoneName = previewZoneName ?? selectedZoneName;
+  const selectedZones = useMemo(() => {
+    if (!deepDive || !activeZoneName) return [];
+    return deepDive.zones.filter((zone) => (
+      zone.name === activeZoneName
+      || (deepDive.mapDisplay === "deduped-cities" && zone.name.split(",")[0].trim() === activeZoneName)
+    ));
+  }, [activeZoneName, deepDive]);
+
+  const previewZoneCard = useCallback((regionName: string) => {
+    setPreviewZoneName(regionName);
+  }, []);
+
+  const clearZonePreview = useCallback(() => {
+    setPreviewZoneName(null);
+  }, []);
+
+  const showZoneCard = useCallback((regionName: string) => {
+    setSelectedZoneName(regionName);
+    setPreviewZoneName(null);
     window.requestAnimationFrame(() => {
-      const card = zoneCardRefs.current.get(zoneName);
-      if (!card) return;
-      card.focus({ preventScroll: true });
-      card.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-        block: "center",
-      });
+      const panel = zonePanelRef.current;
+      if (!panel) return;
+      panel.focus({ preventScroll: true });
+      if (window.matchMedia("(max-width: 1180px)").matches) {
+        panel.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          block: "start",
+        });
+      }
     });
-  }
+  }, []);
 
   if (!selected || !deepDive) return null;
 
@@ -89,6 +107,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
               const next = event.target.value;
               setSelectedName(next);
               setSelectedZoneName(null);
+              setPreviewZoneName(null);
               window.history.replaceState(null, "", `#${getSubtypeTargetId(categoryId, next)}`);
             }}
           >
@@ -160,34 +179,53 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
             displayMode={deepDive.mapDisplay === "deduped-cities" ? "cities" : "regions"}
             minimumRegion={categoryId === "rum" ? "caribbean" : undefined}
             onRegionSelect={showZoneCard}
+            onRegionPreview={previewZoneCard}
+            onRegionPreviewEnd={clearZonePreview}
+            selectedRegion={selectedZoneName ?? undefined}
+            showDistilleryMarkers={false}
           />
-          <div className="zone-list">
-            {deepDive.zones.map((zone, index) => (
-              <article
-                className={selectedZoneName === zone.name ? "is-selected" : undefined}
-                key={`${zone.name}-${zone.distillery?.name ?? index}`}
-                ref={(element) => {
-                  if (element) zoneCardRefs.current.set(zone.name, element);
-                  else zoneCardRefs.current.delete(zone.name);
-                }}
-                tabIndex={-1}
-              >
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h5>{zone.name}</h5>
-                <strong>{zone.character}</strong>
-                <p>{zone.detail}</p>
-                {zone.distillery && (
-                  <div className="zone-distillery">
-                    {zone.distillery.image && (
-                      <img src={withBasePath(zone.distillery.image)} alt="" width="96" height="96" />
-                    )}
-                    <div><small>Representative distillery</small><b>{zone.distillery.name}</b></div>
-                  </div>
-                )}
-                {zone.source && <a className="zone-source" href={zone.source.url} target="_blank" rel="noreferrer">{zone.source.label}<ArrowUpRight size={11} /></a>}
-              </article>
-            ))}
-          </div>
+          <aside
+            className={`zone-panel${selectedZones.length ? " has-selection" : ""}`}
+            ref={zonePanelRef}
+            tabIndex={-1}
+            aria-live="polite"
+            aria-label="Selected place details"
+          >
+            <header className="zone-panel-header">
+              <span>{selectedZones.length ? "Selected place" : "Explore the map"}</span>
+              <h5>{activeZoneName ?? "Choose a city or region"}</h5>
+              <p>{selectedZones.length
+                ? `${selectedZones.length} ${selectedZones.length === 1 ? "field card" : "field cards"}`
+                : "Hover over or select a city or outlined subregion to see what makes it distinctive and its notable producers."}</p>
+            </header>
+            {selectedZones.length ? (
+              <div className="zone-list">
+                {selectedZones.map((zone) => {
+                  const index = deepDive.zones.indexOf(zone);
+                  return (
+                    <article className="is-selected" key={`${zone.name}-${zone.distillery?.name ?? index}`}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <h5>{zone.name}</h5>
+                      <small className="zone-signature-label">Famous style · what makes it unique</small>
+                      <strong>{zone.character}</strong>
+                      <p>{zone.detail}</p>
+                      {zone.distillery && (
+                        <div className="zone-distillery">
+                          {zone.distillery.image && (
+                            <img src={withBasePath(zone.distillery.image)} alt={`${zone.distillery.name} bottle`} width="96" height="96" />
+                          )}
+                          <div><small>Notable distillery</small><b>{zone.distillery.name}</b></div>
+                        </div>
+                      )}
+                      {zone.source && <a className="zone-source" href={zone.source.url} target="_blank" rel="noreferrer">{zone.source.label}<ArrowUpRight size={11} /></a>}
+                    </article>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="zone-panel-empty" aria-hidden="true"><MapPinned /></div>
+            )}
+          </aside>
         </div>
       ) : (
         <div className="method-led-note"><FlaskConical /><strong>No honest regional subdivision</strong><p>{deepDive.mapNote}</p></div>

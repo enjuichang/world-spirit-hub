@@ -35,33 +35,100 @@ function clampAtlasView(view: AtlasView): AtlasView {
 type SubtypeRegion = {
   name: string;
   count: number;
-  style: { left: string; top: string; width: string; height: string };
+  style: CSSProperties;
 };
 
-function subtypeRegion(name: string, locations: SpiritLocation[]): SubtypeRegion {
-  const points = locations.map(({ coordinates }) => ({
-    x: ((coordinates[0] + 180) / 360) * 100,
-    y: ((90 - coordinates[1]) / 180) * 100,
-  }));
-  const xs = points.map(({ x }) => x);
-  const ys = points.map(({ y }) => y);
-  const minX = Math.min(...xs);
-  const maxX = Math.max(...xs);
-  const minY = Math.min(...ys);
-  const maxY = Math.max(...ys);
-  const width = Math.min(18, Math.max(3, maxX - minX + 2));
-  const height = Math.min(20, Math.max(6, maxY - minY + 4));
-  const centerX = (minX + maxX) / 2;
-  const centerY = (minY + maxY) / 2;
+type MapPoint = { x: number; y: number };
+type MapCircle = MapPoint & { radius: number };
+
+const CIRCLE_EPSILON = 1e-9;
+const REGION_MARKER_CLEARANCE = 0.0025;
+
+// Coordinates are measured in units of map height. Since the map is 2:1,
+// x spans 0..2 and y spans 0..1. This keeps the regions circular on screen.
+function mapPoint([longitude, latitude]: [number, number]): MapPoint {
+  return { x: (longitude + 180) / 180, y: (90 - latitude) / 180 };
+}
+
+function squaredDistance(first: MapPoint, second: MapPoint) {
+  return (first.x - second.x) ** 2 + (first.y - second.y) ** 2;
+}
+
+function contains(circle: MapCircle, point: MapPoint) {
+  return squaredDistance(circle, point) <= (circle.radius + CIRCLE_EPSILON) ** 2;
+}
+
+function circleThroughPair(first: MapPoint, second: MapPoint): MapCircle {
+  const x = (first.x + second.x) / 2;
+  const y = (first.y + second.y) / 2;
+  return { x, y, radius: Math.sqrt(squaredDistance({ x, y }, first)) };
+}
+
+function circleThroughTriple(first: MapPoint, second: MapPoint, third: MapPoint): MapCircle | null {
+  const determinant = 2 * (
+    first.x * (second.y - third.y)
+    + second.x * (third.y - first.y)
+    + third.x * (first.y - second.y)
+  );
+  if (Math.abs(determinant) <= CIRCLE_EPSILON) return null;
+
+  const firstLength = first.x ** 2 + first.y ** 2;
+  const secondLength = second.x ** 2 + second.y ** 2;
+  const thirdLength = third.x ** 2 + third.y ** 2;
+  const x = (
+    firstLength * (second.y - third.y)
+    + secondLength * (third.y - first.y)
+    + thirdLength * (first.y - second.y)
+  ) / determinant;
+  const y = (
+    firstLength * (third.x - second.x)
+    + secondLength * (first.x - third.x)
+    + thirdLength * (second.x - first.x)
+  ) / determinant;
+  return { x, y, radius: Math.sqrt(squaredDistance({ x, y }, first)) };
+}
+
+function smallestEnclosingCircle(points: MapPoint[]): MapCircle {
+  let smallest: MapCircle | null = points.length === 1 ? { ...points[0], radius: 0 } : null;
+
+  function consider(candidate: MapCircle | null) {
+    if (
+      candidate
+      && (!smallest || candidate.radius < smallest.radius)
+      && points.every((point) => contains(candidate, point))
+    ) smallest = candidate;
+  }
+
+  for (let first = 0; first < points.length; first += 1) {
+    for (let second = first + 1; second < points.length; second += 1) {
+      consider(circleThroughPair(points[first], points[second]));
+      for (let third = second + 1; third < points.length; third += 1) {
+        consider(circleThroughTriple(points[first], points[second], points[third]));
+      }
+    }
+  }
+
+  // A minimum enclosing circle is always defined by one, two, or three points.
+  return smallest ?? { ...points[0], radius: 0 };
+}
+
+function subtypeRegion(name: string, subtypeLocations: SpiritLocation[], allLocations: SpiritLocation[]): SubtypeRegion | null {
+  const circle = smallestEnclosingCircle(subtypeLocations.map(({ coordinates }) => mapPoint(coordinates)));
+  const radius = circle.radius + REGION_MARKER_CLEARANCE;
+  const containsAnotherSubtype = allLocations.some((location) => (
+    location.subcategory !== name
+    && contains({ ...circle, radius }, mapPoint(location.coordinates))
+  ));
+  if (containsAnotherSubtype) return null;
 
   return {
     name,
-    count: locations.length,
+    count: subtypeLocations.length,
     style: {
-      left: `${Math.max(0, Math.min(100 - width, centerX - width / 2))}%`,
-      top: `${Math.max(0, Math.min(100 - height, centerY - height / 2))}%`,
-      width: `${width}%`,
-      height: `${height}%`,
+      left: `${circle.x * 50}%`,
+      top: `${circle.y * 100}%`,
+      width: `${radius * 100}%`,
+      height: `${radius * 200}%`,
     },
   };
 }
@@ -70,11 +137,16 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
   const subcategories = useMemo(() => [...new Set(locations.map((location) => location.subcategory))], [locations]);
   const [filter, setFilter] = useState("All");
   const subtypeRegions = useMemo(() => {
-    const regions = subcategories.map((subcategory) =>
-      subtypeRegion(subcategory, locations.filter((location) => location.subcategory === subcategory)),
-    );
+    const subtypeLocations = subcategories.map((subcategory) => ({
+      name: subcategory,
+      locations: locations.filter((location) => location.subcategory === subcategory),
+    }));
+    const regions = subtypeLocations.flatMap(({ name, locations: matchingLocations }) => {
+      const region = subtypeRegion(name, matchingLocations, locations);
+      return region ? [region] : [];
+    });
     if (filter !== "All") return regions.filter((region) => region.name === filter);
-    const prominenceThreshold = Math.max(2, Math.ceil(Math.max(...regions.map(({ count }) => count)) * 0.15));
+    const prominenceThreshold = Math.max(2, Math.ceil(Math.max(...subtypeLocations.map(({ locations: matchingLocations }) => matchingLocations.length)) * 0.15));
     return regions.filter(({ count }) => count >= prominenceThreshold).sort((a, b) => b.count - a.count).slice(0, 5);
   }, [filter, locations, subcategories]);
   const filtered = filter === "All" ? locations : locations.filter((location) => location.subcategory === filter);

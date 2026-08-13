@@ -18,7 +18,6 @@ import {
   Plus,
   RotateCcw,
   Search,
-  Sparkles,
   X,
 } from "lucide-react";
 import {
@@ -68,12 +67,16 @@ function clampFallbackView(view: FallbackView): FallbackView {
 
 function OfflineExplorerMap({
   visibleLocations,
-  selectedId,
+  activeId,
   onChooseLocation,
+  onPreviewLocation,
+  onLeaveLocation,
 }: {
   visibleLocations: typeof locations;
-  selectedId: string | null;
+  activeId: string | null;
   onChooseLocation: (id: string) => void;
+  onPreviewLocation: (id: string) => void;
+  onLeaveLocation: () => void;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
@@ -162,7 +165,7 @@ function OfflineExplorerMap({
           {visibleLocations.map((location) => {
             const point = projectLocation(location.coordinates);
             const category = getCategory(location.categoryId)!;
-            const selected = selectedId === location.id;
+            const selected = activeId === location.id;
             return (
               <g
                 key={location.id}
@@ -170,6 +173,10 @@ function OfflineExplorerMap({
                 role="button"
                 tabIndex={0}
                 aria-label={`${location.name}, ${location.place}, ${location.country}`}
+                onMouseEnter={() => onPreviewLocation(location.id)}
+                onMouseLeave={onLeaveLocation}
+                onFocus={() => onPreviewLocation(location.id)}
+                onBlur={onLeaveLocation}
                 onClick={(event) => {
                   event.stopPropagation();
                   onChooseLocation(location.id);
@@ -273,11 +280,13 @@ function featureCollection(
 export function SpiritExplorer() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
+  const previewClearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [mapFailed, setMapFailed] = useState(false);
   const [categoryId, setCategoryId] = useState("all");
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [mobileView, setMobileView] = useState<"map" | "list">("map");
   const [mapMode, setMapMode] = useState<"2d" | "3d">("2d");
 
@@ -302,7 +311,8 @@ export function SpiritExplorer() {
     });
   }, [categoryId, query]);
 
-  const selectedLocation = selectedId ? getLocation(selectedId) : undefined;
+  const activeId = hoveredId ?? selectedId;
+  const selectedLocation = activeId ? getLocation(activeId) : undefined;
   const selectedCategory = selectedLocation
     ? getCategory(selectedLocation.categoryId)
     : categoryId !== "all"
@@ -475,12 +485,22 @@ export function SpiritExplorer() {
           const id = feature?.properties?.id as string | undefined;
           if (!feature || !id) return;
           setSelectedId(id);
+          setHoveredId(null);
           const point = feature.geometry as GeoJSON.Point;
           map.easeTo({
             center: point.coordinates as [number, number],
             zoom: Math.max(map.getZoom(), 5),
             duration: 500,
           });
+        });
+
+        map.on("mouseenter", "unclustered-points", (event) => {
+          const id = event.features?.[0]?.properties?.id as string | undefined;
+          if (id) previewLocation(id);
+        });
+
+        map.on("mouseleave", "unclustered-points", () => {
+          clearLocationPreview();
         });
 
         ["clusters", "unclustered-points"].forEach((layer) => {
@@ -500,6 +520,7 @@ export function SpiritExplorer() {
 
     return () => {
       if (loadTimer) clearTimeout(loadTimer);
+      if (previewClearTimer.current) clearTimeout(previewClearTimer.current);
       mapRef.current?.remove();
       mapRef.current = null;
     };
@@ -509,8 +530,8 @@ export function SpiritExplorer() {
     const map = mapRef.current;
     if (!mapReady || !map) return;
     const source = map.getSource("spirits") as GeoJSONSource | undefined;
-    source?.setData(featureCollection(categoryId, query, selectedId));
-  }, [categoryId, mapReady, query, selectedId]);
+    source?.setData(featureCollection(categoryId, query, activeId));
+  }, [activeId, categoryId, mapReady, query]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -543,6 +564,7 @@ export function SpiritExplorer() {
   function chooseCategory(nextId: string) {
     setCategoryId(nextId);
     setSelectedId(null);
+    setHoveredId(null);
     setQuery("");
     const map = mapRef.current;
     if (map) map.easeTo({ center: [9, 24], zoom: 1.25, duration: 500 });
@@ -552,6 +574,7 @@ export function SpiritExplorer() {
     const location = getLocation(id);
     if (!location) return;
     setSelectedId(id);
+    setHoveredId(null);
     setMobileView("map");
     mapRef.current?.easeTo({
       center: location.coordinates,
@@ -565,10 +588,19 @@ export function SpiritExplorer() {
     setMobileView("map");
   }
 
+  function previewLocation(id: string) {
+    if (previewClearTimer.current) clearTimeout(previewClearTimer.current);
+    setHoveredId(id);
+  }
+
+  function clearLocationPreview(delay = 350) {
+    if (previewClearTimer.current) clearTimeout(previewClearTimer.current);
+    previewClearTimer.current = setTimeout(() => setHoveredId(null), delay);
+  }
+
   return (
     <section className="explorer" id="explore" aria-labelledby="explore-title">
-      <aside className="explorer-sidebar">
-        <div className="explorer-intro">
+      <header className="explorer-intro">
           <p className="eyebrow">
             <span /> The spirited atlas
           </p>
@@ -591,9 +623,9 @@ export function SpiritExplorer() {
               <strong>1</strong> world
             </span>
           </div>
-        </div>
+      </header>
 
-        <div className="filter-panel" aria-label="Map filters">
+      <aside className="filter-panel" aria-label="Map filters">
           <div className="filter-heading">
             <span>Filter the atlas</span>
             {categoryId !== "all" && (
@@ -648,7 +680,6 @@ export function SpiritExplorer() {
               <ArrowUpRight size={15} />
             </Link>
           )}
-        </div>
       </aside>
 
       <div className={`explorer-stage mobile-${mobileView}`}>
@@ -732,8 +763,10 @@ export function SpiritExplorer() {
           {mapFailed && (
             <OfflineExplorerMap
               visibleLocations={filteredLocations}
-              selectedId={selectedId}
+              activeId={activeId}
               onChooseLocation={chooseLocation}
+              onPreviewLocation={previewLocation}
+              onLeaveLocation={() => clearLocationPreview()}
             />
           )}
           <div className="map-legend" aria-label="Spirit category legend">
@@ -792,14 +825,22 @@ export function SpiritExplorer() {
           )}
         </div>
 
-        {selectedCategory && (
-          <aside className="detail-drawer" aria-label="Selected spirit details">
+        {selectedLocation && selectedCategory && (
+          <aside
+            className={`detail-drawer${hoveredId ? " is-hover-preview" : ""}`}
+            aria-label="Selected distillery details"
+            aria-live="polite"
+            onPointerEnter={() => {
+              if (previewClearTimer.current) clearTimeout(previewClearTimer.current);
+            }}
+            onPointerLeave={() => clearLocationPreview(0)}
+          >
             <button
               className="drawer-close"
               type="button"
               onClick={() => {
                 setSelectedId(null);
-                if (!selectedLocation) setCategoryId("all");
+                setHoveredId(null);
               }}
               aria-label="Close details"
             >
@@ -813,8 +854,7 @@ export function SpiritExplorer() {
               {selectedCategory.name}
             </div>
 
-            {selectedLocation ? (
-              <>
+            <>
                 <p className="drawer-overline">
                   <MapPin size={14} /> {selectedLocation.place},{" "}
                   {selectedLocation.country}
@@ -933,71 +973,6 @@ export function SpiritExplorer() {
                   </div>
                 </details>
               </>
-            ) : (
-              <>
-                <p className="drawer-overline">
-                  <Sparkles size={14} /> Category field note
-                </p>
-                <h2>{selectedCategory.name}</h2>
-                <p className="drawer-lead">{selectedCategory.summary}</p>
-              </>
-            )}
-
-            {!selectedLocation && (
-              <>
-                <div className="drawer-section">
-                  <h3>Styles to know</h3>
-                  <div className="subcategory-list">
-                    {selectedCategory.subcategories.map((subcategory) => (
-                      <span key={subcategory}>{subcategory}</span>
-                    ))}
-                  </div>
-                </div>
-                <div className="drawer-section">
-                  <h3>Taste compass</h3>
-                  <div className="taste-bars">
-                    {selectedCategory.taste.map((taste, index) => (
-                      <div key={taste}>
-                        <span>{taste}</span>
-                        <i>
-                          <b
-                            style={{
-                              width: `${78 - index * 7}%`,
-                              backgroundColor: selectedCategory.color,
-                            }}
-                          />
-                        </i>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <details className="drawer-disclosure">
-                  <summary>Production & style</summary>
-                  <p>{selectedCategory.production}</p>
-                </details>
-                <details className="drawer-disclosure">
-                  <summary>Law & labels</summary>
-                  <p>{selectedCategory.law}</p>
-                </details>
-                <details className="drawer-disclosure">
-                  <summary>History</summary>
-                  <p>{selectedCategory.history}</p>
-                </details>
-                <details className="drawer-disclosure">
-                  <summary>What moves price</summary>
-                  <p>{selectedCategory.price}</p>
-                </details>
-                <a
-                  className="source-link"
-                  href={selectedCategory.sourceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <BookOpen size={15} /> {selectedCategory.sourceLabel}
-                  <ArrowUpRight size={14} />
-                </a>
-              </>
-            )}
           </aside>
         )}
       </div>

@@ -1,6 +1,7 @@
 import type { MapRegion, SubtypeGuide } from "../guideData";
 import subtypeExpansion from "../../data/subtype-expansion.json";
 import additionalSubtypeExpansion from "../../data/additional-subtype-expansion.json";
+import bottleImageData from "../../data/bottle-images.json";
 
 export type DeepDiveZone = MapRegion & {
   character: string;
@@ -138,6 +139,7 @@ type ExpansionTuple = [
 
 const originalExpandedProducers = subtypeExpansion as unknown as Record<string, ExpansionTuple[]>;
 const additionalExpandedProducers = additionalSubtypeExpansion as unknown as Record<string, ExpansionTuple[]>;
+const bottleImages = bottleImageData as Record<string, { imagePath: string }>;
 const expandedProducers = Object.fromEntries(
   [...new Set([...Object.keys(originalExpandedProducers), ...Object.keys(additionalExpandedProducers)])].map((key) => [
     key,
@@ -440,7 +442,7 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
   ].filter((producer, index, entries) => entries.findIndex((entry) => entry[0] === producer[0]) === index);
   const zones: DeepDiveZone[] = producers.length
     ? producers.map((producer) => {
-        const [, name, place, , longitude, latitude, descriptor, ...rest] = producer;
+        const [id, name, place, , longitude, latitude, descriptor, ...rest] = producer;
         const [tagOne, tagTwo, tagThree, sourceUrl] = rest;
         return {
           name: place,
@@ -449,7 +451,7 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
           kind: subtype.region?.kind ?? "traditional",
           character: `${tagOne} · ${tagTwo} · ${tagThree}`,
           detail: `${descriptor}. This documented site shows one producer expression of ${subtype.name}; it is an example, not a boundary for the style.`,
-          distillery: { name, point: [longitude, latitude] },
+          distillery: { name, point: [longitude, latitude], image: bottleImages[id]?.imagePath },
           source: { label: `Official ${name} site`, url: sourceUrl },
         };
       })
@@ -460,21 +462,37 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
   const cities = [...new Set(producers.map((producer) => producer[2].split(",")[0].trim()))];
   const methodLens = methodLenses[categoryId] ?? methodLenses.flavoured;
   const isKentuckyBourbon = key === "whisky:Bourbon";
+  const isTennesseeWhiskey = key === "whisky:Tennessee whiskey";
+  const isBrandyDeJerez = key === "brandy:Brandy de Jerez";
 
   return {
     introduction: `${subtype.name} is a ${subtype.lawStatus.toLocaleLowerCase()} whose identity comes from the interaction of raw material, method, place and any maturation rules—not from one flavor stereotype. ${subtype.style}`,
     ingredient,
-    mapTitle: isKentuckyBourbon ? "Kentucky bourbon production cities" : producers.length ? `${subtype.name} production examples` : zones.length ? "Where this identity is rooted" : "Method-led rather than map-led",
+    mapTitle: isKentuckyBourbon
+      ? "Kentucky bourbon production cities"
+      : isBrandyDeJerez
+      ? "The three-city Brandy de Jerez production and ageing area"
+      : producers.length
+      ? `${subtype.name} production cities`
+      : zones.length
+      ? "Where this identity is rooted"
+      : "Method-led rather than map-led",
     mapNote: isKentuckyBourbon
       ? `These ${producers.length} documented production sites are grouped into ${cities.length} Kentucky cities. City markers are geographic anchors, not legal boundaries or a complete directory; bourbon can be made anywhere in the United States.`
+      : isBrandyDeJerez
+      ? "The GI is produced and aged exclusively in the municipalities of Jerez de la Frontera, El Puerto de Santa María and Sanlúcar de Barrameda. The highlighted boundary is their combined municipal area; the three labeled points mark the cities."
       : producers.length
-      ? `These ${producers.length} documented production sites give the atlas concrete geographic anchors${countries.length ? ` across ${countries.join(", ")}` : ""}. Markers identify producers, not legal boundaries or a complete directory.`
+      ? `These ${producers.length} documented production sites are grouped into ${cities.length} cities${countries.length ? ` across ${countries.join(", ")}` : ""}. The map shows cities only; choose one to see its notable producers and style cues.`
       : zones.length
         ? "This marker shows the named production origin or tradition. It is an orientation point, not a claim that one place produces only one flavor."
       : "This subtype has no single truthful internal regional map. Its most useful subdivisions come from recipe, extraction, distillation or maturation rather than geography.",
-    mapDisplay: isKentuckyBourbon ? "deduped-cities" : undefined,
+    mapDisplay: producers.length ? "deduped-cities" : undefined,
     mapFocus: isKentuckyBourbon
       ? ["Kentucky"]
+      : isTennesseeWhiskey
+      ? ["Tennessee"]
+      : isBrandyDeJerez
+      ? ["Brandy de Jerez GI"]
       : categoryId === "agave" && agaveDenominationFocus[subtype.name]
       ? agaveDenominationFocus[subtype.name]
       : countries.length ? countries : undefined,
@@ -484,6 +502,8 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
       methodLens,
       { name: "In the glass", character: "A tendency, never a guarantee", detail: subtype.style },
     ],
-    source: studySource,
+    source: isBrandyDeJerez
+      ? { label: "EU Brandy de Jerez GI product specification", url: "https://eur-lex.europa.eu/eli/C/2026/240/oj/eng/pdf" }
+      : studySource,
   };
 }

@@ -2,8 +2,6 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
-  BookOpen,
   BookOpenText,
   Factory,
   Fingerprint,
@@ -15,6 +13,7 @@ import { locations, type SpiritCategory } from "../data";
 import type { CategoryGuide } from "../guideData";
 import { CategoryDistilleryAtlas } from "./CategoryDistilleryAtlas";
 import { CategoryProgression } from "./CategoryProgression";
+import { ChapterNavigator } from "./ChapterNavigator";
 import { RegionMap } from "./RegionMap";
 import { SubtypeComparison } from "./SubtypeComparison";
 import { SubtypeDeepDive } from "./SubtypeDeepDive";
@@ -130,28 +129,19 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
             <CategoryDistilleryAtlas categoryName={category.name} locations={categoryLocations} />
           </div>
 
-          <aside className="guide-aside">
-            <div>
-              <h3>In this chapter</h3>
-              <ul className="chapter-links">
-                <ChapterLink href="#production">How it&apos;s made</ChapterLink>
-                <ChapterLink href="#branding-terms">Common bottle terms</ChapterLink>
-                <ChapterLink href="#regional-labels">Regional label names</ChapterLink>
-                <ChapterLink href="#styles">Subtype field cards</ChapterLink>
-                <ChapterLink href="#learning-path">Intro to advanced</ChapterLink>
-                <ChapterLink href="#compare">Compare styles</ChapterLink>
-                <ChapterLink href="#distilleries">Distillery map</ChapterLink>
-              </ul>
-            </div>
-            <div>
-              <h3>Explore each subtype</h3>
-              <ul className="chapter-links subtype-chapter-links">
-                {guide.subtypes.map((subtype) => <ChapterLink href={`#${getSubtypeTargetId(category.id, subtype.name)}`} key={subtype.name}>{subtype.name}</ChapterLink>)}
-              </ul>
-            </div>
-            <div><h3>How to read the cards</h3><p className="aside-note">“Protected origin” ties a name to place. “Defined style” sets production rules without necessarily defining one place. “Traditional term” is recognized usage; “broad style” is a useful description, not one universal law.</p></div>
-            <a className="source-link" href={category.sourceUrl} target="_blank" rel="noreferrer"><BookOpen size={15} /> Primary study reference <ArrowUpRight size={14} /></a>
-          </aside>
+          <ChapterNavigator
+            sections={[
+              { href: "#production", label: "How it's made" },
+              { href: "#branding-terms", label: "Common bottle terms" },
+              { href: "#regional-labels", label: "Regional label names" },
+              { href: "#styles", label: "Subtype field cards" },
+              { href: "#learning-path", label: "Intro to advanced" },
+              { href: "#compare", label: "Compare styles" },
+              { href: "#distilleries", label: "Distillery map" },
+            ]}
+            subtypes={guide.subtypes.map((subtype) => ({ href: `#${getSubtypeTargetId(category.id, subtype.name)}`, label: subtype.name }))}
+            sourceUrl={category.sourceUrl}
+          />
         </article>
       </div>
 
@@ -169,8 +159,4 @@ function GuideTitle({ icon, kicker, id, children }: { icon: React.ReactNode; kic
 
 function SubtypeFact({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) {
   return <div className="subtype-fact">{icon}<div><strong>{title}</strong><p>{children}</p></div></div>;
-}
-
-function ChapterLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return <li><a href={href}><span>{children}</span><ArrowRight size={13} aria-hidden="true" /></a></li>;
 }
