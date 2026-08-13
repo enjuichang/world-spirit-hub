@@ -1392,7 +1392,15 @@ export function RegionMap({
                 <li key={`${region.name}-legend-${index}`}>
                   <b aria-hidden="true" style={{ borderColor: REGION_COLORS[index % REGION_COLORS.length], boxShadow: `0 0 0 3px color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 16%, transparent)` }} />
                   <strong>{region.name}</strong>
-                  {displayMode !== "cities" && <small>{region.distillery ? region.distillery.name : region.kind === "protected" ? "Protected origin" : "Production tradition"}</small>}
+                  {displayMode !== "cities" && (
+                    <small>
+                      {"distillery" in region && region.distillery
+                        ? region.distillery.name
+                        : region.kind === "protected"
+                          ? "Protected origin"
+                          : "Production tradition"}
+                    </small>
+                  )}
                 </li>
               ))}
             </ol>
