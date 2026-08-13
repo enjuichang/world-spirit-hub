@@ -102,6 +102,23 @@ test("Australian whisky has a map boundary and representative distilleries", asy
   assert.equal(boundaries.features[0].geometry.type, "MultiPolygon");
 });
 
+test("all maps share complete, detailed country vectors", async () => {
+  const [worldSvg, guideBoundaries] = await Promise.all([
+    readFile(new URL("../public/world-equirectangular.svg", import.meta.url), "utf8"),
+    readFile(new URL("../app/guide/refined-country-boundaries.json", import.meta.url), "utf8").then(JSON.parse),
+  ]);
+
+  assert.equal((worldSvg.match(/class="country /g) ?? []).length, 258);
+  for (const countryCode of ["AUS", "CHN", "FIN", "FRA", "NLD", "USA"]) {
+    assert.match(worldSvg, new RegExp(`class="country ${countryCode}"`));
+  }
+
+  assert.ok(guideBoundaries.features.length >= 33);
+  for (const countryName of ["Australia", "China", "Finland", "Netherlands", "South Korea", "United States"]) {
+    assert.ok(guideBoundaries.features.some((feature) => feature.properties.id === countryName));
+  }
+});
+
 test("Bourbon uses a Kentucky state boundary", async () => {
   const boundaries = await readFile(new URL("../app/guide/kentucky-boundary.json", import.meta.url), "utf8").then(JSON.parse);
 
