@@ -107,6 +107,7 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
                   const mappedRegion = subtype.region && example
                     ? { ...subtype.region, distillery: { name: example.name, point: example.coordinates } }
                     : subtype.region;
+                  const subtypeMinimumRegion = mappedRegion?.name === "Scandinavia" ? "europe" as const : minimumMapRegion;
 
                   return (
                     <article className="subtype-card" key={subtype.name}>
@@ -115,7 +116,7 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
                       <SubtypeFact icon={<Scale />} title="The law">{subtype.law}</SubtypeFact>
                       <SubtypeFact icon={<Sparkles />} title="Signature style">{subtype.style}</SubtypeFact>
                       {example && <SubtypeFact icon={<Factory />} title="Distillery example"><strong className="subtype-example-name">{example.name}</strong>{example.place}, {example.country}. {example.descriptor}.</SubtypeFact>}
-                      {mappedRegion && <div className="subtype-map-wrap"><RegionMap regions={[mappedRegion]} label={`${subtype.name} distribution`} compact minimumRegion={minimumMapRegion} /></div>}
+                      {mappedRegion && <div className="subtype-map-wrap"><RegionMap regions={[mappedRegion]} label={`${subtype.name} distribution`} compact minimumRegion={subtypeMinimumRegion} frameLabel={mappedRegion.name === "Scandinavia" ? "Europe" : undefined} /></div>}
                       <a className="subtype-explore-link" href={`#${getSubtypeTargetId(category.id, subtype.name)}`}>Explore regions & ingredients <ArrowRight size={13} /></a>
                     </article>
                   );

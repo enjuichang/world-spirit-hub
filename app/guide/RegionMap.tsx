@@ -33,7 +33,7 @@ import scotchBoundaryData from "./scotch-regions.json";
 type RegionGeometry = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 type BoundaryProperties = { id: string };
 type BoundaryFeature = GeoJSON.Feature<RegionGeometry, BoundaryProperties>;
-type MinimumRegion = "caribbean";
+type MinimumRegion = "caribbean" | "europe";
 type MapLandmark = {
   name: string;
   point: [number, number];
@@ -60,6 +60,7 @@ type PositionedLabel = {
 
 const MINIMUM_REGION_BOUNDS: Record<MinimumRegion, [[number, number], [number, number]]> = {
   caribbean: [[-92, 6], [-55, 30]],
+  europe: [[-25, 34], [45, 72]],
 };
 
 const LOWER_48_BOUNDS = {
@@ -621,6 +622,7 @@ export function RegionMap({
   immersive = false,
   displayMode = "regions",
   minimumRegion,
+  frameLabel,
   geographicLabels = [],
   onRegionSelect,
   onRegionPreview,
@@ -635,6 +637,7 @@ export function RegionMap({
   immersive?: boolean;
   displayMode?: "regions" | "cities";
   minimumRegion?: MinimumRegion;
+  frameLabel?: string;
   geographicLabels?: Array<{ name: string; point: [number, number] }>;
   onRegionSelect?: (regionName: string) => void;
   onRegionPreview?: (regionName: string) => void;
@@ -706,6 +709,11 @@ export function RegionMap({
   const compactFocusLabel = parentIds.length
     ? `${parentIds.join(" + ")} › ${focusLabel.join(" + ")}`
     : focusLabel.join(" + ");
+  const compactFocusKind = hasDenominationFocus
+    ? `${compactContextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination`
+    : frameLabel
+      ? `${frameLabel} context`
+      : "Geographic focus";
   const mapUnitsPerPixel = Math.max(
     viewBox.width / Math.max(mapViewport.width, 1),
     viewBox.height / Math.max(mapViewport.height, 1),
@@ -1370,7 +1378,7 @@ export function RegionMap({
       <figcaption>
         {compact ? (
           <div className="compact-map-caption">
-            <span>{focusLabel.length ? `${hasDenominationFocus ? `${compactContextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus"} · ${compactFocusLabel}` : "Production area"}</span>
+            <span>{focusLabel.length ? `${compactFocusKind} · ${compactFocusLabel}` : "Production area"}</span>
             {showDistilleryMarkers && !isJerezFocus && regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
           </div>
         ) : (
