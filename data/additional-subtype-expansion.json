@@ -62,6 +62,16 @@
     ["kamet-kurukshetra", "Piccadily Agro Malt Distillery", "Kurukshetra, Haryana", "India", 76.839, 29.969, "North Indian single malt production site", "malt", "spice", "oak", "https://kametwhisky.com/"],
     ["longitude-77-nashik", "Pernod Ricard Nashik Distillery", "Nashik, Maharashtra", "India", 73.789, 20.0, "Indian single malt production and maturation site", "malt", "orchard fruit", "oak", "https://www.longitude77.com/"]
   ],
+  "whisky:Australian whisky": [
+    ["lark-distillery", "LARK Pontville Distillery", "Pontville, Tasmania", "Australia", 147.27, -42.68, "Pioneering Tasmanian single-malt distillery", "malt", "fortified-wine cask", "smoke", "https://larkdistillery.com/"],
+    ["sullivans-cove", "Sullivans Cove Distillery", "Cambridge, Tasmania", "Australia", 147.44, -42.83, "Tasmanian single-cask whisky distillery", "orchard fruit", "caramel", "oak", "https://sullivanscove.com/"],
+    ["hellyers-road-whisky", "Hellyers Road Distillery", "Havenview, Tasmania", "Australia", 145.91, -41.07, "Northwest Tasmanian single-malt distillery", "malt", "vanilla", "peat", "https://hellyersroaddistillery.com.au/"],
+    ["overeem-whisky", "Overeem Distillery", "Huntingfield, Tasmania", "Australia", 147.29, -42.99, "Southern Tasmanian single-malt distillery", "pear", "honey", "wine cask", "https://overeemwhisky.com/"],
+    ["starward", "Starward Distillery", "Port Melbourne, Victoria", "Australia", 144.92, -37.83, "Melbourne whisky distillery centered on Australian wine casks", "malt", "red fruit", "wine cask", "https://starward.com.au/pages/distillery"],
+    ["bakery-hill", "Bakery Hill Distillery", "Kensington, Victoria", "Australia", 144.93, -37.79, "Independent Melbourne single-malt distillery", "malt", "citrus", "oak", "https://bakeryhill.com/pages/distillery"],
+    ["archie-rose-whisky", "Archie Rose Distilling Co.", "Banksmeadow, New South Wales", "Australia", 151.2, -33.96, "Sydney distillery working with Australian barley and rye", "roasted malt", "rye spice", "fruit", "https://archierose.com.au/"],
+    ["limeburners-albany", "Great Southern Distilling Co.", "Albany, Western Australia", "Australia", 117.88, -35.02, "Western Australian producer of Limeburners single malt", "malt", "dried fruit", "oak", "https://distillery.com.au/"]
+  ],
 
   "brandy:Cognac": [
     ["frapin-cognac", "Cognac Frapin", "Segonzac, Charente", "France", -0.219, 45.618, "Grande Champagne estate Cognac house", "grape", "flowers", "rancio", "https://www.cognac-frapin.com/"],

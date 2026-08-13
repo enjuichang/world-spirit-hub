@@ -2,18 +2,24 @@
 /* eslint-disable @next/next/no-img-element -- Vinext's image optimizer cannot fetch project-local assets in the worker runtime. */
 
 import { ArrowUpRight, FlaskConical, MapPinned, Sprout } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { SubtypeGuide } from "../guideData";
+import { withBasePath } from "../publicPath";
 import { RegionMap } from "./RegionMap";
 import { getSubtypeDeepDive, getSubtypeTargetId } from "./subtypeDeepDives";
 
 export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; subtypes: SubtypeGuide[] }) {
   const [selectedName, setSelectedName] = useState(subtypes[0]?.name ?? "");
+  const [selectedZoneName, setSelectedZoneName] = useState<string | null>(null);
+  const zoneCardRefs = useRef(new Map<string, HTMLElement>());
 
   useEffect(() => {
     function readHash() {
       const match = subtypes.find((subtype) => `#${getSubtypeTargetId(categoryId, subtype.name)}` === window.location.hash);
-      if (match) setSelectedName(match.name);
+      if (match) {
+        setSelectedName(match.name);
+        setSelectedZoneName(null);
+      }
     }
     readHash();
     window.addEventListener("hashchange", readHash);
@@ -22,6 +28,20 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
 
   const selected = subtypes.find((subtype) => subtype.name === selectedName) ?? subtypes[0];
   const deepDive = useMemo(() => selected ? getSubtypeDeepDive(categoryId, selected) : undefined, [categoryId, selected]);
+
+  function showZoneCard(regionName: string) {
+    setSelectedZoneName(regionName);
+    window.requestAnimationFrame(() => {
+      const card = zoneCardRefs.current.get(regionName);
+      if (!card) return;
+      card.focus({ preventScroll: true });
+      card.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "center",
+      });
+    });
+  }
+
   if (!selected || !deepDive) return null;
 
   return (
@@ -43,6 +63,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
             onChange={(event) => {
               const next = event.target.value;
               setSelectedName(next);
+              setSelectedZoneName(null);
               window.history.replaceState(null, "", `#${getSubtypeTargetId(categoryId, next)}`);
             }}
           >
@@ -54,7 +75,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
       <article className={`ingredient-profile${!deepDive.ingredient.varieties?.length ? " has-image" : ""}`}>
         {!deepDive.ingredient.varieties?.length && (deepDive.ingredient.image ? (
           <img
-            src={deepDive.ingredient.image}
+            src={withBasePath(deepDive.ingredient.image)}
             alt={deepDive.ingredient.imageAlt ?? deepDive.ingredient.name}
             width="1536"
             height="1024"
@@ -84,7 +105,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
         <div className="ingredient-variety-grid" aria-label={`${selected.name} principal fruit and grape varieties`}>
           {deepDive.ingredient.varieties.map((variety) => (
             <article key={variety.name}>
-              <img src={variety.image} alt={variety.imageAlt} width="960" height="720" />
+              <img src={withBasePath(variety.image)} alt={variety.imageAlt} width="960" height="720" />
               <div>
                 <span>{variety.role}</span>
                 <h5>{variety.name}</h5>
@@ -112,10 +133,19 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
             focus={deepDive.mapFocus}
             immersive
             minimumRegion={categoryId === "rum" ? "caribbean" : undefined}
+            onRegionSelect={showZoneCard}
           />
           <div className="zone-list">
             {deepDive.zones.map((zone, index) => (
-              <article key={`${zone.name}-${zone.distillery?.name ?? index}`}>
+              <article
+                className={selectedZoneName === zone.name ? "is-selected" : undefined}
+                key={`${zone.name}-${zone.distillery?.name ?? index}`}
+                ref={(element) => {
+                  if (element) zoneCardRefs.current.set(zone.name, element);
+                  else zoneCardRefs.current.delete(zone.name);
+                }}
+                tabIndex={-1}
+              >
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <h5>{zone.name}</h5>
                 <strong>{zone.character}</strong>
@@ -123,7 +153,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
                 {zone.distillery && (
                   <div className="zone-distillery">
                     {zone.distillery.image && (
-                      <img src={zone.distillery.image} alt="" width="96" height="96" />
+                      <img src={withBasePath(zone.distillery.image)} alt="" width="96" height="96" />
                     )}
                     <div><small>Representative distillery</small><b>{zone.distillery.name}</b></div>
                   </div>

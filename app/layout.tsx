@@ -1,14 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
+import { withBasePath } from "./publicPath";
 import "./globals.css";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("host") ?? "localhost:3000";
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ??
-    (host.includes("localhost") ? "http" : "https");
-  const origin = `${protocol}://${host}`;
+function siteMetadata(origin: string): Metadata {
+  const ogImage = `${origin}${withBasePath("/og.png")}`;
 
   return {
     metadataBase: new URL(origin),
@@ -18,16 +14,16 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description:
       "Explore the world’s spirits by place, raw material, production, flavor and law through an interactive educational atlas.",
-    icons: { icon: "/og.png", shortcut: "/og.png" },
+    icons: { icon: withBasePath("/og.png"), shortcut: withBasePath("/og.png") },
     openGraph: {
       type: "website",
-      url: origin,
+      url: `${origin}${withBasePath("/")}`,
       title: "World Spirit Hub",
       description: "Explore the world, one pour at a time.",
       siteName: "World Spirit Hub",
       images: [
         {
-          url: `${origin}/og.png`,
+          url: ogImage,
           width: 1792,
           height: 934,
           alt: "World Spirit Hub illustrated world map and spirits atlas",
@@ -38,9 +34,25 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "World Spirit Hub",
       description: "Explore the world, one pour at a time.",
-      images: [`${origin}/og.png`],
+      images: [ogImage],
     },
   };
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  if (process.env.GITHUB_PAGES === "true") {
+    return siteMetadata(
+      process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://localhost",
+    );
+  }
+
+  const requestHeaders = await headers();
+  const host = requestHeaders.get("host") ?? "localhost:3000";
+  const protocol =
+    requestHeaders.get("x-forwarded-proto") ??
+    (host.includes("localhost") ? "http" : "https");
+  const origin = `${protocol}://${host}`;
+  return siteMetadata(origin);
 }
 
 export const viewport: Viewport = {

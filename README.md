@@ -28,10 +28,19 @@ If the token is absent or Mapbox cannot load, the accessible location list remai
 
 - `npm run dev` — start the development site.
 - `npm run build` — produce the Cloudflare-compatible deployment build.
+- `npm run build:pages` — produce a static GitHub Pages build in `out/`.
 - `npm run data:sync` — validate the canonical distillery JSON and regenerate the Markdown inventory.
 - `npm run data:check` — verify the JSON and confirm the generated inventory is current.
 - `npm test` — build and verify the main rendered routes.
 - `npm run lint` — run code-quality checks.
+
+## GitHub Pages
+
+The workflow in `.github/workflows/deploy-pages.yml` builds and publishes the
+site whenever `main` is updated. In the repository’s **Settings → Pages**,
+select **GitHub Actions** as the source. Add a repository secret named
+`NEXT_PUBLIC_MAPBOX_TOKEN` if the hosted atlas should use Mapbox; the accessible
+fallback map works without it.
 
 ## Managing distilleries
 

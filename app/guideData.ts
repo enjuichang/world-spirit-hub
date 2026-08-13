@@ -1,5 +1,6 @@
 export type MapRegion = {
   name: string;
+  mapLabel?: string;
   point: [number, number];
   kind?: "protected" | "traditional" | "global";
   distillery?: {

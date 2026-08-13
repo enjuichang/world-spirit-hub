@@ -27,6 +27,7 @@ import {
   getLocation,
   locations,
 } from "./data";
+import { withBasePath } from "./publicPath";
 
 type BottleImage = {
   imagePath: string;
@@ -152,7 +153,7 @@ function OfflineExplorerMap({
         role="img"
         aria-label={`${visibleLocations.length} spirit sites on a world map`}
       >
-        <image href="/world-equirectangular.svg" x="0" y="0" width="360" height="180" />
+        <image href={withBasePath("/world-equirectangular.svg")} x="0" y="0" width="360" height="180" />
         <g className="offline-map-graticule" aria-hidden="true">
           {[45, 90, 135, 180, 225, 270, 315].map((x) => <line key={`x-${x}`} x1={x} y1="0" x2={x} y2="180" />)}
           {[45, 90, 135].map((y) => <line key={`y-${y}`} x1="0" y1={y} x2="360" y2={y} />)}
@@ -217,7 +218,7 @@ function BottlePortrait({
   return (
     <img
       className={`bottle-image ${compact ? "bottle-image-compact" : ""}`}
-      src={bottle.imagePath}
+      src={withBasePath(bottle.imagePath)}
       alt={`${bottle.productName} bottle from ${name}`}
       loading="lazy"
       decoding="async"
@@ -472,7 +473,7 @@ export function SpiritExplorer() {
         map.on("click", "unclustered-points", (event) => {
           const feature = event.features?.[0];
           const id = feature?.properties?.id as string | undefined;
-          if (!id) return;
+          if (!feature || !id) return;
           setSelectedId(id);
           const point = feature.geometry as GeoJSON.Point;
           map.easeTo({

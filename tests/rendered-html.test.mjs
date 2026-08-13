@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(path = "/") {
@@ -31,7 +32,7 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
   assert.match(html, /<title>World Spirit Hub — A spirited atlas<\/title>/i);
   assert.match(html, /Every spirit has/);
   assert.match(html, /Show all spirits/);
-  assert.match(html, /<strong>628<\/strong> sites/);
+  assert.match(html, /<strong>636<\/strong> sites/);
   assert.match(html, /Choose 2D or 3D map/);
   assert.match(html, /2D<\/button>/);
   assert.match(html, /3D<\/button>/);
@@ -69,8 +70,9 @@ test("renders the educational guide", async () => {
   assert.match(whiskyHtml, /From introductory to advanced/);
   assert.match(whiskyHtml, /Blended Irish whiskey/);
   assert.match(whiskyHtml, /Australian whisky/);
+  assert.match(whiskyHtml, /LARK Pontville Distillery/);
   assert.match(whiskyHtml, /Distillery map/);
-  assert.match(whiskyHtml, /161(?:<!-- -->)? documented production sites/);
+  assert.match(whiskyHtml, /169(?:<!-- -->)? documented production sites/);
 
   const brandyHtml = await brandyResponse.text();
   assert.match(brandyHtml, /More than 98% of Cognac vineyards/);
@@ -87,6 +89,24 @@ test("renders the educational guide", async () => {
   assert.match(agaveHtml, /Los Altos · Highlands/);
   assert.match(agaveHtml, /trade and terroir language, not separate classes/i);
   assert.doesNotMatch(agaveHtml, /Geographic focus · Mexico/);
+});
+
+test("Australian whisky has a map boundary and representative distilleries", async () => {
+  const [expansion, boundaries] = await Promise.all([
+    readFile(new URL("../data/additional-subtype-expansion.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../app/guide/australia-boundary.json", import.meta.url), "utf8").then(JSON.parse),
+  ]);
+
+  assert.equal(expansion["whisky:Australian whisky"].length, 8);
+  assert.equal(boundaries.features[0].properties.id, "Australia");
+  assert.equal(boundaries.features[0].geometry.type, "MultiPolygon");
+});
+
+test("Bourbon uses a Kentucky state boundary", async () => {
+  const boundaries = await readFile(new URL("../app/guide/kentucky-boundary.json", import.meta.url), "utf8").then(JSON.parse);
+
+  assert.equal(boundaries.features[0].properties.id, "Kentucky");
+  assert.equal(boundaries.features[0].geometry.type, "MultiPolygon");
 });
 
 test("renders the taste profile and credentialed bar experiences", async () => {

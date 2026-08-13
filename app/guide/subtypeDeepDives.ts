@@ -145,6 +145,9 @@ const expandedProducers = Object.fromEntries(
 ) as Record<string, ExpansionTuple[]>;
 
 const supplementalProducers: Record<string, ExpansionTuple[]> = {
+  "brandy:Pisco": [
+    ["capel-vicuna", "CAPEL Pisco Distillery", "Vicuña, Coquimbo", "Chile", -70.704, -30.032, "Elqui Valley pisco cooperative", "grape", "flowers", "citrus", "https://www.capel.cl/"],
+  ],
   "whisky:American single malt whiskey": [
     ["westland", "Westland Distillery", "Seattle, Washington", "United States", -122.33, 47.56, "Pacific Northwest single-malt distillery exploring local barley and peat", "malt", "chocolate", "coffee", "https://westlanddistillery.com/pages/about"],
     ["balcones", "Balcones Distilling", "Waco, Texas", "United States", -97.13, 31.55, "Texas pot-still single malt shaped by a hot maturation climate", "malt", "baked fruit", "cinnamon", "https://www.balconesdistilling.com/news/balcones-1-texas-single-malt-for-moments-worth-savoring"],
@@ -430,13 +433,17 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
   if (specific) return specific;
 
   const ingredient = subtypeIngredient(categoryId, subtype.name);
-  const producers = expandedProducers[key] ?? supplementalProducers[key] ?? [];
+  const producers = [
+    ...(expandedProducers[key] ?? []),
+    ...(supplementalProducers[key] ?? []),
+  ].filter((producer, index, entries) => entries.findIndex((entry) => entry[0] === producer[0]) === index);
   const zones: DeepDiveZone[] = producers.length
     ? producers.map((producer) => {
         const [, name, place, , longitude, latitude, descriptor, ...rest] = producer;
         const [tagOne, tagTwo, tagThree, sourceUrl] = rest;
         return {
           name: place,
+          mapLabel: name,
           point: [longitude, latitude],
           kind: subtype.region?.kind ?? "traditional",
           character: `${tagOne} · ${tagTwo} · ${tagThree}`,
@@ -460,7 +467,9 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
       : zones.length
         ? "This marker shows the named production origin or tradition. It is an orientation point, not a claim that one place produces only one flavor."
       : "This subtype has no single truthful internal regional map. Its most useful subdivisions come from recipe, extraction, distillation or maturation rather than geography.",
-    mapFocus: categoryId === "agave" && agaveDenominationFocus[subtype.name]
+    mapFocus: key === "whisky:Bourbon"
+      ? ["Kentucky"]
+      : categoryId === "agave" && agaveDenominationFocus[subtype.name]
       ? agaveDenominationFocus[subtype.name]
       : countries.length ? countries : undefined,
     zones,

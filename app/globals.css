@@ -2370,6 +2370,12 @@ button {
   filter: drop-shadow(0 0 5px rgb(237 197 127 / 48%));
 }
 
+.map-region-outline:focus-visible,
+.map-focused-marker:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 7px rgb(255 225 163 / 85%));
+}
+
 .map-focus-outline {
   fill: rgb(226 188 120 / 10%);
   stroke: #9f8153;
@@ -2446,6 +2452,11 @@ button {
 
 .map-place-marker {
   pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.map-place-marker.is-dimmed {
+  opacity: 0.1;
 }
 
 .map-place-marker line {
@@ -3144,6 +3155,19 @@ button {
   background: rgb(255 255 255 / 1.5%);
   border-right: 1px solid var(--border-soft);
   border-bottom: 1px solid var(--border-soft);
+  outline: 1px solid transparent;
+  outline-offset: -1px;
+  transition: background 180ms ease, box-shadow 180ms ease, outline-color 180ms ease;
+}
+
+.zone-list article.is-selected {
+  background: color-mix(in srgb, var(--category) 10%, rgb(255 255 255 / 1.5%));
+  outline-color: color-mix(in srgb, var(--category) 78%, white 12%);
+  box-shadow: inset 0 0 34px color-mix(in srgb, var(--category) 8%, transparent);
+}
+
+.zone-list article:focus-visible {
+  outline-color: var(--category);
 }
 
 .zone-list article > span {

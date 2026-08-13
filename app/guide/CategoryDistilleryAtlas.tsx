@@ -4,6 +4,7 @@ import { ArrowUpRight, Factory, MapPinned, Minus, Plus, RotateCcw } from "lucide
 import type { CSSProperties } from "react";
 import { useMemo, useRef, useState } from "react";
 import type { SpiritLocation } from "../data";
+import { withBasePath } from "../publicPath";
 
 type AtlasView = { zoom: number; centerX: number; centerY: number };
 
@@ -172,7 +173,10 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
               }}
             >
               <div className="distillery-map-grid" />
-              <div className="distillery-map-land" />
+              <div
+                className="distillery-map-land"
+                style={{ backgroundImage: `url("${withBasePath("/world-equirectangular.svg")}")` }}
+              />
               <div className="distillery-map-regions">
                 {subtypeRegions.map((region) => (
                   <div className={filter === region.name ? "active" : ""} key={region.name} style={region.style}>
