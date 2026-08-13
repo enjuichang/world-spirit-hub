@@ -3373,13 +3373,29 @@ button {
 }
 
 @media (min-width: 1181px) {
+  .guide-chapter-entry {
+    grid-template-columns: 70px minmax(0, 1fr) 64px;
+  }
+
+  .guide-chapter-entry:has(.guide-aside.is-initial) {
+    grid-template-columns: 70px minmax(0, 1fr) minmax(260px, 0.38fr);
+  }
+
+  .guide-chapter-entry .guide-aside.is-condensed {
+    grid-column: 3;
+  }
+
+  .guide-chapter-entry .guide-aside.is-condensed.is-expanded {
+    width: min(300px, calc(100vw - 96px));
+  }
+
   .guide-aside.is-condensed.is-collapsed {
-    width: 52px;
-    background: transparent;
-    border-color: transparent;
-    border-top-color: color-mix(in srgb, var(--category) 44%, transparent);
+    width: 100%;
+    background: var(--surface);
+    border-color: var(--border-soft);
+    border-top-color: var(--category);
     box-shadow: none;
-    opacity: 0.24;
+    opacity: 1;
   }
 
   .guide-aside.is-condensed.is-collapsed:hover,
