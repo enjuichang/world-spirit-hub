@@ -114,7 +114,7 @@ test("all maps share complete, detailed country vectors", async () => {
   }
 
   assert.ok(guideBoundaries.features.length >= 33);
-  for (const countryName of ["Australia", "China", "Finland", "Netherlands", "South Korea", "United States"]) {
+  for (const countryName of ["Australia", "China", "Finland", "Netherlands", "South Korea", "United Kingdom", "United States"]) {
     assert.ok(guideBoundaries.features.some((feature) => feature.properties.id === countryName));
   }
 });
@@ -123,6 +123,13 @@ test("Bourbon uses a Kentucky state boundary", async () => {
   const boundaries = await readFile(new URL("../app/guide/kentucky-boundary.json", import.meta.url), "utf8").then(JSON.parse);
 
   assert.equal(boundaries.features[0].properties.id, "Kentucky");
+  assert.equal(boundaries.features[0].geometry.type, "MultiPolygon");
+});
+
+test("Texas sotol-style spirits use a Texas state boundary", async () => {
+  const boundaries = await readFile(new URL("../app/guide/texas-boundary.json", import.meta.url), "utf8").then(JSON.parse);
+
+  assert.equal(boundaries.features[0].properties.id, "Texas");
   assert.equal(boundaries.features[0].geometry.type, "MultiPolygon");
 });
 

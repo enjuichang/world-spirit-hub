@@ -10,10 +10,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import unicodedata
 from pathlib import Path
-from typing import Iterable
+
+from osgeo import ogr
 
 
 STATE_CODES = {
@@ -195,43 +195,6 @@ def normalize(value: str) -> str:
     return "".join(char for char in decomposed if not unicodedata.combining(char))
 
 
-def perpendicular_distance(point, start, end) -> float:
-    if start == end:
-        return math.dist(point, start)
-    dx = end[0] - start[0]
-    dy = end[1] - start[1]
-    return abs(dy * point[0] - dx * point[1] + end[0] * start[1] - end[1] * start[0]) / math.hypot(dx, dy)
-
-
-def simplify_line(points: list[list[float]], tolerance: float) -> list[list[float]]:
-    if len(points) <= 2:
-        return points
-    distances = [perpendicular_distance(point, points[0], points[-1]) for point in points[1:-1]]
-    if not distances or max(distances) <= tolerance:
-        return [points[0], points[-1]]
-    index = distances.index(max(distances)) + 1
-    left = simplify_line(points[: index + 1], tolerance)
-    right = simplify_line(points[index:], tolerance)
-    return left[:-1] + right
-
-
-def simplify_ring(ring: list[list[float]], tolerance: float) -> list[list[float]]:
-    open_ring = ring[:-1] if ring[0] == ring[-1] else ring
-    simplified = simplify_line(open_ring, tolerance)
-    if len(simplified) < 3:
-        simplified = open_ring[:3]
-    return simplified + [simplified[0]]
-
-
-def polygon_parts(geometry: dict) -> Iterable[list[list[list[float]]]]:
-    if geometry["type"] == "Polygon":
-        yield geometry["coordinates"]
-    elif geometry["type"] == "MultiPolygon":
-        yield from geometry["coordinates"]
-    else:
-        raise ValueError(f"Unsupported geometry: {geometry['type']}")
-
-
 def load_states(input_dir: Path) -> dict[str, dict]:
     states: dict[str, dict] = {}
     for path in sorted(input_dir.glob("inegi-*.json")):
@@ -265,15 +228,41 @@ def select_features(states: dict[str, dict], territory: dict[str, list[str] | st
     return selected
 
 
-def denomination_feature(identifier: str, states: dict[str, dict], territory: dict, tolerance: float) -> dict:
-    polygons = []
+def dissolve_territory(states: dict[str, dict], territory: dict) -> ogr.Geometry:
+    polygons = ogr.Geometry(ogr.wkbMultiPolygon)
     for feature in select_features(states, territory):
-        for polygon in polygon_parts(feature["geometry"]):
-            polygons.append([simplify_ring(ring, tolerance) for ring in polygon])
+        geometry = ogr.CreateGeometryFromJson(json.dumps(feature["geometry"]))
+        if geometry is None:
+            raise ValueError(f"Invalid geometry for {feature['properties']['nomgeo']}")
+        if geometry.GetGeometryType() == ogr.wkbPolygon:
+            polygons.AddGeometry(geometry)
+        elif geometry.GetGeometryType() == ogr.wkbMultiPolygon:
+            for index in range(geometry.GetGeometryCount()):
+                polygons.AddGeometry(geometry.GetGeometryRef(index))
+        else:
+            raise ValueError(f"Unsupported geometry: {geometry.GetGeometryName()}")
+
+    # Dissolve the selected municipalities before simplifying. Simplifying each
+    # municipality separately leaves its shared borders visible on the map and
+    # can introduce tiny gaps between otherwise adjacent authorized areas.
+    dissolved = polygons.UnionCascaded()
+    if dissolved is None:
+        raise ValueError("Unable to dissolve territory geometry")
+    return dissolved
+
+
+def simplify_geometry(identifier: str, geometry: ogr.Geometry, tolerance: float) -> ogr.Geometry:
+    simplified = geometry.SimplifyPreserveTopology(tolerance)
+    if simplified is None:
+        raise ValueError(f"Unable to simplify geometry for {identifier}")
+    return simplified
+
+
+def denomination_feature(identifier: str, geometry: ogr.Geometry) -> dict:
     return {
         "type": "Feature",
         "properties": {"id": identifier},
-        "geometry": {"type": "MultiPolygon", "coordinates": polygons},
+        "geometry": json.loads(geometry.ExportToJson()),
     }
 
 
@@ -296,12 +285,32 @@ def main() -> None:
         "Tequila Highlands": TEQUILA_HIGHLANDS,
         "Tequila Valley": TEQUILA_VALLEY,
     }
+    simplified = {
+        identifier: simplify_geometry(
+            identifier,
+            dissolve_territory(states, territory),
+            args.tolerance,
+        )
+        for identifier, territory in {**territories, **common_regions}.items()
+    }
+    for identifier in ("Tequila Highlands", "Tequila Valley"):
+        clipped = simplified[identifier].Intersection(simplified["Tequila DO"])
+        if clipped is None:
+            raise ValueError(f"Unable to clip {identifier} to the Tequila denomination")
+        simplified[identifier] = clipped
+    tequila_landscapes = simplified["Tequila Highlands"].Union(simplified["Tequila Valley"])
+    if tequila_landscapes is None:
+        raise ValueError("Unable to combine Tequila landscape geometry")
+    other_tequila_areas = simplified["Tequila DO"].Difference(tequila_landscapes)
+    if other_tequila_areas is None:
+        raise ValueError("Unable to derive the other authorized Tequila areas")
+    simplified["Other Tequila authorized areas"] = other_tequila_areas
     collection = {
         "type": "FeatureCollection",
         "source": "INEGI Marco Geoestadístico, December 2025; denomination municipality lists from CRT, IMPI/DOF, and state regulators",
         "features": [
-            denomination_feature(identifier, states, territory, args.tolerance)
-            for identifier, territory in {**territories, **common_regions}.items()
+            denomination_feature(identifier, geometry)
+            for identifier, geometry in simplified.items()
         ],
     }
     args.output.write_text(json.dumps(collection, ensure_ascii=False, separators=(",", ":")) + "\n")

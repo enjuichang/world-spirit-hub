@@ -24,6 +24,8 @@ import refinedBoundaryData from "./refined-country-boundaries.json";
 import spainBoundaryData from "./spain-boundary.json";
 // Simplified U.S. Census TIGER/Line state geometry for the Kentucky bourbon view.
 import kentuckyBoundaryData from "./kentucky-boundary.json";
+// Simplified 2025 U.S. Census cartographic state geometry for the Texas sotol-style view.
+import texasBoundaryData from "./texas-boundary.json";
 // Protected Scotch areas derived from the statutory dividing line and the
 // official 2007 ward boundaries named in the Scotch Whisky specification.
 import scotchBoundaryData from "./scotch-regions.json";
@@ -51,7 +53,7 @@ type PositionedLabel = {
   lineX: number;
   lineY: number;
   textAnchor: "start" | "middle" | "end";
-  kind: "region" | "city" | "distillery";
+  kind: "region" | "city" | "distillery" | "geographic";
   regionIndex?: number;
   regionName?: string;
 };
@@ -92,6 +94,7 @@ const boundaryFeatures = new Map(
     ...(refinedBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(spainBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(kentuckyBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
+    ...(texasBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(scotchBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(agaveBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(brandyBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
@@ -180,8 +183,10 @@ const boundaryGroups: Record<string, string[]> = {
   "Jalisco + authorized areas": ["Tequila DO"],
   "Jalisco & Nayarit": ["Raicilla DO"],
   Korea: ["South Korea"],
+  "Los Altos · Highlands": ["Tequila Highlands"],
   "Netherlands & Belgium": ["Netherlands", "Belgium"],
   "Northern Mexico": ["Sotol DO"],
+  "Other authorized areas": ["Other Tequila authorized areas"],
   "Pacific South America": ["Peru", "Chile"],
   "Peru & Chile": ["Peru", "Chile"],
   Sonora: ["Bacanora DO"],
@@ -207,11 +212,17 @@ const focusContextGroups: Record<string, string[]> = {
   "Brandy de Jerez GI": ["Spain"],
   "Calvados AOC": ["France"],
   "Cognac AOC": ["France"],
+  Guizhou: ["China"],
+  Kentucky: ["United States"],
   "Mezcal DO": ["Mexico"],
   "Raicilla DO": ["Mexico"],
+  Scotland: ["United Kingdom"],
+  Sichuan: ["China"],
   "Sotol DO": ["Mexico"],
   Tennessee: ["United States"],
+  Texas: ["United States"],
   "Tequila DO": ["Mexico"],
+  "Western Cape": ["South Africa"],
 };
 
 const commonRegionGroups: Record<string, string[]> = {
@@ -364,6 +375,17 @@ function landmarkCollection(landmarks: MapLandmark[], kind: MapLandmark["kind"])
   };
 }
 
+function geographicLabelCollection(labels: Array<{ name: string; point: [number, number] }>): GeoJSON.FeatureCollection<GeoJSON.Point> {
+  return {
+    type: "FeatureCollection",
+    features: labels.map((label) => ({
+      type: "Feature" as const,
+      geometry: { type: "Point" as const, coordinates: label.point },
+      properties: { name: label.name },
+    })),
+  };
+}
+
 type LabelRect = { x: number; y: number; width: number; height: number };
 type LabelPlacement = {
   rect: LabelRect;
@@ -382,12 +404,23 @@ function overlapArea(first: LabelRect, second: LabelRect) {
 function positionMapLabels(
   regions: MapRegion[],
   landmarks: MapLandmark[],
+  geographicLabels: Array<{ name: string; point: [number, number] }>,
   viewBox: { x: number; y: number; width: number; height: number },
   fontSize: number,
   markerRadius: number,
   numberRegionLabels: boolean,
 ) {
   const candidates = [
+    ...geographicLabels.map((label, index) => ({
+      key: `geographic-${index}`,
+      name: label.name,
+      point: label.point,
+      kind: "geographic" as const,
+      regionIndex: undefined,
+      regionName: undefined,
+      priority: -1,
+      size: fontSize * 1.04,
+    })),
     ...regions.map((region, index) => ({
       key: `region-${index}`,
       name: `${numberRegionLabels ? `${index + 1}. ` : ""}${region.mapLabel ?? region.name}`,
@@ -587,6 +620,7 @@ export function RegionMap({
   immersive = false,
   displayMode = "regions",
   minimumRegion,
+  geographicLabels = [],
   onRegionSelect,
   onRegionPreview,
   onRegionPreviewEnd,
@@ -600,6 +634,7 @@ export function RegionMap({
   immersive?: boolean;
   displayMode?: "regions" | "cities";
   minimumRegion?: MinimumRegion;
+  geographicLabels?: Array<{ name: string; point: [number, number] }>;
   onRegionSelect?: (regionName: string) => void;
   onRegionPreview?: (regionName: string) => void;
   onRegionPreviewEnd?: () => void;
@@ -634,9 +669,10 @@ export function RegionMap({
   const contextLabel = contextIds.length ? `${contextIds.join(" + ")} context · ` : "";
   const hasDenominationFocus = focusIds.some(isDenominationTerritory);
   const hasIncompleteFocus = focus !== undefined && focusIds.length < focus.length;
-  const fittedViewBox = contextFeatures.length && (!isJerezFocus || compact)
-    ? focusedViewBox(contextFeatures)
-    : focusFeatures.length && !hasIncompleteFocus
+  // Context geometry is intentionally excluded from the initial fit. It stays
+  // visible as a large country backdrop, while the camera opens on the actual
+  // state, appellation, or other subregion the visitor came here to explore.
+  const fittedViewBox = focusFeatures.length && !hasIncompleteFocus
       ? focusedViewBox(focusFeatures)
     : compact || focus !== undefined
       ? pointFocusedViewBox(regions)
@@ -647,6 +683,11 @@ export function RegionMap({
     && !!minimumViewBox
     && regions.some((region) => pointIsWithinBounds(region.point, minimumBounds))
     && (fittedViewBox.width < minimumViewBox.width || fittedViewBox.height < minimumViewBox.height);
+  // Focused maps normally omit the world layer so a denomination or country
+  // can stand alone. A minimum regional frame is different: its purpose is to
+  // preserve geographic context, so every island and neighboring coastline in
+  // that frame must remain visible behind the highlighted focus.
+  const showLandContext = !focusFeatures.length || minimumRegion !== undefined;
   const baseViewBox = shouldApplyMinimumRegion && minimumViewBox
     ? unionViewBoxes(fittedViewBox, minimumViewBox)
     : fittedViewBox;
@@ -676,7 +717,7 @@ export function RegionMap({
     () => landmarksForMap(regions, focusIds, showDistilleryMarkers),
     [focusIds, regions, showDistilleryMarkers],
   );
-  const positionedLabels = positionMapLabels(displayRegions, landmarks, viewBox, markerFontSize, markerRadius, displayMode !== "cities");
+  const positionedLabels = positionMapLabels(displayRegions, landmarks, geographicLabels, viewBox, markerFontSize, markerRadius, displayMode !== "cities");
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -847,6 +888,33 @@ export function RegionMap({
               type: "line",
               source: "country-focus",
               paint: { "line-color": "#ae8c59", "line-width": 1.4, "line-opacity": 0.9 },
+            });
+          }
+          if (geographicLabels.length) {
+            map.addSource("geographic-labels", {
+              type: "geojson",
+              data: geographicLabelCollection(geographicLabels),
+            });
+            map.addLayer({
+              id: "geographic-labels",
+              type: "symbol",
+              source: "geographic-labels",
+              layout: {
+                "text-field": ["get", "name"],
+                "text-size": ["interpolate", ["linear"], ["zoom"], 0, 11, 6, 15],
+                "text-font": ["Open Sans Bold"],
+                "text-letter-spacing": 0.14,
+                "text-transform": "uppercase",
+                "text-anchor": "bottom",
+                "text-offset": [0, -1.7],
+                "text-allow-overlap": true,
+              },
+              paint: {
+                "text-color": "#e2bc78",
+                "text-halo-color": "#17120d",
+                "text-halo-width": 2,
+                "text-halo-blur": 0.5,
+              },
             });
           }
           map.addSource("production-outlines", {
@@ -1086,7 +1154,7 @@ export function RegionMap({
           if (focusFeatures.length) {
             const bounds = new LngLatBounds();
             if (shouldApplyMinimumRegion && minimumBounds) minimumBounds.forEach((point) => bounds.extend(point));
-            (contextFeatures.length && !isJerezFocus ? contextFeatures : focusFeatures).forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
+            focusFeatures.forEach((feature) => extendGeometryBounds(bounds, feature.geometry));
             displayRegions.forEach((region) => {
               bounds.extend(region.point);
               if (region.distillery) bounds.extend(region.distillery.point);
@@ -1118,7 +1186,7 @@ export function RegionMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [commonFeatures, compact, contextFeatures, displayRegions, focusFeatures, hasDenominationFocus, isJerezFocus, landmarks, minimumBounds, onRegionPreview, regions, selectRegion, shouldApplyMinimumRegion]);
+  }, [commonFeatures, compact, contextFeatures, displayRegions, focusFeatures, geographicLabels, hasDenominationFocus, isJerezFocus, landmarks, minimumBounds, onRegionPreview, regions, selectRegion, shouldApplyMinimumRegion]);
 
   return (
     <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}${hoveredRegion ? " has-region-hover" : ""}`} ref={figureRef}>
@@ -1152,7 +1220,7 @@ export function RegionMap({
           role="group"
           aria-label={`${label} interactive subregion map`}
         >
-          {!focusFeatures.length && (
+          {showLandContext && (
             <image className="map-land-vector" href={withBasePath("/world-equirectangular.svg")} x="0" y="0" width="360" height="180" />
           )}
           {contextFeatures.map((feature) => (
@@ -1193,6 +1261,19 @@ export function RegionMap({
             )),
           )}
           {positionedLabels.map((positioned) => {
+            if (positioned.kind === "geographic") {
+              return (
+                <text
+                  className="map-geographic-label"
+                  x={positioned.labelX}
+                  y={positioned.labelY}
+                  dominantBaseline="middle"
+                  fontSize={markerFontSize * 1.04}
+                  textAnchor={positioned.textAnchor}
+                  key={positioned.key}
+                >{positioned.name}</text>
+              );
+            }
             if (positioned.kind === "region" && positioned.regionIndex !== undefined) {
               const region = displayRegions[positioned.regionIndex];
               return (

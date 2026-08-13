@@ -2512,6 +2512,18 @@ button {
   vector-effect: non-scaling-stroke;
 }
 
+.map-geographic-label {
+  fill: #e2bc78;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  paint-order: stroke;
+  pointer-events: none;
+  stroke: #17120d;
+  stroke-width: 0.55;
+  text-transform: uppercase;
+}
+
 .map-common-region {
   fill: rgb(217 168 91 / 32%);
   stroke: none;
@@ -5152,7 +5164,7 @@ button {
   }
 
   .explorer-intro h1 {
-    font-size: 54px;
+    font-size: 44px;
   }
 
   .family-grid,
@@ -5496,7 +5508,7 @@ button {
   }
 
   .explorer-intro h1 {
-    font-size: 49px;
+    font-size: 42px;
   }
 
   .hero-facts {

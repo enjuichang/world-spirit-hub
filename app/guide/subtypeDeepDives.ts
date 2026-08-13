@@ -39,6 +39,7 @@ export type SubtypeDeepDiveData = {
   mapNote: string;
   mapDisplay?: "deduped-cities";
   mapFocus?: string[];
+  mapGeographicLabels?: Array<{ name: string; point: [number, number] }>;
   zones: DeepDiveZone[];
   styles?: DeepDiveStyle[];
   source?: { label: string; url: string };
@@ -460,6 +461,25 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
       : [];
   const countries = [...new Set(producers.map((producer) => producer[3]))];
   const cities = [...new Set(producers.map((producer) => producer[2].split(",")[0].trim()))];
+  const isWesternCapeBrandy = key === "brandy:South African pot-still brandy";
+  const isTexasSotolStyle = key === "agave:Texas sotol-style spirit";
+  const mapGeographicLabels = isWesternCapeBrandy
+    ? [{ name: "Western Cape", point: [19, -33.5] as [number, number] }]
+    : isTexasSotolStyle
+    ? [{ name: "Texas", point: [-99.9, 31] as [number, number] }]
+    : countries.map((country) => {
+    const countryProducers = producers.filter((producer) => producer[3] === country);
+    return {
+      name: country,
+      point: [
+        countryProducers.reduce((total, producer) => total + producer[4], 0) / countryProducers.length,
+        countryProducers.reduce((total, producer) => total + producer[5], 0) / countryProducers.length,
+      ] as [number, number],
+    };
+  });
+  if (key === "rum:Rhum agricole") {
+    mapGeographicLabels.push({ name: "Guadeloupe", point: [-61.55, 16.2] });
+  }
   const methodLens = methodLenses[categoryId] ?? methodLenses.flavoured;
   const isKentuckyBourbon = key === "whisky:Bourbon";
   const isTennesseeWhiskey = key === "whisky:Tennessee whiskey";
@@ -470,6 +490,8 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
     ingredient,
     mapTitle: isKentuckyBourbon
       ? "Kentucky bourbon production cities"
+      : isWesternCapeBrandy
+      ? "Western Cape pot-still brandy production cities"
       : isBrandyDeJerez
       ? "The three-city Brandy de Jerez production and ageing area"
       : producers.length
@@ -479,6 +501,10 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
       : "Method-led rather than map-led",
     mapNote: isKentuckyBourbon
       ? `These ${producers.length} documented production sites are grouped into ${cities.length} Kentucky cities. City markers are geographic anchors, not legal boundaries or a complete directory; bourbon can be made anywhere in the United States.`
+      : isWesternCapeBrandy
+      ? `These ${producers.length} documented production sites are grouped into ${cities.length} Western Cape places. The province outline is a regional production lens, not a separate protected brandy denomination or a complete directory.`
+      : isTexasSotolStyle
+      ? `These ${producers.length} documented production sites are grouped into ${cities.length} Texas places. The highlighted state is a regional production lens, not a protected sotol denomination or a complete directory.`
       : isBrandyDeJerez
       ? "The GI is produced and aged exclusively in the municipalities of Jerez de la Frontera, El Puerto de Santa María and Sanlúcar de Barrameda. The highlighted boundary is their combined municipal area; the three labeled points mark the cities."
       : producers.length
@@ -489,6 +515,10 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
     mapDisplay: producers.length ? "deduped-cities" : undefined,
     mapFocus: isKentuckyBourbon
       ? ["Kentucky"]
+      : isWesternCapeBrandy
+      ? ["Western Cape"]
+      : isTexasSotolStyle
+      ? ["Texas"]
       : isTennesseeWhiskey
       ? ["Tennessee"]
       : isBrandyDeJerez
@@ -496,6 +526,7 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
       : categoryId === "agave" && agaveDenominationFocus[subtype.name]
       ? agaveDenominationFocus[subtype.name]
       : countries.length ? countries : undefined,
+    mapGeographicLabels,
     zones,
     styles: [
       { name: "Legal identity", character: subtype.lawStatus, detail: subtype.law },

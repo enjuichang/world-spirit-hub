@@ -178,6 +178,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
             immersive
             displayMode={deepDive.mapDisplay === "deduped-cities" ? "cities" : "regions"}
             minimumRegion={categoryId === "rum" ? "caribbean" : undefined}
+            geographicLabels={deepDive.mapGeographicLabels}
             onRegionSelect={showZoneCard}
             onRegionPreview={previewZoneCard}
             onRegionPreviewEnd={clearZonePreview}
