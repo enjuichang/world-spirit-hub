@@ -364,6 +364,7 @@ export function SpiritExplorer() {
 
       map.on("load", () => {
         if (loadTimer) clearTimeout(loadTimer);
+        setMapFailed(false);
         map.addSource("terrain-dem", {
           type: "raster-dem",
           url: "mapbox://mapbox.mapbox-terrain-dem-v1",
@@ -696,8 +697,8 @@ export function SpiritExplorer() {
               className={mapMode === "3d" ? "active" : ""}
               onClick={() => chooseMapMode("3d")}
               aria-pressed={mapMode === "3d"}
-              disabled={mapFailed}
-              title={mapFailed ? "3D view needs a live map connection" : undefined}
+              disabled={!mapReady}
+              title={!mapReady ? "3D view will be available when the live map is ready" : undefined}
             >
               <Globe2 size={14} /> 3D
             </button>
