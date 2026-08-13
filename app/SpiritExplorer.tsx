@@ -410,19 +410,6 @@ export function SpiritExplorer() {
         });
 
         map.addLayer({
-          id: "cluster-count",
-          type: "symbol",
-          source: "spirits",
-          filter: ["has", "point_count"],
-          layout: {
-            "text-field": ["get", "point_count_abbreviated"],
-            "text-size": 12,
-            "text-font": ["Open Sans Bold"],
-          },
-          paint: { "text-color": "#100F0E" },
-        });
-
-        map.addLayer({
           id: "unclustered-points",
           type: "circle",
           source: "spirits",
@@ -447,20 +434,6 @@ export function SpiritExplorer() {
               13, ["case", ["==", ["get", "selected"], 1], 3.5, 2],
             ],
           },
-        });
-
-        map.addLayer({
-          id: "point-labels",
-          type: "symbol",
-          source: "spirits",
-          filter: ["!", ["has", "point_count"]],
-          layout: {
-            "text-field": ["get", "short"],
-            "text-size": 8,
-            "text-font": ["Open Sans Bold"],
-            "text-allow-overlap": true,
-          },
-          paint: { "text-color": "#100F0E" },
         });
 
         map.on("click", "clusters", (event) => {
