@@ -10,8 +10,8 @@ import { withBasePath } from "../publicPath";
 import agaveBoundaryData from "./agave-boundaries.json";
 // French spirit appellations derived from INAO's open geographic-area data.
 import brandyBoundaryData from "./brandy-regions.json";
-// Brandy de Jerez's three-municipality production and ageing area, derived
-// from Spain's official IGN administrative-unit boundaries.
+// Brandy de Jerez's three production and ageing municipalities, derived from
+// Spain's official IGN administrative-unit boundaries.
 import jerezBoundaryData from "./jerez-region.json";
 // Simplified Natural Earth admin-0, admin-1, and map-subunit geometry.
 import boundaryData from "./region-boundaries.json";
@@ -88,9 +88,23 @@ function boundaryFeatureForDisplay(feature: BoundaryFeature): BoundaryFeature {
   };
 }
 
+const jerezMunicipalFeatures = (jerezBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features;
+const jerezCombinedFeature: BoundaryFeature = {
+  type: "Feature",
+  properties: { id: "Brandy de Jerez GI" },
+  geometry: {
+    type: "MultiPolygon",
+    coordinates: jerezMunicipalFeatures.flatMap((feature) =>
+      feature.geometry.type === "Polygon" ? [feature.geometry.coordinates] : feature.geometry.coordinates,
+    ),
+  },
+};
+
+const worldBoundaryFeatures = (boundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features;
+
 const boundaryFeatures = new Map(
   [
-    ...(boundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
+    ...worldBoundaryFeatures,
     ...(australiaBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(refinedBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(spainBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
@@ -99,7 +113,8 @@ const boundaryFeatures = new Map(
     ...(scotchBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(agaveBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
     ...(brandyBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
-    ...(jerezBoundaryData as GeoJSON.FeatureCollection<RegionGeometry, BoundaryProperties>).features,
+    ...jerezMunicipalFeatures,
+    jerezCombinedFeature,
   ].map((feature) => {
     const displayFeature = boundaryFeatureForDisplay(feature);
     return [displayFeature.properties.id, displayFeature] as const;
@@ -164,11 +179,6 @@ const FOCUS_LANDMARKS: Record<string, MapLandmark[]> = {
     { name: "Paris", point: [2.3522, 48.8566], kind: "city" },
     { name: "Christian Drouin", point: [0.183, 49.282], kind: "distillery", detail: "Calvados producer" },
   ],
-  "Brandy de Jerez GI": [
-    { name: "Jerez de la Frontera", point: [-6.137, 36.686], kind: "city", highlight: true, detail: "Protected production and ageing municipality" },
-    { name: "El Puerto de Santa María", point: [-6.232, 36.594], kind: "city", highlight: true, detail: "Protected production and ageing municipality" },
-    { name: "Sanlúcar de Barrameda", point: [-6.354, 36.778], kind: "city", highlight: true, detail: "Protected production and ageing municipality" },
-  ],
 };
 
 type StaticView = { zoom: number; centerX: number; centerY: number };
@@ -180,7 +190,7 @@ const boundaryGroups: Record<string, string[]> = {
   Benelux: ["Netherlands", "Belgium", "Luxembourg"],
   Calvados: ["Calvados AOC"],
   Cognac: ["Cognac AOC"],
-  Jerez: ["Brandy de Jerez GI"],
+  Jerez: ["Jerez de la Frontera", "El Puerto de Santa María", "Sanlúcar de Barrameda"],
   "Jalisco + authorized areas": ["Tequila DO"],
   "Jalisco & Nayarit": ["Raicilla DO"],
   Korea: ["South Korea"],
@@ -596,6 +606,21 @@ function clampView(view: StaticView): StaticView {
   };
 }
 
+function focusedStaticView(
+  base: { x: number; y: number; width: number; height: number },
+  focus: { x: number; y: number; width: number; height: number },
+) {
+  const zoom = Math.min(
+    MAX_STATIC_ZOOM,
+    Math.max(1, Math.min(base.width / focus.width, base.height / focus.height)),
+  );
+  return clampView({
+    zoom,
+    centerX: (focus.x + focus.width / 2 - base.x) / base.width,
+    centerY: (focus.y + focus.height / 2 - base.y) / base.height,
+  });
+}
+
 function pointFocusedViewBox(regions: MapRegion[]) {
   const points = regions.flatMap((region) => [region.point, ...(region.distillery ? [region.distillery.point] : [])]).map(project);
   const xs = points.map((point) => point.x * 3.6);
@@ -650,6 +675,7 @@ export function RegionMap({
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const selectedRegionRef = useRef(selectedRegion);
+  const hoveredRegionRef = useRef<string | null>(null);
   const staticDragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -658,20 +684,33 @@ export function RegionMap({
   const [mapViewport, setMapViewport] = useState({ width: 720, height: 350 });
   const activeRegion = hoveredRegion ?? selectedRegion ?? null;
   const previewRegion = useCallback((regionName: string) => {
+    if (hoveredRegionRef.current === regionName) return false;
+    hoveredRegionRef.current = regionName;
     setHoveredRegion(regionName);
     onRegionPreview?.(regionName);
+    return true;
   }, [onRegionPreview]);
   const endRegionPreview = useCallback(() => {
+    if (hoveredRegionRef.current === null) return false;
+    hoveredRegionRef.current = null;
     setHoveredRegion(null);
     onRegionPreviewEnd?.();
+    return true;
   }, [onRegionPreviewEnd]);
   const focusIds = useMemo(
     () => compact || focus !== undefined ? focusIdsForRegions(regions, focus) : [],
     [compact, focus, regions],
   );
-  const isJerezFocus = focusIds.includes("Brandy de Jerez GI");
-  const displayRegions = useMemo(() => isJerezFocus ? [] : regions, [isJerezFocus, regions]);
+  const displayRegions = regions;
   const focusFeatures = useMemo(() => featuresForIds(focusIds), [focusIds]);
+  const displayBoundaryIds = useMemo(
+    () => new Set(displayRegions.flatMap((region) => boundariesForRegion(region).map((feature) => feature.properties.id))),
+    [displayRegions],
+  );
+  const focusOverlayFeatures = useMemo(
+    () => focusFeatures.filter((feature) => !displayBoundaryIds.has(feature.properties.id)),
+    [displayBoundaryIds, focusFeatures],
+  );
   const parentIds = useMemo(
     () => [...new Set(regions.flatMap((region) => region.parentRegion ? [region.parentRegion] : []))]
       .filter((id) => boundaryFeatures.has(id)),
@@ -707,11 +746,21 @@ export function RegionMap({
   // preserve geographic context, so every island and neighboring coastline in
   // that frame must remain visible behind the highlighted focus.
   const showLandContext = !focusFeatures.length || minimumRegion !== undefined;
-  const baseViewBox = shouldApplyMinimumRegion && minimumViewBox
-    ? unionViewBoxes(fittedViewBox, minimumViewBox)
+  // The focused production area remains the initial view, while the parent
+  // country defines the true minimum zoom. This lets the fallback map reveal
+  // the complete country instead of stopping at a clipped denomination.
+  const contextViewBox = contextFeatures.length ? focusedViewBox(contextFeatures) : undefined;
+  const framedViewBox = contextViewBox
+    ? unionViewBoxes(fittedViewBox, contextViewBox)
     : fittedViewBox;
+  const baseViewBox = shouldApplyMinimumRegion && minimumViewBox
+    ? unionViewBoxes(framedViewBox, minimumViewBox)
+    : framedViewBox;
   const baseViewKey = `${baseViewBox.x}:${baseViewBox.y}:${baseViewBox.width}:${baseViewBox.height}`;
-  const staticView = staticViews[baseViewKey] ?? DEFAULT_STATIC_VIEW;
+  const defaultStaticView = contextViewBox
+    ? focusedStaticView(baseViewBox, fittedViewBox)
+    : DEFAULT_STATIC_VIEW;
+  const staticView = staticViews[baseViewKey] ?? defaultStaticView;
   const viewBox = zoomedViewBox(baseViewBox, staticView);
   const focusLabel = focus?.length ? focus : focusIds;
   const compactFocusLabel = parentIds.length
@@ -730,6 +779,12 @@ export function RegionMap({
   // is switching. Cap every SVG size against the visible geographic extent so
   // a transient measurement can never turn a marker into a map-sized shape.
   const mapExtent = Math.min(viewBox.width, viewBox.height);
+  const geographicZoom = Math.min(
+    MAX_STATIC_ZOOM,
+    Math.max(1, Math.min(360 / viewBox.width, 180 / viewBox.height)),
+  );
+  const geographicZoomProgress = Math.log(geographicZoom) / Math.log(MAX_STATIC_ZOOM);
+  const landStrokeWidth = mapUnitsPerPixel * (0.45 + geographicZoomProgress * 0.45);
   const zoomProgress = Math.log(staticView.zoom) / Math.log(MAX_STATIC_ZOOM);
   const primaryMarkerRadiusPx = PRIMARY_MARKER_MIN_RADIUS_PX
     + (PRIMARY_MARKER_MAX_RADIUS_PX - PRIMARY_MARKER_MIN_RADIUS_PX) * zoomProgress;
@@ -789,13 +844,13 @@ export function RegionMap({
 
   function changeStaticZoom(multiplier: number) {
     setStaticViews((views) => {
-      const current = views[baseViewKey] ?? DEFAULT_STATIC_VIEW;
+      const current = views[baseViewKey] ?? defaultStaticView;
       return { ...views, [baseViewKey]: clampView({ ...current, zoom: current.zoom * multiplier }) };
     });
   }
 
   function resetStaticView() {
-    setStaticViews((views) => ({ ...views, [baseViewKey]: DEFAULT_STATIC_VIEW }));
+    setStaticViews((views) => ({ ...views, [baseViewKey]: defaultStaticView }));
   }
 
   function beginStaticPan(event: React.PointerEvent<HTMLDivElement>) {
@@ -817,7 +872,7 @@ export function RegionMap({
     const deltaY = event.clientY - drag.y;
     staticDragRef.current = { ...drag, x: event.clientX, y: event.clientY };
     setStaticViews((views) => {
-      const current = views[baseViewKey] ?? DEFAULT_STATIC_VIEW;
+      const current = views[baseViewKey] ?? defaultStaticView;
       return { ...views, [baseViewKey]: clampView({
         ...current,
         centerX: current.centerX - deltaX / (width * current.zoom),
@@ -876,7 +931,7 @@ export function RegionMap({
               id: "geographic-context-outline",
               type: "line",
               source: "geographic-context",
-              paint: { "line-color": "#c6a56e", "line-width": 1.5, "line-opacity": 0.88 },
+              paint: { "line-color": "#c6a56e", "line-width": 0.9, "line-opacity": 0.82 },
             });
           }
           if (commonFeatures.length) {
@@ -899,10 +954,10 @@ export function RegionMap({
               },
             });
           }
-          if (focusFeatures.length) {
+          if (focusOverlayFeatures.length) {
             map.addSource("country-focus", {
               type: "geojson",
-              data: { type: "FeatureCollection", features: focusFeatures },
+              data: { type: "FeatureCollection", features: focusOverlayFeatures },
             });
             map.addLayer({
               id: "country-focus-fill",
@@ -914,7 +969,7 @@ export function RegionMap({
               id: "country-focus-outline",
               type: "line",
               source: "country-focus",
-              paint: { "line-color": "#ae8c59", "line-width": 1.4, "line-opacity": 0.9 },
+              paint: { "line-color": "#ae8c59", "line-width": 0.85, "line-opacity": 0.86 },
             });
           }
           if (geographicLabels.length) {
@@ -972,9 +1027,9 @@ export function RegionMap({
             source: "production-outlines",
             paint: {
               "line-color": "#e2bc78",
-              "line-width": ["interpolate", ["linear"], ["zoom"], 0, 3, 5, 6],
-              "line-blur": 3,
-              "line-opacity": 0.32,
+              "line-width": ["interpolate", ["linear"], ["zoom"], 0, 1.5, 5, 3.2],
+              "line-blur": 2.4,
+              "line-opacity": 0.26,
             },
           });
           map.addLayer({
@@ -983,8 +1038,8 @@ export function RegionMap({
             source: "production-outlines",
             paint: {
               "line-color": ["case", ["==", ["get", "protected"], 1], "#ffe1a3", "#e2bc78"],
-              "line-width": ["interpolate", ["linear"], ["zoom"], 0, 1.25, 5, 2.5],
-              "line-opacity": 0.96,
+              "line-width": ["interpolate", ["linear"], ["zoom"], 0, 0.8, 5, 1.5],
+              "line-opacity": 0.92,
             },
           });
 
@@ -1042,30 +1097,23 @@ export function RegionMap({
           });
 
           const resetRegionFocus = () => {
-            endRegionPreview();
             map.getCanvas().style.cursor = "";
+            if (!endRegionPreview()) return;
             if (selectedRegionRef.current) focusInteractiveRegionPaint(map, selectedRegionRef.current);
             else resetInteractiveRegionPaint(map);
           };
           const focusRegion = (name: string) => {
-            previewRegion(name);
             map.getCanvas().style.cursor = "pointer";
+            if (!previewRegion(name)) return;
             focusInteractiveRegionPaint(map, name);
-          };
-          const handleRegionHover = (event: mapboxgl.MapMouseEvent & { features?: mapboxgl.MapboxGeoJSONFeature[] }) => {
-            const name = event.features?.[0]?.properties?.regionName ?? event.features?.[0]?.properties?.name;
-            if (typeof name === "string") focusRegion(name);
           };
           const handleRegionClick = (event: mapboxgl.MapMouseEvent & { features?: mapboxgl.MapboxGeoJSONFeature[] }) => {
             const name = event.features?.[0]?.properties?.regionName ?? event.features?.[0]?.properties?.name;
             if (typeof name === "string") void selectRegion(name);
           };
-          map.on("mousemove", "production-area-fill", handleRegionHover);
-          map.on("mouseleave", "production-area-fill", resetRegionFocus);
           map.on("click", "production-area-fill", handleRegionClick);
-          map.on("mousemove", "production-fallback-points", handleRegionHover);
-          map.on("mouseleave", "production-fallback-points", resetRegionFocus);
           map.on("click", "production-fallback-points", handleRegionClick);
+          map.on("click", "production-region-names", handleRegionClick);
 
           const cities = landmarkCollection(landmarks, "city");
           if (cities.features.length) {
@@ -1104,23 +1152,8 @@ export function RegionMap({
               const name = event.features?.[0]?.properties?.name;
               if (typeof name === "string" && regions.some((region) => region.name === name)) void selectRegion(name);
             };
-            const enterCity = (event: mapboxgl.MapMouseEvent & { features?: mapboxgl.MapboxGeoJSONFeature[] }) => {
-              const name = event.features?.[0]?.properties?.name;
-              if (typeof name === "string" && regions.some((region) => region.name === name)) {
-                previewRegion(name);
-                map.getCanvas().style.cursor = "pointer";
-              }
-            };
-            const leaveCity = () => {
-              endRegionPreview();
-              map.getCanvas().style.cursor = "";
-            };
             map.on("click", "context-city-points", selectCity);
             map.on("click", "context-city-names", selectCity);
-            map.on("mouseenter", "context-city-points", enterCity);
-            map.on("mouseenter", "context-city-names", enterCity);
-            map.on("mouseleave", "context-city-points", leaveCity);
-            map.on("mouseleave", "context-city-names", leaveCity);
           }
 
           const distilleries = landmarkCollection(landmarks, "distillery");
@@ -1174,6 +1207,24 @@ export function RegionMap({
             map.on("mouseleave", "distillery-points", () => { map.getCanvas().style.cursor = ""; });
           }
 
+          const regionHoverLayers = [
+            "production-area-fill",
+            "production-fallback-points",
+            "production-region-names",
+            ...(cities.features.length ? ["context-city-points", "context-city-names"] : []),
+          ];
+          const handleRegionHover = (event: mapboxgl.MapMouseEvent) => {
+            const feature = map.queryRenderedFeatures(event.point, { layers: regionHoverLayers }).find((candidate) => {
+              const name = candidate.properties?.regionName ?? candidate.properties?.name;
+              return typeof name === "string" && regions.some((region) => region.name === name);
+            });
+            const name = feature?.properties?.regionName ?? feature?.properties?.name;
+            if (typeof name === "string") focusRegion(name);
+            else resetRegionFocus();
+          };
+          map.on("mousemove", handleRegionHover);
+          map.getCanvas().addEventListener("mouseleave", resetRegionFocus);
+
           if (focusFeatures.length) {
             const bounds = new LngLatBounds();
             if (shouldApplyMinimumRegion && minimumBounds) minimumBounds.forEach((point) => bounds.extend(point));
@@ -1209,7 +1260,7 @@ export function RegionMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [commonFeatures, compact, contextFeatures, displayRegions, endRegionPreview, focusFeatures, geographicLabels, hasDenominationFocus, isJerezFocus, landmarks, minimumBounds, previewRegion, regions, selectRegion, shouldApplyMinimumRegion]);
+  }, [commonFeatures, compact, contextFeatures, displayRegions, endRegionPreview, focusFeatures, focusOverlayFeatures, geographicLabels, hasDenominationFocus, landmarks, minimumBounds, previewRegion, regions, selectRegion, shouldApplyMinimumRegion]);
 
   return (
     <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}${hoveredRegion ? " has-region-hover" : ""}`} ref={figureRef}>
@@ -1229,13 +1280,6 @@ export function RegionMap({
         }}
       >
         <div className="map-graticule" aria-hidden="true" />
-        {!compact && !focusFeatures.length && (
-          <div
-            className="map-land"
-            aria-hidden="true"
-            style={{ backgroundImage: `url("${withBasePath("/world-equirectangular.svg")}")` }}
-          />
-        )}
         <svg
           className="map-region-outlines"
           viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
@@ -1244,7 +1288,12 @@ export function RegionMap({
           aria-label={`${label} interactive subregion map`}
         >
           {showLandContext && (
-            <image className="map-land-vector" href={withBasePath("/world-equirectangular.svg")} x="0" y="0" width="360" height="180" />
+            <use
+              className="map-land-vector"
+              href={`${withBasePath("/world-equirectangular.svg")}#world-country-map`}
+              style={{ strokeWidth: landStrokeWidth }}
+              aria-hidden="true"
+            />
           )}
           {contextFeatures.map((feature) => (
             <path className="map-country-context" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-context`} />
@@ -1252,7 +1301,7 @@ export function RegionMap({
           {commonFeatures.map((feature, index) => (
             <path className={`map-common-region common-${index}`} d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-common`} />
           ))}
-          {focusFeatures.map((feature) => (
+          {focusOverlayFeatures.map((feature) => (
             <path className="map-focus-outline" d={geometryPath(feature.geometry)} fillRule="evenodd" key={`${feature.properties.id}-focus`} />
           ))}
           {displayRegions.flatMap((region, index) =>
@@ -1380,16 +1429,16 @@ export function RegionMap({
         {compact ? (
           <div className="compact-map-caption">
             <span>{focusLabel.length ? `${compactFocusKind} · ${compactFocusLabel}` : "Production area"}</span>
-            {showDistilleryMarkers && !isJerezFocus && regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
+            {showDistilleryMarkers && regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
           </div>
         ) : (
           <>
             <div className="map-caption-heading">
               <span>{focusLabel.length ? `${hasDenominationFocus ? `${contextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus"} · ${focusLabel.join(" + ")}` : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
-              {showDistilleryMarkers && !isJerezFocus && regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
+              {showDistilleryMarkers && regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
             </div>
             <ol>
-              {(isJerezFocus ? landmarks.filter((landmark) => landmark.kind === "city").map((landmark) => ({ name: landmark.name, kind: "protected" as const })) : regions).map((region, index) => (
+              {regions.map((region, index) => (
                 <li key={`${region.name}-legend-${index}`}>
                   <b aria-hidden="true" style={{ borderColor: REGION_COLORS[index % REGION_COLORS.length], boxShadow: `0 0 0 3px color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 16%, transparent)` }} />
                   <strong>{region.name}</strong>

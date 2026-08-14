@@ -2454,6 +2454,7 @@ button {
 
 .map-land-vector {
   opacity: 0.92;
+  pointer-events: none;
 }
 
 .map-region-outlines {
@@ -2469,7 +2470,7 @@ button {
   fill: color-mix(in srgb, var(--category) 20%, transparent);
   stroke: var(--category);
   stroke-linejoin: round;
-  stroke-width: 1.25;
+  stroke-width: 0.85;
   filter: drop-shadow(0 0 2px color-mix(in srgb, var(--category) 62%, transparent));
   vector-effect: non-scaling-stroke;
   pointer-events: auto;
@@ -2500,7 +2501,7 @@ button {
   fill: rgb(226 188 120 / 10%);
   stroke: #9f8153;
   stroke-linejoin: round;
-  stroke-width: 1.25;
+  stroke-width: 0.8;
   vector-effect: non-scaling-stroke;
 }
 
@@ -2508,7 +2509,7 @@ button {
   fill: rgb(175 144 96 / 9%);
   stroke: #8f7958;
   stroke-linejoin: round;
-  stroke-width: 1.35;
+  stroke-width: 0.85;
   vector-effect: non-scaling-stroke;
 }
 

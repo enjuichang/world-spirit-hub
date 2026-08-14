@@ -31,6 +31,11 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
   const selected = subtypes.find((subtype) => subtype.name === selectedName) ?? subtypes[0];
   const deepDive = useMemo(() => selected ? getSubtypeDeepDive(categoryId, selected) : undefined, [categoryId, selected]);
   const mapRegions = useMemo<MapRegion[]>(() => {
+    if (selected?.name === "Brandy de Jerez") return [
+      { name: "Jerez de la Frontera", point: [-6.137, 36.686], kind: "protected" },
+      { name: "El Puerto de Santa María", point: [-6.232, 36.594], kind: "protected" },
+      { name: "Sanlúcar de Barrameda", point: [-6.354, 36.778], kind: "protected" },
+    ];
     if (!deepDive || deepDive.mapDisplay !== "deduped-cities") return deepDive?.zones ?? [];
 
     const cities = new Map<string, { name: string; points: Array<[number, number]>; kind: MapRegion["kind"] }>();
@@ -50,16 +55,19 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
       ],
       kind: city.kind,
     }));
-  }, [deepDive]);
+  }, [deepDive, selected]);
 
   const activeZoneName = previewZoneName ?? selectedZoneName;
   const selectedZones = useMemo(() => {
     if (!deepDive || !activeZoneName) return [];
+    if (selected.name === "Brandy de Jerez") {
+      return deepDive.zones.filter((zone) => zone.name.split(",")[0].trim() === activeZoneName);
+    }
     return deepDive.zones.filter((zone) => (
       zone.name === activeZoneName
       || (deepDive.mapDisplay === "deduped-cities" && zone.name.split(",")[0].trim() === activeZoneName)
     ));
-  }, [activeZoneName, deepDive]);
+  }, [activeZoneName, deepDive, selected]);
 
   const previewZoneCard = useCallback((regionName: string) => {
     setPreviewZoneName(regionName);

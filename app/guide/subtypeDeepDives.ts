@@ -463,7 +463,9 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
   const cities = [...new Set(producers.map((producer) => producer[2].split(",")[0].trim()))];
   const isWesternCapeBrandy = key === "brandy:South African pot-still brandy";
   const isTexasSotolStyle = key === "agave:Texas sotol-style spirit";
-  const mapGeographicLabels = isWesternCapeBrandy
+  const mapGeographicLabels = key === "brandy:Brandy de Jerez"
+    ? []
+    : isWesternCapeBrandy
     ? [{ name: "Western Cape", point: [19, -33.5] as [number, number] }]
     : isTexasSotolStyle
     ? [{ name: "Texas", point: [-99.9, 31] as [number, number] }]
@@ -493,7 +495,7 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
       : isWesternCapeBrandy
       ? "Western Cape pot-still brandy production cities"
       : isBrandyDeJerez
-      ? "The three-city Brandy de Jerez production and ageing area"
+      ? "The three Brandy de Jerez production and ageing municipalities"
       : producers.length
       ? `${subtype.name} production cities`
       : zones.length
@@ -506,13 +508,13 @@ export function getSubtypeDeepDive(categoryId: string, subtype: SubtypeGuide): S
       : isTexasSotolStyle
       ? `These ${producers.length} documented production sites are grouped into ${cities.length} Texas places. The highlighted state is a regional production lens, not a protected sotol denomination or a complete directory.`
       : isBrandyDeJerez
-      ? "The GI is produced and aged exclusively in the municipalities of Jerez de la Frontera, El Puerto de Santa María and Sanlúcar de Barrameda. The highlighted boundary is their combined municipal area; the three labeled points mark the cities."
+      ? "The GI is produced and aged exclusively in Jerez de la Frontera, El Puerto de Santa María and Sanlúcar de Barrameda. Each municipality is mapped as a separate protected region within the Sherry Triangle."
       : producers.length
       ? `These ${producers.length} documented production sites are grouped into ${cities.length} cities${countries.length ? ` across ${countries.join(", ")}` : ""}. The map shows cities only; choose one to see its notable producers and style cues.`
       : zones.length
         ? "This marker shows the named production origin or tradition. It is an orientation point, not a claim that one place produces only one flavor."
       : "This subtype has no single truthful internal regional map. Its most useful subdivisions come from recipe, extraction, distillation or maturation rather than geography.",
-    mapDisplay: producers.length ? "deduped-cities" : undefined,
+    mapDisplay: isBrandyDeJerez ? undefined : producers.length ? "deduped-cities" : undefined,
     mapFocus: isKentuckyBourbon
       ? ["Kentucky"]
       : isWesternCapeBrandy
