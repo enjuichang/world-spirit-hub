@@ -1,12 +1,7 @@
 import type { NextConfig } from "next";
 
 const isGitHubPagesBuild = process.env.GITHUB_PAGES === "true";
-const repositoryName =
-  process.env.GITHUB_REPOSITORY?.split("/").at(-1) ?? "world-spirit-hub";
-const basePath =
-  isGitHubPagesBuild && !repositoryName.endsWith(".github.io")
-    ? `/${repositoryName}`
-    : "";
+const basePath = "";
 
 const nextConfig: NextConfig = {
   ...(isGitHubPagesBuild
