@@ -7,6 +7,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import type { MapRegion } from "../guideData";
 import { withBasePath } from "../publicPath";
 import { useLocale } from "../i18n";
+import { localizeMapboxMap, mapboxLanguage, mapboxUiLocale } from "../mapLocale";
 // Mexican denomination territories generated from the official INEGI municipal frame.
 import agaveBoundaryData from "./agave-boundaries.json";
 // French spirit appellations derived from INAO's open geographic-area data.
@@ -47,6 +48,7 @@ type MapLandmark = {
 type PositionedLabel = {
   key: string;
   name: string;
+  displayName: string;
   pointX: number;
   pointY: number;
   labelX: number;
@@ -335,6 +337,7 @@ function outlineCollection(regions: MapRegion[]): GeoJSON.FeatureCollection<Regi
 function pointCollection(
   regions: MapRegion[],
   onlyWithoutBoundary = false,
+  localize: (value: string) => string = (value) => value,
 ): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: "FeatureCollection",
@@ -348,6 +351,7 @@ function pointCollection(
               properties: {
                 index: index + 1,
                 name: region.mapLabel ?? region.name,
+                label: localize(region.mapLabel ?? region.name),
                 regionName: region.name,
                 protected: region.kind === "protected" ? 1 : 0,
               },
@@ -377,24 +381,38 @@ function landmarksForMap(regions: MapRegion[], focusIds: string[], showDistiller
   });
 }
 
-function landmarkCollection(landmarks: MapLandmark[], kind: MapLandmark["kind"]): GeoJSON.FeatureCollection<GeoJSON.Point> {
+function landmarkCollection(
+  landmarks: MapLandmark[],
+  kind: MapLandmark["kind"],
+  localize: (value: string) => string,
+): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: "FeatureCollection",
     features: landmarks.filter((landmark) => landmark.kind === kind).map((landmark) => ({
       type: "Feature" as const,
       geometry: { type: "Point" as const, coordinates: landmark.point },
-      properties: { name: landmark.name, detail: landmark.detail ?? "", regionName: landmark.regionName ?? "", highlight: landmark.highlight ? 1 : 0 },
+      properties: {
+        name: landmark.name,
+        label: localize(landmark.name),
+        detail: landmark.detail ?? "",
+        localizedDetail: localize(landmark.detail ?? ""),
+        regionName: landmark.regionName ?? "",
+        highlight: landmark.highlight ? 1 : 0,
+      },
     })),
   };
 }
 
-function geographicLabelCollection(labels: Array<{ name: string; point: [number, number] }>): GeoJSON.FeatureCollection<GeoJSON.Point> {
+function geographicLabelCollection(
+  labels: Array<{ name: string; point: [number, number] }>,
+  localize: (value: string) => string,
+): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: "FeatureCollection",
     features: labels.map((label) => ({
       type: "Feature" as const,
       geometry: { type: "Point" as const, coordinates: label.point },
-      properties: { name: label.name },
+      properties: { name: label.name, label: localize(label.name) },
     })),
   };
 }
@@ -422,11 +440,13 @@ function positionMapLabels(
   fontSize: number,
   markerRadius: number,
   numberRegionLabels: boolean,
+  localize: (value: string) => string,
 ) {
   const candidates = [
     ...geographicLabels.map((label, index) => ({
       key: `geographic-${index}`,
       name: label.name,
+      displayName: localize(label.name),
       point: label.point,
       kind: "geographic" as const,
       regionIndex: undefined,
@@ -434,19 +454,24 @@ function positionMapLabels(
       priority: -1,
       size: fontSize * 1.04,
     })),
-    ...regions.map((region, index) => ({
-      key: `region-${index}`,
-      name: `${numberRegionLabels ? `${index + 1}. ` : ""}${region.mapLabel ?? region.name}`,
-      point: region.point,
-      kind: "region" as const,
-      regionIndex: index,
-      regionName: region.name,
-      priority: 0,
-      size: fontSize,
-    })),
+    ...regions.map((region, index) => {
+      const name = region.mapLabel ?? region.name;
+      return {
+        key: `region-${index}`,
+        name,
+        displayName: `${numberRegionLabels ? `${index + 1}. ` : ""}${localize(name)}`,
+        point: region.point,
+        kind: "region" as const,
+        regionIndex: index,
+        regionName: region.name,
+        priority: 0,
+        size: fontSize,
+      };
+    }),
     ...landmarks.map((landmark, index) => ({
       key: `landmark-${landmark.kind}-${index}`,
       name: landmark.name,
+      displayName: localize(landmark.name),
       point: landmark.point,
       kind: landmark.kind,
       regionIndex: undefined,
@@ -470,7 +495,7 @@ function positionMapLabels(
     const pointX = projected.x * 3.6;
     const pointY = projected.y * 1.8;
     const height = candidate.size * 1.35;
-    const width = Math.max(candidate.name.length * candidate.size * 0.57, candidate.size * 2.5);
+    const width = Math.max(candidate.displayName.length * candidate.size * 0.8, candidate.size * 2.5);
     const gap = markerRadius * (candidate.kind === "region" ? 2.1 : 1.65) + padding;
     const rowOffsets = [0, -1, 1, -2, 2, -3, 3, -4, 4];
     const placements: LabelPlacement[] = rowOffsets.flatMap((row) => {
@@ -498,6 +523,7 @@ function positionMapLabels(
     result.push({
       key: candidate.key,
       name: candidate.name,
+      displayName: candidate.displayName,
       pointX,
       pointY,
       labelX: chosen.labelX,
@@ -829,7 +855,7 @@ function RegionMapComponent({
     () => landmarksForMap(regions, focusIds, showDistilleryMarkers),
     [focusIds, regions, showDistilleryMarkers],
   );
-  const positionedLabels = positionMapLabels(displayRegions, landmarks, geographicLabels, viewBox, markerFontSize, markerRadius, displayMode !== "cities");
+  const positionedLabels = positionMapLabels(displayRegions, landmarks, geographicLabels, viewBox, markerFontSize, markerRadius, displayMode !== "cities", term);
 
   useEffect(() => {
     onRegionSelectRef.current = onRegionSelect;
@@ -929,6 +955,7 @@ function RegionMapComponent({
     if (compact || !wrapperRef.current || mapRef.current) return;
     const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
     if (!mapboxToken) return;
+    queueMicrotask(() => setMapReady(false));
 
     const wrapper = wrapperRef.current;
     const observer = new IntersectionObserver(
@@ -947,6 +974,8 @@ function RegionMapComponent({
           attributionControl: false,
           cooperativeGestures: true,
           renderWorldCopies: false,
+          language: mapboxLanguage(locale),
+          locale: mapboxUiLocale(locale),
         });
         mapRef.current = map;
         map.setProjection({ name: "mercator" });
@@ -954,6 +983,7 @@ function RegionMapComponent({
         map.addControl(new mapboxgl.AttributionControl({ compact: true }), "bottom-left");
 
         map.on("load", () => {
+          localizeMapboxMap(map, locale);
           if (contextFeatures.length) {
             map.addSource("geographic-context", {
               type: "geojson",
@@ -1013,14 +1043,14 @@ function RegionMapComponent({
           if (geographicLabels.length) {
             map.addSource("geographic-labels", {
               type: "geojson",
-              data: geographicLabelCollection(geographicLabels),
+              data: geographicLabelCollection(geographicLabels, term),
             });
             map.addLayer({
               id: "geographic-labels",
               type: "symbol",
               source: "geographic-labels",
               layout: {
-                "text-field": ["get", "name"],
+                "text-field": ["get", "label"],
                 "text-size": ["interpolate", ["linear"], ["zoom"], 0, 11, 6, 15],
                 "text-font": ["Open Sans Bold"],
                 "text-letter-spacing": 0.14,
@@ -1083,7 +1113,7 @@ function RegionMapComponent({
 
           map.addSource("production-fallback-points", {
             type: "geojson",
-            data: pointCollection(displayRegions, true),
+            data: pointCollection(displayRegions, true, term),
           });
           map.addLayer({
             id: "production-fallback-halo",
@@ -1110,14 +1140,14 @@ function RegionMapComponent({
 
           map.addSource("production-labels", {
             type: "geojson",
-            data: pointCollection(displayRegions),
+            data: pointCollection(displayRegions, false, term),
           });
           map.addLayer({
             id: "production-region-names",
             type: "symbol",
             source: "production-labels",
             layout: {
-              "text-field": ["get", "name"],
+              "text-field": ["get", "label"],
               "text-size": ["interpolate", ["linear"], ["zoom"], 0, 10, 4, 13],
               "text-font": ["Open Sans Bold"],
               "text-allow-overlap": false,
@@ -1151,7 +1181,7 @@ function RegionMapComponent({
           map.on("click", "production-fallback-points", handleRegionClick);
           map.on("click", "production-region-names", handleRegionClick);
 
-          const cities = landmarkCollection(landmarks, "city");
+          const cities = landmarkCollection(landmarks, "city", term);
           if (cities.features.length) {
             map.addSource("context-cities", { type: "geojson", data: cities });
             map.addLayer({
@@ -1170,7 +1200,7 @@ function RegionMapComponent({
               type: "symbol",
               source: "context-cities",
               layout: {
-                "text-field": ["get", "name"],
+                "text-field": ["get", "label"],
                 "text-size": ["interpolate", ["linear"], ["zoom"], 0, 9, 6, 11],
                 "text-font": ["Open Sans Semibold"],
                 "text-variable-anchor": ["top", "bottom", "left", "right"],
@@ -1192,7 +1222,7 @@ function RegionMapComponent({
             map.on("click", "context-city-names", selectCity);
           }
 
-          const distilleries = landmarkCollection(landmarks, "distillery");
+          const distilleries = landmarkCollection(landmarks, "distillery", term);
           if (distilleries.features.length) {
             map.addSource("representative-distilleries", { type: "geojson", data: distilleries });
             map.addLayer({
@@ -1211,7 +1241,7 @@ function RegionMapComponent({
               type: "symbol",
               source: "representative-distilleries",
               layout: {
-                "text-field": ["get", "name"],
+                "text-field": ["get", "label"],
                 "text-size": 9.5,
                 "text-font": ["Open Sans Semibold"],
                 "text-offset": [0, 1.25],
@@ -1233,9 +1263,15 @@ function RegionMapComponent({
               const feature = event.features?.[0];
               if (!feature || feature.geometry.type !== "Point") return;
               const coordinates = feature.geometry.coordinates as [number, number];
+              const popupContent = document.createElement("div");
+              const popupTitle = document.createElement("strong");
+              const popupDetail = document.createElement("span");
+              popupTitle.textContent = feature.properties?.label ?? feature.properties?.name ?? (locale === "zh-TW" ? "酒廠" : "Distillery");
+              popupDetail.textContent = feature.properties?.localizedDetail ?? feature.properties?.detail ?? "";
+              popupContent.append(popupTitle, popupDetail);
               new mapboxgl.Popup({ closeButton: false, offset: 10, className: "distillery-popup" })
                 .setLngLat(coordinates)
-                .setHTML(`<strong>${feature.properties?.name ?? "Distillery"}</strong><span>${feature.properties?.detail ?? ""}</span>`)
+                .setDOMContent(popupContent)
                 .addTo(map);
             };
             map.on("click", "distillery-points", showDistilleryPopup);
@@ -1296,7 +1332,7 @@ function RegionMapComponent({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [commonFeatures, compact, contextFeatures, displayRegions, focusFeatures, focusOverlayFeatures, geographicLabels, hasDenominationFocus, landmarks, minimumBounds, previewRegion, regions, scheduleRegionPreviewEnd, selectRegion, shouldApplyMinimumRegion]);
+  }, [commonFeatures, compact, contextFeatures, displayRegions, focusFeatures, focusOverlayFeatures, geographicLabels, hasDenominationFocus, landmarks, locale, minimumBounds, previewRegion, regions, scheduleRegionPreviewEnd, selectRegion, shouldApplyMinimumRegion, term]);
 
   return (
     <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}`} ref={figureRef}>
@@ -1304,7 +1340,7 @@ function RegionMapComponent({
         className={`map-canvas${mapReady ? " mapbox-ready" : ""}${staticView.zoom > 1 ? " is-zoomed" : ""}`}
         ref={wrapperRef}
         role="group"
-        aria-label={`${label}: ${regions.map((region) => region.name).join(", ")}`}
+        aria-label={`${label}: ${regions.map((region) => term(region.name)).join(", ")}`}
         onPointerDown={beginStaticPan}
         onPointerMove={moveStaticPan}
         onPointerUp={endStaticPan}
@@ -1376,7 +1412,7 @@ function RegionMapComponent({
                   fontSize={markerFontSize * 1.04}
                   textAnchor={positioned.textAnchor}
                   key={positioned.key}
-                >{positioned.name}</text>
+                >{positioned.displayName}</text>
               );
             }
             if (positioned.kind === "region" && positioned.regionIndex !== undefined) {
@@ -1408,7 +1444,7 @@ function RegionMapComponent({
                     dominantBaseline="middle"
                     fontSize={markerFontSize}
                     textAnchor={positioned.textAnchor}
-                  >{term(compact ? region.name : positioned.name)}</text>
+                  >{compact ? term(region.name) : positioned.displayName}</text>
                 </g>
               );
             }
@@ -1437,7 +1473,7 @@ function RegionMapComponent({
                 tabIndex={selectableRegionName ? 0 : undefined}
                 aria-label={selectableRegionName ? (locale === "zh-TW" ? `查看${term(selectableRegionName)}詳情` : `View details for ${selectableRegionName}`) : undefined}
               >
-                <title>{`${positioned.name}${landmark?.detail ? ` · ${landmark.detail}` : ""}`}</title>
+                <title>{`${positioned.displayName}${landmark?.detail ? ` · ${term(landmark.detail)}` : ""}`}</title>
                 {positioned.kind === "city"
                   ? <circle cx={positioned.pointX} cy={positioned.pointY} r={radius} />
                   : <path d={`M ${positioned.pointX} ${positioned.pointY - radius} L ${positioned.pointX + radius} ${positioned.pointY} L ${positioned.pointX} ${positioned.pointY + radius} L ${positioned.pointX - radius} ${positioned.pointY} Z`} />}
@@ -1448,7 +1484,7 @@ function RegionMapComponent({
                   dominantBaseline="middle"
                   fontSize={markerFontSize * 0.82}
                   textAnchor={positioned.textAnchor}
-                >{term(positioned.name)}</text>
+                >{positioned.displayName}</text>
               </g>
             );
           })}

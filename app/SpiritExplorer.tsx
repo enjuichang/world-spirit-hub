@@ -30,6 +30,7 @@ import { withBasePath } from "./publicPath";
 import { blogPostSummaries } from "./blog/generated-post-summaries";
 import { RelatedPostLinks } from "./blog/RelatedPostLinks";
 import { useLocale } from "./i18n";
+import { localizeMapboxMap, mapboxLanguage, mapboxUiLocale } from "./mapLocale";
 
 type BottleImage = {
   imagePath: string;
@@ -81,7 +82,7 @@ function OfflineExplorerMap({
   onPreviewLocation: (id: string) => void;
   onLeaveLocation: () => void;
 }) {
-  const { t } = useLocale();
+  const { t, term } = useLocale();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [view, setView] = useState(DEFAULT_FALLBACK_VIEW);
@@ -176,7 +177,7 @@ function OfflineExplorerMap({
                 className={selected ? "selected" : ""}
                 role="button"
                 tabIndex={0}
-                aria-label={`${location.name}, ${location.place}, ${location.country}`}
+                aria-label={`${location.name}, ${term(location.place)}, ${term(location.country)}`}
                 onMouseEnter={() => onPreviewLocation(location.id)}
                 onMouseLeave={onLeaveLocation}
                 onFocus={() => onPreviewLocation(location.id)}
@@ -333,6 +334,10 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
     if (!mapContainer.current || mapRef.current) return;
 
     let loadTimer: ReturnType<typeof setTimeout> | undefined;
+    queueMicrotask(() => {
+      setMapReady(false);
+      setMapFailed(false);
+    });
 
     try {
       const mapboxToken = MAPBOX_PUBLIC_TOKEN;
@@ -351,6 +356,8 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
         minZoom: 1,
         maxZoom: 13,
         attributionControl: false,
+        language: mapboxLanguage(locale),
+        locale: mapboxUiLocale(locale),
       });
 
       mapRef.current = map;
@@ -375,6 +382,7 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
       map.on("load", () => {
         if (loadTimer) clearTimeout(loadTimer);
         setMapFailed(false);
+        localizeMapboxMap(map, locale);
         map.addSource("terrain-dem", {
           type: "raster-dem",
           url: "mapbox://mapbox.mapbox-terrain-dem-v1",
@@ -521,7 +529,7 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     const map = mapRef.current;

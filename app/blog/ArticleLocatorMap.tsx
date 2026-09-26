@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import mapboxgl, { Map as MapboxMap } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useLocale } from "../i18n";
+import { localizeMapboxMap, mapboxLanguage, mapboxUiLocale } from "../mapLocale";
 
 type ArticleLocatorMapProps = {
   latitude: number;
@@ -24,11 +25,12 @@ function coordinateLabel(value: number, positive: string, negative: string) {
 }
 
 export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocatorMapProps) {
-  const { locale } = useLocale();
+  const { locale, term } = useLocale();
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [mapFailed, setMapFailed] = useState(false);
+  const localizedLabel = term(label);
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -39,6 +41,10 @@ export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocator
 
     mapboxgl.accessToken = MAPBOX_PUBLIC_TOKEN;
     let loadTimer: ReturnType<typeof setTimeout> | undefined;
+    queueMicrotask(() => {
+      setMapReady(false);
+      setMapFailed(false);
+    });
 
     try {
       const map = new mapboxgl.Map({
@@ -56,6 +62,8 @@ export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocator
         dragRotate: false,
         pitchWithRotate: false,
         renderWorldCopies: false,
+        language: mapboxLanguage(locale),
+        locale: mapboxUiLocale(locale),
       });
       mapRef.current = map;
       map.setProjection({ name: "mercator" });
@@ -73,7 +81,7 @@ export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocator
       const popupContent = document.createElement("div");
       const popupTitle = document.createElement("strong");
       const popupRegion = document.createElement("span");
-      popupTitle.textContent = label;
+      popupTitle.textContent = localizedLabel;
       popupRegion.textContent = locale === "zh-TW" ? "奧勒岡州" : "Oregon";
       popupContent.append(popupTitle, popupRegion);
 
@@ -93,6 +101,7 @@ export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocator
 
       map.on("load", () => {
         if (loadTimer) clearTimeout(loadTimer);
+        localizeMapboxMap(map, locale);
         setMapReady(true);
         setMapFailed(false);
       });
@@ -108,7 +117,7 @@ export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocator
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [latitude, longitude, label, locale]);
+  }, [latitude, longitude, localizedLabel, locale]);
 
   return (
     <figure className="markdown-media markdown-map">
@@ -117,7 +126,7 @@ export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocator
           className={`article-mapbox-canvas${mapReady ? " is-ready" : ""}${mapFailed ? " has-failed" : ""}`}
           ref={containerRef}
           role="region"
-          aria-label={locale === "zh-TW" ? `顯示${label}的奧勒岡州地圖` : `Map of Oregon showing ${label}`}
+          aria-label={locale === "zh-TW" ? `顯示${localizedLabel}的奧勒岡州地圖` : `Map of Oregon showing ${localizedLabel}`}
         />
         {!mapReady && (
           <div className="article-mapbox-status">
@@ -128,9 +137,9 @@ export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocator
         )}
       </div>
       <figcaption>
-        <span>{label}</span>
+        <span>{localizedLabel}</span>
         <span className="article-map-coordinates">
-          {coordinateLabel(latitude, "N", "S")} · {coordinateLabel(longitude, "E", "W")}
+          {coordinateLabel(latitude, locale === "zh-TW" ? "北" : "N", locale === "zh-TW" ? "南" : "S")} · {coordinateLabel(longitude, locale === "zh-TW" ? "東" : "E", locale === "zh-TW" ? "西" : "W")}
         </span>
       </figcaption>
     </figure>

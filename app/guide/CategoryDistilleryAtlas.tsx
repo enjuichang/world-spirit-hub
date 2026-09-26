@@ -261,7 +261,7 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
             </div>
             {filtered.map((location) => (
               <button
-                aria-label={`${location.name}, ${location.place}`}
+                aria-label={`${location.name}, ${term(location.place)}`}
                 aria-pressed={selected?.id === location.id}
                 className={selected?.id === location.id ? "active" : ""}
                 key={location.id}
@@ -287,7 +287,7 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
             <h4>{selected.name}</h4>
             <strong>{selected.descriptor}</strong>
             <p>{selected.note}</p>
-            <ul>{selected.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+            <ul>{selected.tags.map((tag) => <li key={tag}>{term(tag)}</li>)}</ul>
             {selected.sourceUrl && <a href={selected.sourceUrl} target="_blank" rel="noreferrer"><Bilingual en="Visit source" zh="查看來源" /> <ArrowUpRight size={13} /></a>}
           </article>
         )}
