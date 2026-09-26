@@ -5,24 +5,16 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { categories, locations } from "../data";
 import { blogPostSummaries } from "./posts";
-import type { BlogLanguage } from "./types";
-import { BlogLanguageFilter } from "./BlogLanguageFilter";
 import { Bilingual } from "../i18n";
-import { BlogPostGrid, type BlogIndexPost } from "./BlogPostGrid";
+import type { BlogIndexPost } from "./BlogPostGrid";
+import { BlogIndexContent } from "./BlogIndexContent";
 
 export const metadata: Metadata = {
   title: "Journal",
   description: "Field notes, stories and practical ways to understand the world of spirits.",
 };
 
-type BlogPageProps = { searchParams: Promise<{ language?: string }> };
-
-export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const requestedLanguage = (await searchParams).language;
-  const selectedLanguage = (["en-US", "zh-TW"] as const).some((language) => language === requestedLanguage)
-    ? requestedLanguage as BlogLanguage
-    : undefined;
-  const showAll = requestedLanguage === "all";
+export default function BlogPage() {
   const languageCounts = {
     "en-US": blogPostSummaries.filter((post) => post.language === "en-US").length,
     "zh-TW": blogPostSummaries.filter((post) => post.language === "zh-TW").length,
@@ -68,13 +60,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             <p className="eyebrow"><span /> <Bilingual en="Latest entries" zh="最新文章" /></p>
             <h2 id="latest-stories"><Bilingual en="Read the journal" zh="閱讀專欄" /></h2>
           </div>
-          <BlogLanguageFilter
+          <BlogIndexContent
             counts={languageCounts}
             totalCount={uniqueStoryCount}
-            selectedLanguage={selectedLanguage}
-            showAll={showAll}
+            posts={indexPosts}
           />
-          <BlogPostGrid posts={indexPosts} selectedLanguage={selectedLanguage} showAll={showAll} />
         </section>
       </main>
       <SiteFooter />

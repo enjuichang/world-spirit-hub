@@ -9,23 +9,16 @@ import {
 } from "lucide-react";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
-import { categories, getLocation } from "./data";
-import { SpiritExplorer } from "./SpiritExplorer";
+import { categories } from "./data";
+import { HomeExplorer } from "./HomeExplorer";
 import { LocalizedCategoryText, LocalizedText } from "./i18n";
 
-type HomeProps = { searchParams: Promise<{ distillery?: string }> };
-
-export default async function Home({ searchParams }: HomeProps) {
-  const requestedDistillery = (await searchParams).distillery;
-  const initialDistilleryId = requestedDistillery && getLocation(requestedDistillery)
-    ? requestedDistillery
-    : undefined;
-
+export default function Home() {
   return (
     <>
       <SiteHeader />
       <main>
-        <SpiritExplorer initialDistilleryId={initialDistilleryId} />
+        <HomeExplorer />
 
         <section className="editorial-section" aria-labelledby="families-title">
           <div className="section-heading-row">

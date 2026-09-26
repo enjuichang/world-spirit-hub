@@ -296,12 +296,12 @@ export const messages = {
 
 export type TranslationVariables = Record<string, string | number>;
 
-export function translate(locale: Locale, key: MessageKey, variables: TranslationVariables = {}) {
-  const template = messages[locale][key] ?? messages[defaultLocale][key];
-  return Object.entries(variables).reduce(
-    (value, [name, replacement]) => value.replaceAll(`{${name}}`, String(replacement)),
-    template,
-  );
+export function translate(locale: Locale, key: MessageKey, variables: TranslationVariables = {}): string {
+  let value: string = messages[locale][key] ?? messages[defaultLocale][key];
+  for (const [name, replacement] of Object.entries(variables)) {
+    value = value.replaceAll(`{${name}}`, String(replacement));
+  }
+  return value;
 }
 
 type LocalizedCategory = {
