@@ -27,6 +27,9 @@ import {
   locations,
 } from "./data";
 import { withBasePath } from "./publicPath";
+import { blogPostSummaries } from "./blog/generated-post-summaries";
+import { RelatedPostLinks } from "./blog/RelatedPostLinks";
+import { useLocale } from "./i18n";
 
 type BottleImage = {
   imagePath: string;
@@ -78,6 +81,7 @@ function OfflineExplorerMap({
   onPreviewLocation: (id: string) => void;
   onLeaveLocation: () => void;
 }) {
+  const { t } = useLocale();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [view, setView] = useState(DEFAULT_FALLBACK_VIEW);
@@ -148,13 +152,13 @@ function OfflineExplorerMap({
       onPointerMove={movePan}
       onPointerUp={endPan}
       onPointerCancel={endPan}
-      aria-label="Interactive world spirits map"
+      aria-label={t("explorer.mapLabel")}
     >
       <svg
         viewBox={viewBox}
         preserveAspectRatio="xMidYMid slice"
         role="img"
-        aria-label={`${visibleLocations.length} spirit sites on a world map`}
+        aria-label={t("explorer.mapSites", { count: visibleLocations.length })}
       >
         <image href={withBasePath("/world-equirectangular.svg")} x="0" y="0" width="360" height="180" />
         <g className="offline-map-graticule" aria-hidden="true">
@@ -194,15 +198,15 @@ function OfflineExplorerMap({
           })}
         </g>
       </svg>
-      <div className="offline-map-note">Built-in atlas · always available</div>
-      <div className="map-zoom-controls" aria-label="Map zoom controls">
-        <button type="button" onClick={() => changeZoom(1.7)} disabled={view.zoom >= MAX_FALLBACK_ZOOM} aria-label="Zoom in">
+      <div className="offline-map-note">{t("explorer.offline")}</div>
+      <div className="map-zoom-controls" aria-label={t("explorer.zoomControls")}>
+        <button type="button" onClick={() => changeZoom(1.7)} disabled={view.zoom >= MAX_FALLBACK_ZOOM} aria-label={t("explorer.zoomIn")}>
           <Plus />
         </button>
-        <button type="button" onClick={() => changeZoom(1 / 1.7)} disabled={view.zoom <= 1} aria-label="Zoom out">
+        <button type="button" onClick={() => changeZoom(1 / 1.7)} disabled={view.zoom <= 1} aria-label={t("explorer.zoomOut")}>
           <Minus />
         </button>
-        <button type="button" onClick={() => setView(DEFAULT_FALLBACK_VIEW)} disabled={view.zoom <= 1} aria-label="Reset map view">
+        <button type="button" onClick={() => setView(DEFAULT_FALLBACK_VIEW)} disabled={view.zoom <= 1} aria-label={t("explorer.resetMap")}>
           <RotateCcw />
         </button>
       </div>
@@ -277,15 +281,17 @@ function featureCollection(
   };
 }
 
-export function SpiritExplorer() {
+export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: string }) {
+  const { locale, t, categoryName, categoryTaste, category: localizeCategory, term } = useLocale();
+  const initialLocation = initialDistilleryId ? getLocation(initialDistilleryId) : undefined;
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const previewClearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [mapFailed, setMapFailed] = useState(false);
-  const [categoryId, setCategoryId] = useState("all");
+  const [categoryId, setCategoryId] = useState(initialLocation?.categoryId ?? "all");
   const [query, setQuery] = useState("");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(initialLocation?.id ?? null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [mobileView, setMobileView] = useState<"map" | "list">("map");
   const [mapMode, setMapMode] = useState<"2d" | "3d">("2d");
@@ -318,6 +324,10 @@ export function SpiritExplorer() {
     : categoryId !== "all"
       ? getCategory(categoryId)
       : undefined;
+  const localizedSelectedCategory = selectedCategory ? localizeCategory(selectedCategory) : undefined;
+  const selectedLocationPosts = selectedLocation
+    ? blogPostSummaries.filter((post) => post.distilleryIds.includes(selectedLocation.id))
+    : [];
 
   useEffect(() => {
     if (!mapContainer.current || mapRef.current) return;
@@ -589,35 +599,34 @@ export function SpiritExplorer() {
     <section className="explorer" id="explore" aria-labelledby="explore-title">
       <header className="explorer-intro">
           <p className="eyebrow">
-            <span /> The spirited atlas
+            <span /> {t("explorer.eyebrow")}
           </p>
           <h1 id="explore-title">
-            Every spirit has
-            <em> somewhere to begin.</em>
+            {t("explorer.titleStart")}
+            <em>{t("explorer.titleEmphasis")}</em>
           </h1>
           <p>
-            Trace raw materials, methods and laws across the map. Start broad,
-            then follow a category to the people and places that shape it.
+            {t("explorer.intro")}
           </p>
-          <div className="hero-facts" aria-label="Collection summary">
+          <div className="hero-facts" aria-label={t("explorer.summary")}>
             <span>
-              <strong>8</strong> families
+              <strong>8</strong> {t("explorer.families")}
             </span>
             <span>
-              <strong>{locations.length}</strong> sites
+              <strong>{locations.length}</strong> {t("explorer.sites")}
             </span>
             <span>
-              <strong>1</strong> world
+              <strong>1</strong> {t("explorer.world")}
             </span>
           </div>
       </header>
 
-      <aside className="filter-panel" aria-label="Map filters">
+      <aside className="filter-panel" aria-label={t("explorer.filters")}>
           <div className="filter-heading">
-            <span>Filter the atlas</span>
+            <span>{t("explorer.filterTitle")}</span>
             {categoryId !== "all" && (
               <button type="button" onClick={() => chooseCategory("all")}>
-                Clear
+                {t("common.clear")}
               </button>
             )}
           </div>
@@ -631,8 +640,8 @@ export function SpiritExplorer() {
               <Layers3 size={16} />
             </span>
             <span>
-              <strong>Show all spirits</strong>
-              <small>All {locations.length} map sites</small>
+              <strong>{t("explorer.showAll")}</strong>
+              <small>{t("explorer.allSites", { count: locations.length })}</small>
             </span>
             <ChevronRight size={16} aria-hidden="true" />
           </button>
@@ -652,8 +661,8 @@ export function SpiritExplorer() {
                 >
                   <span className="category-mark">{category.short}</span>
                   <span>
-                    <strong>{category.name}</strong>
-                    <small>{count} sites</small>
+                    <strong>{categoryName(category.id, category.name)}</strong>
+                    <small>{t("explorer.siteCount", { count })}</small>
                   </span>
                   <ChevronRight size={16} aria-hidden="true" />
                 </button>
@@ -663,7 +672,7 @@ export function SpiritExplorer() {
           {selectedCategory && !selectedLocation && (
             <Link className="category-guide-link" href={`/guide/${selectedCategory.id}`} style={{ "--category": selectedCategory.color } as React.CSSProperties}>
               <BookOpen size={15} />
-              <span><small>Read the dedicated chapter</small>{selectedCategory.name}</span>
+              <span><small>{t("explorer.readChapter")}</small>{categoryName(selectedCategory.id, selectedCategory.name)}</span>
               <ArrowUpRight size={15} />
             </Link>
           )}
@@ -673,29 +682,29 @@ export function SpiritExplorer() {
         <div className="map-toolbar">
           <label className="map-search">
             <Search size={17} aria-hidden="true" />
-            <span className="sr-only">Search spirit sites</span>
+            <span className="sr-only">{t("explorer.searchLabel")}</span>
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search a place or style…"
+              placeholder={t("explorer.searchPlaceholder")}
             />
             {query && (
               <button
                 type="button"
                 onClick={() => setQuery("")}
-                aria-label="Clear search"
+                aria-label={t("explorer.clearSearch")}
               >
                 <X size={15} />
               </button>
             )}
           </label>
           <div className="result-count" aria-live="polite">
-            <span>{filteredLocations.length}</span> places in view
+            <span>{filteredLocations.length}</span> {t("explorer.placesInView")}
           </div>
           <div
             className="dimension-toggle"
             role="group"
-            aria-label="Choose 2D or 3D map"
+            aria-label={t("explorer.chooseDimension")}
           >
             <button
               type="button"
@@ -711,19 +720,19 @@ export function SpiritExplorer() {
               onClick={() => chooseMapMode("3d")}
               aria-pressed={mapMode === "3d"}
               disabled={!mapReady}
-              title={!mapReady ? "3D view will be available when the live map is ready" : undefined}
+              title={!mapReady ? t("explorer.threeDUnavailable") : undefined}
             >
               <Globe2 size={14} /> 3D
             </button>
           </div>
-          <div className="view-toggle" aria-label="Choose result view">
+          <div className="view-toggle" aria-label={t("explorer.chooseView")}>
             <button
               type="button"
               className={mobileView === "map" ? "active" : ""}
               onClick={() => setMobileView("map")}
               aria-pressed={mobileView === "map"}
             >
-              <MapIcon size={15} /> Map
+              <MapIcon size={15} /> {t("common.map")}
             </button>
             <button
               type="button"
@@ -731,7 +740,7 @@ export function SpiritExplorer() {
               onClick={() => setMobileView("list")}
               aria-pressed={mobileView === "list"}
             >
-              <List size={15} /> List
+              <List size={15} /> {t("common.list")}
             </button>
           </div>
         </div>
@@ -739,13 +748,13 @@ export function SpiritExplorer() {
         <div className="map-pane">
           {!mapReady && !mapFailed && (
             <div className="map-loading" role="status">
-              <span /> Drawing the atlas…
+              <span /> {t("explorer.loading")}
             </div>
           )}
           <div
             ref={mapContainer}
             className={`map-canvas mapbox-explorer-layer${mapFailed ? " mapbox-failed" : ""}`}
-            aria-label="Interactive world spirits map"
+            aria-label={t("explorer.mapLabel")}
           />
           {mapFailed && (
             <OfflineExplorerMap
@@ -756,7 +765,7 @@ export function SpiritExplorer() {
               onLeaveLocation={() => clearLocationPreview()}
             />
           )}
-          <div className="map-legend" aria-label="Spirit category legend">
+          <div className="map-legend" aria-label={t("explorer.legend")}>
             {categories.map((category) => (
               <span key={category.id}>
                 <i style={{ backgroundColor: category.color }} />
@@ -766,17 +775,17 @@ export function SpiritExplorer() {
           </div>
         </div>
 
-        <div className="location-list" aria-label="Spirit sites">
+        <div className="location-list" aria-label={t("explorer.siteList")}>
           <div className="list-heading">
-            <span>Atlas index</span>
-            <small>{filteredLocations.length} results</small>
+            <span>{t("explorer.index")}</span>
+            <small>{t("common.results", { count: filteredLocations.length })}</small>
           </div>
           {filteredLocations.length === 0 ? (
             <div className="no-results">
               <Search size={24} />
-              <strong>No places match that search.</strong>
+              <strong>{t("explorer.noResults")}</strong>
               <button type="button" onClick={() => setQuery("")}>
-                Clear search
+                {t("explorer.clearSearch")}
               </button>
             </div>
           ) : (
@@ -802,7 +811,7 @@ export function SpiritExplorer() {
                   <span>
                     <strong>{location.name}</strong>
                     <small>
-                      {location.place} · {location.subcategory}
+                      {term(location.place)} · {term(location.subcategory)}
                     </small>
                   </span>
                   <ChevronRight size={16} aria-hidden="true" />
@@ -815,7 +824,7 @@ export function SpiritExplorer() {
         {selectedLocation && selectedCategory && (
           <aside
             className={`detail-drawer${hoveredId ? " is-hover-preview" : ""}`}
-            aria-label="Selected distillery details"
+            aria-label={t("explorer.details")}
             aria-live="polite"
             onPointerEnter={() => {
               if (previewClearTimer.current) clearTimeout(previewClearTimer.current);
@@ -829,7 +838,7 @@ export function SpiritExplorer() {
                 setSelectedId(null);
                 setHoveredId(null);
               }}
-              aria-label="Close details"
+              aria-label={t("explorer.closeDetails")}
             >
               <X size={18} />
             </button>
@@ -838,18 +847,18 @@ export function SpiritExplorer() {
               style={{ color: selectedCategory.color }}
             >
               <span>{selectedCategory.short}</span>
-              {selectedCategory.name}
+              {categoryName(selectedCategory.id, selectedCategory.name)}
             </div>
 
             <>
                 <p className="drawer-overline">
-                  <MapPin size={14} /> {selectedLocation.place},{" "}
-                  {selectedLocation.country}
+                  <MapPin size={14} /> {term(selectedLocation.place)},{" "}
+                  {term(selectedLocation.country)}
                 </p>
                 <h2>{selectedLocation.name}</h2>
                 <p className="drawer-lead">{selectedLocation.descriptor}</p>
                 {selectedLocation.precision === "approximate" && (
-                  <p className="precision-note">Approximate regional marker</p>
+                  <p className="precision-note">{t("explorer.approximate")}</p>
                 )}
                 {bottleImageById[selectedLocation.id] && (
                   <figure className="drawer-bottle">
@@ -858,55 +867,60 @@ export function SpiritExplorer() {
                       name={selectedLocation.name}
                     />
                     <figcaption>
-                      <span>Featured bottle</span>
+                      <span>{t("explorer.featuredBottle")}</span>
                       <strong>{bottleImageById[selectedLocation.id].productName}</strong>
                       <small>
-                        An actual bottling associated with this producer.
+                        {t("explorer.bottleNote")}
                       </small>
                       <a
                         href={bottleImageById[selectedLocation.id].productPageUrl}
                         target="_blank"
                         rel="noreferrer"
                       >
-                        View product source <ArrowUpRight size={12} />
+                        {t("explorer.productSource")} <ArrowUpRight size={12} />
                       </a>
                     </figcaption>
                   </figure>
                 )}
                 <div className="taste-tags">
                   {selectedLocation.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
+                    <span key={tag}>{term(tag)}</span>
                   ))}
                 </div>
                 <div className="drawer-section">
-                  <h3>Why it matters</h3>
+                  <h3>{t("explorer.whyMatters")}</h3>
                   <p>{selectedLocation.note}</p>
                 </div>
                 <div className="drawer-section distillery-profile">
-                  <h3>Distillery profile</h3>
+                  <h3>{t("explorer.profile")}</h3>
                   <dl className="profile-facts">
                     <div>
-                      <dt>Established</dt>
+                      <dt>{t("explorer.established")}</dt>
                       <dd>{selectedLocation.profile.established}</dd>
                     </div>
                     <div>
-                      <dt>Spirit focus</dt>
-                      <dd>{selectedLocation.subcategory}</dd>
+                      <dt>{t("explorer.spiritFocus")}</dt>
+                      <dd>{term(selectedLocation.subcategory)}</dd>
                     </div>
                   </dl>
                 </div>
                 <details className="drawer-disclosure" open>
-                  <summary>Production signature</summary>
+                  <summary>{t("explorer.production")}</summary>
                   <p>{selectedLocation.profile.production}</p>
                 </details>
                 <details className="drawer-disclosure">
-                  <summary>Style in the glass</summary>
+                  <summary>{t("explorer.style")}</summary>
                   <p>{selectedLocation.profile.style}</p>
                 </details>
                 <details className="drawer-disclosure">
-                  <summary>History & label context</summary>
+                  <summary>{t("explorer.history")}</summary>
                   <p>{selectedLocation.profile.context}</p>
                 </details>
+                <RelatedPostLinks
+                  posts={selectedLocationPosts}
+                  heading={locale === "zh-TW" ? `關於${selectedLocation.name}的故事` : `Stories featuring ${selectedLocation.name}`}
+                  compact
+                />
                 {selectedLocation.sourceUrl && (
                   <a
                     className="source-link distillery-source"
@@ -915,25 +929,25 @@ export function SpiritExplorer() {
                     rel="noreferrer"
                   >
                     <Globe2 size={15} />
-                    {selectedLocation.sourceLabel ?? "Official distillery website"}
+                    {selectedLocation.sourceLabel ?? t("explorer.officialSite")}
                     <ArrowUpRight size={14} />
                   </a>
                 )}
 
                 <details className="family-reference">
                   <summary>
-                    <BookOpen size={14} /> About the wider {selectedCategory.name} family
+                    <BookOpen size={14} /> {t("explorer.aboutFamily", { name: categoryName(selectedCategory.id, selectedCategory.name) })}
                   </summary>
                   <div className="family-reference-body">
-                    <h3>Styles to know</h3>
+                    <h3>{t("explorer.stylesToKnow")}</h3>
                     <div className="subcategory-list">
-                      {selectedCategory.subcategories.map((subcategory) => (
+                      {(localizedSelectedCategory?.subcategories ?? selectedCategory.subcategories).map((subcategory) => (
                         <span key={subcategory}>{subcategory}</span>
                       ))}
                     </div>
-                    <h3>Taste compass</h3>
+                    <h3>{t("explorer.tasteCompass")}</h3>
                     <div className="taste-bars">
-                      {selectedCategory.taste.map((taste, index) => (
+                      {categoryTaste(selectedCategory.id, selectedCategory.taste).map((taste, index) => (
                         <div key={taste}>
                           <span>{taste}</span>
                           <i>
@@ -947,14 +961,14 @@ export function SpiritExplorer() {
                         </div>
                       ))}
                     </div>
-                    <p>{selectedCategory.production}</p>
+                    <p>{localizedSelectedCategory?.production ?? selectedCategory.production}</p>
                     <a
                       className="source-link"
                       href={selectedCategory.sourceUrl}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <BookOpen size={15} /> {selectedCategory.sourceLabel}
+                      <BookOpen size={15} /> {localizedSelectedCategory?.sourceLabel ?? selectedCategory.sourceLabel}
                       <ArrowUpRight size={14} />
                     </a>
                   </div>

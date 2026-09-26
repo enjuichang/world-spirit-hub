@@ -31,6 +31,8 @@ If the token is absent or Mapbox cannot load, the accessible location list remai
 - `npm run build:pages` — produce a static GitHub Pages build in `out/`.
 - `npm run data:sync` — validate the canonical distillery JSON and regenerate the Markdown inventory.
 - `npm run data:check` — verify the JSON and confirm the generated inventory is current.
+- `npm run blog:sync` — validate journal Markdown and regenerate the app’s post registry.
+- `npm run blog:check` — verify that the generated post registry is current.
 - `npm test` — build and verify the main rendered routes.
 - `npm run lint` — run code-quality checks.
 
@@ -56,6 +58,57 @@ To add or update a distillery:
 
 The generator validates required fields, category IDs, coordinates, tags, source URLs, and duplicate IDs. The test workflow runs `data:check`, so a stale Markdown inventory fails before deployment.
 
+## Writing journal posts
+
+Create a URL-safe, kebab-case `.md` file in [`content/blog`](content/blog). The
+filename becomes the post URL; locale suffixes such as `-en-US` and `-zh-TW`
+are supported. Each post needs `title`, `description`, `date`,
+and `language` front matter. Language must be `en-US` or `zh-TW`; it controls
+the Journal collection, semantic language tag, and date formatting. Add an
+optional `spirit` field to connect the story to one of the eight guide
+categories and display a direct field-guide link:
+
+```md
+---
+title: A title worth opening
+description: A short preview of the story.
+date: 2026-09-26
+author: World Spirit Hub
+language: en-US
+translationKey: clear-creek-pear-brandy
+spirit: rum
+distillery: mount-gay
+tags: labels, field notes
+---
+
+Write the story in **Markdown** here.
+```
+
+Valid spirit IDs are `whisky`, `brandy`, `rum`, `agave`, `gin`, `vodka`,
+`asian`, and `flavoured`. `distillery` accepts any stable distillery ID in the
+project data; use `distilleries: id-one, id-two` for several producers in the
+same family. A distillery automatically supplies its spirit relationship, and
+mismatched or unknown IDs fail validation. These links work in both directions:
+posts link into the guide/atlas, while spirit guides and distillery drawers list
+their related stories. The relationship fields, `author`, and `tags` can be
+omitted. Run `npm run blog:sync` after adding a post; `npm run dev` and all
+build commands also run it automatically. See
+[`content/blog/README.md`](content/blog/README.md) for the supported Markdown.
+
+To publish two language versions of one story, create one file for each locale
+and give both the same `translationKey`. Each key may have at most one `en-US`
+and one `zh-TW` post. The generator validates that paired versions connect to
+the same spirit and distilleries. Journal and article links then follow the
+reader's saved site language, with a manual language switch always available.
+
+Blog-owned images and videos live in [`public/blog-assets`](public/blog-assets),
+preferably grouped by `translationKey`. Markdown supports normal image syntax,
+`@[video](...)` for local or HTTPS video, and `@[embed](...)` for sandboxed HTTPS
+website embeds. Local references are checked during `blog:sync`, so missing or
+unsupported files fail the build instead of publishing broken media. Complete
+syntax and supported formats are documented in
+[`content/blog/README.md`](content/blog/README.md).
+
 ## Main project surfaces
 
 - `data/distilleries.json` — original website-driving distillery inventory.
@@ -68,6 +121,8 @@ The generator validates required fields, category IDs, coordinates, tags, source
 - `app/guide/` — educational field guide.
 - `app/discover/` — local, explainable taste profile.
 - `app/bars/` — privacy-conscious distance sorting for dated bar credentials.
+- `app/blog/` — Markdown-powered journal index, article pages, and spirit-guide connections.
+- `content/blog/` — editable journal posts and authoring instructions.
 - `PLAN.md` — product roadmap, editorial standards, architecture, and implementation checklist.
 
 ## Editorial caveat

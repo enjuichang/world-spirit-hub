@@ -1436,6 +1436,9 @@
     "id": "st-george-brandy", "name": "St. George Spirits", "place": "Alameda, California", "country": "United States", "coordinates": [-122.307, 37.784], "categoryId": "brandy", "subcategory": "Fruit eaux-de-vie", "descriptor": "California eau-de-vie pioneer", "note": "Compare expressive pear, raspberry and apple distillates made from fresh California fruit.", "tags": ["pear", "raspberry", "apple"], "precision": "approximate", "sourceLabel": "Official St. George Spirits website", "sourceUrl": "https://stgeorgespirits.com/spirits/brandy"
   },
   {
+    "id": "clear-creek-brandy", "name": "Clear Creek Distillery", "place": "Hood River, Oregon", "country": "United States", "coordinates": [-121.52, 45.71], "categoryId": "brandy", "subcategory": "Fruit eaux-de-vie", "descriptor": "Flagship whole-fruit pear eau-de-vie", "note": "Focus on Clear Creek’s flagship Pear Brandy: a clear, bone-dry, unaged eau-de-vie made from whole Pacific Northwest fruit, using about 20 pounds of pears for each 700 ml bottle.", "tags": ["pear", "orchard fruit", "floral"], "precision": "approximate", "sourceLabel": "Official Clear Creek Distillery website", "sourceUrl": "https://www.hrdspirits.com/clear-creek-distillery"
+  },
+  {
     "id": "ko-hana", "name": "Kō Hana Distillers", "place": "Kunia, Oʻahu", "country": "United States", "coordinates": [-158.067, 21.354], "categoryId": "rum", "subcategory": "Cane-juice rum", "descriptor": "Hawaiian farm-to-bottle cane distillery", "note": "Explore single-variety heirloom cane, fresh pressing, juice fermentation and agricole-style distillation.", "tags": ["fresh cane", "grass", "tropical fruit"], "precision": "approximate", "sourceLabel": "Official Kō Hana website", "sourceUrl": "https://www.kohanarum.com/ourjourney"
   },
   {

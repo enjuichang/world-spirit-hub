@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Maximize2, Minimize2, Minus, Plus, RotateCcw } from "lucide-react";
 import mapboxgl, { LngLatBounds, Map as MapboxMap } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { MapRegion } from "../guideData";
 import { withBasePath } from "../publicPath";
+import { useLocale } from "../i18n";
 // Mexican denomination territories generated from the official INEGI municipal frame.
 import agaveBoundaryData from "./agave-boundaries.json";
 // French spirit appellations derived from INAO's open geographic-area data.
@@ -639,7 +640,7 @@ function pointFocusedViewBox(regions: MapRegion[]) {
   return { x, y, width, height };
 }
 
-export function RegionMap({
+function RegionMapComponent({
   regions,
   label,
   compact = false,
@@ -670,33 +671,54 @@ export function RegionMap({
   selectedRegion?: string;
   showDistilleryMarkers?: boolean;
 }) {
+  const { locale, term } = useLocale();
   const figureRef = useRef<HTMLElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const selectedRegionRef = useRef(selectedRegion);
+  const onRegionSelectRef = useRef(onRegionSelect);
+  const onRegionPreviewRef = useRef(onRegionPreview);
+  const onRegionPreviewEndRef = useRef(onRegionPreviewEnd);
   const hoveredRegionRef = useRef<string | null>(null);
+  const hoverEndTimerRef = useRef<number | null>(null);
   const staticDragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [staticViews, setStaticViews] = useState<Record<string, StaticView>>({});
   const [mapViewport, setMapViewport] = useState({ width: 720, height: 350 });
-  const activeRegion = hoveredRegion ?? selectedRegion ?? null;
+  const activeRegion = selectedRegion ?? null;
+  const cancelPendingRegionPreviewEnd = useCallback(() => {
+    if (hoverEndTimerRef.current === null) return;
+    window.clearTimeout(hoverEndTimerRef.current);
+    hoverEndTimerRef.current = null;
+  }, []);
   const previewRegion = useCallback((regionName: string) => {
+    cancelPendingRegionPreviewEnd();
     if (hoveredRegionRef.current === regionName) return false;
     hoveredRegionRef.current = regionName;
-    setHoveredRegion(regionName);
-    onRegionPreview?.(regionName);
+    onRegionPreviewRef.current?.(regionName);
     return true;
-  }, [onRegionPreview]);
+  }, [cancelPendingRegionPreviewEnd]);
   const endRegionPreview = useCallback(() => {
+    cancelPendingRegionPreviewEnd();
     if (hoveredRegionRef.current === null) return false;
     hoveredRegionRef.current = null;
-    setHoveredRegion(null);
-    onRegionPreviewEnd?.();
+    onRegionPreviewEndRef.current?.();
+    const map = mapRef.current;
+    if (map) {
+      if (selectedRegionRef.current) focusInteractiveRegionPaint(map, selectedRegionRef.current);
+      else resetInteractiveRegionPaint(map);
+    }
     return true;
-  }, [onRegionPreviewEnd]);
+  }, [cancelPendingRegionPreviewEnd]);
+  const scheduleRegionPreviewEnd = useCallback(() => {
+    cancelPendingRegionPreviewEnd();
+    hoverEndTimerRef.current = window.setTimeout(() => {
+      hoverEndTimerRef.current = null;
+      endRegionPreview();
+    }, 80);
+  }, [cancelPendingRegionPreviewEnd, endRegionPreview]);
   const focusIds = useMemo(
     () => compact || focus !== undefined ? focusIdsForRegions(regions, focus) : [],
     [compact, focus, regions],
@@ -763,6 +785,7 @@ export function RegionMap({
   const staticView = staticViews[baseViewKey] ?? defaultStaticView;
   const viewBox = zoomedViewBox(baseViewBox, staticView);
   const focusLabel = focus?.length ? focus : focusIds;
+  const localizedFocusLabel = focusLabel.map(term);
   const compactFocusLabel = parentIds.length
     ? `${parentIds.join(" + ")} › ${focusLabel.join(" + ")}`
     : focusLabel.join(" + ");
@@ -771,6 +794,13 @@ export function RegionMap({
     : frameLabel
       ? `${frameLabel} context`
       : "Geographic focus";
+  const localizedCompactFocusKind = locale === "zh-TW"
+    ? hasDenominationFocus
+      ? `${contextIds.map(term).join(" + ")}${contextIds.length ? "脈絡 · " : ""}${commonLabel ? `${term(commonLabel)} · ` : ""}官方原產地名稱`
+      : frameLabel
+        ? `${term(frameLabel)}脈絡`
+        : "地理焦點"
+    : compactFocusKind;
   const mapUnitsPerPixel = Math.max(
     viewBox.width / Math.max(mapViewport.width, 1),
     viewBox.height / Math.max(mapViewport.height, 1),
@@ -802,6 +832,14 @@ export function RegionMap({
   const positionedLabels = positionMapLabels(displayRegions, landmarks, geographicLabels, viewBox, markerFontSize, markerRadius, displayMode !== "cities");
 
   useEffect(() => {
+    onRegionSelectRef.current = onRegionSelect;
+    onRegionPreviewRef.current = onRegionPreview;
+    onRegionPreviewEndRef.current = onRegionPreviewEnd;
+  }, [onRegionPreview, onRegionPreviewEnd, onRegionSelect]);
+
+  useEffect(() => () => cancelPendingRegionPreviewEnd(), [cancelPendingRegionPreviewEnd]);
+
+  useEffect(() => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
     const observer = new ResizeObserver(([entry]) => {
@@ -815,10 +853,10 @@ export function RegionMap({
   useEffect(() => {
     selectedRegionRef.current = selectedRegion;
     const map = mapRef.current;
-    if (!mapReady || !map || hoveredRegion) return;
+    if (!mapReady || !map || hoveredRegionRef.current) return;
     if (selectedRegion) focusInteractiveRegionPaint(map, selectedRegion);
     else resetInteractiveRegionPaint(map);
-  }, [hoveredRegion, mapReady, selectedRegion]);
+  }, [mapReady, selectedRegion]);
 
   useEffect(() => {
     function handleFullscreenChange() {
@@ -837,10 +875,10 @@ export function RegionMap({
   }
 
   const selectRegion = useCallback(async (regionName: string) => {
-    if (!onRegionSelect) return;
+    if (!onRegionSelectRef.current) return;
     if (document.fullscreenElement === figureRef.current) await document.exitFullscreen();
-    onRegionSelect(regionName);
-  }, [onRegionSelect]);
+    onRegionSelectRef.current(regionName);
+  }, []);
 
   function changeStaticZoom(multiplier: number) {
     setStaticViews((views) => {
@@ -1098,9 +1136,7 @@ export function RegionMap({
 
           const resetRegionFocus = () => {
             map.getCanvas().style.cursor = "";
-            if (!endRegionPreview()) return;
-            if (selectedRegionRef.current) focusInteractiveRegionPaint(map, selectedRegionRef.current);
-            else resetInteractiveRegionPaint(map);
+            scheduleRegionPreviewEnd();
           };
           const focusRegion = (name: string) => {
             map.getCanvas().style.cursor = "pointer";
@@ -1260,10 +1296,10 @@ export function RegionMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [commonFeatures, compact, contextFeatures, displayRegions, endRegionPreview, focusFeatures, focusOverlayFeatures, geographicLabels, hasDenominationFocus, landmarks, minimumBounds, previewRegion, regions, selectRegion, shouldApplyMinimumRegion]);
+  }, [commonFeatures, compact, contextFeatures, displayRegions, focusFeatures, focusOverlayFeatures, geographicLabels, hasDenominationFocus, landmarks, minimumBounds, previewRegion, regions, scheduleRegionPreviewEnd, selectRegion, shouldApplyMinimumRegion]);
 
   return (
-    <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}${hoveredRegion ? " has-region-hover" : ""}`} ref={figureRef}>
+    <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}`} ref={figureRef}>
       <div
         className={`map-canvas${mapReady ? " mapbox-ready" : ""}${staticView.zoom > 1 ? " is-zoomed" : ""}`}
         ref={wrapperRef}
@@ -1285,7 +1321,7 @@ export function RegionMap({
           viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
           preserveAspectRatio="xMidYMid meet"
           role="group"
-          aria-label={`${label} interactive subregion map`}
+          aria-label={locale === "zh-TW" ? `${label}互動式子產區地圖` : `${label} interactive subregion map`}
         >
           {showLandContext && (
             <use
@@ -1313,9 +1349,9 @@ export function RegionMap({
                 key={`${region.name}-outline-${index}-${featureIndex}`}
                 style={{ fill: `color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 28%, transparent)`, stroke: REGION_COLORS[index % REGION_COLORS.length] }}
                 onPointerEnter={() => previewRegion(region.name)}
-                onPointerLeave={endRegionPreview}
+                onPointerLeave={scheduleRegionPreviewEnd}
                 onFocus={() => previewRegion(region.name)}
-                onBlur={endRegionPreview}
+                onBlur={scheduleRegionPreviewEnd}
                 onClick={() => void selectRegion(region.name)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
@@ -1325,7 +1361,7 @@ export function RegionMap({
                 }}
                 role={onRegionSelect ? "button" : undefined}
                 tabIndex={onRegionSelect ? 0 : undefined}
-                aria-label={onRegionSelect ? `View details for ${region.name}` : undefined}
+                aria-label={onRegionSelect ? (locale === "zh-TW" ? `查看${term(region.name)}詳情` : `View details for ${region.name}`) : undefined}
               />
             )),
           )}
@@ -1350,9 +1386,9 @@ export function RegionMap({
                   className={`map-focused-marker ${region.kind ?? "traditional"}${activeRegion === region.name ? " is-hovered" : activeRegion ? " is-dimmed" : ""}`}
                   key={positioned.key}
                   onPointerEnter={() => previewRegion(region.name)}
-                  onPointerLeave={endRegionPreview}
+                  onPointerLeave={scheduleRegionPreviewEnd}
                   onFocus={() => previewRegion(region.name)}
-                  onBlur={endRegionPreview}
+                  onBlur={scheduleRegionPreviewEnd}
                   onClick={() => void selectRegion(region.name)}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
@@ -1362,7 +1398,7 @@ export function RegionMap({
                   }}
                   role={onRegionSelect ? "button" : undefined}
                   tabIndex={onRegionSelect ? 0 : undefined}
-                  aria-label={onRegionSelect ? `View details for ${region.name}` : undefined}
+                  aria-label={onRegionSelect ? (locale === "zh-TW" ? `查看${term(region.name)}詳情` : `View details for ${region.name}`) : undefined}
                 >
                   <circle cx={positioned.pointX} cy={positioned.pointY} r={markerRadius} />
                   <line x1={positioned.pointX} y1={positioned.pointY} x2={positioned.lineX} y2={positioned.lineY} />
@@ -1372,7 +1408,7 @@ export function RegionMap({
                     dominantBaseline="middle"
                     fontSize={markerFontSize}
                     textAnchor={positioned.textAnchor}
-                  >{compact ? region.name : positioned.name}</text>
+                  >{term(compact ? region.name : positioned.name)}</text>
                 </g>
               );
             }
@@ -1387,9 +1423,9 @@ export function RegionMap({
                 className={`map-place-marker ${positioned.kind}${landmark?.highlight ? " is-highlighted" : ""}${selectableRegionName ? " is-selectable" : ""}${activeRegion && positioned.regionName && positioned.regionName !== activeRegion ? " is-dimmed" : ""}`}
                 key={positioned.key}
                 onPointerEnter={selectableRegionName ? () => previewRegion(selectableRegionName) : undefined}
-                onPointerLeave={selectableRegionName ? endRegionPreview : undefined}
+                onPointerLeave={selectableRegionName ? scheduleRegionPreviewEnd : undefined}
                 onFocus={selectableRegionName ? () => previewRegion(selectableRegionName) : undefined}
-                onBlur={selectableRegionName ? endRegionPreview : undefined}
+                onBlur={selectableRegionName ? scheduleRegionPreviewEnd : undefined}
                 onClick={selectableRegionName ? () => void selectRegion(selectableRegionName) : undefined}
                 onKeyDown={selectableRegionName ? (event) => {
                   if (event.key === "Enter" || event.key === " ") {
@@ -1399,7 +1435,7 @@ export function RegionMap({
                 } : undefined}
                 role={selectableRegionName ? "button" : undefined}
                 tabIndex={selectableRegionName ? 0 : undefined}
-                aria-label={selectableRegionName ? `View details for ${selectableRegionName}` : undefined}
+                aria-label={selectableRegionName ? (locale === "zh-TW" ? `查看${term(selectableRegionName)}詳情` : `View details for ${selectableRegionName}`) : undefined}
               >
                 <title>{`${positioned.name}${landmark?.detail ? ` · ${landmark.detail}` : ""}`}</title>
                 {positioned.kind === "city"
@@ -1412,43 +1448,43 @@ export function RegionMap({
                   dominantBaseline="middle"
                   fontSize={markerFontSize * 0.82}
                   textAnchor={positioned.textAnchor}
-                >{positioned.name}</text>
+                >{term(positioned.name)}</text>
               </g>
             );
           })}
         </svg>
         {!compact && <div className="mapbox-region-layer" ref={mapContainerRef} aria-hidden={!mapReady} />}
-        <div className="map-zoom-controls" aria-label="Map zoom controls">
-          <button type="button" onClick={() => changeStaticZoom(1.5)} disabled={staticView.zoom >= MAX_STATIC_ZOOM} aria-label="Zoom in"><Plus aria-hidden="true" /></button>
-          <button type="button" onClick={() => changeStaticZoom(2 / 3)} disabled={staticView.zoom <= 1} aria-label="Zoom out"><Minus aria-hidden="true" /></button>
-          <button type="button" onClick={resetStaticView} disabled={staticView.zoom <= 1} aria-label="Reset map view"><RotateCcw aria-hidden="true" /></button>
-          {immersive && <button type="button" onClick={toggleFullscreen} aria-label={isFullscreen ? "Exit full screen" : "View map full screen"}>{isFullscreen ? <Minimize2 aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}</button>}
+        <div className="map-zoom-controls" aria-label={locale === "zh-TW" ? "地圖縮放控制" : "Map zoom controls"}>
+          <button type="button" onClick={() => changeStaticZoom(1.5)} disabled={staticView.zoom >= MAX_STATIC_ZOOM} aria-label={locale === "zh-TW" ? "放大" : "Zoom in"}><Plus aria-hidden="true" /></button>
+          <button type="button" onClick={() => changeStaticZoom(2 / 3)} disabled={staticView.zoom <= 1} aria-label={locale === "zh-TW" ? "縮小" : "Zoom out"}><Minus aria-hidden="true" /></button>
+          <button type="button" onClick={resetStaticView} disabled={staticView.zoom <= 1} aria-label={locale === "zh-TW" ? "重設地圖視角" : "Reset map view"}><RotateCcw aria-hidden="true" /></button>
+          {immersive && <button type="button" onClick={toggleFullscreen} aria-label={isFullscreen ? (locale === "zh-TW" ? "離開全螢幕" : "Exit full screen") : (locale === "zh-TW" ? "以全螢幕查看地圖" : "View map full screen")}>{isFullscreen ? <Minimize2 aria-hidden="true" /> : <Maximize2 aria-hidden="true" />}</button>}
         </div>
       </div>
       <figcaption>
         {compact ? (
           <div className="compact-map-caption">
-            <span>{focusLabel.length ? `${compactFocusKind} · ${compactFocusLabel}` : "Production area"}</span>
+            <span>{focusLabel.length ? `${localizedCompactFocusKind} · ${locale === "zh-TW" ? localizedFocusLabel.join(" + ") : compactFocusLabel}` : (locale === "zh-TW" ? "生產區域" : "Production area")}</span>
             {showDistilleryMarkers && regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
           </div>
         ) : (
           <>
             <div className="map-caption-heading">
-              <span>{focusLabel.length ? `${hasDenominationFocus ? `${contextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus"} · ${focusLabel.join(" + ")}` : mapReady ? "Interactive vector atlas" : "Regional vector atlas"}</span>
-              {showDistilleryMarkers && regions.some((region) => region.distillery) && <small><i /> Featured distillery</small>}
+              <span>{focusLabel.length ? `${locale === "zh-TW" ? (hasDenominationFocus ? `${contextIds.map(term).join(" + ")}${contextIds.length ? "脈絡 · " : ""}${commonLabel ? `${term(commonLabel)} · ` : ""}官方原產地名稱` : "地理焦點") : (hasDenominationFocus ? `${contextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus")} · ${locale === "zh-TW" ? localizedFocusLabel.join(" + ") : focusLabel.join(" + ")}` : mapReady ? (locale === "zh-TW" ? "互動式向量地圖集" : "Interactive vector atlas") : (locale === "zh-TW" ? "區域向量地圖集" : "Regional vector atlas")}</span>
+              {showDistilleryMarkers && regions.some((region) => region.distillery) && <small><i /> {locale === "zh-TW" ? "代表酒廠" : "Featured distillery"}</small>}
             </div>
             <ol>
               {regions.map((region, index) => (
                 <li key={`${region.name}-legend-${index}`}>
                   <b aria-hidden="true" style={{ borderColor: REGION_COLORS[index % REGION_COLORS.length], boxShadow: `0 0 0 3px color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 16%, transparent)` }} />
-                  <strong>{region.name}</strong>
+                  <strong>{term(region.name)}</strong>
                   {displayMode !== "cities" && (
                     <small>
                       {"distillery" in region && region.distillery
                         ? region.distillery.name
                         : region.kind === "protected"
-                          ? "Protected origin"
-                          : "Production tradition"}
+                          ? (locale === "zh-TW" ? "受保護產地" : "Protected origin")
+                          : (locale === "zh-TW" ? "生產傳統" : "Production tradition")}
                     </small>
                   )}
                 </li>
@@ -1460,3 +1496,5 @@ export function RegionMap({
     </figure>
   );
 }
+
+export const RegionMap = memo(RegionMapComponent);

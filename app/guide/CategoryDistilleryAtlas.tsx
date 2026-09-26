@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { useMemo, useRef, useState } from "react";
 import type { SpiritLocation } from "../data";
 import { withBasePath } from "../publicPath";
+import { Bilingual, useLocale } from "../i18n";
 
 type AtlasView = { zoom: number; centerX: number; centerY: number };
 
@@ -134,6 +135,7 @@ function subtypeRegion(name: string, subtypeLocations: SpiritLocation[], allLoca
 }
 
 export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryName: string; locations: SpiritLocation[] }) {
+  const { locale, term } = useLocale();
   const subcategories = useMemo(() => [...new Set(locations.map((location) => location.subcategory))], [locations]);
   const [filter, setFilter] = useState("All");
   const subtypeRegions = useMemo(() => {
@@ -201,11 +203,11 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
     <section className="category-distillery-atlas" id="distilleries" aria-labelledby="distillery-atlas-title">
       <div className="guide-section-title">
         <Factory aria-hidden="true" />
-        <div><span>{locations.length} documented production sites</span><h3 id="distillery-atlas-title">Distillery map</h3></div>
+        <div><span><Bilingual en={`${locations.length} documented production sites`} zh={`${locations.length} 個已記錄生產地點`} /></span><h3 id="distillery-atlas-title"><Bilingual en="Distillery map" zh="酒廠地圖" /></h3></div>
       </div>
-      <p className="distillery-atlas-intro">Explore the production sites in the {categoryName.toLowerCase()} chapter. Select a style to reduce the map, then choose a marker for its production story.</p>
+      <p className="distillery-atlas-intro"><Bilingual en={<>Explore the production sites in the {categoryName.toLowerCase()} chapter. Select a style to reduce the map, then choose a marker for its production story.</>} zh={<>探索{categoryName}章節中的生產地點。先選擇風格縮小地圖範圍，再點選標記閱讀其生產故事。</>} /></p>
 
-      <div className="distillery-filter" aria-label="Filter distilleries by subtype">
+      <div className="distillery-filter" aria-label={locale === "zh-TW" ? "依子類型篩選酒廠" : "Filter distilleries by subtype"}>
         {["All", ...subcategories].map((subcategory) => (
           <button
             className={filter === subcategory ? "active" : ""}
@@ -216,12 +218,12 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
               if (first) setSelectedId(first.id);
             }}
             type="button"
-          >{subcategory}<span>{subcategory === "All" ? locations.length : locations.filter((location) => location.subcategory === subcategory).length}</span></button>
+          >{term(subcategory)}<span>{subcategory === "All" ? locations.length : locations.filter((location) => location.subcategory === subcategory).length}</span></button>
         ))}
       </div>
 
       <div className="distillery-atlas-layout">
-        <div className="distillery-world-map" role="group" aria-label={`${categoryName} distillery map with ${filtered.length} markers`}>
+        <div className="distillery-world-map" role="group" aria-label={locale === "zh-TW" ? `${categoryName}酒廠地圖，共 ${filtered.length} 個標記` : `${categoryName} distillery map with ${filtered.length} markers`}>
           <div
             className={`distillery-map-stage${atlasView.zoom > 1 ? " is-zoomed" : ""}`}
             style={atlasMarkerStyle}
@@ -252,7 +254,7 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
               <div className="distillery-map-regions">
                 {subtypeRegions.map((region) => (
                   <div className={filter === region.name ? "active" : ""} key={region.name} style={region.style}>
-                    <span>{region.name}</span>
+                    <span>{term(region.name)}</span>
                   </div>
                 ))}
               </div>
@@ -269,24 +271,24 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
                 type="button"
               ><span /></button>
             ))}
-            <div className="map-zoom-controls" aria-label="Map zoom controls">
-              <button type="button" onClick={() => changeZoom(1.5)} disabled={atlasView.zoom >= MAX_ATLAS_ZOOM} aria-label="Zoom in"><Plus aria-hidden="true" /></button>
-              <button type="button" onClick={() => changeZoom(2 / 3)} disabled={atlasView.zoom <= 1} aria-label="Zoom out"><Minus aria-hidden="true" /></button>
-              <button type="button" onClick={resetView} disabled={atlasView.zoom <= 1} aria-label="Reset map view"><RotateCcw aria-hidden="true" /></button>
+            <div className="map-zoom-controls" aria-label={locale === "zh-TW" ? "地圖縮放控制" : "Map zoom controls"}>
+              <button type="button" onClick={() => changeZoom(1.5)} disabled={atlasView.zoom >= MAX_ATLAS_ZOOM} aria-label={locale === "zh-TW" ? "放大" : "Zoom in"}><Plus aria-hidden="true" /></button>
+              <button type="button" onClick={() => changeZoom(2 / 3)} disabled={atlasView.zoom <= 1} aria-label={locale === "zh-TW" ? "縮小" : "Zoom out"}><Minus aria-hidden="true" /></button>
+              <button type="button" onClick={resetView} disabled={atlasView.zoom <= 1} aria-label={locale === "zh-TW" ? "重設地圖視角" : "Reset map view"}><RotateCcw aria-hidden="true" /></button>
             </div>
           </div>
-          <div className="distillery-map-key"><span /> Prominent subtype regions</div>
-          <div className="distillery-map-count"><strong>{filtered.length}</strong><span>{filter === "All" ? "sites shown" : filter}</span></div>
+          <div className="distillery-map-key"><span /> <Bilingual en="Prominent subtype regions" zh="主要子類型產區" /></div>
+          <div className="distillery-map-count"><strong>{filtered.length}</strong><span>{filter === "All" ? (locale === "zh-TW" ? "個顯示地點" : "sites shown") : term(filter)}</span></div>
         </div>
 
         {selected && (
           <article className="distillery-map-detail">
-            <div><MapPinned size={15} aria-hidden="true" /><span>{selected.place} · {selected.country}</span></div>
+            <div><MapPinned size={15} aria-hidden="true" /><span>{term(selected.place)} · {term(selected.country)}</span></div>
             <h4>{selected.name}</h4>
             <strong>{selected.descriptor}</strong>
             <p>{selected.note}</p>
             <ul>{selected.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-            {selected.sourceUrl && <a href={selected.sourceUrl} target="_blank" rel="noreferrer">Visit source <ArrowUpRight size={13} /></a>}
+            {selected.sourceUrl && <a href={selected.sourceUrl} target="_blank" rel="noreferrer"><Bilingual en="Visit source" zh="查看來源" /> <ArrowUpRight size={13} /></a>}
           </article>
         )}
       </div>

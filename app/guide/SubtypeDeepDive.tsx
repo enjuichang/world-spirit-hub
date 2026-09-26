@@ -7,8 +7,10 @@ import type { MapRegion, SubtypeGuide } from "../guideData";
 import { withBasePath } from "../publicPath";
 import { RegionMap } from "./RegionMap";
 import { getSubtypeDeepDive, getSubtypeTargetId } from "./subtypeDeepDives";
+import { Bilingual, useLocale } from "../i18n";
 
 export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; subtypes: SubtypeGuide[] }) {
+  const { locale, term } = useLocale();
   const [selectedName, setSelectedName] = useState(subtypes[0]?.name ?? "");
   const [selectedZoneName, setSelectedZoneName] = useState<string | null>(null);
   const [previewZoneName, setPreviewZoneName] = useState<string | null>(null);
@@ -103,12 +105,12 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
 
       <header className="deep-dive-header">
         <div>
-          <p className="guide-label">Subtype atlas</p>
-          <h3 id={`${categoryId}-deep-title`}>{selected.name}, up close</h3>
+          <p className="guide-label"><Bilingual en="Subtype atlas" zh="子類型地圖集" /></p>
+          <h3 id={`${categoryId}-deep-title`}><Bilingual en={<>{selected.name}, up close</>} zh={<>深入認識{term(selected.name)}</>} /></h3>
           <p>{deepDive.introduction}</p>
         </div>
         <label>
-          <span>Explore another subtype</span>
+          <span><Bilingual en="Explore another subtype" zh="探索其他子類型" /></span>
           <select
             value={selected.name}
             onChange={(event) => {
@@ -119,7 +121,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
               window.history.replaceState(null, "", `#${getSubtypeTargetId(categoryId, next)}`);
             }}
           >
-            {subtypes.map((subtype) => <option value={subtype.name} key={subtype.name}>{subtype.name}</option>)}
+            {subtypes.map((subtype) => <option value={subtype.name} key={subtype.name}>{term(subtype.name)}</option>)}
           </select>
         </label>
       </header>
@@ -135,12 +137,12 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
         ) : (
           <div className="ingredient-visual" aria-hidden="true">
             <Sprout />
-            <span>{selected.name}</span>
+            <span>{term(selected.name)}</span>
             <strong>{deepDive.ingredient.name}</strong>
           </div>
         ))}
         <div className="ingredient-copy">
-          <span><Sprout size={15} /> Raw ingredient</span>
+          <span><Sprout size={15} /> <Bilingual en="Raw ingredient" zh="原始原料" /></span>
           <h4>{deepDive.ingredient.name}</h4>
           {deepDive.ingredient.scientificName && <em>{deepDive.ingredient.scientificName}</em>}
           <p>{deepDive.ingredient.description}</p>
@@ -154,7 +156,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
       </article>
 
       {!!deepDive.ingredient.varieties?.length && (
-        <div className="ingredient-variety-grid" aria-label={`${selected.name} principal fruit and grape varieties`}>
+        <div className="ingredient-variety-grid" aria-label={locale === "zh-TW" ? `${term(selected.name)}的主要水果與葡萄品種` : `${selected.name} principal fruit and grape varieties`}>
           {deepDive.ingredient.varieties.map((variety) => (
             <article key={variety.name}>
               <img src={withBasePath(variety.image)} alt={variety.imageAlt} width="960" height="720" />
@@ -174,14 +176,14 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
 
       <div className="subregion-heading">
         <MapPinned aria-hidden="true" />
-        <div><span>Regional lens</span><h4>{deepDive.mapTitle}</h4><p>{deepDive.mapNote}</p></div>
+        <div><span><Bilingual en="Regional lens" zh="產區視角" /></span><h4>{deepDive.mapTitle}</h4><p>{deepDive.mapNote}</p></div>
       </div>
 
       {deepDive.zones.length ? (
         <div className="subregion-layout">
           <RegionMap
             regions={mapRegions}
-            label={`${selected.name} subregions`}
+            label={locale === "zh-TW" ? `${term(selected.name)}子產區` : `${selected.name} subregions`}
             focus={deepDive.mapFocus}
             immersive
             displayMode={deepDive.mapDisplay === "deduped-cities" ? "cities" : "regions"}
@@ -198,14 +200,14 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
             ref={zonePanelRef}
             tabIndex={-1}
             aria-live="polite"
-            aria-label="Selected place details"
+            aria-label={locale === "zh-TW" ? "所選地點詳情" : "Selected place details"}
           >
             <header className="zone-panel-header">
-              <span>{selectedZones.length ? "Selected place" : "Explore the map"}</span>
-              <h5>{activeZoneName ?? "Choose a city or region"}</h5>
+              <span>{selectedZones.length ? (locale === "zh-TW" ? "所選地點" : "Selected place") : (locale === "zh-TW" ? "探索地圖" : "Explore the map")}</span>
+              <h5>{activeZoneName ? term(activeZoneName) : (locale === "zh-TW" ? "選擇城市或產區" : "Choose a city or region")}</h5>
               <p>{selectedZones.length
-                ? `${selectedZones.length} ${selectedZones.length === 1 ? "field card" : "field cards"}`
-                : "Hover over or select a city or outlined subregion to see what makes it distinctive and its notable producers."}</p>
+                ? (locale === "zh-TW" ? `${selectedZones.length} 張風土卡` : `${selectedZones.length} ${selectedZones.length === 1 ? "field card" : "field cards"}`)
+                : (locale === "zh-TW" ? "將游標移到城市或框選的子產區，或直接點選，即可查看其特色與代表生產者。" : "Hover over or select a city or outlined subregion to see what makes it distinctive and its notable producers.")}</p>
             </header>
             {selectedZones.length ? (
               <div className="zone-list">
@@ -214,8 +216,8 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
                   return (
                     <article className="is-selected" key={`${zone.name}-${zone.distillery?.name ?? index}`}>
                       <span>{String(index + 1).padStart(2, "0")}</span>
-                      <h5>{zone.name}</h5>
-                      <small className="zone-signature-label">Famous style · what makes it unique</small>
+                      <h5>{term(zone.name)}</h5>
+                      <small className="zone-signature-label"><Bilingual en="Famous style · what makes it unique" zh="代表風格 · 獨特之處" /></small>
                       <strong>{zone.character}</strong>
                       <p>{zone.detail}</p>
                       {zone.distillery && (
@@ -223,7 +225,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
                           {zone.distillery.image && (
                             <img src={withBasePath(zone.distillery.image)} alt={`${zone.distillery.name} bottle`} width="96" height="96" />
                           )}
-                          <div><small>Notable distillery</small><b>{zone.distillery.name}</b></div>
+                          <div><small><Bilingual en="Notable distillery" zh="代表酒廠" /></small><b>{zone.distillery.name}</b></div>
                         </div>
                       )}
                       {zone.source && <a className="zone-source" href={zone.source.url} target="_blank" rel="noreferrer">{zone.source.label}<ArrowUpRight size={11} /></a>}
@@ -237,19 +239,19 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
           </aside>
         </div>
       ) : (
-        <div className="method-led-note"><FlaskConical /><strong>No honest regional subdivision</strong><p>{deepDive.mapNote}</p></div>
+        <div className="method-led-note"><FlaskConical /><strong><Bilingual en="No honest regional subdivision" zh="無法誠實劃分子產區" /></strong><p>{deepDive.mapNote}</p></div>
       )}
 
       {deepDive.styles?.length && (
         <div className="deep-style-section">
-          <div className="subregion-heading"><FlaskConical aria-hidden="true" /><div><span>Styles within the subtype</span><h4>What changes in the glass</h4></div></div>
+          <div className="subregion-heading"><FlaskConical aria-hidden="true" /><div><span><Bilingual en="Styles within the subtype" zh="子類型中的風格" /></span><h4><Bilingual en="What changes in the glass" zh="杯中會如何變化" /></h4></div></div>
           <div className="deep-style-grid">
-            {deepDive.styles.map((style) => <article key={style.name}><h5>{style.name}</h5><strong>{style.character}</strong><p>{style.detail}</p></article>)}
+            {deepDive.styles.map((style) => <article key={style.name}><h5>{term(style.name)}</h5><strong>{style.character}</strong><p>{style.detail}</p></article>)}
           </div>
         </div>
       )}
 
-      {deepDive.source && <a className="deep-dive-source" href={deepDive.source.url} target="_blank" rel="noreferrer">Methodology source · {deepDive.source.label}<ArrowUpRight size={14} /></a>}
+      {deepDive.source && <a className="deep-dive-source" href={deepDive.source.url} target="_blank" rel="noreferrer"><Bilingual en="Methodology source" zh="方法來源" /> · {deepDive.source.label}<ArrowUpRight size={14} /></a>}
     </section>
   );
 }

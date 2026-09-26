@@ -32,7 +32,7 @@ test("server-renders the finished World Spirit Hub homepage", async () => {
   assert.match(html, /<title>World Spirit Hub — A spirited atlas<\/title>/i);
   assert.match(html, /Every spirit has/);
   assert.match(html, /Show all spirits/);
-  assert.match(html, /<strong>636<\/strong> sites/);
+  assert.match(html, /<strong>636<\/strong>\s*(?:<!-- -->)?\s*sites/);
   assert.match(html, /Choose 2D or 3D map/);
   assert.match(html, /2D<\/button>/);
   assert.match(html, /3D<\/button>/);
@@ -157,4 +157,73 @@ test("renders the taste profile and credentialed bar experiences", async () => {
   assert.match(barsHtml, /Remarkable bars/);
   assert.match(barsHtml, /World’s 50 Best Bars/);
   assert.match(barsHtml, /Your coordinates stay in this browser/);
+});
+
+test("renders the localized Markdown journal with bidirectional spirit and distillery links", async () => {
+  const [indexResponse, allResponse, englishResponse, traditionalChineseResponse, postResponse, translatedPostResponse, brandyGuideResponse, distilleryResponse] = await Promise.all([
+    render("/blog"),
+    render("/blog?language=all"),
+    render("/blog?language=en-US"),
+    render("/blog?language=zh-TW"),
+    render("/blog/clear-creek-pear-brandy-en-US"),
+    render("/blog/clear-creek-pear-brandy-zh-TW"),
+    render("/guide/brandy"),
+    render("/?distillery=clear-creek-brandy"),
+  ]);
+
+  assert.equal(indexResponse.status, 200);
+  assert.equal(allResponse.status, 200);
+  assert.equal(englishResponse.status, 200);
+  assert.equal(traditionalChineseResponse.status, 200);
+  assert.equal(postResponse.status, 200);
+  assert.equal(translatedPostResponse.status, 200);
+  assert.equal(brandyGuideResponse.status, 200);
+  assert.equal(distilleryResponse.status, 200);
+
+  const indexHtml = await indexResponse.text();
+  const allHtml = await allResponse.text();
+  const englishHtml = await englishResponse.text();
+  const traditionalChineseHtml = await traditionalChineseResponse.text();
+  const postHtml = await postResponse.text();
+  const translatedPostHtml = await translatedPostResponse.text();
+  const brandyGuideHtml = await brandyGuideResponse.text();
+  const distilleryHtml = await distilleryResponse.text();
+  assert.match(indexHtml, /Stories from inside the bottle/);
+  assert.match(indexHtml, /English/);
+  assert.match(indexHtml, /繁體中文/);
+  assert.match(indexHtml, /href="\/blog\/clear-creek-pear-brandy-en-US"/);
+  assert.doesNotMatch(indexHtml, /href="\/blog\/clear-creek-pear-brandy-zh-TW"/);
+  assert.match(allHtml, /href="\/blog\/clear-creek-pear-brandy-en-US"/);
+  assert.doesNotMatch(allHtml, /href="\/blog\/clear-creek-pear-brandy-zh-TW"/);
+  assert.match(englishHtml, /href="\/blog\/clear-creek-pear-brandy-en-US"/);
+  assert.doesNotMatch(englishHtml, /href="\/blog\/clear-creek-pear-brandy-zh-TW"/);
+  assert.match(traditionalChineseHtml, /href="\/blog\/clear-creek-pear-brandy-zh-TW"/);
+  assert.doesNotMatch(traditionalChineseHtml, /href="\/blog\/clear-creek-pear-brandy-en-US"/);
+  assert.match(postHtml, /lang="en-US"/);
+  assert.match(postHtml, /Read in/);
+  assert.match(postHtml, /href="\/blog\/clear-creek-pear-brandy-zh-TW"/);
+  assert.match(postHtml, /hrefLang="zh-TW"/);
+  assert.match(translatedPostHtml, /lang="zh-TW"/);
+  assert.match(translatedPostHtml, /閱讀語言/);
+  assert.match(translatedPostHtml, /href="\/blog\/clear-creek-pear-brandy-en-US"/);
+  assert.match(translatedPostHtml, /Map of Oregon showing Hood River, Oregon/);
+  assert.match(translatedPostHtml, /45\.7089° N/);
+  assert.match(translatedPostHtml, /121\.5123° W/);
+  assert.match(postHtml, /Story context/);
+  assert.match(postHtml, /Spirit family at a glance/);
+  assert.match(postHtml, /Brandy &amp; fruit spirits/);
+  assert.match(postHtml, /href="\/guide\/brandy"/);
+  assert.match(postHtml, /Distillery/);
+  assert.match(postHtml, /Clear Creek Distillery/);
+  assert.match(postHtml, /Representative bottle/);
+  assert.match(postHtml, /src="\/bottles\/clear-creek-brandy.webp"/);
+  assert.match(postHtml, /Production signature/);
+  assert.match(postHtml, /Style in the glass/);
+  assert.match(postHtml, /Taste cues/);
+  assert.match(postHtml, /href="\/\?distillery=clear-creek-brandy#explore"/);
+  assert.ok(postHtml.indexOf("post-profile-section") < postHtml.indexOf("post-body"));
+  assert.match(brandyGuideHtml, /Stories connected to [\s\S]*Brandy &amp; fruit spirits/);
+  assert.match(brandyGuideHtml, /href="\/blog\/clear-creek-pear-brandy-en-US"/);
+  assert.match(distilleryHtml, /Stories featuring [\s\S]*Clear Creek Distillery/);
+  assert.match(distilleryHtml, /href="\/blog\/clear-creek-pear-brandy-en-US"/);
 });

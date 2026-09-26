@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import { withBasePath } from "./publicPath";
+import { LocaleProvider } from "./i18n";
 import "./globals.css";
 
 function siteMetadata(origin: string): Metadata {
@@ -64,8 +65,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en-US" suppressHydrationWarning>
+      <body>
+        <LocaleProvider>{children}</LocaleProvider>
+      </body>
     </html>
   );
 }

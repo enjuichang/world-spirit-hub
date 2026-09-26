@@ -9,29 +9,33 @@ import {
 } from "lucide-react";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
-import { categories } from "./data";
+import { categories, getLocation } from "./data";
 import { SpiritExplorer } from "./SpiritExplorer";
+import { LocalizedCategoryText, LocalizedText } from "./i18n";
 
-export default function Home() {
+type HomeProps = { searchParams: Promise<{ distillery?: string }> };
+
+export default async function Home({ searchParams }: HomeProps) {
+  const requestedDistillery = (await searchParams).distillery;
+  const initialDistilleryId = requestedDistillery && getLocation(requestedDistillery)
+    ? requestedDistillery
+    : undefined;
+
   return (
     <>
       <SiteHeader />
       <main>
-        <SpiritExplorer />
+        <SpiritExplorer initialDistilleryId={initialDistilleryId} />
 
         <section className="editorial-section" aria-labelledby="families-title">
           <div className="section-heading-row">
             <div>
               <p className="eyebrow">
-                <span /> Eight doors into the atlas
+                <span /> <LocalizedText message="home.familiesEyebrow" />
               </p>
-              <h2 id="families-title">Know the family. Then question the label.</h2>
+              <h2 id="families-title"><LocalizedText message="home.familiesTitle" /></h2>
             </div>
-            <p>
-              A category name is only the beginning. Raw material, place,
-              method and law explain why two bottles under one heading can feel
-              worlds apart.
-            </p>
+            <p><LocalizedText message="home.familiesIntro" /></p>
           </div>
 
           <div className="family-grid">
@@ -46,10 +50,10 @@ export default function Home() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="family-glyph">{category.short}</span>
-                <h3>{category.name}</h3>
-                <p>{category.summary}</p>
+                <h3><LocalizedCategoryText id={category.id} field="name" fallback={category.name} /></h3>
+                <p><LocalizedCategoryText id={category.id} field="summary" fallback={category.summary} /></p>
                 <span className="family-link">
-                  Open field guide <ArrowRight size={15} />
+                  <LocalizedText message="home.openGuide" /> <ArrowRight size={15} />
                 </span>
               </Link>
             ))}
@@ -59,41 +63,38 @@ export default function Home() {
         <section className="method-strip" aria-labelledby="method-title">
           <div className="method-intro">
             <p className="eyebrow light">
-              <span /> Read any spirit
+              <span /> <LocalizedText message="home.methodEyebrow" />
             </p>
-            <h2 id="method-title">Four questions unlock the glass.</h2>
-            <p>
-              The atlas organizes every category around the same causal chain,
-              so tasting notes become explanations—not just adjectives.
-            </p>
+            <h2 id="method-title"><LocalizedText message="home.methodTitle" /></h2>
+            <p><LocalizedText message="home.methodIntro" /></p>
             <Link className="text-link" href="/guide">
-              Enter the complete spirit guide <ArrowRight size={16} />
+              <LocalizedText message="home.enterGuide" /> <ArrowRight size={16} />
             </Link>
           </div>
           <ol className="method-steps">
             <li>
               <span>01</span>
               <FlaskConical aria-hidden="true" />
-              <strong>What went in?</strong>
-              <p>Grain, fruit, cane, agave, botanicals—and how they were prepared.</p>
+              <strong><LocalizedText message="home.method1Title" /></strong>
+              <p><LocalizedText message="home.method1Body" /></p>
             </li>
             <li>
               <span>02</span>
               <ScanSearch aria-hidden="true" />
-              <strong>What happened?</strong>
-              <p>Fermentation, distillation, maturation, blending and finishing.</p>
+              <strong><LocalizedText message="home.method2Title" /></strong>
+              <p><LocalizedText message="home.method2Body" /></p>
             </li>
             <li>
               <span>03</span>
               <MapPinned aria-hidden="true" />
-              <strong>Where is it from?</strong>
-              <p>Climate, local practice, protected origin and cultural context.</p>
+              <strong><LocalizedText message="home.method3Title" /></strong>
+              <p><LocalizedText message="home.method3Body" /></p>
             </li>
             <li>
               <span>04</span>
               <BookOpenText aria-hidden="true" />
-              <strong>What can it be called?</strong>
-              <p>Legal category, age statement, production terms and label clues.</p>
+              <strong><LocalizedText message="home.method4Title" /></strong>
+              <p><LocalizedText message="home.method4Body" /></p>
             </li>
           </ol>
         </section>
@@ -101,24 +102,21 @@ export default function Home() {
         <section className="future-section" aria-labelledby="next-title">
           <div className="future-copy">
             <p className="eyebrow">
-              <span /> Your next route
+              <span /> <LocalizedText message="home.routeEyebrow" />
             </p>
-            <h2 id="next-title">From what you taste to where you go.</h2>
-            <p>
-              Build a taste profile, discover the spirit families that match it,
-              then find award-recognized cocktail bars near you.
-            </p>
+            <h2 id="next-title"><LocalizedText message="home.routeTitle" /></h2>
+            <p><LocalizedText message="home.routeIntro" /></p>
           </div>
           <Link className="future-card taste" href="/discover">
-            <span>01 · Taste profile</span>
-            <h3>Find your spirit</h3>
-            <p>Six quick preferences. Three explainable matches.</p>
+            <span><LocalizedText message="home.tasteLabel" /></span>
+            <h3><LocalizedText message="home.tasteTitle" /></h3>
+            <p><LocalizedText message="home.tasteBody" /></p>
             <ArrowRight />
           </Link>
           <Link className="future-card bars" href="/bars">
-            <span>02 · Bar atlas</span>
-            <h3>Find a remarkable bar</h3>
-            <p>Distance plus current, dated editorial credentials.</p>
+            <span><LocalizedText message="home.barsLabel" /></span>
+            <h3><LocalizedText message="home.barsTitle" /></h3>
+            <p><LocalizedText message="home.barsBody" /></p>
             <Compass />
           </Link>
         </section>

@@ -2,13 +2,13 @@
 
 > Generated from `data/distilleries.json`. Edit the JSON, then run `npm run data:sync`.
 
-**628 sites · 8 spirit families · every marker has an official source link and production profile.**
+**636 sites · 8 spirit families · every marker has an official source link and production profile.**
 
 ## Coverage summary
 
 | Family | Markers |
 | --- | ---: |
-| Whisky & whiskey | 161 |
+| Whisky & whiskey | 169 |
 | Brandy & fruit spirits | 86 |
 | Rum & sugar cane | 70 |
 | Agave & related spirits | 53 |
@@ -83,10 +83,18 @@ Every core educational subtype has at least 6 matching producer sites, most have
 | Flavored spirits & liqueurs | Infused vodka | 8 |
 | Flavored spirits & liqueurs | Absinthe | 10 |
 
-## Whisky & whiskey (161)
+## Whisky & whiskey (169)
 
 | Distillery / site | Place | Country | Style | Precision | Official website | ID |
 | --- | --- | --- | --- | --- | --- | --- |
+| Archie Rose Distilling Co. | Banksmeadow, New South Wales | Australia | Australian whisky | approximate | [Visit](https://archierose.com.au/) | `archie-rose-whisky` |
+| Bakery Hill Distillery | Kensington, Victoria | Australia | Australian whisky | approximate | [Visit](https://bakeryhill.com/pages/distillery) | `bakery-hill` |
+| Great Southern Distilling Co. | Albany, Western Australia | Australia | Australian whisky | approximate | [Visit](https://distillery.com.au/) | `limeburners-albany` |
+| Hellyers Road Distillery | Havenview, Tasmania | Australia | Australian whisky | approximate | [Visit](https://hellyersroaddistillery.com.au/) | `hellyers-road-whisky` |
+| LARK Pontville Distillery | Pontville, Tasmania | Australia | Australian whisky | approximate | [Visit](https://larkdistillery.com/) | `lark-distillery` |
+| Overeem Distillery | Huntingfield, Tasmania | Australia | Australian whisky | approximate | [Visit](https://overeemwhisky.com/) | `overeem-whisky` |
+| Starward Distillery | Port Melbourne, Victoria | Australia | Australian whisky | approximate | [Visit](https://starward.com.au/pages/distillery) | `starward` |
+| Sullivans Cove Distillery | Cambridge, Tasmania | Australia | Australian whisky | approximate | [Visit](https://sullivanscove.com/) | `sullivans-cove` |
 | Alberta Distillers | Calgary, Alberta | Canada | Canadian whisky | approximate | [Visit](https://www.albertadistillers.com/) | `alberta-distillers` |
 | Black Velvet Distillery | Lethbridge, Alberta | Canada | Canadian whisky | approximate | [Visit](https://www.blackvelvetwhisky.com/) | `black-velvet-lethbridge` |
 | Forty Creek Distillery | Grimsby, Ontario | Canada | Canadian whisky | approximate | [Visit](https://fortycreekwhisky.com/visit-us/) | `forty-creek` |

@@ -118,8 +118,7 @@
     ["reisetbauer", "Reisetbauer Qualitätsbrand", "Axberg, Upper Austria", "Austria", 14.12, 48.25, "Austrian orchard eau-de-vie distillery", "pear", "apricot", "fruit", "https://www.reisetbauer.at/"],
     ["schladerer", "Alfred Schladerer Alte Schwarzwälder Hausbrennerei", "Staufen, Baden-Württemberg", "Germany", 7.73, 47.88, "Black Forest fruit brandy distillery", "cherry", "pear", "plum", "https://www.schladerer.de/"],
     ["capreolus-distillery", "Capreolus Distillery", "Cirencester, Gloucestershire", "United Kingdom", -1.97, 51.72, "English whole-fruit eau-de-vie distillery", "pear", "plum", "orchard", "https://capreolusdistillery.co.uk/"],
-    ["nusbaumer", "Distillerie Jos. Nusbaumer", "Steige, Alsace", "France", 7.24, 48.36, "Alsatian fruit eau-de-vie distillery", "raspberry", "pear", "kirsch", "https://www.jos-nusbaumer.com/"],
-    ["clear-creek-brandy", "Clear Creek Distillery", "Hood River, Oregon", "United States", -121.52, 45.71, "Pacific Northwest fruit brandy distillery", "pear", "cherry", "plum", "https://www.hrdspirits.com/clear-creek-distillery"]
+    ["nusbaumer", "Distillerie Jos. Nusbaumer", "Steige, Alsace", "France", 7.24, 48.36, "Alsatian fruit eau-de-vie distillery", "raspberry", "pear", "kirsch", "https://www.jos-nusbaumer.com/"]
   ],
   "brandy:Singani": [
     ["singani-63", "Casa Real Singani 63 Cellars", "Tarija", "Bolivia", -64.74, -21.54, "Tarija singani production and maturation site", "muscat", "flowers", "fruit", "https://singani63.com/"],
