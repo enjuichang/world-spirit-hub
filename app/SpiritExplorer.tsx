@@ -82,7 +82,7 @@ function OfflineExplorerMap({
   onPreviewLocation: (id: string) => void;
   onLeaveLocation: () => void;
 }) {
-  const { t, term } = useLocale();
+  const { t, properName, placeName } = useLocale();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const [view, setView] = useState(DEFAULT_FALLBACK_VIEW);
@@ -177,7 +177,7 @@ function OfflineExplorerMap({
                 className={selected ? "selected" : ""}
                 role="button"
                 tabIndex={0}
-                aria-label={`${location.name}, ${term(location.place)}, ${term(location.country)}`}
+                aria-label={`${properName(location.name)}, ${placeName(location.place)}, ${placeName(location.country)}`}
                 onMouseEnter={() => onPreviewLocation(location.id)}
                 onMouseLeave={onLeaveLocation}
                 onFocus={() => onPreviewLocation(location.id)}
@@ -242,6 +242,9 @@ function featureCollection(
   categoryId: string,
   query: string,
   selectedId: string | null,
+  localizeTermValue: (value: string) => string = (value) => value,
+  localizeProperNameValue: (value: string) => string = (value) => value,
+  localizePlaceNameValue: (value: string) => string = (value) => value,
 ): GeoJSON.FeatureCollection<GeoJSON.Point> {
   const normalized = query.trim().toLocaleLowerCase();
   const visible = locations.filter((location) => {
@@ -251,10 +254,15 @@ function featureCollection(
       normalized.length === 0 ||
       [
         location.name,
+        localizeProperNameValue(location.name),
         location.place,
+        localizePlaceNameValue(location.place),
         location.country,
+        localizePlaceNameValue(location.country),
         location.subcategory,
+        localizeTermValue(location.subcategory),
         ...location.tags,
+        ...location.tags.map(localizeTermValue),
       ]
         .join(" ")
         .toLocaleLowerCase()
@@ -283,7 +291,7 @@ function featureCollection(
 }
 
 export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: string }) {
-  const { locale, t, categoryName, categoryTaste, category: localizeCategory, term } = useLocale();
+  const { locale, t, categoryName, categoryTaste, category: localizeCategory, term, properName, placeName } = useLocale();
   const initialLocation = initialDistilleryId ? getLocation(initialDistilleryId) : undefined;
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapboxMap | null>(null);
@@ -306,17 +314,22 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
         normalized.length === 0 ||
         [
           location.name,
+          properName(location.name),
           location.place,
+          placeName(location.place),
           location.country,
+          placeName(location.country),
           location.subcategory,
+          term(location.subcategory),
           ...location.tags,
+          ...location.tags.map(term),
         ]
           .join(" ")
           .toLocaleLowerCase()
           .includes(normalized);
       return matchesCategory && matchesQuery;
     });
-  }, [categoryId, query]);
+  }, [categoryId, placeName, properName, query, term]);
 
   const activeId = hoveredId ?? selectedId;
   const selectedLocation = activeId ? getLocation(activeId) : undefined;
@@ -535,8 +548,8 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
     const map = mapRef.current;
     if (!mapReady || !map) return;
     const source = map.getSource("spirits") as GeoJSONSource | undefined;
-    source?.setData(featureCollection(categoryId, query, activeId));
-  }, [activeId, categoryId, mapReady, query]);
+    source?.setData(featureCollection(categoryId, query, activeId, term, properName, placeName));
+  }, [activeId, categoryId, mapReady, placeName, properName, query, term]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -809,7 +822,7 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
                   <span className="list-bottle">
                     <BottlePortrait
                       id={location.id}
-                      name={location.name}
+                      name={properName(location.name)}
                       compact
                     />
                     <i style={{ backgroundColor: category.color }}>
@@ -817,9 +830,9 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
                     </i>
                   </span>
                   <span>
-                    <strong>{location.name}</strong>
+                    <strong>{properName(location.name)}</strong>
                     <small>
-                      {term(location.place)} · {term(location.subcategory)}
+                      {placeName(location.place)} · {term(location.subcategory)}
                     </small>
                   </span>
                   <ChevronRight size={16} aria-hidden="true" />
@@ -860,11 +873,11 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
 
             <>
                 <p className="drawer-overline">
-                  <MapPin size={14} /> {term(selectedLocation.place)},{" "}
-                  {term(selectedLocation.country)}
+                  <MapPin size={14} /> {placeName(selectedLocation.place)}{locale === "zh-TW" ? "，" : ", "}
+                  {placeName(selectedLocation.country)}
                 </p>
-                <h2>{selectedLocation.name}</h2>
-                <p className="drawer-lead">{selectedLocation.descriptor}</p>
+                <h2>{properName(selectedLocation.name)}</h2>
+                <p className="drawer-lead">{term(selectedLocation.descriptor)}</p>
                 {selectedLocation.precision === "approximate" && (
                   <p className="precision-note">{t("explorer.approximate")}</p>
                 )}
@@ -872,7 +885,7 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
                   <figure className="drawer-bottle">
                     <BottlePortrait
                       id={selectedLocation.id}
-                      name={selectedLocation.name}
+                      name={properName(selectedLocation.name)}
                     />
                     <figcaption>
                       <span>{t("explorer.featuredBottle")}</span>
@@ -897,14 +910,14 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
                 </div>
                 <div className="drawer-section">
                   <h3>{t("explorer.whyMatters")}</h3>
-                  <p>{selectedLocation.note}</p>
+                  <p>{term(selectedLocation.note)}</p>
                 </div>
                 <div className="drawer-section distillery-profile">
                   <h3>{t("explorer.profile")}</h3>
                   <dl className="profile-facts">
                     <div>
                       <dt>{t("explorer.established")}</dt>
-                      <dd>{selectedLocation.profile.established}</dd>
+                      <dd>{term(selectedLocation.profile.established)}</dd>
                     </div>
                     <div>
                       <dt>{t("explorer.spiritFocus")}</dt>
@@ -914,19 +927,19 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
                 </div>
                 <details className="drawer-disclosure" open>
                   <summary>{t("explorer.production")}</summary>
-                  <p>{selectedLocation.profile.production}</p>
+                  <p>{term(selectedLocation.profile.production)}</p>
                 </details>
                 <details className="drawer-disclosure">
                   <summary>{t("explorer.style")}</summary>
-                  <p>{selectedLocation.profile.style}</p>
+                  <p>{term(selectedLocation.profile.style)}</p>
                 </details>
                 <details className="drawer-disclosure">
                   <summary>{t("explorer.history")}</summary>
-                  <p>{selectedLocation.profile.context}</p>
+                  <p>{term(selectedLocation.profile.context)}</p>
                 </details>
                 <RelatedPostLinks
                   posts={selectedLocationPosts}
-                  heading={locale === "zh-TW" ? `關於${selectedLocation.name}的故事` : `Stories featuring ${selectedLocation.name}`}
+                  heading={locale === "zh-TW" ? `關於${properName(selectedLocation.name)}的故事` : `Stories featuring ${selectedLocation.name}`}
                   compact
                 />
                 {selectedLocation.sourceUrl && (
@@ -937,7 +950,7 @@ export function SpiritExplorer({ initialDistilleryId }: { initialDistilleryId?: 
                     rel="noreferrer"
                   >
                     <Globe2 size={15} />
-                    {selectedLocation.sourceLabel ?? t("explorer.officialSite")}
+                    {selectedLocation.sourceLabel ? term(selectedLocation.sourceLabel) : t("explorer.officialSite")}
                     <ArrowUpRight size={14} />
                   </a>
                 )}

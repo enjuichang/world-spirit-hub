@@ -10,7 +10,7 @@ import { getSubtypeDeepDive, getSubtypeTargetId } from "./subtypeDeepDives";
 import { Bilingual, useLocale } from "../i18n";
 
 export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; subtypes: SubtypeGuide[] }) {
-  const { locale, term } = useLocale();
+  const { locale, term, properName, placeName } = useLocale();
   const [selectedName, setSelectedName] = useState(subtypes[0]?.name ?? "");
   const [selectedZoneName, setSelectedZoneName] = useState<string | null>(null);
   const [previewZoneName, setPreviewZoneName] = useState<string | null>(null);
@@ -107,7 +107,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
         <div>
           <p className="guide-label"><Bilingual en="Subtype atlas" zh="子類型地圖集" /></p>
           <h3 id={`${categoryId}-deep-title`}><Bilingual en={<>{selected.name}, up close</>} zh={<>深入認識{term(selected.name)}</>} /></h3>
-          <p>{deepDive.introduction}</p>
+          <p>{term(deepDive.introduction)}</p>
         </div>
         <label>
           <span><Bilingual en="Explore another subtype" zh="探索其他子類型" /></span>
@@ -130,7 +130,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
         {!deepDive.ingredient.varieties?.length && (deepDive.ingredient.image ? (
           <img
             src={withBasePath(deepDive.ingredient.image)}
-            alt={deepDive.ingredient.imageAlt ?? deepDive.ingredient.name}
+            alt={term(deepDive.ingredient.imageAlt ?? deepDive.ingredient.name)}
             width="1536"
             height="1024"
           />
@@ -138,18 +138,18 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
           <div className="ingredient-visual" aria-hidden="true">
             <Sprout />
             <span>{term(selected.name)}</span>
-            <strong>{deepDive.ingredient.name}</strong>
+            <strong>{term(deepDive.ingredient.name)}</strong>
           </div>
         ))}
         <div className="ingredient-copy">
           <span><Sprout size={15} /> <Bilingual en="Raw ingredient" zh="原始原料" /></span>
-          <h4>{deepDive.ingredient.name}</h4>
+          <h4>{term(deepDive.ingredient.name)}</h4>
           {deepDive.ingredient.scientificName && <em>{deepDive.ingredient.scientificName}</em>}
-          <p>{deepDive.ingredient.description}</p>
-          <small>{deepDive.ingredient.fact}</small>
+          <p>{term(deepDive.ingredient.description)}</p>
+          <small>{term(deepDive.ingredient.fact)}</small>
           {deepDive.ingredient.credit && (
             <a href={deepDive.ingredient.credit.url} target="_blank" rel="noreferrer">
-              {deepDive.ingredient.credit.label}<ArrowUpRight size={11} />
+              {term(deepDive.ingredient.credit.label)}<ArrowUpRight size={11} />
             </a>
           )}
         </div>
@@ -159,15 +159,15 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
         <div className="ingredient-variety-grid" aria-label={locale === "zh-TW" ? `${term(selected.name)}的主要水果與葡萄品種` : `${selected.name} principal fruit and grape varieties`}>
           {deepDive.ingredient.varieties.map((variety) => (
             <article key={variety.name}>
-              <img src={withBasePath(variety.image)} alt={variety.imageAlt} width="960" height="720" />
+              <img src={withBasePath(variety.image)} alt={term(variety.imageAlt)} width="960" height="720" />
               <div>
-                <span>{variety.role}</span>
-                <h5>{variety.name}</h5>
+                <span>{term(variety.role)}</span>
+                <h5>{term(variety.name)}</h5>
                 {variety.scientificName && <em>{variety.scientificName}</em>}
-                <p>{variety.description}</p>
+                <p>{term(variety.description)}</p>
                 {variety.credit && (variety.credit.url
-                  ? <a href={variety.credit.url} target="_blank" rel="noreferrer">{variety.credit.label}<ArrowUpRight size={11} /></a>
-                  : <small>{variety.credit.label}</small>)}
+                  ? <a href={variety.credit.url} target="_blank" rel="noreferrer">{term(variety.credit.label)}<ArrowUpRight size={11} /></a>
+                  : <small>{term(variety.credit.label)}</small>)}
               </div>
             </article>
           ))}
@@ -176,7 +176,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
 
       <div className="subregion-heading">
         <MapPinned aria-hidden="true" />
-        <div><span><Bilingual en="Regional lens" zh="產區視角" /></span><h4>{deepDive.mapTitle}</h4><p>{deepDive.mapNote}</p></div>
+        <div><span><Bilingual en="Regional lens" zh="產區視角" /></span><h4>{term(deepDive.mapTitle)}</h4><p>{term(deepDive.mapNote)}</p></div>
       </div>
 
       {deepDive.zones.length ? (
@@ -204,7 +204,7 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
           >
             <header className="zone-panel-header">
               <span>{selectedZones.length ? (locale === "zh-TW" ? "所選地點" : "Selected place") : (locale === "zh-TW" ? "探索地圖" : "Explore the map")}</span>
-              <h5>{activeZoneName ? term(activeZoneName) : (locale === "zh-TW" ? "選擇城市或產區" : "Choose a city or region")}</h5>
+              <h5>{activeZoneName ? placeName(activeZoneName) : (locale === "zh-TW" ? "選擇城市或產區" : "Choose a city or region")}</h5>
               <p>{selectedZones.length
                 ? (locale === "zh-TW" ? `${selectedZones.length} 張風土卡` : `${selectedZones.length} ${selectedZones.length === 1 ? "field card" : "field cards"}`)
                 : (locale === "zh-TW" ? "將游標移到城市或框選的子產區，或直接點選，即可查看其特色與代表生產者。" : "Hover over or select a city or outlined subregion to see what makes it distinctive and its notable producers.")}</p>
@@ -216,19 +216,19 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
                   return (
                     <article className="is-selected" key={`${zone.name}-${zone.distillery?.name ?? index}`}>
                       <span>{String(index + 1).padStart(2, "0")}</span>
-                      <h5>{term(zone.name)}</h5>
+                      <h5>{placeName(zone.name)}</h5>
                       <small className="zone-signature-label"><Bilingual en="Famous style · what makes it unique" zh="代表風格 · 獨特之處" /></small>
-                      <strong>{zone.character}</strong>
-                      <p>{zone.detail}</p>
+                      <strong>{term(zone.character)}</strong>
+                      <p>{term(zone.detail)}</p>
                       {zone.distillery && (
                         <div className="zone-distillery">
                           {zone.distillery.image && (
-                            <img src={withBasePath(zone.distillery.image)} alt={`${zone.distillery.name} bottle`} width="96" height="96" />
+                            <img src={withBasePath(zone.distillery.image)} alt={locale === "zh-TW" ? `${properName(zone.distillery.name)}酒瓶` : `${zone.distillery.name} bottle`} width="96" height="96" />
                           )}
-                          <div><small><Bilingual en="Notable distillery" zh="代表酒廠" /></small><b>{zone.distillery.name}</b></div>
+                          <div><small><Bilingual en="Notable distillery" zh="代表酒廠" /></small><b>{properName(zone.distillery.name)}</b></div>
                         </div>
                       )}
-                      {zone.source && <a className="zone-source" href={zone.source.url} target="_blank" rel="noreferrer">{zone.source.label}<ArrowUpRight size={11} /></a>}
+                      {zone.source && <a className="zone-source" href={zone.source.url} target="_blank" rel="noreferrer">{term(zone.source.label)}<ArrowUpRight size={11} /></a>}
                     </article>
                   );
                 })}
@@ -239,19 +239,19 @@ export function SubtypeDeepDive({ categoryId, subtypes }: { categoryId: string; 
           </aside>
         </div>
       ) : (
-        <div className="method-led-note"><FlaskConical /><strong><Bilingual en="No honest regional subdivision" zh="無法誠實劃分子產區" /></strong><p>{deepDive.mapNote}</p></div>
+        <div className="method-led-note"><FlaskConical /><strong><Bilingual en="No honest regional subdivision" zh="無法誠實劃分子產區" /></strong><p>{term(deepDive.mapNote)}</p></div>
       )}
 
       {deepDive.styles?.length && (
         <div className="deep-style-section">
           <div className="subregion-heading"><FlaskConical aria-hidden="true" /><div><span><Bilingual en="Styles within the subtype" zh="子類型中的風格" /></span><h4><Bilingual en="What changes in the glass" zh="杯中會如何變化" /></h4></div></div>
           <div className="deep-style-grid">
-            {deepDive.styles.map((style) => <article key={style.name}><h5>{term(style.name)}</h5><strong>{style.character}</strong><p>{style.detail}</p></article>)}
+            {deepDive.styles.map((style) => <article key={style.name}><h5>{term(style.name)}</h5><strong>{term(style.character)}</strong><p>{term(style.detail)}</p></article>)}
           </div>
         </div>
       )}
 
-      {deepDive.source && <a className="deep-dive-source" href={deepDive.source.url} target="_blank" rel="noreferrer"><Bilingual en="Methodology source" zh="方法來源" /> · {deepDive.source.label}<ArrowUpRight size={14} /></a>}
+      {deepDive.source && <a className="deep-dive-source" href={deepDive.source.url} target="_blank" rel="noreferrer"><Bilingual en="Methodology source" zh="方法來源" /> · {term(deepDive.source.label)}<ArrowUpRight size={14} /></a>}
     </section>
   );
 }

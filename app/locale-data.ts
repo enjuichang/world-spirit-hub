@@ -1,3 +1,5 @@
+import generatedZhContent from "../data/zh-TW-content.json";
+
 export const supportedLocales = ["en-US", "zh-TW"] as const;
 
 export type Locale = (typeof supportedLocales)[number];
@@ -580,6 +582,10 @@ export const zhTerms: Record<string, string> = {
   "Portugal": "葡萄牙",
   "Singapore": "新加坡",
   "Switzerland": "瑞士",
+  "Saint Lucia": "聖露西亞",
+  "Ukraine": "烏克蘭",
+  "Venezuela": "委內瑞拉",
+  "Hong Kong": "香港",
   "Texas": "德州",
   "Kentucky": "肯塔基州",
   "Tennessee": "田納西州",
@@ -623,6 +629,52 @@ export const zhTerms: Record<string, string> = {
   "Tequila Highlands": "龍舌蘭高地",
   "Tequila Valley": "龍舌蘭谷地",
   "Jerez": "赫雷斯",
+  "Speyside": "斯佩賽",
+  "Islay": "艾雷島",
+  "Highlands": "蘇格蘭高地",
+  "Lowlands": "蘇格蘭低地",
+  "Campbeltown": "坎貝爾鎮",
+  "Dufftown": "達夫鎮",
+  "Dufftown, Speyside": "斯佩賽達夫鎮",
+  "Mexico City": "墨西哥城",
+  "Barcelona": "巴塞隆納",
+  "London": "倫敦",
+  "Tokyo": "東京",
+  "Sydney": "雪梨",
+  "New York": "紐約",
+  "New Orleans": "紐奧良",
+  "Chicago": "芝加哥",
+  "Cartagena": "卡塔赫納",
+  "Glenfiddich Distillery": "格蘭菲迪酒廠",
+  "Laphroaig Distillery": "拉弗格酒廠",
+  "The Glenlivet Distillery": "格蘭利威酒廠",
+  "The Macallan Distillery": "麥卡倫酒廠",
+  "The Balvenie Distillery": "百富酒廠",
+  "Kavalan Distillery": "金車噶瑪蘭酒廠",
+  "Kweichow Moutai": "貴州茅台",
+  "Luzhou Laojiao": "瀘州老窖",
+  "Kirishima Shuzo": "霧島酒造",
+  "Kumesen Syuzo": "久米仙酒造",
+  "Wuliangye Distillery": "五糧液酒廠",
+  "Yanghe Distillery": "洋河酒廠",
+  "Langjiu Distillery": "郎酒酒廠",
+  "Xinghuacun Fenjiu Distillery": "杏花村汾酒酒廠",
+  "Beijing Red Star Distillery": "北京紅星酒廠",
+  "Guilin Sanhua Distillery": "桂林三花酒廠",
+  "Kinmen Kaoliang Liquor": "金門酒廠",
+  "Matsu Liquor Factory": "馬祖酒廠",
+  "Hennessy": "軒尼詩",
+  "Maison Rémy Martin": "人頭馬酒莊",
+  "See official producer history": "請參閱生產者官方沿革",
+  "Orchard-fruited Speyside malt": "以果園水果香氣為主的斯佩賽麥芽威士忌",
+  "A useful starting point for connecting copper pot distillation, ex-bourbon and sherry-influenced maturation with Speyside style.": "這是理解斯佩賽風格的實用起點，可從中觀察銅製壺式蒸餾、波本桶與雪莉桶熟成如何共同塑造酒款。",
+  "Malted barley is mashed and fermented before double distillation in unusually shaped copper pot stills; the new make then matures in a broad cask inventory in Dufftown.": "發芽大麥經糖化與發酵後，在造型獨特的銅製壺式蒸餾器中進行兩次蒸餾；新酒隨後於達夫鎮的多樣酒桶中熟成。",
+  "The core house profile leans toward pear, fresh orchard fruit and clean malt, with American oak, European oak and finishing casks adding vanilla, spice or dried-fruit depth.": "酒廠核心風格以梨子、新鮮果園水果與純淨麥芽為主；美國橡木桶、歐洲橡木桶與收尾用桶，則增添香草、香料或乾果層次。",
+  "William Grant built the distillery with his family, and spirit first ran on Christmas Day 1887. Glenfiddich remains a single-malt Scotch: one distillery, malted barley and at least three years in oak in Scotland.": "威廉・格蘭特與家人共同建造酒廠，並於 1887 年聖誕節首次蒸餾出酒液。格蘭菲迪至今仍是蘇格蘭單一麥芽威士忌：由單一酒廠以發芽大麥製成，並在蘇格蘭以橡木桶熟成至少三年。",
+  "Peated, maritime Islay malt": "帶有泥煤與海洋氣息的艾雷島麥芽威士忌",
+  "Explore how peat smoke, fermentation, still shape and maturation combine with—not simply copy—a place identity.": "探索泥煤煙燻、發酵、蒸餾器形狀與熟成如何共同建立產地特色，而不只是單純複製地方印象。",
+  "Light, fruit-led Speyside malt": "輕盈、以果香為主的斯佩賽麥芽威士忌",
+  "Compare long-necked stills and a fruit-forward new make with Glenfiddich and richer sherry-led Speyside examples.": "可將其長頸蒸餾器與果香鮮明的新酒，和格蘭菲迪及更濃郁、以雪莉桶為主的斯佩賽酒款比較。",
   "agave": "龍舌蘭",
   "almond": "杏仁",
   "anise": "茴香",
@@ -779,8 +831,220 @@ export const zhTerms: Record<string, string> = {
   "Japanese-informed precision, thoughtful pairings and quiet hospitality.": "日式精準、細心搭配與沉靜款待。",
 };
 
-export function localizeTerm(locale: Locale, value: string) {
-  return locale === "zh-TW" ? zhTerms[value] ?? value : value;
+// Proper names deliberately use a small, source-checked allowlist. A missing
+// entry is not an invitation to transliterate: the English name is safer and
+// more useful than an invented Chinese name.
+const verifiedZhProperNames: Record<string, string> = {
+  "Glenfiddich": "格蘭菲迪",
+  "Glenfiddich Distillery": "格蘭菲迪酒廠",
+  "Laphroaig": "拉弗格",
+  "Laphroaig Distillery": "拉弗格酒廠",
+  "The Glenlivet": "格蘭利威",
+  "The Glenlivet Distillery": "格蘭利威酒廠",
+  "The Macallan": "麥卡倫",
+  "The Macallan Distillery": "麥卡倫酒廠",
+  "The Balvenie": "百富",
+  "The Balvenie Distillery": "百富酒廠",
+  "Glenfarclas": "格蘭花格",
+  "Glenfarclas Distillery": "格蘭花格酒廠",
+  "Glengoyne": "格蘭哥尼",
+  "Glengoyne Distillery": "格蘭哥尼酒廠",
+  "Kavalan": "噶瑪蘭",
+  "Kavalan Distillery": "金車噶瑪蘭威士忌酒廠",
+  "Kinmen Kaoliang Liquor": "金門酒廠",
+  "Matsu Liquor Factory": "馬祖酒廠",
+  "Kweichow Moutai": "貴州茅台",
+  "Moutai": "茅台",
+  "Luzhou Laojiao": "瀘州老窖",
+  "Wuliangye Distillery": "五糧液",
+  "Wuliangye": "五糧液",
+  "Yanghe Distillery": "洋河酒廠",
+  "Yanghe": "洋河",
+  "Hennessy": "軒尼詩",
+  "Maison Rémy Martin": "人頭馬",
+  "Rémy Martin": "人頭馬",
+  "Maison Martell": "馬爹利",
+};
+
+// These are established Taiwan usages (including the Ministry of Foreign
+// Affairs country-name standard) rather than generated transliterations.
+const verifiedZhPlaces: Record<string, string> = {
+  "Scotland": "蘇格蘭",
+  "United States": "美國",
+  "Ireland": "愛爾蘭",
+  "Canada": "加拿大",
+  "Japan": "日本",
+  "Taiwan": "臺灣",
+  "India": "印度",
+  "Australia": "澳洲",
+  "France": "法國",
+  "Spain": "西班牙",
+  "Italy": "義大利",
+  "Peru": "秘魯",
+  "Chile": "智利",
+  "Bolivia": "玻利維亞",
+  "South Africa": "南非",
+  "China": "中國",
+  "South Korea": "南韓",
+  "United Kingdom": "英國",
+  "Netherlands": "荷蘭",
+  "Belgium": "比利時",
+  "Brazil": "巴西",
+  "Mexico": "墨西哥",
+  "Austria": "奧地利",
+  "Barbados": "巴貝多",
+  "Cuba": "古巴",
+  "Denmark": "丹麥",
+  "England": "英格蘭",
+  "Finland": "芬蘭",
+  "Germany": "德國",
+  "Greece": "希臘",
+  "Grenada": "格瑞那達",
+  "Guyana": "蓋亞那",
+  "Haiti": "海地",
+  "Iceland": "冰島",
+  "Jamaica": "牙買加",
+  "Martinique": "馬丁尼克",
+  "Nicaragua": "尼加拉瓜",
+  "Northern Ireland": "北愛爾蘭",
+  "Norway": "挪威",
+  "Poland": "波蘭",
+  "Puerto Rico": "波多黎各",
+  "Sweden": "瑞典",
+  "Trinidad and Tobago": "千里達及托巴哥",
+  "Belize": "貝里斯",
+  "Colombia": "哥倫比亞",
+  "Costa Rica": "哥斯大黎加",
+  "Dominican Republic": "多明尼加共和國",
+  "Guadeloupe": "瓜地洛普",
+  "Guatemala": "瓜地馬拉",
+  "Kenya": "肯亞",
+  "Latvia": "拉脫維亞",
+  "Luxembourg": "盧森堡",
+  "Mauritius": "模里西斯",
+  "Philippines": "菲律賓",
+  "Portugal": "葡萄牙",
+  "Singapore": "新加坡",
+  "Switzerland": "瑞士",
+  "Saint Lucia": "聖露西亞",
+  "Ukraine": "烏克蘭",
+  "Venezuela": "委內瑞拉",
+  "Hong Kong": "香港",
+  "Global": "全球",
+  "Caribbean": "加勒比海",
+  "Central Europe": "中歐",
+  "Western Cape": "西開普省",
+  "Scandinavia": "斯堪地那維亞",
+  "Texas": "德州",
+  "Kentucky": "肯塔基州",
+  "Tennessee": "田納西州",
+  "Oregon": "奧勒岡州",
+  "Bordeaux": "波爾多",
+  "Paris": "巴黎",
+  "Marseille": "馬賽",
+  "Toulouse": "圖盧茲",
+  "Caen": "卡昂",
+  "Rouen": "盧昂",
+  "Cognac": "干邑",
+  "Armagnac": "雅馬邑",
+  "Jerez": "赫雷斯",
+  "Speyside": "斯佩賽",
+  "Islay": "艾雷島",
+  "Highlands": "蘇格蘭高地",
+  "Lowlands": "蘇格蘭低地",
+  "Campbeltown": "坎貝爾鎮",
+  "Dufftown": "達夫鎮",
+  "Mexico City": "墨西哥城",
+  "Barcelona": "巴塞隆納",
+  "London": "倫敦",
+  "Tokyo": "東京",
+  "Sydney": "雪梨",
+  "New York": "紐約",
+  "New Orleans": "紐奧良",
+  "Chicago": "芝加哥",
+  "Cartagena": "卡塔赫納",
+  "Kyushu": "九州",
+  "Okinawa": "沖繩",
+  "Sichuan": "四川",
+  "Sonora": "索諾拉州",
+  "Kinmen": "金門",
+  "Matsu": "馬祖",
+};
+
+export function cleanDisplayName(value: string) {
+  return value
+    .trim()
+    .replace(/\s*[（(](?:英語|英文|English)[^）)]*[）)]\s*[。．.]?$/u, "")
+    .replace(/\s*[。．]+$/u, "")
+    .trim();
+}
+
+export function localizeProperName(locale: Locale, value: string) {
+  const cleaned = cleanDisplayName(value);
+  return locale === "zh-TW" ? verifiedZhProperNames[cleaned] ?? cleaned : cleaned;
+}
+
+export function localizePlaceName(locale: Locale, value: string) {
+  const cleaned = cleanDisplayName(value);
+  if (locale !== "zh-TW") return cleaned;
+  const exact = verifiedZhPlaces[cleaned];
+  if (exact) return exact;
+
+  // Translate only verified comma-delimited components. Unknown components
+  // remain exactly as supplied instead of being guessed phonetically.
+  return cleaned
+    .split(",")
+    .map((part) => {
+      const component = part.trim();
+      return verifiedZhPlaces[component] ?? component;
+    })
+    .join("，");
+}
+
+export function localizeTerm(locale: Locale, value: string): string {
+  if (locale !== "zh-TW") return value;
+
+  const curated = zhTerms[value] ?? zhTerms[value.toLocaleLowerCase()];
+  if (curated) return curated;
+
+  const officialSource = value.match(/^Official (.+) (website|company page|production page|visitor page|tourism profile|technical sheet|reopening story|distilleries page|distillery page|absinthe page|factory guide|product page|profile)$/);
+  if (officialSource) {
+    const sourceKinds: Record<string, string> = {
+      "website": "官方網站",
+      "company page": "官方公司頁面",
+      "production page": "官方生產頁面",
+      "visitor page": "官方參觀頁面",
+      "tourism profile": "官方觀光介紹",
+      "technical sheet": "官方技術資料",
+      "reopening story": "官方復廠介紹",
+      "distilleries page": "官方酒廠頁面",
+      "distillery page": "官方酒廠頁面",
+      "absinthe page": "官方艾碧斯頁面",
+      "factory guide": "官方工廠指南",
+      "product page": "官方產品頁面",
+      "profile": "官方介紹",
+    };
+    return `${localizeProperName(locale, officialSource[1])}${sourceKinds[officialSource[2]]}`;
+  }
+
+  const expandedNote = value.match(/^A documented (.+) production site that broadens the atlas beyond its original reference set\.$/);
+  if (expandedNote) {
+    return `這是一處有資料記錄的${localizeTerm(locale, expandedNote[1])}生產地點，讓地圖集的涵蓋範圍超越最初的參考資料。`;
+  }
+
+  const expandedProduction = value.match(/^(.+) produces (.+) at or around the mapped (.+) site\. The producer source below is the reference for current production and visitor information\.$/);
+  if (expandedProduction) {
+    const [, name, subcategory, place] = expandedProduction;
+    return `${localizeProperName(locale, name)}在地圖所標示的${localizePlaceName(locale, place)}地點或周邊生產${localizeTerm(locale, subcategory)}。下方生產者來源可供查核目前生產與參觀資訊。`;
+  }
+
+  const expandedStyle = value.match(/^(.+)\. Representative cues include ([^,]+), ([^,]+) and ([^.]+)\.$/);
+  if (expandedStyle) {
+    const [, descriptor, first, second, third] = expandedStyle;
+    return `${localizeTerm(locale, descriptor)}。代表性風味包括${localizeTerm(locale, first)}、${localizeTerm(locale, second)}與${localizeTerm(locale, third)}。`;
+  }
+
+  return (generatedZhContent as Record<string, string>)[value] ?? value;
 }
 
 export function localizeCategoryData<T extends { id: string }>(locale: Locale, value: T): T {

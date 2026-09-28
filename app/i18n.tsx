@@ -12,6 +12,8 @@ import {
   zhCategories,
   zhGuideOverviews,
   localizeTerm,
+  localizeProperName,
+  localizePlaceName,
 } from "./locale-data";
 import type { SpiritCategory } from "./data";
 
@@ -26,6 +28,8 @@ type LocaleContextValue = {
   categoryTaste: (id: string, fallback: string[]) => string[];
   category: (value: SpiritCategory) => SpiritCategory;
   term: (value: string) => string;
+  properName: (value: string) => string;
+  placeName: (value: string) => string;
   guideOverview: (categoryId: string, detail: string, process: string[]) => { detail: string; process: string[] };
 };
 
@@ -62,6 +66,8 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
       ? { ...category, ...zhCategories[category.id] }
       : category,
     term: (value) => localizeTerm(locale, value),
+    properName: (value) => localizeProperName(locale, value),
+    placeName: (value) => localizePlaceName(locale, value),
     guideOverview: (categoryId, detail, process) => locale === "zh-TW" && zhGuideOverviews[categoryId]
       ? zhGuideOverviews[categoryId]
       : { detail, process },

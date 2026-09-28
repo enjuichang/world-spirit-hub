@@ -135,7 +135,7 @@ function subtypeRegion(name: string, subtypeLocations: SpiritLocation[], allLoca
 }
 
 export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryName: string; locations: SpiritLocation[] }) {
-  const { locale, term } = useLocale();
+  const { locale, term, properName, placeName } = useLocale();
   const subcategories = useMemo(() => [...new Set(locations.map((location) => location.subcategory))], [locations]);
   const [filter, setFilter] = useState("All");
   const subtypeRegions = useMemo(() => {
@@ -261,13 +261,13 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
             </div>
             {filtered.map((location) => (
               <button
-                aria-label={`${location.name}, ${term(location.place)}`}
+                aria-label={`${properName(location.name)}, ${placeName(location.place)}`}
                 aria-pressed={selected?.id === location.id}
                 className={selected?.id === location.id ? "active" : ""}
                 key={location.id}
                 onClick={() => setSelectedId(location.id)}
                 style={position(location.coordinates, atlasView)}
-                title={location.name}
+                title={properName(location.name)}
                 type="button"
               ><span /></button>
             ))}
@@ -283,10 +283,10 @@ export function CategoryDistilleryAtlas({ categoryName, locations }: { categoryN
 
         {selected && (
           <article className="distillery-map-detail">
-            <div><MapPinned size={15} aria-hidden="true" /><span>{term(selected.place)} · {term(selected.country)}</span></div>
-            <h4>{selected.name}</h4>
-            <strong>{selected.descriptor}</strong>
-            <p>{selected.note}</p>
+            <div><MapPinned size={15} aria-hidden="true" /><span>{placeName(selected.place)} · {placeName(selected.country)}</span></div>
+            <h4>{properName(selected.name)}</h4>
+            <strong>{term(selected.descriptor)}</strong>
+            <p>{term(selected.note)}</p>
             <ul>{selected.tags.map((tag) => <li key={tag}>{term(tag)}</li>)}</ul>
             {selected.sourceUrl && <a href={selected.sourceUrl} target="_blank" rel="noreferrer"><Bilingual en="Visit source" zh="查看來源" /> <ArrowUpRight size={13} /></a>}
           </article>

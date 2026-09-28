@@ -384,7 +384,8 @@ function landmarksForMap(regions: MapRegion[], focusIds: string[], showDistiller
 function landmarkCollection(
   landmarks: MapLandmark[],
   kind: MapLandmark["kind"],
-  localize: (value: string) => string,
+  localizeName: (value: string) => string,
+  localizeDetail: (value: string) => string,
 ): GeoJSON.FeatureCollection<GeoJSON.Point> {
   return {
     type: "FeatureCollection",
@@ -393,9 +394,9 @@ function landmarkCollection(
       geometry: { type: "Point" as const, coordinates: landmark.point },
       properties: {
         name: landmark.name,
-        label: localize(landmark.name),
+        label: localizeName(landmark.name),
         detail: landmark.detail ?? "",
-        localizedDetail: localize(landmark.detail ?? ""),
+        localizedDetail: localizeDetail(landmark.detail ?? ""),
         regionName: landmark.regionName ?? "",
         highlight: landmark.highlight ? 1 : 0,
       },
@@ -440,13 +441,14 @@ function positionMapLabels(
   fontSize: number,
   markerRadius: number,
   numberRegionLabels: boolean,
-  localize: (value: string) => string,
+  localizePlace: (value: string) => string,
+  localizeProperName: (value: string) => string,
 ) {
   const candidates = [
     ...geographicLabels.map((label, index) => ({
       key: `geographic-${index}`,
       name: label.name,
-      displayName: localize(label.name),
+      displayName: localizePlace(label.name),
       point: label.point,
       kind: "geographic" as const,
       regionIndex: undefined,
@@ -459,7 +461,7 @@ function positionMapLabels(
       return {
         key: `region-${index}`,
         name,
-        displayName: `${numberRegionLabels ? `${index + 1}. ` : ""}${localize(name)}`,
+        displayName: `${numberRegionLabels ? `${index + 1}. ` : ""}${localizePlace(name)}`,
         point: region.point,
         kind: "region" as const,
         regionIndex: index,
@@ -471,7 +473,7 @@ function positionMapLabels(
     ...landmarks.map((landmark, index) => ({
       key: `landmark-${landmark.kind}-${index}`,
       name: landmark.name,
-      displayName: localize(landmark.name),
+      displayName: landmark.kind === "distillery" ? localizeProperName(landmark.name) : localizePlace(landmark.name),
       point: landmark.point,
       kind: landmark.kind,
       regionIndex: undefined,
@@ -697,7 +699,7 @@ function RegionMapComponent({
   selectedRegion?: string;
   showDistilleryMarkers?: boolean;
 }) {
-  const { locale, term } = useLocale();
+  const { locale, properName, placeName } = useLocale();
   const figureRef = useRef<HTMLElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
@@ -811,7 +813,7 @@ function RegionMapComponent({
   const staticView = staticViews[baseViewKey] ?? defaultStaticView;
   const viewBox = zoomedViewBox(baseViewBox, staticView);
   const focusLabel = focus?.length ? focus : focusIds;
-  const localizedFocusLabel = focusLabel.map(term);
+  const localizedFocusLabel = focusLabel.map(placeName);
   const compactFocusLabel = parentIds.length
     ? `${parentIds.join(" + ")} › ${focusLabel.join(" + ")}`
     : focusLabel.join(" + ");
@@ -822,9 +824,9 @@ function RegionMapComponent({
       : "Geographic focus";
   const localizedCompactFocusKind = locale === "zh-TW"
     ? hasDenominationFocus
-      ? `${contextIds.map(term).join(" + ")}${contextIds.length ? "脈絡 · " : ""}${commonLabel ? `${term(commonLabel)} · ` : ""}官方原產地名稱`
+      ? `${contextIds.map(placeName).join(" + ")}${contextIds.length ? "脈絡 · " : ""}${commonLabel ? `${placeName(commonLabel)} · ` : ""}官方原產地名稱`
       : frameLabel
-        ? `${term(frameLabel)}脈絡`
+        ? `${placeName(frameLabel)}脈絡`
         : "地理焦點"
     : compactFocusKind;
   const mapUnitsPerPixel = Math.max(
@@ -855,7 +857,7 @@ function RegionMapComponent({
     () => landmarksForMap(regions, focusIds, showDistilleryMarkers),
     [focusIds, regions, showDistilleryMarkers],
   );
-  const positionedLabels = positionMapLabels(displayRegions, landmarks, geographicLabels, viewBox, markerFontSize, markerRadius, displayMode !== "cities", term);
+  const positionedLabels = positionMapLabels(displayRegions, landmarks, geographicLabels, viewBox, markerFontSize, markerRadius, displayMode !== "cities", placeName, properName);
 
   useEffect(() => {
     onRegionSelectRef.current = onRegionSelect;
@@ -1043,7 +1045,7 @@ function RegionMapComponent({
           if (geographicLabels.length) {
             map.addSource("geographic-labels", {
               type: "geojson",
-              data: geographicLabelCollection(geographicLabels, term),
+              data: geographicLabelCollection(geographicLabels, placeName),
             });
             map.addLayer({
               id: "geographic-labels",
@@ -1113,7 +1115,7 @@ function RegionMapComponent({
 
           map.addSource("production-fallback-points", {
             type: "geojson",
-            data: pointCollection(displayRegions, true, term),
+            data: pointCollection(displayRegions, true, placeName),
           });
           map.addLayer({
             id: "production-fallback-halo",
@@ -1140,7 +1142,7 @@ function RegionMapComponent({
 
           map.addSource("production-labels", {
             type: "geojson",
-            data: pointCollection(displayRegions, false, term),
+            data: pointCollection(displayRegions, false, placeName),
           });
           map.addLayer({
             id: "production-region-names",
@@ -1181,7 +1183,7 @@ function RegionMapComponent({
           map.on("click", "production-fallback-points", handleRegionClick);
           map.on("click", "production-region-names", handleRegionClick);
 
-          const cities = landmarkCollection(landmarks, "city", term);
+          const cities = landmarkCollection(landmarks, "city", placeName, placeName);
           if (cities.features.length) {
             map.addSource("context-cities", { type: "geojson", data: cities });
             map.addLayer({
@@ -1222,7 +1224,7 @@ function RegionMapComponent({
             map.on("click", "context-city-names", selectCity);
           }
 
-          const distilleries = landmarkCollection(landmarks, "distillery", term);
+          const distilleries = landmarkCollection(landmarks, "distillery", properName, placeName);
           if (distilleries.features.length) {
             map.addSource("representative-distilleries", { type: "geojson", data: distilleries });
             map.addLayer({
@@ -1332,7 +1334,7 @@ function RegionMapComponent({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [commonFeatures, compact, contextFeatures, displayRegions, focusFeatures, focusOverlayFeatures, geographicLabels, hasDenominationFocus, landmarks, locale, minimumBounds, previewRegion, regions, scheduleRegionPreviewEnd, selectRegion, shouldApplyMinimumRegion, term]);
+  }, [commonFeatures, compact, contextFeatures, displayRegions, focusFeatures, focusOverlayFeatures, geographicLabels, hasDenominationFocus, landmarks, locale, minimumBounds, placeName, previewRegion, properName, regions, scheduleRegionPreviewEnd, selectRegion, shouldApplyMinimumRegion]);
 
   return (
     <figure className={`region-map${compact ? " compact" : ""}${focusFeatures.length ? " focused" : ""}${immersive ? " immersive" : ""}`} ref={figureRef}>
@@ -1340,7 +1342,7 @@ function RegionMapComponent({
         className={`map-canvas${mapReady ? " mapbox-ready" : ""}${staticView.zoom > 1 ? " is-zoomed" : ""}`}
         ref={wrapperRef}
         role="group"
-        aria-label={`${label}: ${regions.map((region) => term(region.name)).join(", ")}`}
+        aria-label={`${label}: ${regions.map((region) => placeName(region.name)).join(", ")}`}
         onPointerDown={beginStaticPan}
         onPointerMove={moveStaticPan}
         onPointerUp={endStaticPan}
@@ -1397,7 +1399,7 @@ function RegionMapComponent({
                 }}
                 role={onRegionSelect ? "button" : undefined}
                 tabIndex={onRegionSelect ? 0 : undefined}
-                aria-label={onRegionSelect ? (locale === "zh-TW" ? `查看${term(region.name)}詳情` : `View details for ${region.name}`) : undefined}
+                aria-label={onRegionSelect ? (locale === "zh-TW" ? `查看${placeName(region.name)}詳情` : `View details for ${region.name}`) : undefined}
               />
             )),
           )}
@@ -1434,7 +1436,7 @@ function RegionMapComponent({
                   }}
                   role={onRegionSelect ? "button" : undefined}
                   tabIndex={onRegionSelect ? 0 : undefined}
-                  aria-label={onRegionSelect ? (locale === "zh-TW" ? `查看${term(region.name)}詳情` : `View details for ${region.name}`) : undefined}
+                  aria-label={onRegionSelect ? (locale === "zh-TW" ? `查看${placeName(region.name)}詳情` : `View details for ${region.name}`) : undefined}
                 >
                   <circle cx={positioned.pointX} cy={positioned.pointY} r={markerRadius} />
                   <line x1={positioned.pointX} y1={positioned.pointY} x2={positioned.lineX} y2={positioned.lineY} />
@@ -1444,7 +1446,7 @@ function RegionMapComponent({
                     dominantBaseline="middle"
                     fontSize={markerFontSize}
                     textAnchor={positioned.textAnchor}
-                  >{compact ? term(region.name) : positioned.displayName}</text>
+                  >{compact ? placeName(region.name) : positioned.displayName}</text>
                 </g>
               );
             }
@@ -1471,9 +1473,9 @@ function RegionMapComponent({
                 } : undefined}
                 role={selectableRegionName ? "button" : undefined}
                 tabIndex={selectableRegionName ? 0 : undefined}
-                aria-label={selectableRegionName ? (locale === "zh-TW" ? `查看${term(selectableRegionName)}詳情` : `View details for ${selectableRegionName}`) : undefined}
+                aria-label={selectableRegionName ? (locale === "zh-TW" ? `查看${placeName(selectableRegionName)}詳情` : `View details for ${selectableRegionName}`) : undefined}
               >
-                <title>{`${positioned.displayName}${landmark?.detail ? ` · ${term(landmark.detail)}` : ""}`}</title>
+                <title>{`${positioned.displayName}${landmark?.detail ? ` · ${placeName(landmark.detail)}` : ""}`}</title>
                 {positioned.kind === "city"
                   ? <circle cx={positioned.pointX} cy={positioned.pointY} r={radius} />
                   : <path d={`M ${positioned.pointX} ${positioned.pointY - radius} L ${positioned.pointX + radius} ${positioned.pointY} L ${positioned.pointX} ${positioned.pointY + radius} L ${positioned.pointX - radius} ${positioned.pointY} Z`} />}
@@ -1501,23 +1503,23 @@ function RegionMapComponent({
         {compact ? (
           <div className="compact-map-caption">
             <span>{focusLabel.length ? `${localizedCompactFocusKind} · ${locale === "zh-TW" ? localizedFocusLabel.join(" + ") : compactFocusLabel}` : (locale === "zh-TW" ? "生產區域" : "Production area")}</span>
-            {showDistilleryMarkers && regions[0].distillery && <strong><i aria-hidden="true" />{regions[0].distillery.name}</strong>}
+            {showDistilleryMarkers && regions[0].distillery && <strong><i aria-hidden="true" />{properName(regions[0].distillery.name)}</strong>}
           </div>
         ) : (
           <>
             <div className="map-caption-heading">
-              <span>{focusLabel.length ? `${locale === "zh-TW" ? (hasDenominationFocus ? `${contextIds.map(term).join(" + ")}${contextIds.length ? "脈絡 · " : ""}${commonLabel ? `${term(commonLabel)} · ` : ""}官方原產地名稱` : "地理焦點") : (hasDenominationFocus ? `${contextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus")} · ${locale === "zh-TW" ? localizedFocusLabel.join(" + ") : focusLabel.join(" + ")}` : mapReady ? (locale === "zh-TW" ? "互動式向量地圖集" : "Interactive vector atlas") : (locale === "zh-TW" ? "區域向量地圖集" : "Regional vector atlas")}</span>
+              <span>{focusLabel.length ? `${locale === "zh-TW" ? (hasDenominationFocus ? `${contextIds.map(placeName).join(" + ")}${contextIds.length ? "脈絡 · " : ""}${commonLabel ? `${placeName(commonLabel)} · ` : ""}官方原產地名稱` : "地理焦點") : (hasDenominationFocus ? `${contextLabel}${commonLabel ? `${commonLabel} · ` : ""}official denomination` : "Geographic focus")} · ${locale === "zh-TW" ? localizedFocusLabel.join(" + ") : focusLabel.join(" + ")}` : mapReady ? (locale === "zh-TW" ? "互動式向量地圖集" : "Interactive vector atlas") : (locale === "zh-TW" ? "區域向量地圖集" : "Regional vector atlas")}</span>
               {showDistilleryMarkers && regions.some((region) => region.distillery) && <small><i /> {locale === "zh-TW" ? "代表酒廠" : "Featured distillery"}</small>}
             </div>
             <ol>
               {regions.map((region, index) => (
                 <li key={`${region.name}-legend-${index}`}>
                   <b aria-hidden="true" style={{ borderColor: REGION_COLORS[index % REGION_COLORS.length], boxShadow: `0 0 0 3px color-mix(in srgb, ${REGION_COLORS[index % REGION_COLORS.length]} 16%, transparent)` }} />
-                  <strong>{term(region.name)}</strong>
+                  <strong>{placeName(region.name)}</strong>
                   {displayMode !== "cities" && (
                     <small>
                       {"distillery" in region && region.distillery
-                        ? region.distillery.name
+                        ? properName(region.distillery.name)
                         : region.kind === "protected"
                           ? (locale === "zh-TW" ? "受保護產地" : "Protected origin")
                           : (locale === "zh-TW" ? "生產傳統" : "Production tradition")}

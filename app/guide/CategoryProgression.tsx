@@ -18,9 +18,9 @@ export function CategoryProgression({ categoryName, steps }: { categoryName: str
           <li key={step.spirit}>
             <header><span>{String(index + 1).padStart(2, "0")}</span><small>{locale === "zh-TW" ? ({ Introductory: "入門", Developing: "發展", Intermediate: "中階", Advanced: "進階" } as Record<string, string>)[step.level] ?? step.level : step.level}</small></header>
             <h4>{term(step.spirit)}</h4>
-            <div className="progression-serve"><GlassWater size={13} aria-hidden="true" />{step.serve}</div>
-            <p>{step.lesson}</p>
-            <footer><span><Bilingual en="Look for" zh="留意" /></span>{step.lookFor}</footer>
+            <div className="progression-serve"><GlassWater size={13} aria-hidden="true" />{term(step.serve)}</div>
+            <p>{term(step.lesson)}</p>
+            <footer><span><Bilingual en="Look for" zh="留意" /></span>{term(step.lookFor)}</footer>
             {index < steps.length - 1 && <ArrowRight aria-hidden="true" />}
           </li>
         ))}

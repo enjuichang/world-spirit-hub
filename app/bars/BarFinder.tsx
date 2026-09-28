@@ -31,7 +31,7 @@ function distanceKm(a: Coordinates, b: [number, number]) {
 }
 
 export function BarFinder() {
-  const { locale, t, term } = useLocale();
+  const { locale, t, term, properName, placeName } = useLocale();
   const [position, setPosition] = useState<Coordinates | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "denied">("idle");
   const [query, setQuery] = useState("");
@@ -45,7 +45,7 @@ export function BarFinder() {
       }))
       .filter((bar) =>
         normalized
-          ? `${bar.name} ${bar.city} ${bar.country} ${bar.style}`
+          ? `${bar.name} ${properName(bar.name)} ${bar.city} ${placeName(bar.city)} ${bar.country} ${placeName(bar.country)} ${bar.style} ${term(bar.style)}`
               .toLocaleLowerCase()
               .includes(normalized)
           : true,
@@ -56,7 +56,7 @@ export function BarFinder() {
         if (a.year !== b.year) return b.year - a.year;
         return (a.position ?? 999) - (b.position ?? 999);
       });
-  }, [position, query]);
+  }, [placeName, position, properName, query, term]);
 
   function locate() {
     if (!navigator.geolocation) {
@@ -152,12 +152,12 @@ export function BarFinder() {
                 )}
               </div>
               <p className="bar-place">
-                <MapPin size={14} /> {term(bar.city)}, {term(bar.country)}
+                <MapPin size={14} /> {placeName(bar.city)}, {placeName(bar.country)}
               </p>
-              <h3>{bar.name}</h3>
+              <h3>{properName(bar.name)}</h3>
               <p>{term(bar.style)}</p>
               <div className="credential-line">
-                <span>{bar.credential}</span>
+                <span>{properName(bar.credential)}</span>
                 <strong>{bar.year}</strong>
               </div>
               <a href={bar.sourceUrl} target="_blank" rel="noreferrer">

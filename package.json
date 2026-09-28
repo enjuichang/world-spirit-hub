@@ -12,9 +12,10 @@
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "data:sync": "node scripts/generate-distillery-index.mjs",
     "data:check": "node scripts/generate-distillery-index.mjs --check",
+    "localization:check": "node scripts/check-zh-content.mjs",
     "blog:sync": "node scripts/generate-blog-content.mjs",
     "blog:check": "node scripts/generate-blog-content.mjs --check",
-    "test": "npm run data:check && npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run data:check && npm run localization:check && npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
   },

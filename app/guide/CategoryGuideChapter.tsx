@@ -36,7 +36,7 @@ type CategoryGuideChapterProps = {
 };
 
 export function CategoryGuideChapter({ category, guide, index, previous, next }: CategoryGuideChapterProps) {
-  const { locale, category: localizeCategory, term, guideOverview } = useLocale();
+  const { locale, category: localizeCategory, term, properName, placeName, guideOverview } = useLocale();
   const localizedCategory = localizeCategory(category);
   const localizedGuideOverview = guideOverview(category.id, guide.detail, guide.process);
   const mappedLabels = withLabelDistilleries(
@@ -87,9 +87,9 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
               <div className="branding-term-grid">
                 {guide.brandingTerms.map((item) => (
                   <article className="branding-term-card" key={`${item.term}-${item.contrast}`}>
-                    <header><strong>{item.term}</strong><span>vs</span><strong>{item.contrast}</strong></header>
-                    <p>{item.meaning}</p>
-                    <footer><span><Bilingual en="Read the label" zh="閱讀酒標" /></span>{item.labelCue}</footer>
+                    <header><strong>{term(item.term)}</strong><span>vs</span><strong>{term(item.contrast)}</strong></header>
+                    <p>{term(item.meaning)}</p>
+                    <footer><span><Bilingual en="Read the label" zh="閱讀酒標" /></span>{term(item.labelCue)}</footer>
                   </article>
                 ))}
               </div>
@@ -99,7 +99,7 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
               <GuideTitle icon={<Tag />} kicker={<Bilingual en="Bottle vocabulary" zh="酒瓶詞彙" />} id={`${category.id}-labels`}><Bilingual en="Regional names found on labels" zh="酒標上的產區名稱" /></GuideTitle>
               <div className="label-atlas-grid">
                 <div className="label-term-list">
-                  {guide.labelTerms.map((labelTerm) => <article key={labelTerm.term}><span>{term(labelTerm.place)}</span><h4>{term(labelTerm.term)}</h4><p>{labelTerm.meaning}</p></article>)}
+                  {guide.labelTerms.map((labelTerm) => <article key={labelTerm.term}><span>{placeName(labelTerm.place)}</span><h4>{term(labelTerm.term)}</h4><p>{term(labelTerm.meaning)}</p></article>)}
                 </div>
                 {mappedLabels.length > 0 && <RegionMap regions={mappedLabels} label={locale === "zh-TW" ? `${localizedCategory.name}生產地區` : `${category.name} production regions`} minimumRegion={minimumMapRegion} />}
               </div>
@@ -121,10 +121,10 @@ export function CategoryGuideChapter({ category, guide, index, previous, next }:
                   return (
                     <article className="subtype-card" key={subtype.name}>
                       <header><h4>{term(subtype.name)}</h4><span className={`law-status ${subtype.lawStatus.toLowerCase().replaceAll(" ", "-")}`}>{term(subtype.lawStatus)}</span></header>
-                      {classification && <SubtypeFact icon={<Fingerprint />} title={locale === "zh-TW" ? "獨立分類" : "Distinct classification"}>{classification.definition}</SubtypeFact>}
-                      <SubtypeFact icon={<Scale />} title={locale === "zh-TW" ? "法規" : "The law"}>{subtype.law}</SubtypeFact>
-                      <SubtypeFact icon={<Sparkles />} title={locale === "zh-TW" ? "代表風格" : "Signature style"}>{subtype.style}</SubtypeFact>
-                      {example && <SubtypeFact icon={<Factory />} title={locale === "zh-TW" ? "酒廠實例" : "Distillery example"}><strong className="subtype-example-name">{example.name}</strong>{term(example.place)}, {term(example.country)}. {example.descriptor}.</SubtypeFact>}
+                      {classification && <SubtypeFact icon={<Fingerprint />} title={locale === "zh-TW" ? "獨立分類" : "Distinct classification"}>{term(classification.definition)}</SubtypeFact>}
+                      <SubtypeFact icon={<Scale />} title={locale === "zh-TW" ? "法規" : "The law"}>{term(subtype.law)}</SubtypeFact>
+                      <SubtypeFact icon={<Sparkles />} title={locale === "zh-TW" ? "代表風格" : "Signature style"}>{term(subtype.style)}</SubtypeFact>
+                      {example && <SubtypeFact icon={<Factory />} title={locale === "zh-TW" ? "酒廠實例" : "Distillery example"}><strong className="subtype-example-name">{properName(example.name)}</strong>{placeName(example.place)}{locale === "zh-TW" ? "，" : ", "}{placeName(example.country)}{locale === "zh-TW" ? "。" : ". "}{term(example.descriptor)}{locale === "zh-TW" ? "。" : "."}</SubtypeFact>}
                       {mappedRegion && <div className="subtype-map-wrap"><RegionMap regions={[mappedRegion]} label={locale === "zh-TW" ? `${term(subtype.name)}分布` : `${subtype.name} distribution`} compact minimumRegion={subtypeMinimumRegion} frameLabel={mappedRegion.name === "Scandinavia" ? (locale === "zh-TW" ? "歐洲" : "Europe") : undefined} /></div>}
                       <a className="subtype-explore-link" href={`#${getSubtypeTargetId(category.id, subtype.name)}`}><Bilingual en="Explore regions & ingredients" zh="探索產區與原料" /> <ArrowRight size={13} /></a>
                     </article>

@@ -5,7 +5,7 @@ import bottleImages from "../../data/bottle-images.json";
 import type { SpiritCategory, SpiritLocation } from "../data";
 import { withBasePath } from "../publicPath";
 import type { BlogLanguage } from "./types";
-import { localizeCategoryData, localizeTerm } from "../locale-data";
+import { localizeCategoryData, localizePlaceName, localizeProperName, localizeTerm } from "../locale-data";
 
 type BottleImage = {
   imagePath: string;
@@ -54,7 +54,7 @@ export function PostConnectionProfiles({
         {distilleries.map((distillery) => {
           const bottle = bottleImageById[distillery.id];
           const imagePath = bottle?.imagePath ?? categoryImage?.path;
-          const imageAlt = bottle?.productName ?? `${distillery.name} ${categoryImage?.alt ?? "spirit"}`;
+          const imageAlt = bottle?.productName ?? `${localizeProperName(language, distillery.name)} ${localizeTerm(language, categoryImage?.alt ?? "spirit")}`;
 
           return (
             <article className="post-distillery-profile" key={distillery.id}>
@@ -64,10 +64,10 @@ export function PostConnectionProfiles({
                   {localizedSpirit?.name ?? localizeTerm(language, distillery.subcategory)}
                 </p>
                 <p className="profile-location">
-                  <MapPin size={16} aria-hidden="true" /> {localizeTerm(language, distillery.place)}, {localizeTerm(language, distillery.country)}
+                  <MapPin size={16} aria-hidden="true" /> {localizePlaceName(language, distillery.place)}, {localizePlaceName(language, distillery.country)}
                 </p>
-                <h3>{distillery.name}</h3>
-                <p className="profile-descriptor">{distillery.descriptor}</p>
+                <h3>{localizeProperName(language, distillery.name)}</h3>
+                <p className="profile-descriptor">{localizeTerm(language, distillery.descriptor)}</p>
                 {distillery.precision === "approximate" && (
                   <span className="profile-precision">
                     {isChinese ? "區域位置約略標示" : "Approximate regional marker"}
@@ -98,17 +98,17 @@ export function PostConnectionProfiles({
 
                 <div className="post-profile-facts">
                   <dl>
-                    <div><dt>{isChinese ? "創立" : "Established"}</dt><dd>{distillery.profile.established}</dd></div>
+                    <div><dt>{isChinese ? "創立" : "Established"}</dt><dd>{localizeTerm(language, distillery.profile.established)}</dd></div>
                     <div><dt>{isChinese ? "烈酒類型" : "Spirit focus"}</dt><dd>{localizeTerm(language, distillery.subcategory)}</dd></div>
-                    <div><dt>{isChinese ? "產地" : "Place"}</dt><dd>{localizeTerm(language, distillery.place)}, {localizeTerm(language, distillery.country)}</dd></div>
+                    <div><dt>{isChinese ? "產地" : "Place"}</dt><dd>{localizePlaceName(language, distillery.place)}, {localizePlaceName(language, distillery.country)}</dd></div>
                   </dl>
                   <div className="post-profile-fact-copy">
                     <span>{isChinese ? "製程特色" : "Production signature"}</span>
-                    <p>{distillery.profile.production}</p>
+                    <p>{localizeTerm(language, distillery.profile.production)}</p>
                   </div>
                   <div className="post-profile-fact-copy">
                     <span>{isChinese ? "杯中風格" : "Style in the glass"}</span>
-                    <p>{distillery.profile.style}</p>
+                    <p>{localizeTerm(language, distillery.profile.style)}</p>
                   </div>
                   <div className="post-profile-tags" aria-label={isChinese ? "風味筆記" : "Flavor notes"}>
                     {distillery.tags.map((tag) => <span key={tag}>{localizeTerm(language, tag)}</span>)}
@@ -133,7 +133,7 @@ export function PostConnectionProfiles({
           <aside className="post-spirit-profile">
             {categoryImage && (
               <div className="post-spirit-profile-image">
-                <img src={withBasePath(categoryImage.path)} alt={categoryImage.alt} loading="lazy" />
+                <img src={withBasePath(categoryImage.path)} alt={localizeTerm(language, categoryImage.alt)} loading="lazy" />
               </div>
             )}
             <div className="post-spirit-profile-copy">

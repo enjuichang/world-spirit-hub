@@ -25,12 +25,12 @@ function coordinateLabel(value: number, positive: string, negative: string) {
 }
 
 export function ArticleLocatorMap({ latitude, longitude, label }: ArticleLocatorMapProps) {
-  const { locale, term } = useLocale();
+  const { locale, placeName } = useLocale();
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapboxMap | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [mapFailed, setMapFailed] = useState(false);
-  const localizedLabel = term(label);
+  const localizedLabel = placeName(label);
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;

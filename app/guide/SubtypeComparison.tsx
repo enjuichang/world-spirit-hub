@@ -13,7 +13,7 @@ type SubtypeComparisonProps = {
 };
 
 export function SubtypeComparison({ categoryId, categoryName, subtypes }: SubtypeComparisonProps) {
-  const { locale, term } = useLocale();
+  const { locale, term, placeName } = useLocale();
   const id = useId();
   const [leftName, setLeftName] = useState(subtypes[0]?.name ?? "");
   const [rightName, setRightName] = useState(subtypes[1]?.name ?? subtypes[0]?.name ?? "");
@@ -27,11 +27,11 @@ export function SubtypeComparison({ categoryId, categoryName, subtypes }: Subtyp
   if (!left || !right || !leftProfile || !rightProfile) return null;
 
   const rows = [
-    { key: "ingredients", number: "01", label: locale === "zh-TW" ? "基礎原料" : "Base ingredients", left: leftProfile.ingredients, right: rightProfile.ingredients },
-    { key: "method", number: "02", label: locale === "zh-TW" ? "關鍵製法" : "Defining method", left: leftProfile.method, right: rightProfile.method },
-    { key: "aging", number: "03", label: locale === "zh-TW" ? "熟成與靜置" : "Aging & resting", left: leftProfile.aging, right: rightProfile.aging },
-    { key: "law", number: "04", label: locale === "zh-TW" ? "產地與規則" : "Origin & rules", left: left.law, right: right.law },
-    { key: "style", number: "05", label: locale === "zh-TW" ? "典型風格" : "Typical profile", left: left.style, right: right.style },
+    { key: "ingredients", number: "01", label: locale === "zh-TW" ? "基礎原料" : "Base ingredients", left: term(leftProfile.ingredients), right: term(rightProfile.ingredients) },
+    { key: "method", number: "02", label: locale === "zh-TW" ? "關鍵製法" : "Defining method", left: term(leftProfile.method), right: term(rightProfile.method) },
+    { key: "aging", number: "03", label: locale === "zh-TW" ? "熟成與靜置" : "Aging & resting", left: term(leftProfile.aging), right: term(rightProfile.aging) },
+    { key: "law", number: "04", label: locale === "zh-TW" ? "產地與規則" : "Origin & rules", left: term(left.law), right: term(right.law) },
+    { key: "style", number: "05", label: locale === "zh-TW" ? "典型風格" : "Typical profile", left: term(left.style), right: term(right.style) },
   ];
 
   return (
@@ -70,7 +70,7 @@ export function SubtypeComparison({ categoryId, categoryName, subtypes }: Subtyp
           <div key={subtype.name}>
             <span>{term(subtype.lawStatus)}</span>
             <strong>{term(subtype.name)}</strong>
-            <small>{term(subtype.region?.name ?? "Style defined by method")}</small>
+            <small>{subtype.region ? placeName(subtype.region.name) : term("Style defined by method")}</small>
           </div>
         ))}
       </div>
@@ -89,7 +89,7 @@ export function SubtypeComparison({ categoryId, categoryName, subtypes }: Subtyp
 }
 
 function toComparisonPhrase(value: string) {
-  const firstSentence = value.match(/^.*?[.!?](?:\s|$)/)?.[0].trim() ?? value.trim();
+  const firstSentence = value.match(/^.*?[.!?。！？](?:\s|$)/)?.[0].trim() ?? value.trim();
   const firstClause = firstSentence.split(/[;—]/, 1)[0].trim();
 
   if (firstClause.length <= 92) return firstClause;
